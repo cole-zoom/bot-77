@@ -1,0 +1,47 @@
+Golden Knight
+GoldenKnightCard
+The Golden Knight makes a force through the Arena, slashing enemies through the power of his moderate damaging sword and absorbing through his very healthy golden bodyplate, all for 4 Elixir.
+
+For 1 Elixir, you can use his dashingly dashed Dashing Dash dashability, causing him to run around until he approaches an enemy, instantly dashing through a foe through another for up to 10 times, and delivering mean swings afterwards! On top of everything else, very much like his former associate, the Bandit, he is completely invulnerable to anything while dashing, but will stop once he dashes onto a Crown Tower! Combine that with his constant dashing without a skip, and you get a juggernaut who's figuratively and literally gold.
+
+Skeleton King
+SkeletonKingCard
+For 4 Elixir, the almighty dynast of the dead rises through the Arena, clubbing everything through his way with a moderate damage melee splash attack! While he stays in the Arena, any form of life destroyed in the entire battlefield, whether it be friend or foe, will make a fine addition to his Soul Counter, albeit with a limit of 14 souls.
+
+For 2 Elixir, you can use his Soul Summoning ability right above your hand. It will release all of the souls he kept for battle in form of Skeletons around a royal Graveyard aura around him, and adds in 6 more Skeletons among the skeleton squad! Be a bit cautious, as some splash damage dealers will shrug off his reincarnated henchmen and kill a royal entity not even he could revive.
+
+Boss Bandit
+BossBanditCard
+The boss of the secret Forest Gang association, and the one on all the wanted posters. For 6 Elixir, the Boss Bandit is far more powerful than the Bandit, with far more dangerous and damaging hits and dashes, while making her harder to take out.
+
+For 1 Elixir, you can use her Getaway Grenade, which makes her become invisible while teleporting back 6 tiles, making her dash again if her target stays away! The ability has a total of 2 uses (with a 3 second cooldown between each use), building her a great getaway (and grenade) plan!
+
+Archer Queen
+ArcherQueenCard
+The queen and coach of all Archers. A powerful glass cannon rocks the Arena with her crossbow and its mean bolts that she constantly fires slowly for 5 Elixir.
+
+For 1 Elixir, you can use her Cloaking Cape ability, mitigating the glass part of her by turning herself invisible, just like the Royal Ghost: unable to be targeted for 3.5 seconds! For the cherry on top, she also increases her fire output for herself drastically while under her invisibility cape, dishing out more impressive loads of damage onto her foes while still being safe inside her hidden cloak! She's vulnerable to heavy spells and large swarms, and walks slower under her maybe heavy cape, because with great power comes great responsibility.
+
+Mighty Miner
+MightyMinerCard
+You don't need a shovel to mine skillfully! One big, strong, drilling, punch-packing hunk is spawned for 4 Elixir! He packs high health, weak damage that ramps up over time to significant measures, similar to the Inferno Dragon. He can easily melt large, tanky troops (or your tower) with just a drill, but struggles with swarms! But wait, there's more!
+
+For 1 Elixir, you can use his Explosive Escape ability, which makes him drill underground and cross over to his other side, parallel to the tile he was in! Now here comes the "Explosive" part of it: when burying himself, he will leave a big bomb that explodes after one second, dealing moderate damage to troops, annihilating swarms, and pushing back lighter units! So when you face this mega mine muncher, prepare for climax, and expect the unexpected!
+
+Goblinstein
+GoblinsteinCard
+IT'S ALI-I-I-I-VE! Doctor Goblinstein is a mad scientist ready to drop in the arena with his mad inventions, such as his trusty Monster, delicately crafted with high health and a vendetta for buildings, although Goblinstein forgot that his creation is a bit vulnerable to tank killers when he’s not in. He holds a remote that shoots some lightning, stunning enemies for a split second, while being safely protected by the green hunky creation of a mastermind. These 2 can attack and/or defend one or two lanes, all for only 5 Elixir!
+
+For 2 Elixir, you can use his Lightning Link, which is quite shocking for him and the Monster! Goblinstein will link through the monster's antenna, creating an electrical passage between them, dealing a shocking amount of damage to anything brave enough to stand near the electricity for 3.5 seconds. The Monster will drop an antenna upon defeat, allowing Goblinstein to either continue his ability or start one! But if Goblinstein dies, the ability will stop immediately and become unusable.
+
+Little Prince
+LittlePrinceCard
+Now who was the irresponsible parent that let their nephew to the Arena? This mischievous brat loads in his crossbow and fires them at all enemies. His crossbow attack ramps up in DPS the longer he stays still, and unlike the Inferno Dragon, he doesn't stop his crossbow's ramping up when he destroys an enemy. He does stop if he moves more than an inch, though, making pushback come in handy, as well as stunners.
+
+For 3 Elixir, you can use his Royal Rescue to meet his guardian: Guardienne, creating the most mischievous tank + glass cannon combo. She dashes her way from behind the kid and on the way to be in front of the Little Prince himself, damaging and knocking back enemies during her dash, and hopefully letting said Little Prince stay a little longer to charge his crossbow. Guardienne will act like a Knight with less health but slightly more damage as long as she stays alive.
+
+Monk
+MonkCard
+Make the opponents wish they've never fought in the first place with this peacemaking powerhouse! With 5 Elixir, a tank is spawned, attacking through foes through melee attacks, with the third one dealing triple the damage of said attack AND pushing the victim a few tiles back.
+
+For 1 Elixir, you can use his Pensive Protection, an ability that makes him meditate for a 4 seconds and chill out. But not only that, a zen shield forms around himself, making him take 65% less damage! When a projectile approaches him, he'll throw hands, nullifying AND deflecting it back to the sender, although Crown Towers take less damage from reflected projectiles. He can deflect a lot from fire to ice, and yes, he can deflect projectile SPELLS back to Crown Towers, which includes Rockets. It can deflect as long as it is travelling in the air with velocity not too high, meaning it cannot deflect stuff like Inferno Beams, stunning electricity, or a sword.

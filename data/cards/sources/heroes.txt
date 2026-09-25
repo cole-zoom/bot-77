@@ -1,0 +1,84 @@
+Card
+Cards
+Cost
+Elixir
+Ability Cost
+Hero Shard
+Total Elixir Cost
+Elixir
+Ability
+Knight
+KnightHeroShard
+3    2    5    Triumphant Taunt -
+Gains a shield and taunts nearby enemies, forcing them to attack him.
+
+Giant
+GiantHeroShard
+5    2    7    Heroic Hurl -
+Throws the highest-hitpoint enemy troop in reach across the other side of the Arena.
+
+Mini P.E.K.K.A.
+MiniPEKKAHeroShard
+4    1    5    Breakfast Boost -
+Eats pancakes to level up. The longer you wait, the more pancakes he cooks!
+
+Musketeer
+MusketeerHeroShard
+4    3    7    Trusty Turret -
+Spawns a short-range, rapid-firing auto-turret that deals landing damage in front of the Musketeer.
+
+Ice Golem
+IceGolemHeroShard
+2    2    4    Snowstorm -
+Conjures a blizzard that damages and slows nearby enemies.
+
+Wizard
+WizardHeroShard
+5    1    6    Fiery Flight -
+Launches into the air and throws fearsome fire tornadoes, pulling enemies in the center.
+
+Goblins
+GoblinsHeroShard
+2    1    3    Banner Brigade -
+The last Goblin standing drops a banner that calls in reinforcements.
+Mega Minion
+MegaMinionHeroShard
+3    2    5    Wounding Warp -
+Warps to the lowest-hitpoint enemy, dealing damage on arrival. Deals reduced damage to Crown Towers.
+Barbarian Barrel
+BarbarianBarrelHeroShard
+2    1    3    Rowdy Reroll -
+Barrels down the lane a second time for maximum impact.
+Magic Archer
+MagicArcherHeroShard
+4    2    6    Triple Threat -
+Summons a decoy while darting back and fires a triple shot on his next attack.
+Balloon
+BalloonHeroShard
+5    2    7    Coffin Cadet -
+A Skeletrooper soars to the nearest enemy on the ground, dealing landing damage.
+
+Bowler
+BowlerHeroShard
+5    2    7    Stone Swish -
+Plants his feet and throws boulders with increased range.
+
+Dark Prince
+DarkPrinceHeroShard
+4    3    7    Destructive Dismount -
+Dismount doing damage, attacking on foot while Rhino charges buildings.
+
+Tombstone
+TombstoneHeroShard
+3    5    8    Regal Revive -
+Tomb Queen rises from the earth, targeting buildings.
+
+Berserker
+BerserkerHeroShard
+2    3    5    Savage Survival -
+A Bear spirit emerges through her, making her attacks go rapid and preventing her health from going below 1 HP while dealing reduced damage to Crown Towers.
+
+Valkyrie
+ValkyrieHeroShard
+4    3    7    Wild Whirlwind -
+Spins rapidly, dealing damage and increasing her movement speed while taking less damage.

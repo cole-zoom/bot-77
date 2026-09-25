@@ -1,0 +1,166 @@
+{
+  "layout_id": "alina_portrait",
+  "description": "Native phone capture, 1080x2340, no overlays. Calibrated on uz4VVzGlOjE.",
+  "frame_size": [
+    1080,
+    2340
+  ],
+  "regions": {
+    "opp_name": [
+      100,
+      88,
+      410,
+      142
+    ],
+    "opp_clan": [
+      100,
+      150,
+      300,
+      188
+    ],
+    "opp_rating": [
+      100,
+      195,
+      200,
+      235
+    ],
+    "timer_label": [
+      915,
+      90,
+      1070,
+      122
+    ],
+    "timer": [
+      915,
+      128,
+      1070,
+      188
+    ],
+    "multiplier": [
+      935,
+      205,
+      1045,
+      305
+    ],
+    "opp_king_hp": [
+      500,
+      115,
+      610,
+      165
+    ],
+    "opp_left_hp": [
+      175,
+      355,
+      280,
+      398
+    ],
+    "opp_right_hp": [
+      812,
+      355,
+      915,
+      398
+    ],
+    "my_left_hp": [
+      172,
+      1415,
+      265,
+      1455
+    ],
+    "my_right_hp": [
+      812,
+      1415,
+      910,
+      1455
+    ],
+    "ability_left": [
+      20,
+      1770,
+      210,
+      1955
+    ],
+    "ability_right": [
+      870,
+      1770,
+      1060,
+      1955
+    ],
+    "slot1_tab": [
+      255,
+      1958,
+      420,
+      2020
+    ],
+    "slot2_tab": [
+      457,
+      1958,
+      624,
+      2020
+    ],
+    "slot3_tab": [
+      660,
+      1958,
+      827,
+      2020
+    ],
+    "slot4_tab": [
+      863,
+      1958,
+      1030,
+      2020
+    ],
+    "slot1": [
+      243,
+      1950,
+      432,
+      2258
+    ],
+    "slot2": [
+      445,
+      1950,
+      636,
+      2258
+    ],
+    "slot3": [
+      648,
+      1950,
+      839,
+      2258
+    ],
+    "slot4": [
+      851,
+      1950,
+      1042,
+      2258
+    ],
+    "next": [
+      45,
+      2195,
+      155,
+      2330
+    ],
+    "elixir_number": [
+      285,
+      2250,
+      365,
+      2318
+    ],
+    "elixir_bar": [
+      290,
+      2268,
+      1045,
+      2302
+    ]
+  },
+  "notes": {
+    "ability_right": "Mighty Miner ability button. States seen: available (bright blue, pink cost pip), unavailable (dark blue, grey pip).",
+    "ability_left": "Mirrored from ability_right. Only appears when a second hero/champion ability exists; never in Alina's usual deck.",
+    "my_king_hp": "Not calibrated: only shown once the POV king tower is damaged.",
+    "slotN_tab": "Evo cards have a tab with charge pips; champion/hero cards have a pointed frame.",
+    "slotN": "Top extended to 1950: a selected card is raised ~31px (card-art top ~1981 vs ~2012).",
+    "emote_panel": "The emote picker covers the whole hand bar (e.g. 521s). Readers must detect it and return 'occluded'.",
+    "next": "A '1sec' countdown can overlay the bottom-left of the next card right after a play."
+  },
+  "hand": {
+    "ui_scale": 1.0
+  }
+}

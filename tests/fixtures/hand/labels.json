@@ -1,0 +1,257 @@
+{
+ "hand_00539.jpg": {
+  "source": "uz4VVzGlOjE",
+  "t": 53.9,
+  "y_offset": 1750,
+  "labels": {
+   "next": "Electro Spirit",
+   "slot1": "Tesla",
+   "slot2": "Earthquake",
+   "slot3": null,
+   "slot4": "Mighty Miner"
+  },
+  "flags": {
+   "slot1": "G",
+   "slot2": "G",
+   "slot4": "G"
+  },
+  "layout": "alina_portrait",
+  "frame_size": [
+   1080,
+   2340
+  ],
+  "elixir": 1
+ },
+ "hand_00766.jpg": {
+  "source": "uz4VVzGlOjE",
+  "t": 76.6,
+  "y_offset": 1750,
+  "labels": {
+   "next": "Skeletons",
+   "slot1": "Tesla",
+   "slot2": "Earthquake",
+   "slot3": "Electro Spirit",
+   "slot4": "Mighty Miner"
+  },
+  "flags": {
+   "slot3": "S"
+  },
+  "layout": "alina_portrait",
+  "frame_size": [
+   1080,
+   2340
+  ],
+  "elixir": 9
+ },
+ "hand_02375.jpg": {
+  "source": "uz4VVzGlOjE",
+  "t": 237.5,
+  "y_offset": 1750,
+  "labels": {
+   "next": "Firecracker",
+   "slot1": "Electro Spirit",
+   "slot2": "Mighty Miner",
+   "slot3": null,
+   "slot4": "The Log"
+  },
+  "flags": {},
+  "layout": "alina_portrait",
+  "frame_size": [
+   1080,
+   2340
+  ],
+  "elixir": 4
+ },
+ "hand_06583.jpg": {
+  "source": "uz4VVzGlOjE",
+  "t": 658.3,
+  "y_offset": 1750,
+  "labels": {
+   "next": "Electro Spirit",
+   "slot1": "Earthquake",
+   "slot2": "Mighty Miner",
+   "slot3": "Hog Rider",
+   "slot4": null
+  },
+  "flags": {},
+  "layout": "alina_portrait",
+  "frame_size": [
+   1080,
+   2340
+  ],
+  "elixir": 0
+ },
+ "hand_07199.jpg": {
+  "source": "uz4VVzGlOjE",
+  "t": 719.9,
+  "y_offset": 1750,
+  "labels": {
+   "next": "Electro Spirit",
+   "slot1": "?",
+   "slot2": "?",
+   "slot3": "?",
+   "slot4": "?"
+  },
+  "flags": {},
+  "layout": "alina_portrait",
+  "frame_size": [
+   1080,
+   2340
+  ],
+  "elixir": 2
+ },
+ "hand_08101.jpg": {
+  "source": "uz4VVzGlOjE",
+  "t": 810.1,
+  "y_offset": 1750,
+  "labels": {
+   "next": "Electro Spirit",
+   "slot1": "The Log",
+   "slot2": "Tesla",
+   "slot3": "Firecracker",
+   "slot4": "Earthquake"
+  },
+  "flags": {
+   "slot3": "evo"
+  },
+  "layout": "alina_portrait",
+  "frame_size": [
+   1080,
+   2340
+  ],
+  "elixir": 3
+ },
+ "hand_08918.jpg": {
+  "source": "uz4VVzGlOjE",
+  "t": 891.8,
+  "y_offset": 1750,
+  "labels": {
+   "next": "Firecracker",
+   "slot1": "The Log",
+   "slot2": null,
+   "slot3": "Skeletons",
+   "slot4": "Tesla"
+  },
+  "flags": {
+   "slot4": "evo,G"
+  },
+  "layout": "alina_portrait",
+  "frame_size": [
+   1080,
+   2340
+  ],
+  "elixir": 3
+ },
+ "hand_10412.jpg": {
+  "source": "uz4VVzGlOjE",
+  "t": 1041.2,
+  "y_offset": 1750,
+  "labels": {
+   "next": "Mighty Miner",
+   "slot1": "Firecracker",
+   "slot2": "Earthquake",
+   "slot3": "Tesla",
+   "slot4": "Hog Rider"
+  },
+  "flags": {
+   "slot1": "G",
+   "slot2": "G",
+   "slot3": "evo,G",
+   "slot4": "G"
+  },
+  "layout": "alina_portrait",
+  "frame_size": [
+   1080,
+   2340
+  ],
+  "elixir": 1
+ },
+ "mohamed_03095.jpg": {
+  "source": "gAibX9rhMfo",
+  "t": 309.5,
+  "layout": "mohamed_landscape_ipad",
+  "frame_size": [
+   1920,
+   1080
+  ],
+  "y_offset": 720,
+  "x_offset": 60,
+  "labels": {
+   "next": "Arrows",
+   "slot1": "Fireball",
+   "slot2": "Poison",
+   "slot3": "Mega Knight",
+   "slot4": "Giant"
+  },
+  "flags": {},
+  "elixir": 6
+ },
+ "mohamed_06117.jpg": {
+  "source": "gAibX9rhMfo",
+  "t": 611.7,
+  "layout": "mohamed_landscape_ipad",
+  "frame_size": [
+   1920,
+   1080
+  ],
+  "y_offset": 720,
+  "x_offset": 60,
+  "labels": {
+   "next": "Mini P.E.K.K.A",
+   "slot1": "Bats",
+   "slot2": "Wizard",
+   "slot3": "Freeze",
+   "slot4": "Spear Goblins"
+  },
+  "flags": {},
+  "elixir": 5
+ },
+ "mohamed_11290.jpg": {
+  "source": "gAibX9rhMfo",
+  "t": 1129.0,
+  "layout": "mohamed_landscape_ipad",
+  "frame_size": [
+   1920,
+   1080
+  ],
+  "y_offset": 720,
+  "x_offset": 60,
+  "labels": {
+   "next": "Fireball",
+   "slot1": "Bomber",
+   "slot2": "Skeleton Army",
+   "slot3": "Hog Rider",
+   "slot4": "Bowler"
+  },
+  "flags": {
+   "slot4": "hero"
+  },
+  "elixir": 6
+ },
+ "mohamed_01959.jpg": {
+  "source": "gAibX9rhMfo",
+  "t": 195.9,
+  "layout": "mohamed_landscape_ipad",
+  "frame_size": [
+   1920,
+   1080
+  ],
+  "y_offset": 720,
+  "x_offset": 60,
+  "labels": {
+   "next": "Prince",
+   "slot1": "Knight",
+   "slot2": "Goblin Cage",
+   "slot3": "Bomber",
+   "slot4": "Barbarians"
+  },
+  "flags": {
+   "slot1": "hero,G",
+   "slot2": "evo,G",
+   "slot3": "evo,G",
+   "slot4": "G"
+  },
+  "verified_by": "Cole",
+  "elixir": 1
+ }
+}

@@ -1,0 +1,665 @@
+# Hand-maintained card facts that the Clash Royale API doesn't provide.
+# Merged onto the API snapshot by `bot77 cards ingest`. Keys are exact API card names.
+# Sources (Cole, 2026-09-24): data/cards/sources/{evolutions,heroes,champions}.txt
+#
+# evo:               cycles to charge, stat boost vs base card, special ability
+# hero_ability /
+# champion_ability:  name, elixir cost, description; uses_per_deploy (default 1), cooldown_s
+# type:              override the troop/building/spell type derived from the card id
+#                    (Heal Spirit: was the Heal spell, id never updated)
+# elixir:            "variable" = Mirror (mirrored card's cost + 1)
+
+Archer Queen:
+  champion_ability:
+    name: Cloaking Cape
+    cost: 1
+    description: 'For 1 Elixir, you can use her Cloaking Cape ability, mitigating the glass part of her by turning herself invisible, just like the Royal Ghost: unable to be targeted for 3.5 seconds! For the cherry on top, she also increases her fire output for herself drastically while under her invisibility cape, dishing out more impressive loads of damage onto her foes while still being safe inside her hidden cloak! She''s vulnerable to heavy spells and large swarms, and walks slower under her maybe heavy cape, because with great power comes great responsibility.
+
+
+      Mighty Miner
+
+      MightyMinerCard
+
+      You don''t need a shovel to mine skillfully! One big, strong, drilling, punch-packing hunk is spawned for 4 Elixir! He packs high health, weak damage that ramps up over time to significant measures, similar to the Inferno Dragon. He can easily melt large, tanky troops (or your tower) with just a drill, but struggles with swarms! But wait, there''s more!
+
+
+      For 1 Elixir, you can use his Explosive Escape ability, which makes him drill underground and cross over to his other side, parallel to the tile he was in! Now here comes the "Explosive" part of it: when burying himself, he will leave a big bomb that explodes after one second, dealing moderate damage to troops, annihilating swarms, and pushing back lighter units! So when you face this mega mine muncher, prepare for climax, and expect the unexpected!
+
+
+      Goblinstein
+
+      GoblinsteinCard
+
+      IT''S ALI-I-I-I-VE! Doctor Goblinstein is a mad scientist ready to drop in the arena with his mad inventions, such as his trusty Monster, delicately crafted with high health and a vendetta for buildings, although Goblinstein forgot that his creation is a bit vulnerable to tank killers when he’s not in. He holds a remote that shoots some lightning, stunning enemies for a split second, while being safely protected by the green hunky creation of a mastermind. These 2 can attack and/or defend one or two lanes, all for only 5 Elixir!
+
+
+      For 2 Elixir, you can use his Lightning Link, which is quite shocking for him and the Monster! Goblinstein will link through the monster''s antenna, creating an electrical passage between them, dealing a shocking amount of damage to anything brave enough to stand near the electricity for 3.5 seconds. The Monster will drop an antenna upon defeat, allowing Goblinstein to either continue his ability or start one! But if Goblinstein dies, the ability will stop immediately and become unusable.
+
+
+      Little Prince
+
+      LittlePrinceCard
+
+      Now who was the irresponsible parent that let their nephew to the Arena? This mischievous brat loads in his crossbow and fires them at all enemies. His crossbow attack ramps up in DPS the longer he stays still, and unlike the Inferno Dragon, he doesn''t stop his crossbow''s ramping up when he destroys an enemy. He does stop if he moves more than an inch, though, making pushback come in handy, as well as stunners.
+
+
+      For 3 Elixir, you can use his Royal Rescue to meet his guardian: Guardienne, creating the most mischievous tank + glass cannon combo. She dashes her way from behind the kid and on the way to be in front of the Little Prince himself, damaging and knocking back enemies during her dash, and hopefully letting said Little Prince stay a little longer to charge his crossbow. Guardienne will act like a Knight with less health but slightly more damage as long as she stays alive.
+
+
+      Monk
+
+      MonkCard
+
+      Make the opponents wish they''ve never fought in the first place with this peacemaking powerhouse! With 5 Elixir, a tank is spawned, attacking through foes through melee attacks, with the third one dealing triple the damage of said attack AND pushing the victim a few tiles back.
+
+
+      For 1 Elixir, you can use his Pensive Protection, an ability that makes him meditate for a 4 seconds and chill out. But not only that, a zen shield forms around himself, making him take 65% less damage! When a projectile approaches him, he''ll throw hands, nullifying AND deflecting it back to the sender, although Crown Towers take less damage from reflected projectiles. He can deflect a lot from fire to ice, and yes, he can deflect projectile SPELLS back to Crown Towers, which includes Rockets. It can deflect as long as it is travelling in the air with velocity not too high, meaning it cannot deflect stuff like Inferno Beams, stunning electricity, or a sword.'
+Archers:
+  evo:
+    cycles: 2
+    stat_boost: +1 tile Range
+    ability_name: Power Shot
+    ability_description: Deals 25% bonus damage to an opposing troop if they're 4-6 tiles away from the Archers.
+Baby Dragon:
+  evo:
+    cycles: 2
+    stat_boost: null
+    ability_name: Wind Gush
+    ability_description: A burst of wind is created in a 8x9 area, reducing enemies' movement speed by 30% and increasing troops' movement speed by 30%. The wind burst lasts for 5 seconds, but if the Baby Dragon is defeated, it will only last 2.5 seconds.
+Balloon:
+  hero_ability:
+    name: Coffin Cadet
+    cost: 2
+    description: A Skeletrooper soars to the nearest enemy on the ground, dealing landing damage.
+Barbarian Barrel:
+  hero_ability:
+    name: Rowdy Reroll
+    cost: 1
+    description: Barrels down the lane a second time for maximum impact.
+Barbarians:
+  evo:
+    cycles: 1
+    stat_boost: null
+    ability_name: Blade Rage
+    ability_description: +35% Attack Period and Movement Speed every time they attack, lasting 5 seconds. This 5-second timer resets if they keep attacking.
+Bats:
+  evo:
+    cycles: 2
+    stat_boost: +50% Hitpoints
+    ability_name: Life Leech
+    ability_description: Every time the Bats attack, they'll start healing at a rate of 2 pulses every second. This heal goes beyond their health bar and acts as an overheal, doubling their max health.
+Battle Ram:
+  evo:
+    cycles: 2
+    stat_boost: null
+    ability_name: Head-First Ram
+    ability_description: Once the Battle Ram starts charging, anything that comes in contact with it will be hit with moderate damage while small to medium troops will be knocked back 2 tiles. Additionally, upon connecting with its target, the Battle Ram will knock itself back and deal double of its regular connection damage, constantly ramming into its target until either the Battle Ram or its target is destroyed. This will deal the same double damage for every connection made. Once the Battle Ram breaks, 2 Evolved Barbarians will be revealed from underneath.
+Berserker:
+  hero_ability:
+    name: Savage Survival
+    cost: 3
+    description: A Bear spirit emerges through her, making her attacks go rapid and preventing her health from going below 1 HP while dealing reduced damage to Crown Towers.
+Bomber:
+  evo:
+    cycles: 2
+    stat_boost: null
+    ability_name: Bomb Bounce
+    ability_description: Every time the Bomber attacks, the bomb he throws bounces twice after the initial attack. Each damage radius is 2.5 tiles apart. The bomb cannot hit the same troop more than once.
+Boss Bandit:
+  champion_ability:
+    name: Getaway Grenade
+    cost: 1
+    description: 'For 1 Elixir, you can use her Getaway Grenade, which makes her become invisible while teleporting back 6 tiles, making her dash again if her target stays away! The ability has a total of 2 uses (with a 3 second cooldown between each use), building her a great getaway (and grenade) plan!
+
+
+      Archer Queen
+
+      ArcherQueenCard
+
+      The queen and coach of all Archers. A powerful glass cannon rocks the Arena with her crossbow and its mean bolts that she constantly fires slowly for 5 Elixir.
+
+
+      For 1 Elixir, you can use her Cloaking Cape ability, mitigating the glass part of her by turning herself invisible, just like the Royal Ghost: unable to be targeted for 3.5 seconds! For the cherry on top, she also increases her fire output for herself drastically while under her invisibility cape, dishing out more impressive loads of damage onto her foes while still being safe inside her hidden cloak! She''s vulnerable to heavy spells and large swarms, and walks slower under her maybe heavy cape, because with great power comes great responsibility.
+
+
+      Mighty Miner
+
+      MightyMinerCard
+
+      You don''t need a shovel to mine skillfully! One big, strong, drilling, punch-packing hunk is spawned for 4 Elixir! He packs high health, weak damage that ramps up over time to significant measures, similar to the Inferno Dragon. He can easily melt large, tanky troops (or your tower) with just a drill, but struggles with swarms! But wait, there''s more!
+
+
+      For 1 Elixir, you can use his Explosive Escape ability, which makes him drill underground and cross over to his other side, parallel to the tile he was in! Now here comes the "Explosive" part of it: when burying himself, he will leave a big bomb that explodes after one second, dealing moderate damage to troops, annihilating swarms, and pushing back lighter units! So when you face this mega mine muncher, prepare for climax, and expect the unexpected!
+
+
+      Goblinstein
+
+      GoblinsteinCard
+
+      IT''S ALI-I-I-I-VE! Doctor Goblinstein is a mad scientist ready to drop in the arena with his mad inventions, such as his trusty Monster, delicately crafted with high health and a vendetta for buildings, although Goblinstein forgot that his creation is a bit vulnerable to tank killers when he’s not in. He holds a remote that shoots some lightning, stunning enemies for a split second, while being safely protected by the green hunky creation of a mastermind. These 2 can attack and/or defend one or two lanes, all for only 5 Elixir!
+
+
+      For 2 Elixir, you can use his Lightning Link, which is quite shocking for him and the Monster! Goblinstein will link through the monster''s antenna, creating an electrical passage between them, dealing a shocking amount of damage to anything brave enough to stand near the electricity for 3.5 seconds. The Monster will drop an antenna upon defeat, allowing Goblinstein to either continue his ability or start one! But if Goblinstein dies, the ability will stop immediately and become unusable.
+
+
+      Little Prince
+
+      LittlePrinceCard
+
+      Now who was the irresponsible parent that let their nephew to the Arena? This mischievous brat loads in his crossbow and fires them at all enemies. His crossbow attack ramps up in DPS the longer he stays still, and unlike the Inferno Dragon, he doesn''t stop his crossbow''s ramping up when he destroys an enemy. He does stop if he moves more than an inch, though, making pushback come in handy, as well as stunners.
+
+
+      For 3 Elixir, you can use his Royal Rescue to meet his guardian: Guardienne, creating the most mischievous tank + glass cannon combo. She dashes her way from behind the kid and on the way to be in front of the Little Prince himself, damaging and knocking back enemies during her dash, and hopefully letting said Little Prince stay a little longer to charge his crossbow. Guardienne will act like a Knight with less health but slightly more damage as long as she stays alive.
+
+
+      Monk
+
+      MonkCard
+
+      Make the opponents wish they''ve never fought in the first place with this peacemaking powerhouse! With 5 Elixir, a tank is spawned, attacking through foes through melee attacks, with the third one dealing triple the damage of said attack AND pushing the victim a few tiles back.
+
+
+      For 1 Elixir, you can use his Pensive Protection, an ability that makes him meditate for a 4 seconds and chill out. But not only that, a zen shield forms around himself, making him take 65% less damage! When a projectile approaches him, he''ll throw hands, nullifying AND deflecting it back to the sender, although Crown Towers take less damage from reflected projectiles. He can deflect a lot from fire to ice, and yes, he can deflect projectile SPELLS back to Crown Towers, which includes Rockets. It can deflect as long as it is travelling in the air with velocity not too high, meaning it cannot deflect stuff like Inferno Beams, stunning electricity, or a sword.'
+    uses_per_deploy: 2
+    cooldown_s: 3
+Bowler:
+  hero_ability:
+    name: Stone Swish
+    cost: 2
+    description: Plants his feet and throws boulders with increased range.
+Cannon:
+  evo:
+    cycles: 2
+    stat_boost: null
+    ability_name: Barrage Carnage
+    ability_description: When deployed, 9 bombs (4 on the player's side and 5 on the opponent's side) will rain from the sky, dealing damage and knockback to air and ground units.
+Dark Prince:
+  hero_ability:
+    name: Destructive Dismount
+    cost: 3
+    description: Dismount doing damage, attacking on foot while Rhino charges buildings.
+Dart Goblin:
+  evo:
+    cycles: 2
+    stat_boost: null
+    ability_name: Noxious Darts
+    ability_description: The Dart Goblin's attacks add a poison effect to the troop that lasts until they are defeating, leaving behind an area-damage poison trail that lasts 1 second when walking. His poison effect increases to level 2 after the Dart Goblin hits the target 4 times, and to level 3 if he hits it 7 times.
+Electro Dragon:
+  evo:
+    cycles: 1
+    stat_boost: null
+    ability_name: Infini-Shock
+    ability_description: The Electro Dragon's bolts can now infinitely chain across units multiple times as long as they're 4 tiles from each other. After the 3rd chain, the bolts lose their stun effect, the damage gets reduced by 33%, and the lightning moves 20% slower until they dissipate.
+Elite Barbarians:
+  evo:
+    cycles: 1
+    stat_boost: null
+    ability_name: Rage Spears
+    ability_description: Each Elite Barbarian spawns with a spear. Once a ground troop is within 3.5-5 tiles, they will throws the spear. Dealing damage while leaving a rage trail that boosts movement and attack speed. Gains a new spear after 5 seconds.
+Executioner:
+  evo:
+    cycles: 1
+    stat_boost: null
+    ability_name: Axe Smash
+    ability_description: The Executioner throws an axe that at 2.5 tiles or less, deals 35% extra damage and knockback, pushing troops back 1.5 tiles. The axe does not deal knockback when returning to the Executioner, and its knockback does not work against heavy units.
+Firecracker:
+  evo:
+    cycles: 2
+    stat_boost: null
+    ability_name: Spark Attack
+    ability_description: Sparks that deal very low damage every 0.25 seconds appear after the initial attack is finished. Lasting 3 seconds. The center spark has a 2.5-tile radius while the shrapnel sparks have a 1.2-tile radius. Additionally, these sparks will slow the movement speed of all troops in their radius by 15%.
+Furnace:
+  evo:
+    cycles: 2
+    stat_boost: null
+    ability_name: Hot Spawn
+    ability_description: While the Furnace attacks, its Fire Spirit spawn period is decreased to 2.4 seconds, with the Fire Spirits alternating between spawning to the left and to the right.
+Giant:
+  hero_ability:
+    name: Heroic Hurl
+    cost: 2
+    description: Throws the highest-hitpoint enemy troop in reach across the other side of the Arena.
+Giant Snowball:
+  evo:
+    cycles: 2
+    stat_boost: null
+    ability_name: Snow Roll
+    ability_description: The Giant Snowball will sacrifice the knockback for a 4 tile roll; pulling all troops in its path.
+Goblin Barrel:
+  evo:
+    cycles: 2
+    stat_boost: null
+    ability_name: Decoy Barrel
+    ability_description: Spawns 2 Goblin Barrels with identical appearances, with the Decoy glowing for 1 second, with the placement mirroring each other in their respective lanes. The Goblin Barrel manually deployed by the player will contain 3 Goblins while the other Goblin Barrel will contain 3 Decoy Goblins. These are identical to Goblins, but they have 53% of a Goblin's damage and 60% of a Goblin's hitpoints.
+Goblin Cage:
+  evo:
+    cycles: 2
+    stat_boost: null
+    ability_name: Rage Cage
+    ability_description: once a ground troop comes within 3 tiles of the Goblin Cage, they’re dragged into the Cage and the Brawler will hit the troop every 1 second. During this time, the troop is unable to attack and the Goblin Brawler is immune to all forms damage (except Electro Giant's Zap Pack.
+Goblin Drill:
+  evo:
+    cycles: 2
+    stat_boost: null
+    ability_name: Whack-A-Drill
+    ability_description: After the Goblin Drill reaches 66% of its original hitpoints, it'll go back underground and spawn 2 Goblins. Afterwards, it'll emerge 90 degrees around the Crown Tower from where it originally was. After reaching 33% of its original hitpoints, it'll rotate another 90 degrees around the Crown Tower and spawn another Goblin. The spawn damage and pushback upon emerging is done only once (when initially deployed). If it hasn't been placed next to the Crown Tower, it'll emerge in the same spot all 3 times.
+Goblin Giant:
+  evo:
+    cycles: 1
+    stat_boost: null
+    ability_name: Tricky Sack
+    ability_description: After the Goblin Giant reaches 50% of his original hitpoints, a Goblin will spawn 2.5 tiles behind him every 2.2 seconds.
+Goblins:
+  hero_ability:
+    name: Banner Brigade
+    cost: 1
+    description: The last Goblin standing drops a banner that calls in reinforcements.
+Goblinstein:
+  champion_ability:
+    name: Lightning Link
+    cost: 2
+    description: 'For 2 Elixir, you can use his Lightning Link, which is quite shocking for him and the Monster! Goblinstein will link through the monster''s antenna, creating an electrical passage between them, dealing a shocking amount of damage to anything brave enough to stand near the electricity for 3.5 seconds. The Monster will drop an antenna upon defeat, allowing Goblinstein to either continue his ability or start one! But if Goblinstein dies, the ability will stop immediately and become unusable.
+
+
+      Little Prince
+
+      LittlePrinceCard
+
+      Now who was the irresponsible parent that let their nephew to the Arena? This mischievous brat loads in his crossbow and fires them at all enemies. His crossbow attack ramps up in DPS the longer he stays still, and unlike the Inferno Dragon, he doesn''t stop his crossbow''s ramping up when he destroys an enemy. He does stop if he moves more than an inch, though, making pushback come in handy, as well as stunners.
+
+
+      For 3 Elixir, you can use his Royal Rescue to meet his guardian: Guardienne, creating the most mischievous tank + glass cannon combo. She dashes her way from behind the kid and on the way to be in front of the Little Prince himself, damaging and knocking back enemies during her dash, and hopefully letting said Little Prince stay a little longer to charge his crossbow. Guardienne will act like a Knight with less health but slightly more damage as long as she stays alive.
+
+
+      Monk
+
+      MonkCard
+
+      Make the opponents wish they''ve never fought in the first place with this peacemaking powerhouse! With 5 Elixir, a tank is spawned, attacking through foes through melee attacks, with the third one dealing triple the damage of said attack AND pushing the victim a few tiles back.
+
+
+      For 1 Elixir, you can use his Pensive Protection, an ability that makes him meditate for a 4 seconds and chill out. But not only that, a zen shield forms around himself, making him take 65% less damage! When a projectile approaches him, he''ll throw hands, nullifying AND deflecting it back to the sender, although Crown Towers take less damage from reflected projectiles. He can deflect a lot from fire to ice, and yes, he can deflect projectile SPELLS back to Crown Towers, which includes Rockets. It can deflect as long as it is travelling in the air with velocity not too high, meaning it cannot deflect stuff like Inferno Beams, stunning electricity, or a sword.'
+Golden Knight:
+  champion_ability:
+    name: Dashing Dash
+    cost: 1
+    description: 'For 1 Elixir, you can use his dashingly dashed Dashing Dash dashability, causing him to run around until he approaches an enemy, instantly dashing through a foe through another for up to 10 times, and delivering mean swings afterwards! On top of everything else, very much like his former associate, the Bandit, he is completely invulnerable to anything while dashing, but will stop once he dashes onto a Crown Tower! Combine that with his constant dashing without a skip, and you get a juggernaut who''s figuratively and literally gold.
+
+
+      Skeleton King
+
+      SkeletonKingCard
+
+      For 4 Elixir, the almighty dynast of the dead rises through the Arena, clubbing everything through his way with a moderate damage melee splash attack! While he stays in the Arena, any form of life destroyed in the entire battlefield, whether it be friend or foe, will make a fine addition to his Soul Counter, albeit with a limit of 14 souls.
+
+
+      For 2 Elixir, you can use his Soul Summoning ability right above your hand. It will release all of the souls he kept for battle in form of Skeletons around a royal Graveyard aura around him, and adds in 6 more Skeletons among the skeleton squad! Be a bit cautious, as some splash damage dealers will shrug off his reincarnated henchmen and kill a royal entity not even he could revive.
+
+
+      Boss Bandit
+
+      BossBanditCard
+
+      The boss of the secret Forest Gang association, and the one on all the wanted posters. For 6 Elixir, the Boss Bandit is far more powerful than the Bandit, with far more dangerous and damaging hits and dashes, while making her harder to take out.
+
+
+      For 1 Elixir, you can use her Getaway Grenade, which makes her become invisible while teleporting back 6 tiles, making her dash again if her target stays away! The ability has a total of 2 uses (with a 3 second cooldown between each use), building her a great getaway (and grenade) plan!
+
+
+      Archer Queen
+
+      ArcherQueenCard
+
+      The queen and coach of all Archers. A powerful glass cannon rocks the Arena with her crossbow and its mean bolts that she constantly fires slowly for 5 Elixir.
+
+
+      For 1 Elixir, you can use her Cloaking Cape ability, mitigating the glass part of her by turning herself invisible, just like the Royal Ghost: unable to be targeted for 3.5 seconds! For the cherry on top, she also increases her fire output for herself drastically while under her invisibility cape, dishing out more impressive loads of damage onto her foes while still being safe inside her hidden cloak! She''s vulnerable to heavy spells and large swarms, and walks slower under her maybe heavy cape, because with great power comes great responsibility.
+
+
+      Mighty Miner
+
+      MightyMinerCard
+
+      You don''t need a shovel to mine skillfully! One big, strong, drilling, punch-packing hunk is spawned for 4 Elixir! He packs high health, weak damage that ramps up over time to significant measures, similar to the Inferno Dragon. He can easily melt large, tanky troops (or your tower) with just a drill, but struggles with swarms! But wait, there''s more!
+
+
+      For 1 Elixir, you can use his Explosive Escape ability, which makes him drill underground and cross over to his other side, parallel to the tile he was in! Now here comes the "Explosive" part of it: when burying himself, he will leave a big bomb that explodes after one second, dealing moderate damage to troops, annihilating swarms, and pushing back lighter units! So when you face this mega mine muncher, prepare for climax, and expect the unexpected!
+
+
+      Goblinstein
+
+      GoblinsteinCard
+
+      IT''S ALI-I-I-I-VE! Doctor Goblinstein is a mad scientist ready to drop in the arena with his mad inventions, such as his trusty Monster, delicately crafted with high health and a vendetta for buildings, although Goblinstein forgot that his creation is a bit vulnerable to tank killers when he’s not in. He holds a remote that shoots some lightning, stunning enemies for a split second, while being safely protected by the green hunky creation of a mastermind. These 2 can attack and/or defend one or two lanes, all for only 5 Elixir!
+
+
+      For 2 Elixir, you can use his Lightning Link, which is quite shocking for him and the Monster! Goblinstein will link through the monster''s antenna, creating an electrical passage between them, dealing a shocking amount of damage to anything brave enough to stand near the electricity for 3.5 seconds. The Monster will drop an antenna upon defeat, allowing Goblinstein to either continue his ability or start one! But if Goblinstein dies, the ability will stop immediately and become unusable.
+
+
+      Little Prince
+
+      LittlePrinceCard
+
+      Now who was the irresponsible parent that let their nephew to the Arena? This mischievous brat loads in his crossbow and fires them at all enemies. His crossbow attack ramps up in DPS the longer he stays still, and unlike the Inferno Dragon, he doesn''t stop his crossbow''s ramping up when he destroys an enemy. He does stop if he moves more than an inch, though, making pushback come in handy, as well as stunners.
+
+
+      For 3 Elixir, you can use his Royal Rescue to meet his guardian: Guardienne, creating the most mischievous tank + glass cannon combo. She dashes her way from behind the kid and on the way to be in front of the Little Prince himself, damaging and knocking back enemies during her dash, and hopefully letting said Little Prince stay a little longer to charge his crossbow. Guardienne will act like a Knight with less health but slightly more damage as long as she stays alive.
+
+
+      Monk
+
+      MonkCard
+
+      Make the opponents wish they''ve never fought in the first place with this peacemaking powerhouse! With 5 Elixir, a tank is spawned, attacking through foes through melee attacks, with the third one dealing triple the damage of said attack AND pushing the victim a few tiles back.
+
+
+      For 1 Elixir, you can use his Pensive Protection, an ability that makes him meditate for a 4 seconds and chill out. But not only that, a zen shield forms around himself, making him take 65% less damage! When a projectile approaches him, he''ll throw hands, nullifying AND deflecting it back to the sender, although Crown Towers take less damage from reflected projectiles. He can deflect a lot from fire to ice, and yes, he can deflect projectile SPELLS back to Crown Towers, which includes Rockets. It can deflect as long as it is travelling in the air with velocity not too high, meaning it cannot deflect stuff like Inferno Beams, stunning electricity, or a sword.'
+Heal Spirit:
+  type: troop
+Hunter:
+  evo:
+    cycles: 2
+    stat_boost: null
+    ability_name: Netting Trap
+    ability_description: The Hunter throws a net at the closest troop, making them unable to move or attack. If that troop is flying, it brings them to the ground and can be attacked as if it was on the ground. The net lasts only for 3 seconds and recharges after 5 seconds.
+Ice Golem:
+  hero_ability:
+    name: Snowstorm
+    cost: 2
+    description: Conjures a blizzard that damages and slows nearby enemies.
+Ice Spirit:
+  evo:
+    cycles: 2
+    stat_boost: +0.5 tiles Splash Radius
+    ability_name: Frost Blast
+    ability_description: Once the Ice Spirit jumps on an opposing troop, it freezes them for 1.1 seconds. After 3 seconds, it freezes the troop for another 1.1 seconds. If the troop is defeated midway through, a 2-tile radius is left behind, maintaining the same pattern on the ground.
+Inferno Dragon:
+  evo:
+    cycles: 2
+    stat_boost: null
+    ability_name: Beam Momentum
+    ability_description: After the Inferno Dragon attacks something and gets to a damage stage, it will keep the that stage on the following troops until after 7 seconds pass by without it hitting a troop or it is hit by a stun attack. After 20 seconds of attacking, it will have a 4th damage stage, which deals double damage of the 3rd stage.
+Knight:
+  evo:
+    cycles: 2
+    stat_boost: null
+    ability_name: Elbow Reflection
+    ability_description: While the Knight is moving or deploying, a shield is applied that reduces all sources of damage coming towards him by 60%. This shield loses its effect once the Knight lands a hit on an enemy unit.
+  hero_ability:
+    name: Triumphant Taunt
+    cost: 2
+    description: Gains a shield and taunts nearby enemies, forcing them to attack him.
+Little Prince:
+  champion_ability:
+    name: Royal Rescue
+    cost: 3
+    description: 'For 3 Elixir, you can use his Royal Rescue to meet his guardian: Guardienne, creating the most mischievous tank + glass cannon combo. She dashes her way from behind the kid and on the way to be in front of the Little Prince himself, damaging and knocking back enemies during her dash, and hopefully letting said Little Prince stay a little longer to charge his crossbow. Guardienne will act like a Knight with less health but slightly more damage as long as she stays alive.
+
+
+      Monk
+
+      MonkCard
+
+      Make the opponents wish they''ve never fought in the first place with this peacemaking powerhouse! With 5 Elixir, a tank is spawned, attacking through foes through melee attacks, with the third one dealing triple the damage of said attack AND pushing the victim a few tiles back.
+
+
+      For 1 Elixir, you can use his Pensive Protection, an ability that makes him meditate for a 4 seconds and chill out. But not only that, a zen shield forms around himself, making him take 65% less damage! When a projectile approaches him, he''ll throw hands, nullifying AND deflecting it back to the sender, although Crown Towers take less damage from reflected projectiles. He can deflect a lot from fire to ice, and yes, he can deflect projectile SPELLS back to Crown Towers, which includes Rockets. It can deflect as long as it is travelling in the air with velocity not too high, meaning it cannot deflect stuff like Inferno Beams, stunning electricity, or a sword.'
+Lumberjack:
+  evo:
+    cycles: 2
+    stat_boost: null
+    ability_name: After-Life Rage
+    ability_description: After the Lumberjack gets defeated, his Ghost will spawn. His Ghost has unlimited health and cannot be targeted by troops, but is affected by spells and chain attacks. The Ghost will disappear shortly after moving away from his Rage, or when his Rage expires. While the Lumberjack's range can be increased with another Rage, the one he dropped decides the lifetime of the Ghost.
+Magic Archer:
+  hero_ability:
+    name: Triple Threat
+    cost: 2
+    description: Summons a decoy while darting back and fires a triple shot on his next attack.
+Mega Knight:
+  evo:
+    cycles: 1
+    stat_boost: null
+    ability_name: Mega Uppercut
+    ability_description: On first and ever second attack, the Mega Knight will do an uppercut, dealing a 4-tile knockback to the targeted troop The troop will always be hit in the direction of the nearest enemy Crown Tower, even if the Mega Knight is directly between the tower and the targeted troop.
+Mega Minion:
+  hero_ability:
+    name: Wounding Warp
+    cost: 2
+    description: Warps to the lowest-hitpoint enemy, dealing damage on arrival. Deals reduced damage to Crown Towers.
+Mighty Miner:
+  champion_ability:
+    name: Explosive Escape
+    cost: 1
+    description: 'For 1 Elixir, you can use his Explosive Escape ability, which makes him drill underground and cross over to his other side, parallel to the tile he was in! Now here comes the "Explosive" part of it: when burying himself, he will leave a big bomb that explodes after one second, dealing moderate damage to troops, annihilating swarms, and pushing back lighter units! So when you face this mega mine muncher, prepare for climax, and expect the unexpected!
+
+
+      Goblinstein
+
+      GoblinsteinCard
+
+      IT''S ALI-I-I-I-VE! Doctor Goblinstein is a mad scientist ready to drop in the arena with his mad inventions, such as his trusty Monster, delicately crafted with high health and a vendetta for buildings, although Goblinstein forgot that his creation is a bit vulnerable to tank killers when he’s not in. He holds a remote that shoots some lightning, stunning enemies for a split second, while being safely protected by the green hunky creation of a mastermind. These 2 can attack and/or defend one or two lanes, all for only 5 Elixir!
+
+
+      For 2 Elixir, you can use his Lightning Link, which is quite shocking for him and the Monster! Goblinstein will link through the monster''s antenna, creating an electrical passage between them, dealing a shocking amount of damage to anything brave enough to stand near the electricity for 3.5 seconds. The Monster will drop an antenna upon defeat, allowing Goblinstein to either continue his ability or start one! But if Goblinstein dies, the ability will stop immediately and become unusable.
+
+
+      Little Prince
+
+      LittlePrinceCard
+
+      Now who was the irresponsible parent that let their nephew to the Arena? This mischievous brat loads in his crossbow and fires them at all enemies. His crossbow attack ramps up in DPS the longer he stays still, and unlike the Inferno Dragon, he doesn''t stop his crossbow''s ramping up when he destroys an enemy. He does stop if he moves more than an inch, though, making pushback come in handy, as well as stunners.
+
+
+      For 3 Elixir, you can use his Royal Rescue to meet his guardian: Guardienne, creating the most mischievous tank + glass cannon combo. She dashes her way from behind the kid and on the way to be in front of the Little Prince himself, damaging and knocking back enemies during her dash, and hopefully letting said Little Prince stay a little longer to charge his crossbow. Guardienne will act like a Knight with less health but slightly more damage as long as she stays alive.
+
+
+      Monk
+
+      MonkCard
+
+      Make the opponents wish they''ve never fought in the first place with this peacemaking powerhouse! With 5 Elixir, a tank is spawned, attacking through foes through melee attacks, with the third one dealing triple the damage of said attack AND pushing the victim a few tiles back.
+
+
+      For 1 Elixir, you can use his Pensive Protection, an ability that makes him meditate for a 4 seconds and chill out. But not only that, a zen shield forms around himself, making him take 65% less damage! When a projectile approaches him, he''ll throw hands, nullifying AND deflecting it back to the sender, although Crown Towers take less damage from reflected projectiles. He can deflect a lot from fire to ice, and yes, he can deflect projectile SPELLS back to Crown Towers, which includes Rockets. It can deflect as long as it is travelling in the air with velocity not too high, meaning it cannot deflect stuff like Inferno Beams, stunning electricity, or a sword.'
+Mini P.E.K.K.A:
+  hero_ability:
+    name: Breakfast Boost
+    cost: 1
+    description: Eats pancakes to level up. The longer you wait, the more pancakes he cooks!
+Minion Horde:
+  evo:
+    cycles: 1
+    stat_boost: null
+    ability_name: Dark Guard
+    ability_description: When the Minion Horde gets hit by a troop or a spell, it turns them invisible, then it stays like that for 3 seconds (reducing attack speed and move speed). After 3 seconds, they will be visible again and can still be vulnerable to attacks and spells that can kill them.
+Mirror:
+  elixir: variable
+Monk:
+  champion_ability:
+    name: Pensive Protection
+    cost: 1
+    description: For 1 Elixir, you can use his Pensive Protection, an ability that makes him meditate for a 4 seconds and chill out. But not only that, a zen shield forms around himself, making him take 65% less damage! When a projectile approaches him, he'll throw hands, nullifying AND deflecting it back to the sender, although Crown Towers take less damage from reflected projectiles. He can deflect a lot from fire to ice, and yes, he can deflect projectile SPELLS back to Crown Towers, which includes Rockets. It can deflect as long as it is travelling in the air with velocity not too high, meaning it cannot deflect stuff like Inferno Beams, stunning electricity, or a sword.
+Mortar:
+  evo:
+    cycles: 2
+    stat_boost: null
+    ability_name: Green Siege
+    ability_description: Every time a Mortar shot lands, a Goblin spawns with it.
+Musketeer:
+  evo:
+    cycles: 2
+    stat_boost: null
+    ability_name: Sniper Shot
+    ability_description: The Musketeer gets 3 limited sniper shots that deal 80% more damage to anything she hits. Her sniper shot range is vertically infinitely long and has a horizontal reach of 2 tiles. She cannot target Crown Towers.
+  hero_ability:
+    name: Trusty Turret
+    cost: 3
+    description: Spawns a short-range, rapid-firing auto-turret that deals landing damage in front of the Musketeer.
+P.E.K.K.A:
+  evo:
+    cycles: 1
+    stat_boost: null
+    ability_name: Butter-Heal
+    ability_description: After the P.E.K.K.A. deals the final blow to any troop or building, a butterfly will spawn around her sword. This butterfly will heal her depending on the defeated unit's hitpoints. Additionally, if she is already at full health, she can overheal to add 66% more hitpoints until it reaches its maximum capacity.
+Princess:
+  evo:
+    cycles: 2
+    stat_boost: null
+    ability_name: Ice Arrows
+    ability_description: Once the Evolved Princess spawns, her first shot will slow down enemies within a 3-tile radius (by 30%, just like the Ice Wizard) for 5.5 seconds. After this first shot, she will fire one normal shots, and the second one will slow them down. Additionally, when the Evolved Princess dies, she leaves behind a 3-tile area-damaging slowdown zone that also lasts 5.5 seconds.
+Royal Ghost:
+  evo:
+    cycles: 2
+    stat_boost: null
+    ability_name: Souldier Summoning
+    ability_description: Every time he attacks while on his invisible state, the Royal Ghost spawns two Souldiers that deal spawn damage on the area the Royal Ghost attacked. The Souldiers' stats are identical to the Royal Ghost's, except that they deal 31% damage and have 6.7% hitpoints compared to the Royal Ghost.
+Royal Giant:
+  evo:
+    cycles: 1
+    stat_boost: null
+    ability_name: Royal Shockwave
+    ability_description: Every time the Royal Giant attacks, a 2.5-tile radius, low damage, and a 1-tile knockback-inducing shockwave briefly appears around him. Can only affect ground.
+Royal Hogs:
+  evo:
+    cycles: 2
+    stat_boost: null
+    ability_name: Hog Flight
+    ability_description: Each of the Royal Hog spawns flying. When attacking, they fall to the ground, dealing fall damage that is 58% of their normal damage.
+Royal Recruits:
+  evo:
+    cycles: 1
+    stat_boost: null
+    ability_name: Charge Squad
+    ability_description: When the shield on a Royal Recruit is knocked off and the troop has traveled 2.5 tiles, it will charge at a Very Fast movement speed and will do 2x damage once connected to an opposing troop. These attributes apply to all 6 Royal Recruits.
+Skeleton Army:
+  evo:
+    cycles: 2
+    stat_boost: +1 Skeleton
+    ability_name: Un-Undead
+    ability_description: A Skeleton General spawns alongside the Skeleton Army. When the Skeletons are defeated, they will become invisible and unable to be targeted, but still able to attack, as well as becoming invincible until the Skeleton General dies. The Skeleton General himself has a shield with the same hitpoints as a normal Skeleton.
+Skeleton Barrel:
+  evo:
+    cycles: 2
+    stat_boost: +61% Death Damage; +25% Hitpoints
+    ability_name: Double Trouble
+    ability_description: After the Skeleton Barrel reaches 75% of its original hitpoints, 1 of the 2 barrels will drop. When all of its hitpoints have been depleted, the second barrel will drop. Each barrel deals death damage while spawning 7 Skeletons.
+Skeleton King:
+  champion_ability:
+    name: Soul Summoning
+    cost: 2
+    description: 'For 2 Elixir, you can use his Soul Summoning ability right above your hand. It will release all of the souls he kept for battle in form of Skeletons around a royal Graveyard aura around him, and adds in 6 more Skeletons among the skeleton squad! Be a bit cautious, as some splash damage dealers will shrug off his reincarnated henchmen and kill a royal entity not even he could revive.
+
+
+      Boss Bandit
+
+      BossBanditCard
+
+      The boss of the secret Forest Gang association, and the one on all the wanted posters. For 6 Elixir, the Boss Bandit is far more powerful than the Bandit, with far more dangerous and damaging hits and dashes, while making her harder to take out.
+
+
+      For 1 Elixir, you can use her Getaway Grenade, which makes her become invisible while teleporting back 6 tiles, making her dash again if her target stays away! The ability has a total of 2 uses (with a 3 second cooldown between each use), building her a great getaway (and grenade) plan!
+
+
+      Archer Queen
+
+      ArcherQueenCard
+
+      The queen and coach of all Archers. A powerful glass cannon rocks the Arena with her crossbow and its mean bolts that she constantly fires slowly for 5 Elixir.
+
+
+      For 1 Elixir, you can use her Cloaking Cape ability, mitigating the glass part of her by turning herself invisible, just like the Royal Ghost: unable to be targeted for 3.5 seconds! For the cherry on top, she also increases her fire output for herself drastically while under her invisibility cape, dishing out more impressive loads of damage onto her foes while still being safe inside her hidden cloak! She''s vulnerable to heavy spells and large swarms, and walks slower under her maybe heavy cape, because with great power comes great responsibility.
+
+
+      Mighty Miner
+
+      MightyMinerCard
+
+      You don''t need a shovel to mine skillfully! One big, strong, drilling, punch-packing hunk is spawned for 4 Elixir! He packs high health, weak damage that ramps up over time to significant measures, similar to the Inferno Dragon. He can easily melt large, tanky troops (or your tower) with just a drill, but struggles with swarms! But wait, there''s more!
+
+
+      For 1 Elixir, you can use his Explosive Escape ability, which makes him drill underground and cross over to his other side, parallel to the tile he was in! Now here comes the "Explosive" part of it: when burying himself, he will leave a big bomb that explodes after one second, dealing moderate damage to troops, annihilating swarms, and pushing back lighter units! So when you face this mega mine muncher, prepare for climax, and expect the unexpected!
+
+
+      Goblinstein
+
+      GoblinsteinCard
+
+      IT''S ALI-I-I-I-VE! Doctor Goblinstein is a mad scientist ready to drop in the arena with his mad inventions, such as his trusty Monster, delicately crafted with high health and a vendetta for buildings, although Goblinstein forgot that his creation is a bit vulnerable to tank killers when he’s not in. He holds a remote that shoots some lightning, stunning enemies for a split second, while being safely protected by the green hunky creation of a mastermind. These 2 can attack and/or defend one or two lanes, all for only 5 Elixir!
+
+
+      For 2 Elixir, you can use his Lightning Link, which is quite shocking for him and the Monster! Goblinstein will link through the monster''s antenna, creating an electrical passage between them, dealing a shocking amount of damage to anything brave enough to stand near the electricity for 3.5 seconds. The Monster will drop an antenna upon defeat, allowing Goblinstein to either continue his ability or start one! But if Goblinstein dies, the ability will stop immediately and become unusable.
+
+
+      Little Prince
+
+      LittlePrinceCard
+
+      Now who was the irresponsible parent that let their nephew to the Arena? This mischievous brat loads in his crossbow and fires them at all enemies. His crossbow attack ramps up in DPS the longer he stays still, and unlike the Inferno Dragon, he doesn''t stop his crossbow''s ramping up when he destroys an enemy. He does stop if he moves more than an inch, though, making pushback come in handy, as well as stunners.
+
+
+      For 3 Elixir, you can use his Royal Rescue to meet his guardian: Guardienne, creating the most mischievous tank + glass cannon combo. She dashes her way from behind the kid and on the way to be in front of the Little Prince himself, damaging and knocking back enemies during her dash, and hopefully letting said Little Prince stay a little longer to charge his crossbow. Guardienne will act like a Knight with less health but slightly more damage as long as she stays alive.
+
+
+      Monk
+
+      MonkCard
+
+      Make the opponents wish they''ve never fought in the first place with this peacemaking powerhouse! With 5 Elixir, a tank is spawned, attacking through foes through melee attacks, with the third one dealing triple the damage of said attack AND pushing the victim a few tiles back.
+
+
+      For 1 Elixir, you can use his Pensive Protection, an ability that makes him meditate for a 4 seconds and chill out. But not only that, a zen shield forms around himself, making him take 65% less damage! When a projectile approaches him, he''ll throw hands, nullifying AND deflecting it back to the sender, although Crown Towers take less damage from reflected projectiles. He can deflect a lot from fire to ice, and yes, he can deflect projectile SPELLS back to Crown Towers, which includes Rockets. It can deflect as long as it is travelling in the air with velocity not too high, meaning it cannot deflect stuff like Inferno Beams, stunning electricity, or a sword.'
+Skeletons:
+  evo:
+    cycles: 2
+    stat_boost: null
+    ability_name: Skele-Cloning
+    ability_description: Every time a Skeletons attacks, another Skeleton spawns right next to it. Stops replicating at 8 Skeletons.
+Tesla:
+  evo:
+    cycles: 2
+    stat_boost: null
+    ability_name: Pulsating Voltage
+    ability_description: After surfacing and during deployment, a pulse of electricity comes out from the Tesla. This pulse deals low damage and inflicts a stun. The stun lasts for 0.5 seconds and has a 6 tile radius.
+Tombstone:
+  hero_ability:
+    name: Regal Revive
+    cost: 5
+    description: Tomb Queen rises from the earth, targeting buildings.
+Valkyrie:
+  evo:
+    cycles: 2
+    stat_boost: null
+    ability_name: Whirlwind Axe
+    ability_description: Every time the Valkyrie attacks, she summons a Tornado which pulls all troops within a 5.5-tile radius into the Valkyrie. This Tornado lasts for 0.5 seconds and deals very low damage to all ground and air troops in its radius, including Crown Towers.
+  hero_ability:
+    name: Wild Whirlwind
+    cost: 3
+    description: Spins rapidly, dealing damage and increasing her movement speed while taking less damage.
+Wall Breakers:
+  evo:
+    cycles: 2
+    stat_boost: null
+    ability_name: Powder Barrels
+    ability_description: If the Wall Breakers are initially defeated, the barrels they roll on break. Dealing moderately damage (reduced to crown towers) in a 1.5-tile radius. After, they continue to run to the nearest building at a Very Fast movement speed. Dealing 50% of the original damage in a 1.5-tile radius once connecting to the nearest building.
+Witch:
+  evo:
+    cycles: 1
+    stat_boost: null
+    ability_name: Boned-aid
+    ability_description: Whenever the first wave of Skeletons are defeated, the Witch heals a set amount of hitpoints. Additionally, if she is already at full health, she can overheal to add 73% more hitpoints until it reaches its maximum capacity.
+Wizard:
+  evo:
+    cycles: 1
+    stat_boost: null
+    ability_name: Fiery Field
+    ability_description: Spawns with a shield equal to 25% of his health. It protects him from damage, and once destroyed it deals normal attack damage and knockback to all small to medium troops within its 3-tile radius.
+  hero_ability:
+    name: Fiery Flight
+    cost: 1
+    description: Launches into the air and throws fearsome fire tornadoes, pulling enemies in the center.
+Zap:
+  evo:
+    cycles: 2
+    stat_boost: null
+    ability_name: Short-Circuit
+    ability_description: Once the initial Zap is used, the radius stays in the arena, growing 0.5 tiles and doing the same stun and twice the damage of the initial Zap.

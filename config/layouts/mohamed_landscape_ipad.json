@@ -1,0 +1,150 @@
+{
+  "layout_id": "mohamed_landscape_ipad",
+  "description": "1920x1080 stream layout: iPad-aspect (3:4) game capture at x 75-885, facecam + panels on the right. Calibrated on gAibX9rhMfo (Princess Gambit).",
+  "frame_size": [
+    1920,
+    1080
+  ],
+  "regions": {
+    "ability_left": [
+      191,
+      756,
+      297,
+      859
+    ],
+    "ability_right": [
+      665,
+      756,
+      770,
+      859
+    ],
+    "slot1_tab": [
+      322,
+      861,
+      414,
+      895
+    ],
+    "slot2_tab": [
+      435,
+      861,
+      528,
+      895
+    ],
+    "slot3_tab": [
+      548,
+      861,
+      641,
+      895
+    ],
+    "slot4_tab": [
+      661,
+      861,
+      754,
+      895
+    ],
+    "slot1": [
+      315,
+      856,
+      421,
+      1028
+    ],
+    "slot2": [
+      428,
+      856,
+      534,
+      1028
+    ],
+    "slot3": [
+      541,
+      856,
+      647,
+      1028
+    ],
+    "slot4": [
+      654,
+      856,
+      760,
+      1028
+    ],
+    "next": [
+      205,
+      992,
+      267,
+      1068
+    ],
+    "elixir_number": [
+      339,
+      1024,
+      383,
+      1061
+    ],
+    "elixir_bar": [
+      342,
+      1034,
+      762,
+      1052
+    ],
+    "opp_name": [
+      128,
+      5,
+      300,
+      36
+    ],
+    "opp_clan": [
+      128,
+      38,
+      290,
+      60
+    ],
+    "timer_label": [
+      792,
+      5,
+      882,
+      26
+    ],
+    "timer": [
+      792,
+      24,
+      882,
+      60
+    ],
+    "multiplier": [
+      800,
+      80,
+      870,
+      140
+    ],
+    "opp_left_hp": [
+      295,
+      143,
+      370,
+      168
+    ],
+    "opp_right_hp": [
+      612,
+      143,
+      688,
+      168
+    ],
+    "my_left_hp": [
+      295,
+      660,
+      370,
+      686
+    ],
+    "my_right_hp": [
+      612,
+      660,
+      688,
+      686
+    ]
+  },
+  "hand": {
+    "ui_scale": 0.557
+  },
+  "notes": {
+    "hand": "Hand-bar regions and constants are Alina's mapped by x' = 180 + 0.557x, y' = 0.557y - 229.7 (same game UI, smaller).",
+    "towers": "Princess Gambit has no king towers, so no king HP regions.",
+    "opp_rating": "Not shown in tournament mode."
+  }
+}

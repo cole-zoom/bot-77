@@ -1,0 +1,27 @@
+[project]
+name = "bot77"
+version = "0.1.0"
+description = "Add your description here"
+requires-python = ">=3.12"
+dependencies = [
+    "lancedb>=0.39.0",
+    "numpy>=2.5.3",
+    "ocrmac>=1.0.1",
+    "opencv-python-headless>=5.0.0.93",
+    "pillow>=12.3.0",
+    "pyarrow>=25.0.1",
+    "pyyaml>=6.0.3",
+    "yt-dlp>=2026.8.19",
+]
+
+[project.scripts]
+bot77 = "bot77:main"
+
+[build-system]
+requires = ["uv_build>=0.12.7,<0.13.0"]
+build-backend = "uv_build"
+
+[dependency-groups]
+dev = [
+    "pytest>=9.1.1",
+]
