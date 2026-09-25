@@ -1,0 +1,226 @@
+{
+ "video_id": "uz4VVzGlOjE",
+ "run": "22f0919296",
+ "exported_at": "2026-09-25T17:01:26.093Z",
+ "verdicts": {
+  "uz4VVzGlOjE_m05_e001": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m05_e002": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m05_e003": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m05_e004": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m05_e005": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m05_e006": {
+   "verdict": "correct",
+   "note": "Tesla mightyminer - just slightly wrong on the elixir count"
+  },
+  "uz4VVzGlOjE_m05_e007": {
+   "verdict": "correct",
+   "note": "same as above"
+  },
+  "uz4VVzGlOjE_m05_e008": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m05_e009": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m05_e010": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m05_e011": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m05_e012": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m05_e013": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m05_e014": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m05_e015": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m05_e016": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m05_e017": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m05_e018": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m05_e019": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m05_e020": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m05_e021": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m05_e022": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m05_e023": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m05_e024": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m05_e025": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m05_e026": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m05_e027": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m05_e028": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m05_e029": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m05_e030": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m05_e031": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m05_e032": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m05_e033": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m05_e034": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m05_e035": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m05_e036": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m05_e037": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m05_e038": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m05_e039": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m05_e040": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m05_e041": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m05_e042": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m05_e043": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m05_e044": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m05_e045": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m05_e046": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m05_e047": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m05_e048": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m05_e049": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m05_e050": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m05_e051": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m05_e052": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m05_e053": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m05_e054": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m05_e055": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m05_e056": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m05_e057": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m05_e058": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m05_e059": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m05_e060": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m05_e061": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m05_e062": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m05_e063": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m05_e064": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m05_e065": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m05_e066": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m05_e067": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m05_e068": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m05_e069": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m05_e070": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m05_e071": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m05_e072": {
+   "verdict": "correct"
+  }
+ },
+ "missing": []
+}

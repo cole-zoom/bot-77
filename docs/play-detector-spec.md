@@ -1,5 +1,7 @@
 # Play Detector v0 — Spec
 
+Related work: KataCR [Wu et al. 2025] (`docs/references.bib`) — a non-embedded Clash Royale agent with YOLOv8 unit detection and an offline-RL policy; its game-state model (§2.3) and generative detection dataset (§3) inform the opponent-play work in `docs/opponent-plays-spec.md`.
+
 Status: draft for review
 Source video for v0: Alina — "How to Play Hog EQ in the New Meta" (`uz4VVzGlOjE`, 1080×2340, 59.94 fps, 21:26)
 Alina's deck: Hog Rider, Earthquake, Tesla (evo), Firecracker (evo), Skeletons, Electro Spirit, Mighty Miner (champion), The Log.
@@ -181,6 +183,14 @@ Fixes: an **ability-button reader** (`bot77.readers.ability`: ready = cyan + pin
 After round 2, on both sets: **matches 1–2: 118/118, matches 3–4: 112/112 (100% precision and recall)**. Match 5 is still unreviewed.
 
 The review page now keys saved verdicts on the detection run, because re-running detection reuses event ids; round 2's export carried stale match 1–2 verdicts, which were excluded from scoring.
+
+### 8.3 Held-out checks: Alina match 5, Ian77
+
+- **Alina match 5** (no tuning on it): 72/72.
+- **Ian77 `UFQFnrtWUE4`** (second creator, split stream layout `ian_split`, ~3,000-rated opponents, jump-cut edits): matches 1–3 scored **188/188** on first review. High confidence has now been right 384/384 times across both videos.
+- Ian's first run split 8 matches into 16: his edits cut footage out, so the clock jumps forward. Segmentation now accepts a forward jump when the following reads continue from it, and in-match time comes from the clock (`Match.elapsed_at`) instead of video time.
+- Fixes from the Ian review: a hero-capable card's ability only counts if it was played in hero form (Barbarian Barrel made the button's owner ambiguous); pairs released together get a looser tolerance (Hog + Barbarian Barrel measured 6.59); unexplained drops within 1.5 s of the match end (bar resets to 0) or of a jump cut are ignored.
+- `uv run bot77 benchmark` scores the current events against every ground-truth file: **490/490** after these fixes.
 
 ## 9. Milestones
 

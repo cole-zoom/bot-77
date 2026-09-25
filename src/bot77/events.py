@@ -42,6 +42,9 @@ VACATE_LOOKBACK_S = 4.0  # a card must have left the hand within this long befor
 NEXT_ADVANCE_S = 2.0  # the next card should change within this long after the drop
 MID_SLIDE_SETTLE_S = 1.0  # a card dragged mid-slide doesn't appear in a slot within this long after the drop
 SMALL_UNEXPLAINED = 1.5
+PAIR_TOLERANCE = 0.7  # two cards released together: two sources of measurement error
+END_GUARD_S = 1.5  # the bar reads 0 when the game ends; ignore unexplained drops this close to the end
+CUT_GUARD_S = 1.5  # elixir jumps at jump cuts in edited videos; ignore unexplained drops this close to one
 MISMATCH_MIN_FRACTION = 0.5  # a cost-mismatch guess needs the drop to be at least this share of the card's cost
 ABILITY_STATE_MIN_FRAMES = 3  # a button state must hold this long to count (drags flicker over it)
 ABILITY_BUTTON_LEAD_S = 0.5  # the button can change this long before the elixir drop starts ...
@@ -226,10 +229,13 @@ def _vacated(series: list, i_drop: int, times: list[float], lookback_s: float):
 
 def detect_plays(states: list[FrameState], costs: dict[int, int], names: dict[int, str],
                  ability_costs: dict[int, int] | None = None,
-                 ability_uses: dict[int, int] | None = None) -> list[Play]:
-    """`costs`: card_id -> elixir; `ability_costs`: card_id -> ability elixir for the deck's
-    heroes / champions; `ability_uses`: card_id -> uses per deploy (default 1)."""
+                 ability_uses: dict[int, int] | None = None,
+                 cut_times: list[float] | None = None) -> list[Play]:
+    """`costs`: card_id -> elixir; `ability_costs`: card_id -> ability elixir for the champions
+    and hero-form cards in play; `ability_uses`: card_id -> uses per deploy (default 1);
+    `cut_times`: video times of jump cuts (edited videos)."""
     ctx = _Context(states, costs, names, ability_costs or {}, ability_uses or {})
+    ctx.cut_times = cut_times or []
     drops = find_drops(states, ctx.e)
     if ctx.button_mode:
         ctx.add_button_abilities(drops)
@@ -265,7 +271,7 @@ class _Context:
         if exact:
             self._card(max(exact, key=lambda c: c[3]), d.i_end, base)  # most recently vacated
             return
-        pair = _pair_match(cands, self.costs, d.amount)
+        pair = _pair_match(cands, self.costs, d.amount, PAIR_TOLERANCE)
         if pair:
             for c in sorted(pair, key=lambda c: c[3]):
                 self._card(c, d.i_end, base, note="two cards released together; drop split by cost", cap="medium")
@@ -286,6 +292,9 @@ class _Context:
             return
         if cands and d.amount < SMALL_UNEXPLAINED:
             return  # e.g. a card hovered over the board while the sliver snapped
+        t_end = self.times[d.i_end]
+        if self.times[-1] - t_end <= END_GUARD_S or any(abs(t_end - c) <= CUT_GUARD_S for c in self.cut_times):
+            return  # the bar resetting at game end, or elixir jumping across a jump cut
         self.plays.append(Play(kind="play", card_id=None, name=None, form=None, slot=None, confidence="low",
                                notes=[f"drop of {d.amount:.2f} with no card leaving the hand"], **base))
 
@@ -467,13 +476,13 @@ class _Context:
                     i += 1
 
 
-def _pair_match(cands: list, costs: dict[int, int], amount: float):
+def _pair_match(cands: list, costs: dict[int, int], amount: float, tolerance: float = COST_TOLERANCE):
     """Two vacated cards whose costs add up to the drop."""
     best = None
     for a in range(len(cands)):
         for b in range(a + 1, len(cands)):
             total = costs.get(cands[a][1], -99) + costs.get(cands[b][1], -99)
             err = abs(total - amount)
-            if err <= COST_TOLERANCE and (best is None or err < best[0]):
+            if err <= tolerance and (best is None or err < best[0]):
                 best = (err, [cands[a], cands[b]])
     return best[1] if best else None

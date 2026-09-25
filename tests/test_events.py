@@ -199,3 +199,24 @@ def test_button_lags_the_elixir_drop():
     tl.run(10)
     assert sorted((p.kind, p.name) for p in detect(tl, ability_costs={MM: 1})) == [
         ("ability", "Mighty Miner"), ("play", "Hog Rider"), ("play", "Mighty Miner")]
+
+
+def test_pair_released_together_with_a_loose_measurement():
+    """Hog + Barbarian Barrel (4 + 2) measured as 6.59; no single card is anywhere near."""
+    tl = Timeline([TESLA, LOG, SKEL, HOG], ESPIRIT, 9.0, [MM, TESLA]).run(5)
+    tl.drag("slot4").run(3).drag("slot2").run(2).spend(6.6).run(4).refill("slot4").run(3).refill("slot2").run(10)
+    assert [p.name for p in detect(tl)] == ["Hog Rider", "The Log"]
+
+
+def test_bar_reset_at_game_end_is_not_a_play():
+    tl = Timeline([TESLA, LOG, SKEL, HOG], ESPIRIT, 3.0, [MM]).run(20)
+    tl.elixir = 0.0
+    tl.run(5)
+    assert detect(tl) == []
+
+
+def test_elixir_jump_at_a_cut_is_not_a_play():
+    tl = Timeline([TESLA, LOG, SKEL, HOG], ESPIRIT, 7.0, [MM]).run(20)
+    tl.spend(1.7).run(30)
+    assert detect(tl, cut_times=[2.0]) == []
+    assert len(detect(tl)) == 1  # without the cut it's kept as an unexplained low-confidence drop

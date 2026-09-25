@@ -1,0 +1,162 @@
+{
+  "layout_id": "ian_split",
+  "description": "1920x1080 split stream layout: game arena + top HUD at x 0-975 (full playfield), facecam top right, hand bar moved to bottom right. Calibrated on UFQFnrtWUE4.",
+  "frame_size": [
+    1920,
+    1080
+  ],
+  "regions": {
+    "slot1_tab": [
+      1195,
+      759,
+      1340,
+      813
+    ],
+    "slot2_tab": [
+      1372,
+      759,
+      1519,
+      813
+    ],
+    "slot3_tab": [
+      1550,
+      759,
+      1697,
+      813
+    ],
+    "slot4_tab": [
+      1728,
+      759,
+      1874,
+      813
+    ],
+    "slot1": [
+      1185,
+      752,
+      1351,
+      1021
+    ],
+    "slot2": [
+      1362,
+      752,
+      1529,
+      1021
+    ],
+    "slot3": [
+      1540,
+      752,
+      1707,
+      1021
+    ],
+    "slot4": [
+      1718,
+      752,
+      1885,
+      1021
+    ],
+    "next": [
+      1012,
+      966,
+      1108,
+      1080
+    ],
+    "elixir_number": [
+      1222,
+      1014,
+      1292,
+      1074
+    ],
+    "elixir_bar": [
+      1226,
+      1030,
+      1888,
+      1060
+    ],
+    "opp_name": [
+      72,
+      5,
+      330,
+      45
+    ],
+    "opp_clan": [
+      72,
+      48,
+      260,
+      78
+    ],
+    "opp_rating": [
+      72,
+      85,
+      150,
+      112
+    ],
+    "timer_label": [
+      852,
+      5,
+      975,
+      30
+    ],
+    "timer": [
+      852,
+      28,
+      975,
+      76
+    ],
+    "multiplier": [
+      866,
+      98,
+      952,
+      182
+    ],
+    "opp_king_hp": [
+      420,
+      8,
+      620,
+      58
+    ],
+    "opp_left_hp": [
+      252,
+      158,
+      345,
+      194
+    ],
+    "opp_right_hp": [
+      660,
+      158,
+      752,
+      194
+    ],
+    "my_left_hp": [
+      252,
+      853,
+      345,
+      888
+    ],
+    "my_right_hp": [
+      660,
+      853,
+      752,
+      888
+    ],
+    "ability_right": [
+      735,
+      960,
+      880,
+      1080
+    ],
+    "ability_left": [
+      95,
+      960,
+      240,
+      1080
+    ]
+  },
+  "hand": {
+    "ui_scale": 0.876
+  },
+  "notes": {
+    "hand": "Hand-bar regions are Alina's mapped by x' = 972.1 + 0.876x, y' = 0.876y - 956.7.",
+    "ability_right": "In the arena crop, bottom right, cut off by the frame's bottom edge. States seen: ready (cyan), grey (unaffordable?), dark navy (used).",
+    "ability_left": "Mirrored; not yet seen."
+  }
+}

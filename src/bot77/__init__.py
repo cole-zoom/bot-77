@@ -33,6 +33,10 @@ def main() -> None:
     redet.add_argument("--video-id", required=True)
     redet.add_argument("--db", type=Path, default=Path("data/lancedb"))
 
+    bench = sub.add_parser("benchmark", help="score current events against every ground-truth file")
+    bench.add_argument("--truth-dir", type=Path, default=Path("data/ground_truth"))
+    bench.add_argument("--db", type=Path, default=Path("data/lancedb"))
+
     review = sub.add_parser("review", help="write an HTML page for checking a processed video's events")
     review.add_argument("--video-id", required=True)
     review.add_argument("--db", type=Path, default=Path("data/lancedb"))
@@ -54,6 +58,8 @@ def main() -> None:
         _process(args)
     elif args.command == "review":
         _review(args)
+    elif args.command == "benchmark":
+        _benchmark(args)
     elif args.command == "redetect":
         import lancedb
 
@@ -75,6 +81,25 @@ def main() -> None:
             print(json.dumps(score_against_truth(args.db, json.loads(truth_path.read_text())), indent=2))
         else:
             print(json.dumps(score_review(args.db, args.review_json), indent=2))
+
+
+def _benchmark(args) -> None:
+    import json
+
+    from bot77.review import score_against_truth
+
+    total = {"true_events": 0, "detected": 0, "right": 0}
+    print(f"{'truth file':38} {'events':>6} {'prec':>7} {'recall':>7}  wrong / missed")
+    for path in sorted(args.truth_dir.glob("truth_*.json")):
+        s = score_against_truth(args.db, json.loads(path.read_text()))
+        for k in total:
+            total[k] += s[k]
+        issues = [f"{w[0]} {w[1]}s {w[3] or w[2]}" for w in s["wrong_events"]] + \
+                 [f"missed {m[0]} {m[1]}s {m[2]}" for m in s["missed_events"]]
+        print(f"{path.name:38} {s['true_events']:>6} {s['precision']:>7.1%} {s['recall']:>7.1%}  {'; '.join(issues)}")
+    p = total["right"] / total["detected"] if total["detected"] else 0
+    r = total["right"] / total["true_events"] if total["true_events"] else 0
+    print(f"{'ALL':38} {total['true_events']:>6} {p:>7.1%} {r:>7.1%}")
 
 
 def _process(args) -> None:

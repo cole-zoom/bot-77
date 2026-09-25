@@ -55,29 +55,37 @@ def parse_phase(label: str) -> str | None:
     return None
 
 
-@lru_cache(maxsize=8)
-def _multiplier_templates(ui_scale: float) -> dict[int, np.ndarray]:
+# The top HUD's size relative to the hand bar varies with the capture's aspect ratio (Ian's
+# is ~0.8x his hand's scale), so the multiplier is searched over a few sizes instead of
+# trusting the layout's hand scale.
+MULTIPLIER_SCALES = (0.55, 0.65, 0.75, 0.85, 1.0)
+
+
+@lru_cache(maxsize=32)
+def _multiplier_templates(scale: float) -> dict[int, np.ndarray]:
     out = {}
     for n in (2, 3):
         im = cv2.imread(str(HUD_ASSETS / f"multiplier_x{n}.png"), cv2.IMREAD_GRAYSCALE)
-        if ui_scale != 1.0:
-            im = cv2.resize(im, None, fx=ui_scale, fy=ui_scale, interpolation=cv2.INTER_AREA)
-        out[n] = normalise(im, 5.0 * ui_scale)
+        if scale != 1.0:
+            im = cv2.resize(im, None, fx=scale, fy=scale, interpolation=cv2.INTER_AREA)
+        out[n] = normalise(im, 5.0 * scale)
     return out
 
 
 def read_multiplier(frame: np.ndarray, layout: Layout) -> tuple[int, float]:
     """(multiplier, score). No x2/x3 drop on screen means normal elixir (1)."""
-    ui = layout.hand.get("ui_scale", 1.0)
     crop = layout.crop(frame, "multiplier")
     s = layout.scale(frame.shape[1])
     if abs(s - 1.0) > 1e-3:
         crop = cv2.resize(crop, None, fx=1 / s, fy=1 / s, interpolation=cv2.INTER_AREA)
-    gray = normalise(cv2.cvtColor(crop, cv2.COLOR_BGR2GRAY), 5.0 * ui)
-    scores = {}
-    for n, t in _multiplier_templates(ui).items():
-        if t.shape[0] <= gray.shape[0] and t.shape[1] <= gray.shape[1]:
-            scores[n] = cv2.minMaxLoc(cv2.matchTemplate(gray, t, cv2.TM_CCOEFF_NORMED))[1]
+    gray_raw = cv2.cvtColor(crop, cv2.COLOR_BGR2GRAY)
+    scores: dict[int, float] = {}
+    for scale in MULTIPLIER_SCALES:
+        gray = normalise(gray_raw, 5.0 * scale)
+        for n, t in _multiplier_templates(scale).items():
+            if t.shape[0] <= gray.shape[0] and t.shape[1] <= gray.shape[1]:
+                score = cv2.minMaxLoc(cv2.matchTemplate(gray, t, cv2.TM_CCOEFF_NORMED))[1]
+                scores[n] = max(scores.get(n, -1.0), score)
     if not scores:
         return 1, 0.0
     n, score = max(scores.items(), key=lambda kv: kv[1])

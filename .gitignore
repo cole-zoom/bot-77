@@ -16,3 +16,7 @@ data/cards/art/
 data/calibration/
 data/reviews/
 data/logs/
+
+# Papers are cited, not redistributed (arXiv's non-exclusive license doesn't grant redistribution)
+docs/papers/*.pdf
+.DS_Store

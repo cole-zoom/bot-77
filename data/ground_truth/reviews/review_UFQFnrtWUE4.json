@@ -1,0 +1,603 @@
+{
+ "video_id": "UFQFnrtWUE4",
+ "run": "62dfc231ea",
+ "exported_at": "2026-09-25T21:12:25.459Z",
+ "verdicts": {
+  "UFQFnrtWUE4_m01_e001": {
+   "verdict": "correct"
+  },
+  "UFQFnrtWUE4_m01_e002": {
+   "verdict": "correct"
+  },
+  "UFQFnrtWUE4_m01_e003": {
+   "verdict": "correct"
+  },
+  "UFQFnrtWUE4_m01_e004": {
+   "verdict": "correct"
+  },
+  "UFQFnrtWUE4_m01_e005": {
+   "verdict": "correct"
+  },
+  "UFQFnrtWUE4_m01_e006": {
+   "verdict": "correct"
+  },
+  "UFQFnrtWUE4_m01_e007": {
+   "verdict": "correct"
+  },
+  "UFQFnrtWUE4_m01_e008": {
+   "verdict": "correct"
+  },
+  "UFQFnrtWUE4_m01_e009": {
+   "verdict": "correct"
+  },
+  "UFQFnrtWUE4_m01_e010": {
+   "verdict": "correct"
+  },
+  "UFQFnrtWUE4_m01_e011": {
+   "verdict": "correct"
+  },
+  "UFQFnrtWUE4_m01_e012": {
+   "verdict": "correct"
+  },
+  "UFQFnrtWUE4_m01_e013": {
+   "verdict": "correct"
+  },
+  "UFQFnrtWUE4_m01_e014": {
+   "verdict": "correct"
+  },
+  "UFQFnrtWUE4_m01_e015": {
+   "verdict": "correct"
+  },
+  "UFQFnrtWUE4_m01_e016": {
+   "verdict": "correct"
+  },
+  "UFQFnrtWUE4_m01_e017": {
+   "verdict": "correct"
+  },
+  "UFQFnrtWUE4_m01_e018": {
+   "verdict": "correct"
+  },
+  "UFQFnrtWUE4_m01_e019": {
+   "verdict": "correct"
+  },
+  "UFQFnrtWUE4_m01_e020": {
+   "verdict": "correct"
+  },
+  "UFQFnrtWUE4_m01_e021": {
+   "verdict": "correct"
+  },
+  "UFQFnrtWUE4_m01_e022": {
+   "verdict": "correct"
+  },
+  "UFQFnrtWUE4_m01_e023": {
+   "verdict": "correct"
+  },
+  "UFQFnrtWUE4_m01_e024": {
+   "verdict": "correct",
+   "note": "Whats the ? for"
+  },
+  "UFQFnrtWUE4_m01_e025": {
+   "verdict": "correct"
+  },
+  "UFQFnrtWUE4_m01_e026": {
+   "verdict": "correct"
+  },
+  "UFQFnrtWUE4_m01_e027": {
+   "verdict": "correct"
+  },
+  "UFQFnrtWUE4_m01_e028": {
+   "verdict": "correct"
+  },
+  "UFQFnrtWUE4_m01_e029": {
+   "verdict": "correct"
+  },
+  "UFQFnrtWUE4_m01_e030": {
+   "verdict": "correct"
+  },
+  "UFQFnrtWUE4_m01_e031": {
+   "verdict": "correct"
+  },
+  "UFQFnrtWUE4_m01_e032": {
+   "verdict": "correct"
+  },
+  "UFQFnrtWUE4_m01_e033": {
+   "verdict": "correct",
+   "note": "yea why ? again"
+  },
+  "UFQFnrtWUE4_m01_e034": {
+   "verdict": "correct"
+  },
+  "UFQFnrtWUE4_m01_e035": {
+   "verdict": "correct"
+  },
+  "UFQFnrtWUE4_m01_e036": {
+   "verdict": "correct"
+  },
+  "UFQFnrtWUE4_m01_e037": {
+   "verdict": "correct"
+  },
+  "UFQFnrtWUE4_m01_e038": {
+   "verdict": "correct"
+  },
+  "UFQFnrtWUE4_m01_e039": {
+   "verdict": "correct"
+  },
+  "UFQFnrtWUE4_m01_e040": {
+   "verdict": "correct"
+  },
+  "UFQFnrtWUE4_m01_e041": {
+   "verdict": "correct"
+  },
+  "UFQFnrtWUE4_m01_e042": {
+   "verdict": "correct"
+  },
+  "UFQFnrtWUE4_m01_e043": {
+   "verdict": "correct"
+  },
+  "UFQFnrtWUE4_m02_e001": {
+   "verdict": "correct"
+  },
+  "UFQFnrtWUE4_m02_e002": {
+   "verdict": "correct"
+  },
+  "UFQFnrtWUE4_m02_e003": {
+   "verdict": "correct"
+  },
+  "UFQFnrtWUE4_m02_e004": {
+   "verdict": "correct"
+  },
+  "UFQFnrtWUE4_m02_e005": {
+   "verdict": "correct"
+  },
+  "UFQFnrtWUE4_m02_e006": {
+   "verdict": "correct"
+  },
+  "UFQFnrtWUE4_m02_e007": {
+   "verdict": "correct"
+  },
+  "UFQFnrtWUE4_m02_e008": {
+   "verdict": "correct"
+  },
+  "UFQFnrtWUE4_m02_e009": {
+   "verdict": "correct"
+  },
+  "UFQFnrtWUE4_m02_e010": {
+   "verdict": "correct"
+  },
+  "UFQFnrtWUE4_m02_e011": {
+   "verdict": "correct"
+  },
+  "UFQFnrtWUE4_m02_e012": {
+   "verdict": "correct"
+  },
+  "UFQFnrtWUE4_m02_e013": {
+   "verdict": "correct"
+  },
+  "UFQFnrtWUE4_m02_e014": {
+   "verdict": "correct"
+  },
+  "UFQFnrtWUE4_m02_e015": {
+   "verdict": "correct"
+  },
+  "UFQFnrtWUE4_m02_e016": {
+   "verdict": "correct"
+  },
+  "UFQFnrtWUE4_m02_e017": {
+   "verdict": "correct"
+  },
+  "UFQFnrtWUE4_m02_e018": {
+   "verdict": "correct"
+  },
+  "UFQFnrtWUE4_m02_e019": {
+   "verdict": "correct"
+  },
+  "UFQFnrtWUE4_m02_e020": {
+   "verdict": "correct"
+  },
+  "UFQFnrtWUE4_m02_e021": {
+   "verdict": "correct"
+  },
+  "UFQFnrtWUE4_m02_e022": {
+   "verdict": "correct"
+  },
+  "UFQFnrtWUE4_m02_e023": {
+   "verdict": "correct"
+  },
+  "UFQFnrtWUE4_m02_e024": {
+   "verdict": "correct"
+  },
+  "UFQFnrtWUE4_m02_e025": {
+   "verdict": "correct"
+  },
+  "UFQFnrtWUE4_m02_e026": {
+   "verdict": "correct"
+  },
+  "UFQFnrtWUE4_m02_e027": {
+   "verdict": "correct"
+  },
+  "UFQFnrtWUE4_m02_e028": {
+   "verdict": "correct"
+  },
+  "UFQFnrtWUE4_m02_e029": {
+   "verdict": "correct"
+  },
+  "UFQFnrtWUE4_m02_e030": {
+   "verdict": "correct"
+  },
+  "UFQFnrtWUE4_m02_e031": {
+   "verdict": "correct"
+  },
+  "UFQFnrtWUE4_m02_e032": {
+   "verdict": "correct"
+  },
+  "UFQFnrtWUE4_m02_e033": {
+   "verdict": "correct"
+  },
+  "UFQFnrtWUE4_m02_e034": {
+   "verdict": "correct"
+  },
+  "UFQFnrtWUE4_m02_e035": {
+   "verdict": "correct"
+  },
+  "UFQFnrtWUE4_m02_e036": {
+   "verdict": "correct"
+  },
+  "UFQFnrtWUE4_m02_e037": {
+   "verdict": "correct"
+  },
+  "UFQFnrtWUE4_m02_e038": {
+   "verdict": "correct"
+  },
+  "UFQFnrtWUE4_m02_e039": {
+   "verdict": "correct"
+  },
+  "UFQFnrtWUE4_m02_e040": {
+   "verdict": "correct"
+  },
+  "UFQFnrtWUE4_m02_e041": {
+   "verdict": "correct"
+  },
+  "UFQFnrtWUE4_m02_e042": {
+   "verdict": "correct"
+  },
+  "UFQFnrtWUE4_m02_e043": {
+   "verdict": "correct"
+  },
+  "UFQFnrtWUE4_m02_e044": {
+   "verdict": "correct"
+  },
+  "UFQFnrtWUE4_m02_e045": {
+   "verdict": "correct"
+  },
+  "UFQFnrtWUE4_m02_e046": {
+   "verdict": "correct"
+  },
+  "UFQFnrtWUE4_m02_e047": {
+   "verdict": "correct"
+  },
+  "UFQFnrtWUE4_m02_e048": {
+   "verdict": "correct"
+  },
+  "UFQFnrtWUE4_m02_e049": {
+   "verdict": "correct"
+  },
+  "UFQFnrtWUE4_m02_e050": {
+   "verdict": "correct"
+  },
+  "UFQFnrtWUE4_m02_e051": {
+   "verdict": "correct"
+  },
+  "UFQFnrtWUE4_m02_e052": {
+   "verdict": "correct"
+  },
+  "UFQFnrtWUE4_m02_e053": {
+   "verdict": "correct"
+  },
+  "UFQFnrtWUE4_m02_e054": {
+   "verdict": "correct"
+  },
+  "UFQFnrtWUE4_m02_e055": {
+   "verdict": "correct"
+  },
+  "UFQFnrtWUE4_m02_e056": {
+   "verdict": "correct"
+  },
+  "UFQFnrtWUE4_m02_e057": {
+   "verdict": "correct"
+  },
+  "UFQFnrtWUE4_m02_e058": {
+   "verdict": "correct"
+  },
+  "UFQFnrtWUE4_m02_e059": {
+   "verdict": "correct"
+  },
+  "UFQFnrtWUE4_m02_e060": {
+   "verdict": "correct"
+  },
+  "UFQFnrtWUE4_m02_e061": {
+   "verdict": "correct"
+  },
+  "UFQFnrtWUE4_m02_e062": {
+   "verdict": "correct"
+  },
+  "UFQFnrtWUE4_m02_e063": {
+   "verdict": "correct"
+  },
+  "UFQFnrtWUE4_m02_e064": {
+   "verdict": "correct"
+  },
+  "UFQFnrtWUE4_m02_e065": {
+   "verdict": "correct"
+  },
+  "UFQFnrtWUE4_m02_e066": {
+   "verdict": "correct"
+  },
+  "UFQFnrtWUE4_m02_e067": {
+   "verdict": "correct"
+  },
+  "UFQFnrtWUE4_m02_e068": {
+   "verdict": "correct"
+  },
+  "UFQFnrtWUE4_m02_e069": {
+   "verdict": "correct"
+  },
+  "UFQFnrtWUE4_m02_e070": {
+   "verdict": "correct"
+  },
+  "UFQFnrtWUE4_m02_e071": {
+   "verdict": "correct"
+  },
+  "UFQFnrtWUE4_m04_e001": {
+   "correct": "__not_a_play"
+  },
+  "UFQFnrtWUE4_m03_e001": {
+   "verdict": "correct"
+  },
+  "UFQFnrtWUE4_m03_e002": {
+   "verdict": "correct"
+  },
+  "UFQFnrtWUE4_m03_e003": {
+   "verdict": "correct"
+  },
+  "UFQFnrtWUE4_m03_e004": {
+   "verdict": "correct"
+  },
+  "UFQFnrtWUE4_m03_e005": {
+   "verdict": "correct"
+  },
+  "UFQFnrtWUE4_m03_e006": {
+   "verdict": "correct"
+  },
+  "UFQFnrtWUE4_m03_e007": {
+   "verdict": "correct"
+  },
+  "UFQFnrtWUE4_m03_e008": {
+   "verdict": "correct"
+  },
+  "UFQFnrtWUE4_m03_e009": {
+   "verdict": "correct"
+  },
+  "UFQFnrtWUE4_m03_e010": {
+   "verdict": "correct"
+  },
+  "UFQFnrtWUE4_m03_e011": {
+   "verdict": "correct"
+  },
+  "UFQFnrtWUE4_m03_e012": {
+   "verdict": "correct"
+  },
+  "UFQFnrtWUE4_m03_e013": {
+   "verdict": "correct"
+  },
+  "UFQFnrtWUE4_m03_e014": {
+   "verdict": "correct"
+  },
+  "UFQFnrtWUE4_m03_e015": {
+   "verdict": "correct"
+  },
+  "UFQFnrtWUE4_m03_e016": {
+   "verdict": "correct"
+  },
+  "UFQFnrtWUE4_m03_e017": {
+   "verdict": "correct"
+  },
+  "UFQFnrtWUE4_m03_e018": {
+   "verdict": "correct"
+  },
+  "UFQFnrtWUE4_m03_e019": {
+   "verdict": "correct"
+  },
+  "UFQFnrtWUE4_m03_e020": {
+   "verdict": "correct"
+  },
+  "UFQFnrtWUE4_m03_e021": {
+   "verdict": "correct"
+  },
+  "UFQFnrtWUE4_m03_e022": {
+   "verdict": "correct"
+  },
+  "UFQFnrtWUE4_m03_e023": {
+   "verdict": "correct"
+  },
+  "UFQFnrtWUE4_m03_e024": {
+   "verdict": "correct"
+  },
+  "UFQFnrtWUE4_m03_e025": {
+   "verdict": "correct"
+  },
+  "UFQFnrtWUE4_m03_e026": {
+   "verdict": "correct"
+  },
+  "UFQFnrtWUE4_m03_e027": {
+   "verdict": "correct"
+  },
+  "UFQFnrtWUE4_m03_e028": {
+   "verdict": "correct"
+  },
+  "UFQFnrtWUE4_m03_e029": {
+   "verdict": "correct"
+  },
+  "UFQFnrtWUE4_m03_e030": {
+   "verdict": "correct"
+  },
+  "UFQFnrtWUE4_m03_e031": {
+   "verdict": "correct"
+  },
+  "UFQFnrtWUE4_m03_e032": {
+   "verdict": "correct"
+  },
+  "UFQFnrtWUE4_m03_e033": {
+   "verdict": "correct"
+  },
+  "UFQFnrtWUE4_m03_e034": {
+   "verdict": "correct"
+  },
+  "UFQFnrtWUE4_m03_e035": {
+   "verdict": "correct"
+  },
+  "UFQFnrtWUE4_m03_e036": {
+   "verdict": "correct"
+  },
+  "UFQFnrtWUE4_m03_e037": {
+   "verdict": "correct"
+  },
+  "UFQFnrtWUE4_m03_e038": {
+   "verdict": "correct"
+  },
+  "UFQFnrtWUE4_m03_e039": {
+   "verdict": "correct"
+  },
+  "UFQFnrtWUE4_m03_e040": {
+   "verdict": "correct"
+  },
+  "UFQFnrtWUE4_m03_e041": {
+   "verdict": "correct"
+  },
+  "UFQFnrtWUE4_m03_e042": {
+   "verdict": "correct"
+  },
+  "UFQFnrtWUE4_m03_e043": {
+   "verdict": "correct"
+  },
+  "UFQFnrtWUE4_m03_e044": {
+   "verdict": "correct"
+  },
+  "UFQFnrtWUE4_m03_e045": {
+   "verdict": "correct"
+  },
+  "UFQFnrtWUE4_m03_e046": {
+   "verdict": "correct"
+  },
+  "UFQFnrtWUE4_m03_e047": {
+   "verdict": "correct"
+  },
+  "UFQFnrtWUE4_m03_e048": {
+   "verdict": "correct"
+  },
+  "UFQFnrtWUE4_m03_e049": {
+   "verdict": "correct"
+  },
+  "UFQFnrtWUE4_m03_e050": {
+   "verdict": "correct"
+  },
+  "UFQFnrtWUE4_m03_e051": {
+   "verdict": "correct"
+  },
+  "UFQFnrtWUE4_m03_e052": {
+   "verdict": "correct"
+  },
+  "UFQFnrtWUE4_m03_e053": {
+   "verdict": "correct"
+  },
+  "UFQFnrtWUE4_m03_e054": {
+   "verdict": "correct"
+  },
+  "UFQFnrtWUE4_m03_e055": {
+   "verdict": "correct"
+  },
+  "UFQFnrtWUE4_m03_e056": {
+   "verdict": "correct"
+  },
+  "UFQFnrtWUE4_m03_e057": {
+   "verdict": "correct"
+  },
+  "UFQFnrtWUE4_m03_e058": {
+   "verdict": "correct"
+  },
+  "UFQFnrtWUE4_m03_e059": {
+   "verdict": "correct"
+  },
+  "UFQFnrtWUE4_m03_e060": {
+   "verdict": "correct"
+  },
+  "UFQFnrtWUE4_m03_e061": {
+   "verdict": "correct"
+  },
+  "UFQFnrtWUE4_m03_e062": {
+   "verdict": "correct"
+  },
+  "UFQFnrtWUE4_m03_e063": {
+   "verdict": "correct"
+  },
+  "UFQFnrtWUE4_m03_e064": {
+   "verdict": "correct"
+  },
+  "UFQFnrtWUE4_m03_e065": {
+   "verdict": "correct"
+  },
+  "UFQFnrtWUE4_m03_e066": {
+   "verdict": "correct"
+  },
+  "UFQFnrtWUE4_m03_e067": {
+   "verdict": "correct"
+  },
+  "UFQFnrtWUE4_m03_e068": {
+   "verdict": "correct"
+  },
+  "UFQFnrtWUE4_m03_e069": {
+   "verdict": "correct"
+  },
+  "UFQFnrtWUE4_m03_e070": {
+   "verdict": "correct"
+  },
+  "UFQFnrtWUE4_m03_e071": {
+   "verdict": "correct"
+  },
+  "UFQFnrtWUE4_m03_e072": {
+   "verdict": "correct"
+  },
+  "UFQFnrtWUE4_m03_e073": {
+   "verdict": "correct"
+  },
+  "UFQFnrtWUE4_m03_e074": {
+   "verdict": "correct"
+  },
+  "UFQFnrtWUE4_m04_e009": {
+   "verdict": "correct"
+  },
+  "UFQFnrtWUE4_m04_e011": {
+   "verdict": "correct"
+  },
+  "UFQFnrtWUE4_m04_e040": {
+   "note": "No card played, the game just ended",
+   "verdict": "wrong",
+   "correct": "__not_a_play"
+  },
+  "UFQFnrtWUE4_m06_e034": {
+   "verdict": "correct"
+  },
+  "UFQFnrtWUE4_m07_e009": {
+   "verdict": "correct",
+   "note": "This was actually a weird cut in game, best to ignore this"
+  },
+  "UFQFnrtWUE4_m08_e010": {
+   "note": "Cut again",
+   "verdict": "correct"
+  },
+  "UFQFnrtWUE4_m05_e022": {
+   "verdict": "correct",
+   "note": "Missed the barbbarrel at the same time"
+  }
+ },
+ "missing": []
+}

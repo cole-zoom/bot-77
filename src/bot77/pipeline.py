@@ -133,17 +133,16 @@ def process_video(video: Path, layout_id: str, cards: list[dict], db_dir: Path, 
             hand = reader.read(f)
             buttons = (read_ability(f, layout, "ability_left"), read_ability(f, layout, "ability_right"))
             states.append(FrameState(t, hand, read_elixir(f, layout), multiplier_at(t), buttons))
-            hud_rows.append(_hud_row(match_id, t, t - m.t_start, hand, states[-1]))
+            hud_rows.append(_hud_row(match_id, t, m.elapsed_at(t), hand, states[-1]))
         log(f"match {mi + 1}: {len(states)} frames ({time.time() - t0:.0f}s), deck {[names[c] for c in deck]}")
 
         # 4. Plays.
-        champs = {cid: by_id[cid]["ability_cost"] for cid in deck
-                  if by_id[cid]["ability_cost"] is not None and (by_id[cid]["is_champion"] or by_id[cid]["has_hero"])}
-        uses = {cid: by_id[cid]["ability_uses_per_deploy"] or 1 for cid in champs}
-        plays = detect_plays(states, costs, names, champs, uses)
+        champs, uses = _ability_cards(deck, by_id, states)
+        cuts = [t for (pt, pr), (t, r) in zip(m.reads, m.reads[1:]) if r.elapsed_s - pr.elapsed_s > (t - pt) + 3]
+        plays = detect_plays(states, costs, names, champs, uses, cuts)
         thumbs = _thumbnails(video, layout, plays)
         for k, p in enumerate(plays):
-            event_rows.append(_event_row(f"{match_id}_e{k + 1:03d}", match_id, video_id, m.t_start, p, thumbs.get(k)))
+            event_rows.append(_event_row(f"{match_id}_e{k + 1:03d}", match_id, video_id, m.elapsed_at(p.t), p, thumbs.get(k)))
 
         opp_here = [o for o in opp if m.t_start <= o[0] <= m.t_end]
         name, rating = (opp_here[len(opp_here) // 2][1:] if opp_here else ("", ""))
@@ -200,14 +199,15 @@ def redetect_video(video_id: str, cards: list[dict], db_dir: Path, log=print) ->
             buttons = tuple(r.get("ability") or ("absent", "absent"))
             states.append(FrameState(r["t_video"], hand, ElixirRead(el, int(el) if el is not None else None, True, 1.0),
                                      r["multiplier"], buttons))
-        deck = m["deck"]
-        champs = {cid: by_id[cid]["ability_cost"] for cid in deck
-                  if by_id[cid]["ability_cost"] is not None and (by_id[cid]["is_champion"] or by_id[cid]["has_hero"])}
-        uses = {cid: by_id[cid]["ability_uses_per_deploy"] or 1 for cid in champs}
-        plays = detect_plays(states, costs, names, champs, uses)
+        champs, uses = _ability_cards(m["deck"], by_id, states)
+        cuts = [b["t_video"] for a, b in zip(rows, rows[1:])
+                if b["t_match"] - a["t_match"] > (b["t_video"] - a["t_video"]) + 2]
+        plays = detect_plays(states, costs, names, champs, uses, cuts)
         thumbs = _thumbnails(Path(video["path"]), layout, plays)
+        hud_t = [r["t_video"] for r in rows]
         for k, p in enumerate(plays):
-            event_rows.append(_event_row(f"{m['match_id']}_e{k + 1:03d}", m["match_id"], video_id, m["t_start"], p, thumbs.get(k)))
+            j = min(max(bisect.bisect_left(hud_t, p.t), 0), len(rows) - 1)  # match time from the stored clock mapping
+            event_rows.append(_event_row(f"{m['match_id']}_e{k + 1:03d}", m["match_id"], video_id, rows[j]["t_match"], p, thumbs.get(k)))
         log(f"{m['match_id']}: {len(plays)} events")
     events = db.open_table("events")
     if "t_drag" not in events.schema.names:  # schema changed: rebuild the table
@@ -218,6 +218,17 @@ def redetect_video(video_id: str, cards: list[dict], db_dir: Path, log=print) ->
     else:
         _replace(db, "events", EVENTS, event_rows, video_id)
     return {"events": len(event_rows)}
+
+
+def _ability_cards(deck: list[int], by_id: dict, states: list[FrameState]) -> tuple[dict, dict]:
+    """Cards whose ability button can appear: champions always, hero-capable cards only if they
+    were actually played in hero form this match (e.g. Barbarian Barrel has a hero form, but
+    a normal Barbarian Barrel has no ability)."""
+    hero_seen = {s.hand[slot].card_id for s in states for slot in SLOTS if s.hand[slot].form == "hero"}
+    costs = {cid: by_id[cid]["ability_cost"] for cid in deck
+             if by_id[cid]["ability_cost"] is not None and (by_id[cid]["is_champion"] or cid in hero_seen)}
+    uses = {cid: by_id[cid]["ability_uses_per_deploy"] or 1 for cid in costs}
+    return costs, uses
 
 
 def _hud_row(match_id: str, t: float, t_match: float, hand: dict, st: FrameState) -> dict:
@@ -232,10 +243,10 @@ def _hud_row(match_id: str, t: float, t_match: float, hand: dict, st: FrameState
     }
 
 
-def _event_row(event_id: str, match_id: str, video_id: str, t_start: float, p: Play, thumbs) -> dict:
+def _event_row(event_id: str, match_id: str, video_id: str, t_match: float, p: Play, thumbs) -> dict:
     d = asdict(p)
     return {
-        "event_id": event_id, "match_id": match_id, "video_id": video_id, "t_video": p.t, "t_match": p.t - t_start,
+        "event_id": event_id, "match_id": match_id, "video_id": video_id, "t_video": p.t, "t_match": t_match,
         "t_drag": p.t_drag,
         "kind": p.kind, "card_id": p.card_id, "card": p.name, "form": p.form, "slot": p.slot,
         "elixir_before": p.elixir_before, "elixir_after": p.elixir_after, "measured_cost": p.measured_cost,
