@@ -158,6 +158,30 @@ The deck is inferred from the cards that appear in the hand during the match (al
 - **Metrics:** play precision and recall, card accuracy, timing error (target ≤ 0.5 s), match-boundary accuracy.
 - **Pass bar for v0:** ≥ 95% precision and recall on POV plays across reviewed matches.
 
+### 8.1 Review round 1 (matches 1–2 of `uz4VVzGlOjE`, fully reviewed by Cole)
+
+Ground truth is rebuilt from the review so it doesn't depend on event ids (`bot77 score --truth`, `data/reviews/truth_uz4VVzGlOjE.json`; two plays Cole described only in notes were added by hand). `bot77 redetect` re-runs detection from the stored HUD states, so detector changes are re-scored in minutes.
+
+| | before fixes | after fixes |
+|---|---|---|
+| precision | 87.1% | 100% (117/117) |
+| recall | 93.1% | 99.2% (117/118) |
+| high-confidence precision | 100% (83/83) | 100% (83/83) |
+
+Fixes, from Cole's findings: trust the hand when the measured cost is off (the bar's sliver vanishes and spent segments drain pale right after a play); a real spend lowers the whole-elixir count, a sliver snap doesn't; ignore elixir while the emote panel covers the hand; start each match after the previous one ends; split merged drops at their pause; catch cards dragged while still sliding in from "next"; add plays seen only as a hand change.
+
+These numbers are on the matches the fixes were tuned on. Matches 3–5 are the held-out check. Remaining known miss: an ability used 0.4 s after a Skeletons play whose bar reading looked like a sliver snap. The real fix is reading the ability button itself (bright when usable, dark after use, gone when the champion is dead).
+
+### 8.2 Review round 2 (matches 3–4, held out)
+
+Scored before any round-2 changes: **99.1% precision (109/110), 97.3% recall (109/112)**; every high- and medium-confidence event was right. All three misses were Mighty Miner abilities: "ability, then Hog straight away" merges into one 5-elixir drop, and at triple elixir an ability can leave the whole-elixir count unchanged. One false play: a card hovered over the board while the sliver snapped.
+
+Fixes: an **ability-button reader** (`bot77.readers.ability`: ready = cyan + pink pip, dark = navy + grey pip, absent). A ready → dark change is a use only if a nearby elixir drop pays for it (the button lags the drop by up to ~1 s), each drop pays for at most one ability, and the rest of the drop must fit a card that left the hand; if a card alone explains the drop, the button went dark because elixir fell below the ability's cost. Elixir-only ability guessing is off whenever the button is readable. Cost-mismatch guesses need a drop of at least half the card's cost.
+
+After round 2, on both sets: **matches 1–2: 118/118, matches 3–4: 112/112 (100% precision and recall)**. Match 5 is still unreviewed.
+
+The review page now keys saved verdicts on the detection run, because re-running detection reuses event ids; round 2's export carried stale match 1–2 verdicts, which were excluded from scoring.
+
 ## 9. Milestones
 
 0. ~~Card metadata ingestion~~ ✅
@@ -167,7 +191,7 @@ The deck is inferred from the cards that appear in the hand during the match (al
 4. ~~Match segmentation~~ ✅
 5. ~~Play event logic + confidence~~ ✅
 6. ~~Write to LanceDB + review page~~ ✅ (`bot77 process`, `bot77 review`)
-7. Cole reviews → fix → re-measure
+7. Cole reviews → fix → re-measure — **round 1 done** (see §8.1)
 8. Tower HP + opponent info readers
 9. Approximate placement (v0.5)
 

@@ -1,0 +1,768 @@
+{
+ "video_id": "uz4VVzGlOjE",
+ "exported_at": "2026-09-25T15:28:59.932Z",
+ "verdicts": {
+  "uz4VVzGlOjE_m01_e001": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m01_e002": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m01_e003": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m01_e004": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m01_e005": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m01_e006": {
+   "note": "E-Spirit slightly first, Skeletons selected first.",
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m01_e007": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m01_e008": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m01_e009": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m01_e010": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m01_e011": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m01_e012": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m01_e013": {
+   "note": "You can't use mighty miner ability before you deploy it",
+   "verdict": "wrong",
+   "correct": "__not_a_play"
+  },
+  "uz4VVzGlOjE_m01_e014": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m01_e015": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m01_e016": {
+   "verdict": "wrong",
+   "correct": "__not_a_play",
+   "note": ""
+  },
+  "uz4VVzGlOjE_m01_e017": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m01_e018": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m01_e019": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m01_e020": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m01_e021": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m01_e022": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m01_e023": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m01_e024": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m01_e025": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m01_e026": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m01_e027": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m01_e028": {
+   "note": "You missed a skeletons",
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m01_e029": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m01_e030": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m01_e031": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m01_e032": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m01_e033": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m01_e034": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m01_e035": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m01_e036": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m01_e037": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m01_e038": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m01_e039": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m01_e040": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m01_e041": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m01_e042": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m01_e043": {
+   "verdict": "wrong",
+   "correct": "Electro Spirit",
+   "note": "You can't mighty miner ability twice on the same mighty miner"
+  },
+  "uz4VVzGlOjE_m01_e044": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m01_e045": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m01_e046": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m01_e047": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m01_e048": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m01_e049": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m01_e050": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m01_e051": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m01_e052": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m01_e053": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m01_e054": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m01_e055": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m01_e056": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m01_e057": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m01_e058": {
+   "note": "Mighty miner is in hand so this is impossible",
+   "verdict": "wrong",
+   "correct": "__not_a_play"
+  },
+  "uz4VVzGlOjE_m01_e059": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m01_e060": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m01_e061": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m01_e062": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m01_e063": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m01_e064": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m01_e065": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m01_e066": {
+   "verdict": "wrong",
+   "note": "You had it right, he used espirit. Why did u say unknown? Maybe because of the 30 secs left title?make a guess"
+  },
+  "uz4VVzGlOjE_m01_e067": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m01_e068": {
+   "note": "He emoted here, thats the message button. Technically your right ig",
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m02_e001": {
+   "note": "Previous match.",
+   "verdict": "unsure"
+  },
+  "uz4VVzGlOjE_m02_e002": {
+   "note": "Previous match again",
+   "verdict": "unsure"
+  },
+  "uz4VVzGlOjE_m02_e003": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m02_e004": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m02_e005": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m02_e006": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m02_e007": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m02_e008": {
+   "verdict": "wrong",
+   "correct": "Skeletons",
+   "note": "Usually the vacated card is the right one, maybe not tho?"
+  },
+  "uz4VVzGlOjE_m02_e009": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m02_e010": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m02_e011": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m02_e012": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m02_e013": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m02_e014": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m02_e015": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m02_e016": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m02_e017": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m02_e018": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m02_e019": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m02_e020": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m02_e021": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m02_e022": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m02_e023": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m02_e024": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m02_e025": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m02_e026": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m02_e027": {
+   "verdict": "wrong",
+   "correct": "Hog Rider",
+   "note": ""
+  },
+  "uz4VVzGlOjE_m02_e028": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m02_e029": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m02_e030": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m02_e031": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m02_e032": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m02_e033": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m02_e034": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m02_e035": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m02_e036": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m02_e037": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m02_e038": {
+   "note": "log - played ontop of a bush, maybe thats why it wasn't detected?",
+   "verdict": "wrong",
+   "correct": "The Log"
+  },
+  "uz4VVzGlOjE_m02_e039": {
+   "verdict": "wrong",
+   "correct": "Tesla",
+   "note": "Not entirely sure how this one was missed"
+  },
+  "uz4VVzGlOjE_m02_e040": {
+   "verdict": "wrong",
+   "correct": "Earthquake",
+   "note": "same here"
+  },
+  "uz4VVzGlOjE_m02_e041": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m02_e042": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m02_e043": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m02_e044": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m02_e045": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m02_e046": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m02_e047": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m02_e048": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m02_e049": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m02_e050": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m02_e051": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m02_e052": {
+   "verdict": "wrong",
+   "correct": "Firecracker",
+   "note": "Usually ur right so idk why unknown"
+  },
+  "uz4VVzGlOjE_m02_e053": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m02_e054": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m02_e055": {
+   "verdict": "wrong",
+   "correct": "__not_a_play",
+   "note": "Mighty not on board"
+  },
+  "uz4VVzGlOjE_m02_e056": {
+   "verdict": "wrong",
+   "note": "Emote"
+  },
+  "uz4VVzGlOjE_m03_e001": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m03_e002": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m03_e003": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m03_e004": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m03_e005": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m03_e006": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m03_e007": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m03_e008": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m03_e009": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m03_e010": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m03_e011": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m03_e012": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m03_e013": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m03_e014": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m03_e015": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m03_e016": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m03_e017": {
+   "verdict": "wrong",
+   "correct": "__not_a_play",
+   "note": "He just hovered the card over the board, ended up playing it a few seconds later"
+  },
+  "uz4VVzGlOjE_m03_e018": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m03_e019": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m03_e020": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m03_e021": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m03_e022": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m03_e023": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m03_e024": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m03_e025": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m03_e026": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m03_e027": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m03_e028": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m03_e029": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m03_e030": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m03_e031": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m03_e032": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m03_e033": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m03_e034": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m03_e035": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m03_e036": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m03_e037": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m04_e001": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m04_e002": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m04_e003": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m04_e004": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m04_e005": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m04_e006": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m04_e007": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m04_e008": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m04_e009": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m04_e010": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m04_e011": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m04_e012": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m04_e013": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m04_e014": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m04_e015": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m04_e016": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m04_e017": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m04_e018": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m04_e019": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m04_e020": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m04_e021": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m04_e022": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m04_e023": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m04_e024": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m04_e025": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m04_e026": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m04_e027": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m04_e028": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m04_e029": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m04_e030": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m04_e031": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m04_e032": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m04_e033": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m04_e034": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m04_e035": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m04_e036": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m04_e037": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m04_e038": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m04_e039": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m04_e040": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m04_e041": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m04_e042": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m04_e043": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m04_e044": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m04_e045": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m04_e046": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m04_e047": {
+   "verdict": "correct",
+   "note": "Spent 4.8 - cost mismatch since you missed the mighty miner ability. "
+  },
+  "uz4VVzGlOjE_m04_e048": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m04_e049": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m04_e050": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m04_e051": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m04_e052": {
+   "verdict": "correct",
+   "note": "again missed mighty miner ability - hog doesn't cost 5 elixir"
+  },
+  "uz4VVzGlOjE_m04_e053": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m04_e054": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m04_e055": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m04_e056": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m04_e057": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m04_e058": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m04_e059": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m04_e060": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m04_e061": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m04_e062": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m04_e063": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m04_e064": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m04_e065": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m04_e066": {
+   "verdict": "correct",
+   "note": "Missed mighty miner ability too here."
+  },
+  "uz4VVzGlOjE_m04_e067": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m04_e068": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m04_e069": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m04_e070": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m04_e071": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m04_e072": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m04_e073": {
+   "verdict": "correct"
+  }
+ },
+ "missing": [
+  {
+   "match_id": "uz4VVzGlOjE_m02",
+   "clock": "0:37",
+   "card": "__ability",
+   "note": "Happens with 2:23 seconds left"
+  },
+  {
+   "match_id": "uz4VVzGlOjE_m04",
+   "clock": "3:43",
+   "card": "__ability",
+   "note": "mighty miner ability then hog right away"
+  },
+  {
+   "match_id": "uz4VVzGlOjE_m04",
+   "clock": "4:00",
+   "card": "__ability",
+   "note": "Hog doesn't cost 5"
+  },
+  {
+   "match_id": "uz4VVzGlOjE_m04",
+   "clock": "4:37",
+   "card": "__ability",
+   "note": "Same thing"
+  }
+ ]
+}

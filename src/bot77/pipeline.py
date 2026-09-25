@@ -14,10 +14,11 @@ import pyarrow as pa
 
 from bot77.events import FrameState, Play, detect_plays
 from bot77.layout import Layout
+from bot77.readers.ability import read_ability
 from bot77.readers.clock import ClockRead, ocr_text, read_clock
 from bot77.readers.elixir import read_elixir
 from bot77.readers.hand import SLOTS, HandReader, infer_deck
-from bot77.segment import Match, segment_matches
+from bot77.segment import segment_matches
 from bot77.video import iter_frames, probe
 
 HUD_FPS = 10
@@ -42,11 +43,13 @@ HUD = pa.schema([
     ("hand", pa.list_(pa.int64())), ("hand_form", pa.list_(pa.string())), ("hand_state", pa.list_(pa.string())),
     ("greyed", pa.list_(pa.bool_())), ("selected", pa.list_(pa.bool_())),
     ("next", pa.int64()), ("elixir", pa.float32()), ("multiplier", pa.int8()),
+    ("ability", pa.list_(pa.string())),  # left, right button: ready | dark | absent
 ])
 EVENTS = pa.schema([
     ("event_id", pa.string()), ("match_id", pa.string()), ("video_id", pa.string()),
     ("t_video", pa.float32()), ("t_match", pa.float32()), ("kind", pa.string()),
     ("card_id", pa.int64()), ("card", pa.string()), ("form", pa.string()), ("slot", pa.string()),
+    ("t_drag", pa.float32()),
     ("elixir_before", pa.float32()), ("elixir_after", pa.float32()), ("measured_cost", pa.float32()),
     ("confidence", pa.string()), ("notes", pa.list_(pa.string())),
     ("thumb_hand", pa.binary()), ("thumb_arena", pa.binary()),
@@ -112,7 +115,9 @@ def process_video(video: Path, layout_id: str, cards: list[dict], db_dir: Path, 
     match_rows, hud_rows, event_rows = [], [], []
     for mi, m in enumerate(matches):
         match_id = f"{video_id}_m{mi + 1:02d}"
-        t_first, t_last = max(m.t_start, 0.0), m.t_end
+        # Matches overlap by a few seconds when end screens are cut out: start after the previous one.
+        prev_end = matches[mi - 1].t_end if mi else 0.0
+        t_first, t_last = max(m.t_start, prev_end, 0.0), m.t_end
 
         # 2. Deck from a spread of frames with the full reader.
         span = t_last - t_first
@@ -126,7 +131,8 @@ def process_video(video: Path, layout_id: str, cards: list[dict], db_dir: Path, 
         hand_crops: dict[int, np.ndarray] = {}
         for t, f in iter_frames(video, HUD_FPS, start=t_first, duration=span):
             hand = reader.read(f)
-            states.append(FrameState(t, hand, read_elixir(f, layout), multiplier_at(t)))
+            buttons = (read_ability(f, layout, "ability_left"), read_ability(f, layout, "ability_right"))
+            states.append(FrameState(t, hand, read_elixir(f, layout), multiplier_at(t), buttons))
             hud_rows.append(_hud_row(match_id, t, t - m.t_start, hand, states[-1]))
         log(f"match {mi + 1}: {len(states)} frames ({time.time() - t0:.0f}s), deck {[names[c] for c in deck]}")
 
@@ -137,7 +143,7 @@ def process_video(video: Path, layout_id: str, cards: list[dict], db_dir: Path, 
         plays = detect_plays(states, costs, names, champs, uses)
         thumbs = _thumbnails(video, layout, plays)
         for k, p in enumerate(plays):
-            event_rows.append(_event_row(f"{match_id}_e{k + 1:03d}", match_id, video_id, m, p, thumbs.get(k)))
+            event_rows.append(_event_row(f"{match_id}_e{k + 1:03d}", match_id, video_id, m.t_start, p, thumbs.get(k)))
 
         opp_here = [o for o in opp if m.t_start <= o[0] <= m.t_end]
         name, rating = (opp_here[len(opp_here) // 2][1:] if opp_here else ("", ""))
@@ -160,6 +166,60 @@ def process_video(video: Path, layout_id: str, cards: list[dict], db_dir: Path, 
     return {"matches": len(match_rows), "events": len(event_rows), "hud_states": len(hud_rows)}
 
 
+def redetect_video(video_id: str, cards: list[dict], db_dir: Path, log=print) -> dict:
+    """Re-run play detection from the stored per-frame HUD states (no video decoding, apart from
+    thumbnails). Use after changing the detector."""
+    from bot77.readers.elixir import ElixirRead
+    from bot77.readers.hand import SlotRead
+
+    db = lancedb.connect(db_dir)
+    video = db.open_table("videos").search().where(f"video_id = '{video_id}'").to_arrow().to_pylist()[0]
+    layout = Layout.load(video["layout_id"])
+    by_id = {c["id"]: c for c in cards}
+    costs = {cid: c["elixir"] for cid, c in by_id.items() if c["elixir"] is not None}
+    names = {cid: c["name"] for cid, c in by_id.items()}
+    matches = sorted(db.open_table("matches").search().where(f"video_id = '{video_id}'").to_arrow().to_pylist(),
+                     key=lambda m: m["index"])
+    hud = db.open_table("hud_states")
+    event_rows = []
+    for mi, m in enumerate(matches):
+        prev_end = matches[mi - 1]["t_end"] if mi else 0.0
+        t_first = max(m["t_start"], prev_end, 0.0)
+        rows = hud.search().where(f"match_id = '{m['match_id']}' AND t_video >= {t_first}").limit(1_000_000) \
+            .to_arrow().to_pylist()
+        rows.sort(key=lambda r: r["t_video"])
+        states = []
+        for r in rows:
+            hand = {}
+            for k, slot in enumerate(SLOTS):
+                cid, st = r["hand"][k], r["hand_state"][k]
+                hand[slot] = SlotRead(st, cid if cid >= 0 else None, names.get(cid), r["hand_form"][k] or None,
+                                      greyed=r["greyed"][k], selected=r["selected"][k])
+            hand["next"] = SlotRead("card", r["next"], names.get(r["next"]), "normal") if r["next"] >= 0 else SlotRead("unknown")
+            el = r["elixir"]
+            buttons = tuple(r.get("ability") or ("absent", "absent"))
+            states.append(FrameState(r["t_video"], hand, ElixirRead(el, int(el) if el is not None else None, True, 1.0),
+                                     r["multiplier"], buttons))
+        deck = m["deck"]
+        champs = {cid: by_id[cid]["ability_cost"] for cid in deck
+                  if by_id[cid]["ability_cost"] is not None and (by_id[cid]["is_champion"] or by_id[cid]["has_hero"])}
+        uses = {cid: by_id[cid]["ability_uses_per_deploy"] or 1 for cid in champs}
+        plays = detect_plays(states, costs, names, champs, uses)
+        thumbs = _thumbnails(Path(video["path"]), layout, plays)
+        for k, p in enumerate(plays):
+            event_rows.append(_event_row(f"{m['match_id']}_e{k + 1:03d}", m["match_id"], video_id, m["t_start"], p, thumbs.get(k)))
+        log(f"{m['match_id']}: {len(plays)} events")
+    events = db.open_table("events")
+    if "t_drag" not in events.schema.names:  # schema changed: rebuild the table
+        keep = events.search().where(f"video_id != '{video_id}'").limit(10_000_000).to_arrow().to_pylist()
+        for r in keep:
+            r.setdefault("t_drag", None)
+        db.create_table("events", pa.Table.from_pylist(keep + event_rows, schema=EVENTS), mode="overwrite")
+    else:
+        _replace(db, "events", EVENTS, event_rows, video_id)
+    return {"events": len(event_rows)}
+
+
 def _hud_row(match_id: str, t: float, t_match: float, hand: dict, st: FrameState) -> dict:
     r = [hand[s] for s in SLOTS]
     return {
@@ -168,14 +228,15 @@ def _hud_row(match_id: str, t: float, t_match: float, hand: dict, st: FrameState
         "hand_form": [x.form or "" for x in r], "hand_state": [x.state for x in r],
         "greyed": [bool(x.greyed) for x in r], "selected": [bool(x.selected) for x in r],
         "next": hand["next"].card_id if hand["next"].state == "card" else -1,
-        "elixir": st.elixir.elixir, "multiplier": st.multiplier,
+        "elixir": st.elixir.elixir, "multiplier": st.multiplier, "ability": list(st.abilities),
     }
 
 
-def _event_row(event_id: str, match_id: str, video_id: str, m: Match, p: Play, thumbs) -> dict:
+def _event_row(event_id: str, match_id: str, video_id: str, t_start: float, p: Play, thumbs) -> dict:
     d = asdict(p)
     return {
-        "event_id": event_id, "match_id": match_id, "video_id": video_id, "t_video": p.t, "t_match": p.t - m.t_start,
+        "event_id": event_id, "match_id": match_id, "video_id": video_id, "t_video": p.t, "t_match": p.t - t_start,
+        "t_drag": p.t_drag,
         "kind": p.kind, "card_id": p.card_id, "card": p.name, "form": p.form, "slot": p.slot,
         "elixir_before": p.elixir_before, "elixir_after": p.elixir_after, "measured_cost": p.measured_cost,
         "confidence": p.confidence, "notes": d["notes"],
@@ -205,6 +266,14 @@ def _replace(db, name: str, schema: pa.Schema, rows: list[dict], video_id: str, 
         db.create_table(name, table)
         return
     t = db.open_table(name)
+    if set(t.schema.names) != set(schema.names):  # schema changed: rebuild, keeping other videos' rows
+        where_other = f"NOT ({key} LIKE '{video_id}%')" if prefix else f"{key} != '{video_id}'"
+        keep = t.search().where(where_other).limit(100_000_000).to_arrow().to_pylist()
+        for r in keep:
+            for col in schema.names:
+                r.setdefault(col, None)
+        db.create_table(name, pa.Table.from_pylist(keep + rows, schema=schema), mode="overwrite")
+        return
     where = f"{key} LIKE '{video_id}%'" if prefix else f"{key} = '{video_id}'"
     t.delete(where)
     if rows:

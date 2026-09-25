@@ -1,0 +1,722 @@
+{
+ "video_id": "uz4VVzGlOjE",
+ "matches": [
+  "uz4VVzGlOjE_m01",
+  "uz4VVzGlOjE_m02"
+ ],
+ "items": [
+  {
+   "match_id": "uz4VVzGlOjE_m01",
+   "t_video": 6.7,
+   "label": "Mighty Miner",
+   "note": ""
+  },
+  {
+   "match_id": "uz4VVzGlOjE_m01",
+   "t_video": 17.8,
+   "label": "Firecracker",
+   "note": ""
+  },
+  {
+   "match_id": "uz4VVzGlOjE_m01",
+   "t_video": 24.5,
+   "label": "__ability",
+   "note": ""
+  },
+  {
+   "match_id": "uz4VVzGlOjE_m01",
+   "t_video": 25.9,
+   "label": "Hog Rider",
+   "note": ""
+  },
+  {
+   "match_id": "uz4VVzGlOjE_m01",
+   "t_video": 31.6,
+   "label": "The Log",
+   "note": ""
+  },
+  {
+   "match_id": "uz4VVzGlOjE_m01",
+   "t_video": 33.2,
+   "label": "Skeletons",
+   "note": "E-Spirit slightly first, Skeletons selected first."
+  },
+  {
+   "match_id": "uz4VVzGlOjE_m01",
+   "t_video": 33.2,
+   "label": "Electro Spirit",
+   "note": ""
+  },
+  {
+   "match_id": "uz4VVzGlOjE_m01",
+   "t_video": 37.5,
+   "label": "Firecracker",
+   "note": ""
+  },
+  {
+   "match_id": "uz4VVzGlOjE_m01",
+   "t_video": 48.5,
+   "label": "Hog Rider",
+   "note": ""
+  },
+  {
+   "match_id": "uz4VVzGlOjE_m01",
+   "t_video": 52.8,
+   "label": "The Log",
+   "note": ""
+  },
+  {
+   "match_id": "uz4VVzGlOjE_m01",
+   "t_video": 77.3,
+   "label": "Electro Spirit",
+   "note": ""
+  },
+  {
+   "match_id": "uz4VVzGlOjE_m01",
+   "t_video": 80.5,
+   "label": "Skeletons",
+   "note": ""
+  },
+  {
+   "match_id": "uz4VVzGlOjE_m01",
+   "t_video": 83.0,
+   "label": "Mighty Miner",
+   "note": ""
+  },
+  {
+   "match_id": "uz4VVzGlOjE_m01",
+   "t_video": 84.9,
+   "label": "Hog Rider",
+   "note": ""
+  },
+  {
+   "match_id": "uz4VVzGlOjE_m01",
+   "t_video": 92.3,
+   "label": "Firecracker",
+   "note": ""
+  },
+  {
+   "match_id": "uz4VVzGlOjE_m01",
+   "t_video": 100.0,
+   "label": "Electro Spirit",
+   "note": ""
+  },
+  {
+   "match_id": "uz4VVzGlOjE_m01",
+   "t_video": 109.1,
+   "label": "The Log",
+   "note": ""
+  },
+  {
+   "match_id": "uz4VVzGlOjE_m01",
+   "t_video": 117.9,
+   "label": "Mighty Miner",
+   "note": ""
+  },
+  {
+   "match_id": "uz4VVzGlOjE_m01",
+   "t_video": 122.5,
+   "label": "Skeletons",
+   "note": ""
+  },
+  {
+   "match_id": "uz4VVzGlOjE_m01",
+   "t_video": 124.5,
+   "label": "Tesla",
+   "note": ""
+  },
+  {
+   "match_id": "uz4VVzGlOjE_m01",
+   "t_video": 125.1,
+   "label": "Firecracker",
+   "note": ""
+  },
+  {
+   "match_id": "uz4VVzGlOjE_m01",
+   "t_video": 127.0,
+   "label": "Electro Spirit",
+   "note": ""
+  },
+  {
+   "match_id": "uz4VVzGlOjE_m01",
+   "t_video": 129.9,
+   "label": "__ability",
+   "note": ""
+  },
+  {
+   "match_id": "uz4VVzGlOjE_m01",
+   "t_video": 135.6,
+   "label": "Hog Rider",
+   "note": ""
+  },
+  {
+   "match_id": "uz4VVzGlOjE_m01",
+   "t_video": 137.7,
+   "label": "Earthquake",
+   "note": ""
+  },
+  {
+   "match_id": "uz4VVzGlOjE_m01",
+   "t_video": 140.6,
+   "label": "Skeletons",
+   "note": "from note on 143.1: 'You missed a skeletons'",
+   "from_note": true,
+   "approximate_time": true
+  },
+  {
+   "match_id": "uz4VVzGlOjE_m01",
+   "t_video": 143.1,
+   "label": "The Log",
+   "note": "You missed a skeletons"
+  },
+  {
+   "match_id": "uz4VVzGlOjE_m01",
+   "t_video": 150.3,
+   "label": "Firecracker",
+   "note": ""
+  },
+  {
+   "match_id": "uz4VVzGlOjE_m01",
+   "t_video": 151.9,
+   "label": "Hog Rider",
+   "note": ""
+  },
+  {
+   "match_id": "uz4VVzGlOjE_m01",
+   "t_video": 152.6,
+   "label": "Electro Spirit",
+   "note": ""
+  },
+  {
+   "match_id": "uz4VVzGlOjE_m01",
+   "t_video": 156.6,
+   "label": "Earthquake",
+   "note": ""
+  },
+  {
+   "match_id": "uz4VVzGlOjE_m01",
+   "t_video": 158.1,
+   "label": "Skeletons",
+   "note": ""
+  },
+  {
+   "match_id": "uz4VVzGlOjE_m01",
+   "t_video": 164.6,
+   "label": "Firecracker",
+   "note": ""
+  },
+  {
+   "match_id": "uz4VVzGlOjE_m01",
+   "t_video": 174.2,
+   "label": "Tesla",
+   "note": ""
+  },
+  {
+   "match_id": "uz4VVzGlOjE_m01",
+   "t_video": 174.9,
+   "label": "Hog Rider",
+   "note": ""
+  },
+  {
+   "match_id": "uz4VVzGlOjE_m01",
+   "t_video": 176.3,
+   "label": "Electro Spirit",
+   "note": ""
+  },
+  {
+   "match_id": "uz4VVzGlOjE_m01",
+   "t_video": 182.1,
+   "label": "Skeletons",
+   "note": ""
+  },
+  {
+   "match_id": "uz4VVzGlOjE_m01",
+   "t_video": 182.5,
+   "label": "Mighty Miner",
+   "note": ""
+  },
+  {
+   "match_id": "uz4VVzGlOjE_m01",
+   "t_video": 186.9,
+   "label": "Tesla",
+   "note": ""
+  },
+  {
+   "match_id": "uz4VVzGlOjE_m01",
+   "t_video": 191.2,
+   "label": "__ability",
+   "note": ""
+  },
+  {
+   "match_id": "uz4VVzGlOjE_m01",
+   "t_video": 196.0,
+   "label": "The Log",
+   "note": ""
+  },
+  {
+   "match_id": "uz4VVzGlOjE_m01",
+   "t_video": 197.6,
+   "label": "Electro Spirit",
+   "note": "You can't mighty miner ability twice on the same mighty miner"
+  },
+  {
+   "match_id": "uz4VVzGlOjE_m01",
+   "t_video": 204.1,
+   "label": "Firecracker",
+   "note": ""
+  },
+  {
+   "match_id": "uz4VVzGlOjE_m01",
+   "t_video": 207.2,
+   "label": "Skeletons",
+   "note": ""
+  },
+  {
+   "match_id": "uz4VVzGlOjE_m01",
+   "t_video": 209.2,
+   "label": "Tesla",
+   "note": ""
+  },
+  {
+   "match_id": "uz4VVzGlOjE_m01",
+   "t_video": 210.8,
+   "label": "Hog Rider",
+   "note": ""
+  },
+  {
+   "match_id": "uz4VVzGlOjE_m01",
+   "t_video": 213.5,
+   "label": "Earthquake",
+   "note": ""
+  },
+  {
+   "match_id": "uz4VVzGlOjE_m01",
+   "t_video": 221.4,
+   "label": "Electro Spirit",
+   "note": ""
+  },
+  {
+   "match_id": "uz4VVzGlOjE_m01",
+   "t_video": 225.0,
+   "label": "Firecracker",
+   "note": ""
+  },
+  {
+   "match_id": "uz4VVzGlOjE_m01",
+   "t_video": 232.5,
+   "label": "Tesla",
+   "note": ""
+  },
+  {
+   "match_id": "uz4VVzGlOjE_m01",
+   "t_video": 234.3,
+   "label": "Skeletons",
+   "note": ""
+  },
+  {
+   "match_id": "uz4VVzGlOjE_m01",
+   "t_video": 234.3,
+   "label": "Hog Rider",
+   "note": ""
+  },
+  {
+   "match_id": "uz4VVzGlOjE_m01",
+   "t_video": 237.9,
+   "label": "Electro Spirit",
+   "note": ""
+  },
+  {
+   "match_id": "uz4VVzGlOjE_m01",
+   "t_video": 239.4,
+   "label": "Firecracker",
+   "note": ""
+  },
+  {
+   "match_id": "uz4VVzGlOjE_m01",
+   "t_video": 241.4,
+   "label": "Tesla",
+   "note": ""
+  },
+  {
+   "match_id": "uz4VVzGlOjE_m01",
+   "t_video": 243.6,
+   "label": "The Log",
+   "note": ""
+  },
+  {
+   "match_id": "uz4VVzGlOjE_m01",
+   "t_video": 247.1,
+   "label": "Hog Rider",
+   "note": ""
+  },
+  {
+   "match_id": "uz4VVzGlOjE_m01",
+   "t_video": 249.7,
+   "label": "Earthquake",
+   "note": ""
+  },
+  {
+   "match_id": "uz4VVzGlOjE_m01",
+   "t_video": 257.4,
+   "label": "Firecracker",
+   "note": ""
+  },
+  {
+   "match_id": "uz4VVzGlOjE_m01",
+   "t_video": 258.9,
+   "label": "Mighty Miner",
+   "note": ""
+  },
+  {
+   "match_id": "uz4VVzGlOjE_m01",
+   "t_video": 258.9,
+   "label": "Skeletons",
+   "note": ""
+  },
+  {
+   "match_id": "uz4VVzGlOjE_m01",
+   "t_video": 262.1,
+   "label": "Tesla",
+   "note": ""
+  },
+  {
+   "match_id": "uz4VVzGlOjE_m01",
+   "t_video": 264.6,
+   "label": "Hog Rider",
+   "note": ""
+  },
+  {
+   "match_id": "uz4VVzGlOjE_m01",
+   "t_video": 266.2,
+   "label": "Electro Spirit",
+   "note": "from note: 'You had it right, he used espirit'",
+   "from_note": true
+  },
+  {
+   "match_id": "uz4VVzGlOjE_m01",
+   "t_video": 269.4,
+   "label": "Earthquake",
+   "note": ""
+  },
+  {
+   "match_id": "uz4VVzGlOjE_m02",
+   "t_video": 280.1,
+   "label": "Skeletons",
+   "note": ""
+  },
+  {
+   "match_id": "uz4VVzGlOjE_m02",
+   "t_video": 282.4,
+   "label": "Electro Spirit",
+   "note": ""
+  },
+  {
+   "match_id": "uz4VVzGlOjE_m02",
+   "t_video": 285.6,
+   "label": "The Log",
+   "note": ""
+  },
+  {
+   "match_id": "uz4VVzGlOjE_m02",
+   "t_video": 290.5,
+   "label": "Mighty Miner",
+   "note": ""
+  },
+  {
+   "match_id": "uz4VVzGlOjE_m02",
+   "t_video": 298.7,
+   "label": "Earthquake",
+   "note": ""
+  },
+  {
+   "match_id": "uz4VVzGlOjE_m02",
+   "t_video": 303.4,
+   "label": "Skeletons",
+   "note": "Usually the vacated card is the right one, maybe not tho?"
+  },
+  {
+   "match_id": "uz4VVzGlOjE_m02",
+   "t_video": 305.1,
+   "label": "Electro Spirit",
+   "note": ""
+  },
+  {
+   "match_id": "uz4VVzGlOjE_m02",
+   "t_video": 306.0,
+   "label": "__ability",
+   "note": "Happens with 2:23 seconds left",
+   "approximate_time": true
+  },
+  {
+   "match_id": "uz4VVzGlOjE_m02",
+   "t_video": 317.7,
+   "label": "Firecracker",
+   "note": ""
+  },
+  {
+   "match_id": "uz4VVzGlOjE_m02",
+   "t_video": 326.0,
+   "label": "Mighty Miner",
+   "note": ""
+  },
+  {
+   "match_id": "uz4VVzGlOjE_m02",
+   "t_video": 331.4,
+   "label": "Earthquake",
+   "note": ""
+  },
+  {
+   "match_id": "uz4VVzGlOjE_m02",
+   "t_video": 335.3,
+   "label": "The Log",
+   "note": ""
+  },
+  {
+   "match_id": "uz4VVzGlOjE_m02",
+   "t_video": 339.1,
+   "label": "Electro Spirit",
+   "note": ""
+  },
+  {
+   "match_id": "uz4VVzGlOjE_m02",
+   "t_video": 340.6,
+   "label": "Firecracker",
+   "note": ""
+  },
+  {
+   "match_id": "uz4VVzGlOjE_m02",
+   "t_video": 343.2,
+   "label": "Skeletons",
+   "note": ""
+  },
+  {
+   "match_id": "uz4VVzGlOjE_m02",
+   "t_video": 349.2,
+   "label": "Earthquake",
+   "note": ""
+  },
+  {
+   "match_id": "uz4VVzGlOjE_m02",
+   "t_video": 367.4,
+   "label": "Mighty Miner",
+   "note": ""
+  },
+  {
+   "match_id": "uz4VVzGlOjE_m02",
+   "t_video": 375.1,
+   "label": "The Log",
+   "note": ""
+  },
+  {
+   "match_id": "uz4VVzGlOjE_m02",
+   "t_video": 382.8,
+   "label": "Electro Spirit",
+   "note": ""
+  },
+  {
+   "match_id": "uz4VVzGlOjE_m02",
+   "t_video": 388.7,
+   "label": "Firecracker",
+   "note": ""
+  },
+  {
+   "match_id": "uz4VVzGlOjE_m02",
+   "t_video": 392.8,
+   "label": "Hog Rider",
+   "note": ""
+  },
+  {
+   "match_id": "uz4VVzGlOjE_m02",
+   "t_video": 395.1,
+   "label": "Earthquake",
+   "note": ""
+  },
+  {
+   "match_id": "uz4VVzGlOjE_m02",
+   "t_video": 402.2,
+   "label": "Skeletons",
+   "note": ""
+  },
+  {
+   "match_id": "uz4VVzGlOjE_m02",
+   "t_video": 402.9,
+   "label": "The Log",
+   "note": ""
+  },
+  {
+   "match_id": "uz4VVzGlOjE_m02",
+   "t_video": 404.7,
+   "label": "Electro Spirit",
+   "note": ""
+  },
+  {
+   "match_id": "uz4VVzGlOjE_m02",
+   "t_video": 409.3,
+   "label": "Hog Rider",
+   "note": ""
+  },
+  {
+   "match_id": "uz4VVzGlOjE_m02",
+   "t_video": 411.4,
+   "label": "Earthquake",
+   "note": ""
+  },
+  {
+   "match_id": "uz4VVzGlOjE_m02",
+   "t_video": 419.3,
+   "label": "Mighty Miner",
+   "note": ""
+  },
+  {
+   "match_id": "uz4VVzGlOjE_m02",
+   "t_video": 422.1,
+   "label": "Tesla",
+   "note": ""
+  },
+  {
+   "match_id": "uz4VVzGlOjE_m02",
+   "t_video": 424.9,
+   "label": "Firecracker",
+   "note": ""
+  },
+  {
+   "match_id": "uz4VVzGlOjE_m02",
+   "t_video": 428.9,
+   "label": "Skeletons",
+   "note": ""
+  },
+  {
+   "match_id": "uz4VVzGlOjE_m02",
+   "t_video": 430.5,
+   "label": "The Log",
+   "note": ""
+  },
+  {
+   "match_id": "uz4VVzGlOjE_m02",
+   "t_video": 434.4,
+   "label": "Electro Spirit",
+   "note": ""
+  },
+  {
+   "match_id": "uz4VVzGlOjE_m02",
+   "t_video": 434.4,
+   "label": "Earthquake",
+   "note": ""
+  },
+  {
+   "match_id": "uz4VVzGlOjE_m02",
+   "t_video": 446.1,
+   "label": "Firecracker",
+   "note": ""
+  },
+  {
+   "match_id": "uz4VVzGlOjE_m02",
+   "t_video": 449.4,
+   "label": "Hog Rider",
+   "note": ""
+  },
+  {
+   "match_id": "uz4VVzGlOjE_m02",
+   "t_video": 450.8,
+   "label": "The Log",
+   "note": "log - played ontop of a bush, maybe thats why it wasn't detected?"
+  },
+  {
+   "match_id": "uz4VVzGlOjE_m02",
+   "t_video": 453.3,
+   "label": "Tesla",
+   "note": "Not entirely sure how this one was missed"
+  },
+  {
+   "match_id": "uz4VVzGlOjE_m02",
+   "t_video": 456.8,
+   "label": "Earthquake",
+   "note": "same here"
+  },
+  {
+   "match_id": "uz4VVzGlOjE_m02",
+   "t_video": 460.4,
+   "label": "Firecracker",
+   "note": ""
+  },
+  {
+   "match_id": "uz4VVzGlOjE_m02",
+   "t_video": 462.5,
+   "label": "Skeletons",
+   "note": ""
+  },
+  {
+   "match_id": "uz4VVzGlOjE_m02",
+   "t_video": 464.4,
+   "label": "Electro Spirit",
+   "note": ""
+  },
+  {
+   "match_id": "uz4VVzGlOjE_m02",
+   "t_video": 471.3,
+   "label": "Tesla",
+   "note": ""
+  },
+  {
+   "match_id": "uz4VVzGlOjE_m02",
+   "t_video": 478.6,
+   "label": "Hog Rider",
+   "note": ""
+  },
+  {
+   "match_id": "uz4VVzGlOjE_m02",
+   "t_video": 485.5,
+   "label": "Firecracker",
+   "note": ""
+  },
+  {
+   "match_id": "uz4VVzGlOjE_m02",
+   "t_video": 488.7,
+   "label": "Earthquake",
+   "note": ""
+  },
+  {
+   "match_id": "uz4VVzGlOjE_m02",
+   "t_video": 489.7,
+   "label": "Skeletons",
+   "note": ""
+  },
+  {
+   "match_id": "uz4VVzGlOjE_m02",
+   "t_video": 493.1,
+   "label": "Tesla",
+   "note": ""
+  },
+  {
+   "match_id": "uz4VVzGlOjE_m02",
+   "t_video": 494.4,
+   "label": "The Log",
+   "note": ""
+  },
+  {
+   "match_id": "uz4VVzGlOjE_m02",
+   "t_video": 494.4,
+   "label": "Electro Spirit",
+   "note": ""
+  },
+  {
+   "match_id": "uz4VVzGlOjE_m02",
+   "t_video": 498.6,
+   "label": "Firecracker",
+   "note": "Usually ur right so idk why unknown"
+  },
+  {
+   "match_id": "uz4VVzGlOjE_m02",
+   "t_video": 500.8,
+   "label": "Skeletons",
+   "note": ""
+  },
+  {
+   "match_id": "uz4VVzGlOjE_m02",
+   "t_video": 505.7,
+   "label": "Hog Rider",
+   "note": ""
+  }
+ ],
+ "skipped_unsure": 2
+}

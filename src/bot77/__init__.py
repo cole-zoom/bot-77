@@ -29,13 +29,20 @@ def main() -> None:
     proc.add_argument("--mode", default="ladder", help="game mode; clock rules are only known for ladder")
     proc.add_argument("--db", type=Path, default=Path("data/lancedb"))
 
+    redet = sub.add_parser("redetect", help="re-run play detection from stored HUD states")
+    redet.add_argument("--video-id", required=True)
+    redet.add_argument("--db", type=Path, default=Path("data/lancedb"))
+
     review = sub.add_parser("review", help="write an HTML page for checking a processed video's events")
     review.add_argument("--video-id", required=True)
     review.add_argument("--db", type=Path, default=Path("data/lancedb"))
     review.add_argument("--out", type=Path, help="defaults to data/reviews/<video-id>.html")
+    review.add_argument("--matches", help="comma-separated match numbers to include, e.g. 3,4,5")
 
     score = sub.add_parser("score", help="precision/recall of detected plays from an exported review")
     score.add_argument("review_json", type=Path)
+    score.add_argument("--truth", action="store_true",
+                       help="score the current events against ground truth built from the review (fully reviewed matches)")
     score.add_argument("--db", type=Path, default=Path("data/lancedb"))
 
     args = parser.parse_args()
@@ -47,12 +54,27 @@ def main() -> None:
         _process(args)
     elif args.command == "review":
         _review(args)
+    elif args.command == "redetect":
+        import lancedb
+
+        from bot77.pipeline import redetect_video
+
+        cards = lancedb.connect(args.db).open_table("cards").search().where("kind = 'deck_card'").limit(1000).to_arrow().to_pylist()
+        print(f"Done: {redetect_video(args.video_id, cards, args.db)}")
     elif args.command == "score":
         import json
 
         from bot77.review import score_review
 
-        print(json.dumps(score_review(args.db, args.review_json), indent=2))
+        from bot77.review import score_against_truth, truth_from_review
+
+        if args.truth:
+            truth_path = args.review_json.with_name(args.review_json.name.replace("review_", "truth_"))
+            if not truth_path.exists():
+                truth_path.write_text(json.dumps(truth_from_review(args.db, args.review_json), indent=1))
+            print(json.dumps(score_against_truth(args.db, json.loads(truth_path.read_text())), indent=2))
+        else:
+            print(json.dumps(score_review(args.db, args.review_json), indent=2))
 
 
 def _process(args) -> None:
@@ -72,7 +94,8 @@ def _review(args) -> None:
     from bot77.review import write_review
 
     out = args.out or Path("data/reviews") / f"{args.video_id}.html"
-    n = write_review(args.db, args.video_id, out)
+    only = [int(x) for x in args.matches.split(",")] if args.matches else None
+    n = write_review(args.db, args.video_id, out, only)
     print(f"Wrote {out} ({n} events)")
 
 

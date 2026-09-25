@@ -23,16 +23,24 @@ def _clock(t: float) -> str:
     return f"{int(t // 60)}:{int(t % 60):02d}"
 
 
-def write_review(db_dir: Path, video_id: str, out: Path) -> int:
+def write_review(db_dir: Path, video_id: str, out: Path, match_indices: list[int] | None = None) -> int:
     db = lancedb.connect(db_dir)
     video = db.open_table("videos").search().where(f"video_id = '{video_id}'").to_arrow().to_pylist()[0]
     matches = sorted(db.open_table("matches").search().where(f"video_id = '{video_id}'").limit(1000)
                      .to_arrow().to_pylist(), key=lambda m: m["index"])
     events = sorted(db.open_table("events").search().where(f"video_id = '{video_id}'").limit(100_000)
                     .to_arrow().to_pylist(), key=lambda e: e["t_video"])
+    if match_indices:
+        matches = [m for m in matches if m["index"] in match_indices]
+        keep = {m["match_id"] for m in matches}
+        events = [e for e in events if e["match_id"] in keep]
 
+    import hashlib
+
+    run = hashlib.sha1("|".join(f"{e['event_id']}:{e['t_video']:.2f}:{e['card']}" for e in events).encode()).hexdigest()[:10]
     data = {
         "video_id": video_id,
+        "run": run,
         "url": video["url"],
         "matches": [{
             "match_id": m["match_id"], "index": m["index"], "opponent": m["opponent_name"],
@@ -42,7 +50,8 @@ def write_review(db_dir: Path, video_id: str, out: Path) -> int:
         "events": [{
             "id": e["event_id"], "match_id": e["match_id"], "t_video": round(e["t_video"], 1),
             "clock": _clock(e["t_match"]), "kind": e["kind"], "card": e["card"], "form": e["form"],
-            "cost": e["measured_cost"], "before": e["elixir_before"], "after": e["elixir_after"],
+            "cost": round(e["measured_cost"], 2), "before": round(e["elixir_before"], 2),
+            "after": round(e["elixir_after"], 2),
             "confidence": e["confidence"], "notes": e["notes"],
             "hand": _b64(e["thumb_hand"]), "arena": _b64(e["thumb_arena"]),
         } for e in events],
@@ -87,7 +96,7 @@ main { padding: 16px; max-width: 1180px; margin: 0 auto; }
 .match { background: var(--panel); border: 1px solid var(--line); border-radius: 10px; margin-bottom: 20px; overflow: hidden; }
 .match > h2 { font-size: 15px; margin: 0; padding: 12px 16px; border-bottom: 1px solid var(--line); display: flex; flex-wrap: wrap; gap: 8px 16px; align-items: baseline; }
 .deck { color: var(--muted); font-weight: normal; font-size: 13px; }
-.event { display: grid; grid-template-columns: 70px minmax(150px, 1fr) 240px 230px; gap: 12px; padding: 10px 16px; border-bottom: 1px solid var(--line); align-items: start; }
+.event { display: grid; grid-template-columns: 70px minmax(150px, 1fr) 380px 220px; gap: 12px; padding: 10px 16px; border-bottom: 1px solid var(--line); align-items: start; }
 .event:last-of-type { border-bottom: 0; }
 .event.v-correct { background: var(--good-bg); }
 .event.v-wrong { background: var(--bad-bg); }
@@ -101,7 +110,7 @@ main { padding: 16px; max-width: 1180px; margin: 0 auto; }
 .notes { color: var(--muted); font-size: 12px; margin-top: 4px; }
 .thumbs { display: flex; gap: 6px; }
 .thumbs img { display: block; border-radius: 4px; border: 1px solid var(--line); cursor: zoom-in; }
-.thumbs .hand { width: 120px; height: auto; align-self: flex-start; }
+.thumbs .hand { width: 260px; height: auto; align-self: flex-start; }
 .thumbs .arena { width: 110px; height: auto; }
 .verdict { display: flex; flex-direction: column; gap: 6px; }
 .verdict .btns { display: flex; gap: 6px; }
@@ -136,7 +145,8 @@ dialog::backdrop { background: rgba(0,0,0,.7); }
 <dialog id="zoom"><img alt=""></dialog>
 <script>
 const DATA = __DATA__;
-const KEY = "bot77-review-" + DATA.video_id;
+// Verdicts are tied to this exact detection run: event ids are reused when detection is re-run.
+const KEY = "bot77-review-" + DATA.video_id + "-" + DATA.run;
 let state = { verdicts: {}, missing: [] };
 try { state = Object.assign(state, JSON.parse(localStorage.getItem(KEY) || "{}")); } catch (e) {}
 const save = () => { try { localStorage.setItem(KEY, JSON.stringify(state)); } catch (e) {} render(); };
@@ -213,7 +223,7 @@ function render() {
 
 document.getElementById("onlyUnsure").addEventListener("change", render);
 document.getElementById("export").addEventListener("click", () => {
-  const blob = new Blob([JSON.stringify({ video_id: DATA.video_id, exported_at: new Date().toISOString(), ...state }, null, 1)], { type: "application/json" });
+  const blob = new Blob([JSON.stringify({ video_id: DATA.video_id, run: DATA.run, exported_at: new Date().toISOString(), ...state }, null, 1)], { type: "application/json" });
   const a = el("a", { href: URL.createObjectURL(blob), download: `review_${DATA.video_id}.json` }); a.click();
 });
 document.getElementById("import").addEventListener("click", () => document.getElementById("importFile").click());
@@ -251,3 +261,85 @@ def score_review(db_dir: Path, review_json: Path) -> dict:
     right = out["overall"]["right"]
     out["recall"] = round(right / (right + out["missed"]), 3) if right + out["missed"] else None
     return out
+
+
+ABILITY = "__ability"
+NOT_A_PLAY = "__not_a_play"
+MATCH_WINDOW_S = 1.5  # a detected event matches a true one within this much video time
+
+
+def truth_from_review(db_dir: Path, review_json: Path) -> dict:
+    """Ground truth for fully reviewed matches, independent of event ids, so later detector
+    runs can be scored against it. Each item: {match_id, t_video, label}, where label is a
+    card name or "__ability". Only matches where every event got a verdict are included."""
+    got = json.loads(review_json.read_text())
+    db = lancedb.connect(db_dir)
+    events = db.open_table("events").search().where(f"video_id = '{got['video_id']}'").limit(100_000) \
+        .select(["event_id", "match_id", "t_video", "kind", "card"]).to_arrow().to_pylist()
+    starts = {m["match_id"]: m["t_start"] for m in db.open_table("matches").search()
+              .where(f"video_id = '{got['video_id']}'").to_arrow().to_pylist()}
+    verdicts = got.get("verdicts", {})
+
+    complete = sorted({e["match_id"] for e in events}
+                      - {e["match_id"] for e in events if not verdicts.get(e["event_id"], {}).get("verdict")})
+    items, unsure = [], 0
+    for e in events:
+        if e["match_id"] not in complete:
+            continue
+        v = verdicts[e["event_id"]]
+        detected = ABILITY if e["kind"] == "ability" else e["card"]
+        if v["verdict"] == "correct":
+            label = detected
+        elif v["verdict"] == "wrong":
+            label = v.get("correct") or None
+        else:
+            unsure += 1
+            continue
+        if label and label != NOT_A_PLAY:
+            items.append({"match_id": e["match_id"], "t_video": round(e["t_video"], 2), "label": label,
+                          "note": v.get("note", "")})
+    for mis in got.get("missing", []):
+        if mis["match_id"] in complete:
+            mm, ss = mis["clock"].split(":")
+            items.append({"match_id": mis["match_id"], "t_video": round(starts[mis["match_id"]] + int(mm) * 60 + int(ss), 2),
+                          "label": mis["card"], "note": mis.get("note", ""), "approximate_time": True})
+    items.sort(key=lambda x: (x["match_id"], x["t_video"]))
+    return {"video_id": got["video_id"], "matches": complete, "items": items, "skipped_unsure": unsure}
+
+
+def score_against_truth(db_dir: Path, truth: dict) -> dict:
+    """Greedy one-to-one matching of detected events to true ones (same label, within
+    MATCH_WINDOW_S; approximate-time truth items allow 3x that)."""
+    db = lancedb.connect(db_dir)
+    events = db.open_table("events").search().where(f"video_id = '{truth['video_id']}'").limit(100_000) \
+        .select(["match_id", "t_video", "kind", "card", "confidence"]).to_arrow().to_pylist()
+    events = [e for e in events if e["match_id"] in truth["matches"]]
+    free = list(truth["items"])
+    tp, fp = [], []
+    for e in sorted(events, key=lambda e: e["t_video"]):
+        label = ABILITY if e["kind"] == "ability" else e["card"]
+        best = None
+        for k, t in enumerate(free):
+            window = MATCH_WINDOW_S * (3 if t.get("approximate_time") else 1)
+            d = abs(t["t_video"] - e["t_video"])
+            if t["match_id"] == e["match_id"] and t["label"] == label and d <= window and (best is None or d < best[0]):
+                best = (d, k)
+        if best:
+            tp.append(e)
+            free.pop(best[1])
+        else:
+            fp.append(e)
+    by_conf = {}
+    for c in ("high", "medium", "low"):
+        a, b = sum(e["confidence"] == c for e in tp), sum(e["confidence"] == c for e in fp)
+        by_conf[c] = {"right": a, "wrong": b, "precision": round(a / (a + b), 3) if a + b else None}
+    n_tp = len(tp)
+    return {
+        "matches": truth["matches"], "true_events": len(truth["items"]), "detected": len(events),
+        "right": n_tp, "wrong": len(fp), "missed": len(free),
+        "precision": round(n_tp / len(events), 3) if events else None,
+        "recall": round(n_tp / len(truth["items"]), 3) if truth["items"] else None,
+        "by_confidence": by_conf,
+        "wrong_events": [(e["match_id"][-3:], round(e["t_video"], 1), e["kind"], e["card"], e["confidence"]) for e in fp],
+        "missed_events": [(t["match_id"][-3:], t["t_video"], t["label"]) for t in free],
+    }
