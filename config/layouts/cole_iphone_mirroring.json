@@ -1,0 +1,173 @@
+{
+  "layout_id": "cole_iphone_mirroring",
+  "description": "Cole's iPhone via iPhone Mirroring, phone region cropped to 1080x2340 (bot77 crop 876x1900+1074+64). Top HUD +80 px vs Alina, hand bar -52 px, arena between squashed (y' = 0.9225y + 107.6). Calibrated on cole_2026-09-28_phone.",
+  "frame_size": [
+    1080,
+    2340
+  ],
+  "regions": {
+    "opp_name": [
+      100,
+      168,
+      410,
+      222
+    ],
+    "opp_clan": [
+      100,
+      230,
+      300,
+      268
+    ],
+    "opp_rating": [
+      100,
+      275,
+      200,
+      315
+    ],
+    "timer_label": [
+      915,
+      170,
+      1070,
+      202
+    ],
+    "timer": [
+      915,
+      208,
+      1070,
+      268
+    ],
+    "multiplier": [
+      935,
+      285,
+      1045,
+      385
+    ],
+    "opp_king_hp": [
+      500,
+      195,
+      610,
+      245
+    ],
+    "opp_left_hp": [
+      175,
+      435,
+      280,
+      475
+    ],
+    "opp_right_hp": [
+      812,
+      435,
+      915,
+      475
+    ],
+    "my_left_hp": [
+      172,
+      1413,
+      265,
+      1450
+    ],
+    "my_right_hp": [
+      812,
+      1413,
+      910,
+      1450
+    ],
+    "ability_left": [
+      20,
+      1718,
+      210,
+      1903
+    ],
+    "ability_right": [
+      870,
+      1718,
+      1060,
+      1903
+    ],
+    "slot1_tab": [
+      255,
+      1906,
+      420,
+      1968
+    ],
+    "slot2_tab": [
+      457,
+      1906,
+      624,
+      1968
+    ],
+    "slot3_tab": [
+      660,
+      1906,
+      827,
+      1968
+    ],
+    "slot4_tab": [
+      863,
+      1906,
+      1030,
+      1968
+    ],
+    "slot1": [
+      243,
+      1898,
+      432,
+      2206
+    ],
+    "slot2": [
+      445,
+      1898,
+      636,
+      2206
+    ],
+    "slot3": [
+      648,
+      1898,
+      839,
+      2206
+    ],
+    "slot4": [
+      851,
+      1898,
+      1042,
+      2206
+    ],
+    "next": [
+      45,
+      2143,
+      155,
+      2278
+    ],
+    "elixir_number": [
+      285,
+      2198,
+      365,
+      2266
+    ],
+    "elixir_bar": [
+      290,
+      2216,
+      1045,
+      2250
+    ],
+    "arena": [
+      20,
+      329,
+      1060,
+      1860
+    ]
+  },
+  "hand": {
+    "ui_scale": 1.0
+  },
+  "katacr_arena": [
+    23,
+    265,
+    1059,
+    1776
+  ],
+  "notes": {
+    "calibration": "Anchors from template matching Alina HUD patches: timer (140->222), opp HP bars (408->484), chat (2060->2008), next label (2175->2122).",
+    "katacr_arena": "Mapped linearly; the detector crop is squashed ~8% vertically vs Alina's, which the detector should tolerate."
+  }
+}

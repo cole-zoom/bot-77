@@ -29,6 +29,14 @@ Per frame, find red level badges (colour + the badge shape) on the arena; track 
 ### Step 3 — Opponent elixir
 Start at 5 (ladder), regen by the clock's multiplier, subtract each identified card's cost. Used as a plausibility check (can't go below 0) and as a feature for scenario mining (elixir advantage, outcycling).
 
+## 3.1 Detector coverage (KataCR 2024 classes vs today's cards)
+
+105/123 cards have a detector class. Of the 18 without one, 5 are made of classes it does have and can be recognised by unit count (Goblin Gang = goblins + spear goblins, Minion Horde = 6 minions, Skeleton Army = many skeletons, Three Musketeers = 3 musketeers, Mirror = a repeat). **13 are genuinely new**: Berserker, Boss Bandit, Goblin Curse, Goblin Demolisher, Goblin Machine, Goblinstein, Minion Giant, Ronin, Rune Giant, Spirit Empress, Suspicious Bush, Vines, Void. Also missing: evo classes for 27 evo forms, and hero classes for all 17 hero forms. Found by Cole's first opponent review (Goblinstein, Minion Giant).
+
+Cards with two entities (Goblinstein's Doctor + Monster) get one class per entity, both mapped to the card; they spawn together, so deploy grouping yields one play and the deck counts the card once.
+
+Fine-tuning (milestone 6) is therefore required, not optional. Its labels come from reviews: every corrected opponent play gives card + time + place to cut new sprite slices [Wu et al. 2025, §3].
+
 ## 4. Validation
 Review page gains opponent rows. Metrics: spawn precision/recall (step 1), card accuracy (step 2), elixir-estimate error at checkpoints where it's inferable.
 

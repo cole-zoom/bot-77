@@ -1,0 +1,617 @@
+{
+ "exported_at": "2026-09-29T16:38:01.675Z",
+ "slices": [
+  {
+   "id": "ronin_1_cole_2026-09-28_phone_0309.00.png",
+   "card": "Ronin",
+   "entity": "ronin",
+   "verdict": "reject"
+  },
+  {
+   "id": "ronin_1_cole_2026-09-28_phone_0310.00.png",
+   "card": "Ronin",
+   "entity": "ronin",
+   "verdict": "reject"
+  },
+  {
+   "id": "ronin_1_cole_2026-09-28_phone_0311.00.png",
+   "card": "Ronin",
+   "entity": "ronin",
+   "verdict": "reject"
+  },
+  {
+   "id": "ronin_1_cole_2026-09-28_phone_0312.00.png",
+   "card": "Ronin",
+   "entity": "ronin",
+   "verdict": "keep"
+  },
+  {
+   "id": "ronin_1_cole_2026-09-28_phone_0313.00.png",
+   "card": "Ronin",
+   "entity": "ronin",
+   "verdict": "keep"
+  },
+  {
+   "id": "ronin_1_cole_2026-09-28_phone_0314.00.png",
+   "card": "Ronin",
+   "entity": "ronin",
+   "verdict": "keep"
+  },
+  {
+   "id": "ronin_1_cole_2026-09-28_phone_0315.00.png",
+   "card": "Ronin",
+   "entity": "ronin",
+   "verdict": "keep"
+  },
+  {
+   "id": "ronin_1_cole_2026-09-28_phone_0316.00.png",
+   "card": "Ronin",
+   "entity": "ronin",
+   "verdict": "keep"
+  },
+  {
+   "id": "ronin_1_cole_2026-09-28_phone_0317.00.png",
+   "card": "Ronin",
+   "entity": "ronin",
+   "verdict": "reject"
+  },
+  {
+   "id": "ronin_1_cole_2026-09-28_phone_0318.00.png",
+   "card": "Ronin",
+   "entity": "ronin",
+   "verdict": "reject"
+  },
+  {
+   "id": "ronin_1_cole_2026-09-28_phone_0319.00.png",
+   "card": "Ronin",
+   "entity": "ronin",
+   "verdict": "reject"
+  },
+  {
+   "id": "ronin_1_cole_2026-09-28_phone_0320.00.png",
+   "card": "Ronin",
+   "entity": "ronin",
+   "verdict": "keep"
+  },
+  {
+   "id": "ronin_1_cole_2026-09-28_phone_0321.00.png",
+   "card": "Ronin",
+   "entity": "ronin",
+   "verdict": "reject"
+  },
+  {
+   "id": "spirit-empress-air_1_cole_2026-09-28_phone_0522.00.png",
+   "card": "Spirit Empress",
+   "entity": "spirit-empress-air",
+   "verdict": "keep"
+  },
+  {
+   "id": "spirit-empress-air_1_cole_2026-09-28_phone_0523.00.png",
+   "card": "Spirit Empress",
+   "entity": "spirit-empress-air",
+   "verdict": "keep"
+  },
+  {
+   "id": "spirit-empress-air_1_cole_2026-09-28_phone_0524.00.png",
+   "card": "Spirit Empress",
+   "entity": "spirit-empress-air",
+   "verdict": "keep"
+  },
+  {
+   "id": "spirit-empress-air_1_cole_2026-09-28_phone_0525.00.png",
+   "card": "Spirit Empress",
+   "entity": "spirit-empress-air",
+   "verdict": "keep"
+  },
+  {
+   "id": "spirit-empress-air_1_cole_2026-09-28_phone_0526.00.png",
+   "card": "Spirit Empress",
+   "entity": "spirit-empress-air",
+   "verdict": "keep"
+  },
+  {
+   "id": "spirit-empress-air_1_cole_2026-09-28_phone_0527.00.png",
+   "card": "Spirit Empress",
+   "entity": "spirit-empress-air",
+   "verdict": "keep"
+  },
+  {
+   "id": "spirit-empress-air_1_cole_2026-09-28_phone_0528.00.png",
+   "card": "Spirit Empress",
+   "entity": "spirit-empress-air",
+   "verdict": "keep"
+  },
+  {
+   "id": "spirit-empress-air_1_cole_2026-09-28_phone_0529.00.png",
+   "card": "Spirit Empress",
+   "entity": "spirit-empress-air",
+   "verdict": "keep"
+  },
+  {
+   "id": "spirit-empress-air_1_cole_2026-09-28_phone_0530.00.png",
+   "card": "Spirit Empress",
+   "entity": "spirit-empress-air",
+   "verdict": "keep"
+  },
+  {
+   "id": "spirit-empress-air_1_cole_2026-09-28_phone_0531.00.png",
+   "card": "Spirit Empress",
+   "entity": "spirit-empress-air",
+   "verdict": "reject"
+  },
+  {
+   "id": "spirit-empress-air_1_cole_2026-09-28_phone_0532.00.png",
+   "card": "Spirit Empress",
+   "entity": "spirit-empress-air",
+   "verdict": "reject"
+  },
+  {
+   "id": "spirit-empress-ground_1_cole_2026-09-28_phone_0595.00.png",
+   "card": "Spirit Empress",
+   "entity": "spirit-empress-ground",
+   "verdict": "keep"
+  },
+  {
+   "id": "spirit-empress-ground_1_cole_2026-09-28_phone_0596.00.png",
+   "card": "Spirit Empress",
+   "entity": "spirit-empress-ground",
+   "verdict": "reject"
+  },
+  {
+   "id": "spirit-empress-ground_1_cole_2026-09-28_phone_0597.00.png",
+   "card": "Spirit Empress",
+   "entity": "spirit-empress-ground",
+   "verdict": "keep"
+  },
+  {
+   "id": "spirit-empress-ground_1_cole_2026-09-28_phone_0598.00.png",
+   "card": "Spirit Empress",
+   "entity": "spirit-empress-ground",
+   "verdict": "keep"
+  },
+  {
+   "id": "spirit-empress-ground_1_cole_2026-09-28_phone_0599.00.png",
+   "card": "Spirit Empress",
+   "entity": "spirit-empress-ground",
+   "verdict": "keep"
+  },
+  {
+   "id": "spirit-empress-ground_1_cole_2026-09-28_phone_0600.00.png",
+   "card": "Spirit Empress",
+   "entity": "spirit-empress-ground",
+   "verdict": "keep"
+  },
+  {
+   "id": "spirit-empress-ground_1_cole_2026-09-28_phone_0601.00.png",
+   "card": "Spirit Empress",
+   "entity": "spirit-empress-ground",
+   "verdict": "keep"
+  },
+  {
+   "id": "spirit-empress-ground_1_cole_2026-09-28_phone_0602.00.png",
+   "card": "Spirit Empress",
+   "entity": "spirit-empress-ground",
+   "verdict": "keep"
+  },
+  {
+   "id": "spirit-empress-ground_1_cole_2026-09-28_phone_0603.00.png",
+   "card": "Spirit Empress",
+   "entity": "spirit-empress-ground",
+   "verdict": "reject"
+  },
+  {
+   "id": "spirit-empress-ground_1_cole_2026-09-28_phone_0604.00.png",
+   "card": "Spirit Empress",
+   "entity": "spirit-empress-ground",
+   "verdict": "reject"
+  },
+  {
+   "id": "spirit-empress-ground_1_cole_2026-09-28_phone_0605.00.png",
+   "card": "Spirit Empress",
+   "entity": "spirit-empress-ground",
+   "verdict": "reject"
+  },
+  {
+   "id": "tomb-queen_1_cole_2026-09-28_phone_1033.00.png",
+   "card": "Tombstone",
+   "entity": "tomb-queen",
+   "verdict": "keep"
+  },
+  {
+   "id": "tomb-queen_1_cole_2026-09-28_phone_1034.00.png",
+   "card": "Tombstone",
+   "entity": "tomb-queen",
+   "verdict": "keep"
+  },
+  {
+   "id": "tomb-queen_1_cole_2026-09-28_phone_1035.00.png",
+   "card": "Tombstone",
+   "entity": "tomb-queen",
+   "verdict": "keep"
+  },
+  {
+   "id": "tomb-queen_1_cole_2026-09-28_phone_1036.00.png",
+   "card": "Tombstone",
+   "entity": "tomb-queen",
+   "verdict": "keep"
+  },
+  {
+   "id": "tomb-queen_1_cole_2026-09-28_phone_1037.00.png",
+   "card": "Tombstone",
+   "entity": "tomb-queen",
+   "verdict": "keep"
+  },
+  {
+   "id": "tomb-queen_1_cole_2026-09-28_phone_1038.00.png",
+   "card": "Tombstone",
+   "entity": "tomb-queen",
+   "verdict": "keep"
+  },
+  {
+   "id": "tomb-queen_1_cole_2026-09-28_phone_1039.00.png",
+   "card": "Tombstone",
+   "entity": "tomb-queen",
+   "verdict": "reject"
+  },
+  {
+   "id": "tomb-queen_1_cole_2026-09-28_phone_1043.00.png",
+   "card": "Tombstone",
+   "entity": "tomb-queen",
+   "verdict": "reject"
+  },
+  {
+   "id": "tomb-queen_1_cole_2026-09-28_phone_1044.00.png",
+   "card": "Tombstone",
+   "entity": "tomb-queen",
+   "verdict": "keep"
+  },
+  {
+   "id": "tomb-queen_1_cole_2026-09-28_phone_1045.00.png",
+   "card": "Tombstone",
+   "entity": "tomb-queen",
+   "verdict": "reject"
+  },
+  {
+   "id": "rune-giant_1_cole_2026-09-28_phone_1243.00.png",
+   "card": "Rune Giant",
+   "entity": "rune-giant",
+   "verdict": "reject"
+  },
+  {
+   "id": "rune-giant_1_cole_2026-09-28_phone_1244.00.png",
+   "card": "Rune Giant",
+   "entity": "rune-giant",
+   "verdict": "reject"
+  },
+  {
+   "id": "rune-giant_1_cole_2026-09-28_phone_1245.00.png",
+   "card": "Rune Giant",
+   "entity": "rune-giant",
+   "verdict": "reject"
+  },
+  {
+   "id": "rune-giant_1_cole_2026-09-28_phone_1246.00.png",
+   "card": "Rune Giant",
+   "entity": "rune-giant",
+   "verdict": "reject"
+  },
+  {
+   "id": "rune-giant_1_cole_2026-09-28_phone_1247.00.png",
+   "card": "Rune Giant",
+   "entity": "rune-giant",
+   "verdict": "reject"
+  },
+  {
+   "id": "rune-giant_1_cole_2026-09-28_phone_1248.00.png",
+   "card": "Rune Giant",
+   "entity": "rune-giant",
+   "verdict": "reject"
+  },
+  {
+   "id": "rune-giant_1_cole_2026-09-28_phone_1249.00.png",
+   "card": "Rune Giant",
+   "entity": "rune-giant",
+   "verdict": "keep"
+  },
+  {
+   "id": "rune-giant_1_cole_2026-09-28_phone_1250.00.png",
+   "card": "Rune Giant",
+   "entity": "rune-giant",
+   "verdict": "keep"
+  },
+  {
+   "id": "rune-giant_1_cole_2026-09-28_phone_1251.00.png",
+   "card": "Rune Giant",
+   "entity": "rune-giant",
+   "verdict": "keep"
+  },
+  {
+   "id": "rune-giant_1_cole_2026-09-28_phone_1252.00.png",
+   "card": "Rune Giant",
+   "entity": "rune-giant",
+   "verdict": "keep"
+  },
+  {
+   "id": "rune-giant_1_cole_2026-09-28_phone_1253.00.png",
+   "card": "Rune Giant",
+   "entity": "rune-giant",
+   "verdict": "reject"
+  },
+  {
+   "id": "rune-giant_1_cole_2026-09-28_phone_1254.00.png",
+   "card": "Rune Giant",
+   "entity": "rune-giant",
+   "verdict": "keep"
+  },
+  {
+   "id": "rune-giant_1_cole_2026-09-28_phone_1255.00.png",
+   "card": "Rune Giant",
+   "entity": "rune-giant",
+   "verdict": "keep"
+  },
+  {
+   "id": "rune-giant_1_cole_2026-09-28_phone_1256.00.png",
+   "card": "Rune Giant",
+   "entity": "rune-giant",
+   "verdict": "reject"
+  },
+  {
+   "id": "rune-giant_1_cole_2026-09-28_phone_1257.00.png",
+   "card": "Rune Giant",
+   "entity": "rune-giant",
+   "verdict": "keep"
+  },
+  {
+   "id": "rune-giant_1_cole_2026-09-28_phone_1258.00.png",
+   "card": "Rune Giant",
+   "entity": "rune-giant",
+   "verdict": "reject"
+  },
+  {
+   "id": "rune-giant_1_cole_2026-09-28_phone_1260.00.png",
+   "card": "Rune Giant",
+   "entity": "rune-giant",
+   "verdict": "reject"
+  },
+  {
+   "id": "rune-giant_1_cole_2026-09-28_phone_1261.00.png",
+   "card": "Rune Giant",
+   "entity": "rune-giant",
+   "verdict": "reject"
+  },
+  {
+   "id": "rune-giant_1_cole_2026-09-28_phone_1262.00.png",
+   "card": "Rune Giant",
+   "entity": "rune-giant",
+   "verdict": "keep"
+  },
+  {
+   "id": "goblinstein-doctor_1_cole_2026-09-28_phone_2168.00.png",
+   "card": "Goblinstein",
+   "entity": "goblinstein-doctor",
+   "verdict": "reject"
+  },
+  {
+   "id": "goblinstein-monster_1_cole_2026-09-28_phone_2168.00.png",
+   "card": "Goblinstein",
+   "entity": "goblinstein-monster",
+   "verdict": "reject"
+  },
+  {
+   "id": "goblinstein-doctor_1_cole_2026-09-28_phone_2169.00.png",
+   "card": "Goblinstein",
+   "entity": "goblinstein-doctor",
+   "verdict": "keep"
+  },
+  {
+   "id": "goblinstein-monster_1_cole_2026-09-28_phone_2169.00.png",
+   "card": "Goblinstein",
+   "entity": "goblinstein-monster",
+   "verdict": "keep"
+  },
+  {
+   "id": "goblinstein-monster_1_cole_2026-09-28_phone_2170.00.png",
+   "card": "Goblinstein",
+   "entity": "goblinstein-monster",
+   "verdict": "keep"
+  },
+  {
+   "id": "goblinstein-doctor_1_cole_2026-09-28_phone_2170.00.png",
+   "card": "Goblinstein",
+   "entity": "goblinstein-doctor",
+   "verdict": "keep"
+  },
+  {
+   "id": "goblinstein-doctor_1_cole_2026-09-28_phone_2171.00.png",
+   "card": "Goblinstein",
+   "entity": "goblinstein-doctor",
+   "verdict": "keep"
+  },
+  {
+   "id": "goblinstein-monster_1_cole_2026-09-28_phone_2171.00.png",
+   "card": "Goblinstein",
+   "entity": "goblinstein-monster",
+   "verdict": "keep"
+  },
+  {
+   "id": "goblinstein-doctor_1_cole_2026-09-28_phone_2172.00.png",
+   "card": "Goblinstein",
+   "entity": "goblinstein-doctor",
+   "verdict": "keep"
+  },
+  {
+   "id": "goblinstein-monster_1_cole_2026-09-28_phone_2172.00.png",
+   "card": "Goblinstein",
+   "entity": "goblinstein-monster",
+   "verdict": "keep"
+  },
+  {
+   "id": "goblinstein-monster_1_cole_2026-09-28_phone_2173.00.png",
+   "card": "Goblinstein",
+   "entity": "goblinstein-monster",
+   "verdict": "keep"
+  },
+  {
+   "id": "goblinstein-doctor_1_cole_2026-09-28_phone_2173.00.png",
+   "card": "Goblinstein",
+   "entity": "goblinstein-doctor",
+   "verdict": "keep"
+  },
+  {
+   "id": "goblinstein-monster_1_cole_2026-09-28_phone_2174.00.png",
+   "card": "Goblinstein",
+   "entity": "goblinstein-monster",
+   "verdict": "reject"
+  },
+  {
+   "id": "goblinstein-doctor_1_cole_2026-09-28_phone_2174.00.png",
+   "card": "Goblinstein",
+   "entity": "goblinstein-doctor",
+   "verdict": "keep"
+  },
+  {
+   "id": "goblinstein-monster_1_cole_2026-09-28_phone_2175.00.png",
+   "card": "Goblinstein",
+   "entity": "goblinstein-monster",
+   "verdict": "reject"
+  },
+  {
+   "id": "goblinstein-doctor_1_cole_2026-09-28_phone_2175.00.png",
+   "card": "Goblinstein",
+   "entity": "goblinstein-doctor",
+   "verdict": "keep"
+  },
+  {
+   "id": "goblinstein-monster_1_cole_2026-09-28_phone_2176.00.png",
+   "card": "Goblinstein",
+   "entity": "goblinstein-monster",
+   "verdict": "reject"
+  },
+  {
+   "id": "goblinstein-doctor_1_cole_2026-09-28_phone_2176.00.png",
+   "card": "Goblinstein",
+   "entity": "goblinstein-doctor",
+   "verdict": "keep"
+  },
+  {
+   "id": "goblinstein-doctor_1_cole_2026-09-28_phone_2177.00.png",
+   "card": "Goblinstein",
+   "entity": "goblinstein-doctor",
+   "verdict": "reject"
+  },
+  {
+   "id": "goblinstein-monster_1_cole_2026-09-28_phone_2177.00.png",
+   "card": "Goblinstein",
+   "entity": "goblinstein-monster",
+   "verdict": "reject"
+  },
+  {
+   "id": "goblinstein-doctor_1_cole_2026-09-28_phone_2178.00.png",
+   "card": "Goblinstein",
+   "entity": "goblinstein-doctor",
+   "verdict": "keep"
+  },
+  {
+   "id": "goblinstein-monster_1_cole_2026-09-28_phone_2178.00.png",
+   "card": "Goblinstein",
+   "entity": "goblinstein-monster",
+   "verdict": "reject"
+  },
+  {
+   "id": "goblinstein-doctor_1_cole_2026-09-28_phone_0135.00.png",
+   "card": "Goblinstein",
+   "entity": "goblinstein-doctor",
+   "verdict": "keep"
+  },
+  {
+   "id": "goblinstein-monster_1_cole_2026-09-28_phone_0135.00.png",
+   "card": "Goblinstein",
+   "entity": "goblinstein-monster",
+   "verdict": "keep"
+  },
+  {
+   "id": "goblinstein-monster_1_cole_2026-09-28_phone_0136.00.png",
+   "card": "Goblinstein",
+   "entity": "goblinstein-monster",
+   "verdict": "keep"
+  },
+  {
+   "id": "goblinstein-doctor_1_cole_2026-09-28_phone_0136.00.png",
+   "card": "Goblinstein",
+   "entity": "goblinstein-doctor",
+   "verdict": "keep"
+  },
+  {
+   "id": "goblinstein-monster_1_cole_2026-09-28_phone_0137.00.png",
+   "card": "Goblinstein",
+   "entity": "goblinstein-monster",
+   "verdict": "keep"
+  },
+  {
+   "id": "goblinstein-doctor_1_cole_2026-09-28_phone_0137.00.png",
+   "card": "Goblinstein",
+   "entity": "goblinstein-doctor",
+   "verdict": "keep"
+  },
+  {
+   "id": "goblinstein-monster_1_cole_2026-09-28_phone_0138.00.png",
+   "card": "Goblinstein",
+   "entity": "goblinstein-monster",
+   "verdict": "keep"
+  },
+  {
+   "id": "goblinstein-doctor_1_cole_2026-09-28_phone_0138.00.png",
+   "card": "Goblinstein",
+   "entity": "goblinstein-doctor",
+   "verdict": "keep"
+  },
+  {
+   "id": "goblinstein-doctor_1_cole_2026-09-28_phone_0139.00.png",
+   "card": "Goblinstein",
+   "entity": "goblinstein-doctor",
+   "verdict": "keep"
+  },
+  {
+   "id": "goblinstein-monster_1_cole_2026-09-28_phone_0139.00.png",
+   "card": "Goblinstein",
+   "entity": "goblinstein-monster",
+   "verdict": "keep"
+  },
+  {
+   "id": "goblinstein-doctor_1_cole_2026-09-28_phone_0140.00.png",
+   "card": "Goblinstein",
+   "entity": "goblinstein-doctor",
+   "verdict": "keep"
+  },
+  {
+   "id": "goblinstein-monster_1_cole_2026-09-28_phone_0140.00.png",
+   "card": "Goblinstein",
+   "entity": "goblinstein-monster",
+   "verdict": "keep"
+  },
+  {
+   "id": "goblinstein-doctor_1_cole_2026-09-28_phone_0141.00.png",
+   "card": "Goblinstein",
+   "entity": "goblinstein-doctor",
+   "verdict": "keep"
+  },
+  {
+   "id": "goblinstein-monster_1_cole_2026-09-28_phone_0141.00.png",
+   "card": "Goblinstein",
+   "entity": "goblinstein-monster",
+   "verdict": "keep"
+  },
+  {
+   "id": "goblinstein-doctor_1_cole_2026-09-28_phone_0142.00.png",
+   "card": "Goblinstein",
+   "entity": "goblinstein-doctor",
+   "verdict": "keep"
+  },
+  {
+   "id": "goblinstein-doctor_1_cole_2026-09-28_phone_0144.00.png",
+   "card": "Goblinstein",
+   "entity": "goblinstein-doctor",
+   "verdict": "keep"
+  }
+ ]
+}

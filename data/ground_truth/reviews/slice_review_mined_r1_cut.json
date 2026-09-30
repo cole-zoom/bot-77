@@ -1,0 +1,215 @@
+{
+ "exported_at": "2026-09-29T06:22:20.319Z",
+ "slices": [
+  {
+   "id": "uz4VVzGlOjE_m03_00688_07.png",
+   "card": "Minion Giant",
+   "entity": "minion-giant",
+   "verdict": "keep"
+  },
+  {
+   "id": "uz4VVzGlOjE_m01_00179_01.png",
+   "card": "Minion Giant",
+   "entity": "minion-giant",
+   "verdict": "keep"
+  },
+  {
+   "id": "uz4VVzGlOjE_m01_00178_06.png",
+   "card": "Minion Giant",
+   "entity": "minion-giant",
+   "verdict": "reject"
+  },
+  {
+   "id": "uz4VVzGlOjE_m02_00272_16.png",
+   "card": "Minion Giant",
+   "entity": "minion-giant",
+   "verdict": "keep"
+  },
+  {
+   "id": "uz4VVzGlOjE_m03_00682_24.png",
+   "card": "Minion Giant",
+   "entity": "minion-giant",
+   "verdict": "keep"
+  },
+  {
+   "id": "uz4VVzGlOjE_m01_00184_28.png",
+   "card": "Minion Giant",
+   "entity": "minion-giant",
+   "verdict": "keep"
+  },
+  {
+   "id": "uz4VVzGlOjE_m01_00261_17.png",
+   "card": "Minion Giant",
+   "entity": "minion-giant",
+   "verdict": "keep"
+  },
+  {
+   "id": "uz4VVzGlOjE_m01_00130_01.png",
+   "card": "Minion Giant",
+   "entity": "minion-giant",
+   "verdict": "reject"
+  },
+  {
+   "id": "uz4VVzGlOjE_m01_00180_20.png",
+   "card": "Minion Giant",
+   "entity": "minion-giant",
+   "verdict": "reject"
+  },
+  {
+   "id": "uz4VVzGlOjE_m01_00181_01.png",
+   "card": "Minion Giant",
+   "entity": "minion-giant",
+   "verdict": "keep"
+  },
+  {
+   "id": "uz4VVzGlOjE_m01_00270_08.png",
+   "card": "Minion Giant",
+   "entity": "minion-giant",
+   "verdict": "keep"
+  },
+  {
+   "id": "uz4VVzGlOjE_m01_00187_15.png",
+   "card": "Minion Giant",
+   "entity": "minion-giant",
+   "verdict": "keep"
+  },
+  {
+   "id": "uz4VVzGlOjE_m01_00268_24.png",
+   "card": "Goblinstein",
+   "entity": "goblinstein-doctor",
+   "verdict": "keep"
+  },
+  {
+   "id": "uz4VVzGlOjE_m01_00263_09.png",
+   "card": "Goblinstein",
+   "entity": "goblinstein-doctor",
+   "verdict": "keep"
+  },
+  {
+   "id": "uz4VVzGlOjE_m01_00028_15.png",
+   "card": "Goblinstein",
+   "entity": "goblinstein-doctor",
+   "verdict": "keep"
+  },
+  {
+   "id": "uz4VVzGlOjE_m01_00027_05.png",
+   "card": "Goblinstein",
+   "entity": "goblinstein-doctor",
+   "verdict": "keep"
+  },
+  {
+   "id": "UFQFnrtWUE4_m07_01407_05.png",
+   "card": "Goblinstein",
+   "entity": "goblinstein-monster",
+   "verdict": "keep"
+  },
+  {
+   "id": "UFQFnrtWUE4_m07_01406_02.png",
+   "card": "Goblinstein",
+   "entity": "goblinstein-monster",
+   "verdict": "reject"
+  },
+  {
+   "id": "UFQFnrtWUE4_m07_01411_01.png",
+   "card": "Goblinstein",
+   "entity": "goblinstein-monster",
+   "verdict": "keep"
+  },
+  {
+   "id": "UFQFnrtWUE4_m07_01412_06.png",
+   "card": "Goblinstein",
+   "entity": "goblinstein-monster",
+   "verdict": "keep"
+  },
+  {
+   "id": "UFQFnrtWUE4_m08_01505_10.png",
+   "card": "Goblinstein",
+   "entity": "goblinstein-monster",
+   "verdict": "keep"
+  },
+  {
+   "id": "UFQFnrtWUE4_m07_01349_04.png",
+   "card": "Goblinstein",
+   "entity": "goblinstein-monster",
+   "verdict": "keep"
+  },
+  {
+   "id": "UFQFnrtWUE4_m07_01348_12.png",
+   "card": "Goblinstein",
+   "entity": "goblinstein-monster",
+   "verdict": "keep"
+  },
+  {
+   "id": "UFQFnrtWUE4_m07_01347_06.png",
+   "card": "Goblinstein",
+   "entity": "goblinstein-monster",
+   "verdict": "keep"
+  },
+  {
+   "id": "UFQFnrtWUE4_m07_01345_02.png",
+   "card": "Goblinstein",
+   "entity": "goblinstein-monster",
+   "verdict": "keep"
+  },
+  {
+   "id": "UFQFnrtWUE4_m07_01504_25.png",
+   "card": "Goblinstein",
+   "entity": "goblinstein-monster",
+   "verdict": "keep"
+  },
+  {
+   "id": "UFQFnrtWUE4_m07_01410_12.png",
+   "card": "Goblinstein",
+   "entity": "goblinstein-monster",
+   "verdict": "keep"
+  },
+  {
+   "id": "UFQFnrtWUE4_m07_01414_18.png",
+   "card": "Goblinstein",
+   "entity": "goblinstein-monster",
+   "verdict": "keep"
+  },
+  {
+   "id": "UFQFnrtWUE4_m07_01445_00.png",
+   "card": "Goblinstein",
+   "entity": "goblinstein-monster",
+   "verdict": "reject"
+  },
+  {
+   "id": "UFQFnrtWUE4_m07_01384_03.png",
+   "card": "Goblinstein",
+   "entity": "goblinstein-monster",
+   "verdict": "keep"
+  },
+  {
+   "id": "UFQFnrtWUE4_m07_01470_10.png",
+   "card": "Goblinstein",
+   "entity": "goblinstein-doctor",
+   "verdict": "reject"
+  },
+  {
+   "id": "UFQFnrtWUE4_m07_01385_05.png",
+   "card": "Goblinstein",
+   "entity": "goblinstein-doctor",
+   "verdict": "keep"
+  },
+  {
+   "id": "UFQFnrtWUE4_m07_01448_03.png",
+   "card": "Goblinstein",
+   "entity": "goblinstein-doctor",
+   "verdict": "keep"
+  },
+  {
+   "id": "UFQFnrtWUE4_m07_01481_09.png",
+   "card": "Goblinstein",
+   "entity": "goblinstein-doctor",
+   "verdict": "keep"
+  },
+  {
+   "id": "UFQFnrtWUE4_m08_01505_09.png",
+   "card": "Goblinstein",
+   "entity": "goblinstein-doctor",
+   "verdict": "reject"
+  }
+ ]
+}

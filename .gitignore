@@ -20,3 +20,11 @@ data/logs/
 # Papers are cited, not redistributed (arXiv's non-exclusive license doesn't grant redistribution)
 docs/papers/*.pdf
 .DS_Store
+data/opponent/
+data/models/
+data/external/
+
+# Slice candidates are regenerable; Cole-approved slices are ground truth and are kept
+data/slices/*
+!data/slices/approved/
+*.pt

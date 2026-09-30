@@ -17,12 +17,14 @@ class Layout:
     frame_size: tuple[int, int]  # (width, height) the regions were marked on
     regions: dict[str, tuple[int, int, int, int]]  # name -> (x0, y0, x1, y1)
     hand: dict = field(default_factory=dict)  # hand-reader constants, in source pixels
+    katacr_arena: tuple[int, int, int, int] | None = None  # crop fed to the KataCR unit detector
 
     @classmethod
     def load(cls, layout_id: str) -> Layout:
         raw = json.loads((LAYOUT_DIR / f"{layout_id}.json").read_text())
         regions = {k: tuple(v) for k, v in raw["regions"].items()}
-        return cls(raw["layout_id"], tuple(raw["frame_size"]), regions, raw.get("hand", {}))
+        arena = tuple(raw["katacr_arena"]) if "katacr_arena" in raw else None
+        return cls(raw["layout_id"], tuple(raw["frame_size"]), regions, raw.get("hand", {}), arena)
 
     def scale(self, frame_w: int) -> float:
         return frame_w / self.frame_size[0]

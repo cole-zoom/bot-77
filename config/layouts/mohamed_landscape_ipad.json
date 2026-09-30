@@ -137,6 +137,12 @@
       660,
       688,
       686
+    ],
+    "arena": [
+      180,
+      90,
+      785,
+      845
     ]
   },
   "hand": {
@@ -145,6 +151,14 @@
   "notes": {
     "hand": "Hand-bar regions and constants are Alina's mapped by x' = 180 + 0.557x, y' = 0.557y - 229.7 (same game UI, smaller).",
     "towers": "Princess Gambit has no king towers, so no king HP regions.",
-    "opp_rating": "Not shown in tournament mode."
-  }
+    "opp_rating": "Not shown in tournament mode.",
+    "arena": "Playfield for unit / badge detection (excludes the top HUD and the hand bar).",
+    "katacr_arena": "Crop fed to the KataCR detector (their part2_2.16 box, 576x896), mapped from Alina's via the tower HP anchors; may extend past the frame (padded)."
+  },
+  "katacr_arena": [
+    219,
+    53,
+    735,
+    852
+  ]
 }

@@ -1,0 +1,4583 @@
+[
+ {
+  "file": "data/slices/approved/minion-giant/minion-giant_1_uz4VVzGlOjE_m01_0122.75_0.png",
+  "card": "Minion Giant",
+  "team": "enemy",
+  "video_id": "uz4VVzGlOjE",
+  "match_id": "uz4VVzGlOjE_m01",
+  "t_video": 122.75,
+  "track": 0,
+  "detector_class": "electro-dragon",
+  "size": [
+   126,
+   153
+  ],
+  "class": "minion-giant",
+  "approved_by": "Cole"
+ },
+ {
+  "file": "data/slices/approved/minion-giant/minion-giant_1_uz4VVzGlOjE_m01_0123.75_0.png",
+  "card": "Minion Giant",
+  "team": "enemy",
+  "video_id": "uz4VVzGlOjE",
+  "match_id": "uz4VVzGlOjE_m01",
+  "t_video": 123.75,
+  "track": 0,
+  "detector_class": "electro-dragon",
+  "size": [
+   111,
+   161
+  ],
+  "class": "minion-giant",
+  "approved_by": "Cole"
+ },
+ {
+  "file": "data/slices/approved/minion-giant/minion-giant_1_uz4VVzGlOjE_m01_0124.75_0.png",
+  "card": "Minion Giant",
+  "team": "enemy",
+  "video_id": "uz4VVzGlOjE",
+  "match_id": "uz4VVzGlOjE_m01",
+  "t_video": 124.75,
+  "track": 0,
+  "detector_class": "electro-dragon",
+  "size": [
+   125,
+   159
+  ],
+  "class": "minion-giant",
+  "approved_by": "Cole"
+ },
+ {
+  "file": "data/slices/approved/minion-giant/minion-giant_1_uz4VVzGlOjE_m01_0209.00_0.png",
+  "card": "Minion Giant",
+  "team": "enemy",
+  "video_id": "uz4VVzGlOjE",
+  "match_id": "uz4VVzGlOjE_m01",
+  "t_video": 209.0,
+  "track": 0,
+  "detector_class": "earthquake",
+  "size": [
+   110,
+   157
+  ],
+  "class": "minion-giant",
+  "approved_by": "Cole"
+ },
+ {
+  "file": "data/slices/approved/minion-giant/minion-giant_1_uz4VVzGlOjE_m01_0233.00_0.png",
+  "card": "Minion Giant",
+  "team": "enemy",
+  "video_id": "uz4VVzGlOjE",
+  "match_id": "uz4VVzGlOjE_m01",
+  "t_video": 233.0,
+  "track": 0,
+  "detector_class": "electro-dragon",
+  "size": [
+   111,
+   134
+  ],
+  "class": "minion-giant",
+  "approved_by": "Cole"
+ },
+ {
+  "file": "data/slices/approved/goblinstein-monster/goblinstein-monster_1_uz4VVzGlOjE_m01_0018.25.png",
+  "card": "Goblinstein",
+  "entity": "goblinstein-monster",
+  "team": "enemy",
+  "video_id": "uz4VVzGlOjE",
+  "match_id": "uz4VVzGlOjE_m01",
+  "t_video": 18.25,
+  "click": [
+   402.30967741935484,
+   304.0875
+  ],
+  "size": [
+   135,
+   120
+  ],
+  "class": "goblinstein-monster",
+  "approved_by": "Cole",
+  "badge_stripped": false
+ },
+ {
+  "file": "data/slices/approved/goblinstein-monster/goblinstein-monster_1_uz4VVzGlOjE_m01_0121.00.png",
+  "card": "Goblinstein",
+  "entity": "goblinstein-monster",
+  "team": "enemy",
+  "video_id": "uz4VVzGlOjE",
+  "match_id": "uz4VVzGlOjE_m01",
+  "t_video": 121,
+  "click": [
+   188.42580645161289,
+   927.3214285714286
+  ],
+  "size": [
+   147,
+   159
+  ],
+  "class": "goblinstein-monster",
+  "approved_by": "Cole",
+  "badge_stripped": false
+ },
+ {
+  "file": "data/slices/approved/goblinstein-doctor/goblinstein-doctor_1_uz4VVzGlOjE_m01_0121.00.png",
+  "card": "Goblinstein",
+  "entity": "goblinstein-doctor",
+  "team": "enemy",
+  "video_id": "uz4VVzGlOjE",
+  "match_id": "uz4VVzGlOjE_m01",
+  "t_video": 121,
+  "click": [
+   210.14838709677417,
+   753.4928571428571
+  ],
+  "size": [
+   179,
+   81
+  ],
+  "class": "goblinstein-doctor",
+  "approved_by": "Cole",
+  "badge_stripped": true
+ },
+ {
+  "file": "data/slices/approved/goblinstein-monster/goblinstein-monster_1_uz4VVzGlOjE_m01_0122.00.png",
+  "card": "Goblinstein",
+  "entity": "goblinstein-monster",
+  "team": "enemy",
+  "video_id": "uz4VVzGlOjE",
+  "match_id": "uz4VVzGlOjE_m01",
+  "t_video": 122,
+  "click": [
+   201.79354838709676,
+   970.4651785714286
+  ],
+  "size": [
+   153,
+   173
+  ],
+  "class": "goblinstein-monster",
+  "approved_by": "Cole",
+  "badge_stripped": false
+ },
+ {
+  "file": "data/slices/approved/goblinstein-doctor/goblinstein-doctor_1_uz4VVzGlOjE_m01_0122.00.png",
+  "card": "Goblinstein",
+  "entity": "goblinstein-doctor",
+  "team": "enemy",
+  "video_id": "uz4VVzGlOjE",
+  "match_id": "uz4VVzGlOjE_m01",
+  "t_video": 122,
+  "click": [
+   208.47741935483873,
+   803.3223214285714
+  ],
+  "size": [
+   174,
+   81
+  ],
+  "class": "goblinstein-doctor",
+  "approved_by": "Cole",
+  "badge_stripped": true
+ },
+ {
+  "file": "data/slices/approved/goblinstein-doctor/goblinstein-doctor_1_uz4VVzGlOjE_m01_0123.00.png",
+  "card": "Goblinstein",
+  "entity": "goblinstein-doctor",
+  "team": "enemy",
+  "video_id": "uz4VVzGlOjE",
+  "match_id": "uz4VVzGlOjE_m01",
+  "t_video": 123,
+  "click": [
+   201.79354838709676,
+   873.2089285714286
+  ],
+  "size": [
+   163,
+   62
+  ],
+  "class": "goblinstein-doctor",
+  "approved_by": "Cole",
+  "badge_stripped": true
+ },
+ {
+  "file": "data/slices/approved/goblinstein-doctor/goblinstein-doctor_1_uz4VVzGlOjE_m01_0259.00.png",
+  "card": "Goblinstein",
+  "entity": "goblinstein-doctor",
+  "team": "enemy",
+  "video_id": "uz4VVzGlOjE",
+  "match_id": "uz4VVzGlOjE_m01",
+  "t_video": 259,
+  "click": [
+   210.14838709677417,
+   753.2839285714285
+  ],
+  "size": [
+   152,
+   68
+  ],
+  "class": "goblinstein-doctor",
+  "approved_by": "Cole",
+  "badge_stripped": false
+ },
+ {
+  "file": "data/slices/approved/goblinstein-doctor/goblinstein-doctor_1_uz4VVzGlOjE_m01_0260.00.png",
+  "card": "Goblinstein",
+  "entity": "goblinstein-doctor",
+  "team": "enemy",
+  "video_id": "uz4VVzGlOjE",
+  "match_id": "uz4VVzGlOjE_m01",
+  "t_video": 260,
+  "click": [
+   205.13548387096776,
+   799.7705357142858
+  ],
+  "size": [
+   163,
+   74
+  ],
+  "class": "goblinstein-doctor",
+  "approved_by": "Cole",
+  "badge_stripped": true
+ },
+ {
+  "file": "data/slices/approved/minion-giant/uz4VVzGlOjE_m03_00688_07.png",
+  "card": "Minion Giant",
+  "entity": "minion-giant",
+  "match_id": "uz4VVzGlOjE_m03",
+  "video_id": "uz4VVzGlOjE",
+  "t_video": 688.0,
+  "team": "enemy",
+  "old_cls": "electro-dragon",
+  "box": [
+   763.458251953125,
+   991.8497924804688,
+   917.5866088867188,
+   1110.056884765625
+  ],
+  "similarity": 0.81,
+  "caption": "m03 \u00b7 enemy \u00b7 old: electro-dragon \u00b7 sim 0.81",
+  "class": "minion-giant",
+  "approved_by": "Cole",
+  "source": "lancedb_mining_r1"
+ },
+ {
+  "file": "data/slices/approved/minion-giant/uz4VVzGlOjE_m01_00179_01.png",
+  "card": "Minion Giant",
+  "entity": "minion-giant",
+  "match_id": "uz4VVzGlOjE_m01",
+  "video_id": "uz4VVzGlOjE",
+  "t_video": 179.0,
+  "team": "enemy",
+  "old_cls": "electro-dragon",
+  "box": [
+   22.519020080566406,
+   527.3240356445312,
+   142.5144805908203,
+   651.0091552734375
+  ],
+  "similarity": 0.794,
+  "caption": "m01 \u00b7 enemy \u00b7 old: electro-dragon \u00b7 sim 0.79",
+  "class": "minion-giant",
+  "approved_by": "Cole",
+  "source": "lancedb_mining_r1"
+ },
+ {
+  "file": "data/slices/approved/minion-giant/uz4VVzGlOjE_m02_00272_16.png",
+  "card": "Minion Giant",
+  "entity": "minion-giant",
+  "match_id": "uz4VVzGlOjE_m02",
+  "video_id": "uz4VVzGlOjE",
+  "t_video": 272.0,
+  "team": "enemy",
+  "old_cls": "golem",
+  "box": [
+   128.0966796875,
+   982.8306274414062,
+   290.2698974609375,
+   1148.8115234375
+  ],
+  "similarity": 0.765,
+  "caption": "m02 \u00b7 enemy \u00b7 old: golem \u00b7 sim 0.77",
+  "class": "minion-giant",
+  "approved_by": "Cole",
+  "source": "lancedb_mining_r1"
+ },
+ {
+  "file": "data/slices/approved/minion-giant/uz4VVzGlOjE_m03_00682_24.png",
+  "card": "Minion Giant",
+  "entity": "minion-giant",
+  "match_id": "uz4VVzGlOjE_m03",
+  "video_id": "uz4VVzGlOjE",
+  "t_video": 682.0,
+  "team": "enemy",
+  "old_cls": "electro-dragon",
+  "box": [
+   897.6787719726562,
+   845.7162475585938,
+   1043.296875,
+   959.9596557617188
+  ],
+  "similarity": 0.752,
+  "caption": "m03 \u00b7 enemy \u00b7 old: electro-dragon \u00b7 sim 0.75",
+  "class": "minion-giant",
+  "approved_by": "Cole",
+  "source": "lancedb_mining_r1"
+ },
+ {
+  "file": "data/slices/approved/minion-giant/uz4VVzGlOjE_m01_00184_28.png",
+  "card": "Minion Giant",
+  "entity": "minion-giant",
+  "match_id": "uz4VVzGlOjE_m01",
+  "video_id": "uz4VVzGlOjE",
+  "t_video": 184.0,
+  "team": "enemy",
+  "old_cls": "electro-dragon",
+  "box": [
+   24.461124420166016,
+   828.61474609375,
+   172.0906982421875,
+   944.0274047851562
+  ],
+  "similarity": 0.751,
+  "caption": "m01 \u00b7 enemy \u00b7 old: electro-dragon \u00b7 sim 0.75",
+  "class": "minion-giant",
+  "approved_by": "Cole",
+  "source": "lancedb_mining_r1"
+ },
+ {
+  "file": "data/slices/approved/minion-giant/uz4VVzGlOjE_m01_00261_17.png",
+  "card": "Minion Giant",
+  "entity": "minion-giant",
+  "match_id": "uz4VVzGlOjE_m01",
+  "video_id": "uz4VVzGlOjE",
+  "t_video": 261.0,
+  "team": "enemy",
+  "old_cls": "electro-dragon",
+  "box": [
+   29.069543838500977,
+   742.639404296875,
+   181.3565216064453,
+   883.6114501953125
+  ],
+  "similarity": 0.742,
+  "caption": "m01 \u00b7 enemy \u00b7 old: electro-dragon \u00b7 sim 0.74",
+  "class": "minion-giant",
+  "approved_by": "Cole",
+  "source": "lancedb_mining_r1"
+ },
+ {
+  "file": "data/slices/approved/minion-giant/uz4VVzGlOjE_m01_00181_01.png",
+  "card": "Minion Giant",
+  "entity": "minion-giant",
+  "match_id": "uz4VVzGlOjE_m01",
+  "video_id": "uz4VVzGlOjE",
+  "t_video": 181.0,
+  "team": "enemy",
+  "old_cls": "electro-dragon",
+  "box": [
+   22.370969772338867,
+   627.99658203125,
+   155.8165740966797,
+   742.9244995117188
+  ],
+  "similarity": 0.721,
+  "caption": "m01 \u00b7 enemy \u00b7 old: electro-dragon \u00b7 sim 0.72",
+  "class": "minion-giant",
+  "approved_by": "Cole",
+  "source": "lancedb_mining_r1"
+ },
+ {
+  "file": "data/slices/approved/minion-giant/uz4VVzGlOjE_m01_00270_08.png",
+  "card": "Minion Giant",
+  "entity": "minion-giant",
+  "match_id": "uz4VVzGlOjE_m01",
+  "video_id": "uz4VVzGlOjE",
+  "t_video": 270.0,
+  "team": "enemy",
+  "old_cls": "electro-dragon",
+  "box": [
+   128.0046844482422,
+   975.5042114257812,
+   266.47625732421875,
+   1087.9432373046875
+  ],
+  "similarity": 0.72,
+  "caption": "m01 \u00b7 enemy \u00b7 old: electro-dragon \u00b7 sim 0.72",
+  "class": "minion-giant",
+  "approved_by": "Cole",
+  "source": "lancedb_mining_r1"
+ },
+ {
+  "file": "data/slices/approved/minion-giant/uz4VVzGlOjE_m01_00187_15.png",
+  "card": "Minion Giant",
+  "entity": "minion-giant",
+  "match_id": "uz4VVzGlOjE_m01",
+  "video_id": "uz4VVzGlOjE",
+  "t_video": 187.0,
+  "team": "friendly",
+  "old_cls": "golem",
+  "box": [
+   113.67860412597656,
+   886.3546752929688,
+   283.6755676269531,
+   1094.2647705078125
+  ],
+  "similarity": 0.693,
+  "caption": "m01 \u00b7 friendly \u00b7 old: golem \u00b7 sim 0.69",
+  "class": "minion-giant",
+  "approved_by": "Cole",
+  "source": "lancedb_mining_r1"
+ },
+ {
+  "file": "data/slices/approved/goblinstein-doctor/uz4VVzGlOjE_m01_00268_24.png",
+  "card": "Goblinstein",
+  "entity": "goblinstein-doctor",
+  "match_id": "uz4VVzGlOjE_m01",
+  "video_id": "uz4VVzGlOjE",
+  "t_video": 268.0,
+  "team": "enemy",
+  "old_cls": "bomber",
+  "box": [
+   172.2623748779297,
+   754.499267578125,
+   245.2501678466797,
+   837.7390747070312
+  ],
+  "similarity": 0.796,
+  "caption": "m01 \u00b7 enemy \u00b7 old: bomber \u00b7 sim 0.80",
+  "class": "goblinstein-doctor",
+  "approved_by": "Cole",
+  "source": "lancedb_mining_r1"
+ },
+ {
+  "file": "data/slices/approved/goblinstein-doctor/uz4VVzGlOjE_m01_00263_09.png",
+  "card": "Goblinstein",
+  "entity": "goblinstein-doctor",
+  "match_id": "uz4VVzGlOjE_m01",
+  "video_id": "uz4VVzGlOjE",
+  "t_video": 263.0,
+  "team": "friendly",
+  "old_cls": "elite-barbarian",
+  "box": [
+   164.62051391601562,
+   762.8013305664062,
+   246.04229736328125,
+   879.9470825195312
+  ],
+  "similarity": 0.724,
+  "caption": "m01 \u00b7 friendly \u00b7 old: elite-barbarian \u00b7 sim 0.72",
+  "class": "goblinstein-doctor",
+  "approved_by": "Cole",
+  "source": "lancedb_mining_r1"
+ },
+ {
+  "file": "data/slices/approved/goblinstein-doctor/uz4VVzGlOjE_m01_00028_15.png",
+  "card": "Goblinstein",
+  "entity": "goblinstein-doctor",
+  "match_id": "uz4VVzGlOjE_m01",
+  "video_id": "uz4VVzGlOjE",
+  "t_video": 28.0,
+  "team": "friendly",
+  "old_cls": "royal-recruit",
+  "box": [
+   221.997314453125,
+   634.2012329101562,
+   311.7659606933594,
+   808.8388061523438
+  ],
+  "similarity": 0.67,
+  "caption": "m01 \u00b7 friendly \u00b7 old: royal-recruit \u00b7 sim 0.67",
+  "class": "goblinstein-doctor",
+  "approved_by": "Cole",
+  "source": "lancedb_mining_r1"
+ },
+ {
+  "file": "data/slices/approved/goblinstein-doctor/uz4VVzGlOjE_m01_00027_05.png",
+  "card": "Goblinstein",
+  "entity": "goblinstein-doctor",
+  "match_id": "uz4VVzGlOjE_m01",
+  "video_id": "uz4VVzGlOjE",
+  "t_video": 27.0,
+  "team": "friendly",
+  "old_cls": "musketeer",
+  "box": [
+   227.0669708251953,
+   557.8738403320312,
+   314.1846618652344,
+   713.6661376953125
+  ],
+  "similarity": 0.656,
+  "caption": "m01 \u00b7 friendly \u00b7 old: musketeer \u00b7 sim 0.66",
+  "class": "goblinstein-doctor",
+  "approved_by": "Cole",
+  "source": "lancedb_mining_r1"
+ },
+ {
+  "file": "data/slices/approved/goblinstein-monster/UFQFnrtWUE4_m07_01407_05.png",
+  "card": "Goblinstein",
+  "entity": "goblinstein-monster",
+  "match_id": "UFQFnrtWUE4_m07",
+  "video_id": "UFQFnrtWUE4",
+  "t_video": 1407.0,
+  "team": "friendly",
+  "old_cls": "baby-dragon",
+  "box": [
+   187.3601837158203,
+   94.21406555175781,
+   281.5771484375,
+   201.72740173339844
+  ],
+  "similarity": 0.79,
+  "caption": "m07 \u00b7 friendly \u00b7 old: baby-dragon \u00b7 sim 0.79",
+  "class": "goblinstein-monster",
+  "approved_by": "Cole",
+  "source": "lancedb_mining_r1"
+ },
+ {
+  "file": "data/slices/approved/goblinstein-monster/UFQFnrtWUE4_m07_01411_01.png",
+  "card": "Goblinstein",
+  "entity": "goblinstein-monster",
+  "match_id": "UFQFnrtWUE4_m07",
+  "video_id": "UFQFnrtWUE4",
+  "t_video": 1411.0,
+  "team": "enemy",
+  "old_cls": "rocket",
+  "box": [
+   174.9794158935547,
+   206.1807861328125,
+   276.3465881347656,
+   330.8680419921875
+  ],
+  "similarity": 0.755,
+  "caption": "m07 \u00b7 enemy \u00b7 old: rocket \u00b7 sim 0.76",
+  "class": "goblinstein-monster",
+  "approved_by": "Cole",
+  "source": "lancedb_mining_r1"
+ },
+ {
+  "file": "data/slices/approved/goblinstein-monster/UFQFnrtWUE4_m07_01412_06.png",
+  "card": "Goblinstein",
+  "entity": "goblinstein-monster",
+  "match_id": "UFQFnrtWUE4_m07",
+  "video_id": "UFQFnrtWUE4",
+  "t_video": 1412.0,
+  "team": "friendly",
+  "old_cls": "baby-dragon",
+  "box": [
+   198.94102478027344,
+   284.5955810546875,
+   294.92181396484375,
+   397.51275634765625
+  ],
+  "similarity": 0.75,
+  "caption": "m07 \u00b7 friendly \u00b7 old: baby-dragon \u00b7 sim 0.75",
+  "class": "goblinstein-monster",
+  "approved_by": "Cole",
+  "source": "lancedb_mining_r1"
+ },
+ {
+  "file": "data/slices/approved/goblinstein-monster/UFQFnrtWUE4_m08_01505_10.png",
+  "card": "Goblinstein",
+  "entity": "goblinstein-monster",
+  "match_id": "UFQFnrtWUE4_m08",
+  "video_id": "UFQFnrtWUE4",
+  "t_video": 1505.0,
+  "team": "friendly",
+  "old_cls": "inferno-dragon",
+  "box": [
+   632.3897094726562,
+   651.0306396484375,
+   728.1128540039062,
+   753.7882690429688
+  ],
+  "similarity": 0.732,
+  "caption": "m08 \u00b7 friendly \u00b7 old: inferno-dragon \u00b7 sim 0.73",
+  "class": "goblinstein-monster",
+  "approved_by": "Cole",
+  "source": "lancedb_mining_r1"
+ },
+ {
+  "file": "data/slices/approved/goblinstein-monster/UFQFnrtWUE4_m07_01349_04.png",
+  "card": "Goblinstein",
+  "entity": "goblinstein-monster",
+  "match_id": "UFQFnrtWUE4_m07",
+  "video_id": "UFQFnrtWUE4",
+  "t_video": 1349.0,
+  "team": "enemy",
+  "old_cls": "baby-dragon",
+  "box": [
+   597.9734497070312,
+   289.6114196777344,
+   699.9508056640625,
+   391.1678161621094
+  ],
+  "similarity": 0.714,
+  "caption": "m07 \u00b7 enemy \u00b7 old: baby-dragon \u00b7 sim 0.71",
+  "class": "goblinstein-monster",
+  "approved_by": "Cole",
+  "source": "lancedb_mining_r1"
+ },
+ {
+  "file": "data/slices/approved/goblinstein-monster/UFQFnrtWUE4_m07_01348_12.png",
+  "card": "Goblinstein",
+  "entity": "goblinstein-monster",
+  "match_id": "UFQFnrtWUE4_m07",
+  "video_id": "UFQFnrtWUE4",
+  "t_video": 1348.0,
+  "team": "enemy",
+  "old_cls": "baby-dragon",
+  "box": [
+   603.576904296875,
+   279.0858459472656,
+   699.0798950195312,
+   383.84246826171875
+  ],
+  "similarity": 0.705,
+  "caption": "m07 \u00b7 enemy \u00b7 old: baby-dragon \u00b7 sim 0.70",
+  "class": "goblinstein-monster",
+  "approved_by": "Cole",
+  "source": "lancedb_mining_r1"
+ },
+ {
+  "file": "data/slices/approved/goblinstein-monster/UFQFnrtWUE4_m07_01347_06.png",
+  "card": "Goblinstein",
+  "entity": "goblinstein-monster",
+  "match_id": "UFQFnrtWUE4_m07",
+  "video_id": "UFQFnrtWUE4",
+  "t_video": 1347.0,
+  "team": "friendly",
+  "old_cls": "baby-dragon",
+  "box": [
+   585.3269653320312,
+   222.4076385498047,
+   679.083740234375,
+   334.476806640625
+  ],
+  "similarity": 0.696,
+  "caption": "m07 \u00b7 friendly \u00b7 old: baby-dragon \u00b7 sim 0.70",
+  "class": "goblinstein-monster",
+  "approved_by": "Cole",
+  "source": "lancedb_mining_r1"
+ },
+ {
+  "file": "data/slices/approved/goblinstein-monster/UFQFnrtWUE4_m07_01345_02.png",
+  "card": "Goblinstein",
+  "entity": "goblinstein-monster",
+  "match_id": "UFQFnrtWUE4_m07",
+  "video_id": "UFQFnrtWUE4",
+  "t_video": 1345.0,
+  "team": "enemy",
+  "old_cls": "baby-dragon",
+  "box": [
+   579.4619140625,
+   162.97702026367188,
+   671.1093139648438,
+   262.838134765625
+  ],
+  "similarity": 0.686,
+  "caption": "m07 \u00b7 enemy \u00b7 old: baby-dragon \u00b7 sim 0.69",
+  "class": "goblinstein-monster",
+  "approved_by": "Cole",
+  "source": "lancedb_mining_r1"
+ },
+ {
+  "file": "data/slices/approved/goblinstein-monster/UFQFnrtWUE4_m07_01504_25.png",
+  "card": "Goblinstein",
+  "entity": "goblinstein-monster",
+  "match_id": "UFQFnrtWUE4_m07",
+  "video_id": "UFQFnrtWUE4",
+  "t_video": 1504.0,
+  "team": "enemy",
+  "old_cls": "baby-dragon",
+  "box": [
+   617.3790283203125,
+   622.0731201171875,
+   708.0682373046875,
+   721.4791870117188
+  ],
+  "similarity": 0.684,
+  "caption": "m07 \u00b7 enemy \u00b7 old: baby-dragon \u00b7 sim 0.68",
+  "class": "goblinstein-monster",
+  "approved_by": "Cole",
+  "source": "lancedb_mining_r1"
+ },
+ {
+  "file": "data/slices/approved/goblinstein-monster/UFQFnrtWUE4_m07_01410_12.png",
+  "card": "Goblinstein",
+  "entity": "goblinstein-monster",
+  "match_id": "UFQFnrtWUE4_m07",
+  "video_id": "UFQFnrtWUE4",
+  "t_video": 1410.0,
+  "team": "friendly",
+  "old_cls": "baby-dragon",
+  "box": [
+   177.9125518798828,
+   234.6436004638672,
+   275.2104187011719,
+   327.578369140625
+  ],
+  "similarity": 0.665,
+  "caption": "m07 \u00b7 friendly \u00b7 old: baby-dragon \u00b7 sim 0.67",
+  "class": "goblinstein-monster",
+  "approved_by": "Cole",
+  "source": "lancedb_mining_r1"
+ },
+ {
+  "file": "data/slices/approved/goblinstein-monster/UFQFnrtWUE4_m07_01414_18.png",
+  "card": "Goblinstein",
+  "entity": "goblinstein-monster",
+  "match_id": "UFQFnrtWUE4_m07",
+  "video_id": "UFQFnrtWUE4",
+  "t_video": 1414.0,
+  "team": "enemy",
+  "old_cls": "baby-dragon",
+  "box": [
+   207.87820434570312,
+   361.3197326660156,
+   303.3424377441406,
+   476.5692443847656
+  ],
+  "similarity": 0.658,
+  "caption": "m07 \u00b7 enemy \u00b7 old: baby-dragon \u00b7 sim 0.66",
+  "class": "goblinstein-monster",
+  "approved_by": "Cole",
+  "source": "lancedb_mining_r1"
+ },
+ {
+  "file": "data/slices/approved/goblinstein-monster/UFQFnrtWUE4_m07_01384_03.png",
+  "card": "Goblinstein",
+  "entity": "goblinstein-monster",
+  "match_id": "UFQFnrtWUE4_m07",
+  "video_id": "UFQFnrtWUE4",
+  "t_video": 1384.0,
+  "team": "enemy",
+  "old_cls": "rocket",
+  "box": [
+   255.81239318847656,
+   534.7936401367188,
+   347.982421875,
+   649.62158203125
+  ],
+  "similarity": 0.644,
+  "caption": "m07 \u00b7 enemy \u00b7 old: rocket \u00b7 sim 0.64",
+  "class": "goblinstein-monster",
+  "approved_by": "Cole",
+  "source": "lancedb_mining_r1"
+ },
+ {
+  "file": "data/slices/approved/goblinstein-doctor/UFQFnrtWUE4_m07_01385_05.png",
+  "card": "Goblinstein",
+  "entity": "goblinstein-doctor",
+  "match_id": "UFQFnrtWUE4_m07",
+  "video_id": "UFQFnrtWUE4",
+  "t_video": 1385.0,
+  "team": "enemy",
+  "old_cls": "musketeer",
+  "box": [
+   245.71109008789062,
+   465.6136474609375,
+   301.15032958984375,
+   544.3430786132812
+  ],
+  "similarity": 0.686,
+  "caption": "m07 \u00b7 enemy \u00b7 old: musketeer \u00b7 sim 0.69",
+  "class": "goblinstein-doctor",
+  "approved_by": "Cole",
+  "source": "lancedb_mining_r1"
+ },
+ {
+  "file": "data/slices/approved/goblinstein-doctor/UFQFnrtWUE4_m07_01448_03.png",
+  "card": "Goblinstein",
+  "entity": "goblinstein-doctor",
+  "match_id": "UFQFnrtWUE4_m07",
+  "video_id": "UFQFnrtWUE4",
+  "t_video": 1448.0,
+  "team": "enemy",
+  "old_cls": "musketeer",
+  "box": [
+   225.49266052246094,
+   432.60498046875,
+   278.04620361328125,
+   537.0359497070312
+  ],
+  "similarity": 0.682,
+  "caption": "m07 \u00b7 enemy \u00b7 old: musketeer \u00b7 sim 0.68",
+  "class": "goblinstein-doctor",
+  "approved_by": "Cole",
+  "source": "lancedb_mining_r1"
+ },
+ {
+  "file": "data/slices/approved/goblinstein-doctor/UFQFnrtWUE4_m07_01481_09.png",
+  "card": "Goblinstein",
+  "entity": "goblinstein-doctor",
+  "match_id": "UFQFnrtWUE4_m07",
+  "video_id": "UFQFnrtWUE4",
+  "t_video": 1481.0,
+  "team": "enemy",
+  "old_cls": "little-prince",
+  "box": [
+   241.6656494140625,
+   439.274169921875,
+   296.3702392578125,
+   517.7220458984375
+  ],
+  "similarity": 0.679,
+  "caption": "m07 \u00b7 enemy \u00b7 old: little-prince \u00b7 sim 0.68",
+  "class": "goblinstein-doctor",
+  "approved_by": "Cole",
+  "source": "lancedb_mining_r1"
+ },
+ {
+  "file": "data/slices/approved/ronin/ronin_1_cole_2026-09-28_phone_0312.00.png",
+  "card": "Ronin",
+  "entity": "ronin",
+  "team": "enemy",
+  "video_id": "cole_2026-09-28_phone",
+  "match_id": null,
+  "t_video": 312,
+  "click": [
+   168.98181818181817,
+   982.9162285825545
+  ],
+  "size": [
+   130,
+   97
+  ],
+  "caption": "5:12",
+  "class": "ronin",
+  "approved_by": "Cole",
+  "source": "clicks_cole_v3"
+ },
+ {
+  "file": "data/slices/approved/ronin/ronin_1_cole_2026-09-28_phone_0313.00.png",
+  "card": "Ronin",
+  "entity": "ronin",
+  "team": "enemy",
+  "video_id": "cole_2026-09-28_phone",
+  "match_id": null,
+  "t_video": 313,
+  "click": [
+   204.29999999999998,
+   1074.7059482087227
+  ],
+  "size": [
+   92,
+   108
+  ],
+  "caption": "5:13",
+  "class": "ronin",
+  "approved_by": "Cole",
+  "source": "clicks_cole_v3"
+ },
+ {
+  "file": "data/slices/approved/ronin/ronin_1_cole_2026-09-28_phone_0314.00.png",
+  "card": "Ronin",
+  "entity": "ronin",
+  "team": "enemy",
+  "video_id": "cole_2026-09-28_phone",
+  "match_id": null,
+  "t_video": 314,
+  "click": [
+   211.36363636363637,
+   1152.3741725077882
+  ],
+  "size": [
+   108,
+   110
+  ],
+  "caption": "5:14",
+  "class": "ronin",
+  "approved_by": "Cole",
+  "source": "clicks_cole_v3"
+ },
+ {
+  "file": "data/slices/approved/ronin/ronin_1_cole_2026-09-28_phone_0315.00.png",
+  "card": "Ronin",
+  "entity": "ronin",
+  "team": "enemy",
+  "video_id": "cole_2026-09-28_phone",
+  "match_id": null,
+  "t_video": 315,
+  "click": [
+   291.41818181818184,
+   1175.4687013239877
+  ],
+  "size": [
+   136,
+   103
+  ],
+  "caption": "5:15",
+  "class": "ronin",
+  "approved_by": "Cole",
+  "source": "clicks_cole_v3"
+ },
+ {
+  "file": "data/slices/approved/ronin/ronin_1_cole_2026-09-28_phone_0316.00.png",
+  "card": "Ronin",
+  "entity": "ronin",
+  "team": "enemy",
+  "video_id": "cole_2026-09-28_phone",
+  "match_id": null,
+  "t_video": 316,
+  "click": [
+   345.57272727272726,
+   1182.529448987539
+  ],
+  "size": [
+   124,
+   98
+  ],
+  "caption": "5:16",
+  "class": "ronin",
+  "approved_by": "Cole",
+  "source": "clicks_cole_v3"
+ },
+ {
+  "file": "data/slices/approved/ronin/ronin_1_cole_2026-09-28_phone_0320.00.png",
+  "card": "Ronin",
+  "entity": "ronin",
+  "team": "enemy",
+  "video_id": "cole_2026-09-28_phone",
+  "match_id": null,
+  "t_video": 320,
+  "click": [
+   265.5181818181818,
+   1264.4635416666667
+  ],
+  "size": [
+   106,
+   96
+  ],
+  "caption": "5:20",
+  "class": "ronin",
+  "approved_by": "Cole",
+  "source": "clicks_cole_v3"
+ },
+ {
+  "file": "data/slices/approved/spirit-empress-air/spirit-empress-air_1_cole_2026-09-28_phone_0522.00.png",
+  "card": "Spirit Empress",
+  "entity": "spirit-empress-air",
+  "team": "enemy",
+  "video_id": "cole_2026-09-28_phone",
+  "match_id": null,
+  "t_video": 522,
+  "click": [
+   1011.909090909091,
+   720.3446748442368
+  ],
+  "size": [
+   158,
+   137
+  ],
+  "caption": "8:42",
+  "class": "spirit-empress-air",
+  "approved_by": "Cole",
+  "source": "clicks_cole_v3"
+ },
+ {
+  "file": "data/slices/approved/spirit-empress-air/spirit-empress-air_1_cole_2026-09-28_phone_0523.00.png",
+  "card": "Spirit Empress",
+  "entity": "spirit-empress-air",
+  "team": "enemy",
+  "video_id": "cole_2026-09-28_phone",
+  "match_id": null,
+  "t_video": 523,
+  "click": [
+   1002.4909090909091,
+   762.2678640965732
+  ],
+  "size": [
+   153,
+   122
+  ],
+  "caption": "8:43",
+  "class": "spirit-empress-air",
+  "approved_by": "Cole",
+  "source": "clicks_cole_v3"
+ },
+ {
+  "file": "data/slices/approved/spirit-empress-air/spirit-empress-air_1_cole_2026-09-28_phone_0524.00.png",
+  "card": "Spirit Empress",
+  "entity": "spirit-empress-air",
+  "team": "enemy",
+  "video_id": "cole_2026-09-28_phone",
+  "match_id": null,
+  "t_video": 524,
+  "click": [
+   997.7818181818182,
+   818.7538454049844
+  ],
+  "size": [
+   153,
+   145
+  ],
+  "caption": "8:44",
+  "class": "spirit-empress-air",
+  "approved_by": "Cole",
+  "source": "clicks_cole_v3"
+ },
+ {
+  "file": "data/slices/approved/spirit-empress-air/spirit-empress-air_1_cole_2026-09-28_phone_0525.00.png",
+  "card": "Spirit Empress",
+  "entity": "spirit-empress-air",
+  "team": "enemy",
+  "video_id": "cole_2026-09-28_phone",
+  "match_id": null,
+  "t_video": 525,
+  "click": [
+   997.7818181818182,
+   865.8254964953271
+  ],
+  "size": [
+   154,
+   129
+  ],
+  "caption": "8:45",
+  "class": "spirit-empress-air",
+  "approved_by": "Cole",
+  "source": "clicks_cole_v3"
+ },
+ {
+  "file": "data/slices/approved/spirit-empress-air/spirit-empress-air_1_cole_2026-09-28_phone_0526.00.png",
+  "card": "Spirit Empress",
+  "entity": "spirit-empress-air",
+  "team": "enemy",
+  "video_id": "cole_2026-09-28_phone",
+  "match_id": null,
+  "t_video": 526,
+  "click": [
+   986.0090909090909,
+   935.9916764018691
+  ],
+  "size": [
+   160,
+   144
+  ],
+  "caption": "8:46",
+  "class": "spirit-empress-air",
+  "approved_by": "Cole",
+  "source": "clicks_cole_v3"
+ },
+ {
+  "file": "data/slices/approved/spirit-empress-air/spirit-empress-air_1_cole_2026-09-28_phone_0527.00.png",
+  "card": "Spirit Empress",
+  "entity": "spirit-empress-air",
+  "team": "enemy",
+  "video_id": "cole_2026-09-28_phone",
+  "match_id": null,
+  "t_video": 527,
+  "click": [
+   986.0090909090909,
+   999.5384053738318
+  ],
+  "size": [
+   155,
+   135
+  ],
+  "caption": "8:47",
+  "class": "spirit-empress-air",
+  "approved_by": "Cole",
+  "source": "clicks_cole_v3"
+ },
+ {
+  "file": "data/slices/approved/spirit-empress-air/spirit-empress-air_1_cole_2026-09-28_phone_0528.00.png",
+  "card": "Spirit Empress",
+  "entity": "spirit-empress-air",
+  "team": "enemy",
+  "video_id": "cole_2026-09-28_phone",
+  "match_id": null,
+  "t_video": 528,
+  "click": [
+   976.590909090909,
+   1039.549308800623
+  ],
+  "size": [
+   159,
+   134
+  ],
+  "caption": "8:48",
+  "class": "spirit-empress-air",
+  "approved_by": "Cole",
+  "source": "clicks_cole_v3"
+ },
+ {
+  "file": "data/slices/approved/spirit-empress-air/spirit-empress-air_1_cole_2026-09-28_phone_0529.00.png",
+  "card": "Spirit Empress",
+  "entity": "spirit-empress-air",
+  "team": "enemy",
+  "video_id": "cole_2026-09-28_phone",
+  "match_id": null,
+  "t_video": 529,
+  "click": [
+   969.5272727272728,
+   1046.1687597352025
+  ],
+  "size": [
+   155,
+   91
+  ],
+  "caption": "8:49",
+  "class": "spirit-empress-air",
+  "approved_by": "Cole",
+  "source": "clicks_cole_v3"
+ },
+ {
+  "file": "data/slices/approved/spirit-empress-air/spirit-empress-air_1_cole_2026-09-28_phone_0530.00.png",
+  "card": "Spirit Empress",
+  "entity": "spirit-empress-air",
+  "team": "enemy",
+  "video_id": "cole_2026-09-28_phone",
+  "match_id": null,
+  "t_video": 530,
+  "click": [
+   964.8181818181818,
+   1067.3510027258567
+  ],
+  "size": [
+   153,
+   115
+  ],
+  "caption": "8:50",
+  "class": "spirit-empress-air",
+  "approved_by": "Cole",
+  "source": "clicks_cole_v3"
+ },
+ {
+  "file": "data/slices/approved/spirit-empress-ground/spirit-empress-ground_1_cole_2026-09-28_phone_0595.00.png",
+  "card": "Spirit Empress",
+  "entity": "spirit-empress-ground",
+  "team": "enemy",
+  "video_id": "cole_2026-09-28_phone",
+  "match_id": null,
+  "t_video": 595,
+  "click": [
+   863.5727272727273,
+   699.3095307632399
+  ],
+  "size": [
+   117,
+   88
+  ],
+  "caption": "9:55",
+  "class": "spirit-empress-ground",
+  "approved_by": "Cole",
+  "source": "clicks_cole_v3"
+ },
+ {
+  "file": "data/slices/approved/spirit-empress-ground/spirit-empress-ground_1_cole_2026-09-28_phone_0597.00.png",
+  "card": "Spirit Empress",
+  "entity": "spirit-empress-ground",
+  "team": "enemy",
+  "video_id": "cole_2026-09-28_phone",
+  "match_id": null,
+  "t_video": 597,
+  "click": [
+   868.2818181818182,
+   868.3261779595016
+  ],
+  "size": [
+   138,
+   86
+  ],
+  "caption": "9:57",
+  "class": "spirit-empress-ground",
+  "approved_by": "Cole",
+  "source": "clicks_cole_v3"
+ },
+ {
+  "file": "data/slices/approved/spirit-empress-ground/spirit-empress-ground_1_cole_2026-09-28_phone_0598.00.png",
+  "card": "Spirit Empress",
+  "entity": "spirit-empress-ground",
+  "team": "enemy",
+  "video_id": "cole_2026-09-28_phone",
+  "match_id": null,
+  "t_video": 598,
+  "click": [
+   863.5727272727273,
+   957.7623150311526
+  ],
+  "size": [
+   140,
+   84
+  ],
+  "caption": "9:58",
+  "class": "spirit-empress-ground",
+  "approved_by": "Cole",
+  "source": "clicks_cole_v3"
+ },
+ {
+  "file": "data/slices/approved/spirit-empress-ground/spirit-empress-ground_1_cole_2026-09-28_phone_0599.00.png",
+  "card": "Spirit Empress",
+  "entity": "spirit-empress-ground",
+  "team": "enemy",
+  "video_id": "cole_2026-09-28_phone",
+  "match_id": null,
+  "t_video": 599,
+  "click": [
+   856.5090909090909,
+   1026.0162091121495
+  ],
+  "size": [
+   138,
+   90
+  ],
+  "caption": "9:59",
+  "class": "spirit-empress-ground",
+  "approved_by": "Cole",
+  "source": "clicks_cole_v3"
+ },
+ {
+  "file": "data/slices/approved/spirit-empress-ground/spirit-empress-ground_1_cole_2026-09-28_phone_0600.00.png",
+  "card": "Spirit Empress",
+  "entity": "spirit-empress-ground",
+  "team": "enemy",
+  "video_id": "cole_2026-09-28_phone",
+  "match_id": null,
+  "t_video": 600,
+  "click": [
+   863.5727272727273,
+   1112.6574669003116
+  ],
+  "size": [
+   132,
+   101
+  ],
+  "caption": "10:00",
+  "class": "spirit-empress-ground",
+  "approved_by": "Cole",
+  "source": "clicks_cole_v3"
+ },
+ {
+  "file": "data/slices/approved/spirit-empress-ground/spirit-empress-ground_1_cole_2026-09-28_phone_0601.00.png",
+  "card": "Spirit Empress",
+  "entity": "spirit-empress-ground",
+  "team": "enemy",
+  "video_id": "cole_2026-09-28_phone",
+  "match_id": null,
+  "t_video": 601,
+  "click": [
+   863.5727272727273,
+   1211.507934190031
+  ],
+  "size": [
+   179,
+   88
+  ],
+  "caption": "10:01",
+  "class": "spirit-empress-ground",
+  "approved_by": "Cole",
+  "source": "clicks_cole_v3"
+ },
+ {
+  "file": "data/slices/approved/spirit-empress-ground/spirit-empress-ground_1_cole_2026-09-28_phone_0602.00.png",
+  "card": "Spirit Empress",
+  "entity": "spirit-empress-ground",
+  "team": "enemy",
+  "video_id": "cole_2026-09-28_phone",
+  "match_id": null,
+  "t_video": 602,
+  "click": [
+   868.2818181818182,
+   1286.8225759345794
+  ],
+  "size": [
+   130,
+   85
+  ],
+  "caption": "10:02",
+  "class": "spirit-empress-ground",
+  "approved_by": "Cole",
+  "source": "clicks_cole_v3"
+ },
+ {
+  "file": "data/slices/approved/tomb-queen/tomb-queen_1_cole_2026-09-28_phone_1033.00.png",
+  "card": "Tombstone",
+  "entity": "tomb-queen",
+  "team": "enemy",
+  "video_id": "cole_2026-09-28_phone",
+  "match_id": null,
+  "t_video": 1033,
+  "click": [
+   602.2181818181818,
+   807.7214271806854
+  ],
+  "size": [
+   138,
+   218
+  ],
+  "caption": "17:13",
+  "class": "tomb-queen",
+  "approved_by": "Cole",
+  "source": "clicks_cole_v3"
+ },
+ {
+  "file": "data/slices/approved/tomb-queen/tomb-queen_1_cole_2026-09-28_phone_1034.00.png",
+  "card": "Tombstone",
+  "entity": "tomb-queen",
+  "team": "enemy",
+  "video_id": "cole_2026-09-28_phone",
+  "match_id": null,
+  "t_video": 1034,
+  "click": [
+   656.3727272727273,
+   843.0251654984423
+  ],
+  "size": [
+   173,
+   211
+  ],
+  "caption": "17:14",
+  "class": "tomb-queen",
+  "approved_by": "Cole",
+  "source": "clicks_cole_v3"
+ },
+ {
+  "file": "data/slices/approved/tomb-queen/tomb-queen_1_cole_2026-09-28_phone_1035.00.png",
+  "card": "Tombstone",
+  "entity": "tomb-queen",
+  "team": "enemy",
+  "video_id": "cole_2026-09-28_phone",
+  "match_id": null,
+  "t_video": 1035,
+  "click": [
+   689.3363636363637,
+   883.0360689252336
+  ],
+  "size": [
+   143,
+   215
+  ],
+  "caption": "17:15",
+  "class": "tomb-queen",
+  "approved_by": "Cole",
+  "source": "clicks_cole_v3"
+ },
+ {
+  "file": "data/slices/approved/tomb-queen/tomb-queen_1_cole_2026-09-28_phone_1036.00.png",
+  "card": "Tombstone",
+  "entity": "tomb-queen",
+  "team": "enemy",
+  "video_id": "cole_2026-09-28_phone",
+  "match_id": null,
+  "t_video": 1036,
+  "click": [
+   745.8454545454546,
+   920.2520930685358
+  ],
+  "size": [
+   148,
+   217
+  ],
+  "caption": "17:16",
+  "class": "tomb-queen",
+  "approved_by": "Cole",
+  "source": "clicks_cole_v3"
+ },
+ {
+  "file": "data/slices/approved/tomb-queen/tomb-queen_1_cole_2026-09-28_phone_1037.00.png",
+  "card": "Tombstone",
+  "entity": "tomb-queen",
+  "team": "enemy",
+  "video_id": "cole_2026-09-28_phone",
+  "match_id": null,
+  "t_video": 1037,
+  "click": [
+   774.1,
+   960.2629964953271
+  ],
+  "size": [
+   114,
+   115
+  ],
+  "caption": "17:17",
+  "class": "tomb-queen",
+  "approved_by": "Cole",
+  "source": "clicks_cole_v3"
+ },
+ {
+  "file": "data/slices/approved/tomb-queen/tomb-queen_1_cole_2026-09-28_phone_1038.00.png",
+  "card": "Tombstone",
+  "entity": "tomb-queen",
+  "team": "enemy",
+  "video_id": "cole_2026-09-28_phone",
+  "match_id": null,
+  "t_video": 1038,
+  "click": [
+   816.4818181818182,
+   1004.9810650311526
+  ],
+  "size": [
+   99,
+   151
+  ],
+  "caption": "17:18",
+  "class": "tomb-queen",
+  "approved_by": "Cole",
+  "source": "clicks_cole_v3"
+ },
+ {
+  "file": "data/slices/approved/tomb-queen/tomb-queen_1_cole_2026-09-28_phone_1044.00.png",
+  "card": "Tombstone",
+  "entity": "tomb-queen",
+  "team": "enemy",
+  "video_id": "cole_2026-09-28_phone",
+  "match_id": null,
+  "t_video": 1044,
+  "click": [
+   842.3818181818182,
+   1326.5392815420562
+  ],
+  "size": [
+   127,
+   137
+  ],
+  "caption": "17:24",
+  "class": "tomb-queen",
+  "approved_by": "Cole",
+  "source": "clicks_cole_v3"
+ },
+ {
+  "file": "data/slices/approved/rune-giant/rune-giant_1_cole_2026-09-28_phone_1249.00.png",
+  "card": "Rune Giant",
+  "entity": "rune-giant",
+  "team": "enemy",
+  "video_id": "cole_2026-09-28_phone",
+  "match_id": null,
+  "t_video": 1249,
+  "click": [
+   764.6818181818182,
+   628.5549552180685
+  ],
+  "size": [
+   199,
+   185
+  ],
+  "caption": "20:49",
+  "class": "rune-giant",
+  "approved_by": "Cole",
+  "source": "clicks_cole_v3"
+ },
+ {
+  "file": "data/slices/approved/rune-giant/rune-giant_1_cole_2026-09-28_phone_1250.00.png",
+  "card": "Rune Giant",
+  "entity": "rune-giant",
+  "team": "enemy",
+  "video_id": "cole_2026-09-28_phone",
+  "match_id": null,
+  "t_video": 1250,
+  "click": [
+   797.6454545454545,
+   691.6603874610591
+  ],
+  "size": [
+   158,
+   186
+  ],
+  "caption": "20:50",
+  "class": "rune-giant",
+  "approved_by": "Cole",
+  "source": "clicks_cole_v3"
+ },
+ {
+  "file": "data/slices/approved/rune-giant/rune-giant_1_cole_2026-09-28_phone_1251.00.png",
+  "card": "Rune Giant",
+  "entity": "rune-giant",
+  "team": "enemy",
+  "video_id": "cole_2026-09-28_phone",
+  "match_id": null,
+  "t_video": 1251,
+  "click": [
+   790.5818181818182,
+   743.4392036604362
+  ],
+  "size": [
+   148,
+   175
+  ],
+  "caption": "20:51",
+  "class": "rune-giant",
+  "approved_by": "Cole",
+  "source": "clicks_cole_v3"
+ },
+ {
+  "file": "data/slices/approved/rune-giant/rune-giant_1_cole_2026-09-28_phone_1252.00.png",
+  "card": "Rune Giant",
+  "entity": "rune-giant",
+  "team": "enemy",
+  "video_id": "cole_2026-09-28_phone",
+  "match_id": null,
+  "t_video": 1252,
+  "click": [
+   818.8363636363637,
+   795.2180198598131
+  ],
+  "size": [
+   160,
+   190
+  ],
+  "caption": "20:52",
+  "class": "rune-giant",
+  "approved_by": "Cole",
+  "source": "clicks_cole_v3"
+ },
+ {
+  "file": "data/slices/approved/rune-giant/rune-giant_1_cole_2026-09-28_phone_1254.00.png",
+  "card": "Rune Giant",
+  "entity": "rune-giant",
+  "team": "enemy",
+  "video_id": "cole_2026-09-28_phone",
+  "match_id": null,
+  "t_video": 1254,
+  "click": [
+   814.1272727272727,
+   893.6271904205607
+  ],
+  "size": [
+   198,
+   132
+  ],
+  "caption": "20:54",
+  "class": "rune-giant",
+  "approved_by": "Cole",
+  "source": "clicks_cole_v3"
+ },
+ {
+  "file": "data/slices/approved/rune-giant/rune-giant_1_cole_2026-09-28_phone_1255.00.png",
+  "card": "Rune Giant",
+  "entity": "rune-giant",
+  "team": "enemy",
+  "video_id": "cole_2026-09-28_phone",
+  "match_id": null,
+  "t_video": 1255,
+  "click": [
+   792.9363636363636,
+   945.4060066199377
+  ],
+  "size": [
+   153,
+   132
+  ],
+  "caption": "20:55",
+  "class": "rune-giant",
+  "approved_by": "Cole",
+  "source": "clicks_cole_v3"
+ },
+ {
+  "file": "data/slices/approved/rune-giant/rune-giant_1_cole_2026-09-28_phone_1257.00.png",
+  "card": "Rune Giant",
+  "entity": "rune-giant",
+  "team": "enemy",
+  "video_id": "cole_2026-09-28_phone",
+  "match_id": null,
+  "t_video": 1257,
+  "click": [
+   807.0636363636364,
+   1057.9366725077882
+  ],
+  "size": [
+   156,
+   153
+  ],
+  "caption": "20:57",
+  "class": "rune-giant",
+  "approved_by": "Cole",
+  "source": "clicks_cole_v3"
+ },
+ {
+  "file": "data/slices/approved/rune-giant/rune-giant_1_cole_2026-09-28_phone_1262.00.png",
+  "card": "Rune Giant",
+  "entity": "rune-giant",
+  "team": "enemy",
+  "video_id": "cole_2026-09-28_phone",
+  "match_id": null,
+  "t_video": 1262,
+  "click": [
+   830.6090909090909,
+   1282.998004283489
+  ],
+  "size": [
+   167,
+   180
+  ],
+  "caption": "21:02",
+  "class": "rune-giant",
+  "approved_by": "Cole",
+  "source": "clicks_cole_v3"
+ },
+ {
+  "file": "data/slices/approved/goblinstein-doctor/goblinstein-doctor_1_cole_2026-09-28_phone_2169.00.png",
+  "card": "Goblinstein",
+  "entity": "goblinstein-doctor",
+  "team": "enemy",
+  "video_id": "cole_2026-09-28_phone",
+  "match_id": null,
+  "t_video": 2169,
+  "click": [
+   771.7454545454545,
+   783.1559092679128
+  ],
+  "size": [
+   128,
+   83
+  ],
+  "caption": "36:09",
+  "class": "goblinstein-doctor",
+  "approved_by": "Cole",
+  "source": "clicks_cole_v3"
+ },
+ {
+  "file": "data/slices/approved/goblinstein-monster/goblinstein-monster_1_cole_2026-09-28_phone_2169.00.png",
+  "card": "Goblinstein",
+  "entity": "goblinstein-monster",
+  "team": "enemy",
+  "video_id": "cole_2026-09-28_phone",
+  "match_id": null,
+  "t_video": 2169,
+  "click": [
+   816.4818181818182,
+   987.9175915109034
+  ],
+  "size": [
+   136,
+   166
+  ],
+  "caption": "36:09",
+  "class": "goblinstein-monster",
+  "approved_by": "Cole",
+  "source": "clicks_cole_v3"
+ },
+ {
+  "file": "data/slices/approved/goblinstein-monster/goblinstein-monster_1_cole_2026-09-28_phone_2170.00.png",
+  "card": "Goblinstein",
+  "entity": "goblinstein-monster",
+  "team": "enemy",
+  "video_id": "cole_2026-09-28_phone",
+  "match_id": null,
+  "t_video": 2170,
+  "click": [
+   842.3818181818182,
+   1034.9892426012461
+  ],
+  "size": [
+   133,
+   179
+  ],
+  "caption": "36:10",
+  "class": "goblinstein-monster",
+  "approved_by": "Cole",
+  "source": "clicks_cole_v3"
+ },
+ {
+  "file": "data/slices/approved/goblinstein-doctor/goblinstein-doctor_1_cole_2026-09-28_phone_2170.00.png",
+  "card": "Goblinstein",
+  "entity": "goblinstein-doctor",
+  "team": "enemy",
+  "video_id": "cole_2026-09-28_phone",
+  "match_id": null,
+  "t_video": 2170,
+  "click": [
+   797.6454545454545,
+   813.7524824766355
+  ],
+  "size": [
+   171,
+   75
+  ],
+  "caption": "36:10",
+  "class": "goblinstein-doctor",
+  "approved_by": "Cole",
+  "source": "clicks_cole_v3"
+ },
+ {
+  "file": "data/slices/approved/goblinstein-doctor/goblinstein-doctor_1_cole_2026-09-28_phone_2171.00.png",
+  "card": "Goblinstein",
+  "entity": "goblinstein-doctor",
+  "team": "enemy",
+  "video_id": "cole_2026-09-28_phone",
+  "match_id": null,
+  "t_video": 2171,
+  "click": [
+   800.0,
+   843.9077589563863
+  ],
+  "size": [
+   125,
+   69
+  ],
+  "caption": "36:11",
+  "class": "goblinstein-doctor",
+  "approved_by": "Cole",
+  "source": "clicks_cole_v3"
+ },
+ {
+  "file": "data/slices/approved/goblinstein-monster/goblinstein-monster_1_cole_2026-09-28_phone_2171.00.png",
+  "card": "Goblinstein",
+  "entity": "goblinstein-monster",
+  "team": "enemy",
+  "video_id": "cole_2026-09-28_phone",
+  "match_id": null,
+  "t_video": 2171,
+  "click": [
+   830.6090909090909,
+   1098.0946748442366
+  ],
+  "size": [
+   167,
+   168
+  ],
+  "caption": "36:11",
+  "class": "goblinstein-monster",
+  "approved_by": "Cole",
+  "source": "clicks_cole_v3"
+ },
+ {
+  "file": "data/slices/approved/goblinstein-doctor/goblinstein-doctor_1_cole_2026-09-28_phone_2172.00.png",
+  "card": "Goblinstein",
+  "entity": "goblinstein-doctor",
+  "team": "enemy",
+  "video_id": "cole_2026-09-28_phone",
+  "match_id": null,
+  "t_video": 2172,
+  "click": [
+   790.5818181818182,
+   865.0900019470405
+  ],
+  "size": [
+   161,
+   82
+  ],
+  "caption": "36:12",
+  "class": "goblinstein-doctor",
+  "approved_by": "Cole",
+  "source": "clicks_cole_v3"
+ },
+ {
+  "file": "data/slices/approved/goblinstein-monster/goblinstein-monster_1_cole_2026-09-28_phone_2172.00.png",
+  "card": "Goblinstein",
+  "entity": "goblinstein-monster",
+  "team": "enemy",
+  "video_id": "cole_2026-09-28_phone",
+  "match_id": null,
+  "t_video": 2172,
+  "click": [
+   823.5454545454545,
+   1161.6414038161993
+  ],
+  "size": [
+   146,
+   170
+  ],
+  "caption": "36:12",
+  "class": "goblinstein-monster",
+  "approved_by": "Cole",
+  "source": "clicks_cole_v3"
+ },
+ {
+  "file": "data/slices/approved/goblinstein-monster/goblinstein-monster_1_cole_2026-09-28_phone_2173.00.png",
+  "card": "Goblinstein",
+  "entity": "goblinstein-monster",
+  "team": "enemy",
+  "video_id": "cole_2026-09-28_phone",
+  "match_id": null,
+  "t_video": 2173,
+  "click": [
+   844.7363636363636,
+   1189.884394470405
+  ],
+  "size": [
+   130,
+   164
+  ],
+  "caption": "36:13",
+  "class": "goblinstein-monster",
+  "approved_by": "Cole",
+  "source": "clicks_cole_v3"
+ },
+ {
+  "file": "data/slices/approved/goblinstein-doctor/goblinstein-doctor_1_cole_2026-09-28_phone_2173.00.png",
+  "card": "Goblinstein",
+  "entity": "goblinstein-doctor",
+  "team": "enemy",
+  "video_id": "cole_2026-09-28_phone",
+  "match_id": null,
+  "t_video": 2173,
+  "click": [
+   800.0,
+   905.1009053738318
+  ],
+  "size": [
+   104,
+   85
+  ],
+  "caption": "36:13",
+  "class": "goblinstein-doctor",
+  "approved_by": "Cole",
+  "source": "clicks_cole_v3"
+ },
+ {
+  "file": "data/slices/approved/goblinstein-doctor/goblinstein-doctor_1_cole_2026-09-28_phone_2174.00.png",
+  "card": "Goblinstein",
+  "entity": "goblinstein-doctor",
+  "team": "enemy",
+  "video_id": "cole_2026-09-28_phone",
+  "match_id": null,
+  "t_video": 2174,
+  "click": [
+   790.5818181818182,
+   874.063035436137
+  ],
+  "size": [
+   164,
+   81
+  ],
+  "caption": "36:14",
+  "class": "goblinstein-doctor",
+  "approved_by": "Cole",
+  "source": "clicks_cole_v3"
+ },
+ {
+  "file": "data/slices/approved/goblinstein-doctor/goblinstein-doctor_1_cole_2026-09-28_phone_2175.00.png",
+  "card": "Goblinstein",
+  "entity": "goblinstein-doctor",
+  "team": "enemy",
+  "video_id": "cole_2026-09-28_phone",
+  "match_id": null,
+  "t_video": 2175,
+  "click": [
+   807.0636363636364,
+   895.2452784267913
+  ],
+  "size": [
+   195,
+   84
+  ],
+  "caption": "36:15",
+  "class": "goblinstein-doctor",
+  "approved_by": "Cole",
+  "source": "clicks_cole_v3"
+ },
+ {
+  "file": "data/slices/approved/goblinstein-doctor/goblinstein-doctor_1_cole_2026-09-28_phone_2176.00.png",
+  "card": "Goblinstein",
+  "entity": "goblinstein-doctor",
+  "team": "enemy",
+  "video_id": "cole_2026-09-28_phone",
+  "match_id": null,
+  "t_video": 2176,
+  "click": [
+   804.7090909090908,
+   909.3667737538941
+  ],
+  "size": [
+   159,
+   96
+  ],
+  "caption": "36:16",
+  "class": "goblinstein-doctor",
+  "approved_by": "Cole",
+  "source": "clicks_cole_v3"
+ },
+ {
+  "file": "data/slices/approved/goblinstein-doctor/goblinstein-doctor_1_cole_2026-09-28_phone_2178.00.png",
+  "card": "Goblinstein",
+  "entity": "goblinstein-doctor",
+  "team": "enemy",
+  "video_id": "cole_2026-09-28_phone",
+  "match_id": null,
+  "t_video": 2178,
+  "click": [
+   823.5454545454545,
+   1017.1902745327103
+  ],
+  "size": [
+   128,
+   61
+  ],
+  "caption": "36:18",
+  "class": "goblinstein-doctor",
+  "approved_by": "Cole",
+  "source": "clicks_cole_v3"
+ },
+ {
+  "file": "data/slices/approved/goblinstein-doctor/goblinstein-doctor_1_cole_2026-09-28_phone_0135.00.png",
+  "card": "Goblinstein",
+  "entity": "goblinstein-doctor",
+  "team": "enemy",
+  "video_id": "cole_2026-09-28_phone",
+  "match_id": null,
+  "t_video": 135,
+  "click": [
+   741.1363636363637,
+   805.3678446261682
+  ],
+  "size": [
+   121,
+   102
+  ],
+  "caption": "2:15",
+  "class": "goblinstein-doctor",
+  "approved_by": "Cole",
+  "source": "clicks_cole_v3"
+ },
+ {
+  "file": "data/slices/approved/goblinstein-monster/goblinstein-monster_1_cole_2026-09-28_phone_0135.00.png",
+  "card": "Goblinstein",
+  "entity": "goblinstein-monster",
+  "team": "enemy",
+  "video_id": "cole_2026-09-28_phone",
+  "match_id": null,
+  "t_video": 135,
+  "click": [
+   830.6090909090909,
+   1028.958187305296
+  ],
+  "size": [
+   150,
+   186
+  ],
+  "caption": "2:15",
+  "class": "goblinstein-monster",
+  "approved_by": "Cole",
+  "source": "clicks_cole_v3"
+ },
+ {
+  "file": "data/slices/approved/goblinstein-monster/goblinstein-monster_1_cole_2026-09-28_phone_0136.00.png",
+  "card": "Goblinstein",
+  "entity": "goblinstein-monster",
+  "team": "enemy",
+  "video_id": "cole_2026-09-28_phone",
+  "match_id": null,
+  "t_video": 136,
+  "click": [
+   818.8363636363637,
+   1035.5776382398753
+  ],
+  "size": [
+   149,
+   163
+  ],
+  "caption": "2:16",
+  "class": "goblinstein-monster",
+  "approved_by": "Cole",
+  "source": "clicks_cole_v3"
+ },
+ {
+  "file": "data/slices/approved/goblinstein-doctor/goblinstein-doctor_1_cole_2026-09-28_phone_0136.00.png",
+  "card": "Goblinstein",
+  "entity": "goblinstein-doctor",
+  "team": "enemy",
+  "video_id": "cole_2026-09-28_phone",
+  "match_id": null,
+  "t_video": 136,
+  "click": [
+   785.8727272727273,
+   854.3517815420561
+  ],
+  "size": [
+   170,
+   71
+  ],
+  "caption": "2:16",
+  "class": "goblinstein-doctor",
+  "approved_by": "Cole",
+  "source": "clicks_cole_v3"
+ },
+ {
+  "file": "data/slices/approved/goblinstein-monster/goblinstein-monster_1_cole_2026-09-28_phone_0137.00.png",
+  "card": "Goblinstein",
+  "entity": "goblinstein-monster",
+  "team": "enemy",
+  "video_id": "cole_2026-09-28_phone",
+  "match_id": null,
+  "t_video": 137,
+  "click": [
+   809.4181818181818,
+   1073.2349591121495
+  ],
+  "size": [
+   198,
+   133
+  ],
+  "caption": "2:17",
+  "class": "goblinstein-monster",
+  "approved_by": "Cole",
+  "source": "clicks_cole_v3"
+ },
+ {
+  "file": "data/slices/approved/goblinstein-doctor/goblinstein-doctor_1_cole_2026-09-28_phone_0137.00.png",
+  "card": "Goblinstein",
+  "entity": "goblinstein-doctor",
+  "team": "enemy",
+  "video_id": "cole_2026-09-28_phone",
+  "match_id": null,
+  "t_video": 137,
+  "click": [
+   797.6454545454545,
+   906.130597741433
+  ],
+  "size": [
+   169,
+   72
+  ],
+  "caption": "2:17",
+  "class": "goblinstein-doctor",
+  "approved_by": "Cole",
+  "source": "clicks_cole_v3"
+ },
+ {
+  "file": "data/slices/approved/goblinstein-monster/goblinstein-monster_1_cole_2026-09-28_phone_0138.00.png",
+  "card": "Goblinstein",
+  "entity": "goblinstein-monster",
+  "team": "enemy",
+  "video_id": "cole_2026-09-28_phone",
+  "match_id": null,
+  "t_video": 138,
+  "click": [
+   724.6545454545454,
+   1122.6601927570096
+  ],
+  "size": [
+   143,
+   157
+  ],
+  "caption": "2:18",
+  "class": "goblinstein-monster",
+  "approved_by": "Cole",
+  "source": "clicks_cole_v3"
+ },
+ {
+  "file": "data/slices/approved/goblinstein-doctor/goblinstein-doctor_1_cole_2026-09-28_phone_0138.00.png",
+  "card": "Goblinstein",
+  "entity": "goblinstein-doctor",
+  "team": "enemy",
+  "video_id": "cole_2026-09-28_phone",
+  "match_id": null,
+  "t_video": 138,
+  "click": [
+   816.4818181818182,
+   974.3844918224298
+  ],
+  "size": [
+   168,
+   85
+  ],
+  "caption": "2:18",
+  "class": "goblinstein-doctor",
+  "approved_by": "Cole",
+  "source": "clicks_cole_v3"
+ },
+ {
+  "file": "data/slices/approved/goblinstein-doctor/goblinstein-doctor_1_cole_2026-09-28_phone_0139.00.png",
+  "card": "Goblinstein",
+  "entity": "goblinstein-doctor",
+  "team": "enemy",
+  "video_id": "cole_2026-09-28_phone",
+  "match_id": null,
+  "t_video": 139,
+  "click": [
+   823.5454545454545,
+   1021.0148461838006
+  ],
+  "size": [
+   173,
+   65
+  ],
+  "caption": "2:19",
+  "class": "goblinstein-doctor",
+  "approved_by": "Cole",
+  "source": "clicks_cole_v3"
+ },
+ {
+  "file": "data/slices/approved/goblinstein-monster/goblinstein-monster_1_cole_2026-09-28_phone_0139.00.png",
+  "card": "Goblinstein",
+  "entity": "goblinstein-monster",
+  "team": "enemy",
+  "video_id": "cole_2026-09-28_phone",
+  "match_id": null,
+  "t_video": 139,
+  "click": [
+   677.5636363636364,
+   1176.3512947819313
+  ],
+  "size": [
+   137,
+   217
+  ],
+  "caption": "2:19",
+  "class": "goblinstein-monster",
+  "approved_by": "Cole",
+  "source": "clicks_cole_v3"
+ },
+ {
+  "file": "data/slices/approved/goblinstein-doctor/goblinstein-doctor_1_cole_2026-09-28_phone_0140.00.png",
+  "card": "Goblinstein",
+  "entity": "goblinstein-doctor",
+  "team": "enemy",
+  "video_id": "cole_2026-09-28_phone",
+  "match_id": null,
+  "t_video": 140,
+  "click": [
+   835.3181818181818,
+   1075.1472449376947
+  ],
+  "size": [
+   165,
+   68
+  ],
+  "caption": "2:20",
+  "class": "goblinstein-doctor",
+  "approved_by": "Cole",
+  "source": "clicks_cole_v3"
+ },
+ {
+  "file": "data/slices/approved/goblinstein-monster/goblinstein-monster_1_cole_2026-09-28_phone_0140.00.png",
+  "card": "Goblinstein",
+  "entity": "goblinstein-monster",
+  "team": "enemy",
+  "video_id": "cole_2026-09-28_phone",
+  "match_id": null,
+  "t_video": 140,
+  "click": [
+   649.3090909090909,
+   1195.1799552180687
+  ],
+  "size": [
+   157,
+   172
+  ],
+  "caption": "2:20",
+  "class": "goblinstein-monster",
+  "approved_by": "Cole",
+  "source": "clicks_cole_v3"
+ },
+ {
+  "file": "data/slices/approved/goblinstein-doctor/goblinstein-doctor_1_cole_2026-09-28_phone_0141.00.png",
+  "card": "Goblinstein",
+  "entity": "goblinstein-doctor",
+  "team": "enemy",
+  "video_id": "cole_2026-09-28_phone",
+  "match_id": null,
+  "t_video": 141,
+  "click": [
+   851.8000000000001,
+   1122.2188960280373
+  ],
+  "size": [
+   102,
+   95
+  ],
+  "caption": "2:21",
+  "class": "goblinstein-doctor",
+  "approved_by": "Cole",
+  "source": "clicks_cole_v3"
+ },
+ {
+  "file": "data/slices/approved/goblinstein-monster/goblinstein-monster_1_cole_2026-09-28_phone_0141.00.png",
+  "card": "Goblinstein",
+  "entity": "goblinstein-monster",
+  "team": "enemy",
+  "video_id": "cole_2026-09-28_phone",
+  "match_id": null,
+  "t_video": 141,
+  "click": [
+   621.0545454545454,
+   1202.2407028816199
+  ],
+  "size": [
+   175,
+   204
+  ],
+  "caption": "2:21",
+  "class": "goblinstein-monster",
+  "approved_by": "Cole",
+  "source": "clicks_cole_v3"
+ },
+ {
+  "file": "data/slices/approved/goblinstein-doctor/goblinstein-doctor_1_cole_2026-09-28_phone_0142.00.png",
+  "card": "Goblinstein",
+  "entity": "goblinstein-doctor",
+  "team": "enemy",
+  "video_id": "cole_2026-09-28_phone",
+  "match_id": null,
+  "t_video": 142,
+  "click": [
+   840.0272727272728,
+   1112.3632690809968
+  ],
+  "size": [
+   104,
+   101
+  ],
+  "caption": "2:22",
+  "class": "goblinstein-doctor",
+  "approved_by": "Cole",
+  "source": "clicks_cole_v3"
+ },
+ {
+  "file": "data/slices/approved/goblinstein-doctor/goblinstein-doctor_1_cole_2026-09-28_phone_0144.00.png",
+  "card": "Goblinstein",
+  "entity": "goblinstein-doctor",
+  "team": "enemy",
+  "video_id": "cole_2026-09-28_phone",
+  "match_id": null,
+  "t_video": 144,
+  "click": [
+   842.3818181818182,
+   1142.9598422897197
+  ],
+  "size": [
+   99,
+   95
+  ],
+  "caption": "2:24",
+  "class": "goblinstein-doctor",
+  "approved_by": "Cole",
+  "source": "clicks_cole_v3"
+ },
+ {
+  "file": "data/slices/approved/minion-giant/cole_2026-09-28_phone_m06_01220_04.png",
+  "card": "Minion Giant",
+  "entity": "minion-giant",
+  "match_id": "cole_2026-09-28_phone_m06",
+  "video_id": "cole_2026-09-28_phone",
+  "t_video": 1220.0,
+  "team": "friendly",
+  "old_cls": "electro-dragon",
+  "box": [
+   893.4909057617188,
+   907.8950805664062,
+   1035.5860595703125,
+   1017.490234375
+  ],
+  "similarity": 0.818,
+  "caption": "m06 \u00b7 friendly \u00b7 old: electro-dragon \u00b7 sim 0.82",
+  "class": "minion-giant",
+  "approved_by": "Cole",
+  "source": "lancedb_mining_r3",
+  "needs_final_pass": true
+ },
+ {
+  "file": "data/slices/approved/minion-giant/cole_2026-09-28_phone_m06_01219_03.png",
+  "card": "Minion Giant",
+  "entity": "minion-giant",
+  "match_id": "cole_2026-09-28_phone_m06",
+  "video_id": "cole_2026-09-28_phone",
+  "t_video": 1219.0,
+  "team": "friendly",
+  "old_cls": "electro-dragon",
+  "box": [
+   895.3858032226562,
+   842.6248779296875,
+   1044.885009765625,
+   956.0529174804688
+  ],
+  "similarity": 0.817,
+  "caption": "m06 \u00b7 friendly \u00b7 old: electro-dragon \u00b7 sim 0.82",
+  "class": "minion-giant",
+  "approved_by": "Cole",
+  "source": "lancedb_mining_r3",
+  "needs_final_pass": true
+ },
+ {
+  "file": "data/slices/approved/minion-giant/cole_2026-09-28_phone_m06_01137_00.png",
+  "card": "Minion Giant",
+  "entity": "minion-giant",
+  "match_id": "cole_2026-09-28_phone_m06",
+  "video_id": "cole_2026-09-28_phone",
+  "t_video": 1137.0,
+  "team": "friendly",
+  "old_cls": "golem",
+  "box": [
+   877.6398315429688,
+   807.6051635742188,
+   1058.4097900390625,
+   954.400634765625
+  ],
+  "similarity": 0.794,
+  "caption": "m06 \u00b7 friendly \u00b7 old: golem \u00b7 sim 0.79",
+  "class": "minion-giant",
+  "approved_by": "Cole",
+  "source": "lancedb_mining_r3",
+  "needs_final_pass": true
+ },
+ {
+  "file": "data/slices/approved/minion-giant/cole_2026-09-28_phone_m06_01306_06.png",
+  "card": "Minion Giant",
+  "entity": "minion-giant",
+  "match_id": "cole_2026-09-28_phone_m06",
+  "video_id": "cole_2026-09-28_phone",
+  "t_video": 1306.0,
+  "team": "friendly",
+  "old_cls": "mega-minion",
+  "box": [
+   790.607666015625,
+   1039.058349609375,
+   941.650146484375,
+   1126.446533203125
+  ],
+  "similarity": 0.772,
+  "caption": "m06 \u00b7 friendly \u00b7 old: mega-minion \u00b7 sim 0.77",
+  "class": "minion-giant",
+  "approved_by": "Cole",
+  "source": "lancedb_mining_r3",
+  "needs_final_pass": true
+ },
+ {
+  "file": "data/slices/approved/minion-giant/cole_2026-09-28_phone_m01_00097_13.png",
+  "card": "Minion Giant",
+  "entity": "minion-giant",
+  "match_id": "cole_2026-09-28_phone_m01",
+  "video_id": "cole_2026-09-28_phone",
+  "t_video": 97.0,
+  "team": "enemy",
+  "old_cls": "electro-dragon",
+  "box": [
+   95.19572448730469,
+   846.1007080078125,
+   241.10604858398438,
+   953.0547485351562
+  ],
+  "similarity": 0.757,
+  "caption": "m01 \u00b7 enemy \u00b7 old: electro-dragon \u00b7 sim 0.76",
+  "class": "minion-giant",
+  "approved_by": "Cole",
+  "source": "lancedb_mining_r3",
+  "needs_final_pass": true
+ },
+ {
+  "file": "data/slices/approved/minion-giant/cole_2026-09-28_phone_m01_00102_12.png",
+  "card": "Goblinstein",
+  "entity": "goblinstein-monster",
+  "match_id": "cole_2026-09-28_phone_m01",
+  "video_id": "cole_2026-09-28_phone",
+  "t_video": 102.0,
+  "team": "enemy",
+  "old_cls": "electro-dragon",
+  "box": [
+   72.20048522949219,
+   1029.9058837890625,
+   213.9911651611328,
+   1130.619140625
+  ],
+  "similarity": 0.663,
+  "caption": "m01 \u00b7 enemy \u00b7 old: electro-dragon \u00b7 sim 0.66",
+  "class": "minion-giant",
+  "approved_by": "Cole",
+  "source": "lancedb_mining_r3",
+  "needs_final_pass": true
+ },
+ {
+  "file": "data/slices/approved/minion-giant/cole_2026-09-28_phone_m01_00104_15.png",
+  "card": "Minion Giant",
+  "entity": "minion-giant",
+  "match_id": "cole_2026-09-28_phone_m01",
+  "video_id": "cole_2026-09-28_phone",
+  "t_video": 104.0,
+  "team": "friendly",
+  "old_cls": "ice-golem",
+  "box": [
+   72.84688568115234,
+   1045.0609130859375,
+   220.43382263183594,
+   1162.1141357421875
+  ],
+  "similarity": 0.69,
+  "caption": "m01 \u00b7 friendly \u00b7 old: ice-golem \u00b7 sim 0.69",
+  "class": "minion-giant",
+  "approved_by": "Cole",
+  "source": "lancedb_mining_r3",
+  "needs_final_pass": true
+ },
+ {
+  "file": "data/slices/approved/goblinstein-doctor/cole_2026-09-28_phone_m11_02252_13.png",
+  "card": "Goblinstein",
+  "entity": "goblinstein-doctor",
+  "match_id": "cole_2026-09-28_phone_m11",
+  "video_id": "cole_2026-09-28_phone",
+  "t_video": 2252.0,
+  "team": "enemy",
+  "old_cls": "bomber",
+  "box": [
+   791.5482788085938,
+   919.9531860351562,
+   869.9200439453125,
+   994.1841430664062
+  ],
+  "similarity": 0.789,
+  "caption": "m11 \u00b7 enemy \u00b7 old: bomber \u00b7 sim 0.79",
+  "class": "goblinstein-doctor",
+  "approved_by": "Cole",
+  "source": "lancedb_mining_r3",
+  "needs_final_pass": true
+ },
+ {
+  "file": "data/slices/approved/goblinstein-doctor/cole_2026-09-28_phone_m11_02287_08.png",
+  "card": "Goblinstein",
+  "entity": "goblinstein-doctor",
+  "match_id": "cole_2026-09-28_phone_m11",
+  "video_id": "cole_2026-09-28_phone",
+  "t_video": 2287.0,
+  "team": "friendly",
+  "old_cls": "musketeer",
+  "box": [
+   701.175537109375,
+   742.4808349609375,
+   778.4749755859375,
+   865.2527465820312
+  ],
+  "similarity": 0.769,
+  "caption": "m11 \u00b7 friendly \u00b7 old: musketeer \u00b7 sim 0.77",
+  "class": "goblinstein-doctor",
+  "approved_by": "Cole",
+  "source": "lancedb_mining_r3",
+  "needs_final_pass": true
+ },
+ {
+  "file": "data/slices/approved/goblinstein-doctor/cole_2026-09-28_phone_m11_02256_12.png",
+  "card": "Goblinstein",
+  "entity": "goblinstein-doctor",
+  "match_id": "cole_2026-09-28_phone_m11",
+  "video_id": "cole_2026-09-28_phone",
+  "t_video": 2256.0,
+  "team": "friendly",
+  "old_cls": "valkyrie",
+  "box": [
+   798.8711547851562,
+   1093.457763671875,
+   876.37060546875,
+   1205.4461669921875
+  ],
+  "similarity": 0.768,
+  "caption": "m11 \u00b7 friendly \u00b7 old: valkyrie \u00b7 sim 0.77",
+  "class": "goblinstein-doctor",
+  "approved_by": "Cole",
+  "source": "lancedb_mining_r3",
+  "needs_final_pass": true
+ },
+ {
+  "file": "data/slices/approved/goblinstein-doctor/cole_2026-09-28_phone_m11_02292_03.png",
+  "card": "Goblinstein",
+  "entity": "goblinstein-doctor",
+  "match_id": "cole_2026-09-28_phone_m11",
+  "video_id": "cole_2026-09-28_phone",
+  "t_video": 2292.0,
+  "team": "enemy",
+  "old_cls": "spear-goblin",
+  "box": [
+   703.7855834960938,
+   730.4807739257812,
+   782.034423828125,
+   812.40087890625
+  ],
+  "similarity": 0.761,
+  "caption": "m11 \u00b7 enemy \u00b7 old: spear-goblin \u00b7 sim 0.76",
+  "class": "goblinstein-doctor",
+  "approved_by": "Cole",
+  "source": "lancedb_mining_r3",
+  "needs_final_pass": true
+ },
+ {
+  "file": "data/slices/approved/goblinstein-doctor/cole_2026-09-28_phone_m11_02294_15.png",
+  "card": "Goblinstein",
+  "entity": "goblinstein-doctor",
+  "match_id": "cole_2026-09-28_phone_m11",
+  "video_id": "cole_2026-09-28_phone",
+  "t_video": 2294.0,
+  "team": "friendly",
+  "old_cls": "musketeer",
+  "box": [
+   699.6494750976562,
+   739.6886596679688,
+   779.0487670898438,
+   860.7622680664062
+  ],
+  "similarity": 0.759,
+  "caption": "m11 \u00b7 friendly \u00b7 old: musketeer \u00b7 sim 0.76",
+  "class": "goblinstein-doctor",
+  "approved_by": "Cole",
+  "source": "lancedb_mining_r3",
+  "needs_final_pass": true
+ },
+ {
+  "file": "data/slices/approved/goblinstein-doctor/cole_2026-09-28_phone_m11_02289_04.png",
+  "card": "Goblinstein",
+  "entity": "goblinstein-doctor",
+  "match_id": "cole_2026-09-28_phone_m11",
+  "video_id": "cole_2026-09-28_phone",
+  "t_video": 2289.0,
+  "team": "enemy",
+  "old_cls": "bomber",
+  "box": [
+   703.6505737304688,
+   713.7207641601562,
+   781.346435546875,
+   801.1142578125
+  ],
+  "similarity": 0.752,
+  "caption": "m11 \u00b7 enemy \u00b7 old: bomber \u00b7 sim 0.75",
+  "class": "goblinstein-doctor",
+  "approved_by": "Cole",
+  "source": "lancedb_mining_r3",
+  "needs_final_pass": true
+ },
+ {
+  "file": "data/slices/approved/goblinstein-doctor/cole_2026-09-28_phone_m11_02288_04.png",
+  "card": "Goblinstein",
+  "entity": "goblinstein-doctor",
+  "match_id": "cole_2026-09-28_phone_m11",
+  "video_id": "cole_2026-09-28_phone",
+  "t_video": 2288.0,
+  "team": "friendly",
+  "old_cls": "musketeer",
+  "box": [
+   702.183837890625,
+   753.6571044921875,
+   776.2206420898438,
+   862.0826416015625
+  ],
+  "similarity": 0.73,
+  "caption": "m11 \u00b7 friendly \u00b7 old: musketeer \u00b7 sim 0.73",
+  "class": "goblinstein-doctor",
+  "approved_by": "Cole",
+  "source": "lancedb_mining_r3",
+  "needs_final_pass": true
+ },
+ {
+  "file": "data/slices/approved/goblinstein-doctor/cole_2026-09-28_phone_m11_02250_25.png",
+  "card": "Goblinstein",
+  "entity": "goblinstein-doctor",
+  "match_id": "cole_2026-09-28_phone_m11",
+  "video_id": "cole_2026-09-28_phone",
+  "t_video": 2250.0,
+  "team": "friendly",
+  "old_cls": "skeleton",
+  "box": [
+   773.5927734375,
+   817.6609497070312,
+   844.7872314453125,
+   886.1989135742188
+  ],
+  "similarity": 0.728,
+  "caption": "m11 \u00b7 friendly \u00b7 old: skeleton \u00b7 sim 0.73",
+  "class": "goblinstein-doctor",
+  "approved_by": "Cole",
+  "source": "lancedb_mining_r3",
+  "needs_final_pass": true
+ },
+ {
+  "file": "data/slices/approved/goblinstein-doctor/cole_2026-09-28_phone_m11_02291_08.png",
+  "card": "Goblinstein",
+  "entity": "goblinstein-doctor",
+  "match_id": "cole_2026-09-28_phone_m11",
+  "video_id": "cole_2026-09-28_phone",
+  "t_video": 2291.0,
+  "team": "friendly",
+  "old_cls": "musketeer",
+  "box": [
+   701.3892211914062,
+   754.247802734375,
+   775.846923828125,
+   861.8719482421875
+  ],
+  "similarity": 0.713,
+  "caption": "m11 \u00b7 friendly \u00b7 old: musketeer \u00b7 sim 0.71",
+  "class": "goblinstein-doctor",
+  "approved_by": "Cole",
+  "source": "lancedb_mining_r3",
+  "needs_final_pass": true
+ },
+ {
+  "file": "data/slices/approved/goblinstein-doctor/cole_2026-09-28_phone_m11_02290_04.png",
+  "card": "Goblinstein",
+  "entity": "goblinstein-doctor",
+  "match_id": "cole_2026-09-28_phone_m11",
+  "video_id": "cole_2026-09-28_phone",
+  "t_video": 2290.0,
+  "team": "enemy",
+  "old_cls": "spear-goblin",
+  "box": [
+   703.8790283203125,
+   729.7916870117188,
+   782.26416015625,
+   809.801025390625
+  ],
+  "similarity": 0.706,
+  "caption": "m11 \u00b7 enemy \u00b7 old: spear-goblin \u00b7 sim 0.71",
+  "class": "goblinstein-doctor",
+  "approved_by": "Cole",
+  "source": "lancedb_mining_r3",
+  "needs_final_pass": true
+ },
+ {
+  "file": "data/slices/approved/goblinstein-doctor/cole_2026-09-28_phone_m11_02167_06.png",
+  "card": "Goblinstein",
+  "entity": "goblinstein-doctor",
+  "match_id": "cole_2026-09-28_phone_m11",
+  "video_id": "cole_2026-09-28_phone",
+  "t_video": 2167.0,
+  "team": "friendly",
+  "old_cls": "fireball",
+  "box": [
+   700.4631958007812,
+   717.7332763671875,
+   786.1168823242188,
+   856.9004516601562
+  ],
+  "similarity": 0.694,
+  "caption": "m11 \u00b7 friendly \u00b7 old: fireball \u00b7 sim 0.69",
+  "class": "goblinstein-doctor",
+  "approved_by": "Cole",
+  "source": "lancedb_mining_r3",
+  "needs_final_pass": true
+ },
+ {
+  "file": "data/slices/approved/goblinstein-monster/cole_2026-09-28_phone_m01_00178_09.png",
+  "card": "Goblinstein",
+  "entity": "goblinstein-monster",
+  "match_id": "cole_2026-09-28_phone_m01",
+  "video_id": "cole_2026-09-28_phone",
+  "t_video": 178.0,
+  "team": "enemy",
+  "old_cls": "goblin-brawler",
+  "box": [
+   657.3660888671875,
+   1076.2266845703125,
+   764.2111206054688,
+   1172.8466796875
+  ],
+  "similarity": 0.726,
+  "caption": "m01 \u00b7 enemy \u00b7 old: goblin-brawler \u00b7 sim 0.73",
+  "class": "goblinstein-monster",
+  "approved_by": "Cole",
+  "source": "lancedb_mining_r3",
+  "needs_final_pass": true
+ },
+ {
+  "file": "data/slices/approved/goblinstein-monster/cole_2026-09-28_phone_m01_00177_03.png",
+  "card": "Goblinstein",
+  "entity": "goblinstein-monster",
+  "match_id": "cole_2026-09-28_phone_m01",
+  "video_id": "cole_2026-09-28_phone",
+  "t_video": 177.0,
+  "team": "enemy",
+  "old_cls": "rocket",
+  "box": [
+   706.3843994140625,
+   976.1054077148438,
+   872.4856567382812,
+   1218.1553955078125
+  ],
+  "similarity": 0.703,
+  "caption": "m01 \u00b7 enemy \u00b7 old: rocket \u00b7 sim 0.70",
+  "class": "goblinstein-monster",
+  "approved_by": "Cole",
+  "source": "lancedb_mining_r3",
+  "needs_final_pass": true
+ },
+ {
+  "file": "data/slices/approved/goblinstein-monster/cole_2026-09-28_phone_m01_00179_01.png",
+  "card": "Goblinstein",
+  "entity": "goblinstein-monster",
+  "match_id": "cole_2026-09-28_phone_m01",
+  "video_id": "cole_2026-09-28_phone",
+  "t_video": 179.0,
+  "team": "friendly",
+  "old_cls": "inferno-tower",
+  "box": [
+   631.3224487304688,
+   1060.583740234375,
+   779.1778564453125,
+   1283.38818359375
+  ],
+  "similarity": 0.683,
+  "caption": "m01 \u00b7 friendly \u00b7 old: inferno-tower \u00b7 sim 0.68",
+  "class": "goblinstein-monster",
+  "approved_by": "Cole",
+  "source": "lancedb_mining_r3",
+  "needs_final_pass": true
+ },
+ {
+  "file": "data/slices/approved/goblinstein-monster/cole_2026-09-28_phone_m11_02289_08.png",
+  "card": "Goblinstein",
+  "entity": "goblinstein-monster",
+  "match_id": "cole_2026-09-28_phone_m11",
+  "video_id": "cole_2026-09-28_phone",
+  "t_video": 2289.0,
+  "team": "friendly",
+  "old_cls": "baby-dragon",
+  "box": [
+   613.9441528320312,
+   989.7951049804688,
+   780.6398315429688,
+   1130.317138671875
+  ],
+  "similarity": 0.665,
+  "caption": "m11 \u00b7 friendly \u00b7 old: baby-dragon \u00b7 sim 0.67",
+  "class": "goblinstein-monster",
+  "approved_by": "Cole",
+  "source": "lancedb_mining_r3",
+  "needs_final_pass": true
+ },
+ {
+  "file": "data/slices/approved/minion-giant/cole_2026-09-28_phone_m01_00102_12.png",
+  "card": "Goblinstein",
+  "entity": "goblinstein-monster",
+  "match_id": "cole_2026-09-28_phone_m01",
+  "video_id": "cole_2026-09-28_phone",
+  "t_video": 102.0,
+  "team": "enemy",
+  "old_cls": "electro-dragon",
+  "box": [
+   72.20048522949219,
+   1029.9058837890625,
+   213.9911651611328,
+   1130.619140625
+  ],
+  "similarity": 0.663,
+  "caption": "m01 \u00b7 enemy \u00b7 old: electro-dragon \u00b7 sim 0.66",
+  "class": "minion-giant",
+  "approved_by": "Cole",
+  "source": "lancedb_mining_r3",
+  "needs_final_pass": true
+ },
+ {
+  "file": "data/slices/approved/goblinstein-monster/UFQFnrtWUE4_m07_01421_00.png",
+  "card": "Goblinstein",
+  "entity": "goblinstein-monster",
+  "match_id": "UFQFnrtWUE4_m07",
+  "video_id": "UFQFnrtWUE4",
+  "t_video": 1421.0,
+  "team": "friendly",
+  "old_cls": "mighty-miner",
+  "box": [
+   162.17884826660156,
+   585.942138671875,
+   298.8818054199219,
+   673.0159301757812
+  ],
+  "similarity": 0.649,
+  "caption": "m07 \u00b7 friendly \u00b7 old: mighty-miner \u00b7 sim 0.65",
+  "class": "goblinstein-monster",
+  "approved_by": "Cole",
+  "source": "lancedb_mining_r3",
+  "needs_final_pass": true
+ },
+ {
+  "file": "data/slices/approved/goblinstein-monster/cole_2026-09-28_phone_m11_02252_00.png",
+  "card": "Goblinstein",
+  "entity": "goblinstein-monster",
+  "match_id": "cole_2026-09-28_phone_m11",
+  "video_id": "cole_2026-09-28_phone",
+  "t_video": 2252.0,
+  "team": "friendly",
+  "old_cls": "mighty-miner",
+  "box": [
+   780.428466796875,
+   1226.3399658203125,
+   1014.34619140625,
+   1365.90966796875
+  ],
+  "similarity": 0.645,
+  "caption": "m11 \u00b7 friendly \u00b7 old: mighty-miner \u00b7 sim 0.65",
+  "class": "goblinstein-monster",
+  "approved_by": "Cole",
+  "source": "lancedb_mining_r3",
+  "needs_final_pass": true
+ },
+ {
+  "file": "data/slices/approved/goblinstein-monster/UFQFnrtWUE4_m07_01437_08.png",
+  "card": "Goblinstein",
+  "entity": "goblinstein-monster",
+  "match_id": "UFQFnrtWUE4_m07",
+  "video_id": "UFQFnrtWUE4",
+  "t_video": 1437.0,
+  "team": "friendly",
+  "old_cls": "mighty-miner",
+  "box": [
+   245.1299591064453,
+   293.81781005859375,
+   345.21282958984375,
+   437.7943420410156
+  ],
+  "similarity": 0.643,
+  "caption": "m07 \u00b7 friendly \u00b7 old: mighty-miner \u00b7 sim 0.64",
+  "class": "goblinstein-monster",
+  "approved_by": "Cole",
+  "source": "lancedb_mining_r3",
+  "needs_final_pass": true
+ },
+ {
+  "file": "data/slices/approved/spirit-empress-air/UFQFnrtWUE4_m02_00290_02.png",
+  "card": "Spirit Empress",
+  "entity": "spirit-empress-air",
+  "match_id": "UFQFnrtWUE4_m02",
+  "video_id": "UFQFnrtWUE4",
+  "t_video": 290.0,
+  "team": "enemy",
+  "old_cls": "magic-archer",
+  "box": [
+   345.81097412109375,
+   350.9207763671875,
+   442.8875427246094,
+   439.32061767578125
+  ],
+  "similarity": 0.831,
+  "caption": "m02 \u00b7 enemy \u00b7 old: magic-archer \u00b7 sim 0.83",
+  "class": "spirit-empress-air",
+  "approved_by": "Cole",
+  "source": "lancedb_mining_r3",
+  "needs_final_pass": true
+ },
+ {
+  "file": "data/slices/approved/spirit-empress-air/UFQFnrtWUE4_m02_00282_06.png",
+  "card": "Spirit Empress",
+  "entity": "spirit-empress-air",
+  "match_id": "UFQFnrtWUE4_m02",
+  "video_id": "UFQFnrtWUE4",
+  "t_video": 282.0,
+  "team": "enemy",
+  "old_cls": "magic-archer",
+  "box": [
+   415.9564514160156,
+   47.28916549682617,
+   504.4062805175781,
+   136.58392333984375
+  ],
+  "similarity": 0.811,
+  "caption": "m02 \u00b7 enemy \u00b7 old: magic-archer \u00b7 sim 0.81",
+  "class": "spirit-empress-air",
+  "approved_by": "Cole",
+  "source": "lancedb_mining_r3",
+  "needs_final_pass": true
+ },
+ {
+  "file": "data/slices/approved/spirit-empress-ground/UFQFnrtWUE4_m02_00356_01.png",
+  "card": "Spirit Empress",
+  "entity": "spirit-empress-ground",
+  "match_id": "UFQFnrtWUE4_m02",
+  "video_id": "UFQFnrtWUE4",
+  "t_video": 356.0,
+  "team": "enemy",
+  "old_cls": "magic-archer",
+  "box": [
+   688.187744140625,
+   374.8130187988281,
+   769.4036254882812,
+   466.24908447265625
+  ],
+  "similarity": 0.748,
+  "caption": "m02 \u00b7 enemy \u00b7 old: magic-archer \u00b7 sim 0.75",
+  "class": "spirit-empress-ground",
+  "approved_by": "Cole",
+  "source": "lancedb_mining_r3",
+  "needs_final_pass": true
+ },
+ {
+  "file": "data/slices/approved/spirit-empress-ground/cole_2026-09-28_phone_m03_00634_13.png",
+  "card": "Spirit Empress",
+  "entity": "spirit-empress-ground",
+  "match_id": "cole_2026-09-28_phone_m03",
+  "video_id": "cole_2026-09-28_phone",
+  "t_video": 634.0,
+  "team": "enemy",
+  "old_cls": "little-prince",
+  "box": [
+   761.3467407226562,
+   856.7338256835938,
+   843.8167724609375,
+   990.8565063476562
+  ],
+  "similarity": 0.736,
+  "caption": "m03 \u00b7 enemy \u00b7 old: little-prince \u00b7 sim 0.74",
+  "class": "spirit-empress-ground",
+  "approved_by": "Cole",
+  "source": "lancedb_mining_r3",
+  "needs_final_pass": true
+ },
+ {
+  "file": "data/slices/approved/spirit-empress-ground/UFQFnrtWUE4_m02_00445_08.png",
+  "card": "Spirit Empress",
+  "entity": "spirit-empress-ground",
+  "match_id": "UFQFnrtWUE4_m02",
+  "video_id": "UFQFnrtWUE4",
+  "t_video": 445.0,
+  "team": "enemy",
+  "old_cls": "magic-archer",
+  "box": [
+   646.0506591796875,
+   507.068115234375,
+   722.3742065429688,
+   601.5543212890625
+  ],
+  "similarity": 0.719,
+  "caption": "m02 \u00b7 enemy \u00b7 old: magic-archer \u00b7 sim 0.72",
+  "class": "spirit-empress-ground",
+  "approved_by": "Cole",
+  "source": "lancedb_mining_r3",
+  "needs_final_pass": true
+ },
+ {
+  "file": "data/slices/approved/rune-giant/cole_2026-09-28_phone_m06_01293_17.png",
+  "card": "Rune Giant",
+  "entity": "rune-giant",
+  "match_id": "cole_2026-09-28_phone_m06",
+  "video_id": "cole_2026-09-28_phone",
+  "t_video": 1293.0,
+  "team": "enemy",
+  "old_cls": "royal-giant",
+  "box": [
+   130.32095336914062,
+   1061.20068359375,
+   330.0996398925781,
+   1236.904541015625
+  ],
+  "similarity": 0.764,
+  "caption": "m06 \u00b7 enemy \u00b7 old: royal-giant \u00b7 sim 0.76",
+  "class": "rune-giant",
+  "approved_by": "Cole",
+  "source": "lancedb_mining_r3",
+  "needs_final_pass": true
+ },
+ {
+  "file": "data/slices/approved/rune-giant/cole_2026-09-28_phone_m06_01296_02.png",
+  "card": "Rune Giant",
+  "entity": "rune-giant",
+  "match_id": "cole_2026-09-28_phone_m06",
+  "video_id": "cole_2026-09-28_phone",
+  "t_video": 1296.0,
+  "team": "enemy",
+  "old_cls": "giant",
+  "box": [
+   130.57545471191406,
+   1177.898193359375,
+   314.8833312988281,
+   1358.016357421875
+  ],
+  "similarity": 0.764,
+  "caption": "m06 \u00b7 enemy \u00b7 old: giant \u00b7 sim 0.76",
+  "class": "rune-giant",
+  "approved_by": "Cole",
+  "source": "lancedb_mining_r3",
+  "needs_final_pass": true
+ },
+ {
+  "file": "data/slices/approved/rune-giant/cole_2026-09-28_phone_m06_01290_29.png",
+  "card": "Rune Giant",
+  "entity": "rune-giant",
+  "match_id": "cole_2026-09-28_phone_m06",
+  "video_id": "cole_2026-09-28_phone",
+  "t_video": 1290.0,
+  "team": "enemy",
+  "old_cls": "giant",
+  "box": [
+   183.319580078125,
+   918.9867553710938,
+   357.3792724609375,
+   1091.2391357421875
+  ],
+  "similarity": 0.706,
+  "caption": "m06 \u00b7 enemy \u00b7 old: giant \u00b7 sim 0.71",
+  "class": "rune-giant",
+  "approved_by": "Cole",
+  "source": "lancedb_mining_r3",
+  "needs_final_pass": true
+ },
+ {
+  "file": "data/slices/approved/rune-giant/cole_2026-09-28_phone_m06_01285_08.png",
+  "card": "Rune Giant",
+  "entity": "rune-giant",
+  "match_id": "cole_2026-09-28_phone_m06",
+  "video_id": "cole_2026-09-28_phone",
+  "t_video": 1285.0,
+  "team": "enemy",
+  "old_cls": "royal-giant",
+  "box": [
+   412.3787841796875,
+   718.5206909179688,
+   608.4552612304688,
+   964.147705078125
+  ],
+  "similarity": 0.704,
+  "caption": "m06 \u00b7 enemy \u00b7 old: royal-giant \u00b7 sim 0.70",
+  "class": "rune-giant",
+  "approved_by": "Cole",
+  "source": "lancedb_mining_r3",
+  "needs_final_pass": true
+ },
+ {
+  "file": "data/slices/approved/rune-giant/cole_2026-09-28_phone_m06_01295_04.png",
+  "card": "Rune Giant",
+  "entity": "rune-giant",
+  "match_id": "cole_2026-09-28_phone_m06",
+  "video_id": "cole_2026-09-28_phone",
+  "t_video": 1295.0,
+  "team": "friendly",
+  "old_cls": "goblin-cage",
+  "box": [
+   163.1253204345703,
+   1137.9306640625,
+   319.3944091796875,
+   1295.0223388671875
+  ],
+  "similarity": 0.702,
+  "caption": "m06 \u00b7 friendly \u00b7 old: goblin-cage \u00b7 sim 0.70",
+  "class": "rune-giant",
+  "approved_by": "Cole",
+  "source": "lancedb_mining_r3",
+  "needs_final_pass": true
+ },
+ {
+  "file": "data/slices/approved/berserker/berserker_1_friend_2026-09-29_a_0397.20.png",
+  "card": "Berserker",
+  "entity": "berserker",
+  "team": "enemy",
+  "video_id": "friend_2026-09-29_a",
+  "match_id": "friend_2026-09-29_a_m02",
+  "t_video": 397.2,
+  "click": [
+   332.04545454545456,
+   1383.748175523952
+  ],
+  "size": [
+   84,
+   80
+  ],
+  "caption": "berserker \u00b7 friend_2026-09 6:37",
+  "class": "berserker",
+  "approved_by": "Cole",
+  "source": "clicks_new_2026-09-30"
+ },
+ {
+  "file": "data/slices/approved/berserker/berserker_1_friend_2026-09-29_b_0384.10.png",
+  "card": "Berserker",
+  "entity": "berserker",
+  "team": "enemy",
+  "video_id": "friend_2026-09-29_b",
+  "match_id": "friend_2026-09-29_b_m02",
+  "t_video": 384.1,
+  "click": [
+   631.5818181818181,
+   1670.5034150449103
+  ],
+  "size": [
+   88,
+   77
+  ],
+  "caption": "berserker \u00b7 friend_2026-09 6:24",
+  "class": "berserker",
+  "approved_by": "Cole",
+  "source": "clicks_new_2026-09-30"
+ },
+ {
+  "file": "data/slices/approved/berserker/berserker_1_friend_2026-09-29_b_0647.70.png",
+  "card": "Berserker",
+  "entity": "berserker",
+  "team": "enemy",
+  "video_id": "friend_2026-09-29_b",
+  "match_id": "friend_2026-09-29_b_m04",
+  "t_video": 647.7,
+  "click": [
+   215.5590909090909,
+   1011.114941991018
+  ],
+  "size": [
+   109,
+   85
+  ],
+  "caption": "berserker \u00b7 friend_2026-09 10:47",
+  "class": "berserker",
+  "approved_by": "Cole",
+  "source": "clicks_new_2026-09-30"
+ },
+ {
+  "file": "data/slices/approved/boss-bandit/boss-bandit_1_cole_2026-09-29_b_0050.20.png",
+  "card": "Boss Bandit",
+  "entity": "boss-bandit",
+  "team": "enemy",
+  "video_id": "cole_2026-09-29_b",
+  "match_id": "cole_2026-09-29_b_m01",
+  "t_video": 50.2,
+  "click": [
+   397.3727272727273,
+   1636.6421704633956
+  ],
+  "size": [
+   110,
+   52
+  ],
+  "caption": "boss-bandit \u00b7 cole_2026-09-2 0:50",
+  "class": "boss-bandit",
+  "approved_by": "Cole",
+  "source": "clicks_new_2026-09-30"
+ },
+ {
+  "file": "data/slices/approved/boss-bandit/boss-bandit_1_cole_2026-09-29_b_0529.10.png",
+  "card": "Boss Bandit",
+  "entity": "boss-bandit",
+  "team": "enemy",
+  "video_id": "cole_2026-09-29_b",
+  "match_id": "cole_2026-09-29_b_m03",
+  "t_video": 529.1,
+  "click": [
+   960.1090909090909,
+   1624.432960961838
+  ],
+  "size": [
+   115,
+   77
+  ],
+  "caption": "boss-bandit \u00b7 cole_2026-09-2 8:49",
+  "class": "boss-bandit",
+  "approved_by": "Cole",
+  "source": "clicks_new_2026-09-30"
+ },
+ {
+  "file": "data/slices/approved/boss-bandit/boss-bandit_1_cole_2026-09-29_b_0719.90.png",
+  "card": "Boss Bandit",
+  "entity": "boss-bandit",
+  "team": "enemy",
+  "video_id": "cole_2026-09-29_b",
+  "match_id": "cole_2026-09-29_b_m03",
+  "t_video": 719.9,
+  "click": [
+   738.7818181818182,
+   1583.9807608060748
+  ],
+  "size": [
+   127,
+   78
+  ],
+  "caption": "boss-bandit \u00b7 cole_2026-09-2 11:59",
+  "class": "boss-bandit",
+  "approved_by": "Cole",
+  "source": "clicks_new_2026-09-30"
+ },
+ {
+  "file": "data/slices/approved/boss-bandit/boss-bandit_1_cole_2026-09-29_c_0307.00.png",
+  "card": "Boss Bandit",
+  "entity": "boss-bandit",
+  "team": "enemy",
+  "video_id": "cole_2026-09-29_c",
+  "match_id": "cole_2026-09-29_c_m01",
+  "t_video": 307,
+  "click": [
+   957.7545454545455,
+   1352.8883737344236
+  ],
+  "size": [
+   117,
+   68
+  ],
+  "caption": "boss-bandit \u00b7 cole_2026-09-2 5:07",
+  "class": "boss-bandit",
+  "approved_by": "Cole",
+  "source": "clicks_new_2026-09-30"
+ },
+ {
+  "file": "data/slices/approved/boss-bandit/boss-bandit_1_cole_2026-09-29_c_1072.50.png",
+  "card": "Boss Bandit",
+  "entity": "boss-bandit",
+  "team": "enemy",
+  "video_id": "cole_2026-09-29_c",
+  "match_id": "cole_2026-09-29_c_m05",
+  "t_video": 1072.5,
+  "click": [
+   861.2181818181818,
+   982.9346159462617
+  ],
+  "size": [
+   112,
+   75
+  ],
+  "caption": "boss-bandit \u00b7 cole_2026-09-2 17:52",
+  "class": "boss-bandit",
+  "approved_by": "Cole",
+  "source": "clicks_new_2026-09-30"
+ },
+ {
+  "file": "data/slices/approved/goblin-curse/goblin-curse_1_friend_2026-09-29_a_0317.70.png",
+  "card": "Goblin Curse",
+  "entity": "goblin-curse",
+  "team": "enemy",
+  "video_id": "friend_2026-09-29_a",
+  "match_id": "friend_2026-09-29_a_m02",
+  "t_video": 317.7,
+  "click": [
+   964.4,
+   1206.4948072604789
+  ],
+  "size": [
+   300,
+   307
+  ],
+  "caption": "goblin-curse \u00b7 friend_2026-09 5:17",
+  "class": "goblin-curse",
+  "approved_by": "Cole",
+  "source": "clicks_new_2026-09-30"
+ },
+ {
+  "file": "data/slices/approved/goblin-curse/goblin-curse_1_friend_2026-09-29_c_0686.00.png",
+  "card": "Goblin Curse",
+  "entity": "goblin-curse",
+  "team": "enemy",
+  "video_id": "friend_2026-09-29_c",
+  "match_id": "friend_2026-09-29_c_m05",
+  "t_video": 686,
+  "click": [
+   610.1863636363637,
+   1210.3578312125746
+  ],
+  "size": [
+   288,
+   290
+  ],
+  "caption": "goblin-curse \u00b7 friend_2026-09 11:26",
+  "class": "goblin-curse",
+  "approved_by": "Cole",
+  "source": "clicks_new_2026-09-30"
+ },
+ {
+  "file": "data/slices/approved/goblin-curse/goblin-curse_1_friend_2026-09-29_c_1154.90.png",
+  "card": "Goblin Curse",
+  "entity": "goblin-curse",
+  "team": "enemy",
+  "video_id": "friend_2026-09-29_c",
+  "match_id": "friend_2026-09-29_c_m07",
+  "t_video": 1154.9,
+  "click": [
+   683.8818181818182,
+   1202.3346276197603
+  ],
+  "size": [
+   403,
+   486
+  ],
+  "caption": "goblin-curse \u00b7 friend_2026-09 19:14",
+  "class": "goblin-curse",
+  "approved_by": "Cole",
+  "source": "clicks_new_2026-09-30"
+ },
+ {
+  "file": "data/slices/approved/goblin-demolisher/goblin-demolisher_1_friend_2026-09-29_b_0241.80.png",
+  "card": "Goblin Demolisher",
+  "entity": "goblin-demolisher",
+  "team": "enemy",
+  "video_id": "friend_2026-09-29_b",
+  "match_id": "friend_2026-09-29_b_m01",
+  "t_video": 241.8,
+  "click": [
+   995.3045454545455,
+   1662.6287892964071
+  ],
+  "size": [
+   120,
+   132
+  ],
+  "caption": "goblin-demolisher \u00b7 friend_2026-09 4:01",
+  "class": "goblin-demolisher",
+  "approved_by": "Cole",
+  "source": "clicks_new_2026-09-30"
+ },
+ {
+  "file": "data/slices/approved/goblin-demolisher/goblin-demolisher_1_friend_2026-09-29_b_0433.90.png",
+  "card": "Goblin Demolisher",
+  "entity": "goblin-demolisher",
+  "team": "enemy",
+  "video_id": "friend_2026-09-29_b",
+  "match_id": "friend_2026-09-29_b_m02",
+  "t_video": 433.9,
+  "click": [
+   572.15,
+   1403.0632952844312
+  ],
+  "size": [
+   116,
+   152
+  ],
+  "caption": "goblin-demolisher \u00b7 friend_2026-09 7:13",
+  "class": "goblin-demolisher",
+  "approved_by": "Cole",
+  "source": "clicks_new_2026-09-30"
+ },
+ {
+  "file": "data/slices/approved/goblin-demolisher/goblin-demolisher_1_friend_2026-09-29_b_0760.50.png",
+  "card": "Goblin Demolisher",
+  "entity": "goblin-demolisher",
+  "team": "enemy",
+  "video_id": "friend_2026-09-29_b",
+  "match_id": "friend_2026-09-29_b_m04",
+  "t_video": 760.5,
+  "click": [
+   800.3681818181818,
+   1328.922950973054
+  ],
+  "size": [
+   102,
+   144
+  ],
+  "caption": "goblin-demolisher \u00b7 friend_2026-09 12:40",
+  "class": "goblin-demolisher",
+  "approved_by": "Cole",
+  "source": "clicks_new_2026-09-30"
+ },
+ {
+  "file": "data/slices/approved/goblin-demolisher/goblin-demolisher_1_friend_2026-09-29_b_1017.30.png",
+  "card": "Goblin Demolisher",
+  "entity": "goblin-demolisher",
+  "team": "enemy",
+  "video_id": "friend_2026-09-29_b",
+  "match_id": "friend_2026-09-29_b_m05",
+  "t_video": 1017.3,
+  "click": [
+   408.1181818181818,
+   1335.6089539670659
+  ],
+  "size": [
+   120,
+   116
+  ],
+  "caption": "goblin-demolisher \u00b7 friend_2026-09 16:57",
+  "class": "goblin-demolisher",
+  "approved_by": "Cole",
+  "source": "clicks_new_2026-09-30"
+ },
+ {
+  "file": "data/slices/approved/goblin-demolisher/goblin-demolisher_1_friend_2026-09-29_b_1085.60.png",
+  "card": "Goblin Demolisher",
+  "entity": "goblin-demolisher",
+  "team": "enemy",
+  "video_id": "friend_2026-09-29_b",
+  "match_id": "friend_2026-09-29_b_m06",
+  "t_video": 1085.6,
+  "click": [
+   113.33636363636364,
+   1320.8997473802394
+  ],
+  "size": [
+   117,
+   134
+  ],
+  "caption": "goblin-demolisher \u00b7 friend_2026-09 18:05",
+  "class": "goblin-demolisher",
+  "approved_by": "Cole",
+  "source": "clicks_new_2026-09-30"
+ },
+ {
+  "file": "data/slices/approved/goblin-machine/goblin-machine_1_cole_2026-09-29_b_0361.00.png",
+  "card": "Goblin Machine",
+  "entity": "goblin-machine",
+  "team": "enemy",
+  "video_id": "cole_2026-09-29_b",
+  "match_id": "cole_2026-09-29_b_m02",
+  "t_video": 361,
+  "click": [
+   517.4545454545455,
+   1349.0638020833333
+  ],
+  "size": [
+   166,
+   208
+  ],
+  "caption": "goblin-machine \u00b7 cole_2026-09-2 6:01",
+  "class": "goblin-machine",
+  "approved_by": "Cole",
+  "source": "clicks_new_2026-09-30"
+ },
+ {
+  "file": "data/slices/approved/goblin-machine/goblin-machine_1_cole_2026-09-29_b_0362.50.png",
+  "card": "Goblin Machine",
+  "entity": "goblin-machine",
+  "team": "enemy",
+  "video_id": "cole_2026-09-29_b",
+  "match_id": "cole_2026-09-29_b_m02",
+  "t_video": 362.5,
+  "click": [
+   460.94545454545454,
+   1301.5508542640187
+  ],
+  "size": [
+   178,
+   157
+  ],
+  "caption": "goblin-machine \u00b7 cole_2026-09-2 6:02",
+  "class": "goblin-machine",
+  "approved_by": "Cole",
+  "source": "clicks_new_2026-09-30"
+ },
+ {
+  "file": "data/slices/approved/goblin-machine/goblin-machine_1_cole_2026-09-29_c_0224.90.png",
+  "card": "Goblin Machine",
+  "entity": "goblin-machine",
+  "team": "enemy",
+  "video_id": "cole_2026-09-29_c",
+  "match_id": "cole_2026-09-29_c_m01",
+  "t_video": 224.9,
+  "click": [
+   967.1727272727272,
+   1654.146940712617
+  ],
+  "size": [
+   147,
+   193
+  ],
+  "caption": "goblin-machine \u00b7 cole_2026-09-2 3:44",
+  "class": "goblin-machine",
+  "approved_by": "Cole",
+  "source": "clicks_new_2026-09-30"
+ },
+ {
+  "file": "data/slices/approved/goblin-machine/goblin-machine_1_cole_2026-09-29_c_0226.40.png",
+  "card": "Goblin Machine",
+  "entity": "goblin-machine",
+  "team": "enemy",
+  "video_id": "cole_2026-09-29_c",
+  "match_id": "cole_2026-09-29_c_m01",
+  "t_video": 226.4,
+  "click": [
+   924.7909090909092,
+   1611.7824547313085
+  ],
+  "size": [
+   173,
+   150
+  ],
+  "caption": "goblin-machine \u00b7 cole_2026-09-2 3:46",
+  "class": "goblin-machine",
+  "approved_by": "Cole",
+  "source": "clicks_new_2026-09-30"
+ },
+ {
+  "file": "data/slices/approved/goblin-machine/goblin-machine_1_cole_2026-09-29_c_0426.40.png",
+  "card": "Goblin Machine",
+  "entity": "goblin-machine",
+  "team": "enemy",
+  "video_id": "cole_2026-09-29_c",
+  "match_id": "cole_2026-09-29_c_m02",
+  "t_video": 426.4,
+  "click": [
+   456.2363636363636,
+   1348.1812086253894
+  ],
+  "size": [
+   153,
+   147
+  ],
+  "caption": "goblin-machine \u00b7 cole_2026-09-2 7:06",
+  "class": "goblin-machine",
+  "approved_by": "Cole",
+  "source": "clicks_new_2026-09-30"
+ },
+ {
+  "file": "data/slices/approved/goblin-machine/goblin-machine_1_cole_2026-09-29_c_0427.90.png",
+  "card": "Goblin Machine",
+  "entity": "goblin-machine",
+  "team": "enemy",
+  "video_id": "cole_2026-09-29_c",
+  "match_id": "cole_2026-09-29_c_m02",
+  "t_video": 427.9,
+  "click": [
+   390.3090909090909,
+   1321.850503796729
+  ],
+  "size": [
+   211,
+   153
+  ],
+  "caption": "goblin-machine \u00b7 cole_2026-09-2 7:07",
+  "class": "goblin-machine",
+  "approved_by": "Cole",
+  "source": "clicks_new_2026-09-30"
+ },
+ {
+  "file": "data/slices/approved/goblin-machine/goblin-machine_1_cole_2026-09-29_c_0531.50.png",
+  "card": "Goblin Machine",
+  "entity": "goblin-machine",
+  "team": "enemy",
+  "video_id": "cole_2026-09-29_c",
+  "match_id": "cole_2026-09-29_c_m02",
+  "t_video": 531.5,
+  "click": [
+   960.1090909090909,
+   1303.021843360592
+  ],
+  "size": [
+   171,
+   168
+  ],
+  "caption": "goblin-machine \u00b7 cole_2026-09-2 8:51",
+  "class": "goblin-machine",
+  "approved_by": "Cole",
+  "source": "clicks_new_2026-09-30"
+ },
+ {
+  "file": "data/slices/approved/goblinstein-monster/goblinstein-monster_1_friend_2026-09-29_a_0328.60.png",
+  "card": "Goblinstein",
+  "entity": "goblinstein-monster",
+  "team": "enemy",
+  "video_id": "friend_2026-09-29_a",
+  "match_id": "friend_2026-09-29_a_m02",
+  "t_video": 328.6,
+  "click": [
+   617.3181818181819,
+   1434.7103761227545
+  ],
+  "size": [
+   155,
+   162
+  ],
+  "caption": "goblinstein-monster \u00b7 friend_2026-09 5:28",
+  "class": "goblinstein-monster",
+  "approved_by": "Cole",
+  "source": "clicks_new_2026-09-30"
+ },
+ {
+  "file": "data/slices/approved/goblinstein-doctor/goblinstein-doctor_1_friend_2026-09-29_a_0328.60.png",
+  "card": "Goblinstein",
+  "entity": "goblinstein-doctor",
+  "team": "enemy",
+  "video_id": "friend_2026-09-29_a",
+  "match_id": "friend_2026-09-29_a_m02",
+  "t_video": 328.6,
+  "click": [
+   441.40000000000003,
+   1696.2073821107786
+  ],
+  "size": [
+   79,
+   79
+  ],
+  "caption": "goblinstein-doctor \u00b7 friend_2026-09 5:28",
+  "class": "goblinstein-doctor",
+  "approved_by": "Cole",
+  "source": "clicks_new_2026-09-30"
+ },
+ {
+  "file": "data/slices/approved/goblinstein-doctor/goblinstein-doctor_1_friend_2026-09-29_b_0172.20.png",
+  "card": "Goblinstein",
+  "entity": "goblinstein-doctor",
+  "team": "enemy",
+  "video_id": "friend_2026-09-29_b",
+  "match_id": "friend_2026-09-29_b_m01",
+  "t_video": 172.2,
+  "click": [
+   976.2863636363636,
+   1475.123549775449
+  ],
+  "size": [
+   76,
+   52
+  ],
+  "caption": "goblinstein-doctor \u00b7 friend_2026-09 2:52",
+  "class": "goblinstein-doctor",
+  "approved_by": "Cole",
+  "source": "clicks_new_2026-09-30"
+ },
+ {
+  "file": "data/slices/approved/goblinstein-monster/goblinstein-monster_1_friend_2026-09-29_b_0172.20.png",
+  "card": "Goblinstein",
+  "entity": "goblinstein-monster",
+  "team": "enemy",
+  "video_id": "friend_2026-09-29_b",
+  "match_id": "friend_2026-09-29_b_m01",
+  "t_video": 172.2,
+  "click": [
+   978.6636363636364,
+   1242.1534898952095
+  ],
+  "size": [
+   207,
+   151
+  ],
+  "caption": "goblinstein-monster \u00b7 friend_2026-09 2:52",
+  "class": "goblinstein-monster",
+  "approved_by": "Cole",
+  "source": "clicks_new_2026-09-30"
+ },
+ {
+  "file": "data/slices/approved/goblinstein-monster/goblinstein-monster_1_friend_2026-09-29_b_0709.20.png",
+  "card": "Goblinstein",
+  "entity": "goblinstein-monster",
+  "team": "enemy",
+  "video_id": "friend_2026-09-29_b",
+  "match_id": "friend_2026-09-29_b_m04",
+  "t_video": 709.2,
+  "click": [
+   332.04545454545456,
+   1555.5041635479042
+  ],
+  "size": [
+   160,
+   150
+  ],
+  "caption": "goblinstein-monster \u00b7 friend_2026-09 11:49",
+  "class": "goblinstein-monster",
+  "approved_by": "Cole",
+  "source": "clicks_new_2026-09-30"
+ },
+ {
+  "file": "data/slices/approved/goblinstein-doctor/goblinstein-doctor_1_friend_2026-09-29_b_1104.20.png",
+  "card": "Goblinstein",
+  "entity": "goblinstein-doctor",
+  "team": "enemy",
+  "video_id": "friend_2026-09-29_b",
+  "match_id": "friend_2026-09-29_b_m06",
+  "t_video": 1104.2,
+  "click": [
+   686.2590909090909,
+   1421.932681511976
+  ],
+  "size": [
+   113,
+   67
+  ],
+  "caption": "goblinstein-doctor \u00b7 friend_2026-09 18:24",
+  "class": "goblinstein-doctor",
+  "approved_by": "Cole",
+  "source": "clicks_new_2026-09-30"
+ },
+ {
+  "file": "data/slices/approved/goblinstein-monster/goblinstein-monster_1_friend_2026-09-29_b_1104.20.png",
+  "card": "Goblinstein",
+  "entity": "goblinstein-monster",
+  "team": "enemy",
+  "video_id": "friend_2026-09-29_b",
+  "match_id": "friend_2026-09-29_b_m06",
+  "t_video": 1104.2,
+  "click": [
+   783.7272727272727,
+   1203.2260946856286
+  ],
+  "size": [
+   144,
+   158
+  ],
+  "caption": "goblinstein-monster \u00b7 friend_2026-09 18:24",
+  "class": "goblinstein-monster",
+  "approved_by": "Cole",
+  "source": "clicks_new_2026-09-30"
+ },
+ {
+  "file": "data/slices/approved/goblinstein-doctor/goblinstein-doctor_1_friend_2026-09-29_c_0638.40.png",
+  "card": "Goblinstein",
+  "entity": "goblinstein-doctor",
+  "team": "enemy",
+  "video_id": "friend_2026-09-29_c",
+  "match_id": "friend_2026-09-29_c_m04",
+  "t_video": 638.4,
+  "click": [
+   315.4045454545454,
+   1430.99593001497
+  ],
+  "size": [
+   82,
+   55
+  ],
+  "caption": "goblinstein-doctor \u00b7 friend_2026-09 10:38",
+  "class": "goblinstein-doctor",
+  "approved_by": "Cole",
+  "source": "clicks_new_2026-09-30"
+ },
+ {
+  "file": "data/slices/approved/goblinstein-monster/goblinstein-monster_1_friend_2026-09-29_c_0638.40.png",
+  "card": "Goblinstein",
+  "entity": "goblinstein-monster",
+  "team": "enemy",
+  "video_id": "friend_2026-09-29_c",
+  "match_id": "friend_2026-09-29_c_m04",
+  "t_video": 638.4,
+  "click": [
+   213.1818181818182,
+   1200.4031156437127
+  ],
+  "size": [
+   200,
+   168
+  ],
+  "caption": "goblinstein-monster \u00b7 friend_2026-09 10:38",
+  "class": "goblinstein-monster",
+  "approved_by": "Cole",
+  "source": "clicks_new_2026-09-30"
+ },
+ {
+  "file": "data/slices/approved/goblinstein-monster/goblinstein-monster_1_friend_2026-09-29_c_1111.70.png",
+  "card": "Goblinstein",
+  "entity": "goblinstein-monster",
+  "team": "enemy",
+  "video_id": "friend_2026-09-29_c",
+  "match_id": "friend_2026-09-29_c_m07",
+  "t_video": 1111.7,
+  "click": [
+   405.7409090909091,
+   1440.059178517964
+  ],
+  "size": [
+   152,
+   144
+  ],
+  "caption": "goblinstein-monster \u00b7 friend_2026-09 18:31",
+  "class": "goblinstein-monster",
+  "approved_by": "Cole",
+  "source": "clicks_new_2026-09-30"
+ },
+ {
+  "file": "data/slices/approved/goblinstein-doctor/goblinstein-doctor_1_friend_2026-09-29_c_1111.70.png",
+  "card": "Goblinstein",
+  "entity": "goblinstein-doctor",
+  "team": "enemy",
+  "video_id": "friend_2026-09-29_c",
+  "match_id": "friend_2026-09-29_c_m07",
+  "t_video": 1111.7,
+  "click": [
+   443.77727272727276,
+   1699.178938997006
+  ],
+  "size": [
+   77,
+   70
+  ],
+  "caption": "goblinstein-doctor \u00b7 friend_2026-09 18:31",
+  "class": "goblinstein-doctor",
+  "approved_by": "Cole",
+  "source": "clicks_new_2026-09-30"
+ },
+ {
+  "file": "data/slices/approved/goblinstein-doctor/goblinstein-doctor_1_friend_2026-09-29_c_1430.50.png",
+  "card": "Goblinstein",
+  "entity": "goblinstein-doctor",
+  "team": "enemy",
+  "video_id": "friend_2026-09-29_c",
+  "match_id": "friend_2026-09-29_c_m09",
+  "t_video": 1430.5,
+  "click": [
+   448.53181818181815,
+   1551.7897174401198
+  ],
+  "size": [
+   92,
+   65
+  ],
+  "caption": "goblinstein-doctor \u00b7 friend_2026-09 23:50",
+  "class": "goblinstein-doctor",
+  "approved_by": "Cole",
+  "source": "clicks_new_2026-09-30"
+ },
+ {
+  "file": "data/slices/approved/minion-giant/minion-giant_1_cole_2026-09-29_b_0478.80.png",
+  "card": "Minion Giant",
+  "entity": "minion-giant",
+  "team": "enemy",
+  "video_id": "cole_2026-09-29_b",
+  "match_id": "cole_2026-09-29_b_m03",
+  "t_video": 478.8,
+  "click": [
+   63.027272727272724,
+   1582.3626727998442
+  ],
+  "size": [
+   185,
+   130
+  ],
+  "caption": "minion-giant \u00b7 cole_2026-09-2 7:58",
+  "class": "minion-giant",
+  "approved_by": "Cole",
+  "source": "clicks_new_2026-09-30"
+ },
+ {
+  "file": "data/slices/approved/minion-giant/minion-giant_1_cole_2026-09-29_b_0480.30.png",
+  "card": "Minion Giant",
+  "entity": "minion-giant",
+  "team": "enemy",
+  "video_id": "cole_2026-09-29_b",
+  "match_id": "cole_2026-09-29_b_m03",
+  "t_video": 480.3,
+  "click": [
+   58.31818181818181,
+   1598.837750681464
+  ],
+  "size": [
+   171,
+   128
+  ],
+  "caption": "minion-giant \u00b7 cole_2026-09-2 8:00",
+  "class": "minion-giant",
+  "approved_by": "Cole",
+  "source": "clicks_new_2026-09-30"
+ },
+ {
+  "file": "data/slices/approved/minion-giant/minion-giant_1_cole_2026-09-29_b_0550.80.png",
+  "card": "Minion Giant",
+  "entity": "minion-giant",
+  "team": "enemy",
+  "video_id": "cole_2026-09-29_b",
+  "match_id": "cole_2026-09-29_b_m03",
+  "t_video": 550.8,
+  "click": [
+   1007.1999999999999,
+   1605.8984983450157
+  ],
+  "size": [
+   180,
+   128
+  ],
+  "caption": "minion-giant \u00b7 cole_2026-09-2 9:10",
+  "class": "minion-giant",
+  "approved_by": "Cole",
+  "source": "clicks_new_2026-09-30"
+ },
+ {
+  "file": "data/slices/approved/minion-giant/minion-giant_1_cole_2026-09-29_b_0552.30.png",
+  "card": "Minion Giant",
+  "entity": "minion-giant",
+  "team": "enemy",
+  "video_id": "cole_2026-09-29_b",
+  "match_id": "cole_2026-09-29_b_m03",
+  "t_video": 552.3,
+  "click": [
+   1018.9727272727272,
+   1525.435394762461
+  ],
+  "size": [
+   175,
+   131
+  ],
+  "caption": "minion-giant \u00b7 cole_2026-09-2 9:12",
+  "class": "minion-giant",
+  "approved_by": "Cole",
+  "source": "clicks_new_2026-09-30"
+ },
+ {
+  "file": "data/slices/approved/minion-giant/minion-giant_1_cole_2026-09-29_b_0733.40.png",
+  "card": "Minion Giant",
+  "entity": "minion-giant",
+  "team": "enemy",
+  "video_id": "cole_2026-09-29_b",
+  "match_id": "cole_2026-09-29_b_m03",
+  "t_video": 733.4,
+  "click": [
+   955.4,
+   969.9899118964174
+  ],
+  "size": [
+   180,
+   154
+  ],
+  "caption": "minion-giant \u00b7 cole_2026-09-2 12:13",
+  "class": "minion-giant",
+  "approved_by": "Cole",
+  "source": "clicks_new_2026-09-30"
+ },
+ {
+  "file": "data/slices/approved/minion-giant/minion-giant_1_cole_2026-09-29_b_0734.90.png",
+  "card": "Minion Giant",
+  "entity": "minion-giant",
+  "team": "enemy",
+  "video_id": "cole_2026-09-29_b",
+  "match_id": "cole_2026-09-29_b_m03",
+  "t_video": 734.9,
+  "click": [
+   971.8818181818182,
+   951.1612514602804
+  ],
+  "size": [
+   188,
+   169
+  ],
+  "caption": "minion-giant \u00b7 cole_2026-09-2 12:14",
+  "class": "minion-giant",
+  "approved_by": "Cole",
+  "source": "clicks_new_2026-09-30"
+ },
+ {
+  "file": "data/slices/approved/minion-giant/minion-giant_1_cole_2026-09-29_c_0736.30.png",
+  "card": "Minion Giant",
+  "entity": "minion-giant",
+  "team": "enemy",
+  "video_id": "cole_2026-09-29_c",
+  "match_id": "cole_2026-09-29_c_m04",
+  "t_video": 736.3,
+  "click": [
+   439.75454545454545,
+   1599.8674430490653
+  ],
+  "size": [
+   171,
+   160
+  ],
+  "caption": "minion-giant \u00b7 cole_2026-09-2 12:16",
+  "class": "minion-giant",
+  "approved_by": "Cole",
+  "source": "clicks_new_2026-09-30"
+ },
+ {
+  "file": "data/slices/approved/minion-giant/minion-giant_1_cole_2026-09-29_c_0856.40.png",
+  "card": "Minion Giant",
+  "entity": "minion-giant",
+  "team": "enemy",
+  "video_id": "cole_2026-09-29_c",
+  "match_id": "cole_2026-09-29_c_m04",
+  "t_video": 856.4,
+  "click": [
+   444.46363636363634,
+   1235.0621470989095
+  ],
+  "size": [
+   186,
+   157
+  ],
+  "caption": "minion-giant \u00b7 cole_2026-09-2 14:16",
+  "class": "minion-giant",
+  "approved_by": "Cole",
+  "source": "clicks_new_2026-09-30"
+ },
+ {
+  "file": "data/slices/approved/minion-giant/minion-giant_1_cole_2026-09-29_c_0857.90.png",
+  "card": "Minion Giant",
+  "entity": "minion-giant",
+  "team": "enemy",
+  "video_id": "cole_2026-09-29_c",
+  "match_id": "cole_2026-09-29_c_m04",
+  "t_video": 857.9,
+  "click": [
+   468.0090909090909,
+   1190.3440785630842
+  ],
+  "size": [
+   164,
+   149
+  ],
+  "caption": "minion-giant \u00b7 cole_2026-09-2 14:17",
+  "class": "minion-giant",
+  "approved_by": "Cole",
+  "source": "clicks_new_2026-09-30"
+ },
+ {
+  "file": "data/slices/approved/minion-giant/minion-giant_1_cole_2026-09-29_c_0923.10.png",
+  "card": "Minion Giant",
+  "entity": "minion-giant",
+  "team": "enemy",
+  "video_id": "cole_2026-09-29_c",
+  "match_id": "cole_2026-09-29_c_m05",
+  "t_video": 923.1,
+  "click": [
+   957.7545454545455,
+   1573.536738220405
+  ],
+  "size": [
+   186,
+   158
+  ],
+  "caption": "minion-giant \u00b7 cole_2026-09-2 15:23",
+  "class": "minion-giant",
+  "approved_by": "Cole",
+  "source": "clicks_new_2026-09-30"
+ },
+ {
+  "file": "data/slices/approved/minion-giant/minion-giant_1_cole_2026-09-29_c_0924.60.png",
+  "card": "Minion Giant",
+  "entity": "minion-giant",
+  "team": "enemy",
+  "video_id": "cole_2026-09-29_c",
+  "match_id": "cole_2026-09-29_c_m05",
+  "t_video": 924.6,
+  "click": [
+   962.4636363636364,
+   1550.0009126752336
+  ],
+  "size": [
+   177,
+   159
+  ],
+  "caption": "minion-giant \u00b7 cole_2026-09-2 15:24",
+  "class": "minion-giant",
+  "approved_by": "Cole",
+  "source": "clicks_new_2026-09-30"
+ },
+ {
+  "file": "data/slices/approved/minion-giant/minion-giant_1_cole_2026-09-29_c_1041.20.png",
+  "card": "Minion Giant",
+  "entity": "minion-giant",
+  "team": "enemy",
+  "video_id": "cole_2026-09-29_c",
+  "match_id": "cole_2026-09-29_c_m05",
+  "t_video": 1041.2,
+  "click": [
+   333.8,
+   1550.0009126752336
+  ],
+  "size": [
+   187,
+   156
+  ],
+  "caption": "minion-giant \u00b7 cole_2026-09-2 17:21",
+  "class": "minion-giant",
+  "approved_by": "Cole",
+  "source": "clicks_new_2026-09-30"
+ },
+ {
+  "file": "data/slices/approved/ronin/ronin_1_cole_2026-09-29_b_0021.30.png",
+  "card": "Ronin",
+  "entity": "ronin",
+  "team": "enemy",
+  "video_id": "cole_2026-09-29_b",
+  "match_id": "cole_2026-09-29_b_m01",
+  "t_video": 21.3,
+  "click": [
+   161.9181818181818,
+   1351.8586813668223
+  ],
+  "size": [
+   107,
+   95
+  ],
+  "caption": "ronin \u00b7 cole_2026-09-2 0:21",
+  "class": "ronin",
+  "approved_by": "Cole",
+  "source": "clicks_new_2026-09-30"
+ },
+ {
+  "file": "data/slices/approved/ronin/ronin_1_cole_2026-09-29_c_0193.70.png",
+  "card": "Ronin",
+  "entity": "ronin",
+  "team": "enemy",
+  "video_id": "cole_2026-09-29_c",
+  "match_id": "cole_2026-09-29_c_m01",
+  "t_video": 193.7,
+  "click": [
+   903.6,
+   1221.529047410436
+  ],
+  "size": [
+   125,
+   91
+  ],
+  "caption": "ronin \u00b7 cole_2026-09-2 3:13",
+  "class": "ronin",
+  "approved_by": "Cole",
+  "source": "clicks_new_2026-09-30"
+ },
+ {
+  "file": "data/slices/approved/ronin/ronin_1_cole_2026-09-29_c_0423.70.png",
+  "card": "Ronin",
+  "entity": "ronin",
+  "team": "enemy",
+  "video_id": "cole_2026-09-29_c",
+  "match_id": "cole_2026-09-29_c_m02",
+  "t_video": 423.7,
+  "click": [
+   176.04545454545456,
+   1331.7061307437696
+  ],
+  "size": [
+   119,
+   119
+  ],
+  "caption": "ronin \u00b7 cole_2026-09-2 7:03",
+  "class": "ronin",
+  "approved_by": "Cole",
+  "source": "clicks_new_2026-09-30"
+ },
+ {
+  "file": "data/slices/approved/ronin/ronin_1_cole_2026-09-29_c_0929.90.png",
+  "card": "Ronin",
+  "entity": "ronin",
+  "team": "enemy",
+  "video_id": "cole_2026-09-29_c",
+  "match_id": "cole_2026-09-29_c_m05",
+  "t_video": 929.9,
+  "click": [
+   413.8545454545454,
+   1300.6682608060748
+  ],
+  "size": [
+   121,
+   123
+  ],
+  "caption": "ronin \u00b7 cole_2026-09-2 15:29",
+  "class": "ronin",
+  "approved_by": "Cole",
+  "source": "clicks_new_2026-09-30"
+ },
+ {
+  "file": "data/slices/approved/ronin/ronin_1_cole_2026-09-29_c_1242.10.png",
+  "card": "Ronin",
+  "entity": "ronin",
+  "team": "enemy",
+  "video_id": "cole_2026-09-29_c",
+  "match_id": "cole_2026-09-29_c_m06",
+  "t_video": 1242.1,
+  "click": [
+   411.5,
+   1637.2305661020248
+  ],
+  "size": [
+   118,
+   77
+  ],
+  "caption": "ronin \u00b7 cole_2026-09-2 20:42",
+  "class": "ronin",
+  "approved_by": "Cole",
+  "source": "clicks_new_2026-09-30"
+ },
+ {
+  "file": "data/slices/approved/ronin/ronin_1_cole_2026-09-29_c_1732.50.png",
+  "card": "Ronin",
+  "entity": "ronin",
+  "team": "enemy",
+  "video_id": "cole_2026-09-29_c",
+  "match_id": "cole_2026-09-29_c_m08",
+  "t_video": 1732.5,
+  "click": [
+   350.2818181818182,
+   1274.3375559774145
+  ],
+  "size": [
+   126,
+   119
+  ],
+  "caption": "ronin \u00b7 cole_2026-09-2 28:52",
+  "class": "ronin",
+  "approved_by": "Cole",
+  "source": "clicks_new_2026-09-30"
+ },
+ {
+  "file": "data/slices/approved/rune-giant/rune-giant_1_cole_2026-09-29_b_0406.00.png",
+  "card": "Rune Giant",
+  "entity": "rune-giant",
+  "team": "enemy",
+  "video_id": "cole_2026-09-29_b",
+  "match_id": "cole_2026-09-29_b_m02",
+  "t_video": 406,
+  "click": [
+   489.2,
+   1462.182863609813
+  ],
+  "size": [
+   165,
+   153
+  ],
+  "caption": "rune-giant \u00b7 cole_2026-09-2 6:46",
+  "class": "rune-giant",
+  "approved_by": "Cole",
+  "source": "clicks_new_2026-09-30"
+ },
+ {
+  "file": "data/slices/approved/rune-giant/rune-giant_1_cole_2026-09-29_b_0470.40.png",
+  "card": "Rune Giant",
+  "entity": "rune-giant",
+  "team": "enemy",
+  "video_id": "cole_2026-09-29_b",
+  "match_id": "cole_2026-09-29_b_m03",
+  "t_video": 470.4,
+  "click": [
+   491.55454545454546,
+   1701.8069874415887
+  ],
+  "size": [
+   136,
+   220
+  ],
+  "caption": "rune-giant \u00b7 cole_2026-09-2 7:50",
+  "class": "rune-giant",
+  "approved_by": "Cole",
+  "source": "clicks_new_2026-09-30"
+ },
+ {
+  "file": "data/slices/approved/spirit-empress-air/spirit-empress-air_1_cole_2026-09-29_b_0250.60.png",
+  "card": "Spirit Empress",
+  "entity": "spirit-empress-air",
+  "team": "enemy",
+  "video_id": "cole_2026-09-29_b",
+  "match_id": "cole_2026-09-29_b_m02",
+  "t_video": 250.6,
+  "click": [
+   55.96363636363636,
+   1518.8159438278815
+  ],
+  "size": [
+   185,
+   120
+  ],
+  "caption": "spirit-empress-air \u00b7 cole_2026-09-2 4:10",
+  "class": "spirit-empress-air",
+  "approved_by": "Cole",
+  "source": "clicks_new_2026-09-30"
+ },
+ {
+  "file": "data/slices/approved/spirit-empress-air/spirit-empress-air_1_cole_2026-09-29_c_0121.10.png",
+  "card": "Spirit Empress",
+  "entity": "spirit-empress-air",
+  "team": "enemy",
+  "video_id": "cole_2026-09-29_c",
+  "match_id": "cole_2026-09-29_c_m01",
+  "t_video": 121.1,
+  "click": [
+   98.34545454545454,
+   953.5148340147975
+  ],
+  "size": [
+   196,
+   150
+  ],
+  "caption": "spirit-empress-air \u00b7 cole_2026-09-2 2:01",
+  "class": "spirit-empress-air",
+  "approved_by": "Cole",
+  "source": "clicks_new_2026-09-30"
+ },
+ {
+  "file": "data/slices/approved/spirit-empress-air/spirit-empress-air_1_cole_2026-09-29_c_0514.30.png",
+  "card": "Spirit Empress",
+  "entity": "spirit-empress-air",
+  "team": "enemy",
+  "video_id": "cole_2026-09-29_c",
+  "match_id": "cole_2026-09-29_c_m02",
+  "t_video": 514.3,
+  "click": [
+   630.4727272727272,
+   1362.5969017718069
+  ],
+  "size": [
+   148,
+   171
+  ],
+  "caption": "spirit-empress-air \u00b7 cole_2026-09-2 8:34",
+  "class": "spirit-empress-air",
+  "approved_by": "Cole",
+  "source": "clicks_new_2026-09-30"
+ },
+ {
+  "file": "data/slices/approved/spirit-empress-air/spirit-empress-air_1_cole_2026-09-29_c_0556.70.png",
+  "card": "Spirit Empress",
+  "entity": "spirit-empress-air",
+  "team": "enemy",
+  "video_id": "cole_2026-09-29_c",
+  "match_id": "cole_2026-09-29_c_m02",
+  "t_video": 556.7,
+  "click": [
+   618.6999999999999,
+   1251.5372249805296
+  ],
+  "size": [
+   147,
+   171
+  ],
+  "caption": "spirit-empress-air \u00b7 cole_2026-09-2 9:16",
+  "class": "spirit-empress-air",
+  "approved_by": "Cole",
+  "source": "clicks_new_2026-09-30"
+ },
+ {
+  "file": "data/slices/approved/spirit-empress-air/spirit-empress-air_1_cole_2026-09-29_c_0972.60.png",
+  "card": "Spirit Empress",
+  "entity": "spirit-empress-air",
+  "team": "enemy",
+  "video_id": "cole_2026-09-29_c",
+  "match_id": "cole_2026-09-29_c_m05",
+  "t_video": 972.6,
+  "click": [
+   65.38181818181818,
+   1218.5870692172898
+  ],
+  "size": [
+   126,
+   102
+  ],
+  "caption": "spirit-empress-air \u00b7 cole_2026-09-2 16:12",
+  "class": "spirit-empress-air",
+  "approved_by": "Cole",
+  "source": "clicks_new_2026-09-30"
+ },
+ {
+  "file": "data/slices/approved/spirit-empress-air/spirit-empress-air_1_cole_2026-09-29_c_1370.20.png",
+  "card": "Spirit Empress",
+  "entity": "spirit-empress-air",
+  "team": "enemy",
+  "video_id": "cole_2026-09-29_c",
+  "match_id": "cole_2026-09-29_c_m06",
+  "t_video": 1370.2,
+  "click": [
+   211.36363636363637,
+   1504.841547410436
+  ],
+  "size": [
+   232,
+   134
+  ],
+  "caption": "spirit-empress-air \u00b7 cole_2026-09-2 22:50",
+  "class": "spirit-empress-air",
+  "approved_by": "Cole",
+  "source": "clicks_new_2026-09-30"
+ },
+ {
+  "file": "data/slices/approved/suspicious-bush/suspicious-bush_1_cole_2026-09-29_b_0037.00.png",
+  "card": "Suspicious Bush",
+  "entity": "suspicious-bush",
+  "team": "enemy",
+  "video_id": "cole_2026-09-29_b",
+  "match_id": "cole_2026-09-29_b_m01",
+  "t_video": 37,
+  "click": [
+   625.7636363636364,
+   1716.6639773169782
+  ],
+  "size": [
+   89,
+   116
+  ],
+  "caption": "suspicious-bush \u00b7 cole_2026-09-2 0:37",
+  "class": "suspicious-bush",
+  "approved_by": "Cole",
+  "source": "clicks_new_2026-09-30"
+ },
+ {
+  "file": "data/slices/approved/suspicious-bush/suspicious-bush_1_cole_2026-09-29_b_0038.50.png",
+  "card": "Suspicious Bush",
+  "entity": "suspicious-bush",
+  "team": "enemy",
+  "video_id": "cole_2026-09-29_b",
+  "match_id": "cole_2026-09-29_b_m01",
+  "t_video": 38.5,
+  "click": [
+   649.3090909090909,
+   1683.7138215537382
+  ],
+  "size": [
+   123,
+   112
+  ],
+  "caption": "suspicious-bush \u00b7 cole_2026-09-2 0:38",
+  "class": "suspicious-bush",
+  "approved_by": "Cole",
+  "source": "clicks_new_2026-09-30"
+ },
+ {
+  "file": "data/slices/approved/suspicious-bush/suspicious-bush_1_cole_2026-09-29_b_0344.70.png",
+  "card": "Suspicious Bush",
+  "entity": "suspicious-bush",
+  "team": "enemy",
+  "video_id": "cole_2026-09-29_b",
+  "match_id": "cole_2026-09-29_b_m02",
+  "t_video": 344.7,
+  "click": [
+   623.409090909091,
+   1713.869098033489
+  ],
+  "size": [
+   132,
+   109
+  ],
+  "caption": "suspicious-bush \u00b7 cole_2026-09-2 5:44",
+  "class": "suspicious-bush",
+  "approved_by": "Cole",
+  "source": "clicks_new_2026-09-30"
+ },
+ {
+  "file": "data/slices/approved/suspicious-bush/suspicious-bush_1_cole_2026-09-29_b_0346.20.png",
+  "card": "Suspicious Bush",
+  "entity": "suspicious-bush",
+  "team": "enemy",
+  "video_id": "cole_2026-09-29_b",
+  "match_id": "cole_2026-09-29_b_m02",
+  "t_video": 346.2,
+  "click": [
+   635.1818181818182,
+   1699.7476027063863
+  ],
+  "size": [
+   127,
+   107
+  ],
+  "caption": "suspicious-bush \u00b7 cole_2026-09-2 5:46",
+  "class": "suspicious-bush",
+  "approved_by": "Cole",
+  "source": "clicks_new_2026-09-30"
+ },
+ {
+  "file": "data/slices/approved/suspicious-bush/suspicious-bush_1_cole_2026-09-29_b_0560.20.png",
+  "card": "Suspicious Bush",
+  "entity": "suspicious-bush",
+  "team": "enemy",
+  "video_id": "cole_2026-09-29_b",
+  "match_id": "cole_2026-09-29_b_m03",
+  "t_video": 560.2,
+  "click": [
+   81.86363636363636,
+   1666.3561502141745
+  ],
+  "size": [
+   126,
+   117
+  ],
+  "caption": "suspicious-bush \u00b7 cole_2026-09-2 9:20",
+  "class": "suspicious-bush",
+  "approved_by": "Cole",
+  "source": "clicks_new_2026-09-30"
+ },
+ {
+  "file": "data/slices/approved/suspicious-bush/suspicious-bush_1_cole_2026-09-29_b_0615.70.png",
+  "card": "Suspicious Bush",
+  "entity": "suspicious-bush",
+  "team": "enemy",
+  "video_id": "cole_2026-09-29_b",
+  "match_id": "cole_2026-09-29_b_m03",
+  "t_video": 615.7,
+  "click": [
+   654.0181818181818,
+   1680.4776455412773
+  ],
+  "size": [
+   127,
+   104
+  ],
+  "caption": "suspicious-bush \u00b7 cole_2026-09-2 10:15",
+  "class": "suspicious-bush",
+  "approved_by": "Cole",
+  "source": "clicks_new_2026-09-30"
+ },
+ {
+  "file": "data/slices/approved/suspicious-bush/suspicious-bush_1_cole_2026-09-29_c_0102.10.png",
+  "card": "Suspicious Bush",
+  "entity": "suspicious-bush",
+  "team": "enemy",
+  "video_id": "cole_2026-09-29_c",
+  "match_id": "cole_2026-09-29_c_m01",
+  "t_video": 102.1,
+  "click": [
+   969.5272727272728,
+   1663.5612709306854
+  ],
+  "size": [
+   120,
+   119
+  ],
+  "caption": "suspicious-bush \u00b7 cole_2026-09-2 1:42",
+  "class": "suspicious-bush",
+  "approved_by": "Cole",
+  "source": "clicks_new_2026-09-30"
+ },
+ {
+  "file": "data/slices/approved/suspicious-bush/suspicious-bush_1_cole_2026-09-29_c_0154.70.png",
+  "card": "Suspicious Bush",
+  "entity": "suspicious-bush",
+  "team": "enemy",
+  "video_id": "cole_2026-09-29_c",
+  "match_id": "cole_2026-09-29_c_m01",
+  "t_video": 154.7,
+  "click": [
+   821.1909090909091,
+   1055.8956751362928
+  ],
+  "size": [
+   120,
+   119
+  ],
+  "caption": "suspicious-bush \u00b7 cole_2026-09-2 2:34",
+  "class": "suspicious-bush",
+  "approved_by": "Cole",
+  "source": "clicks_new_2026-09-30"
+ },
+ {
+  "file": "data/slices/approved/suspicious-bush/suspicious-bush_1_cole_2026-09-29_c_0247.40.png",
+  "card": "Suspicious Bush",
+  "entity": "suspicious-bush",
+  "team": "enemy",
+  "video_id": "cole_2026-09-29_c",
+  "match_id": "cole_2026-09-29_c_m01",
+  "t_video": 247.4,
+  "click": [
+   79.5090909090909,
+   1674.887886974299
+  ],
+  "size": [
+   122,
+   115
+  ],
+  "caption": "suspicious-bush \u00b7 cole_2026-09-2 4:07",
+  "class": "suspicious-bush",
+  "approved_by": "Cole",
+  "source": "clicks_new_2026-09-30"
+ },
+ {
+  "file": "data/slices/approved/suspicious-bush/suspicious-bush_1_cole_2026-09-29_c_0365.80.png",
+  "card": "Suspicious Bush",
+  "entity": "suspicious-bush",
+  "team": "enemy",
+  "video_id": "cole_2026-09-29_c",
+  "match_id": "cole_2026-09-29_c_m02",
+  "t_video": 365.8,
+  "click": [
+   606.9272727272727,
+   1700.3359983450157
+  ],
+  "size": [
+   121,
+   120
+  ],
+  "caption": "suspicious-bush \u00b7 cole_2026-09-2 6:05",
+  "class": "suspicious-bush",
+  "approved_by": "Cole",
+  "source": "clicks_new_2026-09-30"
+ },
+ {
+  "file": "data/slices/approved/void/void_1_friend_2026-09-29_b_0292.20.png",
+  "card": "Void",
+  "entity": "void",
+  "team": "enemy",
+  "video_id": "friend_2026-09-29_b",
+  "match_id": "friend_2026-09-29_b_m01",
+  "t_video": 292.2,
+  "click": [
+   603.0545454545455,
+   980.3593282185628
+  ],
+  "size": [
+   243,
+   289
+  ],
+  "caption": "void \u00b7 friend_2026-09 4:52",
+  "class": "void",
+  "approved_by": "Cole",
+  "source": "clicks_new_2026-09-30"
+ },
+ {
+  "file": "data/slices/approved/void/void_1_friend_2026-09-29_c_1051.80.png",
+  "card": "Void",
+  "entity": "void",
+  "team": "enemy",
+  "video_id": "friend_2026-09-29_c",
+  "match_id": "friend_2026-09-29_c_m07",
+  "t_video": 1051.8,
+  "click": [
+   973.9090909090909,
+   1200.9974270209582
+  ],
+  "size": [
+   225,
+   242
+  ],
+  "caption": "void \u00b7 friend_2026-09 17:31",
+  "class": "void",
+  "approved_by": "Cole",
+  "source": "clicks_new_2026-09-30"
+ },
+ {
+  "file": "data/slices/approved/void/void_1_friend_2026-09-29_c_1053.30.png",
+  "card": "Void",
+  "entity": "void",
+  "team": "enemy",
+  "video_id": "friend_2026-09-29_c",
+  "match_id": "friend_2026-09-29_c_m07",
+  "t_video": 1053.3,
+  "click": [
+   962.0227272727273,
+   1198.1744479790418
+  ],
+  "size": [
+   220,
+   250
+  ],
+  "caption": "void \u00b7 friend_2026-09 17:33",
+  "class": "void",
+  "approved_by": "Cole",
+  "source": "clicks_new_2026-09-30"
+ }
+]

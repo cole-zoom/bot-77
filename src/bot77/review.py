@@ -96,7 +96,7 @@ main { padding: 16px; max-width: 1180px; margin: 0 auto; }
 .match { background: var(--panel); border: 1px solid var(--line); border-radius: 10px; margin-bottom: 20px; overflow: hidden; }
 .match > h2 { font-size: 15px; margin: 0; padding: 12px 16px; border-bottom: 1px solid var(--line); display: flex; flex-wrap: wrap; gap: 8px 16px; align-items: baseline; }
 .deck { color: var(--muted); font-weight: normal; font-size: 13px; }
-.event { display: grid; grid-template-columns: 70px minmax(150px, 1fr) 380px 220px; gap: 12px; padding: 10px 16px; border-bottom: 1px solid var(--line); align-items: start; }
+.event { display: grid; grid-template-columns: 70px minmax(150px, 1fr) 380px 300px; gap: 12px; padding: 10px 16px; border-bottom: 1px solid var(--line); align-items: start; }
 .event:last-of-type { border-bottom: 0; }
 .event.v-correct { background: var(--good-bg); }
 .event.v-wrong { background: var(--bad-bg); }
@@ -114,6 +114,7 @@ main { padding: 16px; max-width: 1180px; margin: 0 auto; }
 .thumbs .arena { width: 110px; height: auto; }
 .verdict { display: flex; flex-direction: column; gap: 6px; }
 .verdict .btns { display: flex; gap: 6px; }
+.verdict .btns button { white-space: nowrap; }
 .verdict .btns button[aria-pressed="true"].ok { background: var(--good); border-color: var(--good); color: #fff; }
 .verdict .btns button[aria-pressed="true"].no { background: var(--bad); border-color: var(--bad); color: #fff; }
 .verdict .btns button[aria-pressed="true"].meh { background: var(--warn); border-color: var(--warn); color: #fff; }
@@ -122,6 +123,11 @@ main { padding: 16px; max-width: 1180px; margin: 0 auto; }
 .missing { padding: 12px 16px; background: var(--bg); display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
 .missing ul { flex-basis: 100%; margin: 4px 0 0; padding-left: 18px; }
 .hidden { display: none !important; }
+.deckbox { padding: 12px 16px; border-top: 1px solid var(--line); display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.deckbox strong { margin-right: 4px; }
+.deckbox select { max-width: 170px; }
+.deckbox select.confirmed { border-color: var(--good); background: var(--good-bg); font-weight: 600; }
+.deckbox .hint { flex-basis: 100%; color: var(--muted); font-size: 12px; }
 dialog { border: 0; padding: 0; background: transparent; }
 dialog img { max-width: 92vw; max-height: 92vh; border-radius: 8px; }
 dialog::backdrop { background: rgba(0,0,0,.7); }
@@ -147,8 +153,39 @@ dialog::backdrop { background: rgba(0,0,0,.7); }
 const DATA = __DATA__;
 // Verdicts are tied to this exact detection run: event ids are reused when detection is re-run.
 const KEY = "bot77-review-" + DATA.video_id + "-" + DATA.run;
-let state = { verdicts: {}, missing: [] };
+let state = { verdicts: {}, missing: [], decks: {}, confirmed: {}, recent: {} };
 try { state = Object.assign(state, JSON.parse(localStorage.getItem(KEY) || "{}")); } catch (e) {}
+for (const m of DATA.matches) {
+  if (!state.decks[m.match_id]) state.decks[m.match_id] = (m.deck || []).slice();
+  state.confirmed[m.match_id] = state.confirmed[m.match_id] || [];
+  state.recent[m.match_id] = state.recent[m.match_id] || [];
+}
+const matchOf = id => DATA.matches.find(m => m.match_id === id);
+
+// Card choices for a correction: cards corrected recently in this match first, then the
+// guessed deck, then (on opponent pages) every card.
+function cardChoices(m) {
+  const seen = new Set(), out = [];
+  const add = (group, list) => { const g = list.filter(c => c && !seen.has(c)); g.forEach(c => seen.add(c)); if (g.length) out.push([group, g]); };
+  add("Recently corrected", state.recent[m.match_id] || []);
+  add("Deck", DATA.all_cards ? state.decks[m.match_id] : m.deck);
+  if (DATA.all_cards) add("All cards", DATA.all_cards);
+  return out;
+}
+
+// A correction to card X puts X in the guessed deck: it replaces the wrong guess if that was in
+// the deck, otherwise the last unconfirmed guess.
+function learnCard(m, wrongCard, card) {
+  if (!DATA.all_cards || !card || card.startsWith("__")) return;
+  const id = m.match_id, deck = state.decks[id], conf = state.confirmed[id];
+  state.recent[id] = [card, ...state.recent[id].filter(c => c !== card)].slice(0, 8);
+  if (!conf.includes(card)) conf.push(card);
+  if (deck.includes(card)) return;
+  let k = deck.indexOf(wrongCard);
+  if (k < 0 || conf.includes(deck[k])) k = [...deck.keys()].reverse().find(i => !conf.includes(deck[i]));
+  if (k === undefined) { if (deck.length < 8) deck.push(card); return; }
+  deck[k] = card;
+}
 const save = () => { try { localStorage.setItem(KEY, JSON.stringify(state)); } catch (e) {} render(); };
 
 const el = (tag, attrs = {}, ...kids) => {
@@ -166,13 +203,21 @@ document.getElementById("zoom").addEventListener("click", e => e.currentTarget.c
 
 function eventRow(ev, deck) {
   const v = state.verdicts[ev.id] || {};
-  const set = verdict => { state.verdicts[ev.id] = Object.assign({}, v, { verdict: v.verdict === verdict ? undefined : verdict }); save(); };
+  const set = verdict => {
+    state.verdicts[ev.id] = Object.assign({}, v, { verdict: v.verdict === verdict ? undefined : verdict });
+    if (verdict === "correct" && v.verdict !== "correct") learnCard(matchOf(ev.match_id), null, ev.card);
+    save();
+  };
   const label = ev.kind === "ability" ? `${ev.card || "?"} ability` : (ev.card || "Unknown card");
-  const fixSel = el("select", { onchange: e => { state.verdicts[ev.id] = Object.assign({}, v, { verdict: "wrong", correct: e.target.value }); save(); } },
+  const m = matchOf(ev.match_id);
+  const fixSel = el("select", { onchange: e => {
+      state.verdicts[ev.id] = Object.assign({}, v, { verdict: "wrong", correct: e.target.value });
+      learnCard(m, ev.card, e.target.value); save(); } },
     el("option", { value: "" }, "What was it really?"),
-    deck.map(c => el("option", { value: c, selected: v.correct === c ? "" : null }, c)),
-    el("option", { value: "__ability", selected: v.correct === "__ability" ? "" : null }, "Champion/hero ability"),
-    el("option", { value: "__not_a_play", selected: v.correct === "__not_a_play" ? "" : null }, "Not a play at all"));
+    el("option", { value: "__not_a_play", selected: v.correct === "__not_a_play" ? "" : null }, "Not a play at all"),
+    cardChoices(m).map(([group, cards]) => el("optgroup", { label: group },
+      cards.map(c => el("option", { value: c, selected: v.correct === c ? "" : null }, c)))),
+    el("option", { value: "__ability", selected: v.correct === "__ability" ? "" : null }, "Champion/hero ability"));
   const note = el("input", { placeholder: "note (optional)", value: v.note || "",
     onchange: e => { state.verdicts[ev.id] = Object.assign({}, state.verdicts[ev.id] || {}, { note: e.target.value }); save(); } });
   return el("div", { class: "event" + (v.verdict ? " v-" + v.verdict : ""), "data-conf": ev.confidence },
@@ -180,7 +225,7 @@ function eventRow(ev, deck) {
        el("div", { class: "meta" }, `${ev.t_video}s`)),
     el("div", {},
       el("div", {}, el("span", { class: "card" }, label), ev.form && ev.form !== "normal" ? el("span", { class: "form" }, ev.form) : null),
-      el("div", { class: "meta" }, `elixir ${ev.before} → ${ev.after} · spent ${ev.cost}`),
+      el("div", { class: "meta" }, ev.meta || `elixir ${ev.before} → ${ev.after} · spent ${ev.cost}`),
       el("span", { class: `pill c-${ev.confidence}` }, ev.confidence),
       ev.notes.length ? el("div", { class: "notes" }, ev.notes.join("; ")) : null),
     el("div", { class: "thumbs" },
@@ -189,21 +234,37 @@ function eventRow(ev, deck) {
     el("div", { class: "verdict" },
       el("div", { class: "btns" },
         el("button", { class: "ok", "aria-pressed": String(v.verdict === "correct"), onclick: () => set("correct") }, "✓ Right"),
-        el("button", { class: "no", "aria-pressed": String(v.verdict === "wrong"), onclick: () => set("wrong") }, "✗ Wrong"),
+        el("button", { class: "no", "aria-pressed": String(v.verdict === "wrong" && v.correct !== "__not_a_play"), onclick: () => set("wrong") }, "✗ Wrong"),
+        el("button", { class: "no", title: "Not a play at all (tracking glitch, spawner output, wrong team)",
+          "aria-pressed": String(v.verdict === "wrong" && v.correct === "__not_a_play"),
+          onclick: () => { const on = v.verdict === "wrong" && v.correct === "__not_a_play";
+            state.verdicts[ev.id] = on ? {} : Object.assign({}, v, { verdict: "wrong", correct: "__not_a_play" }); save(); } }, "Not a play"),
         el("button", { class: "meh", "aria-pressed": String(v.verdict === "unsure"), onclick: () => set("unsure") }, "?")),
       el("div", { class: "fix" }, fixSel), note));
 }
 
 function missingBox(m) {
   const t = el("input", { placeholder: "m:ss", size: 5 });
-  const c = el("select", {}, m.deck.map(x => el("option", { value: x }, x)), el("option", { value: "__ability" }, "Champion/hero ability"));
+  const c = el("select", {}, cardChoices(m).map(([group, cards]) => el("optgroup", { label: group }, cards.map(x => el("option", { value: x }, x)))),
+    el("option", { value: "__ability" }, "Champion/hero ability"));
   const n = el("input", { placeholder: "note" });
   const mine = state.missing.filter(x => x.match_id === m.match_id);
   return el("div", { class: "missing" },
     el("strong", {}, "Missed a play?"), t, c, n,
-    el("button", { onclick: () => { if (!t.value) return; state.missing.push({ match_id: m.match_id, clock: t.value, card: c.value, note: n.value }); save(); } }, "Add"),
+    el("button", { onclick: () => { if (!t.value) return; state.missing.push({ match_id: m.match_id, clock: t.value, card: c.value, note: n.value }); learnCard(m, null, c.value); save(); } }, "Add"),
     mine.length ? el("ul", {}, mine.map(x => el("li", {}, `${x.clock} ${x.card}${x.note ? " — " + x.note : ""} `,
       el("button", { onclick: () => { state.missing.splice(state.missing.indexOf(x), 1); save(); } }, "remove")))) : null);
+}
+
+function deckBox(m) {
+  const deck = state.decks[m.match_id], conf = state.confirmed[m.match_id];
+  const slots = [...Array(8).keys()].map(i => el("select", {
+      class: conf.includes(deck[i]) ? "confirmed" : "",
+      onchange: e => { deck[i] = e.target.value; if (e.target.value && !conf.includes(e.target.value)) conf.push(e.target.value); save(); } },
+    el("option", { value: "" }, "?"),
+    DATA.all_cards.map(c => el("option", { value: c, selected: deck[i] === c ? "" : null }, c))));
+  return el("div", { class: "deckbox" }, el("strong", {}, "Guessed deck"), slots,
+    el("div", { class: "hint" }, "Green = confirmed by you. Corrections swap the real card in; you can also set any slot directly."));
 }
 
 function render() {
@@ -214,7 +275,7 @@ function render() {
     main.append(el("section", { class: "match" },
       el("h2", {}, `Match ${m.index} · vs ${m.opponent || "?"}${m.rating ? " (" + m.rating + ")" : ""} · ${m.length}`,
         el("span", { class: "deck" }, m.deck.join(" · "))),
-      evs.map(e => eventRow(e, m.deck)), missingBox(m)));
+      evs.map(e => eventRow(e, m.deck)), missingBox(m), DATA.all_cards ? deckBox(m) : null));
   }
   const done = DATA.events.filter(e => (state.verdicts[e.id] || {}).verdict).length;
   document.getElementById("progress").textContent = `${done} / ${DATA.events.length} reviewed`;
@@ -343,3 +404,72 @@ def score_against_truth(db_dir: Path, truth: dict) -> dict:
         "wrong_events": [(e["match_id"][-3:], round(e["t_video"], 1), e["kind"], e["card"], e["confidence"]) for e in fp],
         "missed_events": [(t["match_id"][-3:], t["t_video"], t["label"]) for t in free],
     }
+
+
+def write_opponent_review(db_dir: Path, video_id: str, out: Path, match_indices: list[int] | None = None) -> int:
+    """Review page for opponent deploys (same page and export format as the POV review)."""
+    import hashlib
+
+    db = lancedb.connect(db_dir)
+    video = db.open_table("videos").search().where(f"video_id = '{video_id}'").to_arrow().to_pylist()[0]
+    matches = sorted(db.open_table("matches").search().where(f"video_id = '{video_id}'").limit(1000).to_arrow().to_pylist(),
+                     key=lambda m: m["index"])
+    if match_indices:
+        matches = [m for m in matches if m["index"] in match_indices]
+    keep = {m["match_id"] for m in matches}
+    events = sorted((e for e in db.open_table("opponent_events").search().where(f"video_id = '{video_id}'").limit(100_000)
+                     .to_arrow().to_pylist() if e["match_id"] in keep), key=lambda e: e["t_video"])
+    all_cards = sorted(c["name"] for c in db.open_table("cards").search().where("kind = 'deck_card'").limit(1000)
+                       .select(["name"]).to_arrow().to_pylist())
+    decks = {e["match_id"]: e["deck"] for e in events}
+    run = hashlib.sha1("|".join(f"{e['event_id']}:{e['t_video']:.2f}:{e['card']}" for e in events).encode()).hexdigest()[:10]
+
+    def conf(e):
+        votes = json.loads(e["votes"])
+        share = votes.get(e["card"], 0) / max(sum(votes.values()), 1) if e["card"] else 0
+        return "low" if not e["card"] or e["subunit_only"] else "high" if share >= 0.8 else "medium"
+
+    data = {
+        "video_id": video_id + "_opponent", "run": run, "url": video["url"], "all_cards": all_cards,
+        "matches": [{"match_id": m["match_id"], "index": m["index"], "opponent": m["opponent_name"],
+                     "rating": m["opponent_rating"], "deck": decks.get(m["match_id"], []),
+                     "length": _clock(m["t_end"] - max(m["t_start"], 0))} for m in matches],
+        "events": [{
+            "id": e["event_id"], "match_id": e["match_id"], "t_video": round(e["t_video"], 1),
+            "clock": _clock(e["t_match"] or 0), "kind": "play", "card": e["card"] or "Unknown card",
+            "form": "evo" if e["evo"] else None, "confidence": conf(e),
+            "meta": f"{e['units']} unit(s) at tile ({e['x_tiles']:.0f}, {e['y_tiles']:.0f}) · detector saw {', '.join(e['classes'])}",
+            "notes": (["only death spawns / summons"] if e["subunit_only"] else []),
+            "hand": _b64(e["thumb_zoom"]), "arena": _b64(e["thumb_arena"]),
+        } for e in events],
+    }
+    title = f"Opponent review · {video.get('creator') or video_id}"
+    page = TEMPLATE.replace("__TITLE__", html.escape(title)).replace("__DATA__", json.dumps(data).replace("</", "<\\/"))
+    out.parent.mkdir(parents=True, exist_ok=True)
+    out.write_text(page)
+    return len(events)
+
+
+def score_opponent(db_dir: Path, truth: dict, table: str = "opponent_events") -> dict:
+    """Opponent deploys vs ground truth: a deploy is *found* if a true play is within the window
+    (any card), and *fully right* if the card matches too (one-to-one, card matches first)."""
+    db = lancedb.connect(db_dir)
+    events = [e for e in db.open_table(table).search().where(f"video_id = '{truth['video_id']}'")
+              .limit(100_000).select(["match_id", "t_video", "card"]).to_arrow().to_pylist() if e["match_id"] in truth["matches"]]
+    items = truth["items"]
+    win = lambda t: MATCH_WINDOW_S * (3 if t.get("approximate_time") else 1)
+    used_t, used_e, right, found = set(), set(), 0, 0
+    for exact in (True, False):
+        for i, e in sorted(enumerate(events), key=lambda ie: ie[1]["t_video"]):
+            if i in used_e:
+                continue
+            cands = [(abs(t["t_video"] - e["t_video"]), k) for k, t in enumerate(items)
+                     if k not in used_t and t["match_id"] == e["match_id"] and abs(t["t_video"] - e["t_video"]) <= win(t)
+                     and (t["label"] == e["card"]) == exact]
+            if cands:
+                _, k = min(cands)
+                used_t.add(k); used_e.add(i); found += 1; right += exact
+    return {"true_plays": len(items), "detected": len(events), "fully_right": right, "wrong_card": found - right,
+            "not_a_play": len(events) - found, "missed": len(items) - found,
+            "found_recall": round(found / len(items), 3), "fully_right_rate": round(right / len(items), 3),
+            "deploy_precision": round(found / len(events), 3) if events else None}

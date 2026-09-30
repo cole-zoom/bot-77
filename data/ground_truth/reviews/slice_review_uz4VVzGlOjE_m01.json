@@ -1,0 +1,89 @@
+{
+ "exported_at": "2026-09-29T00:31:21.485Z",
+ "slices": [
+  {
+   "id": "goblinstein-candidate_1_uz4VVzGlOjE_m01_0016.75_0.png",
+   "card": "Goblinstein",
+   "entity": "goblinstein-monster",
+   "verdict": "reject"
+  },
+  {
+   "id": "goblinstein-candidate_1_uz4VVzGlOjE_m01_0119.50_0.png",
+   "card": "Goblinstein",
+   "entity": "goblinstein-monster",
+   "verdict": "reject"
+  },
+  {
+   "id": "goblinstein-candidate_1_uz4VVzGlOjE_m01_0120.50_0.png",
+   "card": "Goblinstein",
+   "entity": "goblinstein-monster",
+   "verdict": "reject"
+  },
+  {
+   "id": "goblinstein-candidate_1_uz4VVzGlOjE_m01_0119.00_1.png",
+   "card": "Goblinstein",
+   "entity": "goblinstein-monster",
+   "verdict": "reject"
+  },
+  {
+   "id": "goblinstein-candidate_1_uz4VVzGlOjE_m01_0120.00_1.png",
+   "card": "Goblinstein",
+   "entity": "goblinstein-monster",
+   "verdict": "reject"
+  },
+  {
+   "id": "minion-giant-candidate_1_uz4VVzGlOjE_m01_0122.75_0.png",
+   "card": "Minion Giant",
+   "entity": "minion-giant",
+   "verdict": "keep"
+  },
+  {
+   "id": "minion-giant-candidate_1_uz4VVzGlOjE_m01_0123.75_0.png",
+   "card": "Minion Giant",
+   "entity": "minion-giant",
+   "verdict": "keep"
+  },
+  {
+   "id": "minion-giant-candidate_1_uz4VVzGlOjE_m01_0124.75_0.png",
+   "card": "Minion Giant",
+   "entity": "minion-giant",
+   "verdict": "keep"
+  },
+  {
+   "id": "minion-giant-candidate_1_uz4VVzGlOjE_m01_0208.00_0.png",
+   "card": "Minion Giant",
+   "entity": "minion-giant",
+   "verdict": "reject"
+  },
+  {
+   "id": "minion-giant-candidate_1_uz4VVzGlOjE_m01_0209.00_0.png",
+   "card": "Minion Giant",
+   "entity": "minion-giant",
+   "verdict": "keep"
+  },
+  {
+   "id": "minion-giant-candidate_1_uz4VVzGlOjE_m01_0233.00_0.png",
+   "card": "Minion Giant",
+   "entity": "minion-giant",
+   "verdict": "keep"
+  },
+  {
+   "id": "minion-giant-candidate_1_uz4VVzGlOjE_m01_0234.00_0.png",
+   "card": "Minion Giant",
+   "entity": "minion-giant",
+   "verdict": "reject"
+  },
+  {
+   "id": "goblinstein-candidate_1_uz4VVzGlOjE_m01_0257.50_0.png",
+   "card": "Goblinstein",
+   "entity": "goblinstein-monster",
+   "verdict": "reject"
+  },
+  {
+   "id": "goblinstein-candidate_1_uz4VVzGlOjE_m01_0258.75_0.png",
+   "card": "Goblinstein",
+   "entity": "goblinstein-doctor",
+   "verdict": "reject"
+  }
+ ]
+}

@@ -1,0 +1,204 @@
+{
+ "video_id": "cole_2026-09-29_c",
+ "side": "opponent",
+ "matches": [
+  "cole_2026-09-29_c_m06"
+ ],
+ "items": [
+  {
+   "match_id": "cole_2026-09-29_c_m06",
+   "t_video": 1194.3,
+   "label": "Tombstone",
+   "form": "hero",
+   "source": "POV of friend_2026-09-29_c_m09",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-09-29_c_m06",
+   "t_video": 1195.7,
+   "label": "Mirror",
+   "form": "normal",
+   "source": "POV of friend_2026-09-29_c_m09",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "cole_2026-09-29_c_m06",
+   "t_video": 1201.1,
+   "label": "Void",
+   "form": "normal",
+   "source": "POV of friend_2026-09-29_c_m09",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-09-29_c_m06",
+   "t_video": 1211.3,
+   "label": "Goblin Curse",
+   "form": "normal",
+   "source": "POV of friend_2026-09-29_c_m09",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-09-29_c_m06",
+   "t_video": 1222.1,
+   "label": "Vines",
+   "form": "normal",
+   "source": "POV of friend_2026-09-29_c_m09",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-09-29_c_m06",
+   "t_video": 1225.8,
+   "label": "Ice Spirit",
+   "form": "normal",
+   "source": "POV of friend_2026-09-29_c_m09",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-09-29_c_m06",
+   "t_video": 1252.3,
+   "label": "Mirror",
+   "form": "normal",
+   "source": "POV of friend_2026-09-29_c_m09",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "cole_2026-09-29_c_m06",
+   "t_video": 1270.2,
+   "label": "Goblinstein",
+   "form": "normal",
+   "source": "POV of friend_2026-09-29_c_m09",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-09-29_c_m06",
+   "t_video": 1279.8,
+   "label": "Void",
+   "form": "normal",
+   "source": "POV of friend_2026-09-29_c_m09",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-09-29_c_m06",
+   "t_video": 1293.8,
+   "label": "Goblin Drill",
+   "form": "normal",
+   "source": "POV of friend_2026-09-29_c_m09",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-09-29_c_m06",
+   "t_video": 1294.7,
+   "label": "Ice Spirit",
+   "form": "normal",
+   "source": "POV of friend_2026-09-29_c_m09",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "cole_2026-09-29_c_m06",
+   "t_video": 1303.6,
+   "label": "Vines",
+   "form": "normal",
+   "source": "POV of friend_2026-09-29_c_m09",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-09-29_c_m06",
+   "t_video": 1311.3,
+   "label": "Goblinstein",
+   "form": "normal",
+   "source": "POV of friend_2026-09-29_c_m09",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-09-29_c_m06",
+   "t_video": 1325.9,
+   "label": "Void",
+   "form": "normal",
+   "source": "POV of friend_2026-09-29_c_m09",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-09-29_c_m06",
+   "t_video": 1328.2,
+   "label": "Mirror",
+   "form": "normal",
+   "source": "POV of friend_2026-09-29_c_m09",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "cole_2026-09-29_c_m06",
+   "t_video": 1334.3,
+   "label": "Ice Spirit",
+   "form": "normal",
+   "source": "POV of friend_2026-09-29_c_m09",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-09-29_c_m06",
+   "t_video": 1336.4,
+   "label": "Goblin Curse",
+   "form": "normal",
+   "source": "POV of friend_2026-09-29_c_m09",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-09-29_c_m06",
+   "t_video": 1337.1,
+   "label": "Vines",
+   "form": "normal",
+   "source": "POV of friend_2026-09-29_c_m09",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "cole_2026-09-29_c_m06",
+   "t_video": 1350.6,
+   "label": "Tombstone",
+   "form": "hero",
+   "source": "POV of friend_2026-09-29_c_m09",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-09-29_c_m06",
+   "t_video": 1355.0,
+   "label": "Mirror",
+   "form": "normal",
+   "source": "POV of friend_2026-09-29_c_m09",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "cole_2026-09-29_c_m06",
+   "t_video": 1362.5,
+   "label": "Goblinstein",
+   "form": "normal",
+   "source": "POV of friend_2026-09-29_c_m09",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-09-29_c_m06",
+   "t_video": 1378.6,
+   "label": "Void",
+   "form": "normal",
+   "source": "POV of friend_2026-09-29_c_m09",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "cole_2026-09-29_c_m06",
+   "t_video": 1380.3,
+   "label": "Goblin Curse",
+   "form": "normal",
+   "source": "POV of friend_2026-09-29_c_m09",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-09-29_c_m06",
+   "t_video": 1381.2,
+   "label": "Vines",
+   "form": "normal",
+   "source": "POV of friend_2026-09-29_c_m09",
+   "source_confidence": "medium"
+  }
+ ],
+ "paired_with": "friend_2026-09-29_c_m09",
+ "offset_s": 65.0,
+ "auto": true
+}

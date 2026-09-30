@@ -1,0 +1,276 @@
+{
+ "video_id": "friend_2026-09-29_c",
+ "side": "opponent",
+ "matches": [
+  "friend_2026-09-29_c_m15"
+ ],
+ "items": [
+  {
+   "match_id": "friend_2026-09-29_c_m15",
+   "t_video": 1993.1,
+   "label": "Barbarian Barrel",
+   "form": "hero",
+   "source": "POV of cole_2026-09-29_c_m10",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "friend_2026-09-29_c_m15",
+   "t_video": 2001.7,
+   "label": "Suspicious Bush",
+   "form": "normal",
+   "source": "POV of cole_2026-09-29_c_m10",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "friend_2026-09-29_c_m15",
+   "t_video": 2006.0,
+   "label": "Minion Giant",
+   "form": "normal",
+   "source": "POV of cole_2026-09-29_c_m10",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "friend_2026-09-29_c_m15",
+   "t_video": 2007.2,
+   "label": "Goblin Machine",
+   "form": "normal",
+   "source": "POV of cole_2026-09-29_c_m10",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "friend_2026-09-29_c_m15",
+   "t_video": 2028.3,
+   "label": "Barbarian Barrel",
+   "form": "hero",
+   "source": "POV of cole_2026-09-29_c_m10",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "friend_2026-09-29_c_m15",
+   "t_video": 2031.7,
+   "label": "__ability",
+   "form": null,
+   "source": "POV of cole_2026-09-29_c_m10",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "friend_2026-09-29_c_m15",
+   "t_video": 2039.5,
+   "label": "Mirror",
+   "form": "normal",
+   "source": "POV of cole_2026-09-29_c_m10",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "friend_2026-09-29_c_m15",
+   "t_video": 2042.3,
+   "label": "__ability",
+   "form": null,
+   "source": "POV of cole_2026-09-29_c_m10",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "friend_2026-09-29_c_m15",
+   "t_video": 2050.1,
+   "label": "Ronin",
+   "form": "normal",
+   "source": "POV of cole_2026-09-29_c_m10",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "friend_2026-09-29_c_m15",
+   "t_video": 2067.9,
+   "label": "Boss Bandit",
+   "form": "normal",
+   "source": "POV of cole_2026-09-29_c_m10",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "friend_2026-09-29_c_m15",
+   "t_video": 2085.4,
+   "label": "Barbarian Barrel",
+   "form": "hero",
+   "source": "POV of cole_2026-09-29_c_m10",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "friend_2026-09-29_c_m15",
+   "t_video": 2090.3,
+   "label": "__ability",
+   "form": null,
+   "source": "POV of cole_2026-09-29_c_m10",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "friend_2026-09-29_c_m15",
+   "t_video": 2099.5,
+   "label": "Mirror",
+   "form": "normal",
+   "source": "POV of cole_2026-09-29_c_m10",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "friend_2026-09-29_c_m15",
+   "t_video": 2122.3,
+   "label": "Ronin",
+   "form": "normal",
+   "source": "POV of cole_2026-09-29_c_m10",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "friend_2026-09-29_c_m15",
+   "t_video": 2123.4,
+   "label": "Goblin Machine",
+   "form": "normal",
+   "source": "POV of cole_2026-09-29_c_m10",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "friend_2026-09-29_c_m15",
+   "t_video": 2135.1,
+   "label": "Spirit Empress",
+   "form": "normal",
+   "source": "POV of cole_2026-09-29_c_m10",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "friend_2026-09-29_c_m15",
+   "t_video": 2137.6,
+   "label": "Barbarian Barrel",
+   "form": "hero",
+   "source": "POV of cole_2026-09-29_c_m10",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "friend_2026-09-29_c_m15",
+   "t_video": 2142.3,
+   "label": "__ability",
+   "form": null,
+   "source": "POV of cole_2026-09-29_c_m10",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "friend_2026-09-29_c_m15",
+   "t_video": 2143.1,
+   "label": "Mirror",
+   "form": "normal",
+   "source": "POV of cole_2026-09-29_c_m10",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "friend_2026-09-29_c_m15",
+   "t_video": 2147.8,
+   "label": "Minion Giant",
+   "form": "normal",
+   "source": "POV of cole_2026-09-29_c_m10",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "friend_2026-09-29_c_m15",
+   "t_video": 2160.1,
+   "label": "Boss Bandit",
+   "form": "normal",
+   "source": "POV of cole_2026-09-29_c_m10",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "friend_2026-09-29_c_m15",
+   "t_video": 2164.4,
+   "label": "Spirit Empress",
+   "form": "normal",
+   "source": "POV of cole_2026-09-29_c_m10",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "friend_2026-09-29_c_m15",
+   "t_video": 2178.0,
+   "label": "Barbarian Barrel",
+   "form": "hero",
+   "source": "POV of cole_2026-09-29_c_m10",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "friend_2026-09-29_c_m15",
+   "t_video": 2180.4,
+   "label": "Mirror",
+   "form": "normal",
+   "source": "POV of cole_2026-09-29_c_m10",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "friend_2026-09-29_c_m15",
+   "t_video": 2183.8,
+   "label": "__ability",
+   "form": null,
+   "source": "POV of cole_2026-09-29_c_m10",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "friend_2026-09-29_c_m15",
+   "t_video": 2186.0,
+   "label": "Ronin",
+   "form": "normal",
+   "source": "POV of cole_2026-09-29_c_m10",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "friend_2026-09-29_c_m15",
+   "t_video": 2187.2,
+   "label": "Suspicious Bush",
+   "form": "normal",
+   "source": "POV of cole_2026-09-29_c_m10",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "friend_2026-09-29_c_m15",
+   "t_video": 2197.0,
+   "label": "Spirit Empress",
+   "form": "normal",
+   "source": "POV of cole_2026-09-29_c_m10",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "friend_2026-09-29_c_m15",
+   "t_video": 2201.2,
+   "label": "Goblin Machine",
+   "form": "normal",
+   "source": "POV of cole_2026-09-29_c_m10",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "friend_2026-09-29_c_m15",
+   "t_video": 2204.6,
+   "label": "Barbarian Barrel",
+   "form": "hero",
+   "source": "POV of cole_2026-09-29_c_m10",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "friend_2026-09-29_c_m15",
+   "t_video": 2214.8,
+   "label": "Mirror",
+   "form": "normal",
+   "source": "POV of cole_2026-09-29_c_m10",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "friend_2026-09-29_c_m15",
+   "t_video": 2219.3,
+   "label": "__ability",
+   "form": null,
+   "source": "POV of cole_2026-09-29_c_m10",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "friend_2026-09-29_c_m15",
+   "t_video": 2225.3,
+   "label": "Boss Bandit",
+   "form": "normal",
+   "source": "POV of cole_2026-09-29_c_m10",
+   "source_confidence": "medium"
+  }
+ ],
+ "paired_with": "cole_2026-09-29_c_m10",
+ "offset_s": 65.0,
+ "auto": true
+}

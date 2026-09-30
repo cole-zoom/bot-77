@@ -149,6 +149,12 @@
       960,
       240,
       1080
+    ],
+    "arena": [
+      0,
+      60,
+      975,
+      1080
     ]
   },
   "hand": {
@@ -157,6 +163,14 @@
   "notes": {
     "hand": "Hand-bar regions are Alina's mapped by x' = 972.1 + 0.876x, y' = 0.876y - 956.7.",
     "ability_right": "In the arena crop, bottom right, cut off by the frame's bottom edge. States seen: ready (cyan), grey (unaffordable?), dark navy (used).",
-    "ability_left": "Mirrored; not yet seen."
-  }
+    "ability_left": "Mirrored; not yet seen.",
+    "arena": "Playfield for unit / badge detection (excludes the top HUD and the hand bar).",
+    "katacr_arena": "Crop fed to the KataCR detector (their part2_2.16 box, 576x896), mapped from Alina's via the tower HP anchors; may extend past the frame (padded)."
+  },
+  "katacr_arena": [
+    155,
+    37,
+    818,
+    1111
+  ]
 }

@@ -1,0 +1,188 @@
+{
+ "video_id": "cole_2026-09-29_b",
+ "side": "opponent",
+ "matches": [
+  "cole_2026-09-29_b_m02"
+ ],
+ "items": [
+  {
+   "match_id": "cole_2026-09-29_b_m02",
+   "t_video": 263.4,
+   "label": "Goblinstein",
+   "form": "normal",
+   "source": "POV of friend_2026-09-29_b_m04",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-09-29_b_m02",
+   "t_video": 268.7,
+   "label": "Berserker",
+   "form": "normal",
+   "source": "POV of friend_2026-09-29_b_m04",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-09-29_b_m02",
+   "t_video": 282.0,
+   "label": "Goblin Demolisher",
+   "form": "normal",
+   "source": "POV of friend_2026-09-29_b_m04",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "cole_2026-09-29_b_m02",
+   "t_video": 283.3,
+   "label": "Vines",
+   "form": "normal",
+   "source": "POV of friend_2026-09-29_b_m04",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-09-29_b_m02",
+   "t_video": 284.1,
+   "label": "Goblin Curse",
+   "form": "normal",
+   "source": "POV of friend_2026-09-29_b_m04",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "cole_2026-09-29_b_m02",
+   "t_video": 295.4,
+   "label": "Void",
+   "form": "normal",
+   "source": "POV of friend_2026-09-29_b_m04",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-09-29_b_m02",
+   "t_video": 309.8,
+   "label": "Berserker",
+   "form": "normal",
+   "source": "POV of friend_2026-09-29_b_m04",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-09-29_b_m02",
+   "t_video": 313.0,
+   "label": "Goblin Demolisher",
+   "form": "normal",
+   "source": "POV of friend_2026-09-29_b_m04",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-09-29_b_m02",
+   "t_video": 330.2,
+   "label": "Goblinstein",
+   "form": "normal",
+   "source": "POV of friend_2026-09-29_b_m04",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-09-29_b_m02",
+   "t_video": 344.5,
+   "label": "__ability",
+   "form": null,
+   "source": "POV of friend_2026-09-29_b_m04",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-09-29_b_m02",
+   "t_video": 351.2,
+   "label": "Goblin Curse",
+   "form": "normal",
+   "source": "POV of friend_2026-09-29_b_m04",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-09-29_b_m02",
+   "t_video": 363.7,
+   "label": "Mirror",
+   "form": "normal",
+   "source": "POV of friend_2026-09-29_b_m04",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "cole_2026-09-29_b_m02",
+   "t_video": 371.3,
+   "label": "Berserker",
+   "form": "normal",
+   "source": "POV of friend_2026-09-29_b_m04",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-09-29_b_m02",
+   "t_video": 380.1,
+   "label": "Vines",
+   "form": "normal",
+   "source": "POV of friend_2026-09-29_b_m04",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-09-29_b_m02",
+   "t_video": 381.5,
+   "label": "Goblin Demolisher",
+   "form": "normal",
+   "source": "POV of friend_2026-09-29_b_m04",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-09-29_b_m02",
+   "t_video": 384.5,
+   "label": "Rune Giant",
+   "form": "normal",
+   "source": "POV of friend_2026-09-29_b_m04",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "cole_2026-09-29_b_m02",
+   "t_video": 390.1,
+   "label": "Goblinstein",
+   "form": "normal",
+   "source": "POV of friend_2026-09-29_b_m04",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-09-29_b_m02",
+   "t_video": 406.8,
+   "label": "Mirror",
+   "form": "normal",
+   "source": "POV of friend_2026-09-29_b_m04",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "cole_2026-09-29_b_m02",
+   "t_video": 409.7,
+   "label": "Berserker",
+   "form": "normal",
+   "source": "POV of friend_2026-09-29_b_m04",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-09-29_b_m02",
+   "t_video": 411.8,
+   "label": "Goblin Demolisher",
+   "form": "normal",
+   "source": "POV of friend_2026-09-29_b_m04",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-09-29_b_m02",
+   "t_video": 417.2,
+   "label": "Vines",
+   "form": "normal",
+   "source": "POV of friend_2026-09-29_b_m04",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-09-29_b_m02",
+   "t_video": 422.2,
+   "label": "Goblinstein",
+   "form": "normal",
+   "source": "POV of friend_2026-09-29_b_m04",
+   "source_confidence": "medium"
+  }
+ ],
+ "paired_with": "friend_2026-09-29_b_m04",
+ "offset_s": 376.0,
+ "auto": true
+}

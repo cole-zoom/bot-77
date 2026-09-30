@@ -1,0 +1,92 @@
+{
+ "video_id": "cole_2026-09-29_c",
+ "side": "opponent",
+ "matches": [
+  "cole_2026-09-29_c_m03"
+ ],
+ "items": [
+  {
+   "match_id": "cole_2026-09-29_c_m03",
+   "t_video": 550.3,
+   "label": "Mirror",
+   "form": "normal",
+   "source": "POV of friend_2026-09-29_c_m04",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "cole_2026-09-29_c_m03",
+   "t_video": 559.3,
+   "label": "Goblin Drill",
+   "form": "normal",
+   "source": "POV of friend_2026-09-29_c_m04",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "cole_2026-09-29_c_m03",
+   "t_video": 570.4,
+   "label": "Goblinstein",
+   "form": "normal",
+   "source": "POV of friend_2026-09-29_c_m04",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-09-29_c_m03",
+   "t_video": 571.5,
+   "label": "Void",
+   "form": "normal",
+   "source": "POV of friend_2026-09-29_c_m04",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "cole_2026-09-29_c_m03",
+   "t_video": 577.7,
+   "label": "Tombstone",
+   "form": "hero",
+   "source": "POV of friend_2026-09-29_c_m04",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-09-29_c_m03",
+   "t_video": 591.3,
+   "label": "Goblin Drill",
+   "form": "evo",
+   "source": "POV of friend_2026-09-29_c_m04",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-09-29_c_m03",
+   "t_video": 597.0,
+   "label": "Goblinstein",
+   "form": "normal",
+   "source": "POV of friend_2026-09-29_c_m04",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-09-29_c_m03",
+   "t_video": 606.2,
+   "label": "Void",
+   "form": "normal",
+   "source": "POV of friend_2026-09-29_c_m04",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-09-29_c_m03",
+   "t_video": 607.4,
+   "label": "Goblin Curse",
+   "form": "normal",
+   "source": "POV of friend_2026-09-29_c_m04",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "cole_2026-09-29_c_m03",
+   "t_video": 608.2,
+   "label": "Vines",
+   "form": "normal",
+   "source": "POV of friend_2026-09-29_c_m04",
+   "source_confidence": "medium"
+  }
+ ],
+ "paired_with": "friend_2026-09-29_c_m04",
+ "offset_s": 65.0,
+ "auto": true
+}

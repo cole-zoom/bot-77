@@ -149,6 +149,12 @@
       2268,
       1045,
       2302
+    ],
+    "arena": [
+      20,
+      240,
+      1060,
+      1900
     ]
   },
   "notes": {
@@ -158,9 +164,17 @@
     "slotN_tab": "Evo cards have a tab with charge pips; champion/hero cards have a pointed frame.",
     "slotN": "Top extended to 1950: a selected card is raised ~31px (card-art top ~1981 vs ~2012).",
     "emote_panel": "The emote picker covers the whole hand bar (e.g. 521s). Readers must detect it and return 'occluded'.",
-    "next": "A '1sec' countdown can overlay the bottom-left of the next card right after a play."
+    "next": "A '1sec' countdown can overlay the bottom-left of the next card right after a play.",
+    "arena": "Playfield for unit / badge detection (excludes the top HUD and the hand bar).",
+    "katacr_arena": "Crop fed to the KataCR detector (their part2_2.16 box, 576x896), mapped from Alina's via the tower HP anchors; may extend past the frame (padded)."
   },
   "hand": {
     "ui_scale": 1.0
-  }
+  },
+  "katacr_arena": [
+    23,
+    171,
+    1059,
+    1809
+  ]
 }

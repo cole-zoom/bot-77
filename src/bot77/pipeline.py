@@ -273,7 +273,7 @@ def _replace(db, name: str, schema: pa.Schema, rows: list[dict], video_id: str, 
              prefix: bool = False) -> None:
     """Replace this video's rows in a table (creating it if needed)."""
     table = pa.Table.from_pylist(rows, schema=schema)
-    if name not in db.table_names():
+    if name not in db.table_names(limit=10_000):
         db.create_table(name, table)
         return
     t = db.open_table(name)

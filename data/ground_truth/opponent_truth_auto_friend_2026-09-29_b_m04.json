@@ -1,0 +1,124 @@
+{
+ "video_id": "friend_2026-09-29_b",
+ "side": "opponent",
+ "matches": [
+  "friend_2026-09-29_b_m04"
+ ],
+ "items": [
+  {
+   "match_id": "friend_2026-09-29_b_m04",
+   "t_video": 620.9,
+   "label": "Berserker",
+   "form": "hero",
+   "source": "POV of cole_2026-09-29_b_m02",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "friend_2026-09-29_b_m04",
+   "t_video": 623.6,
+   "label": "Spirit Empress",
+   "form": "normal",
+   "source": "POV of cole_2026-09-29_b_m02",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "friend_2026-09-29_b_m04",
+   "t_video": 636.8,
+   "label": "__ability",
+   "form": null,
+   "source": "POV of cole_2026-09-29_b_m02",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "friend_2026-09-29_b_m04",
+   "t_video": 647.7,
+   "label": "Boss Bandit",
+   "form": "normal",
+   "source": "POV of cole_2026-09-29_b_m02",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "friend_2026-09-29_b_m04",
+   "t_video": 656.6,
+   "label": "Goblin Machine",
+   "form": "normal",
+   "source": "POV of cole_2026-09-29_b_m02",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "friend_2026-09-29_b_m04",
+   "t_video": 680.2,
+   "label": "Ronin",
+   "form": "normal",
+   "source": "POV of cole_2026-09-29_b_m02",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "friend_2026-09-29_b_m04",
+   "t_video": 682.7,
+   "label": "Berserker",
+   "form": "hero",
+   "source": "POV of cole_2026-09-29_b_m02",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "friend_2026-09-29_b_m04",
+   "t_video": 719.2,
+   "label": "Suspicious Bush",
+   "form": "normal",
+   "source": "POV of cole_2026-09-29_b_m02",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "friend_2026-09-29_b_m04",
+   "t_video": 735.5,
+   "label": "Goblin Machine",
+   "form": "normal",
+   "source": "POV of cole_2026-09-29_b_m02",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "friend_2026-09-29_b_m04",
+   "t_video": 752.5,
+   "label": "Ronin",
+   "form": "normal",
+   "source": "POV of cole_2026-09-29_b_m02",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "friend_2026-09-29_b_m04",
+   "t_video": 754.6,
+   "label": "Berserker",
+   "form": "hero",
+   "source": "POV of cole_2026-09-29_b_m02",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "friend_2026-09-29_b_m04",
+   "t_video": 762.5,
+   "label": "__ability",
+   "form": null,
+   "source": "POV of cole_2026-09-29_b_m02",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "friend_2026-09-29_b_m04",
+   "t_video": 773.5,
+   "label": "Boss Bandit",
+   "form": "normal",
+   "source": "POV of cole_2026-09-29_b_m02",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "friend_2026-09-29_b_m04",
+   "t_video": 779.0,
+   "label": "Rune Giant",
+   "form": "normal",
+   "source": "POV of cole_2026-09-29_b_m02",
+   "source_confidence": "high"
+  }
+ ],
+ "paired_with": "cole_2026-09-29_b_m02",
+ "offset_s": 376.0,
+ "auto": true
+}

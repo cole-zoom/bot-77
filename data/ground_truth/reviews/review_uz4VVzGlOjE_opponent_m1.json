@@ -1,0 +1,330 @@
+{
+ "video_id": "uz4VVzGlOjE_opponent",
+ "run": "6f7d69a486",
+ "exported_at": "2026-09-28T23:59:41.421Z",
+ "verdicts": {
+  "uz4VVzGlOjE_m01_o001": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m01_o002": {
+   "verdict": "wrong",
+   "correct": "Goblinstein"
+  },
+  "uz4VVzGlOjE_m01_o003": {
+   "verdict": "wrong",
+   "correct": "__not_a_play",
+   "note": "U already saw this above"
+  },
+  "uz4VVzGlOjE_m01_o004": {
+   "verdict": "wrong",
+   "correct": "Electro Spirit"
+  },
+  "uz4VVzGlOjE_m01_o005": {
+   "verdict": "wrong",
+   "correct": "__not_a_play",
+   "note": "Wrong player"
+  },
+  "uz4VVzGlOjE_m01_o006": {
+   "verdict": "wrong",
+   "correct": "__not_a_play",
+   "note": "Wrong player"
+  },
+  "uz4VVzGlOjE_m01_o007": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m01_o008": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m01_o009": {
+   "verdict": "wrong",
+   "correct": "__not_a_play",
+   "note": "Thats the pov, not opponent"
+  },
+  "uz4VVzGlOjE_m01_o010": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m01_o011": {
+   "verdict": "wrong",
+   "correct": "__not_a_play"
+  },
+  "uz4VVzGlOjE_m01_o012": {
+   "verdict": "wrong",
+   "correct": "Electro Spirit"
+  },
+  "uz4VVzGlOjE_m01_o013": {
+   "verdict": "correct",
+   "correct": "__not_a_play",
+   "note": "Wrong player"
+  },
+  "uz4VVzGlOjE_m01_o014": {
+   "verdict": "wrong",
+   "correct": "Barbarian Barrel",
+   "note": "Barb from the barb barrel - not sure how to label this"
+  },
+  "uz4VVzGlOjE_m01_o015": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m01_o016": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m01_o017": {
+   "verdict": "wrong",
+   "correct": "__not_a_play"
+  },
+  "uz4VVzGlOjE_m01_o018": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m01_o019": {
+   "verdict": "wrong",
+   "correct": "__not_a_play"
+  },
+  "uz4VVzGlOjE_m01_o020": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m01_o021": {
+   "verdict": "wrong",
+   "correct": "__not_a_play",
+   "note": "Thats the 2x elixir button"
+  },
+  "uz4VVzGlOjE_m01_o022": {
+   "verdict": "wrong",
+   "correct": "Goblinstein"
+  },
+  "uz4VVzGlOjE_m01_o023": {
+   "verdict": "wrong",
+   "correct": "Minion Giant"
+  },
+  "uz4VVzGlOjE_m01_o024": {
+   "verdict": "wrong",
+   "correct": "__not_a_play",
+   "note": "Wrong player"
+  },
+  "uz4VVzGlOjE_m01_o025": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m01_o026": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m01_o027": {
+   "verdict": "wrong",
+   "correct": "Goblin Hut"
+  },
+  "uz4VVzGlOjE_m01_o028": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m01_o029": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m01_o030": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m01_o031": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m01_o032": {
+   "verdict": "wrong",
+   "correct": "Goblin Hut"
+  },
+  "uz4VVzGlOjE_m01_o033": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m01_o034": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m01_o035": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m01_o036": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m01_o037": {
+   "verdict": "wrong",
+   "correct": "__not_a_play",
+   "note": "Wrong player"
+  },
+  "uz4VVzGlOjE_m01_o038": {
+   "verdict": "wrong",
+   "correct": "__not_a_play",
+   "note": "All cards were already on the board. Goblin came out of the goblin hut already in play"
+  },
+  "uz4VVzGlOjE_m01_o039": {
+   "verdict": "wrong",
+   "correct": "__not_a_play",
+   "note": "Wrong player: Mighty miner ability"
+  },
+  "uz4VVzGlOjE_m01_o040": {
+   "verdict": "wrong",
+   "correct": "Archers",
+   "note": "They weren't evo, and ur circling nothing. they are actually behind the king tower"
+  },
+  "uz4VVzGlOjE_m01_o041": {
+   "verdict": "wrong",
+   "correct": "Skeletons",
+   "note": "Evo skeles + e spirit (so u were right about the esprirt, but u circled the skeletons"
+  },
+  "uz4VVzGlOjE_m01_o042": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m01_o043": {
+   "verdict": "wrong",
+   "correct": "Minion Giant"
+  },
+  "uz4VVzGlOjE_m01_o044": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m01_o045": {
+   "verdict": "wrong",
+   "correct": "__not_a_play",
+   "note": "Ur circling nothing"
+  },
+  "uz4VVzGlOjE_m01_o046": {
+   "verdict": "wrong",
+   "correct": "Goblin Hut"
+  },
+  "uz4VVzGlOjE_m01_o047": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m01_o048": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m01_o049": {
+   "verdict": "wrong",
+   "correct": "Electro Spirit"
+  },
+  "uz4VVzGlOjE_m01_o050": {
+   "verdict": "wrong",
+   "correct": "Minion Giant"
+  },
+  "uz4VVzGlOjE_m01_o051": {
+   "verdict": "wrong",
+   "correct": "__not_a_play",
+   "note": "This is the wrong player's hog"
+  },
+  "uz4VVzGlOjE_m01_o052": {
+   "verdict": "wrong",
+   "correct": "__not_a_play",
+   "note": "this was already played"
+  },
+  "uz4VVzGlOjE_m01_o053": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m01_o054": {
+   "verdict": "wrong",
+   "correct": "__not_a_play",
+   "note": "Other players evo tesla"
+  },
+  "uz4VVzGlOjE_m01_o055": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m01_o056": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m01_o057": {
+   "verdict": "wrong",
+   "correct": "__not_a_play",
+   "note": "Thats the current player playing an earthquake"
+  },
+  "uz4VVzGlOjE_m01_o058": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m01_o059": {
+   "verdict": "wrong",
+   "correct": "Electro Spirit"
+  },
+  "uz4VVzGlOjE_m01_o060": {
+   "verdict": "wrong",
+   "correct": "Goblin Hut"
+  },
+  "uz4VVzGlOjE_m01_o061": {
+   "verdict": "wrong",
+   "correct": "Goblinstein"
+  },
+  "uz4VVzGlOjE_m01_o062": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m01_o063": {
+   "verdict": "correct"
+  },
+  "uz4VVzGlOjE_m01_o064": {
+   "verdict": "wrong",
+   "note": "Same thing w the earthquake"
+  }
+ },
+ "missing": [
+  {
+   "match_id": "uz4VVzGlOjE_m01",
+   "clock": "1:30",
+   "card": "Archers",
+   "note": "Split archers the back behind king tower, thats prolly why"
+  },
+  {
+   "match_id": "uz4VVzGlOjE_m01",
+   "clock": "1:35",
+   "card": "Goblin Hut",
+   "note": "In a mess of troops"
+  },
+  {
+   "match_id": "uz4VVzGlOjE_m01",
+   "clock": "2:15",
+   "card": "Lightning",
+   "note": ""
+  },
+  {
+   "match_id": "uz4VVzGlOjE_m01",
+   "clock": "3:20",
+   "card": "Skeletons",
+   "note": "U circled skeletons and labled them as an espirit, and missed the espirit"
+  },
+  {
+   "match_id": "uz4VVzGlOjE_m01",
+   "clock": "4:01",
+   "card": "Lightning",
+   "note": ""
+  },
+  {
+   "match_id": "uz4VVzGlOjE_m01",
+   "clock": "4:33",
+   "card": "Electro Spirit",
+   "note": ""
+  }
+ ],
+ "decks": {
+  "uz4VVzGlOjE_m01": [
+   "Archers",
+   "Skeletons",
+   "Barbarian Barrel",
+   "Goblin Hut",
+   "Minion Giant",
+   "Electro Spirit",
+   "Lightning",
+   "Goblinstein"
+  ]
+ },
+ "confirmed": {
+  "uz4VVzGlOjE_m01": [
+   "Goblinstein",
+   "Electro Spirit",
+   "Mighty Miner",
+   "Goblin Hut",
+   "Skeletons",
+   "Archers",
+   "Barbarian Barrel",
+   "Minion Giant",
+   "Lightning",
+   "Unknown card",
+   "Electro Dragon"
+  ]
+ },
+ "recent": {
+  "uz4VVzGlOjE_m01": [
+   "Electro Spirit",
+   "Skeletons",
+   "Lightning",
+   "Goblinstein",
+   "Goblin Hut",
+   "Archers",
+   "Barbarian Barrel",
+   "Minion Giant"
+  ]
+ }
+}

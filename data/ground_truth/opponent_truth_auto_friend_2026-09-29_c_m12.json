@@ -1,0 +1,116 @@
+{
+ "video_id": "friend_2026-09-29_c",
+ "side": "opponent",
+ "matches": [
+  "friend_2026-09-29_c_m12"
+ ],
+ "items": [
+  {
+   "match_id": "friend_2026-09-29_c_m12",
+   "t_video": 1524.8,
+   "label": "Goblin Machine",
+   "form": "normal",
+   "source": "POV of cole_2026-09-29_c_m07",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "friend_2026-09-29_c_m12",
+   "t_video": 1529.6,
+   "label": "Spirit Empress",
+   "form": "normal",
+   "source": "POV of cole_2026-09-29_c_m07",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "friend_2026-09-29_c_m12",
+   "t_video": 1553.0,
+   "label": "Ronin",
+   "form": "normal",
+   "source": "POV of cole_2026-09-29_c_m07",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "friend_2026-09-29_c_m12",
+   "t_video": 1554.5,
+   "label": "Suspicious Bush",
+   "form": "normal",
+   "source": "POV of cole_2026-09-29_c_m07",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "friend_2026-09-29_c_m12",
+   "t_video": 1587.9,
+   "label": "Dark Prince",
+   "form": "hero",
+   "source": "POV of cole_2026-09-29_c_m07",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "friend_2026-09-29_c_m12",
+   "t_video": 1589.6,
+   "label": "__ability",
+   "form": null,
+   "source": "POV of cole_2026-09-29_c_m07",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "friend_2026-09-29_c_m12",
+   "t_video": 1599.7,
+   "label": "Spirit Empress",
+   "form": "normal",
+   "source": "POV of cole_2026-09-29_c_m07",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "friend_2026-09-29_c_m12",
+   "t_video": 1611.7,
+   "label": "Ronin",
+   "form": "normal",
+   "source": "POV of cole_2026-09-29_c_m07",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "friend_2026-09-29_c_m12",
+   "t_video": 1633.2,
+   "label": "Suspicious Bush",
+   "form": "normal",
+   "source": "POV of cole_2026-09-29_c_m07",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "friend_2026-09-29_c_m12",
+   "t_video": 1639.8,
+   "label": "Boss Bandit",
+   "form": "normal",
+   "source": "POV of cole_2026-09-29_c_m07",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "friend_2026-09-29_c_m12",
+   "t_video": 1665.3,
+   "label": "Dark Prince",
+   "form": "hero",
+   "source": "POV of cole_2026-09-29_c_m07",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "friend_2026-09-29_c_m12",
+   "t_video": 1667.4,
+   "label": "Minion Giant",
+   "form": "normal",
+   "source": "POV of cole_2026-09-29_c_m07",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "friend_2026-09-29_c_m12",
+   "t_video": 1677.5,
+   "label": "Ronin",
+   "form": "normal",
+   "source": "POV of cole_2026-09-29_c_m07",
+   "source_confidence": "medium"
+  }
+ ],
+ "paired_with": "cole_2026-09-29_c_m07",
+ "offset_s": 66.0,
+ "auto": true
+}

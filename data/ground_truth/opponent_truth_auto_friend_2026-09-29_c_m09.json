@@ -1,0 +1,164 @@
+{
+ "video_id": "friend_2026-09-29_c",
+ "side": "opponent",
+ "matches": [
+  "friend_2026-09-29_c_m09"
+ ],
+ "items": [
+  {
+   "match_id": "friend_2026-09-29_c_m09",
+   "t_video": 1256.4,
+   "label": "Goblin Machine",
+   "form": "normal",
+   "source": "POV of cole_2026-09-29_c_m06",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "friend_2026-09-29_c_m09",
+   "t_video": 1274.2,
+   "label": "Mirror",
+   "form": "normal",
+   "source": "POV of cole_2026-09-29_c_m06",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "friend_2026-09-29_c_m09",
+   "t_video": 1287.1,
+   "label": "Suspicious Bush",
+   "form": "normal",
+   "source": "POV of cole_2026-09-29_c_m06",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "friend_2026-09-29_c_m09",
+   "t_video": 1304.1,
+   "label": "Ronin",
+   "form": "normal",
+   "source": "POV of cole_2026-09-29_c_m06",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "friend_2026-09-29_c_m09",
+   "t_video": 1315.1,
+   "label": "Boss Bandit",
+   "form": "normal",
+   "source": "POV of cole_2026-09-29_c_m06",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "friend_2026-09-29_c_m09",
+   "t_video": 1337.2,
+   "label": "Mirror",
+   "form": "normal",
+   "source": "POV of cole_2026-09-29_c_m06",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "friend_2026-09-29_c_m09",
+   "t_video": 1354.2,
+   "label": "Goblin Machine",
+   "form": "normal",
+   "source": "POV of cole_2026-09-29_c_m06",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "friend_2026-09-29_c_m09",
+   "t_video": 1374.0,
+   "label": "Minion Giant",
+   "form": "normal",
+   "source": "POV of cole_2026-09-29_c_m06",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "friend_2026-09-29_c_m09",
+   "t_video": 1381.4,
+   "label": "Ronin",
+   "form": "normal",
+   "source": "POV of cole_2026-09-29_c_m06",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "friend_2026-09-29_c_m09",
+   "t_video": 1385.0,
+   "label": "Mirror",
+   "form": "normal",
+   "source": "POV of cole_2026-09-29_c_m06",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "friend_2026-09-29_c_m09",
+   "t_video": 1406.2,
+   "label": "Goblin Machine",
+   "form": "normal",
+   "source": "POV of cole_2026-09-29_c_m06",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "friend_2026-09-29_c_m09",
+   "t_video": 1409.3,
+   "label": "Minion Giant",
+   "form": "normal",
+   "source": "POV of cole_2026-09-29_c_m06",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "friend_2026-09-29_c_m09",
+   "t_video": 1413.7,
+   "label": "Ronin",
+   "form": "normal",
+   "source": "POV of cole_2026-09-29_c_m06",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "friend_2026-09-29_c_m09",
+   "t_video": 1430.2,
+   "label": "Suspicious Bush",
+   "form": "normal",
+   "source": "POV of cole_2026-09-29_c_m06",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "friend_2026-09-29_c_m09",
+   "t_video": 1432.2,
+   "label": "Spirit Empress",
+   "form": "normal",
+   "source": "POV of cole_2026-09-29_c_m06",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "friend_2026-09-29_c_m09",
+   "t_video": 1439.4,
+   "label": "Mirror",
+   "form": "normal",
+   "source": "POV of cole_2026-09-29_c_m06",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "friend_2026-09-29_c_m09",
+   "t_video": 1448.2,
+   "label": "Boss Bandit",
+   "form": "normal",
+   "source": "POV of cole_2026-09-29_c_m06",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "friend_2026-09-29_c_m09",
+   "t_video": 1455.0,
+   "label": "Goblin Machine",
+   "form": "normal",
+   "source": "POV of cole_2026-09-29_c_m06",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "friend_2026-09-29_c_m09",
+   "t_video": 1467.5,
+   "label": "Ronin",
+   "form": "normal",
+   "source": "POV of cole_2026-09-29_c_m06",
+   "source_confidence": "medium"
+  }
+ ],
+ "paired_with": "cole_2026-09-29_c_m06",
+ "offset_s": 65.0,
+ "auto": true
+}
