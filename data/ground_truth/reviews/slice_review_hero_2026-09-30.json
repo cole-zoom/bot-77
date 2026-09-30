@@ -1,0 +1,526 @@
+{
+ "exported_at": "2026-09-30T21:05:41.355Z",
+ "slices": [
+  {
+   "id": "barbarian-barrel-hero_1_cole_2026-09-29_c_1929.60.png",
+   "card": "Barbarian Barrel (hero)",
+   "entity": "barbarian-barrel-hero",
+   "verdict": "keep"
+  },
+  {
+   "id": "barbarian-barrel-hero_1_cole_2026-09-29_c_1931.10.png",
+   "card": "Barbarian Barrel (hero)",
+   "entity": "barbarian-barrel-hero",
+   "verdict": "keep"
+  },
+  {
+   "id": "barbarian-barrel-hero_1_cole_2026-09-29_c_1964.80.png",
+   "card": "Barbarian Barrel (hero)",
+   "entity": "barbarian-barrel-hero",
+   "verdict": "reject"
+  },
+  {
+   "id": "barbarian-barrel-hero_1_cole_2026-09-29_c_1966.30.png",
+   "card": "Barbarian Barrel (hero)",
+   "entity": "barbarian-barrel-hero",
+   "verdict": "reject"
+  },
+  {
+   "id": "barbarian-barrel-hero_1_cole_2026-09-29_c_2021.90.png",
+   "card": "Barbarian Barrel (hero)",
+   "entity": "barbarian-barrel-hero",
+   "verdict": "reject"
+  },
+  {
+   "id": "barbarian-barrel-hero_1_cole_2026-09-29_c_2023.40.png",
+   "card": "Barbarian Barrel (hero)",
+   "entity": "barbarian-barrel-hero",
+   "verdict": "reject"
+  },
+  {
+   "id": "barbarian-barrel-hero_1_cole_2026-09-29_c_2074.10.png",
+   "card": "Barbarian Barrel (hero)",
+   "entity": "barbarian-barrel-hero",
+   "verdict": "keep"
+  },
+  {
+   "id": "barbarian-barrel-hero_1_cole_2026-09-29_c_2075.60.png",
+   "card": "Barbarian Barrel (hero)",
+   "entity": "barbarian-barrel-hero",
+   "verdict": "keep"
+  },
+  {
+   "id": "barbarian-barrel-hero_1_cole_2026-09-29_c_2114.50.png",
+   "card": "Barbarian Barrel (hero)",
+   "entity": "barbarian-barrel-hero",
+   "verdict": "keep"
+  },
+  {
+   "id": "barbarian-barrel-hero_1_cole_2026-09-29_c_2116.00.png",
+   "card": "Barbarian Barrel (hero)",
+   "entity": "barbarian-barrel-hero",
+   "verdict": "keep"
+  },
+  {
+   "id": "barbarian-barrel-hero_1_cole_2026-09-29_c_2141.10.png",
+   "card": "Barbarian Barrel (hero)",
+   "entity": "barbarian-barrel-hero",
+   "verdict": "keep"
+  },
+  {
+   "id": "barbarian-barrel-hero_1_cole_2026-09-29_c_2142.60.png",
+   "card": "Barbarian Barrel (hero)",
+   "entity": "barbarian-barrel-hero",
+   "verdict": "keep"
+  },
+  {
+   "id": "berserker-hero_1_PuJls1qTZsU_0030.80.png",
+   "card": "Berserker (hero)",
+   "entity": "berserker-hero",
+   "verdict": "reject"
+  },
+  {
+   "id": "berserker-hero_1_PuJls1qTZsU_0032.30.png",
+   "card": "Berserker (hero)",
+   "entity": "berserker-hero",
+   "verdict": "keep"
+  },
+  {
+   "id": "berserker-hero_1_PuJls1qTZsU_0358.50.png",
+   "card": "Berserker (hero)",
+   "entity": "berserker-hero",
+   "verdict": "reject"
+  },
+  {
+   "id": "berserker-hero_1_PuJls1qTZsU_0360.00.png",
+   "card": "Berserker (hero)",
+   "entity": "berserker-hero",
+   "verdict": "reject"
+  },
+  {
+   "id": "berserker-hero_1_PuJls1qTZsU_0809.70.png",
+   "card": "Berserker (hero)",
+   "entity": "berserker-hero",
+   "verdict": "reject"
+  },
+  {
+   "id": "berserker-hero_1_PuJls1qTZsU_1119.10.png",
+   "card": "Berserker (hero)",
+   "entity": "berserker-hero",
+   "verdict": "reject"
+  },
+  {
+   "id": "berserker-hero_1_PuJls1qTZsU_1332.10.png",
+   "card": "Berserker (hero)",
+   "entity": "berserker-hero",
+   "verdict": "keep"
+  },
+  {
+   "id": "berserker-hero_1_PuJls1qTZsU_1333.60.png",
+   "card": "Berserker (hero)",
+   "entity": "berserker-hero",
+   "verdict": "reject"
+  },
+  {
+   "id": "berserker-hero_1_PuJls1qTZsU_1581.70.png",
+   "card": "Berserker (hero)",
+   "entity": "berserker-hero",
+   "verdict": "reject"
+  },
+  {
+   "id": "dark-prince-hero_1_cole_2026-09-29_c_0027.60.png",
+   "card": "Dark Prince (hero)",
+   "entity": "dark-prince-hero",
+   "verdict": "reject"
+  },
+  {
+   "id": "dark-prince-hero_1_cole_2026-09-29_c_0029.10.png",
+   "card": "Dark Prince (hero)",
+   "entity": "dark-prince-hero",
+   "verdict": "keep"
+  },
+  {
+   "id": "dark-prince-hero_1_cole_2026-09-29_c_0171.30.png",
+   "card": "Dark Prince (hero)",
+   "entity": "dark-prince-hero",
+   "verdict": "keep"
+  },
+  {
+   "id": "dark-prince-hero_1_cole_2026-09-29_c_0546.70.png",
+   "card": "Dark Prince (hero)",
+   "entity": "dark-prince-hero",
+   "verdict": "reject"
+  },
+  {
+   "id": "dark-prince-hero_1_cole_2026-09-29_c_0548.20.png",
+   "card": "Dark Prince (hero)",
+   "entity": "dark-prince-hero",
+   "verdict": "reject"
+  },
+  {
+   "id": "dark-prince-hero_1_cole_2026-09-29_c_0817.90.png",
+   "card": "Dark Prince (hero)",
+   "entity": "dark-prince-hero",
+   "verdict": "reject"
+  },
+  {
+   "id": "dark-prince-hero_1_cole_2026-09-29_c_0819.40.png",
+   "card": "Dark Prince (hero)",
+   "entity": "dark-prince-hero",
+   "verdict": "keep"
+  },
+  {
+   "id": "dark-prince-hero_1_cole_2026-09-29_c_1067.10.png",
+   "card": "Dark Prince (hero)",
+   "entity": "dark-prince-hero",
+   "verdict": "reject"
+  },
+  {
+   "id": "dark-prince-hero_1_cole_2026-09-29_c_1068.60.png",
+   "card": "Dark Prince (hero)",
+   "entity": "dark-prince-hero",
+   "verdict": "keep"
+  },
+  {
+   "id": "dark-prince-hero_1_cole_2026-09-29_c_1523.40.png",
+   "card": "Dark Prince (hero)",
+   "entity": "dark-prince-hero",
+   "verdict": "reject"
+  },
+  {
+   "id": "dark-prince-hero_1_cole_2026-09-29_c_1524.90.png",
+   "card": "Dark Prince (hero)",
+   "entity": "dark-prince-hero",
+   "verdict": "reject"
+  },
+  {
+   "id": "goblins-hero_1_6rCdZkKZiis_0036.90.png",
+   "card": "Goblins (hero)",
+   "entity": "goblins-hero",
+   "verdict": "keep"
+  },
+  {
+   "id": "goblins-hero_1_6rCdZkKZiis_0221.40.png",
+   "card": "Goblins (hero)",
+   "entity": "goblins-hero",
+   "verdict": "reject"
+  },
+  {
+   "id": "goblins-hero_1_6rCdZkKZiis_0450.20.png",
+   "card": "Goblins (hero)",
+   "entity": "goblins-hero",
+   "verdict": "keep"
+  },
+  {
+   "id": "goblins-hero_1_6rCdZkKZiis_0856.40.png",
+   "card": "Goblins (hero)",
+   "entity": "goblins-hero",
+   "verdict": "reject"
+  },
+  {
+   "id": "goblins-hero_1_6rCdZkKZiis_0857.90.png",
+   "card": "Goblins (hero)",
+   "entity": "goblins-hero",
+   "verdict": "reject"
+  },
+  {
+   "id": "goblins-hero_1_6rCdZkKZiis_1035.10.png",
+   "card": "Goblins (hero)",
+   "entity": "goblins-hero",
+   "verdict": "reject"
+  },
+  {
+   "id": "goblins-hero_1_6rCdZkKZiis_1036.60.png",
+   "card": "Goblins (hero)",
+   "entity": "goblins-hero",
+   "verdict": "reject"
+  },
+  {
+   "id": "ice-golem-hero_1_3r9-35N9yE8_0119.50.png",
+   "card": "Ice Golem (hero)",
+   "entity": "ice-golem-hero",
+   "verdict": "reject"
+  },
+  {
+   "id": "ice-golem-hero_1_3r9-35N9yE8_0332.90.png",
+   "card": "Ice Golem (hero)",
+   "entity": "ice-golem-hero",
+   "verdict": "reject"
+  },
+  {
+   "id": "ice-golem-hero_1_3r9-35N9yE8_0334.40.png",
+   "card": "Ice Golem (hero)",
+   "entity": "ice-golem-hero",
+   "verdict": "keep"
+  },
+  {
+   "id": "ice-golem-hero_1_3r9-35N9yE8_0541.50.png",
+   "card": "Ice Golem (hero)",
+   "entity": "ice-golem-hero",
+   "verdict": "reject"
+  },
+  {
+   "id": "ice-golem-hero_1_3r9-35N9yE8_0773.50.png",
+   "card": "Ice Golem (hero)",
+   "entity": "ice-golem-hero",
+   "verdict": "reject"
+  },
+  {
+   "id": "ice-golem-hero_1_3r9-35N9yE8_0775.00.png",
+   "card": "Ice Golem (hero)",
+   "entity": "ice-golem-hero",
+   "verdict": "keep"
+  },
+  {
+   "id": "ice-golem-hero_1_3r9-35N9yE8_0959.20.png",
+   "card": "Ice Golem (hero)",
+   "entity": "ice-golem-hero",
+   "verdict": "keep"
+  },
+  {
+   "id": "ice-golem-hero_1_3r9-35N9yE8_1102.70.png",
+   "card": "Ice Golem (hero)",
+   "entity": "ice-golem-hero",
+   "verdict": "reject"
+  },
+  {
+   "id": "ice-wizard-hero_1_b9nXaMBejRw_0178.50.png",
+   "card": "Ice Wizard (hero)",
+   "entity": "ice-wizard-hero",
+   "verdict": "reject"
+  },
+  {
+   "id": "ice-wizard-hero_1_b9nXaMBejRw_0180.00.png",
+   "card": "Ice Wizard (hero)",
+   "entity": "ice-wizard-hero",
+   "verdict": "keep"
+  },
+  {
+   "id": "ice-wizard-hero_1_b9nXaMBejRw_0966.70.png",
+   "card": "Ice Wizard (hero)",
+   "entity": "ice-wizard-hero",
+   "verdict": "reject"
+  },
+  {
+   "id": "ice-wizard-hero_1_b9nXaMBejRw_0968.20.png",
+   "card": "Ice Wizard (hero)",
+   "entity": "ice-wizard-hero",
+   "verdict": "keep"
+  },
+  {
+   "id": "ice-wizard-hero_1_b9nXaMBejRw_1028.50.png",
+   "card": "Ice Wizard (hero)",
+   "entity": "ice-wizard-hero"
+  },
+  {
+   "id": "ice-wizard-hero_1_b9nXaMBejRw_1030.00.png",
+   "card": "Ice Wizard (hero)",
+   "entity": "ice-wizard-hero",
+   "verdict": "keep"
+  },
+  {
+   "id": "ice-wizard-hero_1_b9nXaMBejRw_1072.60.png",
+   "card": "Ice Wizard (hero)",
+   "entity": "ice-wizard-hero",
+   "verdict": "keep"
+  },
+  {
+   "id": "knight-hero_1_7R5FP2IYWsw_0020.40.png",
+   "card": "Knight (hero)",
+   "entity": "knight-hero",
+   "verdict": "reject"
+  },
+  {
+   "id": "knight-hero_1_7R5FP2IYWsw_0021.90.png",
+   "card": "Knight (hero)",
+   "entity": "knight-hero",
+   "verdict": "reject"
+  },
+  {
+   "id": "knight-hero_1_7R5FP2IYWsw_0360.30.png",
+   "card": "Knight (hero)",
+   "entity": "knight-hero",
+   "verdict": "reject"
+  },
+  {
+   "id": "knight-hero_1_7R5FP2IYWsw_0653.70.png",
+   "card": "Knight (hero)",
+   "entity": "knight-hero",
+   "verdict": "reject"
+  },
+  {
+   "id": "knight-hero_1_7R5FP2IYWsw_0655.20.png",
+   "card": "Knight (hero)",
+   "entity": "knight-hero",
+   "verdict": "keep"
+  },
+  {
+   "id": "knight-hero_1_7R5FP2IYWsw_0798.70.png",
+   "card": "Knight (hero)",
+   "entity": "knight-hero",
+   "verdict": "reject"
+  },
+  {
+   "id": "knight-hero_1_7R5FP2IYWsw_0800.20.png",
+   "card": "Knight (hero)",
+   "entity": "knight-hero",
+   "verdict": "reject"
+  },
+  {
+   "id": "knight-hero_1_7R5FP2IYWsw_1182.10.png",
+   "card": "Knight (hero)",
+   "entity": "knight-hero",
+   "verdict": "reject"
+  },
+  {
+   "id": "knight-hero_1_7R5FP2IYWsw_1328.50.png",
+   "card": "Knight (hero)",
+   "entity": "knight-hero",
+   "verdict": "keep"
+  },
+  {
+   "id": "mega-minion-hero_1_2elEncccZwQ_0520.80.png",
+   "card": "Mega Minion (hero)",
+   "entity": "mega-minion-hero",
+   "verdict": "reject"
+  },
+  {
+   "id": "mega-minion-hero_1_2elEncccZwQ_0522.30.png",
+   "card": "Mega Minion (hero)",
+   "entity": "mega-minion-hero",
+   "verdict": "reject"
+  },
+  {
+   "id": "mega-minion-hero_1_2elEncccZwQ_0581.50.png",
+   "card": "Mega Minion (hero)",
+   "entity": "mega-minion-hero",
+   "verdict": "reject"
+  },
+  {
+   "id": "mega-minion-hero_1_2elEncccZwQ_0583.00.png",
+   "card": "Mega Minion (hero)",
+   "entity": "mega-minion-hero",
+   "verdict": "reject"
+  },
+  {
+   "id": "tombstone-hero_1_friend_2026-09-29_c_0099.50.png",
+   "card": "Tombstone (hero)",
+   "entity": "tombstone-hero",
+   "verdict": "reject"
+  },
+  {
+   "id": "tombstone-hero_1_friend_2026-09-29_c_0101.00.png",
+   "card": "Tombstone (hero)",
+   "entity": "tombstone-hero",
+   "verdict": "keep"
+  },
+  {
+   "id": "tombstone-hero_1_friend_2026-09-29_c_0358.90.png",
+   "card": "Tombstone (hero)",
+   "entity": "tombstone-hero",
+   "verdict": "reject"
+  },
+  {
+   "id": "tombstone-hero_1_friend_2026-09-29_c_0360.40.png",
+   "card": "Tombstone (hero)",
+   "entity": "tombstone-hero",
+   "verdict": "keep"
+  },
+  {
+   "id": "tombstone-hero_1_friend_2026-09-29_c_0584.20.png",
+   "card": "Tombstone (hero)",
+   "entity": "tombstone-hero",
+   "verdict": "reject"
+  },
+  {
+   "id": "tombstone-hero_1_friend_2026-09-29_c_0585.70.png",
+   "card": "Tombstone (hero)",
+   "entity": "tombstone-hero",
+   "verdict": "keep"
+  },
+  {
+   "id": "tombstone-hero_1_friend_2026-09-29_c_0981.80.png",
+   "card": "Tombstone (hero)",
+   "entity": "tombstone-hero",
+   "verdict": "keep"
+  },
+  {
+   "id": "tombstone-hero_1_friend_2026-09-29_c_1260.80.png",
+   "card": "Tombstone (hero)",
+   "entity": "tombstone-hero",
+   "verdict": "reject"
+  },
+  {
+   "id": "tombstone-hero_1_friend_2026-09-29_c_1262.30.png",
+   "card": "Tombstone (hero)",
+   "entity": "tombstone-hero",
+   "verdict": "reject"
+  },
+  {
+   "id": "tombstone-hero_1_friend_2026-09-29_c_1745.90.png",
+   "card": "Tombstone (hero)",
+   "entity": "tombstone-hero",
+   "verdict": "reject"
+  },
+  {
+   "id": "tombstone-hero_1_friend_2026-09-29_c_1747.40.png",
+   "card": "Tombstone (hero)",
+   "entity": "tombstone-hero",
+   "verdict": "keep"
+  },
+  {
+   "id": "valkyrie-hero_1_b9nXaMBejRw_0525.20.png",
+   "card": "Valkyrie (hero)",
+   "entity": "valkyrie-hero",
+   "verdict": "reject"
+  },
+  {
+   "id": "valkyrie-hero_1_b9nXaMBejRw_0526.70.png",
+   "card": "Valkyrie (hero)",
+   "entity": "valkyrie-hero",
+   "verdict": "keep"
+  },
+  {
+   "id": "valkyrie-hero_1_b9nXaMBejRw_0558.40.png",
+   "card": "Valkyrie (hero)",
+   "entity": "valkyrie-hero",
+   "verdict": "reject"
+  },
+  {
+   "id": "valkyrie-hero_1_b9nXaMBejRw_0559.90.png",
+   "card": "Valkyrie (hero)",
+   "entity": "valkyrie-hero",
+   "verdict": "reject"
+  },
+  {
+   "id": "valkyrie-hero_1_b9nXaMBejRw_0594.80.png",
+   "card": "Valkyrie (hero)",
+   "entity": "valkyrie-hero",
+   "verdict": "reject"
+  },
+  {
+   "id": "valkyrie-hero_1_b9nXaMBejRw_0608.40.png",
+   "card": "Valkyrie (hero)",
+   "entity": "valkyrie-hero",
+   "verdict": "reject"
+  },
+  {
+   "id": "valkyrie-hero_1_b9nXaMBejRw_0609.90.png",
+   "card": "Valkyrie (hero)",
+   "entity": "valkyrie-hero",
+   "verdict": "reject"
+  },
+  {
+   "id": "valkyrie-hero_1_b9nXaMBejRw_0632.30.png",
+   "card": "Valkyrie (hero)",
+   "entity": "valkyrie-hero",
+   "verdict": "reject"
+  },
+  {
+   "id": "valkyrie-hero_1_b9nXaMBejRw_0633.80.png",
+   "card": "Valkyrie (hero)",
+   "entity": "valkyrie-hero",
+   "verdict": "reject"
+  }
+ ]
+}

@@ -1,0 +1,688 @@
+{
+ "exported_at": "2026-09-30T21:08:10.456Z",
+ "slices": [
+  {
+   "id": "baby-dragon-evolution_1_2elEncccZwQ_0749.20.png",
+   "card": "Baby Dragon (evo)",
+   "entity": "baby-dragon-evolution",
+   "verdict": "keep"
+  },
+  {
+   "id": "baby-dragon-evolution_1_2elEncccZwQ_0750.70.png",
+   "card": "Baby Dragon (evo)",
+   "entity": "baby-dragon-evolution",
+   "verdict": "keep"
+  },
+  {
+   "id": "baby-dragon-evolution_1_b9nXaMBejRw_0773.20.png",
+   "card": "Baby Dragon (evo)",
+   "entity": "baby-dragon-evolution",
+   "verdict": "keep"
+  },
+  {
+   "id": "baby-dragon-evolution_1_b9nXaMBejRw_0774.70.png",
+   "card": "Baby Dragon (evo)",
+   "entity": "baby-dragon-evolution",
+   "verdict": "keep"
+  },
+  {
+   "id": "bats-evolution_1_HuwsYOmuVao_0101.40.png",
+   "card": "Bats (evo)",
+   "entity": "bats-evolution",
+   "verdict": "reject"
+  },
+  {
+   "id": "bats-evolution_1_HuwsYOmuVao_0102.90.png",
+   "card": "Bats (evo)",
+   "entity": "bats-evolution",
+   "verdict": "reject"
+  },
+  {
+   "id": "bats-evolution_1_HuwsYOmuVao_0178.80.png",
+   "card": "Bats (evo)",
+   "entity": "bats-evolution",
+   "verdict": "reject"
+  },
+  {
+   "id": "bats-evolution_1_HuwsYOmuVao_0180.30.png",
+   "card": "Bats (evo)",
+   "entity": "bats-evolution",
+   "verdict": "keep"
+  },
+  {
+   "id": "bats-evolution_1_HuwsYOmuVao_0232.80.png",
+   "card": "Bats (evo)",
+   "entity": "bats-evolution",
+   "verdict": "reject"
+  },
+  {
+   "id": "bats-evolution_1_HuwsYOmuVao_0234.30.png",
+   "card": "Bats (evo)",
+   "entity": "bats-evolution",
+   "verdict": "keep"
+  },
+  {
+   "id": "bats-evolution_1_HuwsYOmuVao_0546.00.png",
+   "card": "Bats (evo)",
+   "entity": "bats-evolution",
+   "verdict": "keep"
+  },
+  {
+   "id": "bats-evolution_1_HuwsYOmuVao_0697.10.png",
+   "card": "Bats (evo)",
+   "entity": "bats-evolution",
+   "verdict": "reject"
+  },
+  {
+   "id": "bats-evolution_1_HuwsYOmuVao_0698.60.png",
+   "card": "Bats (evo)",
+   "entity": "bats-evolution",
+   "verdict": "reject"
+  },
+  {
+   "id": "bats-evolution_1_HuwsYOmuVao_0791.80.png",
+   "card": "Bats (evo)",
+   "entity": "bats-evolution",
+   "verdict": "keep"
+  },
+  {
+   "id": "battle-ram-evolution_1_2elEncccZwQ_0364.10.png",
+   "card": "Battle Ram (evo)",
+   "entity": "battle-ram-evolution",
+   "verdict": "keep"
+  },
+  {
+   "id": "cannon-evolution_1_PuJls1qTZsU_0123.10.png",
+   "card": "Cannon (evo)",
+   "entity": "cannon-evolution",
+   "verdict": "reject"
+  },
+  {
+   "id": "cannon-evolution_1_PuJls1qTZsU_0124.60.png",
+   "card": "Cannon (evo)",
+   "entity": "cannon-evolution",
+   "verdict": "reject"
+  },
+  {
+   "id": "cannon-evolution_1_PuJls1qTZsU_1494.50.png",
+   "card": "Cannon (evo)",
+   "entity": "cannon-evolution"
+  },
+  {
+   "id": "cannon-evolution_1_SXCyXJ3h1GE_0690.60.png",
+   "card": "Cannon (evo)",
+   "entity": "cannon-evolution",
+   "verdict": "reject"
+  },
+  {
+   "id": "cannon-evolution_1_SXCyXJ3h1GE_0692.10.png",
+   "card": "Cannon (evo)",
+   "entity": "cannon-evolution",
+   "verdict": "keep"
+  },
+  {
+   "id": "cannon-evolution_1_SXCyXJ3h1GE_1474.50.png",
+   "card": "Cannon (evo)",
+   "entity": "cannon-evolution",
+   "verdict": "reject"
+  },
+  {
+   "id": "cannon-evolution_1_SXCyXJ3h1GE_1476.00.png",
+   "card": "Cannon (evo)",
+   "entity": "cannon-evolution",
+   "verdict": "reject"
+  },
+  {
+   "id": "cannon-evolution_1_ge_HXewYAhg_0593.50.png",
+   "card": "Cannon (evo)",
+   "entity": "cannon-evolution",
+   "verdict": "reject"
+  },
+  {
+   "id": "cannon-evolution_1_ge_HXewYAhg_0595.00.png",
+   "card": "Cannon (evo)",
+   "entity": "cannon-evolution",
+   "verdict": "keep"
+  },
+  {
+   "id": "dart-goblin-evolution_1_6bLDtHZlcSU_0132.40.png",
+   "card": "Dart Goblin (evo)",
+   "entity": "dart-goblin-evolution",
+   "verdict": "reject"
+  },
+  {
+   "id": "dart-goblin-evolution_1_6bLDtHZlcSU_0133.90.png",
+   "card": "Dart Goblin (evo)",
+   "entity": "dart-goblin-evolution",
+   "verdict": "keep"
+  },
+  {
+   "id": "dart-goblin-evolution_1_6bLDtHZlcSU_0416.30.png",
+   "card": "Dart Goblin (evo)",
+   "entity": "dart-goblin-evolution",
+   "verdict": "reject"
+  },
+  {
+   "id": "dart-goblin-evolution_1_6bLDtHZlcSU_0417.80.png",
+   "card": "Dart Goblin (evo)",
+   "entity": "dart-goblin-evolution",
+   "verdict": "keep"
+  },
+  {
+   "id": "dart-goblin-evolution_1_6bLDtHZlcSU_1127.10.png",
+   "card": "Dart Goblin (evo)",
+   "entity": "dart-goblin-evolution",
+   "verdict": "keep"
+  },
+  {
+   "id": "dart-goblin-evolution_1_6bLDtHZlcSU_1637.70.png",
+   "card": "Dart Goblin (evo)",
+   "entity": "dart-goblin-evolution",
+   "verdict": "reject"
+  },
+  {
+   "id": "dart-goblin-evolution_1_6bLDtHZlcSU_1639.20.png",
+   "card": "Dart Goblin (evo)",
+   "entity": "dart-goblin-evolution",
+   "verdict": "keep"
+  },
+  {
+   "id": "dart-goblin-evolution_1_6rCdZkKZiis_0402.60.png",
+   "card": "Dart Goblin (evo)",
+   "entity": "dart-goblin-evolution",
+   "verdict": "reject"
+  },
+  {
+   "id": "dart-goblin-evolution_1_6rCdZkKZiis_0404.10.png",
+   "card": "Dart Goblin (evo)",
+   "entity": "dart-goblin-evolution",
+   "verdict": "keep"
+  },
+  {
+   "id": "dart-goblin-evolution_1_6rCdZkKZiis_1030.20.png",
+   "card": "Dart Goblin (evo)",
+   "entity": "dart-goblin-evolution",
+   "verdict": "reject"
+  },
+  {
+   "id": "dart-goblin-evolution_1_6rCdZkKZiis_1031.70.png",
+   "card": "Dart Goblin (evo)",
+   "entity": "dart-goblin-evolution",
+   "verdict": "keep"
+  },
+  {
+   "id": "firecracker-evolution_1_UFQFnrtWUE4_0092.30.png",
+   "card": "Firecracker (evo)",
+   "entity": "firecracker-evolution",
+   "verdict": "reject"
+  },
+  {
+   "id": "firecracker-evolution_1_UFQFnrtWUE4_0093.80.png",
+   "card": "Firecracker (evo)",
+   "entity": "firecracker-evolution",
+   "verdict": "keep"
+  },
+  {
+   "id": "firecracker-evolution_1_UFQFnrtWUE4_0705.40.png",
+   "card": "Firecracker (evo)",
+   "entity": "firecracker-evolution",
+   "verdict": "reject"
+  },
+  {
+   "id": "firecracker-evolution_1_UFQFnrtWUE4_1386.00.png",
+   "card": "Firecracker (evo)",
+   "entity": "firecracker-evolution",
+   "verdict": "reject"
+  },
+  {
+   "id": "firecracker-evolution_1_UFQFnrtWUE4_1387.50.png",
+   "card": "Firecracker (evo)",
+   "entity": "firecracker-evolution",
+   "verdict": "reject"
+  },
+  {
+   "id": "firecracker-evolution_1_cole_2026-09-28_phone_0360.50.png",
+   "card": "Firecracker (evo)",
+   "entity": "firecracker-evolution",
+   "verdict": "reject"
+  },
+  {
+   "id": "firecracker-evolution_1_cole_2026-09-28_phone_0362.00.png",
+   "card": "Firecracker (evo)",
+   "entity": "firecracker-evolution",
+   "verdict": "keep"
+  },
+  {
+   "id": "firecracker-evolution_1_cole_2026-09-28_phone_1296.60.png",
+   "card": "Firecracker (evo)",
+   "entity": "firecracker-evolution",
+   "verdict": "reject"
+  },
+  {
+   "id": "firecracker-evolution_1_cole_2026-09-28_phone_1298.10.png",
+   "card": "Firecracker (evo)",
+   "entity": "firecracker-evolution",
+   "verdict": "reject"
+  },
+  {
+   "id": "firecracker-evolution_1_uz4VVzGlOjE_0095.30.png",
+   "card": "Firecracker (evo)",
+   "entity": "firecracker-evolution",
+   "verdict": "reject"
+  },
+  {
+   "id": "goblin-barrel-evolution_1_6bLDtHZlcSU_0056.90.png",
+   "card": "Goblin Barrel (evo)",
+   "entity": "goblin-barrel-evolution",
+   "verdict": "keep"
+  },
+  {
+   "id": "goblin-barrel-evolution_1_6bLDtHZlcSU_0058.40.png",
+   "card": "Goblin Barrel (evo)",
+   "entity": "goblin-barrel-evolution",
+   "verdict": "reject"
+  },
+  {
+   "id": "goblin-barrel-evolution_1_6bLDtHZlcSU_0467.40.png",
+   "card": "Goblin Barrel (evo)",
+   "entity": "goblin-barrel-evolution",
+   "verdict": "keep"
+  },
+  {
+   "id": "goblin-barrel-evolution_1_6bLDtHZlcSU_0468.90.png",
+   "card": "Goblin Barrel (evo)",
+   "entity": "goblin-barrel-evolution",
+   "verdict": "keep"
+  },
+  {
+   "id": "goblin-barrel-evolution_1_6bLDtHZlcSU_0982.50.png",
+   "card": "Goblin Barrel (evo)",
+   "entity": "goblin-barrel-evolution",
+   "verdict": "keep"
+  },
+  {
+   "id": "goblin-barrel-evolution_1_6bLDtHZlcSU_0984.00.png",
+   "card": "Goblin Barrel (evo)",
+   "entity": "goblin-barrel-evolution",
+   "verdict": "keep"
+  },
+  {
+   "id": "goblin-barrel-evolution_1_6bLDtHZlcSU_1278.30.png",
+   "card": "Goblin Barrel (evo)",
+   "entity": "goblin-barrel-evolution",
+   "verdict": "keep"
+  },
+  {
+   "id": "goblin-barrel-evolution_1_6bLDtHZlcSU_1279.80.png",
+   "card": "Goblin Barrel (evo)",
+   "entity": "goblin-barrel-evolution",
+   "verdict": "reject"
+  },
+  {
+   "id": "goblin-barrel-evolution_1_6bLDtHZlcSU_1602.60.png",
+   "card": "Goblin Barrel (evo)",
+   "entity": "goblin-barrel-evolution",
+   "verdict": "keep"
+  },
+  {
+   "id": "goblin-barrel-evolution_1_6bLDtHZlcSU_1604.10.png",
+   "card": "Goblin Barrel (evo)",
+   "entity": "goblin-barrel-evolution",
+   "verdict": "reject"
+  },
+  {
+   "id": "goblin-barrel-evolution_1_6bLDtHZlcSU_1852.30.png",
+   "card": "Goblin Barrel (evo)",
+   "entity": "goblin-barrel-evolution",
+   "verdict": "keep"
+  },
+  {
+   "id": "goblin-barrel-evolution_1_6bLDtHZlcSU_1853.80.png",
+   "card": "Goblin Barrel (evo)",
+   "entity": "goblin-barrel-evolution",
+   "verdict": "keep"
+  },
+  {
+   "id": "goblin-drill-evolution_1_friend_2026-09-29_c_0541.20.png",
+   "card": "Goblin Drill (evo)",
+   "entity": "goblin-drill-evolution",
+   "verdict": "keep"
+  },
+  {
+   "id": "goblin-drill-evolution_1_friend_2026-09-29_c_0542.70.png",
+   "card": "Goblin Drill (evo)",
+   "entity": "goblin-drill-evolution",
+   "verdict": "reject"
+  },
+  {
+   "id": "goblin-drill-evolution_1_friend_2026-09-29_c_0657.80.png",
+   "card": "Goblin Drill (evo)",
+   "entity": "goblin-drill-evolution",
+   "verdict": "reject"
+  },
+  {
+   "id": "goblin-drill-evolution_1_friend_2026-09-29_c_0659.30.png",
+   "card": "Goblin Drill (evo)",
+   "entity": "goblin-drill-evolution",
+   "verdict": "reject"
+  },
+  {
+   "id": "goblin-drill-evolution_1_friend_2026-09-29_c_1114.00.png",
+   "card": "Goblin Drill (evo)",
+   "entity": "goblin-drill-evolution",
+   "verdict": "reject"
+  },
+  {
+   "id": "goblin-drill-evolution_1_friend_2026-09-29_c_1686.90.png",
+   "card": "Goblin Drill (evo)",
+   "entity": "goblin-drill-evolution",
+   "verdict": "reject"
+  },
+  {
+   "id": "ice-spirit-evolution_1_HuwsYOmuVao_0121.30.png",
+   "card": "Ice Spirit (evo)",
+   "entity": "ice-spirit-evolution",
+   "verdict": "reject"
+  },
+  {
+   "id": "ice-spirit-evolution_1_SXCyXJ3h1GE_0143.40.png",
+   "card": "Ice Spirit (evo)",
+   "entity": "ice-spirit-evolution",
+   "verdict": "reject"
+  },
+  {
+   "id": "ice-spirit-evolution_1_SXCyXJ3h1GE_0144.90.png",
+   "card": "Ice Spirit (evo)",
+   "entity": "ice-spirit-evolution",
+   "verdict": "reject"
+  },
+  {
+   "id": "ice-spirit-evolution_1_SXCyXJ3h1GE_0419.70.png",
+   "card": "Ice Spirit (evo)",
+   "entity": "ice-spirit-evolution",
+   "verdict": "reject"
+  },
+  {
+   "id": "ice-spirit-evolution_1_SXCyXJ3h1GE_0421.20.png",
+   "card": "Ice Spirit (evo)",
+   "entity": "ice-spirit-evolution",
+   "verdict": "reject"
+  },
+  {
+   "id": "ice-spirit-evolution_1_SXCyXJ3h1GE_1246.60.png",
+   "card": "Ice Spirit (evo)",
+   "entity": "ice-spirit-evolution",
+   "verdict": "reject"
+  },
+  {
+   "id": "ice-spirit-evolution_1_SXCyXJ3h1GE_1248.10.png",
+   "card": "Ice Spirit (evo)",
+   "entity": "ice-spirit-evolution",
+   "verdict": "keep"
+  },
+  {
+   "id": "ice-spirit-evolution_1_SXCyXJ3h1GE_1435.00.png",
+   "card": "Ice Spirit (evo)",
+   "entity": "ice-spirit-evolution",
+   "verdict": "reject"
+  },
+  {
+   "id": "knight-evolution_1_b9nXaMBejRw_0755.80.png",
+   "card": "Knight (evo)",
+   "entity": "knight-evolution",
+   "verdict": "reject"
+  },
+  {
+   "id": "knight-evolution_1_b9nXaMBejRw_0757.30.png",
+   "card": "Knight (evo)",
+   "entity": "knight-evolution",
+   "verdict": "reject"
+  },
+  {
+   "id": "royal-giant-evolution_1_2elEncccZwQ_0227.30.png",
+   "card": "Royal Giant (evo)",
+   "entity": "royal-giant-evolution",
+   "verdict": "reject"
+  },
+  {
+   "id": "royal-giant-evolution_1_2elEncccZwQ_0228.80.png",
+   "card": "Royal Giant (evo)",
+   "entity": "royal-giant-evolution",
+   "verdict": "keep"
+  },
+  {
+   "id": "royal-hogs-evolution_1_PuJls1qTZsU_0161.10.png",
+   "card": "Royal Hogs (evo)",
+   "entity": "royal-hogs-evolution",
+   "verdict": "reject"
+  },
+  {
+   "id": "royal-hogs-evolution_1_PuJls1qTZsU_0162.60.png",
+   "card": "Royal Hogs (evo)",
+   "entity": "royal-hogs-evolution",
+   "verdict": "keep"
+  },
+  {
+   "id": "royal-hogs-evolution_1_PuJls1qTZsU_0365.80.png",
+   "card": "Royal Hogs (evo)",
+   "entity": "royal-hogs-evolution",
+   "verdict": "reject"
+  },
+  {
+   "id": "royal-hogs-evolution_1_PuJls1qTZsU_0367.30.png",
+   "card": "Royal Hogs (evo)",
+   "entity": "royal-hogs-evolution",
+   "verdict": "keep"
+  },
+  {
+   "id": "royal-hogs-evolution_1_PuJls1qTZsU_0547.30.png",
+   "card": "Royal Hogs (evo)",
+   "entity": "royal-hogs-evolution",
+   "verdict": "reject"
+  },
+  {
+   "id": "royal-hogs-evolution_1_PuJls1qTZsU_0548.80.png",
+   "card": "Royal Hogs (evo)",
+   "entity": "royal-hogs-evolution",
+   "verdict": "keep"
+  },
+  {
+   "id": "royal-hogs-evolution_1_PuJls1qTZsU_0646.00.png",
+   "card": "Royal Hogs (evo)",
+   "entity": "royal-hogs-evolution",
+   "verdict": "reject"
+  },
+  {
+   "id": "royal-hogs-evolution_1_PuJls1qTZsU_0647.50.png",
+   "card": "Royal Hogs (evo)",
+   "entity": "royal-hogs-evolution",
+   "verdict": "reject"
+  },
+  {
+   "id": "royal-hogs-evolution_1_PuJls1qTZsU_0756.00.png",
+   "card": "Royal Hogs (evo)",
+   "entity": "royal-hogs-evolution",
+   "verdict": "keep"
+  },
+  {
+   "id": "royal-hogs-evolution_1_PuJls1qTZsU_0757.50.png",
+   "card": "Royal Hogs (evo)",
+   "entity": "royal-hogs-evolution",
+   "verdict": "keep"
+  },
+  {
+   "id": "royal-hogs-evolution_1_PuJls1qTZsU_0971.60.png",
+   "card": "Royal Hogs (evo)",
+   "entity": "royal-hogs-evolution",
+   "verdict": "reject"
+  },
+  {
+   "id": "royal-hogs-evolution_1_PuJls1qTZsU_0973.10.png",
+   "card": "Royal Hogs (evo)",
+   "entity": "royal-hogs-evolution",
+   "verdict": "keep"
+  },
+  {
+   "id": "skeleton-barrel-evolution_1_6rCdZkKZiis_0085.80.png",
+   "card": "Skeleton Barrel (evo)",
+   "entity": "skeleton-barrel-evolution",
+   "verdict": "keep"
+  },
+  {
+   "id": "skeleton-barrel-evolution_1_6rCdZkKZiis_0087.30.png",
+   "card": "Skeleton Barrel (evo)",
+   "entity": "skeleton-barrel-evolution",
+   "verdict": "reject"
+  },
+  {
+   "id": "skeleton-barrel-evolution_1_6rCdZkKZiis_0385.90.png",
+   "card": "Skeleton Barrel (evo)",
+   "entity": "skeleton-barrel-evolution",
+   "verdict": "reject"
+  },
+  {
+   "id": "skeleton-barrel-evolution_1_6rCdZkKZiis_0387.40.png",
+   "card": "Skeleton Barrel (evo)",
+   "entity": "skeleton-barrel-evolution",
+   "verdict": "reject"
+  },
+  {
+   "id": "skeleton-barrel-evolution_1_6rCdZkKZiis_0639.00.png",
+   "card": "Skeleton Barrel (evo)",
+   "entity": "skeleton-barrel-evolution",
+   "verdict": "keep"
+  },
+  {
+   "id": "skeleton-barrel-evolution_1_6rCdZkKZiis_0640.50.png",
+   "card": "Skeleton Barrel (evo)",
+   "entity": "skeleton-barrel-evolution",
+   "verdict": "reject"
+  },
+  {
+   "id": "skeleton-barrel-evolution_1_6rCdZkKZiis_0912.40.png",
+   "card": "Skeleton Barrel (evo)",
+   "entity": "skeleton-barrel-evolution",
+   "verdict": "keep"
+  },
+  {
+   "id": "skeleton-barrel-evolution_1_6rCdZkKZiis_0913.90.png",
+   "card": "Skeleton Barrel (evo)",
+   "entity": "skeleton-barrel-evolution",
+   "verdict": "reject"
+  },
+  {
+   "id": "skeleton-barrel-evolution_1_6rCdZkKZiis_1161.60.png",
+   "card": "Skeleton Barrel (evo)",
+   "entity": "skeleton-barrel-evolution",
+   "verdict": "reject"
+  },
+  {
+   "id": "skeleton-barrel-evolution_1_6rCdZkKZiis_1163.10.png",
+   "card": "Skeleton Barrel (evo)",
+   "entity": "skeleton-barrel-evolution",
+   "verdict": "reject"
+  },
+  {
+   "id": "skeleton-barrel-evolution_1_b9nXaMBejRw_0345.60.png",
+   "card": "Skeleton Barrel (evo)",
+   "entity": "skeleton-barrel-evolution",
+   "verdict": "keep"
+  },
+  {
+   "id": "skeleton-barrel-evolution_1_b9nXaMBejRw_0347.10.png",
+   "card": "Skeleton Barrel (evo)",
+   "entity": "skeleton-barrel-evolution",
+   "verdict": "reject"
+  },
+  {
+   "id": "skeletons-evolution_1_3r9-35N9yE8_0112.30.png",
+   "card": "Skeletons (evo)",
+   "entity": "skeletons-evolution",
+   "verdict": "reject"
+  },
+  {
+   "id": "skeletons-evolution_1_3r9-35N9yE8_0262.30.png",
+   "card": "Skeletons (evo)",
+   "entity": "skeletons-evolution",
+   "verdict": "reject"
+  },
+  {
+   "id": "skeletons-evolution_1_3r9-35N9yE8_0263.80.png",
+   "card": "Skeletons (evo)",
+   "entity": "skeletons-evolution",
+   "verdict": "keep"
+  },
+  {
+   "id": "skeletons-evolution_1_3r9-35N9yE8_0422.40.png",
+   "card": "Skeletons (evo)",
+   "entity": "skeletons-evolution",
+   "verdict": "keep"
+  },
+  {
+   "id": "skeletons-evolution_1_3r9-35N9yE8_0844.70.png",
+   "card": "Skeletons (evo)",
+   "entity": "skeletons-evolution",
+   "verdict": "keep"
+  },
+  {
+   "id": "skeletons-evolution_1_3r9-35N9yE8_0846.20.png",
+   "card": "Skeletons (evo)",
+   "entity": "skeletons-evolution",
+   "verdict": "reject"
+  },
+  {
+   "id": "tesla-evolution_1_UFQFnrtWUE4_0638.90.png",
+   "card": "Tesla (evo)",
+   "entity": "tesla-evolution",
+   "verdict": "reject"
+  },
+  {
+   "id": "tesla-evolution_1_UFQFnrtWUE4_0640.40.png",
+   "card": "Tesla (evo)",
+   "entity": "tesla-evolution",
+   "verdict": "keep"
+  },
+  {
+   "id": "tesla-evolution_1_UFQFnrtWUE4_0920.10.png",
+   "card": "Tesla (evo)",
+   "entity": "tesla-evolution",
+   "verdict": "reject"
+  },
+  {
+   "id": "tesla-evolution_1_UFQFnrtWUE4_1486.20.png",
+   "card": "Tesla (evo)",
+   "entity": "tesla-evolution",
+   "verdict": "keep"
+  },
+  {
+   "id": "tesla-evolution_1_Yufu8gJolkQ_0493.90.png",
+   "card": "Tesla (evo)",
+   "entity": "tesla-evolution",
+   "verdict": "keep"
+  },
+  {
+   "id": "tesla-evolution_1_cole_2026-09-28_phone_0839.80.png",
+   "card": "Tesla (evo)",
+   "entity": "tesla-evolution",
+   "verdict": "reject"
+  },
+  {
+   "id": "tesla-evolution_1_cole_2026-09-28_phone_0841.30.png",
+   "card": "Tesla (evo)",
+   "entity": "tesla-evolution",
+   "verdict": "reject"
+  },
+  {
+   "id": "tesla-evolution_1_uz4VVzGlOjE_0244.40.png",
+   "card": "Tesla (evo)",
+   "entity": "tesla-evolution",
+   "verdict": "reject"
+  },
+  {
+   "id": "witch-evolution_1_b9nXaMBejRw_0971.60.png",
+   "card": "Witch (evo)",
+   "entity": "witch-evolution",
+   "verdict": "reject"
+  }
+ ]
+}

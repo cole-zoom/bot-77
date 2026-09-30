@@ -395,3 +395,10 @@ query; and every round's approvals are just rows, so the dataset's history is ke
   Rune Giant 15, Ronin 12, Suspicious Bush 10, Tomb Queen 7, Goblin Machine 7, Boss Bandit 5, Goblin
   Demolisher 5, Berserker 3, Goblin Curse 3, Void 3. Hero and evo galleries not reviewed yet.
 - Approved slices are now committed (`data/slices/approved/`, 9 MB); candidates stay out of git.
+- Cole's hero and evo gallery passes ("some were kinda brutal"): **hero 31 / 87 kept, evo 47 / 114**.
+  Near-zero for Mega Minion hero 0/4, Valkyrie hero 1/9, Knight hero 2/9, Goblins hero 2/7, Berserker hero
+  2/9, Cannon evo 2/9, Firecracker evo 2/10, Ice Spirit evo 1/8. Across all click rounds, SAM from a single
+  click keeps ~35–40% — it spills into neighbours and effects on busy frames.
+- **Conclusion:** slices alone won't reach 40 per entity. The main source for the paid run becomes
+  **auto-labelled real frames** (boxes, from POV plays + paired opponent labels), with slices supplementing
+  the generator; Cole spot-checks a sample instead of approving each one.
