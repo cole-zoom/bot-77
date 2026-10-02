@@ -1,0 +1,1410 @@
+{
+ "exported_at": "2026-10-02T01:24:49.120Z",
+ "frames": [
+  {
+   "id": "cole_2026-10-01_c_m05_0799.00_baby-dragon-evolution",
+   "entity": "baby-dragon-evolution",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "unnaLsLzabw_m05_1455.50_executioner-evolution",
+   "entity": "executioner-evolution",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "vp9U0iGUtZA_m03_0769.50_executioner-evolution",
+   "entity": "executioner-evolution",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "txYlMgXaGF8_m01_0278.50_baby-dragon-evolution",
+   "entity": "baby-dragon-evolution",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "kdav8AdQPc0_m02_0406.25_giant-snowball-evolution",
+   "entity": "giant-snowball-evolution",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "vp9U0iGUtZA_m03_0845.50_executioner-evolution",
+   "entity": "executioner-evolution",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "vp9U0iGUtZA_m01_0169.50_executioner-evolution",
+   "entity": "executioner-evolution",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "unnaLsLzabw_m04_1132.50_executioner-evolution",
+   "entity": "executioner-evolution",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "unnaLsLzabw_m03_0760.50_executioner-evolution",
+   "entity": "executioner-evolution",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "XuM18Vfd-xc_m04_1066.50_goblin-drill-evolution",
+   "entity": "goblin-drill-evolution",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "cole_2026-09-29_c_m08_1813.50_goblin-drill-evolution",
+   "entity": "goblin-drill-evolution",
+   "source": "paired",
+   "verdict": "off"
+  },
+  {
+   "id": "kJxB8oaQ9zc_m03_0535.75_furnace-evolution",
+   "entity": "furnace-evolution",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "kWTdrSkGfr8_m05_0877.25_hunter-evolution",
+   "entity": "hunter-evolution",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "FZlpciW8KlM_m02_0321.75_executioner-evolution",
+   "entity": "executioner-evolution",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "b9nXaMBejRw_m05_1072.00_giant-snowball-evolution",
+   "entity": "giant-snowball-evolution",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "kdav8AdQPc0_m01_0208.25_giant-snowball-evolution",
+   "entity": "giant-snowball-evolution",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "XuM18Vfd-xc_m04_1063.25_goblin-drill-evolution",
+   "entity": "goblin-drill-evolution",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "friend_2026-09-29_c_m13_1880.50_goblin-drill-evolution",
+   "entity": "goblin-drill-evolution",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "2elEncccZwQ_m03_0522.00_mega-minion-hero",
+   "entity": "mega-minion-hero",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "Rd1o7LHSUzU_m06_1583.75_executioner-evolution",
+   "entity": "executioner-evolution",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "Rd1o7LHSUzU_m10_2625.25_executioner-evolution",
+   "entity": "executioner-evolution",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "kdav8AdQPc0_m04_0911.75_giant-snowball-evolution",
+   "entity": "giant-snowball-evolution",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "5BjmAo2-b2k_m04_0624.75_ice-wizard-hero",
+   "entity": "ice-wizard-hero",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "9TTvAa6ElP0_m07_1570.75_executioner-evolution",
+   "entity": "executioner-evolution",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "kdav8AdQPc0_m05_1136.00_giant-snowball-evolution",
+   "entity": "giant-snowball-evolution",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "KjQYOTotuYE_m06_1293.75_executioner-evolution",
+   "entity": "executioner-evolution",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "kdav8AdQPc0_m02_0464.50_goblin-drill-evolution",
+   "entity": "goblin-drill-evolution",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "kdav8AdQPc0_m06_1391.50_giant-snowball-evolution",
+   "entity": "giant-snowball-evolution",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "cole_2026-10-01_d_m06_1132.25_baby-dragon-evolution",
+   "entity": "baby-dragon-evolution",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "9TTvAa6ElP0_m05_1115.75_executioner-evolution",
+   "entity": "executioner-evolution",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "kWTdrSkGfr8_m05_0875.25_hunter-evolution",
+   "entity": "hunter-evolution",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "vp9U0iGUtZA_m01_0167.50_executioner-evolution",
+   "entity": "executioner-evolution",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "Rd1o7LHSUzU_m10_2627.25_executioner-evolution",
+   "entity": "executioner-evolution",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "kdav8AdQPc0_m03_0753.00_goblin-drill-evolution",
+   "entity": "goblin-drill-evolution",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "FZlpciW8KlM_m02_0318.00_executioner-evolution",
+   "entity": "executioner-evolution",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "kdav8AdQPc0_m03_0754.25_goblin-drill-evolution",
+   "entity": "goblin-drill-evolution",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "9TTvAa6ElP0_m02_0402.75_executioner-evolution",
+   "entity": "executioner-evolution",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "9TTvAa6ElP0_m07_1572.50_executioner-evolution",
+   "entity": "executioner-evolution",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "kdav8AdQPc0_m03_0751.00_goblin-drill-evolution",
+   "entity": "goblin-drill-evolution",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "Rd1o7LHSUzU_m07_1969.25_executioner-evolution",
+   "entity": "executioner-evolution",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "PQz8QNWU13E_m01_0114.50_executioner-evolution",
+   "entity": "executioner-evolution",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "nLcU_Kvx4xk_m04_0601.00_giant-snowball-evolution",
+   "entity": "giant-snowball-evolution",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "9TTvAa6ElP0_m07_1569.25_executioner-evolution",
+   "entity": "executioner-evolution",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "nLcU_Kvx4xk_m01_0140.75_giant-snowball-evolution",
+   "entity": "giant-snowball-evolution",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "txYlMgXaGF8_m02_0395.50_baby-dragon-evolution",
+   "entity": "baby-dragon-evolution",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "nLcU_Kvx4xk_m03_0476.75_giant-snowball-evolution",
+   "entity": "giant-snowball-evolution",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "4ul7QISa5Qw_m03_0696.25_executioner-evolution",
+   "entity": "executioner-evolution",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "Rd1o7LHSUzU_m10_2694.75_executioner-evolution",
+   "entity": "executioner-evolution",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "kdav8AdQPc0_m02_0483.50_giant-snowball-evolution",
+   "entity": "giant-snowball-evolution",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "vp9U0iGUtZA_m03_0846.50_executioner-evolution",
+   "entity": "executioner-evolution",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "kJxB8oaQ9zc_m02_0246.00_musketeer-evolution",
+   "entity": "musketeer-evolution",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "KjQYOTotuYE_m06_1297.25_executioner-evolution",
+   "entity": "executioner-evolution",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "9TTvAa6ElP0_m05_1108.75_executioner-evolution",
+   "entity": "executioner-evolution",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "9TTvAa6ElP0_m05_1110.50_executioner-evolution",
+   "entity": "executioner-evolution",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "9TTvAa6ElP0_m05_1114.75_executioner-evolution",
+   "entity": "executioner-evolution",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "cole_2026-10-01_d_m04_0875.25_baby-dragon-evolution",
+   "entity": "baby-dragon-evolution",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "kJxB8oaQ9zc_m03_0541.75_furnace-evolution",
+   "entity": "furnace-evolution",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "KjQYOTotuYE_m03_0676.00_executioner-evolution",
+   "entity": "executioner-evolution",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "nLcU_Kvx4xk_m02_0310.75_musketeer-evolution",
+   "entity": "musketeer-evolution",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "X1zkb8MeVZQ_m04_1000.75_executioner-evolution",
+   "entity": "executioner-evolution",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "FZlpciW8KlM_m04_1032.25_executioner-evolution",
+   "entity": "executioner-evolution",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "kWTdrSkGfr8_m06_1058.00_hunter-evolution",
+   "entity": "hunter-evolution",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "cole_2026-10-01_d_m04_0876.25_baby-dragon-evolution",
+   "entity": "baby-dragon-evolution",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "9TTvAa6ElP0_m05_1057.25_executioner-evolution",
+   "entity": "executioner-evolution",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "unnaLsLzabw_m03_0758.00_executioner-evolution",
+   "entity": "executioner-evolution",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "2elEncccZwQ_m03_0523.25_mega-minion-hero",
+   "entity": "mega-minion-hero",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "b9nXaMBejRw_m05_0970.50_witch-evolution",
+   "entity": "witch-evolution",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "FZlpciW8KlM_m02_0229.25_executioner-evolution",
+   "entity": "executioner-evolution",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "nLcU_Kvx4xk_m04_0600.75_giant-snowball-evolution",
+   "entity": "giant-snowball-evolution",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "X1zkb8MeVZQ_m02_0395.50_executioner-evolution",
+   "entity": "executioner-evolution",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "txYlMgXaGF8_m03_0572.50_baby-dragon-evolution",
+   "entity": "baby-dragon-evolution",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "Rd1o7LHSUzU_m10_2688.50_executioner-evolution",
+   "entity": "executioner-evolution",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "cole_2026-10-01_b_m01_0114.25_baby-dragon-evolution",
+   "entity": "baby-dragon-evolution",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "PQz8QNWU13E_m04_0998.75_executioner-evolution",
+   "entity": "executioner-evolution",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "txYlMgXaGF8_m01_0247.50_baby-dragon-evolution",
+   "entity": "baby-dragon-evolution",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "cole_2026-10-01_b_m01_0113.25_baby-dragon-evolution",
+   "entity": "baby-dragon-evolution",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "vp9U0iGUtZA_m01_0166.00_executioner-evolution",
+   "entity": "executioner-evolution",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "cole_2026-10-01_c_m05_0800.00_baby-dragon-evolution",
+   "entity": "baby-dragon-evolution",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "unnaLsLzabw_m04_0937.25_executioner-evolution",
+   "entity": "executioner-evolution",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "txYlMgXaGF8_m01_0250.00_baby-dragon-evolution",
+   "entity": "baby-dragon-evolution",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "cole_2026-10-01_d_m04_0873.25_baby-dragon-evolution",
+   "entity": "baby-dragon-evolution",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "kdav8AdQPc0_m02_0483.75_giant-snowball-evolution",
+   "entity": "giant-snowball-evolution",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "kWTdrSkGfr8_m05_0874.25_hunter-evolution",
+   "entity": "hunter-evolution",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "txYlMgXaGF8_m03_0577.00_baby-dragon-evolution",
+   "entity": "baby-dragon-evolution",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "PQz8QNWU13E_m04_1000.25_executioner-evolution",
+   "entity": "executioner-evolution",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "kdav8AdQPc0_m06_1391.75_giant-snowball-evolution",
+   "entity": "giant-snowball-evolution",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "cole_2026-09-29_c_m05_1051.00_goblin-drill-evolution",
+   "entity": "goblin-drill-evolution",
+   "source": "paired",
+   "verdict": "wrong"
+  },
+  {
+   "id": "4ul7QISa5Qw_m01_0263.00_executioner-evolution",
+   "entity": "executioner-evolution",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "Rd1o7LHSUzU_m10_2692.00_executioner-evolution",
+   "entity": "executioner-evolution",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "kdav8AdQPc0_m05_1052.00_giant-snowball-evolution",
+   "entity": "giant-snowball-evolution",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "kdav8AdQPc0_m01_0151.50_giant-snowball-evolution",
+   "entity": "giant-snowball-evolution",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "kdav8AdQPc0_m01_0208.50_giant-snowball-evolution",
+   "entity": "giant-snowball-evolution",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "9TTvAa6ElP0_m02_0401.75_executioner-evolution",
+   "entity": "executioner-evolution",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "kdav8AdQPc0_m03_0752.00_goblin-drill-evolution",
+   "entity": "goblin-drill-evolution",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "XuM18Vfd-xc_m04_1061.75_goblin-drill-evolution",
+   "entity": "goblin-drill-evolution",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "KjQYOTotuYE_m02_0457.25_executioner-evolution",
+   "entity": "executioner-evolution",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "FZlpciW8KlM_m02_0319.25_executioner-evolution",
+   "entity": "executioner-evolution",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "kdav8AdQPc0_m02_0356.25_giant-snowball-evolution",
+   "entity": "giant-snowball-evolution",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "kJxB8oaQ9zc_m03_0539.00_furnace-evolution",
+   "entity": "furnace-evolution",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "kdav8AdQPc0_m06_1297.00_giant-snowball-evolution",
+   "entity": "giant-snowball-evolution",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "5BjmAo2-b2k_m04_0623.25_ice-wizard-hero",
+   "entity": "ice-wizard-hero",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "unnaLsLzabw_m04_1129.75_executioner-evolution",
+   "entity": "executioner-evolution",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "friend_2026-09-29_c_m13_1879.50_goblin-drill-evolution",
+   "entity": "goblin-drill-evolution",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "4ul7QISa5Qw_m03_0697.25_executioner-evolution",
+   "entity": "executioner-evolution",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "friend_2026-09-29_c_m13_1881.50_goblin-drill-evolution",
+   "entity": "goblin-drill-evolution",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "kdav8AdQPc0_m05_1136.25_giant-snowball-evolution",
+   "entity": "giant-snowball-evolution",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "4ul7QISa5Qw_m01_0113.50_executioner-evolution",
+   "entity": "executioner-evolution",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "9TTvAa6ElP0_m02_0400.75_executioner-evolution",
+   "entity": "executioner-evolution",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "4ul7QISa5Qw_m02_0455.25_executioner-evolution",
+   "entity": "executioner-evolution",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "9TTvAa6ElP0_m05_1055.50_executioner-evolution",
+   "entity": "executioner-evolution",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "PQz8QNWU13E_m03_0697.00_executioner-evolution",
+   "entity": "executioner-evolution",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "cole_2026-09-29_c_m08_1817.50_goblin-drill-evolution",
+   "entity": "goblin-drill-evolution",
+   "source": "paired",
+   "verdict": "wrong"
+  },
+  {
+   "id": "b9nXaMBejRw_m05_0972.50_witch-evolution",
+   "entity": "witch-evolution",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "4ul7QISa5Qw_m01_0261.75_executioner-evolution",
+   "entity": "executioner-evolution",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "Rd1o7LHSUzU_m07_1921.25_executioner-evolution",
+   "entity": "executioner-evolution",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "X1zkb8MeVZQ_m02_0398.25_executioner-evolution",
+   "entity": "executioner-evolution",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "9TTvAa6ElP0_m05_1054.50_executioner-evolution",
+   "entity": "executioner-evolution",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "X1zkb8MeVZQ_m03_0743.00_executioner-evolution",
+   "entity": "executioner-evolution",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "FZlpciW8KlM_m02_0230.25_executioner-evolution",
+   "entity": "executioner-evolution",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "unnaLsLzabw_m04_1131.00_executioner-evolution",
+   "entity": "executioner-evolution",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "Rd1o7LHSUzU_m11_2886.00_executioner-evolution",
+   "entity": "executioner-evolution",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "friend_2026-09-29_c_m13_1878.00_goblin-drill-evolution",
+   "entity": "goblin-drill-evolution",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "kWTdrSkGfr8_m04_0650.75_hunter-evolution",
+   "entity": "hunter-evolution",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "vp9U0iGUtZA_m03_0768.50_executioner-evolution",
+   "entity": "executioner-evolution",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "KjQYOTotuYE_m01_0290.25_executioner-evolution",
+   "entity": "executioner-evolution",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "X1zkb8MeVZQ_m04_0999.50_executioner-evolution",
+   "entity": "executioner-evolution",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "KjQYOTotuYE_m03_0677.25_executioner-evolution",
+   "entity": "executioner-evolution",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "kJxB8oaQ9zc_m03_0543.75_furnace-evolution",
+   "entity": "furnace-evolution",
+   "source": "POV",
+   "verdict": "wrong",
+   "others_bad": true
+  },
+  {
+   "id": "b9nXaMBejRw_m05_0971.50_witch-evolution",
+   "entity": "witch-evolution",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "kJxB8oaQ9zc_m03_0540.75_furnace-evolution",
+   "entity": "furnace-evolution",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "nLcU_Kvx4xk_m03_0476.50_giant-snowball-evolution",
+   "entity": "giant-snowball-evolution",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "9TTvAa6ElP0_m02_0404.00_executioner-evolution",
+   "entity": "executioner-evolution",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "txYlMgXaGF8_m01_0249.00_baby-dragon-evolution",
+   "entity": "baby-dragon-evolution",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "nLcU_Kvx4xk_m02_0246.50_giant-snowball-evolution",
+   "entity": "giant-snowball-evolution",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "kdav8AdQPc0_m02_0462.75_goblin-drill-evolution",
+   "entity": "goblin-drill-evolution",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "kdav8AdQPc0_m03_0755.25_goblin-drill-evolution",
+   "entity": "goblin-drill-evolution",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "vp9U0iGUtZA_m01_0168.50_executioner-evolution",
+   "entity": "executioner-evolution",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "FZlpciW8KlM_m02_0320.75_executioner-evolution",
+   "entity": "executioner-evolution",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "Rd1o7LHSUzU_m05_1256.25_executioner-evolution",
+   "entity": "executioner-evolution",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "Rd1o7LHSUzU_m10_2693.25_executioner-evolution",
+   "entity": "executioner-evolution",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "FZlpciW8KlM_m02_0231.25_executioner-evolution",
+   "entity": "executioner-evolution",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "Rd1o7LHSUzU_m07_1968.25_executioner-evolution",
+   "entity": "executioner-evolution",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "kWTdrSkGfr8_m05_0876.25_hunter-evolution",
+   "entity": "hunter-evolution",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "kdav8AdQPc0_m02_0356.50_giant-snowball-evolution",
+   "entity": "giant-snowball-evolution",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "txYlMgXaGF8_m03_0573.50_baby-dragon-evolution",
+   "entity": "baby-dragon-evolution",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "XuM18Vfd-xc_m04_1065.25_goblin-drill-evolution",
+   "entity": "goblin-drill-evolution",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "9TTvAa6ElP0_m06_1195.75_executioner-evolution",
+   "entity": "executioner-evolution",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "b9nXaMBejRw_m05_1072.25_giant-snowball-evolution",
+   "entity": "giant-snowball-evolution",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "KjQYOTotuYE_m03_0670.75_executioner-evolution",
+   "entity": "executioner-evolution",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "txYlMgXaGF8_m01_0251.00_baby-dragon-evolution",
+   "entity": "baby-dragon-evolution",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "cole_2026-09-29_c_m05_1047.00_goblin-drill-evolution",
+   "entity": "goblin-drill-evolution",
+   "source": "paired",
+   "verdict": "wrong"
+  },
+  {
+   "id": "kWTdrSkGfr8_m05_0872.25_hunter-evolution",
+   "entity": "hunter-evolution",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "kdav8AdQPc0_m06_1297.25_giant-snowball-evolution",
+   "entity": "giant-snowball-evolution",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "txYlMgXaGF8_m03_0575.75_baby-dragon-evolution",
+   "entity": "baby-dragon-evolution",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "cole_2026-10-01_d_m01_0136.25_goblin-drill-evolution",
+   "entity": "goblin-drill-evolution",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "kdav8AdQPc0_m03_0674.25_giant-snowball-evolution",
+   "entity": "giant-snowball-evolution",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "kWTdrSkGfr8_m06_1057.00_hunter-evolution",
+   "entity": "hunter-evolution",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "9TTvAa6ElP0_m02_0399.50_executioner-evolution",
+   "entity": "executioner-evolution",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "KjQYOTotuYE_m01_0289.00_executioner-evolution",
+   "entity": "executioner-evolution",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "KjQYOTotuYE_m02_0366.00_executioner-evolution",
+   "entity": "executioner-evolution",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "KjQYOTotuYE_m03_0673.00_executioner-evolution",
+   "entity": "executioner-evolution",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "cole_2026-09-29_c_m05_1052.25_goblin-drill-evolution",
+   "entity": "goblin-drill-evolution",
+   "source": "paired",
+   "verdict": "wrong"
+  },
+  {
+   "id": "friend_2026-09-29_c_m13_1882.50_goblin-drill-evolution",
+   "entity": "goblin-drill-evolution",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "X1zkb8MeVZQ_m02_0397.00_executioner-evolution",
+   "entity": "executioner-evolution",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "kdav8AdQPc0_m03_0674.50_giant-snowball-evolution",
+   "entity": "giant-snowball-evolution",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "KjQYOTotuYE_m05_1047.50_executioner-evolution",
+   "entity": "executioner-evolution",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "Rd1o7LHSUzU_m07_1920.00_executioner-evolution",
+   "entity": "executioner-evolution",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "FZlpciW8KlM_m04_1033.50_executioner-evolution",
+   "entity": "executioner-evolution",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "kWTdrSkGfr8_m04_0652.25_hunter-evolution",
+   "entity": "hunter-evolution",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "4ul7QISa5Qw_m02_0514.00_executioner-evolution",
+   "entity": "executioner-evolution",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "T4z8FVeoMsE_m04_1019.50_executioner-evolution",
+   "entity": "executioner-evolution",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "Rd1o7LHSUzU_m10_2630.00_executioner-evolution",
+   "entity": "executioner-evolution",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "9TTvAa6ElP0_m05_1111.50_executioner-evolution",
+   "entity": "executioner-evolution",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "KjQYOTotuYE_m06_1296.00_executioner-evolution",
+   "entity": "executioner-evolution",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "4ul7QISa5Qw_m04_0883.50_executioner-evolution",
+   "entity": "executioner-evolution",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "txYlMgXaGF8_m03_0571.25_baby-dragon-evolution",
+   "entity": "baby-dragon-evolution",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "Rd1o7LHSUzU_m06_1579.75_executioner-evolution",
+   "entity": "executioner-evolution",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "Rd1o7LHSUzU_m06_1582.00_executioner-evolution",
+   "entity": "executioner-evolution",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "unnaLsLzabw_m03_0761.50_executioner-evolution",
+   "entity": "executioner-evolution",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "kdav8AdQPc0_m01_0151.25_giant-snowball-evolution",
+   "entity": "giant-snowball-evolution",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "cole_2026-09-29_c_m08_1814.50_goblin-drill-evolution",
+   "entity": "goblin-drill-evolution",
+   "source": "paired",
+   "verdict": "wrong"
+  },
+  {
+   "id": "9TTvAa6ElP0_m06_1197.25_executioner-evolution",
+   "entity": "executioner-evolution",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "Rd1o7LHSUzU_m06_1504.50_executioner-evolution",
+   "entity": "executioner-evolution",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "KjQYOTotuYE_m03_0536.50_executioner-evolution",
+   "entity": "executioner-evolution",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "cole_2026-10-01_d_m04_0874.25_baby-dragon-evolution",
+   "entity": "baby-dragon-evolution",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "Rd1o7LHSUzU_m06_1505.50_executioner-evolution",
+   "entity": "executioner-evolution",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "kJxB8oaQ9zc_m03_0537.50_furnace-evolution",
+   "entity": "furnace-evolution",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "cole_2026-09-29_c_m08_1816.00_goblin-drill-evolution",
+   "entity": "goblin-drill-evolution",
+   "source": "paired",
+   "verdict": "wrong"
+  },
+  {
+   "id": "cole_2026-09-29_c_m05_1048.00_goblin-drill-evolution",
+   "entity": "goblin-drill-evolution",
+   "source": "paired",
+   "verdict": "wrong"
+  },
+  {
+   "id": "cole_2026-09-29_c_m08_1811.50_goblin-drill-evolution",
+   "entity": "goblin-drill-evolution",
+   "source": "paired",
+   "verdict": "off"
+  },
+  {
+   "id": "kdav8AdQPc0_m05_1051.75_giant-snowball-evolution",
+   "entity": "giant-snowball-evolution",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "b9nXaMBejRw_m05_0973.50_witch-evolution",
+   "entity": "witch-evolution",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "FZlpciW8KlM_m02_0322.75_executioner-evolution",
+   "entity": "executioner-evolution",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "Rd1o7LHSUzU_m10_2695.75_executioner-evolution",
+   "entity": "executioner-evolution",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "FZlpciW8KlM_m02_0323.75_executioner-evolution",
+   "entity": "executioner-evolution",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "txYlMgXaGF8_m01_0246.00_baby-dragon-evolution",
+   "entity": "baby-dragon-evolution",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "kdav8AdQPc0_m02_0406.50_giant-snowball-evolution",
+   "entity": "giant-snowball-evolution",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "PQz8QNWU13E_m02_0434.50_executioner-evolution",
+   "entity": "executioner-evolution",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "X1zkb8MeVZQ_m04_0998.50_executioner-evolution",
+   "entity": "executioner-evolution",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "Rd1o7LHSUzU_m10_2629.00_executioner-evolution",
+   "entity": "executioner-evolution",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "cole_2026-09-29_c_m08_1812.50_goblin-drill-evolution",
+   "entity": "goblin-drill-evolution",
+   "source": "paired",
+   "verdict": "wrong"
+  },
+  {
+   "id": "b9nXaMBejRw_m05_1029.50_ice-wizard-hero",
+   "entity": "ice-wizard-hero",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "KjQYOTotuYE_m03_0672.00_executioner-evolution",
+   "entity": "executioner-evolution",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "txYlMgXaGF8_m01_0245.00_baby-dragon-evolution",
+   "entity": "baby-dragon-evolution",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "unnaLsLzabw_m03_0759.50_executioner-evolution",
+   "entity": "executioner-evolution",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "4ul7QISa5Qw_m01_0169.50_executioner-evolution",
+   "entity": "executioner-evolution",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "Rd1o7LHSUzU_m08_2181.00_executioner-evolution",
+   "entity": "executioner-evolution",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "Rd1o7LHSUzU_m10_2690.50_executioner-evolution",
+   "entity": "executioner-evolution",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "cole_2026-09-29_c_m05_1046.00_goblin-drill-evolution",
+   "entity": "goblin-drill-evolution",
+   "source": "paired",
+   "verdict": "wrong"
+  },
+  {
+   "id": "KjQYOTotuYE_m06_1295.00_executioner-evolution",
+   "entity": "executioner-evolution",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "4ul7QISa5Qw_m02_0515.50_executioner-evolution",
+   "entity": "executioner-evolution",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "nLcU_Kvx4xk_m01_0141.00_giant-snowball-evolution",
+   "entity": "giant-snowball-evolution",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "kJxB8oaQ9zc_m02_0247.50_musketeer-evolution",
+   "entity": "musketeer-evolution",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "9TTvAa6ElP0_m05_1113.50_executioner-evolution",
+   "entity": "executioner-evolution",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "kdav8AdQPc0_m03_0756.25_goblin-drill-evolution",
+   "entity": "goblin-drill-evolution",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "Rd1o7LHSUzU_m05_1257.75_executioner-evolution",
+   "entity": "executioner-evolution",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "KjQYOTotuYE_m03_0674.25_executioner-evolution",
+   "entity": "executioner-evolution",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "txYlMgXaGF8_m02_0394.50_baby-dragon-evolution",
+   "entity": "baby-dragon-evolution",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "nLcU_Kvx4xk_m02_0246.25_giant-snowball-evolution",
+   "entity": "giant-snowball-evolution",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "KjQYOTotuYE_m02_0456.25_executioner-evolution",
+   "entity": "executioner-evolution",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "kWTdrSkGfr8_m05_0873.25_hunter-evolution",
+   "entity": "hunter-evolution",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "cole_2026-10-01_d_m01_0137.25_goblin-drill-evolution",
+   "entity": "goblin-drill-evolution",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "cole_2026-09-29_c_m05_1049.00_goblin-drill-evolution",
+   "entity": "goblin-drill-evolution",
+   "source": "paired",
+   "verdict": "wrong"
+  },
+  {
+   "id": "unnaLsLzabw_m05_1454.00_executioner-evolution",
+   "entity": "executioner-evolution",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "unnaLsLzabw_m01_0059.75_executioner-evolution",
+   "entity": "executioner-evolution",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "T4z8FVeoMsE_m05_1300.75_executioner-evolution",
+   "entity": "executioner-evolution",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "Rd1o7LHSUzU_m11_2887.00_executioner-evolution",
+   "entity": "executioner-evolution",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "txYlMgXaGF8_m03_0574.50_baby-dragon-evolution",
+   "entity": "baby-dragon-evolution",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "cole_2026-10-01_d_m06_1133.25_baby-dragon-evolution",
+   "entity": "baby-dragon-evolution",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "KjQYOTotuYE_m06_1299.00_executioner-evolution",
+   "entity": "executioner-evolution",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "PQz8QNWU13E_m01_0224.25_executioner-evolution",
+   "entity": "executioner-evolution",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "kdav8AdQPc0_m04_0912.00_giant-snowball-evolution",
+   "entity": "giant-snowball-evolution",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "Rd1o7LHSUzU_m05_1259.25_executioner-evolution",
+   "entity": "executioner-evolution",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "friend_2026-09-29_c_m13_1876.75_goblin-drill-evolution",
+   "entity": "goblin-drill-evolution",
+   "source": "POV",
+   "verdict": "off"
+  }
+ ]
+}

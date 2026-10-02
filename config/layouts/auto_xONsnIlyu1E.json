@@ -1,0 +1,185 @@
+{
+  "layout_id": "auto_xONsnIlyu1E",
+  "description": "Mohamed Light \u2014 wide capture, fitted by hand per band",
+  "frame_size": [
+    1920,
+    1080
+  ],
+  "regions": {
+    "opp_name": [
+      134,
+      4,
+      308,
+      34
+    ],
+    "opp_clan": [
+      134,
+      39,
+      246,
+      60
+    ],
+    "opp_rating": [
+      134,
+      64,
+      190,
+      86
+    ],
+    "timer_label": [
+      788,
+      5,
+      874,
+      23
+    ],
+    "timer": [
+      788,
+      26,
+      874,
+      60
+    ],
+    "multiplier": [
+      799,
+      69,
+      860,
+      125
+    ],
+    "opp_king_hp": [
+      458,
+      19,
+      513,
+      47
+    ],
+    "opp_left_hp": [
+      299,
+      145,
+      350,
+      166
+    ],
+    "opp_right_hp": [
+      612,
+      145,
+      663,
+      166
+    ],
+    "my_left_hp": [
+      297,
+      660,
+      343,
+      680
+    ],
+    "my_right_hp": [
+      612,
+      660,
+      660,
+      680
+    ],
+    "ability_left": [
+      188,
+      750,
+      294,
+      853
+    ],
+    "ability_right": [
+      664,
+      750,
+      770,
+      853
+    ],
+    "slot1_tab": [
+      319,
+      855,
+      412,
+      890
+    ],
+    "slot2_tab": [
+      433,
+      855,
+      526,
+      890
+    ],
+    "slot3_tab": [
+      546,
+      855,
+      640,
+      890
+    ],
+    "slot4_tab": [
+      660,
+      855,
+      753,
+      890
+    ],
+    "slot1": [
+      313,
+      850,
+      419,
+      1023
+    ],
+    "slot2": [
+      426,
+      850,
+      533,
+      1023
+    ],
+    "slot3": [
+      539,
+      850,
+      646,
+      1023
+    ],
+    "slot4": [
+      653,
+      850,
+      760,
+      1023
+    ],
+    "next": [
+      202,
+      988,
+      263,
+      1063
+    ],
+    "elixir_number": [
+      336,
+      1018,
+      381,
+      1056
+    ],
+    "elixir_bar": [
+      339,
+      1028,
+      762,
+      1048
+    ],
+    "arena": [
+      222,
+      89,
+      734,
+      896
+    ]
+  },
+  "hand": {
+    "ui_scale": 0.56
+  },
+  "katacr_arena": [
+    224,
+    56,
+    734,
+    852
+  ],
+  "notes": {
+    "manual": {
+      "hs": 0.56,
+      "hx": 176.6,
+      "hy": -241.6,
+      "ts": 0.56,
+      "rx": 275.2,
+      "lx": 78,
+      "ty": -45.4,
+      "axs": 0.492,
+      "ax": 212.5,
+      "ays": 0.486,
+      "ay": -27.6
+    },
+    "method": "Hand-fitted layouts for wide-screen captures, where the HUD bands don't share one x transform and\nauto layout can't fit them (decisions.md, 2026-10-01). Each band is a linear map of Alina's layout,\nfitted from measured positions (template-matched chat / Next / elixir drop for the hand bar, the timer\nbox for the top HUD, colour-blob tower HP bars for the arena):\n  hand  x' = hx + hs*x, y' = hy + hs*y      top-right  x' = rx + ts*x, y' = ty + ts*y\n  arena x' = ax + axs*x, y' = ay + ays*y    top-left   x' = lx + ts*x\n"
+  }
+}

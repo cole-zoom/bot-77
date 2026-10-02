@@ -1,0 +1,614 @@
+{
+ "exported_at": "2026-09-30T21:49:48.927Z",
+ "frames": [
+  {
+   "id": "cole_2026-09-29_c_m05_1151.00_minion-giant",
+   "entity": "minion-giant",
+   "source": "POV",
+   "verdict": "right",
+   "others_bad": true
+  },
+  {
+   "id": "cole_2026-09-29_c_m01_0064.25_ronin",
+   "entity": "ronin",
+   "source": "POV",
+   "verdict": "off",
+   "others_bad": true
+  },
+  {
+   "id": "3r9-35N9yE8_m05_0956.50_ice-golem-hero",
+   "entity": "ice-golem-hero",
+   "source": "POV",
+   "verdict": "off",
+   "others_bad": true
+  },
+  {
+   "id": "cole_2026-09-29_c_m03_0608.00_goblin-curse",
+   "entity": "goblin-curse",
+   "source": "paired",
+   "verdict": "wrong"
+  },
+  {
+   "id": "cole_2026-09-29_c_m05_1150.00_minion-giant",
+   "entity": "minion-giant",
+   "source": "POV",
+   "verdict": "right",
+   "others_bad": true
+  },
+  {
+   "id": "cole_2026-09-29_c_m03_0572.25_goblinstein-doctor",
+   "entity": "goblinstein-doctor",
+   "source": "paired",
+   "verdict": "wrong",
+   "others_bad": true
+  },
+  {
+   "id": "b9nXaMBejRw_m04_0759.00_knight-evolution",
+   "entity": "knight-evolution",
+   "source": "POV",
+   "verdict": "off",
+   "others_bad": true
+  },
+  {
+   "id": "cole_2026-09-29_c_m01_0172.50_dark-prince-hero",
+   "entity": "dark-prince-hero",
+   "source": "POV",
+   "verdict": "right",
+   "others_bad": false
+  },
+  {
+   "id": "cole_2026-09-29_c_m02_0367.75_suspicious-bush",
+   "entity": "suspicious-bush",
+   "source": "POV",
+   "verdict": "right",
+   "others_bad": true
+  },
+  {
+   "id": "friend_2026-09-29_c_m07_1068.50_boss-bandit",
+   "entity": "boss-bandit",
+   "source": "paired",
+   "verdict": "right"
+  },
+  {
+   "id": "6rCdZkKZiis_m05_1184.75_goblins-hero",
+   "entity": "goblins-hero",
+   "source": "POV",
+   "verdict": "right",
+   "others_bad": true
+  },
+  {
+   "id": "PuJls1qTZsU_m01_0161.50_royal-hogs-evolution",
+   "entity": "royal-hogs-evolution",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "UFQFnrtWUE4_m07_1483.75_tesla-evolution",
+   "entity": "tesla-evolution",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "b9nXaMBejRw_m03_0557.00_valkyrie-hero",
+   "entity": "valkyrie-hero",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "friend_2026-09-29_c_m16_2194.25_vines",
+   "entity": "vines",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "friend_2026-09-29_c_m15_2086.00_barbarian-barrel-hero",
+   "entity": "barbarian-barrel-hero",
+   "source": "paired",
+   "verdict": "wrong"
+  },
+  {
+   "id": "6bLDtHZlcSU_m07_1601.50_goblin-barrel-evolution",
+   "entity": "goblin-barrel-evolution",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "HuwsYOmuVao_m02_0499.50_rune-giant",
+   "entity": "rune-giant",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "3r9-35N9yE8_m03_0724.25_skeletons-evolution",
+   "entity": "skeletons-evolution",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "HuwsYOmuVao_m02_0546.50_rune-giant",
+   "entity": "rune-giant",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "cole_2026-09-29_c_m04_0736.00_minion-giant",
+   "entity": "minion-giant",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "SXCyXJ3h1GE_m06_1584.25_ice-spirit-evolution",
+   "entity": "ice-spirit-evolution",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "friend_2026-09-29_b_m05_1034.00_goblin-machine",
+   "entity": "goblin-machine",
+   "source": "paired",
+   "verdict": "right"
+  },
+  {
+   "id": "friend_2026-09-29_c_m01_0170.50_dark-prince-hero",
+   "entity": "dark-prince-hero",
+   "source": "paired",
+   "verdict": "right"
+  },
+  {
+   "id": "friend_2026-09-29_b_m06_1105.75_berserker",
+   "entity": "berserker",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "SXCyXJ3h1GE_m06_1583.25_ice-spirit-evolution",
+   "entity": "ice-spirit-evolution",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "cole_2026-09-29_c_m04_0840.75_tombstone-hero",
+   "entity": "tombstone-hero",
+   "source": "paired",
+   "verdict": "off"
+  },
+  {
+   "id": "b9nXaMBejRw_m01_0131.25_goblinstein-monster",
+   "entity": "goblinstein-monster",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "2elEncccZwQ_m04_0750.00_baby-dragon-evolution",
+   "entity": "baby-dragon-evolution",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "b9nXaMBejRw_m02_0434.50_skeleton-barrel-evolution",
+   "entity": "skeleton-barrel-evolution",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "friend_2026-09-29_c_m09_1433.00_spirit-empress-ground",
+   "entity": "spirit-empress-ground",
+   "source": "paired",
+   "verdict": "wrong"
+  },
+  {
+   "id": "2elEncccZwQ_m02_0364.50_battle-ram-evolution",
+   "entity": "battle-ram-evolution",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "cole_2026-09-29_b_m02_0285.25_goblin-demolisher",
+   "entity": "goblin-demolisher",
+   "source": "paired",
+   "verdict": "off"
+  },
+  {
+   "id": "cole_2026-09-29_c_m04_0712.75_ronin",
+   "entity": "ronin",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "2elEncccZwQ_m02_0363.50_battle-ram-evolution",
+   "entity": "battle-ram-evolution",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "6bLDtHZlcSU_m06_1277.50_goblin-barrel-evolution",
+   "entity": "goblin-barrel-evolution",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "UFQFnrtWUE4_m08_1762.75_firecracker-evolution",
+   "entity": "firecracker-evolution",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "friend_2026-09-29_b_m01_0102.00_goblin-demolisher",
+   "entity": "goblin-demolisher",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "cole_2026-09-29_c_m08_1816.50_goblinstein-doctor",
+   "entity": "goblinstein-doctor",
+   "source": "paired",
+   "verdict": "off"
+  },
+  {
+   "id": "6rCdZkKZiis_m02_0307.50_goblins-hero",
+   "entity": "goblins-hero",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "cole_2026-09-29_c_m05_0928.00_ronin",
+   "entity": "ronin",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "PuJls1qTZsU_m07_1503.25_berserker-hero",
+   "entity": "berserker-hero",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "PuJls1qTZsU_m06_1313.50_royal-hogs-evolution",
+   "entity": "royal-hogs-evolution",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "cole_2026-09-29_c_m04_0706.00_goblin-curse",
+   "entity": "goblin-curse",
+   "source": "paired",
+   "verdict": "wrong"
+  },
+  {
+   "id": "SXCyXJ3h1GE_m06_1581.25_ice-spirit-evolution",
+   "entity": "ice-spirit-evolution",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "b9nXaMBejRw_m04_0757.00_knight-evolution",
+   "entity": "knight-evolution",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "6rCdZkKZiis_m05_1107.00_goblins-hero",
+   "entity": "goblins-hero",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "PuJls1qTZsU_m01_0159.50_royal-hogs-evolution",
+   "entity": "royal-hogs-evolution",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "cole_2026-09-29_c_m10_2132.75_spirit-empress-ground",
+   "entity": "spirit-empress-ground",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "cole_2026-09-29_c_m10_2021.00_barbarian-barrel-hero",
+   "entity": "barbarian-barrel-hero",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "friend_2026-09-29_b_m04_0749.75_berserker",
+   "entity": "berserker",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "PuJls1qTZsU_m05_1051.00_cannon-evolution",
+   "entity": "cannon-evolution",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "HuwsYOmuVao_m03_0695.75_bats-evolution",
+   "entity": "bats-evolution",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "friend_2026-09-29_c_m15_2138.25_barbarian-barrel-hero",
+   "entity": "barbarian-barrel-hero",
+   "source": "paired",
+   "verdict": "wrong"
+  },
+  {
+   "id": "friend_2026-09-29_b_m06_1104.50_berserker",
+   "entity": "berserker",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "2elEncccZwQ_m04_0751.75_baby-dragon-evolution",
+   "entity": "baby-dragon-evolution",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "cole_2026-09-29_c_m05_0954.75_goblinstein-doctor",
+   "entity": "goblinstein-doctor",
+   "source": "paired",
+   "verdict": "wrong"
+  },
+  {
+   "id": "HuwsYOmuVao_m02_0546.50_bats-evolution",
+   "entity": "bats-evolution",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "b9nXaMBejRw_m04_0774.25_baby-dragon-evolution",
+   "entity": "baby-dragon-evolution",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "cole_2026-09-29_c_m07_1604.25_dark-prince-hero",
+   "entity": "dark-prince-hero",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "6rCdZkKZiis_m01_0155.00_suspicious-bush",
+   "entity": "suspicious-bush",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "6bLDtHZlcSU_m05_1126.50_dart-goblin-evolution",
+   "entity": "dart-goblin-evolution",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "friend_2026-09-29_b_m02_0385.75_spirit-empress-ground",
+   "entity": "spirit-empress-ground",
+   "source": "paired",
+   "verdict": "wrong"
+  },
+  {
+   "id": "cole_2026-09-29_b_m02_0351.75_goblin-curse",
+   "entity": "goblin-curse",
+   "source": "paired",
+   "verdict": "wrong"
+  },
+  {
+   "id": "SXCyXJ3h1GE_m06_1430.75_cannon-evolution",
+   "entity": "cannon-evolution",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "3r9-35N9yE8_m06_1228.75_ice-golem-hero",
+   "entity": "ice-golem-hero",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "3r9-35N9yE8_m07_1374.00_cannon-evolution",
+   "entity": "cannon-evolution",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "7R5FP2IYWsw_m03_0800.25_knight-hero",
+   "entity": "knight-hero",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "6bLDtHZlcSU_m07_1538.75_goblin-barrel-evolution",
+   "entity": "goblin-barrel-evolution",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "3r9-35N9yE8_m03_0725.25_skeletons-evolution",
+   "entity": "skeletons-evolution",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "cole_2026-09-28_phone_m07_1461.75_firecracker-evolution",
+   "entity": "firecracker-evolution",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "cole_2026-09-29_c_m01_0226.25_vines",
+   "entity": "vines",
+   "source": "paired",
+   "verdict": "wrong"
+  },
+  {
+   "id": "Yufu8gJolkQ_m01_0124.50_bats-evolution",
+   "entity": "bats-evolution",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "Yufu8gJolkQ_m02_0556.00_tesla-evolution",
+   "entity": "tesla-evolution",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "2elEncccZwQ_m01_0228.00_royal-giant-evolution",
+   "entity": "royal-giant-evolution",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "cole_2026-09-29_c_m01_0304.25_boss-bandit",
+   "entity": "boss-bandit",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "b9nXaMBejRw_m04_0758.00_knight-evolution",
+   "entity": "knight-evolution",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "6rCdZkKZiis_m03_0640.75_skeleton-barrel-evolution",
+   "entity": "skeleton-barrel-evolution",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "friend_2026-09-29_b_m04_0739.00_goblin-machine",
+   "entity": "goblin-machine",
+   "source": "paired",
+   "verdict": "right"
+  },
+  {
+   "id": "6bLDtHZlcSU_m02_0352.25_dart-goblin-evolution",
+   "entity": "dart-goblin-evolution",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "PuJls1qTZsU_m07_1500.50_berserker-hero",
+   "entity": "berserker-hero",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "uz4VVzGlOjE_m01_0168.25_firecracker-evolution",
+   "entity": "firecracker-evolution",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "b9nXaMBejRw_m02_0440.25_dart-goblin-evolution",
+   "entity": "dart-goblin-evolution",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "friend_2026-09-29_b_m01_0101.00_goblin-demolisher",
+   "entity": "goblin-demolisher",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "3r9-35N9yE8_m03_0726.25_skeletons-evolution",
+   "entity": "skeletons-evolution",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "7R5FP2IYWsw_m05_1216.00_knight-hero",
+   "entity": "knight-hero",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "HuwsYOmuVao_m01_0086.75_rune-giant",
+   "entity": "rune-giant",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "PuJls1qTZsU_m03_0668.25_berserker-hero",
+   "entity": "berserker-hero",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "b9nXaMBejRw_m01_0202.50_goblinstein-monster",
+   "entity": "goblinstein-monster",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "cole_2026-09-29_c_m05_1072.25_boss-bandit",
+   "entity": "boss-bandit",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "friend_2026-09-29_c_m03_0480.75_goblinstein-monster",
+   "entity": "goblinstein-monster",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "6rCdZkKZiis_m03_0642.75_skeleton-barrel-evolution",
+   "entity": "skeleton-barrel-evolution",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "6rCdZkKZiis_m03_0762.50_suspicious-bush",
+   "entity": "suspicious-bush",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "Yufu8gJolkQ_m02_0555.00_tesla-evolution",
+   "entity": "tesla-evolution",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "cole_2026-09-29_c_m07_1607.25_void",
+   "entity": "void",
+   "source": "paired",
+   "verdict": "wrong"
+  },
+  {
+   "id": "cole_2026-09-29_c_m05_1086.50_tombstone-hero",
+   "entity": "tombstone-hero",
+   "source": "paired",
+   "verdict": "right"
+  },
+  {
+   "id": "7R5FP2IYWsw_m01_0022.75_knight-hero",
+   "entity": "knight-hero",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "friend_2026-09-29_b_m05_0875.50_goblin-machine",
+   "entity": "goblin-machine",
+   "source": "paired",
+   "verdict": "right"
+  },
+  {
+   "id": "3r9-35N9yE8_m05_0958.50_ice-golem-hero",
+   "entity": "ice-golem-hero",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "friend_2026-09-29_b_m05_0878.00_void",
+   "entity": "void",
+   "source": "POV",
+   "verdict": "off"
+  }
+ ]
+}

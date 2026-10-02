@@ -86,7 +86,7 @@ function render() {
     const div = document.createElement("div"); div.className = "frame";
     const bar = document.createElement("div"); bar.className = "bar";
     bar.innerHTML = f.card
-      ? `<span><strong>${f.card}</strong> · ${Math.floor(f.t / 60)}:${String(Math.floor(f.t % 60)).padStart(2, "0")} <span class="muted">(skip if it isn't visible)</span></span>`
+      ? `<span><strong>${f.card}</strong> · ${Math.floor(f.t / 60)}:${String(Math.floor(f.t % 60)).padStart(2, "0")} <span class="muted">(skip if it isn't visible${f.multi ? " — click EVERY unit of the group" : ""})</span></span>`
       : `<span><strong>${f.t}s</strong> <span class="muted">(${(f.t - f.play_t).toFixed(1)}s after the play)</span></span>`;
     const clear = document.createElement("button"); clear.textContent = "Clear"; clear.onclick = () => { delete state.clicks[f.id]; save(); }; bar.append(clear);
     const wrap = document.createElement("div"); wrap.className = "wrap";
@@ -96,7 +96,7 @@ function render() {
       d.style.left = (c.u * 100) + "%"; d.style.top = (c.v * 100) + "%"; wrap.append(d); }
     wrap.onclick = ev => { if (f.entities && !f.entities.includes(DATA.entities[current])) { current = DATA.entities.indexOf(f.entities[0]); renderEntities(); }
       const r = img.getBoundingClientRect(); const u = (ev.clientX - r.left) / r.width, v = (ev.clientY - r.top) / r.height;
-      const list = (state.clicks[f.id] || []).filter(c => c.entity !== DATA.entities[current]);
+      const list = (state.clicks[f.id] || []).filter(c => f.multi || c.entity !== DATA.entities[current]);
       list.push({ entity: DATA.entities[current], u, v }); state.clicks[f.id] = list; save(); };
     div.append(bar, wrap); main.append(div);
   }
@@ -144,7 +144,7 @@ def write_click_page_times(video: Path, layout_id: str, targets: list[dict], out
             img = cv2.resize(crop, (show_w, round(crop.shape[0] * k)), interpolation=cv2.INTER_AREA)
             jpg = cv2.imencode(".jpg", img, [cv2.IMWRITE_JPEG_QUALITY, 85])[1].tobytes()
             frames.append({"id": f"{t_vid}_{t:07.2f}", "video_id": t_vid, "match_id": tg.get("match_id"), "card": tg["card"],
-                           "entities": tg["entities"], "t": t, "play_t": tg["times"][0], "offset_x": cx0, "offset_y": cy0,
+                           "entities": tg["entities"], "multi": tg.get("multi", False), "t": t, "play_t": tg["times"][0], "offset_x": cx0, "offset_y": cy0,
                            "scale": k, "crop_w": crop.shape[1], "crop_h": crop.shape[0],
                            "img": "data:image/jpeg;base64," + base64.b64encode(jpg).decode()})
     ents = list(dict.fromkeys(e for tg in targets for e in tg["entities"]))

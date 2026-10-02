@@ -1,0 +1,172 @@
+{
+  "layout_id": "auto_0m7iCgw8sYc",
+  "description": "Ryley - Clash Royale, 1080x2304. ryley_portrait shifted by hand (top -7, arena -9, hand -18 px).",
+  "frame_size": [
+    1080,
+    2304
+  ],
+  "regions": {
+    "opp_name": [
+      101,
+      153,
+      411,
+      207
+    ],
+    "opp_clan": [
+      101,
+      215,
+      301,
+      253
+    ],
+    "opp_rating": [
+      101,
+      260,
+      201,
+      300
+    ],
+    "timer_label": [
+      916,
+      155,
+      1071,
+      187
+    ],
+    "timer": [
+      916,
+      193,
+      1071,
+      253
+    ],
+    "multiplier": [
+      936,
+      270,
+      1046,
+      370
+    ],
+    "opp_king_hp": [
+      501,
+      180,
+      611,
+      230
+    ],
+    "opp_left_hp": [
+      176,
+      384,
+      281,
+      426
+    ],
+    "opp_right_hp": [
+      813,
+      384,
+      916,
+      426
+    ],
+    "my_left_hp": [
+      173,
+      1420,
+      266,
+      1459
+    ],
+    "my_right_hp": [
+      813,
+      1420,
+      911,
+      1459
+    ],
+    "ability_left": [
+      21,
+      1701,
+      211,
+      1886
+    ],
+    "ability_right": [
+      871,
+      1701,
+      1061,
+      1886
+    ],
+    "slot1_tab": [
+      256,
+      1889,
+      421,
+      1951
+    ],
+    "slot2_tab": [
+      458,
+      1889,
+      625,
+      1951
+    ],
+    "slot3_tab": [
+      661,
+      1889,
+      828,
+      1951
+    ],
+    "slot4_tab": [
+      864,
+      1889,
+      1031,
+      1951
+    ],
+    "slot1": [
+      244,
+      1881,
+      433,
+      2189
+    ],
+    "slot2": [
+      446,
+      1881,
+      637,
+      2189
+    ],
+    "slot3": [
+      649,
+      1881,
+      840,
+      2189
+    ],
+    "slot4": [
+      852,
+      1881,
+      1043,
+      2189
+    ],
+    "next": [
+      46,
+      2126,
+      156,
+      2261
+    ],
+    "elixir_number": [
+      286,
+      2181,
+      366,
+      2249
+    ],
+    "elixir_bar": [
+      291,
+      2199,
+      1046,
+      2233
+    ],
+    "arena": [
+      21,
+      272,
+      1061,
+      1894
+    ]
+  },
+  "hand": {
+    "ui_scale": 1.0
+  },
+  "katacr_arena": [
+    24,
+    204,
+    1060,
+    1805
+  ],
+  "notes": {
+    "manual": "2026-10-01: auto layout failed (red opp bar merges with the arena). Offsets measured from timer box (205 vs 212), tower bar (1470 vs 1477-1482) and Next/elixir (2108/2213 vs 2124/2231) against ryley_portrait's video 7R5FP2IYWsw."
+  }
+}

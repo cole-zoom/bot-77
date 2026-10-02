@@ -1,0 +1,185 @@
+{
+  "layout_id": "auto_Pn15Nh1xWoM",
+  "description": "Rolex \u2014 wide capture, fitted by hand per band",
+  "frame_size": [
+    1342,
+    1920
+  ],
+  "regions": {
+    "opp_name": [
+      100,
+      0,
+      410,
+      43
+    ],
+    "opp_clan": [
+      100,
+      51,
+      300,
+      89
+    ],
+    "opp_rating": [
+      100,
+      96,
+      200,
+      136
+    ],
+    "timer_label": [
+      1181,
+      0,
+      1336,
+      23
+    ],
+    "timer": [
+      1181,
+      29,
+      1336,
+      89
+    ],
+    "multiplier": [
+      1201,
+      106,
+      1311,
+      206
+    ],
+    "opp_king_hp": [
+      635,
+      16,
+      734,
+      66
+    ],
+    "opp_left_hp": [
+      343,
+      234,
+      437,
+      272
+    ],
+    "opp_right_hp": [
+      915,
+      234,
+      1008,
+      272
+    ],
+    "my_left_hp": [
+      340,
+      1175,
+      424,
+      1210
+    ],
+    "my_right_hp": [
+      915,
+      1175,
+      1003,
+      1210
+    ],
+    "ability_left": [
+      144,
+      1336,
+      338,
+      1525
+    ],
+    "ability_right": [
+      1011,
+      1336,
+      1205,
+      1525
+    ],
+    "slot1_tab": [
+      384,
+      1528,
+      552,
+      1591
+    ],
+    "slot2_tab": [
+      590,
+      1528,
+      760,
+      1591
+    ],
+    "slot3_tab": [
+      797,
+      1528,
+      968,
+      1591
+    ],
+    "slot4_tab": [
+      1004,
+      1528,
+      1175,
+      1591
+    ],
+    "slot1": [
+      372,
+      1520,
+      565,
+      1834
+    ],
+    "slot2": [
+      578,
+      1520,
+      773,
+      1834
+    ],
+    "slot3": [
+      785,
+      1520,
+      980,
+      1834
+    ],
+    "slot4": [
+      992,
+      1520,
+      1187,
+      1834
+    ],
+    "next": [
+      170,
+      1770,
+      282,
+      1908
+    ],
+    "elixir_number": [
+      415,
+      1826,
+      496,
+      1895
+    ],
+    "elixir_bar": [
+      420,
+      1844,
+      1190,
+      1879
+    ],
+    "arena": [
+      204,
+      132,
+      1138,
+      1605
+    ]
+  },
+  "hand": {
+    "ui_scale": 1.02
+  },
+  "katacr_arena": [
+    207,
+    71,
+    1137,
+    1525
+  ],
+  "notes": {
+    "manual": {
+      "hs": 1.02,
+      "hx": 124,
+      "hy": -469,
+      "ts": 1.0,
+      "rx": 266,
+      "lx": 0,
+      "ty": -99,
+      "axs": 0.898,
+      "ax": 186,
+      "ays": 0.8874,
+      "ay": -80.8
+    },
+    "method": "Hand-fitted layouts for wide-screen captures, where the HUD bands don't share one x transform and\nauto layout can't fit them (decisions.md, 2026-10-01). Each band is a linear map of Alina's layout,\nfitted from measured positions (template-matched chat / Next / elixir drop for the hand bar, the timer\nbox for the top HUD, colour-blob tower HP bars for the arena):\n  hand  x' = hx + hs*x, y' = hy + hs*y      top-right  x' = rx + ts*x, y' = ty + ts*y\n  arena x' = ax + axs*x, y' = ay + ays*y    top-left   x' = lx + ts*x\n"
+  }
+}
