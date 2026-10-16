@@ -107,7 +107,7 @@ def class_list() -> list[str]:
 
 # card-level slug -> class name where KataCR's naming differs (singular unit names; existing evo classes)
 FORM_CLASS = {"archers-evolution": "archer-evolution", "barbarians-evolution": "barbarian-evolution",
-              "bats-evolution": "bats-evolution", "skeletons-evolution": "skeletons-evolution",
+              "bats-evolution": "bat-evolution", "skeletons-evolution": "skeleton-evolution",
               "royal-recruits-evolution": "royal-recruit-evolution", "wall-breakers-evolution": "wall-breaker-evolution",
               "royal-hogs-evolution": "royal-hogs-evolution", "goblins-hero": "goblins-hero",
               "minion-horde-evolution": "minion-horde-evolution", "elite-barbarians-evolution": "elite-barbarian-evolution",
@@ -183,7 +183,8 @@ def _iou(a, b) -> float:
 
 
 class AutoLabeler:
-    def __init__(self, db_dir: Path = Path("data/lancedb"), out: Path = OUT, click_anchors: bool = False):
+    def __init__(self, db_dir: Path = Path("data/lancedb"), out: Path = OUT, click_anchors: bool = False,
+                 dets_table: str = "unit_detections"):
         self.db = lancedb.connect(db_dir)
         self.out = out
         self.classes = class_list()
@@ -198,7 +199,7 @@ class AutoLabeler:
         self.sam = SAM(str(SAM_WEIGHTS))
         self.knn = self.db.open_table("real_crop_index")  # KataCR's hand-labelled real crops
         self.stats = defaultdict(int)
-        self.dets = self.db.open_table("unit_detections")
+        self.dets = self.db.open_table(dets_table)  # V4 mining: the newest detector's run over the play windows
         (out / "images").mkdir(parents=True, exist_ok=True)
         (out / "labels").mkdir(parents=True, exist_ok=True)
         CLASSES.write_text(json.dumps(self.classes, indent=1))
@@ -265,7 +266,10 @@ class AutoLabeler:
                       if -0.3 <= tr.first_t - t0 <= 3.0 and len(tr.dets) >= 2
                       and ((tr.dets[0][1] - sx) ** 2 + (tr.dets[0][2] - sy) ** 2) ** 0.5
                       <= (PAIRED_RADIUS_TILES if item["source"] == "paired" else SPOT_RADIUS_TILES)
-                      + (1.5 if UNITS.get(item["card"], 1) > 1 else 0)]  # groups spread out (evo hogs fly apart)
+                      + (1.5 if UNITS.get(item["card"], 1) > 1 else 0)  # groups spread out (evo hogs fly apart)
+                      # a building already standing near the drop is not a unit born from a troop card (Cole,
+                      # 2026-10-02: a Cannon boxed as the second evo Archer)
+                      and not (self.ctype.get(tr.card) == "building" and self.ctype.get(item["card"]) != "building")]
             tracks.sort(key=lambda tr: ((tr.dets[0][1] - sx) ** 2 + (tr.dets[0][2] - sy) ** 2))
             if not tracks:
                 self.stats["drop_no_track_near_spot"] += 1
@@ -410,6 +414,42 @@ class AutoLabeler:
                 "old_boxes": n_old}
 
 
+def hero_matches(events: list[dict]) -> set[tuple[str, str]]:
+    """(match_id, card) where the POV player showed the card's hero form. Cole, 2026-10-02: once a player owns a
+    card's hero it is always played as the hero, but the hand reader often logs the real play as the normal form
+    plus a phantom hand-only hero event, so every play of that card in the match is the hero."""
+    return {(e["match_id"], e["card"]) for e in events if e["kind"] == "play" and e["form"] == "hero" and e["card"]}
+
+
+def declared_forms(events: list[dict], cycles: dict[str, int | None],
+                   path: Path = Path("config/recording_decks.json")) -> dict[tuple[str, float], str]:
+    """(match_id, t_video) -> form for plays in Cole's dedicated recordings, from the deck he declared.
+    Hero cards: every play is the hero. Evo cards with N cycles: N normal plays, then the evo, repeating; anchored
+    on any evo play the hand reader did catch (Cole, 2026-10-07: since an update the first evo sometimes needs one
+    extra play, so the reader's own evo reads take precedence when present)."""
+    if not path.exists():
+        return {}
+    decks = {k: v for k, v in json.loads(path.read_text()).items() if not k.startswith("_")}
+    out: dict[tuple[str, float], str] = {}
+    by = defaultdict(list)
+    for e in events:
+        if e["kind"] == "play" and e["video_id"] in decks and e["card"] in decks[e["video_id"]]:
+            by[(e["match_id"], e["card"], decks[e["video_id"]][e["card"]])].append(e)
+    for (match, card, form), plays in by.items():
+        plays.sort(key=lambda e: e["t_video"])
+        if form == "hero":
+            out.update({(match, p["t_video"]): "hero" for p in plays})
+            continue
+        n = cycles.get(card) or 2
+        anchors = [i for i, p in enumerate(plays) if p["form"] == "evo"]
+        start = anchors[0] if anchors else n
+        while start - (n + 1) >= n:
+            start -= n + 1
+        evo = set(range(start, len(plays), n + 1)) | set(anchors)
+        out.update({(match, p["t_video"]): "evo" if i in evo else "normal" for i, p in enumerate(plays)})
+    return out
+
+
 def collect_items(db_dir: Path = Path("data/lancedb")) -> list[dict]:
     """Trusted labels to auto-label: POV plays of new cards and evo/hero forms, and paired opponent plays."""
     db = lancedb.connect(db_dir)
@@ -417,10 +457,17 @@ def collect_items(db_dir: Path = Path("data/lancedb")) -> list[dict]:
            "Void", "Ronin", "Rune Giant", "Spirit Empress", "Minion Giant", "Goblinstein"}
     ev = db.open_table("events").search().limit(10**7).select(
         ["video_id", "match_id", "t_video", "kind", "card", "form", "confidence", "measured_cost"]).to_arrow().to_pylist()
+    hero_cards = hero_matches(ev)
+    declared = declared_forms(ev, cycles={c["name"]: c["evo_cycles"] for c in db.open_table("cards").search()
+                                          .where("kind = 'deck_card'").limit(1000).select(["name", "evo_cycles"]).to_arrow().to_pylist()})
     items = []
     for e in ev:
         if e["kind"] != "play" or not e["card"]:
             continue
+        if (e["match_id"], e["card"]) in hero_cards and e["form"] in (None, "normal"):
+            e = {**e, "form": "hero"}
+        if (e["match_id"], e["t_video"]) in declared:
+            e = {**e, "form": declared[(e["match_id"], e["t_video"])], "confidence": "high", "form_rule": True}
         if e["card"] == "Spirit Empress":
             ent = spirit_empress_form(e)
             if ent:
@@ -497,6 +544,27 @@ def label_clicks(al: "AutoLabeler", clicks_path: Path, log=print) -> list[dict]:
                 continue
         rows = al.dets.search().where(f"match_id = '{match}' AND t_video >= {c['t'] - 0.15} AND t_video <= {c['t'] + 0.15}") \
             .limit(10**4).to_arrow().to_pylist()
+        # Prefer the detector's box when one contains the click (spot-check 3, 2026-10-02: SAM from the click point
+        # boxed only part of the unit in 34% of click labels; detector boxes were well-sized 98% of the time). Cole's
+        # click confirms which unit it is, so only the box is taken from the detector, never its class.
+        lx, ly = x / s, y / s
+        inside = [d for d in rows if d["cls"] not in NON_UNITS and d["x0"] <= lx <= d["x1"] and d["y0"] <= ly <= d["y1"]
+                  and (d["x1"] - d["x0"]) <= 6 * tile and (d["y1"] - d["y0"]) <= 6 * tile]
+        if inside:
+            d = min(inside, key=lambda d: (d["x1"] - d["x0"]) * (d["y1"] - d["y0"]))  # the tightest one
+            box = (d["x0"], d["y0"], d["x1"], d["y1"])
+            al.stats["click_box_detector"] += 1
+        else:
+            # SAM fallback: on a unit that is still deploying, the piece under the click is often the deploy
+            # stopwatch drawn over it; drop the click rather than box the stopwatch
+            def iou(a, b):
+                ix = max(0, min(a[2], b[2]) - max(a[0], b[0])); iy = max(0, min(a[3], b[3]) - max(a[1], b[1]))
+                u = (a[2] - a[0]) * (a[3] - a[1]) + (b[2] - b[0]) * (b[3] - b[1]) - ix * iy
+                return ix * iy / u if u > 0 else 0.0
+            if any(d["cls"] == "clock" and iou(box, (d["x0"], d["y0"], d["x1"], d["y1"])) > 0.4 for d in rows):
+                al.stats["click_dropped_on_stopwatch"] += 1
+                continue
+            al.stats["click_box_sam"] += 1
         pending.append(((c["video_id"], round(c["t"], 2)), box, c["entity"], c, match, rows, v, lay))
     by_frame = defaultdict(list)
     for p in pending:

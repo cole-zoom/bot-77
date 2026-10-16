@@ -1,0 +1,373 @@
+{
+ "video_id": "bl_2026-10-12_r00",
+ "side": "opponent",
+ "matches": [
+  "bl_2026-10-12_r00_m01"
+ ],
+ "items": [
+  {
+   "match_id": "bl_2026-10-12_r00_m01",
+   "t_video": 16.1,
+   "label": "Balloon",
+   "form": "hero",
+   "source": "POV of bl_2026-10-12_r00_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "bl_2026-10-12_r00_m01",
+   "t_video": 38.7,
+   "label": "Valkyrie",
+   "form": "normal",
+   "source": "POV of bl_2026-10-12_r00_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "bl_2026-10-12_r00_m01",
+   "t_video": 53.7,
+   "label": "Skeletons",
+   "form": "normal",
+   "source": "POV of bl_2026-10-12_r00_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "bl_2026-10-12_r00_m01",
+   "t_video": 55.8,
+   "label": "Witch",
+   "form": "normal",
+   "source": "POV of bl_2026-10-12_r00_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "bl_2026-10-12_r00_m01",
+   "t_video": 79.2,
+   "label": "Cannon",
+   "form": "normal",
+   "source": "POV of bl_2026-10-12_r00_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "bl_2026-10-12_r00_m01",
+   "t_video": 81.2,
+   "label": "Valkyrie",
+   "form": "normal",
+   "source": "POV of bl_2026-10-12_r00_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "bl_2026-10-12_r00_m01",
+   "t_video": 99.7,
+   "label": "Skeletons",
+   "form": "normal",
+   "source": "POV of bl_2026-10-12_r00_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "bl_2026-10-12_r00_m01",
+   "t_video": 101.2,
+   "label": "Witch",
+   "form": "normal",
+   "source": "POV of bl_2026-10-12_r00_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "bl_2026-10-12_r00_m01",
+   "t_video": 101.2,
+   "label": "Wizard",
+   "form": "hero",
+   "source": "POV of bl_2026-10-12_r00_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "bl_2026-10-12_r00_m01",
+   "t_video": 132.9,
+   "label": "Balloon",
+   "form": "hero",
+   "source": "POV of bl_2026-10-12_r00_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "bl_2026-10-12_r00_m01",
+   "t_video": 133.7,
+   "label": "Witch",
+   "form": "normal",
+   "source": "POV of bl_2026-10-12_r00_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "bl_2026-10-12_r00_m01",
+   "t_video": 142.8,
+   "label": "Valkyrie",
+   "form": "normal",
+   "source": "POV of bl_2026-10-12_r00_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "bl_2026-10-12_r00_m01",
+   "t_video": 145.7,
+   "label": "Skeletons",
+   "form": "normal",
+   "source": "POV of bl_2026-10-12_r00_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "bl_2026-10-12_r00_m01",
+   "t_video": 153.5,
+   "label": "Balloon",
+   "form": "hero",
+   "source": "POV of bl_2026-10-12_r00_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "bl_2026-10-12_r00_m01",
+   "t_video": 160.2,
+   "label": "__ability",
+   "form": null,
+   "source": "POV of bl_2026-10-12_r00_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "bl_2026-10-12_r00_m01",
+   "t_video": 164.3,
+   "label": "Cannon",
+   "form": "normal",
+   "source": "POV of bl_2026-10-12_r00_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "bl_2026-10-12_r00_m01",
+   "t_video": 167.4,
+   "label": "Valkyrie",
+   "form": "normal",
+   "source": "POV of bl_2026-10-12_r00_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "bl_2026-10-12_r00_m01",
+   "t_video": 181.1,
+   "label": "Witch",
+   "form": "normal",
+   "source": "POV of bl_2026-10-12_r00_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "bl_2026-10-12_r00_m01",
+   "t_video": 185.4,
+   "label": "Skeletons",
+   "form": "normal",
+   "source": "POV of bl_2026-10-12_r00_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "bl_2026-10-12_r00_m01",
+   "t_video": 188.3,
+   "label": "Balloon",
+   "form": "hero",
+   "source": "POV of bl_2026-10-12_r00_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "bl_2026-10-12_r00_m01",
+   "t_video": 191.3,
+   "label": "Wizard",
+   "form": "hero",
+   "source": "POV of bl_2026-10-12_r00_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "bl_2026-10-12_r00_m01",
+   "t_video": 193.8,
+   "label": "Cannon",
+   "form": "evo",
+   "source": "POV of bl_2026-10-12_r00_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "bl_2026-10-12_r00_m01",
+   "t_video": 196.3,
+   "label": "__ability",
+   "form": null,
+   "source": "POV of bl_2026-10-12_r00_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "bl_2026-10-12_r00_m01",
+   "t_video": 206.5,
+   "label": "Witch",
+   "form": "normal",
+   "source": "POV of bl_2026-10-12_r00_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "bl_2026-10-12_r00_m01",
+   "t_video": 210.5,
+   "label": "Valkyrie",
+   "form": "normal",
+   "source": "POV of bl_2026-10-12_r00_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "bl_2026-10-12_r00_m01",
+   "t_video": 222.8,
+   "label": "Balloon",
+   "form": "hero",
+   "source": "POV of bl_2026-10-12_r00_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "bl_2026-10-12_r00_m01",
+   "t_video": 229.6,
+   "label": "__ability",
+   "form": null,
+   "source": "POV of bl_2026-10-12_r00_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "bl_2026-10-12_r00_m01",
+   "t_video": 230.3,
+   "label": "__ability",
+   "form": null,
+   "source": "POV of bl_2026-10-12_r00_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "bl_2026-10-12_r00_m01",
+   "t_video": 240.4,
+   "label": "Skeletons",
+   "form": "normal",
+   "source": "POV of bl_2026-10-12_r00_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "bl_2026-10-12_r00_m01",
+   "t_video": 241.6,
+   "label": "Wizard",
+   "form": "hero",
+   "source": "POV of bl_2026-10-12_r00_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "bl_2026-10-12_r00_m01",
+   "t_video": 243.0,
+   "label": "Witch",
+   "form": "normal",
+   "source": "POV of bl_2026-10-12_r00_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "bl_2026-10-12_r00_m01",
+   "t_video": 248.4,
+   "label": "Valkyrie",
+   "form": "normal",
+   "source": "POV of bl_2026-10-12_r00_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "bl_2026-10-12_r00_m01",
+   "t_video": 252.8,
+   "label": "Balloon",
+   "form": "hero",
+   "source": "POV of bl_2026-10-12_r00_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "bl_2026-10-12_r00_m01",
+   "t_video": 259.5,
+   "label": "__ability",
+   "form": null,
+   "source": "POV of bl_2026-10-12_r00_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "bl_2026-10-12_r00_m01",
+   "t_video": 262.3,
+   "label": "Skeletons",
+   "form": "normal",
+   "source": "POV of bl_2026-10-12_r00_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "bl_2026-10-12_r00_m01",
+   "t_video": 269.4,
+   "label": "Witch",
+   "form": "normal",
+   "source": "POV of bl_2026-10-12_r00_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "bl_2026-10-12_r00_m01",
+   "t_video": 272.5,
+   "label": "Wizard",
+   "form": "hero",
+   "source": "POV of bl_2026-10-12_r00_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "bl_2026-10-12_r00_m01",
+   "t_video": 275.0,
+   "label": "Balloon",
+   "form": "hero",
+   "source": "POV of bl_2026-10-12_r00_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "bl_2026-10-12_r00_m01",
+   "t_video": 279.9,
+   "label": "Valkyrie",
+   "form": "normal",
+   "source": "POV of bl_2026-10-12_r00_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "bl_2026-10-12_r00_m01",
+   "t_video": 282.2,
+   "label": "Skeletons",
+   "form": "normal",
+   "source": "POV of bl_2026-10-12_r00_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "bl_2026-10-12_r00_m01",
+   "t_video": 283.8,
+   "label": "__ability",
+   "form": null,
+   "source": "POV of bl_2026-10-12_r00_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "bl_2026-10-12_r00_m01",
+   "t_video": 290.1,
+   "label": "Witch",
+   "form": "normal",
+   "source": "POV of bl_2026-10-12_r00_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "bl_2026-10-12_r00_m01",
+   "t_video": 291.5,
+   "label": "Wizard",
+   "form": "hero",
+   "source": "POV of bl_2026-10-12_r00_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "bl_2026-10-12_r00_m01",
+   "t_video": 295.8,
+   "label": "Balloon",
+   "form": "hero",
+   "source": "POV of bl_2026-10-12_r00_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "bl_2026-10-12_r00_m01",
+   "t_video": 301.5,
+   "label": "Valkyrie",
+   "form": "normal",
+   "source": "POV of bl_2026-10-12_r00_top_m01",
+   "source_confidence": "high"
+  }
+ ],
+ "paired_with": "bl_2026-10-12_r00_top_m01",
+ "offset_s": 0.0,
+ "auto": true,
+ "source": "replay"
+}

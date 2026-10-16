@@ -1,0 +1,317 @@
+{
+ "video_id": "tv_2026-10-13_r112",
+ "side": "opponent",
+ "matches": [
+  "tv_2026-10-13_r112_m01"
+ ],
+ "items": [
+  {
+   "match_id": "tv_2026-10-13_r112_m01",
+   "t_video": 21.9,
+   "label": "Goblin Gang",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r112_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r112_m01",
+   "t_video": 27.1,
+   "label": "Skeleton Barrel",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r112_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r112_m01",
+   "t_video": 33.6,
+   "label": "Dart Goblin",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r112_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r112_m01",
+   "t_video": 37.9,
+   "label": "Suspicious Bush",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r112_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r112_m01",
+   "t_video": 41.4,
+   "label": "Mighty Miner",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r112_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r112_m01",
+   "t_video": 58.3,
+   "label": "Fireball",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r112_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r112_m01",
+   "t_video": 59.6,
+   "label": "Minions",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r112_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r112_m01",
+   "t_video": 80.3,
+   "label": "Dart Goblin",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r112_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-13_r112_m01",
+   "t_video": 91.8,
+   "label": "Suspicious Bush",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r112_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r112_m01",
+   "t_video": 96.0,
+   "label": "Mighty Miner",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r112_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r112_m01",
+   "t_video": 102.3,
+   "label": "__ability",
+   "form": null,
+   "source": "POV of tv_2026-10-13_r112_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-13_r112_m01",
+   "t_video": 105.9,
+   "label": "Skeleton Barrel",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r112_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r112_m01",
+   "t_video": 119.1,
+   "label": "Royal Recruits",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r112_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r112_m01",
+   "t_video": 124.4,
+   "label": "Minions",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r112_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r112_m01",
+   "t_video": 135.5,
+   "label": "Suspicious Bush",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r112_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r112_m01",
+   "t_video": 139.2,
+   "label": "Mighty Miner",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r112_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r112_m01",
+   "t_video": 139.8,
+   "label": "Dart Goblin",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r112_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r112_m01",
+   "t_video": 145.6,
+   "label": "Fireball",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r112_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r112_m01",
+   "t_video": 152.2,
+   "label": "Goblin Gang",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r112_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r112_m01",
+   "t_video": 154.6,
+   "label": "Suspicious Bush",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r112_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r112_m01",
+   "t_video": 158.9,
+   "label": "Mighty Miner",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r112_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r112_m01",
+   "t_video": 161.9,
+   "label": "Dart Goblin",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r112_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r112_m01",
+   "t_video": 163.0,
+   "label": "Skeleton Barrel",
+   "form": "evo",
+   "source": "POV of tv_2026-10-13_r112_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-13_r112_m01",
+   "t_video": 172.6,
+   "label": "Royal Recruits",
+   "form": "evo",
+   "source": "POV of tv_2026-10-13_r112_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r112_m01",
+   "t_video": 176.8,
+   "label": "Minions",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r112_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r112_m01",
+   "t_video": 181.1,
+   "label": "Goblin Gang",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r112_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r112_m01",
+   "t_video": 186.1,
+   "label": "Dart Goblin",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r112_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r112_m01",
+   "t_video": 193.9,
+   "label": "Fireball",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r112_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r112_m01",
+   "t_video": 196.3,
+   "label": "Suspicious Bush",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r112_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r112_m01",
+   "t_video": 198.1,
+   "label": "Minions",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r112_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r112_m01",
+   "t_video": 206.2,
+   "label": "Mighty Miner",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r112_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r112_m01",
+   "t_video": 207.6,
+   "label": "Goblin Gang",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r112_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r112_m01",
+   "t_video": 213.2,
+   "label": "Fireball",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r112_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r112_m01",
+   "t_video": 223.2,
+   "label": "Skeleton Barrel",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r112_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r112_m01",
+   "t_video": 223.9,
+   "label": "Suspicious Bush",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r112_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r112_m01",
+   "t_video": 226.0,
+   "label": "Minions",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r112_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r112_m01",
+   "t_video": 228.6,
+   "label": "Dart Goblin",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r112_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r112_m01",
+   "t_video": 234.2,
+   "label": "Fireball",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r112_top_m01",
+   "source_confidence": "high"
+  }
+ ],
+ "paired_with": "tv_2026-10-13_r112_top_m01",
+ "offset_s": 0.0,
+ "auto": true,
+ "source": "replay"
+}

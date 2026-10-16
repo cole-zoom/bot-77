@@ -1,0 +1,333 @@
+{
+ "video_id": "tv_2026-10-13_r53",
+ "side": "opponent",
+ "matches": [
+  "tv_2026-10-13_r53_m01"
+ ],
+ "items": [
+  {
+   "match_id": "tv_2026-10-13_r53_m01",
+   "t_video": 19.6,
+   "label": "Royal Hogs",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r53_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r53_m01",
+   "t_video": 34.6,
+   "label": "Barbarian Barrel",
+   "form": "hero",
+   "source": "POV of tv_2026-10-13_r53_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r53_m01",
+   "t_video": 39.9,
+   "label": "Royal Recruits",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r53_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r53_m01",
+   "t_video": 52.6,
+   "label": "Flying Machine",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r53_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r53_m01",
+   "t_video": 57.6,
+   "label": "Fireball",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r53_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r53_m01",
+   "t_video": 82.0,
+   "label": "Zappies",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r53_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r53_m01",
+   "t_video": 94.6,
+   "label": "Royal Hogs",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r53_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r53_m01",
+   "t_video": 109.3,
+   "label": "Goblin Cage",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r53_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r53_m01",
+   "t_video": 120.9,
+   "label": "Flying Machine",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r53_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r53_m01",
+   "t_video": 130.9,
+   "label": "Royal Recruits",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r53_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r53_m01",
+   "t_video": 134.7,
+   "label": "Zappies",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r53_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r53_m01",
+   "t_video": 140.0,
+   "label": "Fireball",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r53_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r53_m01",
+   "t_video": 152.4,
+   "label": "Barbarian Barrel",
+   "form": "hero",
+   "source": "POV of tv_2026-10-13_r53_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r53_m01",
+   "t_video": 156.5,
+   "label": "__ability",
+   "form": null,
+   "source": "POV of tv_2026-10-13_r53_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-13_r53_m01",
+   "t_video": 159.6,
+   "label": "Flying Machine",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r53_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r53_m01",
+   "t_video": 166.0,
+   "label": "Goblin Cage",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r53_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r53_m01",
+   "t_video": 170.4,
+   "label": "Zappies",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r53_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r53_m01",
+   "t_video": 174.4,
+   "label": "Fireball",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r53_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-13_r53_m01",
+   "t_video": 177.7,
+   "label": "Arrows",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r53_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r53_m01",
+   "t_video": 186.8,
+   "label": "Flying Machine",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r53_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r53_m01",
+   "t_video": 193.4,
+   "label": "Royal Hogs",
+   "form": "evo",
+   "source": "POV of tv_2026-10-13_r53_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r53_m01",
+   "t_video": 203.0,
+   "label": "Goblin Cage",
+   "form": "evo",
+   "source": "POV of tv_2026-10-13_r53_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r53_m01",
+   "t_video": 209.9,
+   "label": "Royal Recruits",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r53_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r53_m01",
+   "t_video": 217.0,
+   "label": "Barbarian Barrel",
+   "form": "hero",
+   "source": "POV of tv_2026-10-13_r53_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r53_m01",
+   "t_video": 221.6,
+   "label": "Flying Machine",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r53_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r53_m01",
+   "t_video": 229.9,
+   "label": "Royal Hogs",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r53_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r53_m01",
+   "t_video": 235.2,
+   "label": "Goblin Cage",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r53_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r53_m01",
+   "t_video": 236.9,
+   "label": "Fireball",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r53_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r53_m01",
+   "t_video": 247.9,
+   "label": "Royal Recruits",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r53_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r53_m01",
+   "t_video": 254.4,
+   "label": "Flying Machine",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r53_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r53_m01",
+   "t_video": 260.1,
+   "label": "Zappies",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r53_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r53_m01",
+   "t_video": 262.1,
+   "label": "Goblin Cage",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r53_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r53_m01",
+   "t_video": 266.6,
+   "label": "Royal Hogs",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r53_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-13_r53_m01",
+   "t_video": 274.1,
+   "label": "Royal Recruits",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r53_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r53_m01",
+   "t_video": 276.0,
+   "label": "Barbarian Barrel",
+   "form": "hero",
+   "source": "POV of tv_2026-10-13_r53_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r53_m01",
+   "t_video": 281.5,
+   "label": "Flying Machine",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r53_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r53_m01",
+   "t_video": 287.6,
+   "label": "Goblin Cage",
+   "form": "evo",
+   "source": "POV of tv_2026-10-13_r53_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r53_m01",
+   "t_video": 292.2,
+   "label": "Royal Hogs",
+   "form": "evo",
+   "source": "POV of tv_2026-10-13_r53_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r53_m01",
+   "t_video": 297.8,
+   "label": "Zappies",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r53_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r53_m01",
+   "t_video": 301.4,
+   "label": "Royal Recruits",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r53_top_m01",
+   "source_confidence": "medium"
+  }
+ ],
+ "paired_with": "tv_2026-10-13_r53_top_m01",
+ "offset_s": 0.0,
+ "auto": true,
+ "source": "replay"
+}

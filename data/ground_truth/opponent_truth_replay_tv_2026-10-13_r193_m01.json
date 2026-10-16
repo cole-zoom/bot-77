@@ -1,0 +1,253 @@
+{
+ "video_id": "tv_2026-10-13_r193",
+ "side": "opponent",
+ "matches": [
+  "tv_2026-10-13_r193_m01"
+ ],
+ "items": [
+  {
+   "match_id": "tv_2026-10-13_r193_m01",
+   "t_video": 17.2,
+   "label": "Wizard",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r193_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r193_m01",
+   "t_video": 24.0,
+   "label": "Boss Bandit",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r193_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r193_m01",
+   "t_video": 38.2,
+   "label": "Witch",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r193_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-13_r193_m01",
+   "t_video": 43.6,
+   "label": "Firecracker",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r193_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r193_m01",
+   "t_video": 52.0,
+   "label": "Royal Ghost",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r193_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r193_m01",
+   "t_video": 67.1,
+   "label": "Baby Dragon",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r193_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r193_m01",
+   "t_video": 85.6,
+   "label": "Wizard",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r193_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-13_r193_m01",
+   "t_video": 89.2,
+   "label": "Valkyrie",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r193_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-13_r193_m01",
+   "t_video": 98.5,
+   "label": "Firecracker",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r193_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r193_m01",
+   "t_video": 124.7,
+   "label": "Witch",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r193_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r193_m01",
+   "t_video": 127.1,
+   "label": "Baby Dragon",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r193_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r193_m01",
+   "t_video": 129.5,
+   "label": "Royal Ghost",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r193_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r193_m01",
+   "t_video": 136.3,
+   "label": "Valkyrie",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r193_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r193_m01",
+   "t_video": 142.7,
+   "label": "Wizard",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r193_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-13_r193_m01",
+   "t_video": 148.3,
+   "label": "Witch",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r193_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r193_m01",
+   "t_video": 153.9,
+   "label": "Baby Dragon",
+   "form": null,
+   "source": "next-card advance in tv_2026-10-13_r193_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-13_r193_m01",
+   "t_video": 158.4,
+   "label": "Skeleton Army",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r193_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r193_m01",
+   "t_video": 163.7,
+   "label": "Valkyrie",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r193_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r193_m01",
+   "t_video": 167.9,
+   "label": "Baby Dragon",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r193_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-13_r193_m01",
+   "t_video": 177.2,
+   "label": "Wizard",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r193_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r193_m01",
+   "t_video": 181.5,
+   "label": "Baby Dragon",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r193_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r193_m01",
+   "t_video": 190.1,
+   "label": "Boss Bandit",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r193_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r193_m01",
+   "t_video": 195.4,
+   "label": "Valkyrie",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r193_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r193_m01",
+   "t_video": 199.2,
+   "label": "Skeleton Army",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r193_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r193_m01",
+   "t_video": 200.9,
+   "label": "__ability",
+   "form": null,
+   "source": "POV of tv_2026-10-13_r193_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-13_r193_m01",
+   "t_video": 207.2,
+   "label": "Wizard",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r193_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r193_m01",
+   "t_video": 212.8,
+   "label": "Baby Dragon",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r193_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r193_m01",
+   "t_video": 217.2,
+   "label": "__ability",
+   "form": null,
+   "source": "POV of tv_2026-10-13_r193_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-13_r193_m01",
+   "t_video": 224.2,
+   "label": "Boss Bandit",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r193_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r193_m01",
+   "t_video": 228.7,
+   "label": "Firecracker",
+   "form": "evo",
+   "source": "POV of tv_2026-10-13_r193_top_m01",
+   "source_confidence": "high"
+  }
+ ],
+ "paired_with": "tv_2026-10-13_r193_top_m01",
+ "offset_s": 0.0,
+ "auto": true,
+ "source": "replay"
+}

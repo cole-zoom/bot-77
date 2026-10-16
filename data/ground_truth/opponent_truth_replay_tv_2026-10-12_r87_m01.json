@@ -1,0 +1,573 @@
+{
+ "video_id": "tv_2026-10-12_r87",
+ "side": "opponent",
+ "matches": [
+  "tv_2026-10-12_r87_m01"
+ ],
+ "items": [
+  {
+   "match_id": "tv_2026-10-12_r87_m01",
+   "t_video": 15.0,
+   "label": "The Log",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r87_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r87_m01",
+   "t_video": 20.7,
+   "label": "Ice Spirit",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r87_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r87_m01",
+   "t_video": 26.9,
+   "label": "Skeletons",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r87_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r87_m01",
+   "t_video": 30.6,
+   "label": "Archer Queen",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r87_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r87_m01",
+   "t_video": 37.9,
+   "label": "Royal Delivery",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r87_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r87_m01",
+   "t_video": 47.4,
+   "label": "The Log",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r87_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r87_m01",
+   "t_video": 51.8,
+   "label": "Royal Hogs",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r87_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r87_m01",
+   "t_video": 55.9,
+   "label": "Skeletons",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r87_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r87_m01",
+   "t_video": 56.6,
+   "label": "Ice Spirit",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r87_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r87_m01",
+   "t_video": 78.6,
+   "label": "Royal Delivery",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r87_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r87_m01",
+   "t_video": 89.0,
+   "label": "Archer Queen",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r87_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r87_m01",
+   "t_video": 93.3,
+   "label": "Royal Hogs",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r87_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r87_m01",
+   "t_video": 104.8,
+   "label": "Cannon",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r87_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r87_m01",
+   "t_video": 111.2,
+   "label": "Ice Spirit",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r87_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r87_m01",
+   "t_video": 115.2,
+   "label": "Royal Delivery",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r87_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r87_m01",
+   "t_video": 130.8,
+   "label": "Archer Queen",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r87_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r87_m01",
+   "t_video": 137.3,
+   "label": "Skeletons",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r87_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r87_m01",
+   "t_video": 139.7,
+   "label": "The Log",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r87_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r87_m01",
+   "t_video": 142.3,
+   "label": "Cannon",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r87_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r87_m01",
+   "t_video": 148.4,
+   "label": "Earthquake",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r87_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r87_m01",
+   "t_video": 149.1,
+   "label": "Royal Delivery",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r87_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r87_m01",
+   "t_video": 151.0,
+   "label": "Royal Hogs",
+   "form": "evo",
+   "source": "POV of tv_2026-10-12_r87_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r87_m01",
+   "t_video": 153.0,
+   "label": "__ability",
+   "form": null,
+   "source": "POV of tv_2026-10-12_r87_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-12_r87_m01",
+   "t_video": 155.2,
+   "label": "The Log",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r87_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r87_m01",
+   "t_video": 166.9,
+   "label": "Ice Spirit",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r87_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r87_m01",
+   "t_video": 172.5,
+   "label": "Archer Queen",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r87_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r87_m01",
+   "t_video": 177.7,
+   "label": "Cannon",
+   "form": "evo",
+   "source": "POV of tv_2026-10-12_r87_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r87_m01",
+   "t_video": 180.5,
+   "label": "Royal Delivery",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r87_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r87_m01",
+   "t_video": 182.3,
+   "label": "Earthquake",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r87_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r87_m01",
+   "t_video": 183.9,
+   "label": "__ability",
+   "form": null,
+   "source": "POV of tv_2026-10-12_r87_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-12_r87_m01",
+   "t_video": 186.9,
+   "label": "The Log",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r87_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r87_m01",
+   "t_video": 187.8,
+   "label": "Ice Spirit",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r87_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r87_m01",
+   "t_video": 190.4,
+   "label": "Skeletons",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r87_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r87_m01",
+   "t_video": 193.2,
+   "label": "Royal Hogs",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r87_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r87_m01",
+   "t_video": 204.9,
+   "label": "Archer Queen",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r87_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r87_m01",
+   "t_video": 205.8,
+   "label": "Cannon",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r87_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r87_m01",
+   "t_video": 208.3,
+   "label": "Ice Spirit",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r87_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r87_m01",
+   "t_video": 209.8,
+   "label": "Skeletons",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r87_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r87_m01",
+   "t_video": 216.5,
+   "label": "Earthquake",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r87_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r87_m01",
+   "t_video": 220.7,
+   "label": "The Log",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r87_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r87_m01",
+   "t_video": 224.4,
+   "label": "Cannon",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r87_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r87_m01",
+   "t_video": 228.1,
+   "label": "Ice Spirit",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r87_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r87_m01",
+   "t_video": 230.6,
+   "label": "Royal Delivery",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r87_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r87_m01",
+   "t_video": 231.2,
+   "label": "Skeletons",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r87_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r87_m01",
+   "t_video": 241.7,
+   "label": "Archer Queen",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r87_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r87_m01",
+   "t_video": 245.1,
+   "label": "Earthquake",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r87_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r87_m01",
+   "t_video": 246.8,
+   "label": "Cannon",
+   "form": "evo",
+   "source": "POV of tv_2026-10-12_r87_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r87_m01",
+   "t_video": 247.6,
+   "label": "__ability",
+   "form": null,
+   "source": "POV of tv_2026-10-12_r87_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-12_r87_m01",
+   "t_video": 248.8,
+   "label": "The Log",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r87_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r87_m01",
+   "t_video": 250.0,
+   "label": "Ice Spirit",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r87_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r87_m01",
+   "t_video": 254.5,
+   "label": "Royal Hogs",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r87_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r87_m01",
+   "t_video": 255.4,
+   "label": "Skeletons",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r87_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r87_m01",
+   "t_video": 262.6,
+   "label": "Archer Queen",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r87_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r87_m01",
+   "t_video": 265.3,
+   "label": "Cannon",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r87_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r87_m01",
+   "t_video": 268.4,
+   "label": "Ice Spirit",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r87_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r87_m01",
+   "t_video": 269.9,
+   "label": "Royal Hogs",
+   "form": "evo",
+   "source": "POV of tv_2026-10-12_r87_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r87_m01",
+   "t_video": 277.7,
+   "label": "Skeletons",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r87_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r87_m01",
+   "t_video": 278.3,
+   "label": "The Log",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r87_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r87_m01",
+   "t_video": 279.7,
+   "label": "__ability",
+   "form": null,
+   "source": "POV of tv_2026-10-12_r87_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-12_r87_m01",
+   "t_video": 280.0,
+   "label": "Archer Queen",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r87_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-12_r87_m01",
+   "t_video": 284.7,
+   "label": "Cannon",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r87_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r87_m01",
+   "t_video": 286.9,
+   "label": "Ice Spirit",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r87_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r87_m01",
+   "t_video": 287.9,
+   "label": "Royal Hogs",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r87_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-12_r87_m01",
+   "t_video": 289.2,
+   "label": "Earthquake",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r87_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r87_m01",
+   "t_video": 290.2,
+   "label": "__ability",
+   "form": null,
+   "source": "POV of tv_2026-10-12_r87_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-12_r87_m01",
+   "t_video": 293.3,
+   "label": "The Log",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r87_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r87_m01",
+   "t_video": 294.3,
+   "label": "Skeletons",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r87_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r87_m01",
+   "t_video": 296.5,
+   "label": "Ice Spirit",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r87_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r87_m01",
+   "t_video": 297.2,
+   "label": "Cannon",
+   "form": "evo",
+   "source": "POV of tv_2026-10-12_r87_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r87_m01",
+   "t_video": 302.7,
+   "label": "Royal Delivery",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r87_top_m01",
+   "source_confidence": "high"
+  }
+ ],
+ "paired_with": "tv_2026-10-12_r87_top_m01",
+ "offset_s": 0.0,
+ "auto": true,
+ "source": "replay"
+}

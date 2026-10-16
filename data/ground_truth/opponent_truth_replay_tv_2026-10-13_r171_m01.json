@@ -1,0 +1,349 @@
+{
+ "video_id": "tv_2026-10-13_r171",
+ "side": "opponent",
+ "matches": [
+  "tv_2026-10-13_r171_m01"
+ ],
+ "items": [
+  {
+   "match_id": "tv_2026-10-13_r171_m01",
+   "t_video": 16.7,
+   "label": "Hunter",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r171_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r171_m01",
+   "t_video": 28.5,
+   "label": "Goblins",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r171_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r171_m01",
+   "t_video": 34.6,
+   "label": "Royal Ghost",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r171_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r171_m01",
+   "t_video": 41.7,
+   "label": "Barbarian Barrel",
+   "form": "hero",
+   "source": "POV of tv_2026-10-13_r171_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r171_m01",
+   "t_video": 44.3,
+   "label": "Fisherman",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r171_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r171_m01",
+   "t_video": 46.7,
+   "label": "Hunter",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r171_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r171_m01",
+   "t_video": 52.1,
+   "label": "Goblins",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r171_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r171_m01",
+   "t_video": 57.6,
+   "label": "Royal Ghost",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r171_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r171_m01",
+   "t_video": 64.7,
+   "label": "Royal Giant",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r171_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r171_m01",
+   "t_video": 74.4,
+   "label": "Electro Spirit",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r171_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r171_m01",
+   "t_video": 85.9,
+   "label": "Hunter",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r171_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r171_m01",
+   "t_video": 94.0,
+   "label": "Goblins",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r171_top_m01",
+   "source_confidence": "low"
+  },
+  {
+   "match_id": "tv_2026-10-13_r171_m01",
+   "t_video": 105.7,
+   "label": "Fisherman",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r171_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r171_m01",
+   "t_video": 113.2,
+   "label": "Royal Ghost",
+   "form": "evo",
+   "source": "POV of tv_2026-10-13_r171_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r171_m01",
+   "t_video": 117.2,
+   "label": "Electro Spirit",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r171_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r171_m01",
+   "t_video": 118.1,
+   "label": "Barbarian Barrel",
+   "form": "hero",
+   "source": "POV of tv_2026-10-13_r171_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r171_m01",
+   "t_video": 122.7,
+   "label": "Goblins",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r171_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r171_m01",
+   "t_video": 127.2,
+   "label": "Royal Giant",
+   "form": "evo",
+   "source": "POV of tv_2026-10-13_r171_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-13_r171_m01",
+   "t_video": 130.6,
+   "label": "Fisherman",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r171_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r171_m01",
+   "t_video": 133.0,
+   "label": "Electro Spirit",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r171_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r171_m01",
+   "t_video": 141.8,
+   "label": "Hunter",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r171_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r171_m01",
+   "t_video": 144.7,
+   "label": "Goblins",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r171_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r171_m01",
+   "t_video": 147.9,
+   "label": "Royal Ghost",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r171_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r171_m01",
+   "t_video": 150.0,
+   "label": "Fisherman",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r171_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r171_m01",
+   "t_video": 153.1,
+   "label": "Electro Spirit",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r171_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r171_m01",
+   "t_video": 158.9,
+   "label": "Royal Giant",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r171_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r171_m01",
+   "t_video": 166.4,
+   "label": "Hunter",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r171_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r171_m01",
+   "t_video": 167.9,
+   "label": "Goblins",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r171_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r171_m01",
+   "t_video": 171.8,
+   "label": "Fireball",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r171_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-13_r171_m01",
+   "t_video": 176.2,
+   "label": "Royal Ghost",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r171_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r171_m01",
+   "t_video": 178.6,
+   "label": "Royal Giant",
+   "form": "evo",
+   "source": "POV of tv_2026-10-13_r171_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r171_m01",
+   "t_video": 181.1,
+   "label": "Hunter",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r171_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r171_m01",
+   "t_video": 193.1,
+   "label": "Goblins",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r171_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r171_m01",
+   "t_video": 194.5,
+   "label": "Fisherman",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r171_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r171_m01",
+   "t_video": 197.1,
+   "label": "Royal Ghost",
+   "form": "evo",
+   "source": "POV of tv_2026-10-13_r171_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r171_m01",
+   "t_video": 201.9,
+   "label": "Electro Spirit",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r171_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r171_m01",
+   "t_video": 203.2,
+   "label": "Fireball",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r171_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r171_m01",
+   "t_video": 205.8,
+   "label": "Goblins",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r171_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r171_m01",
+   "t_video": 208.6,
+   "label": "Hunter",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r171_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r171_m01",
+   "t_video": 210.7,
+   "label": "Fisherman",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r171_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r171_m01",
+   "t_video": 213.2,
+   "label": "Electro Spirit",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r171_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r171_m01",
+   "t_video": 214.4,
+   "label": "Barbarian Barrel",
+   "form": "hero",
+   "source": "POV of tv_2026-10-13_r171_top_m01",
+   "source_confidence": "high"
+  }
+ ],
+ "paired_with": "tv_2026-10-13_r171_top_m01",
+ "offset_s": 0.0,
+ "auto": true,
+ "source": "replay"
+}

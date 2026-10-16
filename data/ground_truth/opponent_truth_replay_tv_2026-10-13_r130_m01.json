@@ -1,0 +1,181 @@
+{
+ "video_id": "tv_2026-10-13_r130",
+ "side": "opponent",
+ "matches": [
+  "tv_2026-10-13_r130_m01"
+ ],
+ "items": [
+  {
+   "match_id": "tv_2026-10-13_r130_m01",
+   "t_video": 13.8,
+   "label": "Lava Hound",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r130_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r130_m01",
+   "t_video": 22.1,
+   "label": "Tombstone",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r130_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-13_r130_m01",
+   "t_video": 32.1,
+   "label": "Mega Minion",
+   "form": "hero",
+   "source": "POV of tv_2026-10-13_r130_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r130_m01",
+   "t_video": 36.2,
+   "label": "Zap",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r130_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r130_m01",
+   "t_video": 44.2,
+   "label": "Skeleton Dragons",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r130_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r130_m01",
+   "t_video": 58.4,
+   "label": "Barbarians",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r130_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r130_m01",
+   "t_video": 78.2,
+   "label": "Lava Hound",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r130_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r130_m01",
+   "t_video": 84.2,
+   "label": "Tombstone",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r130_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r130_m01",
+   "t_video": 91.3,
+   "label": "Mega Minion",
+   "form": "hero",
+   "source": "POV of tv_2026-10-13_r130_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r130_m01",
+   "t_video": 108.4,
+   "label": "Zap",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r130_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r130_m01",
+   "t_video": 111.7,
+   "label": "Tombstone",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r130_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-13_r130_m01",
+   "t_video": 124.1,
+   "label": "Skeleton Dragons",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r130_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r130_m01",
+   "t_video": 134.4,
+   "label": "Tombstone",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r130_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r130_m01",
+   "t_video": 136.6,
+   "label": "Barbarians",
+   "form": "evo",
+   "source": "POV of tv_2026-10-13_r130_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r130_m01",
+   "t_video": 144.3,
+   "label": "Zap",
+   "form": "evo",
+   "source": "POV of tv_2026-10-13_r130_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-13_r130_m01",
+   "t_video": 153.8,
+   "label": "Skeleton Dragons",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r130_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r130_m01",
+   "t_video": 160.7,
+   "label": "Tombstone",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r130_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r130_m01",
+   "t_video": 165.2,
+   "label": "Mega Minion",
+   "form": "hero",
+   "source": "POV of tv_2026-10-13_r130_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r130_m01",
+   "t_video": 166.6,
+   "label": "Barbarians",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r130_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-13_r130_m01",
+   "t_video": 171.0,
+   "label": "Fireball",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r130_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r130_m01",
+   "t_video": 181.4,
+   "label": "Zap",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r130_top_m01",
+   "source_confidence": "high"
+  }
+ ],
+ "paired_with": "tv_2026-10-13_r130_top_m01",
+ "offset_s": 0.0,
+ "auto": true,
+ "source": "replay"
+}

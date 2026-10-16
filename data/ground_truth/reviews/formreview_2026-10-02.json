@@ -1,0 +1,2868 @@
+{
+ "exported_at": "2026-10-02T23:58:29.583Z",
+ "frames": [
+  {
+   "id": "kjO4VIQpRmM_m04_0590.00_balloon-hero",
+   "entity": "balloon-hero",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "bEqy2I3UP80_m09_0772.75_mini-pekka-hero",
+   "entity": "mini-pekka-hero",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "FRQBRMzwWXE_m07_1182.25_giant-hero",
+   "entity": "giant-hero",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "G2qgxatXOHE_m04_0712.25_furnace-evolution",
+   "entity": "furnace-evolution",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "JvfOnzG1Cag_m05_0438.50_musketeer-hero",
+   "entity": "musketeer-hero",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "oPDyLHWbu08_m01_0062.25_ice-golem-hero",
+   "entity": "ice-golem-hero",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "EYZBR5GxSec_m02_0251.00_elite-barbarian-evolution",
+   "entity": "elite-barbarian-evolution",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "tbJ_G489MkI_m04_0670.25_ice-golem-hero",
+   "entity": "ice-golem-hero",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "3r9-35N9yE8_m06_1228.75_ice-golem-hero",
+   "entity": "ice-golem-hero",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "JvfOnzG1Cag_m05_0496.50_musketeer-hero",
+   "entity": "musketeer-hero",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "83d3zofOD44_m01_0082.00_ice-golem-hero",
+   "entity": "ice-golem-hero",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "JvfOnzG1Cag_m06_0556.75_musketeer-hero",
+   "entity": "musketeer-hero",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "x15brXQpQ8o_m05_1156.75_bowler-hero",
+   "entity": "bowler-hero",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "oPDyLHWbu08_m04_0945.75_ice-golem-hero",
+   "entity": "ice-golem-hero",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "FRQBRMzwWXE_m07_1183.75_giant-hero",
+   "entity": "giant-hero",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "83d3zofOD44_m03_0376.25_ice-golem-hero",
+   "entity": "ice-golem-hero",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "3r9-35N9yE8_m01_0195.00_ice-golem-hero",
+   "entity": "ice-golem-hero",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "Ut_nI1XYIfU_m02_0476.25_bowler-hero",
+   "entity": "bowler-hero",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "FRQBRMzwWXE_m06_0891.50_giant-hero",
+   "entity": "giant-hero",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "tGONo2rzFHw_m02_0372.00_princess-evolution",
+   "entity": "princess-evolution",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "xwQDkyZq4kE_m03_0504.00_balloon-hero",
+   "entity": "balloon-hero",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "01NO-ma-V1I_m08_0694.75_mini-pekka-hero",
+   "entity": "mini-pekka-hero",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "ElIl0ij-Z6o_m01_0162.25_goblin-cage-evolution",
+   "entity": "goblin-cage-evolution",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "EYZBR5GxSec_m01_0091.00_elite-barbarian-evolution",
+   "entity": "elite-barbarian-evolution",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "JvfOnzG1Cag_m05_0434.25_musketeer-hero",
+   "entity": "musketeer-hero",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "Sa-ao9-Pwnk_m01_0113.00_electro-dragon-evolution",
+   "entity": "electro-dragon-evolution",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "9BvND7VutBQ_m13_1054.00_musketeer-evolution",
+   "entity": "musketeer-evolution",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "ysEKLO8sMp8_m02_0456.50_balloon-hero",
+   "entity": "balloon-hero",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "iszvnzGwQ9c_m05_1245.00_elite-barbarian-evolution",
+   "entity": "elite-barbarian-evolution",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "NX3HsIQRPvY_m04_0772.25_goblin-cage-evolution",
+   "entity": "goblin-cage-evolution",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "7kxx0Y7Shpc_m05_0681.50_goblin-giant-evolution",
+   "entity": "goblin-giant-evolution",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "Ut_nI1XYIfU_m01_0231.00_bowler-hero",
+   "entity": "bowler-hero",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "7kxx0Y7Shpc_m05_0678.75_goblin-giant-evolution",
+   "entity": "goblin-giant-evolution",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "9G4GU0hEdhQ_m04_0916.75_furnace-evolution",
+   "entity": "furnace-evolution",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "9G4GU0hEdhQ_m04_0918.25_furnace-evolution",
+   "entity": "furnace-evolution",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "ElIl0ij-Z6o_m01_0164.25_goblin-cage-evolution",
+   "entity": "goblin-cage-evolution",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "ysEKLO8sMp8_m05_0869.75_balloon-hero",
+   "entity": "balloon-hero",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "FRQBRMzwWXE_m05_0793.00_giant-hero",
+   "entity": "giant-hero",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "FRQBRMzwWXE_m04_0663.25_giant-hero",
+   "entity": "giant-hero",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "83d3zofOD44_m01_0085.75_ice-golem-hero",
+   "entity": "ice-golem-hero",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "zgiAi5kyDGI_m07_0656.75_lumberjack-evolution",
+   "entity": "lumberjack-evolution",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "xwQDkyZq4kE_m01_0277.00_balloon-hero",
+   "entity": "balloon-hero",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "tGONo2rzFHw_m02_0373.00_princess-evolution",
+   "entity": "princess-evolution",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "83d3zofOD44_m03_0374.50_ice-golem-hero",
+   "entity": "ice-golem-hero",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "bEqy2I3UP80_m11_0918.50_mini-pekka-hero",
+   "entity": "mini-pekka-hero",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "83d3zofOD44_m03_0473.50_ice-golem-hero",
+   "entity": "ice-golem-hero",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "ysEKLO8sMp8_m02_0455.25_balloon-hero",
+   "entity": "balloon-hero",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "oPDyLHWbu08_m01_0025.25_ice-golem-hero",
+   "entity": "ice-golem-hero",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "bEqy2I3UP80_m12_1039.75_mini-pekka-hero",
+   "entity": "mini-pekka-hero",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "01NO-ma-V1I_m05_0496.25_mini-pekka-hero",
+   "entity": "mini-pekka-hero",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "Nr04--Oq2Rk_m02_0453.75_musketeer-hero",
+   "entity": "musketeer-hero",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "EYZBR5GxSec_m04_0755.25_elite-barbarian-evolution",
+   "entity": "elite-barbarian-evolution",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "GoQcv9f6dHw_m02_0363.75_mega-knight-evolution",
+   "entity": "mega-knight-evolution",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "NX3HsIQRPvY_m03_0673.75_goblin-cage-evolution",
+   "entity": "goblin-cage-evolution",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "Sa-ao9-Pwnk_m03_0578.50_electro-dragon-evolution",
+   "entity": "electro-dragon-evolution",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "FRQBRMzwWXE_m07_1137.25_giant-hero",
+   "entity": "giant-hero",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "FRQBRMzwWXE_m05_0816.00_giant-hero",
+   "entity": "giant-hero",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "ysEKLO8sMp8_m02_0418.75_balloon-hero",
+   "entity": "balloon-hero",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "Ut_nI1XYIfU_m01_0225.75_bowler-hero",
+   "entity": "bowler-hero",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "oPDyLHWbu08_m01_0060.25_ice-golem-hero",
+   "entity": "ice-golem-hero",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "oPDyLHWbu08_m04_0972.50_ice-golem-hero",
+   "entity": "ice-golem-hero",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "kjO4VIQpRmM_m04_0591.25_balloon-hero",
+   "entity": "balloon-hero",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "FRQBRMzwWXE_m06_1031.00_giant-hero",
+   "entity": "giant-hero",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "NX3HsIQRPvY_m01_0082.75_goblin-cage-evolution",
+   "entity": "goblin-cage-evolution",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "83d3zofOD44_m03_0476.00_ice-golem-hero",
+   "entity": "ice-golem-hero",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "bEqy2I3UP80_m02_0135.50_mini-pekka-hero",
+   "entity": "mini-pekka-hero",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "EYZBR5GxSec_m04_0704.00_elite-barbarian-evolution",
+   "entity": "elite-barbarian-evolution",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "iszvnzGwQ9c_m02_0506.00_elite-barbarian-evolution",
+   "entity": "elite-barbarian-evolution",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "PgwX9BTa81o_m06_1044.50_elite-barbarian-evolution",
+   "entity": "elite-barbarian-evolution",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "wLspCp1d_wU_m04_1069.75_furnace-evolution",
+   "entity": "furnace-evolution",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "3r9-35N9yE8_m03_0541.75_ice-golem-hero",
+   "entity": "ice-golem-hero",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "FRQBRMzwWXE_m06_0980.50_giant-hero",
+   "entity": "giant-hero",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "83d3zofOD44_m01_0080.75_ice-golem-hero",
+   "entity": "ice-golem-hero",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "Sa-ao9-Pwnk_m01_0119.25_electro-dragon-evolution",
+   "entity": "electro-dragon-evolution",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "wLspCp1d_wU_m02_0362.25_furnace-evolution",
+   "entity": "furnace-evolution",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "tbJ_G489MkI_m06_1054.25_ice-golem-hero",
+   "entity": "ice-golem-hero",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "bEqy2I3UP80_m01_0068.00_mini-pekka-hero",
+   "entity": "mini-pekka-hero",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "01NO-ma-V1I_m05_0495.00_mini-pekka-hero",
+   "entity": "mini-pekka-hero",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "FRQBRMzwWXE_m03_0440.75_giant-hero",
+   "entity": "giant-hero",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "PgwX9BTa81o_m06_1173.00_elite-barbarian-evolution",
+   "entity": "elite-barbarian-evolution",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "Ut_nI1XYIfU_m01_0230.00_bowler-hero",
+   "entity": "bowler-hero",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "ElIl0ij-Z6o_m01_0159.00_goblin-cage-evolution",
+   "entity": "goblin-cage-evolution",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "01NO-ma-V1I_m01_0097.00_mini-pekka-hero",
+   "entity": "mini-pekka-hero",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "tbJ_G489MkI_m02_0301.75_ice-golem-hero",
+   "entity": "ice-golem-hero",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "JvfOnzG1Cag_m12_1068.50_musketeer-hero",
+   "entity": "musketeer-hero",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "bEqy2I3UP80_m09_0774.75_mini-pekka-hero",
+   "entity": "mini-pekka-hero",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "Ut_nI1XYIfU_m01_0228.50_bowler-hero",
+   "entity": "bowler-hero",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "tbJ_G489MkI_m03_0467.50_ice-golem-hero",
+   "entity": "ice-golem-hero",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "Ut_nI1XYIfU_m02_0477.25_bowler-hero",
+   "entity": "bowler-hero",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "JvfOnzG1Cag_m12_1066.50_musketeer-hero",
+   "entity": "musketeer-hero",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "9G4GU0hEdhQ_m02_0439.00_furnace-evolution",
+   "entity": "furnace-evolution",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "01NO-ma-V1I_m05_0426.25_mini-pekka-hero",
+   "entity": "mini-pekka-hero",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "x15brXQpQ8o_m01_0127.25_bowler-hero",
+   "entity": "bowler-hero",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "01NO-ma-V1I_m05_0425.25_mini-pekka-hero",
+   "entity": "mini-pekka-hero",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "3r9-35N9yE8_m06_1232.00_ice-golem-hero",
+   "entity": "ice-golem-hero",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "EYZBR5GxSec_m01_0092.00_elite-barbarian-evolution",
+   "entity": "elite-barbarian-evolution",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "JvfOnzG1Cag_m05_0494.00_musketeer-hero",
+   "entity": "musketeer-hero",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "NX3HsIQRPvY_m04_0771.25_goblin-cage-evolution",
+   "entity": "goblin-cage-evolution",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "ysEKLO8sMp8_m05_0972.75_balloon-hero",
+   "entity": "balloon-hero",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "bEqy2I3UP80_m02_0136.75_mini-pekka-hero",
+   "entity": "mini-pekka-hero",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "wLspCp1d_wU_m03_0760.50_furnace-evolution",
+   "entity": "furnace-evolution",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "EYZBR5GxSec_m04_0703.00_elite-barbarian-evolution",
+   "entity": "elite-barbarian-evolution",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "FRQBRMzwWXE_m04_0629.50_mini-pekka-hero",
+   "entity": "mini-pekka-hero",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "3r9-35N9yE8_m05_0956.50_ice-golem-hero",
+   "entity": "ice-golem-hero",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "tbJ_G489MkI_m01_0026.75_ice-golem-hero",
+   "entity": "ice-golem-hero",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "wLspCp1d_wU_m02_0276.75_furnace-evolution",
+   "entity": "furnace-evolution",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "FRQBRMzwWXE_m03_0402.50_giant-hero",
+   "entity": "giant-hero",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "JvfOnzG1Cag_m12_1065.25_musketeer-hero",
+   "entity": "musketeer-hero",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "EYZBR5GxSec_m04_0571.00_elite-barbarian-evolution",
+   "entity": "elite-barbarian-evolution",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "EYZBR5GxSec_m02_0353.75_elite-barbarian-evolution",
+   "entity": "elite-barbarian-evolution",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "01NO-ma-V1I_m05_0375.25_mini-pekka-hero",
+   "entity": "mini-pekka-hero",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "wLspCp1d_wU_m02_0424.50_furnace-evolution",
+   "entity": "furnace-evolution",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "oPDyLHWbu08_m01_0058.50_ice-golem-hero",
+   "entity": "ice-golem-hero",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "9BvND7VutBQ_m05_0499.75_musketeer-evolution",
+   "entity": "musketeer-evolution",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "wLspCp1d_wU_m05_1281.50_furnace-evolution",
+   "entity": "furnace-evolution",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "oPDyLHWbu08_m01_0256.75_ice-golem-hero",
+   "entity": "ice-golem-hero",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "EYZBR5GxSec_m04_0756.50_elite-barbarian-evolution",
+   "entity": "elite-barbarian-evolution",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "01NO-ma-V1I_m02_0153.75_giant-hero",
+   "entity": "giant-hero",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "EYZBR5GxSec_m04_0703.25_elite-barbarian-evolution",
+   "entity": "elite-barbarian-evolution",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "01NO-ma-V1I_m05_0499.50_mini-pekka-hero",
+   "entity": "mini-pekka-hero",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "Ut_nI1XYIfU_m01_0232.00_bowler-hero",
+   "entity": "bowler-hero",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "7kxx0Y7Shpc_m02_0261.50_goblin-giant-evolution",
+   "entity": "goblin-giant-evolution",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "x15brXQpQ8o_m04_0909.75_bowler-hero",
+   "entity": "bowler-hero",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "83d3zofOD44_m03_0470.50_ice-golem-hero",
+   "entity": "ice-golem-hero",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "EYZBR5GxSec_m02_0251.25_elite-barbarian-evolution",
+   "entity": "elite-barbarian-evolution",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "Ut_nI1XYIfU_m01_0140.50_bowler-hero",
+   "entity": "bowler-hero",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "3r9-35N9yE8_m02_0441.50_ice-golem-hero",
+   "entity": "ice-golem-hero",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "FRQBRMzwWXE_m06_0984.00_giant-hero",
+   "entity": "giant-hero",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "3r9-35N9yE8_m05_0957.50_ice-golem-hero",
+   "entity": "ice-golem-hero",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "kJuyRH6R9zU_m01_0154.25_musketeer-evolution",
+   "entity": "musketeer-evolution",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "01NO-ma-V1I_m02_0152.50_giant-hero",
+   "entity": "giant-hero",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "PgwX9BTa81o_m01_0176.75_elite-barbarian-evolution",
+   "entity": "elite-barbarian-evolution",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "83d3zofOD44_m03_0472.25_ice-golem-hero",
+   "entity": "ice-golem-hero",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "wLspCp1d_wU_m03_0691.25_furnace-evolution",
+   "entity": "furnace-evolution",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "NX3HsIQRPvY_m03_0674.75_goblin-cage-evolution",
+   "entity": "goblin-cage-evolution",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "NX3HsIQRPvY_m01_0080.75_goblin-cage-evolution",
+   "entity": "goblin-cage-evolution",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "NX3HsIQRPvY_m04_0769.25_goblin-cage-evolution",
+   "entity": "goblin-cage-evolution",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "EYZBR5GxSec_m02_0250.25_elite-barbarian-evolution",
+   "entity": "elite-barbarian-evolution",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "tbJ_G489MkI_m04_0672.25_ice-golem-hero",
+   "entity": "ice-golem-hero",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "kJuyRH6R9zU_m07_0754.75_musketeer-evolution",
+   "entity": "musketeer-evolution",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "3r9-35N9yE8_m02_0465.00_ice-golem-hero",
+   "entity": "ice-golem-hero",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "wLspCp1d_wU_m02_0364.50_furnace-evolution",
+   "entity": "furnace-evolution",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "JvfOnzG1Cag_m12_1095.25_musketeer-hero",
+   "entity": "musketeer-hero",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "bEqy2I3UP80_m02_0137.75_mini-pekka-hero",
+   "entity": "mini-pekka-hero",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "FRQBRMzwWXE_m06_0893.25_giant-hero",
+   "entity": "giant-hero",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "ElIl0ij-Z6o_m01_0163.25_goblin-cage-evolution",
+   "entity": "goblin-cage-evolution",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "83d3zofOD44_m01_0083.00_ice-golem-hero",
+   "entity": "ice-golem-hero",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "83d3zofOD44_m03_0475.00_ice-golem-hero",
+   "entity": "ice-golem-hero",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "EYZBR5GxSec_m04_0576.75_elite-barbarian-evolution",
+   "entity": "elite-barbarian-evolution",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "01NO-ma-V1I_m06_0583.50_mini-pekka-hero",
+   "entity": "mini-pekka-hero",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "kJuyRH6R9zU_m02_0227.75_musketeer-evolution",
+   "entity": "musketeer-evolution",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "iszvnzGwQ9c_m03_0760.00_elite-barbarian-evolution",
+   "entity": "elite-barbarian-evolution",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "G2qgxatXOHE_m04_0709.75_furnace-evolution",
+   "entity": "furnace-evolution",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "3r9-35N9yE8_m05_0958.50_ice-golem-hero",
+   "entity": "ice-golem-hero",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "x15brXQpQ8o_m02_0364.75_bowler-hero",
+   "entity": "bowler-hero",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "ysEKLO8sMp8_m06_1026.25_balloon-hero",
+   "entity": "balloon-hero",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "bEqy2I3UP80_m10_0888.00_mini-pekka-hero",
+   "entity": "mini-pekka-hero",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "ysEKLO8sMp8_m03_0543.75_balloon-hero",
+   "entity": "balloon-hero",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "FRQBRMzwWXE_m06_0981.50_giant-hero",
+   "entity": "giant-hero",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "FRQBRMzwWXE_m04_0551.50_mini-pekka-hero",
+   "entity": "mini-pekka-hero",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "ysEKLO8sMp8_m01_0194.50_balloon-hero",
+   "entity": "balloon-hero",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "bEqy2I3UP80_m09_0775.75_mini-pekka-hero",
+   "entity": "mini-pekka-hero",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "tbJ_G489MkI_m04_0667.25_ice-golem-hero",
+   "entity": "ice-golem-hero",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "3r9-35N9yE8_m04_0879.00_ice-golem-hero",
+   "entity": "ice-golem-hero",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "3r9-35N9yE8_m02_0440.50_ice-golem-hero",
+   "entity": "ice-golem-hero",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "01NO-ma-V1I_m06_0580.50_mini-pekka-hero",
+   "entity": "mini-pekka-hero",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "FRQBRMzwWXE_m03_0400.25_giant-hero",
+   "entity": "giant-hero",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "7kxx0Y7Shpc_m05_0680.25_goblin-giant-evolution",
+   "entity": "goblin-giant-evolution",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "wLspCp1d_wU_m05_1205.50_furnace-evolution",
+   "entity": "furnace-evolution",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "iszvnzGwQ9c_m04_1054.50_elite-barbarian-evolution",
+   "entity": "elite-barbarian-evolution",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "kJuyRH6R9zU_m08_0898.25_musketeer-evolution",
+   "entity": "musketeer-evolution",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "wLspCp1d_wU_m01_0106.50_furnace-evolution",
+   "entity": "furnace-evolution",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "wLspCp1d_wU_m02_0423.00_furnace-evolution",
+   "entity": "furnace-evolution",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "JvfOnzG1Cag_m12_1100.50_musketeer-hero",
+   "entity": "musketeer-hero",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "kJuyRH6R9zU_m08_0896.00_musketeer-evolution",
+   "entity": "musketeer-evolution",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "FRQBRMzwWXE_m03_0438.50_giant-hero",
+   "entity": "giant-hero",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "kJuyRH6R9zU_m07_0753.25_musketeer-evolution",
+   "entity": "musketeer-evolution",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "EYZBR5GxSec_m04_0702.00_elite-barbarian-evolution",
+   "entity": "elite-barbarian-evolution",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "JvfOnzG1Cag_m12_1102.50_musketeer-hero",
+   "entity": "musketeer-hero",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "bEqy2I3UP80_m10_0816.25_mini-pekka-hero",
+   "entity": "mini-pekka-hero",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "xwQDkyZq4kE_m03_0505.25_balloon-hero",
+   "entity": "balloon-hero",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "iszvnzGwQ9c_m02_0594.25_elite-barbarian-evolution",
+   "entity": "elite-barbarian-evolution",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "oPDyLHWbu08_m01_0258.25_ice-golem-hero",
+   "entity": "ice-golem-hero",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "oPDyLHWbu08_m01_0057.50_ice-golem-hero",
+   "entity": "ice-golem-hero",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "bEqy2I3UP80_m09_0773.75_mini-pekka-hero",
+   "entity": "mini-pekka-hero",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "ysEKLO8sMp8_m01_0193.50_balloon-hero",
+   "entity": "balloon-hero",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "bEqy2I3UP80_m07_0591.75_mini-pekka-hero",
+   "entity": "mini-pekka-hero",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "PgwX9BTa81o_m01_0178.25_elite-barbarian-evolution",
+   "entity": "elite-barbarian-evolution",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "3r9-35N9yE8_m06_1234.50_ice-golem-hero",
+   "entity": "ice-golem-hero",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "FRQBRMzwWXE_m03_0264.00_mini-pekka-hero",
+   "entity": "mini-pekka-hero",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "tbJ_G489MkI_m03_0516.00_ice-golem-hero",
+   "entity": "ice-golem-hero",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "9BvND7VutBQ_m10_0976.50_musketeer-evolution",
+   "entity": "musketeer-evolution",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "ysEKLO8sMp8_m06_1027.50_balloon-hero",
+   "entity": "balloon-hero",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "iszvnzGwQ9c_m02_0595.50_elite-barbarian-evolution",
+   "entity": "elite-barbarian-evolution",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "wLspCp1d_wU_m05_1202.75_furnace-evolution",
+   "entity": "furnace-evolution",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "Sa-ao9-Pwnk_m01_0115.50_electro-dragon-evolution",
+   "entity": "electro-dragon-evolution",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "FRQBRMzwWXE_m06_0898.25_giant-hero",
+   "entity": "giant-hero",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "wLspCp1d_wU_m05_1282.75_furnace-evolution",
+   "entity": "furnace-evolution",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "kJuyRH6R9zU_m07_0751.75_musketeer-evolution",
+   "entity": "musketeer-evolution",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "G2qgxatXOHE_m05_1043.50_furnace-evolution",
+   "entity": "furnace-evolution",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "FRQBRMzwWXE_m06_0985.25_giant-hero",
+   "entity": "giant-hero",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "EYZBR5GxSec_m04_0799.50_elite-barbarian-evolution",
+   "entity": "elite-barbarian-evolution",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "PgwX9BTa81o_m06_1174.75_elite-barbarian-evolution",
+   "entity": "elite-barbarian-evolution",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "EYZBR5GxSec_m04_0572.00_elite-barbarian-evolution",
+   "entity": "elite-barbarian-evolution",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "01NO-ma-V1I_m05_0503.00_mini-pekka-hero",
+   "entity": "mini-pekka-hero",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "EYZBR5GxSec_m04_0795.25_elite-barbarian-evolution",
+   "entity": "elite-barbarian-evolution",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "wLspCp1d_wU_m04_1071.00_furnace-evolution",
+   "entity": "furnace-evolution",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "JvfOnzG1Cag_m05_0497.50_musketeer-hero",
+   "entity": "musketeer-hero",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "JvfOnzG1Cag_m06_0552.75_musketeer-hero",
+   "entity": "musketeer-hero",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "FRQBRMzwWXE_m07_1185.25_giant-hero",
+   "entity": "giant-hero",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "tbJ_G489MkI_m02_0305.00_ice-golem-hero",
+   "entity": "ice-golem-hero",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "iszvnzGwQ9c_m03_0759.00_elite-barbarian-evolution",
+   "entity": "elite-barbarian-evolution",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "kJuyRH6R9zU_m07_0756.00_musketeer-evolution",
+   "entity": "musketeer-evolution",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "NX3HsIQRPvY_m03_0670.75_goblin-cage-evolution",
+   "entity": "goblin-cage-evolution",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "PgwX9BTa81o_m01_0174.25_elite-barbarian-evolution",
+   "entity": "elite-barbarian-evolution",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "JvfOnzG1Cag_m12_1097.75_musketeer-hero",
+   "entity": "musketeer-hero",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "FRQBRMzwWXE_m05_0794.00_giant-hero",
+   "entity": "giant-hero",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "EYZBR5GxSec_m04_0701.75_elite-barbarian-evolution",
+   "entity": "elite-barbarian-evolution",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "FRQBRMzwWXE_m04_0632.00_mini-pekka-hero",
+   "entity": "mini-pekka-hero",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "ElIl0ij-Z6o_m02_0299.00_goblin-cage-evolution",
+   "entity": "goblin-cage-evolution",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "PgwX9BTa81o_m01_0173.00_elite-barbarian-evolution",
+   "entity": "elite-barbarian-evolution",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "Ut_nI1XYIfU_m01_0281.25_bowler-hero",
+   "entity": "bowler-hero",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "01NO-ma-V1I_m06_0540.25_giant-hero",
+   "entity": "giant-hero",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "bEqy2I3UP80_m07_0593.25_mini-pekka-hero",
+   "entity": "mini-pekka-hero",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "01NO-ma-V1I_m06_0539.00_giant-hero",
+   "entity": "giant-hero",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "tbJ_G489MkI_m04_0669.25_ice-golem-hero",
+   "entity": "ice-golem-hero",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "3r9-35N9yE8_m04_0878.00_ice-golem-hero",
+   "entity": "ice-golem-hero",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "xwQDkyZq4kE_m01_0282.75_balloon-hero",
+   "entity": "balloon-hero",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "iszvnzGwQ9c_m05_1243.75_elite-barbarian-evolution",
+   "entity": "elite-barbarian-evolution",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "tbJ_G489MkI_m03_0472.50_ice-golem-hero",
+   "entity": "ice-golem-hero",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "oPDyLHWbu08_m04_0970.00_ice-golem-hero",
+   "entity": "ice-golem-hero",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "wLspCp1d_wU_m02_0366.00_furnace-evolution",
+   "entity": "furnace-evolution",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "JvfOnzG1Cag_m12_1096.50_musketeer-hero",
+   "entity": "musketeer-hero",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "zgiAi5kyDGI_m07_0659.25_lumberjack-evolution",
+   "entity": "lumberjack-evolution",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "ysEKLO8sMp8_m04_0682.25_balloon-hero",
+   "entity": "balloon-hero",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "wLspCp1d_wU_m05_1201.25_furnace-evolution",
+   "entity": "furnace-evolution",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "tbJ_G489MkI_m01_0028.00_ice-golem-hero",
+   "entity": "ice-golem-hero",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "3r9-35N9yE8_m03_0540.50_ice-golem-hero",
+   "entity": "ice-golem-hero",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "01NO-ma-V1I_m03_0258.50_mini-pekka-hero",
+   "entity": "mini-pekka-hero",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "EYZBR5GxSec_m04_0797.25_elite-barbarian-evolution",
+   "entity": "elite-barbarian-evolution",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "G2qgxatXOHE_m04_0797.25_furnace-evolution",
+   "entity": "furnace-evolution",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "NX3HsIQRPvY_m03_0550.00_goblin-cage-evolution",
+   "entity": "goblin-cage-evolution",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "EYZBR5GxSec_m02_0251.50_elite-barbarian-evolution",
+   "entity": "elite-barbarian-evolution",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "bEqy2I3UP80_m07_0594.25_mini-pekka-hero",
+   "entity": "mini-pekka-hero",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "7kxx0Y7Shpc_m05_0683.75_goblin-giant-evolution",
+   "entity": "goblin-giant-evolution",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "01NO-ma-V1I_m02_0148.25_giant-hero",
+   "entity": "giant-hero",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "NX3HsIQRPvY_m03_0552.50_goblin-cage-evolution",
+   "entity": "goblin-cage-evolution",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "oPDyLHWbu08_m04_0971.25_ice-golem-hero",
+   "entity": "ice-golem-hero",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "bEqy2I3UP80_m09_0776.75_mini-pekka-hero",
+   "entity": "mini-pekka-hero",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "JvfOnzG1Cag_m05_0493.00_musketeer-hero",
+   "entity": "musketeer-hero",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "3r9-35N9yE8_m02_0436.25_ice-golem-hero",
+   "entity": "ice-golem-hero",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "FRQBRMzwWXE_m06_1032.00_giant-hero",
+   "entity": "giant-hero",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "G2qgxatXOHE_m04_0713.75_furnace-evolution",
+   "entity": "furnace-evolution",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "oPDyLHWbu08_m01_0023.25_ice-golem-hero",
+   "entity": "ice-golem-hero",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "ysEKLO8sMp8_m05_0975.00_balloon-hero",
+   "entity": "balloon-hero",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "ysEKLO8sMp8_m02_0458.00_balloon-hero",
+   "entity": "balloon-hero",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "wLspCp1d_wU_m05_1204.00_furnace-evolution",
+   "entity": "furnace-evolution",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "bEqy2I3UP80_m01_0071.25_mini-pekka-hero",
+   "entity": "mini-pekka-hero",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "FRQBRMzwWXE_m04_0553.50_mini-pekka-hero",
+   "entity": "mini-pekka-hero",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "FRQBRMzwWXE_m03_0437.50_giant-hero",
+   "entity": "giant-hero",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "EYZBR5GxSec_m04_0752.75_elite-barbarian-evolution",
+   "entity": "elite-barbarian-evolution",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "PgwX9BTa81o_m06_1042.50_elite-barbarian-evolution",
+   "entity": "elite-barbarian-evolution",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "zgiAi5kyDGI_m07_0658.00_lumberjack-evolution",
+   "entity": "lumberjack-evolution",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "01NO-ma-V1I_m06_0541.25_giant-hero",
+   "entity": "giant-hero",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "83d3zofOD44_m03_0469.50_ice-golem-hero",
+   "entity": "ice-golem-hero",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "FRQBRMzwWXE_m07_1181.00_giant-hero",
+   "entity": "giant-hero",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "SzXoM-s9LHo_m01_0170.75_mega-knight-evolution",
+   "entity": "mega-knight-evolution",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "ElIl0ij-Z6o_m02_0302.00_goblin-cage-evolution",
+   "entity": "goblin-cage-evolution",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "EYZBR5GxSec_m04_0753.75_elite-barbarian-evolution",
+   "entity": "elite-barbarian-evolution",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "FRQBRMzwWXE_m07_1179.50_giant-hero",
+   "entity": "giant-hero",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "Sa-ao9-Pwnk_m01_0117.75_electro-dragon-evolution",
+   "entity": "electro-dragon-evolution",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "FRQBRMzwWXE_m04_0550.50_mini-pekka-hero",
+   "entity": "mini-pekka-hero",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "iszvnzGwQ9c_m03_0757.75_elite-barbarian-evolution",
+   "entity": "elite-barbarian-evolution",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "EYZBR5GxSec_m04_0574.00_elite-barbarian-evolution",
+   "entity": "elite-barbarian-evolution",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "PgwX9BTa81o_m01_0175.25_elite-barbarian-evolution",
+   "entity": "elite-barbarian-evolution",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "ysEKLO8sMp8_m04_0745.75_balloon-hero",
+   "entity": "balloon-hero",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "FRQBRMzwWXE_m04_0633.00_mini-pekka-hero",
+   "entity": "mini-pekka-hero",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "JvfOnzG1Cag_m05_0441.00_musketeer-hero",
+   "entity": "musketeer-hero",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "tbJ_G489MkI_m02_0303.00_ice-golem-hero",
+   "entity": "ice-golem-hero",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "kjO4VIQpRmM_m07_0879.25_balloon-hero",
+   "entity": "balloon-hero",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "FRQBRMzwWXE_m04_0666.25_giant-hero",
+   "entity": "giant-hero",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "FRQBRMzwWXE_m04_0554.50_mini-pekka-hero",
+   "entity": "mini-pekka-hero",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "x15brXQpQ8o_m02_0363.75_bowler-hero",
+   "entity": "bowler-hero",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "bEqy2I3UP80_m01_0069.00_mini-pekka-hero",
+   "entity": "mini-pekka-hero",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "iszvnzGwQ9c_m02_0596.75_elite-barbarian-evolution",
+   "entity": "elite-barbarian-evolution",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "JvfOnzG1Cag_m05_0498.50_musketeer-hero",
+   "entity": "musketeer-hero",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "ElIl0ij-Z6o_m02_0297.75_goblin-cage-evolution",
+   "entity": "goblin-cage-evolution",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "7kxx0Y7Shpc_m05_0677.50_goblin-giant-evolution",
+   "entity": "goblin-giant-evolution",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "bEqy2I3UP80_m10_0815.00_mini-pekka-hero",
+   "entity": "mini-pekka-hero",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "iszvnzGwQ9c_m02_0504.75_elite-barbarian-evolution",
+   "entity": "elite-barbarian-evolution",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "FRQBRMzwWXE_m03_0401.50_giant-hero",
+   "entity": "giant-hero",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "3r9-35N9yE8_m06_1233.50_ice-golem-hero",
+   "entity": "ice-golem-hero",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "83d3zofOD44_m04_0661.75_ice-golem-hero",
+   "entity": "ice-golem-hero",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "9G4GU0hEdhQ_m04_0915.50_furnace-evolution",
+   "entity": "furnace-evolution",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "ElIl0ij-Z6o_m02_0303.00_goblin-cage-evolution",
+   "entity": "goblin-cage-evolution",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "FRQBRMzwWXE_m03_0382.00_giant-hero",
+   "entity": "giant-hero",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "83d3zofOD44_m03_0412.00_ice-golem-hero",
+   "entity": "ice-golem-hero",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "3r9-35N9yE8_m07_1311.00_ice-golem-hero",
+   "entity": "ice-golem-hero",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "kjO4VIQpRmM_m07_1000.25_balloon-hero",
+   "entity": "balloon-hero",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "bEqy2I3UP80_m12_1008.00_mini-pekka-hero",
+   "entity": "mini-pekka-hero",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "Nr04--Oq2Rk_m02_0455.25_musketeer-hero",
+   "entity": "musketeer-hero",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "SzXoM-s9LHo_m01_0173.75_mega-knight-evolution",
+   "entity": "mega-knight-evolution",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "JvfOnzG1Cag_m12_1070.00_musketeer-hero",
+   "entity": "musketeer-hero",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "3r9-35N9yE8_m01_0290.75_ice-golem-hero",
+   "entity": "ice-golem-hero",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "9BvND7VutBQ_m02_0281.75_musketeer-evolution",
+   "entity": "musketeer-evolution",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "9G4GU0hEdhQ_m04_0920.00_furnace-evolution",
+   "entity": "furnace-evolution",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "Sa-ao9-Pwnk_m01_0112.00_electro-dragon-evolution",
+   "entity": "electro-dragon-evolution",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "01NO-ma-V1I_m01_0045.75_mini-pekka-hero",
+   "entity": "mini-pekka-hero",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "3r9-35N9yE8_m05_0959.50_ice-golem-hero",
+   "entity": "ice-golem-hero",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "01NO-ma-V1I_m03_0259.75_mini-pekka-hero",
+   "entity": "mini-pekka-hero",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "kjO4VIQpRmM_m07_0981.50_balloon-hero",
+   "entity": "balloon-hero",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "FRQBRMzwWXE_m07_1168.00_mini-pekka-hero",
+   "entity": "mini-pekka-hero",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "3r9-35N9yE8_m07_1309.75_ice-golem-hero",
+   "entity": "ice-golem-hero",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "tbJ_G489MkI_m03_0468.50_ice-golem-hero",
+   "entity": "ice-golem-hero",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "JvfOnzG1Cag_m06_0554.25_musketeer-hero",
+   "entity": "musketeer-hero",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "kjO4VIQpRmM_m07_0978.50_balloon-hero",
+   "entity": "balloon-hero",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "01NO-ma-V1I_m05_0497.50_mini-pekka-hero",
+   "entity": "mini-pekka-hero",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "ysEKLO8sMp8_m05_0872.00_balloon-hero",
+   "entity": "balloon-hero",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "3r9-35N9yE8_m01_0289.25_ice-golem-hero",
+   "entity": "ice-golem-hero",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "ysEKLO8sMp8_m05_0871.00_balloon-hero",
+   "entity": "balloon-hero",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "FRQBRMzwWXE_m04_0548.50_mini-pekka-hero",
+   "entity": "mini-pekka-hero",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "oPDyLHWbu08_m01_0061.25_ice-golem-hero",
+   "entity": "ice-golem-hero",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "FRQBRMzwWXE_m03_0382.75_mini-pekka-hero",
+   "entity": "mini-pekka-hero",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "EYZBR5GxSec_m01_0090.00_elite-barbarian-evolution",
+   "entity": "elite-barbarian-evolution",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "FRQBRMzwWXE_m03_0381.75_mini-pekka-hero",
+   "entity": "mini-pekka-hero",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "bEqy2I3UP80_m11_0920.00_mini-pekka-hero",
+   "entity": "mini-pekka-hero",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "SzXoM-s9LHo_m01_0176.00_mega-knight-evolution",
+   "entity": "mega-knight-evolution",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "9G4GU0hEdhQ_m05_1277.25_furnace-evolution",
+   "entity": "furnace-evolution",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "01NO-ma-V1I_m01_0047.25_mini-pekka-hero",
+   "entity": "mini-pekka-hero",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "3r9-35N9yE8_m02_0442.50_ice-golem-hero",
+   "entity": "ice-golem-hero",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "EYZBR5GxSec_m01_0088.50_elite-barbarian-evolution",
+   "entity": "elite-barbarian-evolution",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "bEqy2I3UP80_m07_0589.75_mini-pekka-hero",
+   "entity": "mini-pekka-hero",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "3r9-35N9yE8_m01_0193.75_ice-golem-hero",
+   "entity": "ice-golem-hero",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "oPDyLHWbu08_m01_0022.25_ice-golem-hero",
+   "entity": "ice-golem-hero",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "83d3zofOD44_m04_0663.25_ice-golem-hero",
+   "entity": "ice-golem-hero",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "NX3HsIQRPvY_m04_0770.25_goblin-cage-evolution",
+   "entity": "goblin-cage-evolution",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "tbJ_G489MkI_m02_0299.25_ice-golem-hero",
+   "entity": "ice-golem-hero",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "JvfOnzG1Cag_m06_0551.25_musketeer-hero",
+   "entity": "musketeer-hero",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "ElIl0ij-Z6o_m02_0301.00_goblin-cage-evolution",
+   "entity": "goblin-cage-evolution",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "JvfOnzG1Cag_m05_0440.00_musketeer-hero",
+   "entity": "musketeer-hero",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "NX3HsIQRPvY_m01_0076.75_goblin-cage-evolution",
+   "entity": "goblin-cage-evolution",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "bEqy2I3UP80_m07_0590.75_mini-pekka-hero",
+   "entity": "mini-pekka-hero",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "ElIl0ij-Z6o_m02_0300.00_goblin-cage-evolution",
+   "entity": "goblin-cage-evolution",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "EYZBR5GxSec_m01_0093.00_elite-barbarian-evolution",
+   "entity": "elite-barbarian-evolution",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "tbJ_G489MkI_m03_0469.50_ice-golem-hero",
+   "entity": "ice-golem-hero",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "FRQBRMzwWXE_m04_0630.75_mini-pekka-hero",
+   "entity": "mini-pekka-hero",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "FRQBRMzwWXE_m06_0894.75_giant-hero",
+   "entity": "giant-hero",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "bEqy2I3UP80_m09_0771.75_mini-pekka-hero",
+   "entity": "mini-pekka-hero",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "G2qgxatXOHE_m05_1042.25_furnace-evolution",
+   "entity": "furnace-evolution",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "ysEKLO8sMp8_m01_0192.50_balloon-hero",
+   "entity": "balloon-hero",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "FRQBRMzwWXE_m03_0380.50_mini-pekka-hero",
+   "entity": "mini-pekka-hero",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "FRQBRMzwWXE_m07_1186.25_giant-hero",
+   "entity": "giant-hero",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "01NO-ma-V1I_m02_0150.50_giant-hero",
+   "entity": "giant-hero",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "tbJ_G489MkI_m04_0671.25_ice-golem-hero",
+   "entity": "ice-golem-hero",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "FRQBRMzwWXE_m05_0790.75_giant-hero",
+   "entity": "giant-hero",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "Ut_nI1XYIfU_m02_0444.50_bowler-hero",
+   "entity": "bowler-hero",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "FRQBRMzwWXE_m04_0664.50_giant-hero",
+   "entity": "giant-hero",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "GoQcv9f6dHw_m02_0362.00_mega-knight-evolution",
+   "entity": "mega-knight-evolution",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "Ut_nI1XYIfU_m02_0445.50_bowler-hero",
+   "entity": "bowler-hero",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "bEqy2I3UP80_m12_1038.75_mini-pekka-hero",
+   "entity": "mini-pekka-hero",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "9G4GU0hEdhQ_m03_0731.00_furnace-evolution",
+   "entity": "furnace-evolution",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "83d3zofOD44_m03_0372.50_ice-golem-hero",
+   "entity": "ice-golem-hero",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "NX3HsIQRPvY_m03_0671.75_goblin-cage-evolution",
+   "entity": "goblin-cage-evolution",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "NX3HsIQRPvY_m03_0672.75_goblin-cage-evolution",
+   "entity": "goblin-cage-evolution",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "x15brXQpQ8o_m04_0842.75_bowler-hero",
+   "entity": "bowler-hero",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "PgwX9BTa81o_m06_1171.50_elite-barbarian-evolution",
+   "entity": "elite-barbarian-evolution",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "NX3HsIQRPvY_m01_0078.00_goblin-cage-evolution",
+   "entity": "goblin-cage-evolution",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "tbJ_G489MkI_m02_0304.00_ice-golem-hero",
+   "entity": "ice-golem-hero",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "EYZBR5GxSec_m02_0252.00_elite-barbarian-evolution",
+   "entity": "elite-barbarian-evolution",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "oPDyLHWbu08_m04_0968.00_ice-golem-hero",
+   "entity": "ice-golem-hero",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "tbJ_G489MkI_m02_0300.75_ice-golem-hero",
+   "entity": "ice-golem-hero",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "FRQBRMzwWXE_m04_0555.50_mini-pekka-hero",
+   "entity": "mini-pekka-hero",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "iszvnzGwQ9c_m02_0507.00_elite-barbarian-evolution",
+   "entity": "elite-barbarian-evolution",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "FRQBRMzwWXE_m06_0896.25_giant-hero",
+   "entity": "giant-hero",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "01NO-ma-V1I_m02_0151.50_giant-hero",
+   "entity": "giant-hero",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "tbJ_G489MkI_m03_0470.50_ice-golem-hero",
+   "entity": "ice-golem-hero",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "SzXoM-s9LHo_m01_0172.25_mega-knight-evolution",
+   "entity": "mega-knight-evolution",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "NX3HsIQRPvY_m03_0551.00_goblin-cage-evolution",
+   "entity": "goblin-cage-evolution",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "ysEKLO8sMp8_m01_0191.25_balloon-hero",
+   "entity": "balloon-hero",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "JvfOnzG1Cag_m12_1071.25_musketeer-hero",
+   "entity": "musketeer-hero",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "3r9-35N9yE8_m02_0439.50_ice-golem-hero",
+   "entity": "ice-golem-hero",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "xwQDkyZq4kE_m01_0281.25_balloon-hero",
+   "entity": "balloon-hero",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "Ut_nI1XYIfU_m01_0227.50_bowler-hero",
+   "entity": "bowler-hero",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "oPDyLHWbu08_m04_0942.75_ice-golem-hero",
+   "entity": "ice-golem-hero",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "iszvnzGwQ9c_m02_0593.00_elite-barbarian-evolution",
+   "entity": "elite-barbarian-evolution",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "iszvnzGwQ9c_m04_1055.50_elite-barbarian-evolution",
+   "entity": "elite-barbarian-evolution",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "FRQBRMzwWXE_m06_0983.00_giant-hero",
+   "entity": "giant-hero",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "tbJ_G489MkI_m03_0471.50_ice-golem-hero",
+   "entity": "ice-golem-hero",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "wLspCp1d_wU_m02_0275.75_furnace-evolution",
+   "entity": "furnace-evolution",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "kJuyRH6R9zU_m02_0231.50_musketeer-evolution",
+   "entity": "musketeer-evolution",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "JvfOnzG1Cag_m07_0592.00_musketeer-hero",
+   "entity": "musketeer-hero",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "ysEKLO8sMp8_m02_0417.00_balloon-hero",
+   "entity": "balloon-hero",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "01NO-ma-V1I_m03_0257.25_mini-pekka-hero",
+   "entity": "mini-pekka-hero",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "9BvND7VutBQ_m01_0134.00_musketeer-evolution",
+   "entity": "musketeer-evolution",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "tGONo2rzFHw_m02_0374.00_princess-evolution",
+   "entity": "princess-evolution",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "01NO-ma-V1I_m06_0581.75_mini-pekka-hero",
+   "entity": "mini-pekka-hero",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "NX3HsIQRPvY_m04_0774.25_goblin-cage-evolution",
+   "entity": "goblin-cage-evolution",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "EYZBR5GxSec_m02_0252.25_elite-barbarian-evolution",
+   "entity": "elite-barbarian-evolution",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "01NO-ma-V1I_m01_0114.75_giant-hero",
+   "entity": "giant-hero",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "FRQBRMzwWXE_m07_1171.00_mini-pekka-hero",
+   "entity": "mini-pekka-hero",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "kJuyRH6R9zU_m02_0230.00_musketeer-evolution",
+   "entity": "musketeer-evolution",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "JvfOnzG1Cag_m12_1067.50_musketeer-hero",
+   "entity": "musketeer-hero",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "FRQBRMzwWXE_m07_1169.00_mini-pekka-hero",
+   "entity": "mini-pekka-hero",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "wLspCp1d_wU_m02_0360.00_furnace-evolution",
+   "entity": "furnace-evolution",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "ysEKLO8sMp8_m04_0744.75_balloon-hero",
+   "entity": "balloon-hero",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "ElIl0ij-Z6o_m01_0160.00_goblin-cage-evolution",
+   "entity": "goblin-cage-evolution",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "SzXoM-s9LHo_m01_0175.00_mega-knight-evolution",
+   "entity": "mega-knight-evolution",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "oPDyLHWbu08_m01_0063.50_ice-golem-hero",
+   "entity": "ice-golem-hero",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "G2qgxatXOHE_m01_0179.50_furnace-evolution",
+   "entity": "furnace-evolution",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "wLspCp1d_wU_m03_0690.00_furnace-evolution",
+   "entity": "furnace-evolution",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "FRQBRMzwWXE_m03_0262.75_mini-pekka-hero",
+   "entity": "mini-pekka-hero",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "wLspCp1d_wU_m02_0363.25_furnace-evolution",
+   "entity": "furnace-evolution",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "83d3zofOD44_m03_0377.25_ice-golem-hero",
+   "entity": "ice-golem-hero",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "tbJ_G489MkI_m04_0668.25_ice-golem-hero",
+   "entity": "ice-golem-hero",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "kjO4VIQpRmM_m01_0114.50_balloon-hero",
+   "entity": "balloon-hero",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "EYZBR5GxSec_m04_0700.50_elite-barbarian-evolution",
+   "entity": "elite-barbarian-evolution",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "oPDyLHWbu08_m01_0259.25_ice-golem-hero",
+   "entity": "ice-golem-hero",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "PgwX9BTa81o_m06_1041.50_elite-barbarian-evolution",
+   "entity": "elite-barbarian-evolution",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "JvfOnzG1Cag_m05_0435.50_musketeer-hero",
+   "entity": "musketeer-hero",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "9G4GU0hEdhQ_m07_1841.75_furnace-evolution",
+   "entity": "furnace-evolution",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "JvfOnzG1Cag_m12_1099.25_musketeer-hero",
+   "entity": "musketeer-hero",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "NX3HsIQRPvY_m01_0079.25_goblin-cage-evolution",
+   "entity": "goblin-cage-evolution",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "oPDyLHWbu08_m01_0021.25_ice-golem-hero",
+   "entity": "ice-golem-hero",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "zgiAi5kyDGI_m07_0655.50_lumberjack-evolution",
+   "entity": "lumberjack-evolution",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "01NO-ma-V1I_m02_0149.50_giant-hero",
+   "entity": "giant-hero",
+   "source": "POV",
+   "others_bad": true,
+   "verdict": "wrong"
+  },
+  {
+   "id": "7kxx0Y7Shpc_m05_0682.50_goblin-giant-evolution",
+   "entity": "goblin-giant-evolution",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "FRQBRMzwWXE_m06_0890.50_giant-hero",
+   "entity": "giant-hero",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "EYZBR5GxSec_m04_0578.25_elite-barbarian-evolution",
+   "entity": "elite-barbarian-evolution",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "FRQBRMzwWXE_m03_0439.50_giant-hero",
+   "entity": "giant-hero",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "JvfOnzG1Cag_m11_0944.50_musketeer-hero",
+   "entity": "musketeer-hero",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "PgwX9BTa81o_m06_1172.00_elite-barbarian-evolution",
+   "entity": "elite-barbarian-evolution",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "01NO-ma-V1I_m05_0501.25_mini-pekka-hero",
+   "entity": "mini-pekka-hero",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "EYZBR5GxSec_m02_0352.75_elite-barbarian-evolution",
+   "entity": "elite-barbarian-evolution",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "3r9-35N9yE8_m06_1231.00_ice-golem-hero",
+   "entity": "ice-golem-hero",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "oPDyLHWbu08_m04_0944.00_ice-golem-hero",
+   "entity": "ice-golem-hero",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "tbJ_G489MkI_m06_1055.50_ice-golem-hero",
+   "entity": "ice-golem-hero",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "PgwX9BTa81o_m06_1046.50_elite-barbarian-evolution",
+   "entity": "elite-barbarian-evolution",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "oPDyLHWbu08_m04_0941.25_ice-golem-hero",
+   "entity": "ice-golem-hero",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "Ut_nI1XYIfU_m01_0284.25_bowler-hero",
+   "entity": "bowler-hero",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "x15brXQpQ8o_m04_0908.75_bowler-hero",
+   "entity": "bowler-hero",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "JvfOnzG1Cag_m05_0495.00_musketeer-hero",
+   "entity": "musketeer-hero",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "Sa-ao9-Pwnk_m01_0114.50_electro-dragon-evolution",
+   "entity": "electro-dragon-evolution",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "NX3HsIQRPvY_m04_0773.25_goblin-cage-evolution",
+   "entity": "goblin-cage-evolution",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "wLspCp1d_wU_m03_0608.25_furnace-evolution",
+   "entity": "furnace-evolution",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "FRQBRMzwWXE_m04_0661.75_giant-hero",
+   "entity": "giant-hero",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "FRQBRMzwWXE_m03_0379.50_mini-pekka-hero",
+   "entity": "mini-pekka-hero",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "EYZBR5GxSec_m04_0798.25_elite-barbarian-evolution",
+   "entity": "elite-barbarian-evolution",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "JvfOnzG1Cag_m10_0917.00_musketeer-hero",
+   "entity": "musketeer-hero",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "JvfOnzG1Cag_m06_0555.75_musketeer-hero",
+   "entity": "musketeer-hero",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "01NO-ma-V1I_m01_0098.50_mini-pekka-hero",
+   "entity": "mini-pekka-hero",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "wLspCp1d_wU_m02_0421.75_furnace-evolution",
+   "entity": "furnace-evolution",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "xwQDkyZq4kE_m01_0280.00_balloon-hero",
+   "entity": "balloon-hero",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "wLspCp1d_wU_m02_0361.00_furnace-evolution",
+   "entity": "furnace-evolution",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "x15brXQpQ8o_m05_1155.25_bowler-hero",
+   "entity": "bowler-hero",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "01NO-ma-V1I_m01_0044.25_mini-pekka-hero",
+   "entity": "mini-pekka-hero",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "bEqy2I3UP80_m11_0921.00_mini-pekka-hero",
+   "entity": "mini-pekka-hero",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "JvfOnzG1Cag_m05_0436.50_musketeer-hero",
+   "entity": "musketeer-hero",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "G2qgxatXOHE_m04_0710.75_furnace-evolution",
+   "entity": "furnace-evolution",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "kjO4VIQpRmM_m07_0980.25_balloon-hero",
+   "entity": "balloon-hero",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "Ut_nI1XYIfU_m01_0285.25_bowler-hero",
+   "entity": "bowler-hero",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "3r9-35N9yE8_m04_0880.50_ice-golem-hero",
+   "entity": "ice-golem-hero",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "JvfOnzG1Cag_m08_0735.75_musketeer-hero",
+   "entity": "musketeer-hero",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "ysEKLO8sMp8_m05_0868.25_balloon-hero",
+   "entity": "balloon-hero",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "FRQBRMzwWXE_m06_0986.50_giant-hero",
+   "entity": "giant-hero",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "EYZBR5GxSec_m04_0575.25_elite-barbarian-evolution",
+   "entity": "elite-barbarian-evolution",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "Ut_nI1XYIfU_m01_0283.25_bowler-hero",
+   "entity": "bowler-hero",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "3r9-35N9yE8_m02_0437.75_ice-golem-hero",
+   "entity": "ice-golem-hero",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "FRQBRMzwWXE_m05_0792.00_giant-hero",
+   "entity": "giant-hero",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "83d3zofOD44_m01_0084.00_ice-golem-hero",
+   "entity": "ice-golem-hero",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "FRQBRMzwWXE_m07_1170.00_mini-pekka-hero",
+   "entity": "mini-pekka-hero",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "3r9-35N9yE8_m06_1230.00_ice-golem-hero",
+   "entity": "ice-golem-hero",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "bEqy2I3UP80_m01_0067.00_mini-pekka-hero",
+   "entity": "mini-pekka-hero",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "iszvnzGwQ9c_m04_1052.25_elite-barbarian-evolution",
+   "entity": "elite-barbarian-evolution",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "xwQDkyZq4kE_m01_0278.25_balloon-hero",
+   "entity": "balloon-hero",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "01NO-ma-V1I_m09_0821.50_giant-hero",
+   "entity": "giant-hero",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "PgwX9BTa81o_m06_1045.50_elite-barbarian-evolution",
+   "entity": "elite-barbarian-evolution",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "tGONo2rzFHw_m02_0370.75_princess-evolution",
+   "entity": "princess-evolution",
+   "source": "POV",
+   "verdict": "off"
+  }
+ ]
+}

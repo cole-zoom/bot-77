@@ -4,6 +4,7 @@ and write everything to the LanceDB `cards` table."""
 from __future__ import annotations
 
 import json
+import urllib.error
 import urllib.request
 from concurrent.futures import ThreadPoolExecutor
 from dataclasses import dataclass, field
@@ -197,8 +198,14 @@ def fetch_art(rows: list[dict], art_dir: Path) -> None:
     def fetch(job):
         row, variant, url, path = job
         if not path.exists():
-            with urllib.request.urlopen(url, timeout=30) as resp:
-                path.write_bytes(resp.read())
+            try:
+                with urllib.request.urlopen(url, timeout=30) as resp:
+                    path.write_bytes(resp.read())
+            except urllib.error.HTTPError as e:
+                # the API can list a new form before Supercell uploads its art (2026-10-09: hero Electro Wizard, evo
+                # Electro Giant were 404): keep the card data; use an in-game art override (data/cards/art_overrides)
+                print(f"warning: no art for {row['name']} {variant} ({e.code}); use an art override")
+                return row, variant, None
         return row, variant, path.read_bytes()
 
     for row in rows:

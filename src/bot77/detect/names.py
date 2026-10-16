@@ -22,7 +22,7 @@ DEATH_OR_SUMMON = {"golemite", "lava-pup", "phoenix-egg", "phoenix-small", "roya
 NON_UNITS = {"bar", "bar-level", "clock", "dirt", "elixir", "emote", "text", "selected", "axe", "bomb", "goblin-ball",
              "king-tower", "king-tower-bar", "queen-tower", "cannoneer-tower", "dagger-duchess-tower",
              "dagger-duchess-tower-bar", "tower-bar", "skeleton-king-bar", "skeleton-king-skill", "padding_0",
-             "evolution-symbol", "ice-spirit-evolution-symbol"}
+             "evolution-symbol", "ice-spirit-evolution-symbol", "tesla-evolution-shock"}
 EVO_SYMBOLS = {"evolution-symbol", "ice-spirit-evolution-symbol"}
 
 
@@ -36,8 +36,10 @@ def class_to_card(cls: str, card_names: list[str]) -> tuple[str | None, str]:
         return None, ""
     if cls in SUBUNITS:
         return SUBUNITS[cls], "normal"
-    form = "evo" if cls.endswith("-evolution") else "normal"
-    base = _norm(cls.replace("-evolution", ""))
+    # v2 classes (2026-10-10): hero forms were dropped here, so every hero play vanished from the opponent log
+    cls = cls.replace("-hero-dismounted", "-hero")
+    form = "evo" if cls.endswith("-evolution") else "hero" if cls.endswith("-hero") else "normal"
+    base = _norm(re.sub(r"-(evolution|hero)$", "", cls))
     by_norm = {_norm(c): c for c in card_names}
     for cand in (base, base + "s", base.rstrip("s"), base + "es"):
         if cand in by_norm:

@@ -1,0 +1,365 @@
+{
+ "video_id": "tv_2026-10-14_r77",
+ "side": "opponent",
+ "matches": [
+  "tv_2026-10-14_r77_m01"
+ ],
+ "items": [
+  {
+   "match_id": "tv_2026-10-14_r77_m01",
+   "t_video": 13.0,
+   "label": "Goblin Demolisher",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r77_top_m01",
+   "source_confidence": "low"
+  },
+  {
+   "match_id": "tv_2026-10-14_r77_m01",
+   "t_video": 24.2,
+   "label": "Baby Dragon",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r77_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r77_m01",
+   "t_video": 33.2,
+   "label": "Spirit Empress",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r77_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r77_m01",
+   "t_video": 40.4,
+   "label": "Rune Giant",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r77_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r77_m01",
+   "t_video": 52.1,
+   "label": "Arrows",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r77_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r77_m01",
+   "t_video": 74.4,
+   "label": "Goblin Demolisher",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r77_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r77_m01",
+   "t_video": 84.8,
+   "label": "Tombstone",
+   "form": "hero",
+   "source": "POV of tv_2026-10-14_r77_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r77_m01",
+   "t_video": 94.4,
+   "label": "Baby Dragon",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r77_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-14_r77_m01",
+   "t_video": 103.3,
+   "label": "Rune Giant",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r77_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r77_m01",
+   "t_video": 104.5,
+   "label": "Lumberjack",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r77_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r77_m01",
+   "t_video": 109.5,
+   "label": "Arrows",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r77_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r77_m01",
+   "t_video": 134.8,
+   "label": "Goblin Demolisher",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r77_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r77_m01",
+   "t_video": 150.8,
+   "label": "Baby Dragon",
+   "form": "evo",
+   "source": "POV of tv_2026-10-14_r77_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r77_m01",
+   "t_video": 155.8,
+   "label": "Void",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r77_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r77_m01",
+   "t_video": 162.0,
+   "label": "Rune Giant",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r77_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r77_m01",
+   "t_video": 164.9,
+   "label": "Spirit Empress",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r77_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r77_m01",
+   "t_video": 171.6,
+   "label": "Arrows",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r77_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r77_m01",
+   "t_video": 181.1,
+   "label": "Baby Dragon",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r77_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r77_m01",
+   "t_video": 185.6,
+   "label": "Goblin Demolisher",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r77_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r77_m01",
+   "t_video": 193.9,
+   "label": "Rune Giant",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r77_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r77_m01",
+   "t_video": 197.9,
+   "label": "Spirit Empress",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r77_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r77_m01",
+   "t_video": 201.0,
+   "label": "Tombstone",
+   "form": "hero",
+   "source": "POV of tv_2026-10-14_r77_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r77_m01",
+   "t_video": 210.0,
+   "label": "Baby Dragon",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r77_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r77_m01",
+   "t_video": 213.2,
+   "label": "Lumberjack",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r77_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r77_m01",
+   "t_video": 216.1,
+   "label": "Goblin Demolisher",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r77_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-14_r77_m01",
+   "t_video": 221.0,
+   "label": "Arrows",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r77_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r77_m01",
+   "t_video": 232.4,
+   "label": "Rune Giant",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r77_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r77_m01",
+   "t_video": 238.4,
+   "label": "Spirit Empress",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r77_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-14_r77_m01",
+   "t_video": 244.9,
+   "label": "Lumberjack",
+   "form": "evo",
+   "source": "POV of tv_2026-10-14_r77_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r77_m01",
+   "t_video": 247.0,
+   "label": "Void",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r77_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r77_m01",
+   "t_video": 249.9,
+   "label": "Arrows",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r77_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r77_m01",
+   "t_video": 253.6,
+   "label": "Baby Dragon",
+   "form": null,
+   "source": "next-card advance in tv_2026-10-14_r77_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-14_r77_m01",
+   "t_video": 256.2,
+   "label": "Rune Giant",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r77_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r77_m01",
+   "t_video": 260.3,
+   "label": "Lumberjack",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r77_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r77_m01",
+   "t_video": 263.9,
+   "label": "Baby Dragon",
+   "form": "evo",
+   "source": "POV of tv_2026-10-14_r77_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-14_r77_m01",
+   "t_video": 265.9,
+   "label": "Arrows",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r77_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r77_m01",
+   "t_video": 274.8,
+   "label": "Baby Dragon",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r77_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r77_m01",
+   "t_video": 276.8,
+   "label": "Rune Giant",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r77_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r77_m01",
+   "t_video": 281.0,
+   "label": "Goblin Demolisher",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r77_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-14_r77_m01",
+   "t_video": 283.4,
+   "label": "Arrows",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r77_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r77_m01",
+   "t_video": 293.9,
+   "label": "Void",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r77_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r77_m01",
+   "t_video": 297.4,
+   "label": "Lumberjack",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r77_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r77_m01",
+   "t_video": 299.5,
+   "label": "Goblin Demolisher",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r77_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-14_r77_m01",
+   "t_video": 300.8,
+   "label": "Tombstone",
+   "form": "hero",
+   "source": "POV of tv_2026-10-14_r77_top_m01",
+   "source_confidence": "high"
+  }
+ ],
+ "paired_with": "tv_2026-10-14_r77_top_m01",
+ "offset_s": 0.0,
+ "auto": true,
+ "source": "replay"
+}

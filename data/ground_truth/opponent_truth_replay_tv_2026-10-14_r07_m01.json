@@ -1,0 +1,117 @@
+{
+ "video_id": "tv_2026-10-14_r07",
+ "side": "opponent",
+ "matches": [
+  "tv_2026-10-14_r07_m01"
+ ],
+ "items": [
+  {
+   "match_id": "tv_2026-10-14_r07_m01",
+   "t_video": 21.6,
+   "label": "Golem",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r07_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r07_m01",
+   "t_video": 32.5,
+   "label": "Phoenix",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r07_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r07_m01",
+   "t_video": 36.7,
+   "label": "Arrows",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r07_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-14_r07_m01",
+   "t_video": 48.1,
+   "label": "Electro Wizard",
+   "form": "hero",
+   "source": "POV of tv_2026-10-14_r07_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r07_m01",
+   "t_video": 79.4,
+   "label": "Night Witch",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r07_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r07_m01",
+   "t_video": 87.5,
+   "label": "Golem",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r07_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r07_m01",
+   "t_video": 104.1,
+   "label": "Lightning",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r07_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r07_m01",
+   "t_video": 118.4,
+   "label": "Arrows",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r07_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-14_r07_m01",
+   "t_video": 123.7,
+   "label": "Electro Wizard",
+   "form": "hero",
+   "source": "POV of tv_2026-10-14_r07_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r07_m01",
+   "t_video": 138.3,
+   "label": "Elite Barbarians",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r07_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r07_m01",
+   "t_video": 140.6,
+   "label": "Baby Dragon",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r07_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r07_m01",
+   "t_video": 153.5,
+   "label": "Lightning",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r07_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r07_m01",
+   "t_video": 157.4,
+   "label": "Arrows",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r07_top_m01",
+   "source_confidence": "medium"
+  }
+ ],
+ "paired_with": "tv_2026-10-14_r07_top_m01",
+ "offset_s": 0.0,
+ "auto": true,
+ "source": "replay"
+}

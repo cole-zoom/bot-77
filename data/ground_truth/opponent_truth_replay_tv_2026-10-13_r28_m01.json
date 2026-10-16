@@ -1,0 +1,173 @@
+{
+ "video_id": "tv_2026-10-13_r28",
+ "side": "opponent",
+ "matches": [
+  "tv_2026-10-13_r28_m01"
+ ],
+ "items": [
+  {
+   "match_id": "tv_2026-10-13_r28_m01",
+   "t_video": 16.9,
+   "label": "Phoenix",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r28_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r28_m01",
+   "t_video": 26.0,
+   "label": "Bomber",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r28_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r28_m01",
+   "t_video": 30.5,
+   "label": "Elite Barbarians",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r28_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r28_m01",
+   "t_video": 50.6,
+   "label": "Mini P.E.K.K.A",
+   "form": "hero",
+   "source": "POV of tv_2026-10-13_r28_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r28_m01",
+   "t_video": 64.4,
+   "label": "Golem",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r28_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r28_m01",
+   "t_video": 76.3,
+   "label": "Night Witch",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r28_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r28_m01",
+   "t_video": 88.3,
+   "label": "Bomber",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r28_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-13_r28_m01",
+   "t_video": 95.8,
+   "label": "Arrows",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r28_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r28_m01",
+   "t_video": 100.4,
+   "label": "Mini P.E.K.K.A",
+   "form": "hero",
+   "source": "POV of tv_2026-10-13_r28_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r28_m01",
+   "t_video": 111.7,
+   "label": "Phoenix",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r28_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r28_m01",
+   "t_video": 131.0,
+   "label": "Golem",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r28_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r28_m01",
+   "t_video": 143.8,
+   "label": "Night Witch",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r28_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r28_m01",
+   "t_video": 152.0,
+   "label": "Elite Barbarians",
+   "form": "evo",
+   "source": "POV of tv_2026-10-13_r28_top_m01",
+   "source_confidence": "low"
+  },
+  {
+   "match_id": "tv_2026-10-13_r28_m01",
+   "t_video": 152.7,
+   "label": "Bomber",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r28_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r28_m01",
+   "t_video": 156.9,
+   "label": "Mini P.E.K.K.A",
+   "form": "hero",
+   "source": "POV of tv_2026-10-13_r28_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r28_m01",
+   "t_video": 162.8,
+   "label": "Phoenix",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r28_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r28_m01",
+   "t_video": 170.6,
+   "label": "Night Witch",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r28_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r28_m01",
+   "t_video": 177.6,
+   "label": "Elite Barbarians",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r28_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r28_m01",
+   "t_video": 184.2,
+   "label": "Arrows",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r28_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r28_m01",
+   "t_video": 185.2,
+   "label": "Zap",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r28_top_m01",
+   "source_confidence": "high"
+  }
+ ],
+ "paired_with": "tv_2026-10-13_r28_top_m01",
+ "offset_s": 0.0,
+ "auto": true,
+ "source": "replay"
+}

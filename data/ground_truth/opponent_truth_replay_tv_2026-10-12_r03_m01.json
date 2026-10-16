@@ -1,0 +1,461 @@
+{
+ "video_id": "tv_2026-10-12_r03",
+ "side": "opponent",
+ "matches": [
+  "tv_2026-10-12_r03_m01"
+ ],
+ "items": [
+  {
+   "match_id": "tv_2026-10-12_r03_m01",
+   "t_video": 23.9,
+   "label": "Knight",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r03_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r03_m01",
+   "t_video": 31.7,
+   "label": "Tesla",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r03_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r03_m01",
+   "t_video": 41.5,
+   "label": "The Log",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r03_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r03_m01",
+   "t_video": 41.9,
+   "label": "Skeletons",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r03_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r03_m01",
+   "t_video": 56.9,
+   "label": "Knight",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r03_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r03_m01",
+   "t_video": 59.3,
+   "label": "X-Bow",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r03_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r03_m01",
+   "t_video": 66.7,
+   "label": "The Log",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r03_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r03_m01",
+   "t_video": 90.9,
+   "label": "Skeletons",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r03_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r03_m01",
+   "t_video": 96.1,
+   "label": "Knight",
+   "form": null,
+   "source": "next-card advance in tv_2026-10-12_r03_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-12_r03_m01",
+   "t_video": 104.9,
+   "label": "Tesla",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r03_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-12_r03_m01",
+   "t_video": 106.7,
+   "label": "Knight",
+   "form": "evo",
+   "source": "POV of tv_2026-10-12_r03_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r03_m01",
+   "t_video": 118.5,
+   "label": "The Log",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r03_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r03_m01",
+   "t_video": 128.7,
+   "label": "Skeletons",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r03_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r03_m01",
+   "t_video": 130.4,
+   "label": "Knight",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r03_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r03_m01",
+   "t_video": 136.7,
+   "label": "Tesla",
+   "form": null,
+   "source": "next-card advance in tv_2026-10-12_r03_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-12_r03_m01",
+   "t_video": 138.9,
+   "label": "Rocket",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r03_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r03_m01",
+   "t_video": 143.3,
+   "label": "Tesla",
+   "form": "evo",
+   "source": "POV of tv_2026-10-12_r03_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-12_r03_m01",
+   "t_video": 144.9,
+   "label": "Skeletons",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r03_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r03_m01",
+   "t_video": 156.1,
+   "label": "Knight",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r03_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r03_m01",
+   "t_video": 162.6,
+   "label": "X-Bow",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r03_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r03_m01",
+   "t_video": 170.1,
+   "label": "Tesla",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r03_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-12_r03_m01",
+   "t_video": 173.4,
+   "label": "Skeletons",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r03_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r03_m01",
+   "t_video": 175.7,
+   "label": "Knight",
+   "form": "evo",
+   "source": "POV of tv_2026-10-12_r03_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r03_m01",
+   "t_video": 185.2,
+   "label": "Tornado",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r03_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r03_m01",
+   "t_video": 186.6,
+   "label": "Tesla",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r03_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-12_r03_m01",
+   "t_video": 189.5,
+   "label": "The Log",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r03_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r03_m01",
+   "t_video": 191.5,
+   "label": "Skeletons",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r03_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r03_m01",
+   "t_video": 197.6,
+   "label": "Knight",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r03_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r03_m01",
+   "t_video": 202.8,
+   "label": "Tesla",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r03_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-12_r03_m01",
+   "t_video": 206.8,
+   "label": "Tesla",
+   "form": "evo",
+   "source": "POV of tv_2026-10-12_r03_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r03_m01",
+   "t_video": 211.2,
+   "label": "X-Bow",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r03_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r03_m01",
+   "t_video": 220.6,
+   "label": "Skeletons",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r03_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r03_m01",
+   "t_video": 224.1,
+   "label": "The Log",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r03_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-12_r03_m01",
+   "t_video": 226.1,
+   "label": "Knight",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r03_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r03_m01",
+   "t_video": 231.8,
+   "label": "Tesla",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r03_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r03_m01",
+   "t_video": 241.8,
+   "label": "Skeletons",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r03_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r03_m01",
+   "t_video": 243.2,
+   "label": "X-Bow",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r03_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-12_r03_m01",
+   "t_video": 246.5,
+   "label": "The Log",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r03_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r03_m01",
+   "t_video": 247.8,
+   "label": "Knight",
+   "form": "evo",
+   "source": "POV of tv_2026-10-12_r03_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r03_m01",
+   "t_video": 250.0,
+   "label": "Tornado",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r03_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r03_m01",
+   "t_video": 252.3,
+   "label": "Ice Wizard",
+   "form": null,
+   "source": "next-card advance in tv_2026-10-12_r03_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-12_r03_m01",
+   "t_video": 259.2,
+   "label": "Rocket",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r03_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-12_r03_m01",
+   "t_video": 263.0,
+   "label": "Tesla",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r03_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r03_m01",
+   "t_video": 265.8,
+   "label": "The Log",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r03_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-12_r03_m01",
+   "t_video": 268.7,
+   "label": "Skeletons",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r03_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-12_r03_m01",
+   "t_video": 274.4,
+   "label": "Knight",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r03_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r03_m01",
+   "t_video": 279.5,
+   "label": "Rocket",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r03_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-12_r03_m01",
+   "t_video": 281.1,
+   "label": "The Log",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r03_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r03_m01",
+   "t_video": 284.2,
+   "label": "Skeletons",
+   "form": null,
+   "source": "next-card advance in tv_2026-10-12_r03_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-12_r03_m01",
+   "t_video": 286.7,
+   "label": "Tesla",
+   "form": "evo",
+   "source": "POV of tv_2026-10-12_r03_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r03_m01",
+   "t_video": 290.3,
+   "label": "Knight",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r03_top_m01",
+   "source_confidence": "low"
+  },
+  {
+   "match_id": "tv_2026-10-12_r03_m01",
+   "t_video": 290.3,
+   "label": "Ice Wizard",
+   "form": null,
+   "source": "next-card advance in tv_2026-10-12_r03_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-12_r03_m01",
+   "t_video": 292.8,
+   "label": "Skeletons",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r03_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-12_r03_m01",
+   "t_video": 298.2,
+   "label": "Tornado",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r03_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r03_m01",
+   "t_video": 299.6,
+   "label": "Rocket",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r03_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-12_r03_m01",
+   "t_video": 302.2,
+   "label": "The Log",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r03_top_m01",
+   "source_confidence": "high"
+  }
+ ],
+ "paired_with": "tv_2026-10-12_r03_top_m01",
+ "offset_s": 0.0,
+ "auto": true,
+ "source": "replay"
+}

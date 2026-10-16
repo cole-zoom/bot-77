@@ -45,7 +45,8 @@
    159
   ],
   "class": "minion-giant",
-  "approved_by": "Cole"
+  "approved_by": "Cole",
+  "fixed": "2026-10-08"
  },
  {
   "file": "data/slices/approved/minion-giant/minion-giant_1_uz4VVzGlOjE_m01_0209.00_0.png",
@@ -636,7 +637,8 @@
   "caption": "m07 \u00b7 enemy \u00b7 old: baby-dragon \u00b7 sim 0.70",
   "class": "goblinstein-monster",
   "approved_by": "Cole",
-  "source": "lancedb_mining_r1"
+  "source": "lancedb_mining_r1",
+  "fixed": "2026-10-08"
  },
  {
   "file": "data/slices/approved/goblinstein-monster/UFQFnrtWUE4_m07_01347_06.png",
@@ -993,7 +995,8 @@
   "caption": "8:43",
   "class": "spirit-empress-air",
   "approved_by": "Cole",
-  "source": "clicks_cole_v3"
+  "source": "clicks_cole_v3",
+  "fixed": "2026-10-08"
  },
  {
   "file": "data/slices/approved/spirit-empress-air/spirit-empress-air_1_cole_2026-09-28_phone_0524.00.png",
@@ -1728,7 +1731,8 @@
   "caption": "36:11",
   "class": "goblinstein-monster",
   "approved_by": "Cole",
-  "source": "clicks_cole_v3"
+  "source": "clicks_cole_v3",
+  "fixed": "2026-10-08"
  },
  {
   "file": "data/slices/approved/goblinstein-doctor/goblinstein-doctor_1_cole_2026-09-28_phone_2172.00.png",
@@ -2254,7 +2258,8 @@
   "class": "minion-giant",
   "approved_by": "Cole",
   "source": "lancedb_mining_r3",
-  "needs_final_pass": true
+  "needs_final_pass": true,
+  "fixed": "2026-10-08"
  },
  {
   "file": "data/slices/approved/minion-giant/cole_2026-09-28_phone_m06_01219_03.png",
@@ -2785,28 +2790,6 @@
   "needs_final_pass": true
  },
  {
-  "file": "data/slices/approved/goblinstein-monster/UFQFnrtWUE4_m07_01437_08.png",
-  "card": "Goblinstein",
-  "entity": "goblinstein-monster",
-  "match_id": "UFQFnrtWUE4_m07",
-  "video_id": "UFQFnrtWUE4",
-  "t_video": 1437.0,
-  "team": "friendly",
-  "old_cls": "mighty-miner",
-  "box": [
-   245.1299591064453,
-   293.81781005859375,
-   345.21282958984375,
-   437.7943420410156
-  ],
-  "similarity": 0.643,
-  "caption": "m07 \u00b7 friendly \u00b7 old: mighty-miner \u00b7 sim 0.64",
-  "class": "goblinstein-monster",
-  "approved_by": "Cole",
-  "source": "lancedb_mining_r3",
-  "needs_final_pass": true
- },
- {
   "file": "data/slices/approved/spirit-empress-air/UFQFnrtWUE4_m02_00290_02.png",
   "card": "Spirit Empress",
   "entity": "spirit-empress-air",
@@ -2936,7 +2919,8 @@
   "class": "rune-giant",
   "approved_by": "Cole",
   "source": "lancedb_mining_r3",
-  "needs_final_pass": true
+  "needs_final_pass": true,
+  "fixed": "2026-10-08"
  },
  {
   "file": "data/slices/approved/rune-giant/cole_2026-09-28_phone_m06_01296_02.png",
@@ -2958,7 +2942,8 @@
   "class": "rune-giant",
   "approved_by": "Cole",
   "source": "lancedb_mining_r3",
-  "needs_final_pass": true
+  "needs_final_pass": true,
+  "fixed": "2026-10-08"
  },
  {
   "file": "data/slices/approved/rune-giant/cole_2026-09-28_phone_m06_01290_29.png",
@@ -4158,7 +4143,8 @@
   "caption": "rune-giant \u00b7 cole_2026-09-2 6:46",
   "class": "rune-giant",
   "approved_by": "Cole",
-  "source": "clicks_new_2026-09-30"
+  "source": "clicks_new_2026-09-30",
+  "fixed": "2026-10-08"
  },
  {
   "file": "data/slices/approved/rune-giant/rune-giant_1_cole_2026-09-29_b_0470.40.png",
@@ -4326,7 +4312,8 @@
   "caption": "suspicious-bush \u00b7 cole_2026-09-2 0:37",
   "class": "suspicious-bush",
   "approved_by": "Cole",
-  "source": "clicks_new_2026-09-30"
+  "source": "clicks_new_2026-09-30",
+  "fixed": "2026-10-08"
  },
  {
   "file": "data/slices/approved/suspicious-bush/suspicious-bush_1_cole_2026-09-29_b_0038.50.png",
@@ -4536,7 +4523,8 @@
   "caption": "void \u00b7 friend_2026-09 4:52",
   "class": "void",
   "approved_by": "Cole",
-  "source": "clicks_new_2026-09-30"
+  "source": "clicks_new_2026-09-30",
+  "fixed": "2026-10-08"
  },
  {
   "file": "data/slices/approved/void/void_1_friend_2026-09-29_c_1051.80.png",
@@ -4557,7 +4545,8 @@
   "caption": "void \u00b7 friend_2026-09 17:31",
   "class": "void",
   "approved_by": "Cole",
-  "source": "clicks_new_2026-09-30"
+  "source": "clicks_new_2026-09-30",
+  "fixed": "2026-10-08"
  },
  {
   "file": "data/slices/approved/void/void_1_friend_2026-09-29_c_1053.30.png",
@@ -4578,7 +4567,8 @@
   "caption": "void \u00b7 friend_2026-09 17:33",
   "class": "void",
   "approved_by": "Cole",
-  "source": "clicks_new_2026-09-30"
+  "source": "clicks_new_2026-09-30",
+  "fixed": "2026-10-08"
  },
  {
   "file": "data/slices/approved/barbarian-barrel-hero/barbarian-barrel-hero_1_cole_2026-09-29_c_1929.60.png",
@@ -4641,7 +4631,8 @@
   "caption": "barbarian-barrel-hero \u00b7 cole_2026-09-2 34:34",
   "class": "barbarian-barrel-hero",
   "approved_by": "Cole",
-  "source": "clicks_hero_2026-09-30"
+  "source": "clicks_hero_2026-09-30",
+  "fixed": "2026-10-08"
  },
  {
   "file": "data/slices/approved/barbarian-barrel-hero/barbarian-barrel-hero_1_cole_2026-09-29_c_2075.60.png",
@@ -4725,7 +4716,8 @@
   "caption": "barbarian-barrel-hero \u00b7 cole_2026-09-2 35:41",
   "class": "barbarian-barrel-hero",
   "approved_by": "Cole",
-  "source": "clicks_hero_2026-09-30"
+  "source": "clicks_hero_2026-09-30",
+  "fixed": "2026-10-08"
  },
  {
   "file": "data/slices/approved/barbarian-barrel-hero/barbarian-barrel-hero_1_cole_2026-09-29_c_2142.60.png",
@@ -4746,7 +4738,8 @@
   "caption": "barbarian-barrel-hero \u00b7 cole_2026-09-2 35:42",
   "class": "barbarian-barrel-hero",
   "approved_by": "Cole",
-  "source": "clicks_hero_2026-09-30"
+  "source": "clicks_hero_2026-09-30",
+  "fixed": "2026-10-08"
  },
  {
   "file": "data/slices/approved/berserker-hero/berserker-hero_1_PuJls1qTZsU_0032.30.png",
@@ -4871,48 +4864,6 @@
   ],
   "caption": "dark-prince-hero \u00b7 cole_2026-09-2 17:48",
   "class": "dark-prince-hero",
-  "approved_by": "Cole",
-  "source": "clicks_hero_2026-09-30"
- },
- {
-  "file": "data/slices/approved/goblins-hero/goblins-hero_1_6rCdZkKZiis_0036.90.png",
-  "card": "Goblins (hero)",
-  "entity": "goblins-hero",
-  "team": "enemy",
-  "video_id": "6rCdZkKZiis",
-  "match_id": "6rCdZkKZiis_m01",
-  "t_video": 36.9,
-  "click": [
-   426.6272727272727,
-   1112.330112591912
-  ],
-  "size": [
-   215,
-   108
-  ],
-  "caption": "goblins-hero \u00b7 6rCdZkKZiis 0:36",
-  "class": "goblins-hero",
-  "approved_by": "Cole",
-  "source": "clicks_hero_2026-09-30"
- },
- {
-  "file": "data/slices/approved/goblins-hero/goblins-hero_1_6rCdZkKZiis_0450.20.png",
-  "card": "Goblins (hero)",
-  "entity": "goblins-hero",
-  "team": "enemy",
-  "video_id": "6rCdZkKZiis",
-  "match_id": "6rCdZkKZiis_m02",
-  "t_video": 450.2,
-  "click": [
-   372.4727272727273,
-   1175.4577780330883
-  ],
-  "size": [
-   176,
-   168
-  ],
-  "caption": "goblins-hero \u00b7 6rCdZkKZiis 7:30",
-  "class": "goblins-hero",
   "approved_by": "Cole",
   "source": "clicks_hero_2026-09-30"
  },
@@ -5250,7 +5201,8 @@
   "caption": "baby-dragon-evolution \u00b7 2elEncccZwQ 12:29",
   "class": "baby-dragon-evolution",
   "approved_by": "Cole",
-  "source": "clicks_evo_2026-09-30"
+  "source": "clicks_evo_2026-09-30",
+  "fixed": "2026-10-08"
  },
  {
   "file": "data/slices/approved/baby-dragon-evolution/baby-dragon-evolution_1_2elEncccZwQ_0750.70.png",
@@ -5312,90 +5264,6 @@
   ],
   "caption": "baby-dragon-evolution \u00b7 b9nXaMBejRw 12:54",
   "class": "baby-dragon-evolution",
-  "approved_by": "Cole",
-  "source": "clicks_evo_2026-09-30"
- },
- {
-  "file": "data/slices/approved/bats-evolution/bats-evolution_1_HuwsYOmuVao_0180.30.png",
-  "card": "Bats (evo)",
-  "entity": "bats-evolution",
-  "team": "enemy",
-  "video_id": "HuwsYOmuVao",
-  "match_id": "HuwsYOmuVao_m01",
-  "t_video": 180.3,
-  "click": [
-   866.9272727272727,
-   1112.0358111213236
-  ],
-  "size": [
-   106,
-   223
-  ],
-  "caption": "bats-evolution \u00b7 HuwsYOmuVao 3:00",
-  "class": "bats-evolution",
-  "approved_by": "Cole",
-  "source": "clicks_evo_2026-09-30"
- },
- {
-  "file": "data/slices/approved/bats-evolution/bats-evolution_1_HuwsYOmuVao_0234.30.png",
-  "card": "Bats (evo)",
-  "entity": "bats-evolution",
-  "team": "enemy",
-  "video_id": "HuwsYOmuVao",
-  "match_id": "HuwsYOmuVao_m01",
-  "t_video": 234.3,
-  "click": [
-   991.7181818181818,
-   1215.1884765625
-  ],
-  "size": [
-   120,
-   173
-  ],
-  "caption": "bats-evolution \u00b7 HuwsYOmuVao 3:54",
-  "class": "bats-evolution",
-  "approved_by": "Cole",
-  "source": "clicks_evo_2026-09-30"
- },
- {
-  "file": "data/slices/approved/bats-evolution/bats-evolution_1_HuwsYOmuVao_0546.00.png",
-  "card": "Bats (evo)",
-  "entity": "bats-evolution",
-  "team": "enemy",
-  "video_id": "HuwsYOmuVao",
-  "match_id": "HuwsYOmuVao_m02",
-  "t_video": 546,
-  "click": [
-   250.03636363636363,
-   1104.5311236213236
-  ],
-  "size": [
-   152,
-   218
-  ],
-  "caption": "bats-evolution \u00b7 HuwsYOmuVao 9:06",
-  "class": "bats-evolution",
-  "approved_by": "Cole",
-  "source": "clicks_evo_2026-09-30"
- },
- {
-  "file": "data/slices/approved/bats-evolution/bats-evolution_1_HuwsYOmuVao_0791.80.png",
-  "card": "Bats (evo)",
-  "entity": "bats-evolution",
-  "team": "enemy",
-  "video_id": "HuwsYOmuVao",
-  "match_id": "HuwsYOmuVao_m03",
-  "t_video": 791.8,
-  "click": [
-   384.24545454545455,
-   1289.6467486213235
-  ],
-  "size": [
-   196,
-   228
-  ],
-  "caption": "bats-evolution \u00b7 HuwsYOmuVao 13:11",
-  "class": "bats-evolution",
   "approved_by": "Cole",
   "source": "clicks_evo_2026-09-30"
  },
@@ -5775,7 +5643,8 @@
   "caption": "goblin-barrel-evolution \u00b7 6bLDtHZlcSU 26:42",
   "class": "goblin-barrel-evolution",
   "approved_by": "Cole",
-  "source": "clicks_evo_2026-09-30"
+  "source": "clicks_evo_2026-09-30",
+  "fixed": "2026-10-08"
  },
  {
   "file": "data/slices/approved/goblin-barrel-evolution/goblin-barrel-evolution_1_6bLDtHZlcSU_1852.30.png",
@@ -5796,7 +5665,8 @@
   "caption": "goblin-barrel-evolution \u00b7 6bLDtHZlcSU 30:52",
   "class": "goblin-barrel-evolution",
   "approved_by": "Cole",
-  "source": "clicks_evo_2026-09-30"
+  "source": "clicks_evo_2026-09-30",
+  "fixed": "2026-10-08"
  },
  {
   "file": "data/slices/approved/goblin-barrel-evolution/goblin-barrel-evolution_1_6bLDtHZlcSU_1853.80.png",
@@ -6027,7 +5897,8 @@
   "caption": "skeleton-barrel-evolution \u00b7 6rCdZkKZiis 1:25",
   "class": "skeleton-barrel-evolution",
   "approved_by": "Cole",
-  "source": "clicks_evo_2026-09-30"
+  "source": "clicks_evo_2026-09-30",
+  "fixed": "2026-10-08"
  },
  {
   "file": "data/slices/approved/skeleton-barrel-evolution/skeleton-barrel-evolution_1_6rCdZkKZiis_0639.00.png",
@@ -6048,7 +5919,8 @@
   "caption": "skeleton-barrel-evolution \u00b7 6rCdZkKZiis 10:39",
   "class": "skeleton-barrel-evolution",
   "approved_by": "Cole",
-  "source": "clicks_evo_2026-09-30"
+  "source": "clicks_evo_2026-09-30",
+  "fixed": "2026-10-08"
  },
  {
   "file": "data/slices/approved/skeleton-barrel-evolution/skeleton-barrel-evolution_1_6rCdZkKZiis_0912.40.png",
@@ -6069,7 +5941,8 @@
   "caption": "skeleton-barrel-evolution \u00b7 6rCdZkKZiis 15:12",
   "class": "skeleton-barrel-evolution",
   "approved_by": "Cole",
-  "source": "clicks_evo_2026-09-30"
+  "source": "clicks_evo_2026-09-30",
+  "fixed": "2026-10-08"
  },
  {
   "file": "data/slices/approved/skeleton-barrel-evolution/skeleton-barrel-evolution_1_b9nXaMBejRw_0345.60.png",
@@ -6090,7 +5963,8 @@
   "caption": "skeleton-barrel-evolution \u00b7 b9nXaMBejRw 5:45",
   "class": "skeleton-barrel-evolution",
   "approved_by": "Cole",
-  "source": "clicks_evo_2026-09-30"
+  "source": "clicks_evo_2026-09-30",
+  "fixed": "2026-10-08"
  },
  {
   "file": "data/slices/approved/skeletons-evolution/skeletons-evolution_1_3r9-35N9yE8_0263.80.png",
@@ -6109,7 +5983,7 @@
    34
   ],
   "caption": "skeletons-evolution \u00b7 3r9-35N9yE8 4:23",
-  "class": "skeletons-evolution",
+  "class": "skeleton-evolution",
   "approved_by": "Cole",
   "source": "clicks_evo_2026-09-30"
  },
@@ -6130,7 +6004,7 @@
    32
   ],
   "caption": "skeletons-evolution \u00b7 3r9-35N9yE8 7:02",
-  "class": "skeletons-evolution",
+  "class": "skeleton-evolution",
   "approved_by": "Cole",
   "source": "clicks_evo_2026-09-30"
  },
@@ -6151,7 +6025,7 @@
    41
   ],
   "caption": "skeletons-evolution \u00b7 3r9-35N9yE8 14:04",
-  "class": "skeletons-evolution",
+  "class": "skeleton-evolution",
   "approved_by": "Cole",
   "source": "clicks_evo_2026-09-30"
  },

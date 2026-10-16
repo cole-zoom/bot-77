@@ -1,0 +1,269 @@
+{
+ "video_id": "tv_2026-10-13_r180",
+ "side": "opponent",
+ "matches": [
+  "tv_2026-10-13_r180_m01"
+ ],
+ "items": [
+  {
+   "match_id": "tv_2026-10-13_r180_m01",
+   "t_video": 13.0,
+   "label": "P.E.K.K.A",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r180_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r180_m01",
+   "t_video": 32.6,
+   "label": "Zap",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r180_top_m01",
+   "source_confidence": "low"
+  },
+  {
+   "match_id": "tv_2026-10-13_r180_m01",
+   "t_video": 40.8,
+   "label": "Mini P.E.K.K.A",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r180_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r180_m01",
+   "t_video": 43.4,
+   "label": "Bandit",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r180_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r180_m01",
+   "t_video": 70.2,
+   "label": "Hog Rider",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r180_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r180_m01",
+   "t_video": 71.2,
+   "label": "Bats",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r180_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r180_m01",
+   "t_video": 75.6,
+   "label": "Mini P.E.K.K.A",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r180_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-13_r180_m01",
+   "t_video": 81.1,
+   "label": "Zap",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r180_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r180_m01",
+   "t_video": 98.3,
+   "label": "Bandit",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r180_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r180_m01",
+   "t_video": 98.8,
+   "label": "Electro Wizard",
+   "form": "hero",
+   "source": "POV of tv_2026-10-13_r180_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-13_r180_m01",
+   "t_video": 110.1,
+   "label": "Bats",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r180_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-13_r180_m01",
+   "t_video": 119.8,
+   "label": "Mini P.E.K.K.A",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r180_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r180_m01",
+   "t_video": 125.8,
+   "label": "Zap",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r180_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r180_m01",
+   "t_video": 138.0,
+   "label": "P.E.K.K.A",
+   "form": "evo",
+   "source": "POV of tv_2026-10-13_r180_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-13_r180_m01",
+   "t_video": 144.4,
+   "label": "Bandit",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r180_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r180_m01",
+   "t_video": 145.6,
+   "label": "Electro Wizard",
+   "form": "hero",
+   "source": "POV of tv_2026-10-13_r180_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-13_r180_m01",
+   "t_video": 147.5,
+   "label": "Bats",
+   "form": "evo",
+   "source": "POV of tv_2026-10-13_r180_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r180_m01",
+   "t_video": 153.1,
+   "label": "Mini P.E.K.K.A",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r180_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r180_m01",
+   "t_video": 155.9,
+   "label": "Zap",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r180_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r180_m01",
+   "t_video": 161.6,
+   "label": "Mini P.E.K.K.A",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r180_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r180_m01",
+   "t_video": 165.7,
+   "label": "Bandit",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r180_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r180_m01",
+   "t_video": 171.4,
+   "label": "Hog Rider",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r180_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r180_m01",
+   "t_video": 176.8,
+   "label": "Mini P.E.K.K.A",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r180_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r180_m01",
+   "t_video": 181.3,
+   "label": "Zap",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r180_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-13_r180_m01",
+   "t_video": 191.3,
+   "label": "Bats",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r180_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r180_m01",
+   "t_video": 191.9,
+   "label": "Electro Wizard",
+   "form": "hero",
+   "source": "POV of tv_2026-10-13_r180_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r180_m01",
+   "t_video": 195.0,
+   "label": "Bandit",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r180_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r180_m01",
+   "t_video": 202.2,
+   "label": "Mini P.E.K.K.A",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r180_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r180_m01",
+   "t_video": 207.8,
+   "label": "Hog Rider",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r180_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r180_m01",
+   "t_video": 224.0,
+   "label": "P.E.K.K.A",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r180_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r180_m01",
+   "t_video": 229.2,
+   "label": "Electro Wizard",
+   "form": "hero",
+   "source": "POV of tv_2026-10-13_r180_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r180_m01",
+   "t_video": 232.8,
+   "label": "Bats",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r180_top_m01",
+   "source_confidence": "low"
+  }
+ ],
+ "paired_with": "tv_2026-10-13_r180_top_m01",
+ "offset_s": 0.0,
+ "auto": true,
+ "source": "replay"
+}

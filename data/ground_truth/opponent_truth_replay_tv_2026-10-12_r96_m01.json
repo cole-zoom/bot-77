@@ -1,0 +1,373 @@
+{
+ "video_id": "tv_2026-10-12_r96",
+ "side": "opponent",
+ "matches": [
+  "tv_2026-10-12_r96_m01"
+ ],
+ "items": [
+  {
+   "match_id": "tv_2026-10-12_r96_m01",
+   "t_video": 15.5,
+   "label": "Bandit",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r96_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r96_m01",
+   "t_video": 25.8,
+   "label": "Electro Wizard",
+   "form": "hero",
+   "source": "POV of tv_2026-10-12_r96_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r96_m01",
+   "t_video": 36.8,
+   "label": "Ram Rider",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r96_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r96_m01",
+   "t_video": 37.4,
+   "label": "Barbarian Barrel",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r96_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r96_m01",
+   "t_video": 44.8,
+   "label": "Giant Snowball",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r96_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r96_m01",
+   "t_video": 61.3,
+   "label": "Bandit",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r96_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-12_r96_m01",
+   "t_video": 74.4,
+   "label": "P.E.K.K.A",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r96_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r96_m01",
+   "t_video": 80.8,
+   "label": "Electro Wizard",
+   "form": "hero",
+   "source": "POV of tv_2026-10-12_r96_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r96_m01",
+   "t_video": 91.1,
+   "label": "Barbarian Barrel",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r96_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r96_m01",
+   "t_video": 101.8,
+   "label": "Baby Dragon",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r96_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r96_m01",
+   "t_video": 106.0,
+   "label": "Giant Snowball",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r96_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r96_m01",
+   "t_video": 121.5,
+   "label": "Bandit",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r96_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-12_r96_m01",
+   "t_video": 131.2,
+   "label": "P.E.K.K.A",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r96_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r96_m01",
+   "t_video": 140.8,
+   "label": "Ram Rider",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r96_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r96_m01",
+   "t_video": 147.8,
+   "label": "Baby Dragon",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r96_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r96_m01",
+   "t_video": 156.9,
+   "label": "Electro Wizard",
+   "form": "hero",
+   "source": "POV of tv_2026-10-12_r96_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r96_m01",
+   "t_video": 159.5,
+   "label": "Bandit",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r96_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r96_m01",
+   "t_video": 162.2,
+   "label": "Lightning",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r96_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r96_m01",
+   "t_video": 172.7,
+   "label": "Ram Rider",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r96_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r96_m01",
+   "t_video": 184.7,
+   "label": "P.E.K.K.A",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r96_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-12_r96_m01",
+   "t_video": 187.7,
+   "label": "Baby Dragon",
+   "form": "evo",
+   "source": "POV of tv_2026-10-12_r96_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r96_m01",
+   "t_video": 195.7,
+   "label": "Bandit",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r96_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r96_m01",
+   "t_video": 205.8,
+   "label": "Electro Wizard",
+   "form": "hero",
+   "source": "POV of tv_2026-10-12_r96_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r96_m01",
+   "t_video": 209.2,
+   "label": "Barbarian Barrel",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r96_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r96_m01",
+   "t_video": 214.1,
+   "label": "P.E.K.K.A",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r96_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-12_r96_m01",
+   "t_video": 218.2,
+   "label": "Ram Rider",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r96_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r96_m01",
+   "t_video": 232.5,
+   "label": "Baby Dragon",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r96_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-12_r96_m01",
+   "t_video": 235.5,
+   "label": "Bandit",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r96_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r96_m01",
+   "t_video": 237.5,
+   "label": "Barbarian Barrel",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r96_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r96_m01",
+   "t_video": 244.5,
+   "label": "P.E.K.K.A",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r96_top_m01",
+   "source_confidence": "low"
+  },
+  {
+   "match_id": "tv_2026-10-12_r96_m01",
+   "t_video": 248.0,
+   "label": "Electro Wizard",
+   "form": "hero",
+   "source": "POV of tv_2026-10-12_r96_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r96_m01",
+   "t_video": 255.8,
+   "label": "Baby Dragon",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r96_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r96_m01",
+   "t_video": 259.0,
+   "label": "Bandit",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r96_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r96_m01",
+   "t_video": 264.0,
+   "label": "Barbarian Barrel",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r96_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r96_m01",
+   "t_video": 268.0,
+   "label": "P.E.K.K.A",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r96_top_m01",
+   "source_confidence": "low"
+  },
+  {
+   "match_id": "tv_2026-10-12_r96_m01",
+   "t_video": 274.3,
+   "label": "Electro Wizard",
+   "form": "hero",
+   "source": "POV of tv_2026-10-12_r96_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r96_m01",
+   "t_video": 276.9,
+   "label": "Baby Dragon",
+   "form": "evo",
+   "source": "POV of tv_2026-10-12_r96_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r96_m01",
+   "t_video": 277.6,
+   "label": "Giant Snowball",
+   "form": "evo",
+   "source": "POV of tv_2026-10-12_r96_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r96_m01",
+   "t_video": 282.3,
+   "label": "Bandit",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r96_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r96_m01",
+   "t_video": 283.2,
+   "label": "Barbarian Barrel",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r96_top_m01",
+   "source_confidence": "low"
+  },
+  {
+   "match_id": "tv_2026-10-12_r96_m01",
+   "t_video": 285.7,
+   "label": "Ram Rider",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r96_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r96_m01",
+   "t_video": 290.8,
+   "label": "Lightning",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r96_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r96_m01",
+   "t_video": 298.2,
+   "label": "Giant Snowball",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r96_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r96_m01",
+   "t_video": 301.5,
+   "label": "P.E.K.K.A",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r96_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r96_m01",
+   "t_video": 303.3,
+   "label": "Barbarian Barrel",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r96_top_m01",
+   "source_confidence": "high"
+  }
+ ],
+ "paired_with": "tv_2026-10-12_r96_top_m01",
+ "offset_s": 0.0,
+ "auto": true,
+ "source": "replay"
+}

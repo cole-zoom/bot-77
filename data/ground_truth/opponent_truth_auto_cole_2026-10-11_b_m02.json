@@ -1,0 +1,252 @@
+{
+ "video_id": "cole_2026-10-11_b",
+ "side": "opponent",
+ "matches": [
+  "cole_2026-10-11_b_m02"
+ ],
+ "items": [
+  {
+   "match_id": "cole_2026-10-11_b_m02",
+   "t_video": 421.1,
+   "label": "Ice Wizard",
+   "form": "normal",
+   "source": "POV of cole_2026-10-11_a_m02",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-11_b_m02",
+   "t_video": 422.3,
+   "label": "Tornado",
+   "form": "normal",
+   "source": "POV of cole_2026-10-11_a_m02",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "cole_2026-10-11_b_m02",
+   "t_video": 424.0,
+   "label": "Skeleton King",
+   "form": "normal",
+   "source": "POV of cole_2026-10-11_a_m02",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "cole_2026-10-11_b_m02",
+   "t_video": 447.5,
+   "label": "Barbarian Barrel",
+   "form": "normal",
+   "source": "POV of cole_2026-10-11_a_m02",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-11_b_m02",
+   "t_video": 449.2,
+   "label": "Tombstone",
+   "form": "hero",
+   "source": "POV of cole_2026-10-11_a_m02",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "cole_2026-10-11_b_m02",
+   "t_video": 472.1,
+   "label": "Ice Wizard",
+   "form": "normal",
+   "source": "POV of cole_2026-10-11_a_m02",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-11_b_m02",
+   "t_video": 482.4,
+   "label": "Phoenix",
+   "form": "normal",
+   "source": "POV of cole_2026-10-11_a_m02",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-11_b_m02",
+   "t_video": 485.1,
+   "label": "Skeleton King",
+   "form": "normal",
+   "source": "POV of cole_2026-10-11_a_m02",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-11_b_m02",
+   "t_video": 499.5,
+   "label": "Poison",
+   "form": "normal",
+   "source": "POV of cole_2026-10-11_a_m02",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-11_b_m02",
+   "t_video": 518.6,
+   "label": "Tombstone",
+   "form": "hero",
+   "source": "POV of cole_2026-10-11_a_m02",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-11_b_m02",
+   "t_video": 520.6,
+   "label": "Barbarian Barrel",
+   "form": "normal",
+   "source": "POV of cole_2026-10-11_a_m02",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-11_b_m02",
+   "t_video": 525.1,
+   "label": "Phoenix",
+   "form": "normal",
+   "source": "POV of cole_2026-10-11_a_m02",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-11_b_m02",
+   "t_video": 534.7,
+   "label": "Skeleton King",
+   "form": "normal",
+   "source": "POV of cole_2026-10-11_a_m02",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-11_b_m02",
+   "t_video": 540.1,
+   "label": "Ice Wizard",
+   "form": "normal",
+   "source": "POV of cole_2026-10-11_a_m02",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-11_b_m02",
+   "t_video": 547.9,
+   "label": "Tombstone",
+   "form": "hero",
+   "source": "POV of cole_2026-10-11_a_m02",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-11_b_m02",
+   "t_video": 551.0,
+   "label": "Barbarian Barrel",
+   "form": "normal",
+   "source": "POV of cole_2026-10-11_a_m02",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-11_b_m02",
+   "t_video": 555.6,
+   "label": "Phoenix",
+   "form": "normal",
+   "source": "POV of cole_2026-10-11_a_m02",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-11_b_m02",
+   "t_video": 573.8,
+   "label": "Skeleton King",
+   "form": "normal",
+   "source": "POV of cole_2026-10-11_a_m02",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-11_b_m02",
+   "t_video": 579.9,
+   "label": "Ice Wizard",
+   "form": "normal",
+   "source": "POV of cole_2026-10-11_a_m02",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-11_b_m02",
+   "t_video": 582.5,
+   "label": "Tombstone",
+   "form": "hero",
+   "source": "POV of cole_2026-10-11_a_m02",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-11_b_m02",
+   "t_video": 599.4,
+   "label": "Barbarian Barrel",
+   "form": "normal",
+   "source": "POV of cole_2026-10-11_a_m02",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-11_b_m02",
+   "t_video": 601.1,
+   "label": "Graveyard",
+   "form": "normal",
+   "source": "POV of cole_2026-10-11_a_m02",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-11_b_m02",
+   "t_video": 602.9,
+   "label": "Phoenix",
+   "form": "normal",
+   "source": "POV of cole_2026-10-11_a_m02",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-11_b_m02",
+   "t_video": 621.3,
+   "label": "Skeleton King",
+   "form": "normal",
+   "source": "POV of cole_2026-10-11_a_m02",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-11_b_m02",
+   "t_video": 642.2,
+   "label": "Tombstone",
+   "form": "hero",
+   "source": "POV of cole_2026-10-11_a_m02",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-11_b_m02",
+   "t_video": 644.2,
+   "label": "Ice Wizard",
+   "form": "normal",
+   "source": "POV of cole_2026-10-11_a_m02",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "cole_2026-10-11_b_m02",
+   "t_video": 658.6,
+   "label": "Barbarian Barrel",
+   "form": "normal",
+   "source": "POV of cole_2026-10-11_a_m02",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-11_b_m02",
+   "t_video": 662.5,
+   "label": "Poison",
+   "form": "normal",
+   "source": "POV of cole_2026-10-11_a_m02",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-11_b_m02",
+   "t_video": 665.0,
+   "label": "Graveyard",
+   "form": "normal",
+   "source": "POV of cole_2026-10-11_a_m02",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-11_b_m02",
+   "t_video": 668.1,
+   "label": "Skeleton King",
+   "form": "normal",
+   "source": "POV of cole_2026-10-11_a_m02",
+   "source_confidence": "high"
+  }
+ ],
+ "paired_with": "cole_2026-10-11_a_m02",
+ "offset_s": -26.0,
+ "auto": true
+}

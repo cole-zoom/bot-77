@@ -1,0 +1,405 @@
+{
+ "video_id": "tv_2026-10-12_r04",
+ "side": "opponent",
+ "matches": [
+  "tv_2026-10-12_r04_m01"
+ ],
+ "items": [
+  {
+   "match_id": "tv_2026-10-12_r04_m01",
+   "t_video": 18.3,
+   "label": "Mother Witch",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r04_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r04_m01",
+   "t_video": 29.7,
+   "label": "Cannon Cart",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r04_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-12_r04_m01",
+   "t_video": 35.4,
+   "label": "Goblinstein",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r04_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r04_m01",
+   "t_video": 39.5,
+   "label": "Guards",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r04_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r04_m01",
+   "t_video": 45.0,
+   "label": "Barbarian Barrel",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r04_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r04_m01",
+   "t_video": 59.9,
+   "label": "Mother Witch",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r04_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-12_r04_m01",
+   "t_video": 71.4,
+   "label": "Mortar",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r04_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r04_m01",
+   "t_video": 104.2,
+   "label": "Cannon Cart",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r04_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r04_m01",
+   "t_video": 117.1,
+   "label": "Minion Horde",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r04_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r04_m01",
+   "t_video": 119.8,
+   "label": "Barbarian Barrel",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r04_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r04_m01",
+   "t_video": 129.4,
+   "label": "Mother Witch",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r04_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r04_m01",
+   "t_video": 135.7,
+   "label": "Guards",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r04_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r04_m01",
+   "t_video": 139.9,
+   "label": "Fireball",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r04_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r04_m01",
+   "t_video": 144.4,
+   "label": "Mortar",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r04_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r04_m01",
+   "t_video": 147.1,
+   "label": "Barbarian Barrel",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r04_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r04_m01",
+   "t_video": 152.7,
+   "label": "Mother Witch",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r04_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r04_m01",
+   "t_video": 159.4,
+   "label": "Cannon Cart",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r04_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r04_m01",
+   "t_video": 162.3,
+   "label": "Fireball",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r04_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r04_m01",
+   "t_video": 173.2,
+   "label": "Goblinstein",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r04_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r04_m01",
+   "t_video": 181.4,
+   "label": "Guards",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r04_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r04_m01",
+   "t_video": 182.7,
+   "label": "Barbarian Barrel",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r04_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r04_m01",
+   "t_video": 184.0,
+   "label": "Mother Witch",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r04_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r04_m01",
+   "t_video": 187.7,
+   "label": "Fireball",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r04_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r04_m01",
+   "t_video": 194.8,
+   "label": "Cannon Cart",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r04_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r04_m01",
+   "t_video": 205.3,
+   "label": "Minion Horde",
+   "form": "evo",
+   "source": "POV of tv_2026-10-12_r04_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r04_m01",
+   "t_video": 211.8,
+   "label": "Barbarian Barrel",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r04_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r04_m01",
+   "t_video": 213.9,
+   "label": "Guards",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r04_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r04_m01",
+   "t_video": 214.7,
+   "label": "Mother Witch",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r04_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-12_r04_m01",
+   "t_video": 222.6,
+   "label": "Fireball",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r04_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r04_m01",
+   "t_video": 231.9,
+   "label": "Cannon Cart",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r04_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r04_m01",
+   "t_video": 238.7,
+   "label": "Goblinstein",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r04_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r04_m01",
+   "t_video": 245.7,
+   "label": "Minion Horde",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r04_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r04_m01",
+   "t_video": 247.6,
+   "label": "Mother Witch",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r04_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r04_m01",
+   "t_video": 250.0,
+   "label": "Fireball",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r04_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-12_r04_m01",
+   "t_video": 256.2,
+   "label": "Mortar",
+   "form": "evo",
+   "source": "POV of tv_2026-10-12_r04_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r04_m01",
+   "t_video": 261.5,
+   "label": "Cannon Cart",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r04_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r04_m01",
+   "t_video": 262.2,
+   "label": "Guards",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r04_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r04_m01",
+   "t_video": 263.3,
+   "label": "Barbarian Barrel",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r04_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r04_m01",
+   "t_video": 271.1,
+   "label": "Goblinstein",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r04_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r04_m01",
+   "t_video": 275.7,
+   "label": "Minion Horde",
+   "form": "evo",
+   "source": "POV of tv_2026-10-12_r04_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-12_r04_m01",
+   "t_video": 276.6,
+   "label": "Mother Witch",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r04_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r04_m01",
+   "t_video": 280.0,
+   "label": "Fireball",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r04_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r04_m01",
+   "t_video": 284.6,
+   "label": "Barbarian Barrel",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r04_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r04_m01",
+   "t_video": 285.2,
+   "label": "Guards",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r04_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r04_m01",
+   "t_video": 289.5,
+   "label": "Cannon Cart",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r04_top_m01",
+   "source_confidence": "low"
+  },
+  {
+   "match_id": "tv_2026-10-12_r04_m01",
+   "t_video": 296.2,
+   "label": "Mother Witch",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r04_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r04_m01",
+   "t_video": 300.2,
+   "label": "Mortar",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r04_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r04_m01",
+   "t_video": 302.3,
+   "label": "Barbarian Barrel",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r04_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r04_m01",
+   "t_video": 304.8,
+   "label": "Cannon Cart",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r04_top_m01",
+   "source_confidence": "high"
+  }
+ ],
+ "paired_with": "tv_2026-10-12_r04_top_m01",
+ "offset_s": 0.0,
+ "auto": true,
+ "source": "replay"
+}

@@ -1,0 +1,501 @@
+{
+ "video_id": "tv_2026-10-12_r63",
+ "side": "opponent",
+ "matches": [
+  "tv_2026-10-12_r63_m01"
+ ],
+ "items": [
+  {
+   "match_id": "tv_2026-10-12_r63_m01",
+   "t_video": 11.2,
+   "label": "Furnace",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r63_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r63_m01",
+   "t_video": 20.1,
+   "label": "Skeleton Barrel",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r63_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r63_m01",
+   "t_video": 32.9,
+   "label": "Dart Goblin",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r63_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r63_m01",
+   "t_video": 39.3,
+   "label": "Berserker",
+   "form": "hero",
+   "source": "POV of tv_2026-10-12_r63_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r63_m01",
+   "t_video": 44.8,
+   "label": "Suspicious Bush",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r63_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r63_m01",
+   "t_video": 48.6,
+   "label": "Furnace",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r63_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-12_r63_m01",
+   "t_video": 51.9,
+   "label": "Rascals",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r63_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r63_m01",
+   "t_video": 64.1,
+   "label": "Skeleton Barrel",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r63_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-12_r63_m01",
+   "t_video": 77.2,
+   "label": "Dart Goblin",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r63_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r63_m01",
+   "t_video": 80.5,
+   "label": "Berserker",
+   "form": "hero",
+   "source": "POV of tv_2026-10-12_r63_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r63_m01",
+   "t_video": 84.2,
+   "label": "Royal Ghost",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r63_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r63_m01",
+   "t_video": 103.3,
+   "label": "Rascals",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r63_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r63_m01",
+   "t_video": 107.6,
+   "label": "Suspicious Bush",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r63_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r63_m01",
+   "t_video": 118.1,
+   "label": "Furnace",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r63_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r63_m01",
+   "t_video": 130.0,
+   "label": "Berserker",
+   "form": "hero",
+   "source": "POV of tv_2026-10-12_r63_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r63_m01",
+   "t_video": 133.0,
+   "label": "Royal Ghost",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r63_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r63_m01",
+   "t_video": 136.0,
+   "label": "Dart Goblin",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r63_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r63_m01",
+   "t_video": 138.1,
+   "label": "Suspicious Bush",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r63_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r63_m01",
+   "t_video": 142.3,
+   "label": "Furnace",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r63_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r63_m01",
+   "t_video": 148.2,
+   "label": "Berserker",
+   "form": "hero",
+   "source": "POV of tv_2026-10-12_r63_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-12_r63_m01",
+   "t_video": 148.8,
+   "label": "Rascals",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r63_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r63_m01",
+   "t_video": 152.8,
+   "label": "Royal Ghost",
+   "form": "evo",
+   "source": "POV of tv_2026-10-12_r63_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-12_r63_m01",
+   "t_video": 157.7,
+   "label": "Skeleton Barrel",
+   "form": "evo",
+   "source": "POV of tv_2026-10-12_r63_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r63_m01",
+   "t_video": 164.1,
+   "label": "Dart Goblin",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r63_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r63_m01",
+   "t_video": 170.1,
+   "label": "Furnace",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r63_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r63_m01",
+   "t_video": 174.7,
+   "label": "Suspicious Bush",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r63_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r63_m01",
+   "t_video": 176.6,
+   "label": "Royal Ghost",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r63_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r63_m01",
+   "t_video": 184.2,
+   "label": "Berserker",
+   "form": "hero",
+   "source": "POV of tv_2026-10-12_r63_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r63_m01",
+   "t_video": 188.0,
+   "label": "Skeleton Barrel",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r63_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r63_m01",
+   "t_video": 192.6,
+   "label": "Dart Goblin",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r63_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r63_m01",
+   "t_video": 194.8,
+   "label": "Rascals",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r63_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r63_m01",
+   "t_video": 201.1,
+   "label": "Furnace",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r63_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r63_m01",
+   "t_video": 204.7,
+   "label": "Suspicious Bush",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r63_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r63_m01",
+   "t_video": 211.1,
+   "label": "Skeleton Barrel",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r63_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r63_m01",
+   "t_video": 212.4,
+   "label": "Royal Ghost",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r63_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r63_m01",
+   "t_video": 215.6,
+   "label": "Berserker",
+   "form": "hero",
+   "source": "POV of tv_2026-10-12_r63_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r63_m01",
+   "t_video": 218.6,
+   "label": "Vines",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r63_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r63_m01",
+   "t_video": 228.3,
+   "label": "Furnace",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r63_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r63_m01",
+   "t_video": 232.7,
+   "label": "Dart Goblin",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r63_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r63_m01",
+   "t_video": 235.7,
+   "label": "Royal Ghost",
+   "form": "evo",
+   "source": "POV of tv_2026-10-12_r63_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r63_m01",
+   "t_video": 240.6,
+   "label": "Rascals",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r63_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r63_m01",
+   "t_video": 241.6,
+   "label": "Skeleton Barrel",
+   "form": "evo",
+   "source": "POV of tv_2026-10-12_r63_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r63_m01",
+   "t_video": 247.8,
+   "label": "Furnace",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r63_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-12_r63_m01",
+   "t_video": 250.4,
+   "label": "Dart Goblin",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r63_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r63_m01",
+   "t_video": 253.1,
+   "label": "Suspicious Bush",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r63_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r63_m01",
+   "t_video": 258.4,
+   "label": "Berserker",
+   "form": "hero",
+   "source": "POV of tv_2026-10-12_r63_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r63_m01",
+   "t_video": 261.1,
+   "label": "Rascals",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r63_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r63_m01",
+   "t_video": 263.1,
+   "label": "Furnace",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r63_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r63_m01",
+   "t_video": 264.1,
+   "label": "Royal Ghost",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r63_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r63_m01",
+   "t_video": 269.9,
+   "label": "Dart Goblin",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r63_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r63_m01",
+   "t_video": 272.6,
+   "label": "Skeleton Barrel",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r63_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r63_m01",
+   "t_video": 275.6,
+   "label": "Vines",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r63_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-12_r63_m01",
+   "t_video": 275.6,
+   "label": "Berserker",
+   "form": "hero",
+   "source": "POV of tv_2026-10-12_r63_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-12_r63_m01",
+   "t_video": 280.6,
+   "label": "Rascals",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r63_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r63_m01",
+   "t_video": 283.6,
+   "label": "Furnace",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r63_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r63_m01",
+   "t_video": 285.7,
+   "label": "Skeleton Barrel",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r63_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r63_m01",
+   "t_video": 288.5,
+   "label": "Dart Goblin",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r63_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r63_m01",
+   "t_video": 291.1,
+   "label": "Vines",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r63_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r63_m01",
+   "t_video": 297.6,
+   "label": "Rascals",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r63_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r63_m01",
+   "t_video": 300.4,
+   "label": "Suspicious Bush",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r63_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r63_m01",
+   "t_video": 302.7,
+   "label": "Furnace",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r63_top_m01",
+   "source_confidence": "medium"
+  }
+ ],
+ "paired_with": "tv_2026-10-12_r63_top_m01",
+ "offset_s": 0.0,
+ "auto": true,
+ "source": "replay"
+}

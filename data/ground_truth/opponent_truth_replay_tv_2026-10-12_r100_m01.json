@@ -1,0 +1,373 @@
+{
+ "video_id": "tv_2026-10-12_r100",
+ "side": "opponent",
+ "matches": [
+  "tv_2026-10-12_r100_m01"
+ ],
+ "items": [
+  {
+   "match_id": "tv_2026-10-12_r100_m01",
+   "t_video": 16.5,
+   "label": "Giant Skeleton",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r100_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r100_m01",
+   "t_video": 25.3,
+   "label": "Valkyrie",
+   "form": "hero",
+   "source": "POV of tv_2026-10-12_r100_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-12_r100_m01",
+   "t_video": 38.8,
+   "label": "__ability",
+   "form": null,
+   "source": "POV of tv_2026-10-12_r100_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-12_r100_m01",
+   "t_video": 50.3,
+   "label": "Arrows",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r100_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r100_m01",
+   "t_video": 64.8,
+   "label": "Witch",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r100_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r100_m01",
+   "t_video": 76.3,
+   "label": "Tombstone",
+   "form": "hero",
+   "source": "POV of tv_2026-10-12_r100_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r100_m01",
+   "t_video": 84.4,
+   "label": "Giant Skeleton",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r100_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r100_m01",
+   "t_video": 98.8,
+   "label": "Valkyrie",
+   "form": "hero",
+   "source": "POV of tv_2026-10-12_r100_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r100_m01",
+   "t_video": 100.2,
+   "label": "Mother Witch",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r100_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r100_m01",
+   "t_video": 109.0,
+   "label": "__ability",
+   "form": null,
+   "source": "POV of tv_2026-10-12_r100_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-12_r100_m01",
+   "t_video": 118.5,
+   "label": "Arrows",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r100_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r100_m01",
+   "t_video": 134.2,
+   "label": "Tombstone",
+   "form": "hero",
+   "source": "POV of tv_2026-10-12_r100_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r100_m01",
+   "t_video": 141.3,
+   "label": "Giant Skeleton",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r100_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-12_r100_m01",
+   "t_video": 150.4,
+   "label": "Witch",
+   "form": "evo",
+   "source": "POV of tv_2026-10-12_r100_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r100_m01",
+   "t_video": 157.7,
+   "label": "Earthquake",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r100_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r100_m01",
+   "t_video": 163.0,
+   "label": "Valkyrie",
+   "form": "hero",
+   "source": "POV of tv_2026-10-12_r100_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r100_m01",
+   "t_video": 166.0,
+   "label": "Mother Witch",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r100_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r100_m01",
+   "t_video": 170.1,
+   "label": "Giant Skeleton",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r100_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-12_r100_m01",
+   "t_video": 176.5,
+   "label": "Elixir Golem",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r100_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r100_m01",
+   "t_video": 189.0,
+   "label": "Witch",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r100_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r100_m01",
+   "t_video": 190.3,
+   "label": "Arrows",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r100_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r100_m01",
+   "t_video": 194.0,
+   "label": "Tombstone",
+   "form": "hero",
+   "source": "POV of tv_2026-10-12_r100_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-12_r100_m01",
+   "t_video": 199.1,
+   "label": "Mother Witch",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r100_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r100_m01",
+   "t_video": 210.3,
+   "label": "Giant Skeleton",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r100_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r100_m01",
+   "t_video": 213.2,
+   "label": "Earthquake",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r100_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r100_m01",
+   "t_video": 218.4,
+   "label": "Valkyrie",
+   "form": "hero",
+   "source": "POV of tv_2026-10-12_r100_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r100_m01",
+   "t_video": 223.9,
+   "label": "Tombstone",
+   "form": "hero",
+   "source": "POV of tv_2026-10-12_r100_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-12_r100_m01",
+   "t_video": 227.0,
+   "label": "Mother Witch",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r100_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-12_r100_m01",
+   "t_video": 235.5,
+   "label": "Giant Skeleton",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r100_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r100_m01",
+   "t_video": 242.8,
+   "label": "Witch",
+   "form": "evo",
+   "source": "POV of tv_2026-10-12_r100_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r100_m01",
+   "t_video": 250.5,
+   "label": "Valkyrie",
+   "form": "hero",
+   "source": "POV of tv_2026-10-12_r100_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r100_m01",
+   "t_video": 253.7,
+   "label": "Tombstone",
+   "form": "hero",
+   "source": "POV of tv_2026-10-12_r100_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r100_m01",
+   "t_video": 256.0,
+   "label": "Mother Witch",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r100_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-12_r100_m01",
+   "t_video": 264.6,
+   "label": "Giant Skeleton",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r100_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-12_r100_m01",
+   "t_video": 266.8,
+   "label": "Witch",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r100_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r100_m01",
+   "t_video": 273.5,
+   "label": "Valkyrie",
+   "form": "hero",
+   "source": "POV of tv_2026-10-12_r100_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r100_m01",
+   "t_video": 276.1,
+   "label": "Arrows",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r100_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r100_m01",
+   "t_video": 280.6,
+   "label": "Elixir Golem",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r100_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r100_m01",
+   "t_video": 284.3,
+   "label": "Giant Skeleton",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r100_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r100_m01",
+   "t_video": 286.8,
+   "label": "Witch",
+   "form": "evo",
+   "source": "POV of tv_2026-10-12_r100_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r100_m01",
+   "t_video": 290.3,
+   "label": "Earthquake",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r100_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r100_m01",
+   "t_video": 294.1,
+   "label": "Valkyrie",
+   "form": "hero",
+   "source": "POV of tv_2026-10-12_r100_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-12_r100_m01",
+   "t_video": 296.6,
+   "label": "Elixir Golem",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r100_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r100_m01",
+   "t_video": 299.0,
+   "label": "Arrows",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r100_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-12_r100_m01",
+   "t_video": 301.5,
+   "label": "__ability",
+   "form": null,
+   "source": "POV of tv_2026-10-12_r100_top_m01",
+   "source_confidence": "medium"
+  }
+ ],
+ "paired_with": "tv_2026-10-12_r100_top_m01",
+ "offset_s": 0.0,
+ "auto": true,
+ "source": "replay"
+}

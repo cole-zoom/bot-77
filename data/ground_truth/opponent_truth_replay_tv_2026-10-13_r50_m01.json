@@ -1,0 +1,293 @@
+{
+ "video_id": "tv_2026-10-13_r50",
+ "side": "opponent",
+ "matches": [
+  "tv_2026-10-13_r50_m01"
+ ],
+ "items": [
+  {
+   "match_id": "tv_2026-10-13_r50_m01",
+   "t_video": 16.5,
+   "label": "Hog Rider",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r50_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r50_m01",
+   "t_video": 28.6,
+   "label": "Musketeer",
+   "form": "hero",
+   "source": "POV of tv_2026-10-13_r50_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r50_m01",
+   "t_video": 35.0,
+   "label": "The Log",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r50_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r50_m01",
+   "t_video": 42.7,
+   "label": "Ice Golem",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r50_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r50_m01",
+   "t_video": 52.6,
+   "label": "Ice Spirit",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r50_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r50_m01",
+   "t_video": 56.8,
+   "label": "Hog Rider",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r50_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r50_m01",
+   "t_video": 62.5,
+   "label": "Fireball",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r50_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-13_r50_m01",
+   "t_video": 67.6,
+   "label": "Cannon",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r50_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r50_m01",
+   "t_video": 68.7,
+   "label": "The Log",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r50_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r50_m01",
+   "t_video": 69.6,
+   "label": "Skeletons",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r50_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-13_r50_m01",
+   "t_video": 76.2,
+   "label": "Ice Golem",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r50_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r50_m01",
+   "t_video": 79.8,
+   "label": "Ice Spirit",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r50_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r50_m01",
+   "t_video": 86.0,
+   "label": "Cannon",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r50_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r50_m01",
+   "t_video": 100.7,
+   "label": "Hog Rider",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r50_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r50_m01",
+   "t_video": 111.2,
+   "label": "Musketeer",
+   "form": "hero",
+   "source": "POV of tv_2026-10-13_r50_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r50_m01",
+   "t_video": 119.7,
+   "label": "Skeletons",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r50_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r50_m01",
+   "t_video": 123.7,
+   "label": "Ice Spirit",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r50_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r50_m01",
+   "t_video": 128.3,
+   "label": "Ice Golem",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r50_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r50_m01",
+   "t_video": 129.9,
+   "label": "Fireball",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r50_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r50_m01",
+   "t_video": 138.3,
+   "label": "Cannon",
+   "form": "evo",
+   "source": "POV of tv_2026-10-13_r50_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r50_m01",
+   "t_video": 139.4,
+   "label": "Musketeer",
+   "form": "hero",
+   "source": "POV of tv_2026-10-13_r50_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r50_m01",
+   "t_video": 140.6,
+   "label": "The Log",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r50_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r50_m01",
+   "t_video": 144.8,
+   "label": "__ability",
+   "form": null,
+   "source": "POV of tv_2026-10-13_r50_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-13_r50_m01",
+   "t_video": 146.3,
+   "label": "Ice Spirit",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r50_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r50_m01",
+   "t_video": 152.7,
+   "label": "Ice Golem",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r50_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r50_m01",
+   "t_video": 154.3,
+   "label": "Hog Rider",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r50_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r50_m01",
+   "t_video": 156.1,
+   "label": "Skeletons",
+   "form": "evo",
+   "source": "POV of tv_2026-10-13_r50_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r50_m01",
+   "t_video": 158.7,
+   "label": "The Log",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r50_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r50_m01",
+   "t_video": 166.3,
+   "label": "Fireball",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r50_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r50_m01",
+   "t_video": 173.0,
+   "label": "Ice Golem",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r50_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r50_m01",
+   "t_video": 174.6,
+   "label": "Hog Rider",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r50_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r50_m01",
+   "t_video": 176.8,
+   "label": "Ice Spirit",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r50_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r50_m01",
+   "t_video": 179.9,
+   "label": "The Log",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r50_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r50_m01",
+   "t_video": 182.3,
+   "label": "Fireball",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r50_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r50_m01",
+   "t_video": 186.1,
+   "label": "Skeletons",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r50_top_m01",
+   "source_confidence": "high"
+  }
+ ],
+ "paired_with": "tv_2026-10-13_r50_top_m01",
+ "offset_s": 0.0,
+ "auto": true,
+ "source": "replay"
+}

@@ -1,0 +1,205 @@
+{
+ "video_id": "tv_2026-10-14_r20",
+ "side": "opponent",
+ "matches": [
+  "tv_2026-10-14_r20_m01"
+ ],
+ "items": [
+  {
+   "match_id": "tv_2026-10-14_r20_m01",
+   "t_video": 29.3,
+   "label": "P.E.K.K.A",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r20_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r20_m01",
+   "t_video": 43.8,
+   "label": "Executioner",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r20_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r20_m01",
+   "t_video": 47.7,
+   "label": "Zap",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r20_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r20_m01",
+   "t_video": 50.1,
+   "label": "Bandit",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r20_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r20_m01",
+   "t_video": 59.9,
+   "label": "Goblin Gang",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r20_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r20_m01",
+   "t_video": 74.2,
+   "label": "Musketeer",
+   "form": "hero",
+   "source": "POV of tv_2026-10-14_r20_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r20_m01",
+   "t_video": 83.7,
+   "label": "Executioner",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r20_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r20_m01",
+   "t_video": 94.4,
+   "label": "Tornado",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r20_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r20_m01",
+   "t_video": 100.7,
+   "label": "Bandit",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r20_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r20_m01",
+   "t_video": 116.6,
+   "label": "Goblin Gang",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r20_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r20_m01",
+   "t_video": 120.3,
+   "label": "Musketeer",
+   "form": "hero",
+   "source": "POV of tv_2026-10-14_r20_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r20_m01",
+   "t_video": 128.3,
+   "label": "Zap",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r20_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r20_m01",
+   "t_video": 138.8,
+   "label": "Executioner",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r20_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r20_m01",
+   "t_video": 146.5,
+   "label": "P.E.K.K.A",
+   "form": "evo",
+   "source": "POV of tv_2026-10-14_r20_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r20_m01",
+   "t_video": 149.1,
+   "label": "Goblin Gang",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r20_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r20_m01",
+   "t_video": 152.1,
+   "label": "Tornado",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r20_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r20_m01",
+   "t_video": 154.7,
+   "label": "Zap",
+   "form": "evo",
+   "source": "POV of tv_2026-10-14_r20_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r20_m01",
+   "t_video": 161.6,
+   "label": "Graveyard",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r20_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r20_m01",
+   "t_video": 165.8,
+   "label": "Bandit",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r20_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r20_m01",
+   "t_video": 170.1,
+   "label": "Goblin Gang",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r20_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r20_m01",
+   "t_video": 174.2,
+   "label": "Tornado",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r20_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r20_m01",
+   "t_video": 177.1,
+   "label": "Zap",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r20_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r20_m01",
+   "t_video": 187.4,
+   "label": "P.E.K.K.A",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r20_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-14_r20_m01",
+   "t_video": 191.1,
+   "label": "Bandit",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r20_top_m01",
+   "source_confidence": "high"
+  }
+ ],
+ "paired_with": "tv_2026-10-14_r20_top_m01",
+ "offset_s": 0.0,
+ "auto": true,
+ "source": "replay"
+}

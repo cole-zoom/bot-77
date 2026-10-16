@@ -1,0 +1,405 @@
+{
+ "video_id": "tv_2026-10-13_r101",
+ "side": "opponent",
+ "matches": [
+  "tv_2026-10-13_r101_m01"
+ ],
+ "items": [
+  {
+   "match_id": "tv_2026-10-13_r101_m01",
+   "t_video": 13.2,
+   "label": "Royal Ghost",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r101_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r101_m01",
+   "t_video": 19.8,
+   "label": "Battle Ram",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r101_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r101_m01",
+   "t_video": 30.7,
+   "label": "Hunter",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r101_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r101_m01",
+   "t_video": 43.2,
+   "label": "Heal Spirit",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r101_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r101_m01",
+   "t_video": 46.7,
+   "label": "Barbarian Barrel",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r101_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r101_m01",
+   "t_video": 51.3,
+   "label": "Royal Ghost",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r101_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r101_m01",
+   "t_video": 60.4,
+   "label": "Three Musketeers",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r101_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r101_m01",
+   "t_video": 77.4,
+   "label": "Battle Ram",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r101_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r101_m01",
+   "t_video": 86.4,
+   "label": "Heal Spirit",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r101_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r101_m01",
+   "t_video": 99.7,
+   "label": "Barbarian Barrel",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r101_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r101_m01",
+   "t_video": 106.2,
+   "label": "Royal Ghost",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r101_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r101_m01",
+   "t_video": 116.3,
+   "label": "Three Musketeers",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r101_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r101_m01",
+   "t_video": 130.4,
+   "label": "Battle Ram",
+   "form": "evo",
+   "source": "POV of tv_2026-10-13_r101_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r101_m01",
+   "t_video": 138.3,
+   "label": "Heal Spirit",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r101_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r101_m01",
+   "t_video": 141.5,
+   "label": "Hunter",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r101_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r101_m01",
+   "t_video": 145.7,
+   "label": "Royal Ghost",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r101_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r101_m01",
+   "t_video": 151.2,
+   "label": "Three Musketeers",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r101_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-13_r101_m01",
+   "t_video": 166.3,
+   "label": "Battle Ram",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r101_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r101_m01",
+   "t_video": 171.0,
+   "label": "Heal Spirit",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r101_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r101_m01",
+   "t_video": 173.6,
+   "label": "Hunter",
+   "form": "evo",
+   "source": "POV of tv_2026-10-13_r101_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r101_m01",
+   "t_video": 176.6,
+   "label": "Royal Ghost",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r101_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r101_m01",
+   "t_video": 183.1,
+   "label": "Three Musketeers",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r101_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-13_r101_m01",
+   "t_video": 186.6,
+   "label": "Ice Golem",
+   "form": "hero",
+   "source": "POV of tv_2026-10-13_r101_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r101_m01",
+   "t_video": 190.7,
+   "label": "Barbarian Barrel",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r101_top_m01",
+   "source_confidence": "low"
+  },
+  {
+   "match_id": "tv_2026-10-13_r101_m01",
+   "t_video": 198.0,
+   "label": "Battle Ram",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r101_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r101_m01",
+   "t_video": 201.3,
+   "label": "Royal Ghost",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r101_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r101_m01",
+   "t_video": 202.4,
+   "label": "Heal Spirit",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r101_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r101_m01",
+   "t_video": 212.5,
+   "label": "Three Musketeers",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r101_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-13_r101_m01",
+   "t_video": 218.3,
+   "label": "Ice Golem",
+   "form": "hero",
+   "source": "POV of tv_2026-10-13_r101_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r101_m01",
+   "t_video": 220.9,
+   "label": "Fireball",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r101_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r101_m01",
+   "t_video": 229.0,
+   "label": "Battle Ram",
+   "form": "evo",
+   "source": "POV of tv_2026-10-13_r101_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r101_m01",
+   "t_video": 231.5,
+   "label": "Heal Spirit",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r101_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r101_m01",
+   "t_video": 232.5,
+   "label": "Royal Ghost",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r101_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r101_m01",
+   "t_video": 244.6,
+   "label": "Three Musketeers",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r101_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-13_r101_m01",
+   "t_video": 246.7,
+   "label": "Ice Golem",
+   "form": "hero",
+   "source": "POV of tv_2026-10-13_r101_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-13_r101_m01",
+   "t_video": 250.6,
+   "label": "Battle Ram",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r101_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r101_m01",
+   "t_video": 256.4,
+   "label": "Heal Spirit",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r101_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r101_m01",
+   "t_video": 259.0,
+   "label": "Royal Ghost",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r101_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r101_m01",
+   "t_video": 262.8,
+   "label": "Three Musketeers",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r101_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r101_m01",
+   "t_video": 265.4,
+   "label": "Ice Golem",
+   "form": "hero",
+   "source": "POV of tv_2026-10-13_r101_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-13_r101_m01",
+   "t_video": 268.8,
+   "label": "Battle Ram",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r101_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-13_r101_m01",
+   "t_video": 271.5,
+   "label": "Heal Spirit",
+   "form": null,
+   "source": "next-card advance in tv_2026-10-13_r101_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-13_r101_m01",
+   "t_video": 273.6,
+   "label": "Royal Ghost",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r101_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r101_m01",
+   "t_video": 280.7,
+   "label": "Three Musketeers",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r101_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-13_r101_m01",
+   "t_video": 284.0,
+   "label": "Ice Golem",
+   "form": "hero",
+   "source": "POV of tv_2026-10-13_r101_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r101_m01",
+   "t_video": 287.3,
+   "label": "Battle Ram",
+   "form": "evo",
+   "source": "POV of tv_2026-10-13_r101_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r101_m01",
+   "t_video": 294.5,
+   "label": "Hunter",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r101_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r101_m01",
+   "t_video": 296.9,
+   "label": "Royal Ghost",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r101_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r101_m01",
+   "t_video": 299.8,
+   "label": "Fireball",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r101_top_m01",
+   "source_confidence": "high"
+  }
+ ],
+ "paired_with": "tv_2026-10-13_r101_top_m01",
+ "offset_s": 0.0,
+ "auto": true,
+ "source": "replay"
+}

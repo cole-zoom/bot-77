@@ -33,9 +33,11 @@ def draw(img_path: Path, lbl_path: Path, classes: list[str]) -> bytes:
     return cv2.imencode(".jpg", im, [cv2.IMWRITE_JPEG_QUALITY, 85])[1].tobytes()
 
 
-def write_spotcheck(root: Path, out: Path, n: int = 100, seed: int = 0) -> int:
+def write_spotcheck(root: Path, out: Path, n: int = 100, seed: int = 0, manifests: list[Path] | None = None,
+                    title: str = "Auto-label spot check") -> int:
     classes = json.loads(Path("config/classes_v2.json").read_text())
-    manifest = [x for f in sorted(root.glob("manifest_*.json")) for x in json.loads(f.read_text())]
+    files = manifests if manifests is not None else sorted(root.glob("manifest_*.json"))
+    manifest = [x for f in files for x in json.loads(Path(f).read_text())]
     by = defaultdict(list)
     for x in manifest:
         by[x["entity"]].append(x)
@@ -51,7 +53,7 @@ def write_spotcheck(root: Path, out: Path, n: int = 100, seed: int = 0) -> int:
                  draw(root / "images" / f"{x['name']}.jpg", root / "labels" / f"{x['name']}.txt", classes)).decode()}
             for x in pick]
     out.parent.mkdir(parents=True, exist_ok=True)
-    out.write_text(PAGE.replace("__DATA__", json.dumps(data).replace("</", "<\\/")))
+    out.write_text(PAGE.replace("__DATA__", json.dumps(data).replace("</", "<\\/")).replace("Auto-label spot check", title))
     return len(data)
 
 

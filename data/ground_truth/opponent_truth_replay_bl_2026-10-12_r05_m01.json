@@ -1,0 +1,117 @@
+{
+ "video_id": "bl_2026-10-12_r05",
+ "side": "opponent",
+ "matches": [
+  "bl_2026-10-12_r05_m01"
+ ],
+ "items": [
+  {
+   "match_id": "bl_2026-10-12_r05_m01",
+   "t_video": 16.3,
+   "label": "Tornado",
+   "form": "normal",
+   "source": "POV of bl_2026-10-12_r05_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "bl_2026-10-12_r05_m01",
+   "t_video": 17.2,
+   "label": "Skeleton Army",
+   "form": "normal",
+   "source": "POV of bl_2026-10-12_r05_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "bl_2026-10-12_r05_m01",
+   "t_video": 25.2,
+   "label": "Baby Dragon",
+   "form": "normal",
+   "source": "POV of bl_2026-10-12_r05_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "bl_2026-10-12_r05_m01",
+   "t_video": 31.4,
+   "label": "Valkyrie",
+   "form": "normal",
+   "source": "POV of bl_2026-10-12_r05_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "bl_2026-10-12_r05_m01",
+   "t_video": 54.0,
+   "label": "Wizard",
+   "form": "normal",
+   "source": "POV of bl_2026-10-12_r05_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "bl_2026-10-12_r05_m01",
+   "t_video": 56.0,
+   "label": "Tornado",
+   "form": "normal",
+   "source": "POV of bl_2026-10-12_r05_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "bl_2026-10-12_r05_m01",
+   "t_video": 62.8,
+   "label": "Skeleton Army",
+   "form": "normal",
+   "source": "POV of bl_2026-10-12_r05_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "bl_2026-10-12_r05_m01",
+   "t_video": 81.2,
+   "label": "Ice Wizard",
+   "form": "normal",
+   "source": "POV of bl_2026-10-12_r05_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "bl_2026-10-12_r05_m01",
+   "t_video": 90.6,
+   "label": "Baby Dragon",
+   "form": "normal",
+   "source": "POV of bl_2026-10-12_r05_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "bl_2026-10-12_r05_m01",
+   "t_video": 93.6,
+   "label": "Giant Snowball",
+   "form": "normal",
+   "source": "POV of bl_2026-10-12_r05_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "bl_2026-10-12_r05_m01",
+   "t_video": 100.9,
+   "label": "Tornado",
+   "form": "normal",
+   "source": "POV of bl_2026-10-12_r05_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "bl_2026-10-12_r05_m01",
+   "t_video": 108.1,
+   "label": "Skeleton Army",
+   "form": "normal",
+   "source": "POV of bl_2026-10-12_r05_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "bl_2026-10-12_r05_m01",
+   "t_video": 110.6,
+   "label": "Ice Wizard",
+   "form": "normal",
+   "source": "POV of bl_2026-10-12_r05_top_m01",
+   "source_confidence": "high"
+  }
+ ],
+ "paired_with": "bl_2026-10-12_r05_top_m01",
+ "offset_s": 0.0,
+ "auto": true,
+ "source": "replay"
+}

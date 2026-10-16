@@ -5,6 +5,8 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 
+from pathlib import Path
+
 import cv2
 import numpy as np
 
@@ -64,6 +66,10 @@ class SlotRead:
     selected: bool | None = None
 
 
+ART_OVERRIDES = Path("data/cards/art_overrides")
+EVO_ART_SCALES_EXTRA = (0.84, 0.88, 0.92)  # besides CANONICAL['evo_art_scale'] (0.80)
+
+
 def _decode_art(png: bytes) -> np.ndarray:
     im = cv2.imdecode(np.frombuffer(png, np.uint8), cv2.IMREAD_UNCHANGED)
     if im.shape[2] == 4:
@@ -78,9 +84,13 @@ def _art_patch(im: np.ndarray) -> np.ndarray:
     return cv2.cvtColor(im[int(y0 * h):int(y1 * h), int(x0 * w):int(x1 * w)], cv2.COLOR_BGR2GRAY)
 
 
-def load_templates(cards: list[dict], ui_scale: float = 1.0) -> list[Template]:
-    """`cards` are rows of the LanceDB `cards` table (need id, name, art_normal/evo/hero)."""
-    c, sigma = CANONICAL, LCN_SIGMA * ui_scale
+def load_templates(cards: list[dict], ui_scale: float = 1.0, next_scales: tuple[float, ...] | None = None) -> list[Template]:
+    """`cards` are rows of the LanceDB `cards` table (need id, name, art_normal/evo/hero). `next_scales` overrides
+    CANONICAL['next_art_scales'] for a capture whose Next card is drawn at a different size relative to the hand
+    (the replay viewer: 0.35-0.39, decisions.md 2026-10-12)."""
+    c, sigma = dict(CANONICAL), LCN_SIGMA * ui_scale
+    if next_scales:
+        c["next_art_scales"] = tuple(next_scales)
     out = []
     for card in cards:
         for form in ("normal", "evo", "hero"):
@@ -88,11 +98,26 @@ def load_templates(cards: list[dict], ui_scale: float = 1.0) -> list[Template]:
             if not png:
                 continue
             patch = _art_patch(_decode_art(png))
-            grow = c["evo_art_scale"] / c["slot_art_scale"] if form != "normal" else 1.0
-            resize = lambda s: normalise(
-                cv2.resize(patch, None, fx=s * grow * ui_scale, fy=s * grow * ui_scale, interpolation=cv2.INTER_AREA), sigma)
-            out.append(Template(card["id"], card["name"], form,
-                                resize(c["slot_art_scale"]), tuple(resize(s) for s in c["next_art_scales"])))
+            # evo/hero cards are drawn larger than normal ones, and larger than the original calibration in newer
+            # captures (Cole's 2026-10-06 recording: best match at 0.88, not 0.80, so every evo/hero card read as
+            # nothing and its plays never reached the event log). Try several sizes; the best score per card wins.
+            for evo_scale in ((c["evo_art_scale"], *EVO_ART_SCALES_EXTRA) if form != "normal" else (None,)):
+                grow = evo_scale / c["slot_art_scale"] if evo_scale else 1.0
+                resize = lambda s: normalise(
+                    cv2.resize(patch, None, fx=s * grow * ui_scale, fy=s * grow * ui_scale, interpolation=cv2.INTER_AREA), sigma)
+                out.append(Template(card["id"], card["name"], form,
+                                    resize(c["slot_art_scale"]), tuple(resize(s) for s in c["next_art_scales"])))
+    # In-game art overrides: art patches cut from real frames, for cards whose API icon no longer matches what the
+    # hand shows (evo Skeleton Army shows the Skeleton General since an update; its API evo icon is the old skulls).
+    # Saved at slot scale for an evo/hero card drawn at OVERRIDE_DRAWN_SCALE (see scripts in decisions.md, 2026-10-07).
+    names = {card["name"]: card["id"] for card in cards}
+    for f in sorted(ART_OVERRIDES.glob("*__*.png")):
+        name, form = f.stem.split("__")
+        if name not in names:
+            continue
+        patch = cv2.imread(str(f), cv2.IMREAD_GRAYSCALE)
+        rs = lambda k: normalise(cv2.resize(patch, None, fx=k * ui_scale, fy=k * ui_scale, interpolation=cv2.INTER_AREA), sigma)
+        out.append(Template(names[name], name, form, rs(1.0), tuple(rs(n / c["slot_art_scale"]) for n in c["next_art_scales"])))
     return out
 
 
@@ -104,7 +129,7 @@ class HandReader:
 
     @classmethod
     def from_cards(cls, layout: Layout, cards: list[dict]) -> HandReader:
-        return cls(layout, load_templates(cards, layout.hand.get("ui_scale", 1.0)))
+        return cls(layout, load_templates(cards, layout.hand.get("ui_scale", 1.0), layout.hand.get("next_art_scales")))
 
     def restrict(self, card_ids: set[int]) -> HandReader:
         """A reader that only considers the given cards (e.g. the inferred deck)."""

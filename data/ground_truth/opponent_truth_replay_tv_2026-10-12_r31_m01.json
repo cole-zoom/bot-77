@@ -1,0 +1,357 @@
+{
+ "video_id": "tv_2026-10-12_r31",
+ "side": "opponent",
+ "matches": [
+  "tv_2026-10-12_r31_m01"
+ ],
+ "items": [
+  {
+   "match_id": "tv_2026-10-12_r31_m01",
+   "t_video": 13.9,
+   "label": "Berserker",
+   "form": "hero",
+   "source": "POV of tv_2026-10-12_r31_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r31_m01",
+   "t_video": 19.2,
+   "label": "Valkyrie",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r31_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r31_m01",
+   "t_video": 28.8,
+   "label": "Skeleton Dragons",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r31_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r31_m01",
+   "t_video": 33.2,
+   "label": "Tombstone",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r31_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r31_m01",
+   "t_video": 41.5,
+   "label": "Spirit Empress",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r31_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r31_m01",
+   "t_video": 50.2,
+   "label": "Berserker",
+   "form": "hero",
+   "source": "POV of tv_2026-10-12_r31_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r31_m01",
+   "t_video": 54.8,
+   "label": "Zap",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r31_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r31_m01",
+   "t_video": 64.5,
+   "label": "Valkyrie",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r31_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r31_m01",
+   "t_video": 76.3,
+   "label": "Fireball",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r31_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-12_r31_m01",
+   "t_video": 108.5,
+   "label": "Spirit Empress",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r31_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r31_m01",
+   "t_video": 121.2,
+   "label": "Tombstone",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r31_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r31_m01",
+   "t_video": 125.9,
+   "label": "Berserker",
+   "form": "hero",
+   "source": "POV of tv_2026-10-12_r31_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r31_m01",
+   "t_video": 136.6,
+   "label": "Lava Hound",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r31_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r31_m01",
+   "t_video": 141.5,
+   "label": "Valkyrie",
+   "form": "evo",
+   "source": "POV of tv_2026-10-12_r31_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-12_r31_m01",
+   "t_video": 145.1,
+   "label": "Skeleton Dragons",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r31_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r31_m01",
+   "t_video": 154.3,
+   "label": "Spirit Empress",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r31_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r31_m01",
+   "t_video": 159.9,
+   "label": "Berserker",
+   "form": "hero",
+   "source": "POV of tv_2026-10-12_r31_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r31_m01",
+   "t_video": 165.6,
+   "label": "Tombstone",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r31_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r31_m01",
+   "t_video": 169.9,
+   "label": "Zap",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r31_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r31_m01",
+   "t_video": 170.5,
+   "label": "Fireball",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r31_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-12_r31_m01",
+   "t_video": 181.4,
+   "label": "Lava Hound",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r31_top_m01",
+   "source_confidence": "low"
+  },
+  {
+   "match_id": "tv_2026-10-12_r31_m01",
+   "t_video": 188.9,
+   "label": "Valkyrie",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r31_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r31_m01",
+   "t_video": 196.4,
+   "label": "Spirit Empress",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r31_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r31_m01",
+   "t_video": 200.1,
+   "label": "Tombstone",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r31_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r31_m01",
+   "t_video": 202.9,
+   "label": "Skeleton Dragons",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r31_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r31_m01",
+   "t_video": 208.6,
+   "label": "Berserker",
+   "form": "hero",
+   "source": "POV of tv_2026-10-12_r31_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r31_m01",
+   "t_video": 215.0,
+   "label": "Valkyrie",
+   "form": null,
+   "source": "next-card advance in tv_2026-10-12_r31_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-12_r31_m01",
+   "t_video": 219.6,
+   "label": "Fireball",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r31_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r31_m01",
+   "t_video": 222.2,
+   "label": "Zap",
+   "form": "evo",
+   "source": "POV of tv_2026-10-12_r31_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r31_m01",
+   "t_video": 226.6,
+   "label": "Valkyrie",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r31_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-12_r31_m01",
+   "t_video": 237.4,
+   "label": "Lava Hound",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r31_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-12_r31_m01",
+   "t_video": 240.0,
+   "label": "Tombstone",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r31_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r31_m01",
+   "t_video": 246.9,
+   "label": "Valkyrie",
+   "form": "evo",
+   "source": "POV of tv_2026-10-12_r31_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r31_m01",
+   "t_video": 251.2,
+   "label": "Skeleton Dragons",
+   "form": null,
+   "source": "next-card advance in tv_2026-10-12_r31_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-12_r31_m01",
+   "t_video": 254.0,
+   "label": "Berserker",
+   "form": "hero",
+   "source": "POV of tv_2026-10-12_r31_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r31_m01",
+   "t_video": 256.0,
+   "label": "Zap",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r31_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r31_m01",
+   "t_video": 261.0,
+   "label": "Skeleton Dragons",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r31_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-12_r31_m01",
+   "t_video": 266.0,
+   "label": "Lava Hound",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r31_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-12_r31_m01",
+   "t_video": 268.9,
+   "label": "Tombstone",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r31_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r31_m01",
+   "t_video": 272.2,
+   "label": "Skeleton Dragons",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r31_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r31_m01",
+   "t_video": 273.5,
+   "label": "Berserker",
+   "form": "hero",
+   "source": "POV of tv_2026-10-12_r31_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-12_r31_m01",
+   "t_video": 277.7,
+   "label": "Valkyrie",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r31_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r31_m01",
+   "t_video": 282.1,
+   "label": "Fireball",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r31_top_m01",
+   "source_confidence": "high"
+  }
+ ],
+ "paired_with": "tv_2026-10-12_r31_top_m01",
+ "offset_s": 0.0,
+ "auto": true,
+ "source": "replay"
+}

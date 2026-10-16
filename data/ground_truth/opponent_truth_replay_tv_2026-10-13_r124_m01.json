@@ -1,0 +1,269 @@
+{
+ "video_id": "tv_2026-10-13_r124",
+ "side": "opponent",
+ "matches": [
+  "tv_2026-10-13_r124_m01"
+ ],
+ "items": [
+  {
+   "match_id": "tv_2026-10-13_r124_m01",
+   "t_video": 13.7,
+   "label": "Electro Spirit",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r124_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r124_m01",
+   "t_video": 18.8,
+   "label": "Firecracker",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r124_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r124_m01",
+   "t_video": 21.2,
+   "label": "Spear Goblins",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r124_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r124_m01",
+   "t_video": 24.7,
+   "label": "Tesla",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r124_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r124_m01",
+   "t_video": 29.8,
+   "label": "Fireball",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r124_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r124_m01",
+   "t_video": 36.9,
+   "label": "Giant Snowball",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r124_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-13_r124_m01",
+   "t_video": 55.9,
+   "label": "Mini P.E.K.K.A",
+   "form": "hero",
+   "source": "POV of tv_2026-10-13_r124_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r124_m01",
+   "t_video": 56.5,
+   "label": "Firecracker",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r124_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r124_m01",
+   "t_video": 74.5,
+   "label": "Hog Rider",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r124_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r124_m01",
+   "t_video": 83.8,
+   "label": "Electro Spirit",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r124_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r124_m01",
+   "t_video": 84.8,
+   "label": "Spear Goblins",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r124_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r124_m01",
+   "t_video": 86.5,
+   "label": "Giant Snowball",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r124_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r124_m01",
+   "t_video": 90.0,
+   "label": "Mini P.E.K.K.A",
+   "form": "hero",
+   "source": "POV of tv_2026-10-13_r124_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-13_r124_m01",
+   "t_video": 110.4,
+   "label": "Firecracker",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r124_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r124_m01",
+   "t_video": 117.5,
+   "label": "Hog Rider",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r124_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r124_m01",
+   "t_video": 119.2,
+   "label": "Spear Goblins",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r124_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r124_m01",
+   "t_video": 133.4,
+   "label": "Electro Spirit",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r124_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r124_m01",
+   "t_video": 135.2,
+   "label": "Giant Snowball",
+   "form": "evo",
+   "source": "POV of tv_2026-10-13_r124_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r124_m01",
+   "t_video": 137.8,
+   "label": "Firecracker",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r124_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r124_m01",
+   "t_video": 140.9,
+   "label": "Tesla",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r124_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r124_m01",
+   "t_video": 142.5,
+   "label": "Mini P.E.K.K.A",
+   "form": "hero",
+   "source": "POV of tv_2026-10-13_r124_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r124_m01",
+   "t_video": 145.0,
+   "label": "Electro Spirit",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r124_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r124_m01",
+   "t_video": 146.3,
+   "label": "Spear Goblins",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r124_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-13_r124_m01",
+   "t_video": 148.2,
+   "label": "Giant Snowball",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r124_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r124_m01",
+   "t_video": 156.2,
+   "label": "Hog Rider",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r124_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r124_m01",
+   "t_video": 157.2,
+   "label": "Firecracker",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r124_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r124_m01",
+   "t_video": 159.2,
+   "label": "Electro Spirit",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r124_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r124_m01",
+   "t_video": 164.3,
+   "label": "Mini P.E.K.K.A",
+   "form": "hero",
+   "source": "POV of tv_2026-10-13_r124_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r124_m01",
+   "t_video": 167.2,
+   "label": "Spear Goblins",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r124_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r124_m01",
+   "t_video": 169.8,
+   "label": "Giant Snowball",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r124_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-13_r124_m01",
+   "t_video": 175.4,
+   "label": "Hog Rider",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r124_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r124_m01",
+   "t_video": 177.3,
+   "label": "Electro Spirit",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r124_top_m01",
+   "source_confidence": "high"
+  }
+ ],
+ "paired_with": "tv_2026-10-13_r124_top_m01",
+ "offset_s": 0.0,
+ "auto": true,
+ "source": "replay"
+}

@@ -7,6 +7,22 @@
  "items": [
   {
    "match_id": "friend_2026-09-29_c_m03",
+   "t_video": 331.4,
+   "label": "Spirit Empress",
+   "form": null,
+   "source": "next-card advance in cole_2026-09-29_c_m02",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "friend_2026-09-29_c_m03",
+   "t_video": 381.6,
+   "label": "Mirror",
+   "form": null,
+   "source": "next-card advance in cole_2026-09-29_c_m02",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "friend_2026-09-29_c_m03",
    "t_video": 426.8,
    "label": "Ronin",
    "form": "normal",
@@ -27,6 +43,14 @@
    "label": "Dark Prince",
    "form": "hero",
    "source": "POV of cole_2026-09-29_c_m02",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "friend_2026-09-29_c_m03",
+   "t_video": 447.2,
+   "label": "Spirit Empress",
+   "form": null,
+   "source": "next-card advance in cole_2026-09-29_c_m02",
    "source_confidence": "medium"
   },
   {

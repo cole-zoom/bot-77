@@ -23,6 +23,14 @@
   },
   {
    "match_id": "cole_2026-09-29_c_m08",
+   "t_video": 1666.5,
+   "label": "Mirror",
+   "form": null,
+   "source": "next-card advance in friend_2026-09-29_c_m13",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "cole_2026-09-29_c_m08",
    "t_video": 1679.4,
    "label": "Tombstone",
    "form": "hero",
@@ -52,6 +60,14 @@
    "form": "normal",
    "source": "POV of friend_2026-09-29_c_m13",
    "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-09-29_c_m08",
+   "t_video": 1700.3,
+   "label": "Goblin Drill",
+   "form": null,
+   "source": "next-card advance in friend_2026-09-29_c_m13",
+   "source_confidence": "medium"
   },
   {
    "match_id": "cole_2026-09-29_c_m08",
@@ -131,6 +147,14 @@
    "label": "Mirror",
    "form": "normal",
    "source": "POV of friend_2026-09-29_c_m13",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "cole_2026-09-29_c_m08",
+   "t_video": 1794.2,
+   "label": "Mirror",
+   "form": null,
+   "source": "next-card advance in friend_2026-09-29_c_m13",
    "source_confidence": "medium"
   },
   {

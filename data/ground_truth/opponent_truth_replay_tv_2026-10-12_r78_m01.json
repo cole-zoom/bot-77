@@ -1,0 +1,301 @@
+{
+ "video_id": "tv_2026-10-12_r78",
+ "side": "opponent",
+ "matches": [
+  "tv_2026-10-12_r78_m01"
+ ],
+ "items": [
+  {
+   "match_id": "tv_2026-10-12_r78_m01",
+   "t_video": 15.2,
+   "label": "Baby Dragon",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r78_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r78_m01",
+   "t_video": 17.3,
+   "label": "Tornado",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r78_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r78_m01",
+   "t_video": 35.5,
+   "label": "Barbarian Barrel",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r78_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r78_m01",
+   "t_video": 42.7,
+   "label": "Bowler",
+   "form": "hero",
+   "source": "POV of tv_2026-10-12_r78_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r78_m01",
+   "t_video": 58.6,
+   "label": "Goblin Cage",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r78_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r78_m01",
+   "t_video": 60.6,
+   "label": "Archers",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r78_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r78_m01",
+   "t_video": 72.1,
+   "label": "Tornado",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r78_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r78_m01",
+   "t_video": 86.3,
+   "label": "Baby Dragon",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r78_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r78_m01",
+   "t_video": 97.6,
+   "label": "Bowler",
+   "form": "hero",
+   "source": "POV of tv_2026-10-12_r78_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r78_m01",
+   "t_video": 108.6,
+   "label": "Goblin Cage",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r78_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r78_m01",
+   "t_video": 110.6,
+   "label": "Barbarian Barrel",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r78_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r78_m01",
+   "t_video": 113.6,
+   "label": "Tornado",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r78_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r78_m01",
+   "t_video": 118.6,
+   "label": "__ability",
+   "form": null,
+   "source": "POV of tv_2026-10-12_r78_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-12_r78_m01",
+   "t_video": 130.8,
+   "label": "Archers",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r78_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r78_m01",
+   "t_video": 137.0,
+   "label": "Bowler",
+   "form": "hero",
+   "source": "POV of tv_2026-10-12_r78_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r78_m01",
+   "t_video": 144.5,
+   "label": "Electro Giant",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r78_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-12_r78_m01",
+   "t_video": 151.3,
+   "label": "Baby Dragon",
+   "form": "evo",
+   "source": "POV of tv_2026-10-12_r78_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r78_m01",
+   "t_video": 152.3,
+   "label": "Barbarian Barrel",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r78_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r78_m01",
+   "t_video": 160.5,
+   "label": "Archers",
+   "form": "evo",
+   "source": "POV of tv_2026-10-12_r78_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r78_m01",
+   "t_video": 163.0,
+   "label": "Tornado",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r78_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r78_m01",
+   "t_video": 165.7,
+   "label": "__ability",
+   "form": null,
+   "source": "POV of tv_2026-10-12_r78_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-12_r78_m01",
+   "t_video": 174.3,
+   "label": "Bowler",
+   "form": "hero",
+   "source": "POV of tv_2026-10-12_r78_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-12_r78_m01",
+   "t_video": 178.2,
+   "label": "Baby Dragon",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r78_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r78_m01",
+   "t_video": 185.7,
+   "label": "Goblin Cage",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r78_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r78_m01",
+   "t_video": 189.4,
+   "label": "Barbarian Barrel",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r78_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r78_m01",
+   "t_video": 190.3,
+   "label": "Archers",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r78_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r78_m01",
+   "t_video": 194.7,
+   "label": "Tornado",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r78_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r78_m01",
+   "t_video": 200.2,
+   "label": "Baby Dragon",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r78_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r78_m01",
+   "t_video": 203.4,
+   "label": "Bowler",
+   "form": "hero",
+   "source": "POV of tv_2026-10-12_r78_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r78_m01",
+   "t_video": 210.2,
+   "label": "Goblin Cage",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r78_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r78_m01",
+   "t_video": 217.3,
+   "label": "__ability",
+   "form": null,
+   "source": "POV of tv_2026-10-12_r78_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-12_r78_m01",
+   "t_video": 223.7,
+   "label": "Electro Giant",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r78_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r78_m01",
+   "t_video": 225.0,
+   "label": "Barbarian Barrel",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r78_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r78_m01",
+   "t_video": 230.1,
+   "label": "Baby Dragon",
+   "form": "evo",
+   "source": "POV of tv_2026-10-12_r78_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r78_m01",
+   "t_video": 234.7,
+   "label": "Tornado",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r78_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r78_m01",
+   "t_video": 238.5,
+   "label": "Archers",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r78_top_m01",
+   "source_confidence": "low"
+  }
+ ],
+ "paired_with": "tv_2026-10-12_r78_top_m01",
+ "offset_s": 0.0,
+ "auto": true,
+ "source": "replay"
+}

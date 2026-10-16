@@ -1,0 +1,157 @@
+{
+ "video_id": "tv_2026-10-13_r182",
+ "side": "opponent",
+ "matches": [
+  "tv_2026-10-13_r182_m01"
+ ],
+ "items": [
+  {
+   "match_id": "tv_2026-10-13_r182_m01",
+   "t_video": 14.0,
+   "label": "Mega Knight",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r182_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-13_r182_m01",
+   "t_video": 25.2,
+   "label": "Rune Giant",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r182_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r182_m01",
+   "t_video": 29.6,
+   "label": "Baby Dragon",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r182_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r182_m01",
+   "t_video": 40.7,
+   "label": "Skeleton Dragons",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r182_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-13_r182_m01",
+   "t_video": 70.3,
+   "label": "Firecracker",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r182_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-13_r182_m01",
+   "t_video": 81.6,
+   "label": "Valkyrie",
+   "form": "hero",
+   "source": "POV of tv_2026-10-13_r182_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r182_m01",
+   "t_video": 88.6,
+   "label": "Goblin Gang",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r182_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r182_m01",
+   "t_video": 100.7,
+   "label": "Skeleton Dragons",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r182_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-13_r182_m01",
+   "t_video": 114.2,
+   "label": "Royal Hogs",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r182_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r182_m01",
+   "t_video": 131.7,
+   "label": "Firecracker",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r182_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r182_m01",
+   "t_video": 134.1,
+   "label": "Mega Knight",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r182_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r182_m01",
+   "t_video": 137.2,
+   "label": "Goblin Gang",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r182_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r182_m01",
+   "t_video": 142.8,
+   "label": "Skeleton Dragons",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r182_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r182_m01",
+   "t_video": 150.1,
+   "label": "Baby Dragon",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r182_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-13_r182_m01",
+   "t_video": 157.1,
+   "label": "Rune Giant",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r182_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-13_r182_m01",
+   "t_video": 162.1,
+   "label": "Firecracker",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r182_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r182_m01",
+   "t_video": 166.8,
+   "label": "Valkyrie",
+   "form": "hero",
+   "source": "POV of tv_2026-10-13_r182_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r182_m01",
+   "t_video": 169.6,
+   "label": "Skeleton Dragons",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r182_top_m01",
+   "source_confidence": "high"
+  }
+ ],
+ "paired_with": "tv_2026-10-13_r182_top_m01",
+ "offset_s": 0.0,
+ "auto": true,
+ "source": "replay"
+}

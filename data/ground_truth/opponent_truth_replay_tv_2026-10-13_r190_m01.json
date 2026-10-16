@@ -1,0 +1,229 @@
+{
+ "video_id": "tv_2026-10-13_r190",
+ "side": "opponent",
+ "matches": [
+  "tv_2026-10-13_r190_m01"
+ ],
+ "items": [
+  {
+   "match_id": "tv_2026-10-13_r190_m01",
+   "t_video": 13.9,
+   "label": "Zap",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r190_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r190_m01",
+   "t_video": 19.6,
+   "label": "Ice Golem",
+   "form": "hero",
+   "source": "POV of tv_2026-10-13_r190_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r190_m01",
+   "t_video": 23.7,
+   "label": "Ice Spirit",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r190_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r190_m01",
+   "t_video": 27.7,
+   "label": "Mega Minion",
+   "form": "hero",
+   "source": "POV of tv_2026-10-13_r190_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r190_m01",
+   "t_video": 41.0,
+   "label": "Elite Barbarians",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r190_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r190_m01",
+   "t_video": 44.6,
+   "label": "Dart Goblin",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r190_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r190_m01",
+   "t_video": 51.0,
+   "label": "Ice Golem",
+   "form": "hero",
+   "source": "POV of tv_2026-10-13_r190_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r190_m01",
+   "t_video": 61.0,
+   "label": "Ice Spirit",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r190_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-13_r190_m01",
+   "t_video": 61.0,
+   "label": "Hog Rider",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r190_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-13_r190_m01",
+   "t_video": 72.7,
+   "label": "Fireball",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r190_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r190_m01",
+   "t_video": 98.3,
+   "label": "Elite Barbarians",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r190_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r190_m01",
+   "t_video": 104.8,
+   "label": "Mega Minion",
+   "form": "hero",
+   "source": "POV of tv_2026-10-13_r190_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r190_m01",
+   "t_video": 107.2,
+   "label": "Ice Golem",
+   "form": "hero",
+   "source": "POV of tv_2026-10-13_r190_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r190_m01",
+   "t_video": 113.1,
+   "label": "Dart Goblin",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r190_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r190_m01",
+   "t_video": 116.1,
+   "label": "Ice Spirit",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r190_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r190_m01",
+   "t_video": 131.7,
+   "label": "Zap",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r190_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r190_m01",
+   "t_video": 134.1,
+   "label": "Mega Minion",
+   "form": "hero",
+   "source": "POV of tv_2026-10-13_r190_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r190_m01",
+   "t_video": 135.5,
+   "label": "Elite Barbarians",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r190_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r190_m01",
+   "t_video": 142.2,
+   "label": "Hog Rider",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r190_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-13_r190_m01",
+   "t_video": 143.2,
+   "label": "Ice Golem",
+   "form": "hero",
+   "source": "POV of tv_2026-10-13_r190_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r190_m01",
+   "t_video": 145.6,
+   "label": "Ice Spirit",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r190_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r190_m01",
+   "t_video": 156.1,
+   "label": "Mega Minion",
+   "form": "hero",
+   "source": "POV of tv_2026-10-13_r190_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r190_m01",
+   "t_video": 158.8,
+   "label": "Zap",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r190_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r190_m01",
+   "t_video": 163.6,
+   "label": "Dart Goblin",
+   "form": "evo",
+   "source": "POV of tv_2026-10-13_r190_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r190_m01",
+   "t_video": 166.3,
+   "label": "Elite Barbarians",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r190_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r190_m01",
+   "t_video": 169.4,
+   "label": "Hog Rider",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r190_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r190_m01",
+   "t_video": 175.1,
+   "label": "Fireball",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r190_top_m01",
+   "source_confidence": "high"
+  }
+ ],
+ "paired_with": "tv_2026-10-13_r190_top_m01",
+ "offset_s": 0.0,
+ "auto": true,
+ "source": "replay"
+}

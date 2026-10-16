@@ -41,7 +41,11 @@ _STD = torch.tensor([0.229, 0.224, 0.225]).view(1, 3, 1, 1)
 class Embedder:
     def __init__(self, device: str | None = None):
         self.device = device or ("mps" if torch.backends.mps.is_available() else "cpu")
-        self.model = torch.hub.load("facebookresearch/dinov2", "dinov2_vits14", verbose=False).eval().to(self.device)
+        # load from the local hub cache when present: the GitHub lookup torch.hub does otherwise failed a batch-6
+        # video with HTTP 504 (2026-10-02)
+        local = Path(torch.hub.get_dir()) / "facebookresearch_dinov2_main"
+        self.model = (torch.hub.load(str(local), "dinov2_vits14", source="local", verbose=False) if local.exists()
+                      else torch.hub.load("facebookresearch/dinov2", "dinov2_vits14", verbose=False)).eval().to(self.device)
 
     @torch.no_grad()
     def __call__(self, images_bgr: list[np.ndarray]) -> np.ndarray:
@@ -81,6 +85,8 @@ def build_crops(video_id: str, db_dir: Path = Path("data/lancedb"), log=print, b
     matches = sorted(db.open_table("matches").search().where(f"video_id = '{video_id}'").to_arrow().to_pylist(),
                      key=lambda m: m["index"])
     emb = Embedder()
+    if "unit_crops" in db.table_names(limit=10_000):  # re-running a video replaces its crops (it used to append:
+        db.open_table("unit_crops").delete(f"video_id = '{video_id}'")  # 14 re-run videos ended up doubled)
     total = 0
     for m in matches:
         dets = db.open_table("unit_detections").search().where(f"match_id = '{m['match_id']}'").limit(10**7).to_arrow().to_pylist()

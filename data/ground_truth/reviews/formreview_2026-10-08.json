@@ -1,0 +1,763 @@
+{
+ "exported_at": "2026-10-08T16:48:25.140Z",
+ "frames": [
+  {
+   "id": "tGONo2rzFHw_m03_0773.50_princess-evolution",
+   "entity": "princess-evolution",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "jG6aNXmyG9U_m05_1090.00_magic-archer-hero",
+   "entity": "magic-archer-hero",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "tGONo2rzFHw_m02_0374.00_princess-evolution",
+   "entity": "princess-evolution",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "tGONo2rzFHw_m02_0373.00_princess-evolution",
+   "entity": "princess-evolution",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "W3QHVQASbPU_m08_0560.25_inferno-dragon-evolution",
+   "entity": "inferno-dragon-evolution",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "uz4VVzGlOjE_m01_0242.50_tesla-evolution",
+   "entity": "tesla-evolution",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "jG6aNXmyG9U_m05_1114.50_magic-archer-hero",
+   "entity": "magic-archer-hero",
+   "source": "POV",
+   "verdict": "off",
+   "others_bad": true
+  },
+  {
+   "id": "oJWATjGWVfw_m03_0730.25_princess-evolution",
+   "entity": "princess-evolution",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "1VGZ9_heGow_m03_0388.75_magic-archer-hero",
+   "entity": "magic-archer-hero",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "UFQFnrtWUE4_m03_0640.00_tesla-evolution",
+   "entity": "tesla-evolution",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "oJWATjGWVfw_m03_0732.25_princess-evolution",
+   "entity": "princess-evolution",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "cole_2026-10-06_m03_0527.00_magic-archer-hero",
+   "entity": "magic-archer-hero",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "UFQFnrtWUE4_m08_1699.25_tesla-evolution",
+   "entity": "tesla-evolution",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "E-foREDXesc_m06_0471.50_hunter-evolution",
+   "entity": "hunter-evolution",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "cole_2026-10-06_m04_0758.25_lumberjack-evolution",
+   "entity": "lumberjack-evolution",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "uz4VVzGlOjE_m02_0476.00_tesla-evolution",
+   "entity": "tesla-evolution",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "1VGZ9_heGow_m05_0728.25_magic-archer-hero",
+   "entity": "magic-archer-hero",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "zgiAi5kyDGI_m05_0591.25_lumberjack-evolution",
+   "entity": "lumberjack-evolution",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "cole_2026-10-06_m03_0568.50_lumberjack-evolution",
+   "entity": "lumberjack-evolution",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "UFQFnrtWUE4_m07_1483.75_tesla-evolution",
+   "entity": "tesla-evolution",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "jG6aNXmyG9U_m03_0537.75_magic-archer-hero",
+   "entity": "magic-archer-hero",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "zgiAi5kyDGI_m07_0656.75_lumberjack-evolution",
+   "entity": "lumberjack-evolution",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "7kxx0Y7Shpc_m05_0682.50_goblin-giant-evolution",
+   "entity": "goblin-giant-evolution",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "E-foREDXesc_m06_0470.50_hunter-evolution",
+   "entity": "hunter-evolution",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "E-foREDXesc_m06_0474.50_hunter-evolution",
+   "entity": "hunter-evolution",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "1VGZ9_heGow_m03_0389.75_magic-archer-hero",
+   "entity": "magic-archer-hero",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "Yufu8gJolkQ_m02_0492.75_tesla-evolution",
+   "entity": "tesla-evolution",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "Yufu8gJolkQ_m02_0555.00_tesla-evolution",
+   "entity": "tesla-evolution",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "UFQFnrtWUE4_m05_1010.50_tesla-evolution",
+   "entity": "tesla-evolution",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "zgiAi5kyDGI_m04_0438.25_lumberjack-evolution",
+   "entity": "lumberjack-evolution",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "zgiAi5kyDGI_m08_0708.75_lumberjack-evolution",
+   "entity": "lumberjack-evolution",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "oJWATjGWVfw_m03_0731.25_princess-evolution",
+   "entity": "princess-evolution",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "Yufu8gJolkQ_m02_0491.00_tesla-evolution",
+   "entity": "tesla-evolution",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "1VGZ9_heGow_m02_0351.25_magic-archer-hero",
+   "entity": "magic-archer-hero",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "7kxx0Y7Shpc_m02_0317.75_zap-evolution",
+   "entity": "zap-evolution",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "1VGZ9_heGow_m05_0732.25_magic-archer-hero",
+   "entity": "magic-archer-hero",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "7kxx0Y7Shpc_m05_0680.25_goblin-giant-evolution",
+   "entity": "goblin-giant-evolution",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "bIpl2LaSgzc_m07_0932.75_inferno-dragon-evolution",
+   "entity": "inferno-dragon-evolution",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "tGONo2rzFHw_m01_0169.75_princess-evolution",
+   "entity": "princess-evolution",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "cole_2026-10-06_m02_0337.75_magic-archer-hero",
+   "entity": "magic-archer-hero",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "7kxx0Y7Shpc_m05_0681.50_goblin-giant-evolution",
+   "entity": "goblin-giant-evolution",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "1VGZ9_heGow_m04_0675.25_magic-archer-hero",
+   "entity": "magic-archer-hero",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "jG6aNXmyG9U_m03_0538.75_magic-archer-hero",
+   "entity": "magic-archer-hero",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "cole_2026-10-06_m03_0557.00_magic-archer-hero",
+   "entity": "magic-archer-hero",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "jG6aNXmyG9U_m04_0668.00_magic-archer-hero",
+   "entity": "magic-archer-hero",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "9G4GU0hEdhQ_m06_1622.00_tesla-evolution",
+   "entity": "tesla-evolution",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "uz4VVzGlOjE_m02_0473.75_tesla-evolution",
+   "entity": "tesla-evolution",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "jG6aNXmyG9U_m04_0736.75_magic-archer-hero",
+   "entity": "magic-archer-hero",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "1VGZ9_heGow_m05_0729.25_magic-archer-hero",
+   "entity": "magic-archer-hero",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "zgiAi5kyDGI_m08_0707.50_lumberjack-evolution",
+   "entity": "lumberjack-evolution",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "tGONo2rzFHw_m02_0372.00_princess-evolution",
+   "entity": "princess-evolution",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "UFQFnrtWUE4_m03_0641.00_tesla-evolution",
+   "entity": "tesla-evolution",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "UFQFnrtWUE4_m03_0718.50_tesla-evolution",
+   "entity": "tesla-evolution",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "9G4GU0hEdhQ_m07_1899.50_tesla-evolution",
+   "entity": "tesla-evolution",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "W3QHVQASbPU_m12_0923.50_inferno-dragon-evolution",
+   "entity": "inferno-dragon-evolution",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "oJWATjGWVfw_m03_0726.25_princess-evolution",
+   "entity": "princess-evolution",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "9G4GU0hEdhQ_m06_1620.00_tesla-evolution",
+   "entity": "tesla-evolution",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "E-foREDXesc_m06_0475.50_hunter-evolution",
+   "entity": "hunter-evolution",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "dIT3p1kmf3M_m01_0132.00_zap-evolution",
+   "entity": "zap-evolution",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "UFQFnrtWUE4_m05_1009.50_tesla-evolution",
+   "entity": "tesla-evolution",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "cole_2026-10-06_m01_0172.25_lumberjack-evolution",
+   "entity": "lumberjack-evolution",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "jG6aNXmyG9U_m02_0445.00_magic-archer-hero",
+   "entity": "magic-archer-hero",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "1VGZ9_heGow_m03_0387.75_magic-archer-hero",
+   "entity": "magic-archer-hero",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "jG6aNXmyG9U_m03_0539.75_magic-archer-hero",
+   "entity": "magic-archer-hero",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "1VGZ9_heGow_m05_0733.25_magic-archer-hero",
+   "entity": "magic-archer-hero",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "jG6aNXmyG9U_m03_0541.75_magic-archer-hero",
+   "entity": "magic-archer-hero",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "oJWATjGWVfw_m02_0414.25_princess-evolution",
+   "entity": "princess-evolution",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "jG6aNXmyG9U_m04_0667.00_magic-archer-hero",
+   "entity": "magic-archer-hero",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "E-foREDXesc_m06_0473.50_hunter-evolution",
+   "entity": "hunter-evolution",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "9G4GU0hEdhQ_m02_0440.25_tesla-evolution",
+   "entity": "tesla-evolution",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "zgiAi5kyDGI_m07_0659.25_lumberjack-evolution",
+   "entity": "lumberjack-evolution",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "UFQFnrtWUE4_m03_0720.50_tesla-evolution",
+   "entity": "tesla-evolution",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "E-foREDXesc_m06_0469.00_hunter-evolution",
+   "entity": "hunter-evolution",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "jG6aNXmyG9U_m04_0669.25_magic-archer-hero",
+   "entity": "magic-archer-hero",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "cole_2026-10-06_m04_0759.25_lumberjack-evolution",
+   "entity": "lumberjack-evolution",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "7kxx0Y7Shpc_m02_0261.50_goblin-giant-evolution",
+   "entity": "goblin-giant-evolution",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "zgiAi5kyDGI_m07_0655.50_lumberjack-evolution",
+   "entity": "lumberjack-evolution",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "cole_2026-10-06_m03_0564.50_lumberjack-evolution",
+   "entity": "lumberjack-evolution",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "9G4GU0hEdhQ_m04_0905.25_tesla-evolution",
+   "entity": "tesla-evolution",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "UFQFnrtWUE4_m03_0638.75_tesla-evolution",
+   "entity": "tesla-evolution",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "zgiAi5kyDGI_m05_0587.25_lumberjack-evolution",
+   "entity": "lumberjack-evolution",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "9G4GU0hEdhQ_m04_0903.75_tesla-evolution",
+   "entity": "tesla-evolution",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "1VGZ9_heGow_m02_0350.00_magic-archer-hero",
+   "entity": "magic-archer-hero",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "1VGZ9_heGow_m03_0390.75_magic-archer-hero",
+   "entity": "magic-archer-hero",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "zgiAi5kyDGI_m05_0590.00_lumberjack-evolution",
+   "entity": "lumberjack-evolution",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "-gRfP38ohaE_m01_0139.25_zap-evolution",
+   "entity": "zap-evolution",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "dIT3p1kmf3M_m01_0132.25_zap-evolution",
+   "entity": "zap-evolution",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "tbJ_G489MkI_m03_0450.50_princess-evolution",
+   "entity": "princess-evolution",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "1VGZ9_heGow_m04_0673.75_magic-archer-hero",
+   "entity": "magic-archer-hero",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "7kxx0Y7Shpc_m05_0683.75_goblin-giant-evolution",
+   "entity": "goblin-giant-evolution",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "zgiAi5kyDGI_m04_0523.75_lumberjack-evolution",
+   "entity": "lumberjack-evolution",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "UFQFnrtWUE4_m03_0637.75_tesla-evolution",
+   "entity": "tesla-evolution",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "1VGZ9_heGow_m04_0672.50_magic-archer-hero",
+   "entity": "magic-archer-hero",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "1VGZ9_heGow_m03_0386.75_magic-archer-hero",
+   "entity": "magic-archer-hero",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "uz4VVzGlOjE_m05_1077.50_tesla-evolution",
+   "entity": "tesla-evolution",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "9G4GU0hEdhQ_m06_1624.00_tesla-evolution",
+   "entity": "tesla-evolution",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "9G4GU0hEdhQ_m06_1619.00_tesla-evolution",
+   "entity": "tesla-evolution",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "cole_2026-10-06_m01_0029.25_magic-archer-hero",
+   "entity": "magic-archer-hero",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "jG6aNXmyG9U_m03_0540.75_magic-archer-hero",
+   "entity": "magic-archer-hero",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "1VGZ9_heGow_m02_0352.50_magic-archer-hero",
+   "entity": "magic-archer-hero",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "uz4VVzGlOjE_m02_0475.00_tesla-evolution",
+   "entity": "tesla-evolution",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "jG6aNXmyG9U_m04_0735.50_magic-archer-hero",
+   "entity": "magic-archer-hero",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "zgiAi5kyDGI_m08_0709.75_lumberjack-evolution",
+   "entity": "lumberjack-evolution",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "cole_2026-10-06_m02_0363.50_magic-archer-hero",
+   "entity": "magic-archer-hero",
+   "source": "POV",
+   "others_bad": true,
+   "verdict": "off"
+  },
+  {
+   "id": "1VGZ9_heGow_m05_0730.25_magic-archer-hero",
+   "entity": "magic-archer-hero",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "UFQFnrtWUE4_m05_1011.50_tesla-evolution",
+   "entity": "tesla-evolution",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "tbJ_G489MkI_m01_0175.75_princess-evolution",
+   "entity": "princess-evolution",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "cole_2026-10-06_m03_0566.75_lumberjack-evolution",
+   "entity": "lumberjack-evolution",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "uz4VVzGlOjE_m05_1078.50_tesla-evolution",
+   "entity": "tesla-evolution",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "oJWATjGWVfw_m03_0729.25_princess-evolution",
+   "entity": "princess-evolution",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "cole_2026-10-06_m02_0377.25_lumberjack-evolution",
+   "entity": "lumberjack-evolution",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "zgiAi5kyDGI_m09_0880.75_lumberjack-evolution",
+   "entity": "lumberjack-evolution",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "1VGZ9_heGow_m03_0508.00_magic-archer-hero",
+   "entity": "magic-archer-hero",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "cole_2026-10-06_m02_0375.75_lumberjack-evolution",
+   "entity": "lumberjack-evolution",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "W3QHVQASbPU_m08_0559.25_inferno-dragon-evolution",
+   "entity": "inferno-dragon-evolution",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "1VGZ9_heGow_m05_0731.25_magic-archer-hero",
+   "entity": "magic-archer-hero",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "oJWATjGWVfw_m03_0727.75_princess-evolution",
+   "entity": "princess-evolution",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "1VGZ9_heGow_m03_0534.25_magic-archer-hero",
+   "entity": "magic-archer-hero",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "jG6aNXmyG9U_m03_0536.75_magic-archer-hero",
+   "entity": "magic-archer-hero",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "oJWATjGWVfw_m02_0413.00_princess-evolution",
+   "entity": "princess-evolution",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "zgiAi5kyDGI_m05_0588.75_lumberjack-evolution",
+   "entity": "lumberjack-evolution",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "9G4GU0hEdhQ_m07_1900.50_tesla-evolution",
+   "entity": "tesla-evolution",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "UFQFnrtWUE4_m03_0719.50_tesla-evolution",
+   "entity": "tesla-evolution",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "tGONo2rzFHw_m05_1364.00_princess-evolution",
+   "entity": "princess-evolution",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "jG6aNXmyG9U_m04_0666.00_magic-archer-hero",
+   "entity": "magic-archer-hero",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "1VGZ9_heGow_m03_0385.75_magic-archer-hero",
+   "entity": "magic-archer-hero",
+   "source": "POV",
+   "verdict": "wrong"
+  }
+ ]
+}

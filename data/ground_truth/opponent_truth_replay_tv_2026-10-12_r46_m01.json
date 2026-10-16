@@ -1,0 +1,341 @@
+{
+ "video_id": "tv_2026-10-12_r46",
+ "side": "opponent",
+ "matches": [
+  "tv_2026-10-12_r46_m01"
+ ],
+ "items": [
+  {
+   "match_id": "tv_2026-10-12_r46_m01",
+   "t_video": 11.9,
+   "label": "Bandit",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r46_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-12_r46_m01",
+   "t_video": 11.9,
+   "label": "Wall Breakers",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r46_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-12_r46_m01",
+   "t_video": 21.4,
+   "label": "Goblin Gang",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r46_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r46_m01",
+   "t_video": 27.9,
+   "label": "Zap",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r46_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r46_m01",
+   "t_video": 41.5,
+   "label": "Archer Queen",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r46_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r46_m01",
+   "t_video": 45.3,
+   "label": "__ability",
+   "form": null,
+   "source": "POV of tv_2026-10-12_r46_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-12_r46_m01",
+   "t_video": 46.8,
+   "label": "Prince",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r46_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r46_m01",
+   "t_video": 56.9,
+   "label": "Bandit",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r46_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r46_m01",
+   "t_video": 65.2,
+   "label": "Arrows",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r46_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r46_m01",
+   "t_video": 72.0,
+   "label": "Goblin Gang",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r46_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r46_m01",
+   "t_video": 86.3,
+   "label": "Archer Queen",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r46_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r46_m01",
+   "t_video": 114.5,
+   "label": "Mega Knight",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r46_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r46_m01",
+   "t_video": 121.3,
+   "label": "Prince",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r46_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r46_m01",
+   "t_video": 131.5,
+   "label": "Bandit",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r46_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r46_m01",
+   "t_video": 132.7,
+   "label": "Wall Breakers",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r46_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r46_m01",
+   "t_video": 143.4,
+   "label": "Goblin Gang",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r46_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r46_m01",
+   "t_video": 145.5,
+   "label": "Mega Knight",
+   "form": "evo",
+   "source": "POV of tv_2026-10-12_r46_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r46_m01",
+   "t_video": 152.8,
+   "label": "Arrows",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r46_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r46_m01",
+   "t_video": 156.2,
+   "label": "Archer Queen",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r46_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-12_r46_m01",
+   "t_video": 158.7,
+   "label": "Wall Breakers",
+   "form": "evo",
+   "source": "POV of tv_2026-10-12_r46_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r46_m01",
+   "t_video": 166.6,
+   "label": "__ability",
+   "form": null,
+   "source": "POV of tv_2026-10-12_r46_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-12_r46_m01",
+   "t_video": 169.7,
+   "label": "Bandit",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r46_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r46_m01",
+   "t_video": 173.8,
+   "label": "Mega Knight",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r46_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r46_m01",
+   "t_video": 179.8,
+   "label": "Arrows",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r46_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r46_m01",
+   "t_video": 180.8,
+   "label": "Zap",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r46_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r46_m01",
+   "t_video": 190.0,
+   "label": "Goblin Gang",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r46_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r46_m01",
+   "t_video": 193.5,
+   "label": "Bandit",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r46_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-12_r46_m01",
+   "t_video": 197.9,
+   "label": "Wall Breakers",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r46_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r46_m01",
+   "t_video": 204.0,
+   "label": "Prince",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r46_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-12_r46_m01",
+   "t_video": 213.1,
+   "label": "Zap",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r46_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r46_m01",
+   "t_video": 216.2,
+   "label": "Goblin Gang",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r46_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r46_m01",
+   "t_video": 218.1,
+   "label": "Bandit",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r46_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r46_m01",
+   "t_video": 222.3,
+   "label": "Arrows",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r46_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r46_m01",
+   "t_video": 224.3,
+   "label": "Wall Breakers",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r46_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r46_m01",
+   "t_video": 226.1,
+   "label": "Archer Queen",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r46_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r46_m01",
+   "t_video": 235.0,
+   "label": "Zap",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r46_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r46_m01",
+   "t_video": 238.5,
+   "label": "Goblin Gang",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r46_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-12_r46_m01",
+   "t_video": 241.3,
+   "label": "Arrows",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r46_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r46_m01",
+   "t_video": 248.6,
+   "label": "Mega Knight",
+   "form": "evo",
+   "source": "POV of tv_2026-10-12_r46_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-12_r46_m01",
+   "t_video": 252.3,
+   "label": "Bandit",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r46_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-12_r46_m01",
+   "t_video": 252.3,
+   "label": "Wall Breakers",
+   "form": "evo",
+   "source": "POV of tv_2026-10-12_r46_top_m01",
+   "source_confidence": "medium"
+  }
+ ],
+ "paired_with": "tv_2026-10-12_r46_top_m01",
+ "offset_s": 0.0,
+ "auto": true,
+ "source": "replay"
+}

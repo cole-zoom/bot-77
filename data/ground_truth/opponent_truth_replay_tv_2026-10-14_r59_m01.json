@@ -1,0 +1,205 @@
+{
+ "video_id": "tv_2026-10-14_r59",
+ "side": "opponent",
+ "matches": [
+  "tv_2026-10-14_r59_m01"
+ ],
+ "items": [
+  {
+   "match_id": "tv_2026-10-14_r59_m01",
+   "t_video": 15.9,
+   "label": "Sparky",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r59_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r59_m01",
+   "t_video": 26.2,
+   "label": "Elixir Collector",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r59_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-14_r59_m01",
+   "t_video": 45.4,
+   "label": "Wizard",
+   "form": "hero",
+   "source": "POV of tv_2026-10-14_r59_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r59_m01",
+   "t_video": 54.2,
+   "label": "Giant",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r59_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r59_m01",
+   "t_video": 57.2,
+   "label": "Skeleton Army",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r59_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-14_r59_m01",
+   "t_video": 61.2,
+   "label": "__ability",
+   "form": null,
+   "source": "POV of tv_2026-10-14_r59_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-14_r59_m01",
+   "t_video": 69.2,
+   "label": "Tornado",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r59_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r59_m01",
+   "t_video": 74.8,
+   "label": "Zap",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r59_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r59_m01",
+   "t_video": 80.7,
+   "label": "Electro Wizard",
+   "form": "hero",
+   "source": "POV of tv_2026-10-14_r59_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-14_r59_m01",
+   "t_video": 96.4,
+   "label": "Elixir Collector",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r59_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r59_m01",
+   "t_video": 113.7,
+   "label": "Giant",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r59_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r59_m01",
+   "t_video": 116.1,
+   "label": "Wizard",
+   "form": "hero",
+   "source": "POV of tv_2026-10-14_r59_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r59_m01",
+   "t_video": 129.2,
+   "label": "Sparky",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r59_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r59_m01",
+   "t_video": 131.2,
+   "label": "Electro Wizard",
+   "form": "hero",
+   "source": "POV of tv_2026-10-14_r59_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r59_m01",
+   "t_video": 136.2,
+   "label": "Tornado",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r59_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-14_r59_m01",
+   "t_video": 140.2,
+   "label": "Giant",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r59_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r59_m01",
+   "t_video": 145.0,
+   "label": "Wizard",
+   "form": "hero",
+   "source": "POV of tv_2026-10-14_r59_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r59_m01",
+   "t_video": 155.7,
+   "label": "Sparky",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r59_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-14_r59_m01",
+   "t_video": 160.9,
+   "label": "Electro Wizard",
+   "form": "hero",
+   "source": "POV of tv_2026-10-14_r59_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r59_m01",
+   "t_video": 171.7,
+   "label": "Zap",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r59_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-14_r59_m01",
+   "t_video": 172.8,
+   "label": "Elixir Collector",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r59_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-14_r59_m01",
+   "t_video": 178.7,
+   "label": "Giant",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r59_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r59_m01",
+   "t_video": 182.7,
+   "label": "Wizard",
+   "form": "hero",
+   "source": "POV of tv_2026-10-14_r59_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-14_r59_m01",
+   "t_video": 186.8,
+   "label": "Tornado",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r59_top_m01",
+   "source_confidence": "high"
+  }
+ ],
+ "paired_with": "tv_2026-10-14_r59_top_m01",
+ "offset_s": 0.0,
+ "auto": true,
+ "source": "replay"
+}

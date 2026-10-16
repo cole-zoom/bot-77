@@ -1,0 +1,245 @@
+{
+ "video_id": "tv_2026-10-12_r95",
+ "side": "opponent",
+ "matches": [
+  "tv_2026-10-12_r95_m01"
+ ],
+ "items": [
+  {
+   "match_id": "tv_2026-10-12_r95_m01",
+   "t_video": 15.3,
+   "label": "Lumberjack",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r95_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-12_r95_m01",
+   "t_video": 27.2,
+   "label": "Ice Wizard",
+   "form": "hero",
+   "source": "POV of tv_2026-10-12_r95_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r95_m01",
+   "t_video": 36.2,
+   "label": "Goblin Gang",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r95_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r95_m01",
+   "t_video": 54.2,
+   "label": "Valkyrie",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r95_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r95_m01",
+   "t_video": 59.7,
+   "label": "The Log",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r95_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r95_m01",
+   "t_video": 75.6,
+   "label": "Arrows",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r95_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-12_r95_m01",
+   "t_video": 81.7,
+   "label": "Ice Wizard",
+   "form": "hero",
+   "source": "POV of tv_2026-10-12_r95_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r95_m01",
+   "t_video": 92.8,
+   "label": "Goblin Gang",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r95_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r95_m01",
+   "t_video": 98.5,
+   "label": "Lumberjack",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r95_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r95_m01",
+   "t_video": 99.4,
+   "label": "Lumberjack",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r95_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-12_r95_m01",
+   "t_video": 111.2,
+   "label": "Arrows",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r95_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-12_r95_m01",
+   "t_video": 124.4,
+   "label": "Tesla",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r95_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r95_m01",
+   "t_video": 138.1,
+   "label": "The Log",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r95_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-12_r95_m01",
+   "t_video": 139.4,
+   "label": "Lumberjack",
+   "form": "evo",
+   "source": "POV of tv_2026-10-12_r95_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-12_r95_m01",
+   "t_video": 151.7,
+   "label": "Arrows",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r95_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r95_m01",
+   "t_video": 156.5,
+   "label": "Valkyrie",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r95_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r95_m01",
+   "t_video": 157.2,
+   "label": "Ice Wizard",
+   "form": "hero",
+   "source": "POV of tv_2026-10-12_r95_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r95_m01",
+   "t_video": 166.9,
+   "label": "Goblin Gang",
+   "form": null,
+   "source": "next-card advance in tv_2026-10-12_r95_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-12_r95_m01",
+   "t_video": 170.1,
+   "label": "Lumberjack",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r95_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r95_m01",
+   "t_video": 170.7,
+   "label": "Goblin Gang",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r95_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-12_r95_m01",
+   "t_video": 175.9,
+   "label": "Arrows",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r95_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-12_r95_m01",
+   "t_video": 184.9,
+   "label": "Tesla",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r95_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r95_m01",
+   "t_video": 188.2,
+   "label": "The Log",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r95_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r95_m01",
+   "t_video": 196.6,
+   "label": "Lumberjack",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r95_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-12_r95_m01",
+   "t_video": 202.9,
+   "label": "Ice Wizard",
+   "form": "hero",
+   "source": "POV of tv_2026-10-12_r95_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r95_m01",
+   "t_video": 206.4,
+   "label": "Arrows",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r95_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r95_m01",
+   "t_video": 218.5,
+   "label": "Tesla",
+   "form": "evo",
+   "source": "POV of tv_2026-10-12_r95_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-12_r95_m01",
+   "t_video": 219.0,
+   "label": "The Log",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r95_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-12_r95_m01",
+   "t_video": 222.6,
+   "label": "Ice Wizard",
+   "form": "hero",
+   "source": "POV of tv_2026-10-12_r95_top_m01",
+   "source_confidence": "high"
+  }
+ ],
+ "paired_with": "tv_2026-10-12_r95_top_m01",
+ "offset_s": 0.0,
+ "auto": true,
+ "source": "replay"
+}

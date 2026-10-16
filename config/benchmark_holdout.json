@@ -1,0 +1,4 @@
+{
+  "_doc": "Matches held out of ALL training (detector, crop classifier, mining seeds). Play-level opponent benchmark: Alina match 1 (Cole's 52-play truth) + Cole/friend 2026-09-29 match 5 (dual-POV pairing gives exact opponent plays, 34 + 25). Chosen so no entity drops below the 40 bar (decisions.md, 2026-10-09).",
+  "matches": ["uz4VVzGlOjE_m01", "cole_2026-09-29_c_m05", "friend_2026-09-29_c_m07"]
+}

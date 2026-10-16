@@ -1,0 +1,341 @@
+{
+ "video_id": "tv_2026-10-14_r28",
+ "side": "opponent",
+ "matches": [
+  "tv_2026-10-14_r28_m01"
+ ],
+ "items": [
+  {
+   "match_id": "tv_2026-10-14_r28_m01",
+   "t_video": 16.2,
+   "label": "Golden Knight",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r28_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r28_m01",
+   "t_video": 19.4,
+   "label": "__ability",
+   "form": null,
+   "source": "POV of tv_2026-10-14_r28_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-14_r28_m01",
+   "t_video": 24.8,
+   "label": "Royal Recruits",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r28_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r28_m01",
+   "t_video": 32.6,
+   "label": "Electro Spirit",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r28_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r28_m01",
+   "t_video": 40.1,
+   "label": "Royal Hogs",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r28_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r28_m01",
+   "t_video": 51.6,
+   "label": "Flying Machine",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r28_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r28_m01",
+   "t_video": 59.5,
+   "label": "Arrows",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r28_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r28_m01",
+   "t_video": 70.8,
+   "label": "Golden Knight",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r28_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r28_m01",
+   "t_video": 92.8,
+   "label": "Goblin Cage",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r28_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r28_m01",
+   "t_video": 103.1,
+   "label": "Electro Spirit",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r28_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r28_m01",
+   "t_video": 104.8,
+   "label": "Flying Machine",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r28_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r28_m01",
+   "t_video": 116.1,
+   "label": "Arrows",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r28_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r28_m01",
+   "t_video": 119.7,
+   "label": "Zappies",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r28_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r28_m01",
+   "t_video": 131.8,
+   "label": "Royal Recruits",
+   "form": "evo",
+   "source": "POV of tv_2026-10-14_r28_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r28_m01",
+   "t_video": 135.6,
+   "label": "Electro Spirit",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r28_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r28_m01",
+   "t_video": 137.7,
+   "label": "Flying Machine",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r28_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r28_m01",
+   "t_video": 142.8,
+   "label": "Arrows",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r28_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r28_m01",
+   "t_video": 147.6,
+   "label": "Golden Knight",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r28_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r28_m01",
+   "t_video": 150.0,
+   "label": "__ability",
+   "form": null,
+   "source": "POV of tv_2026-10-14_r28_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-14_r28_m01",
+   "t_video": 156.6,
+   "label": "Zappies",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r28_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r28_m01",
+   "t_video": 160.3,
+   "label": "Goblin Cage",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r28_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r28_m01",
+   "t_video": 166.3,
+   "label": "Flying Machine",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r28_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r28_m01",
+   "t_video": 171.7,
+   "label": "Electro Spirit",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r28_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r28_m01",
+   "t_video": 176.8,
+   "label": "Golden Knight",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r28_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r28_m01",
+   "t_video": 178.4,
+   "label": "__ability",
+   "form": null,
+   "source": "POV of tv_2026-10-14_r28_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-14_r28_m01",
+   "t_video": 181.6,
+   "label": "Arrows",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r28_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r28_m01",
+   "t_video": 187.6,
+   "label": "Zappies",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r28_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r28_m01",
+   "t_video": 190.3,
+   "label": "Flying Machine",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r28_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r28_m01",
+   "t_video": 196.3,
+   "label": "Electro Spirit",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r28_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r28_m01",
+   "t_video": 198.3,
+   "label": "Golden Knight",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r28_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r28_m01",
+   "t_video": 202.6,
+   "label": "__ability",
+   "form": null,
+   "source": "POV of tv_2026-10-14_r28_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-14_r28_m01",
+   "t_video": 204.1,
+   "label": "Royal Hogs",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r28_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r28_m01",
+   "t_video": 210.1,
+   "label": "Zappies",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r28_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r28_m01",
+   "t_video": 215.3,
+   "label": "Flying Machine",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r28_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r28_m01",
+   "t_video": 219.4,
+   "label": "Arrows",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r28_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r28_m01",
+   "t_video": 229.1,
+   "label": "Goblin Cage",
+   "form": "evo",
+   "source": "POV of tv_2026-10-14_r28_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r28_m01",
+   "t_video": 232.8,
+   "label": "Royal Hogs",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r28_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r28_m01",
+   "t_video": 235.8,
+   "label": "Electro Spirit",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r28_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r28_m01",
+   "t_video": 240.9,
+   "label": "Golden Knight",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r28_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r28_m01",
+   "t_video": 242.6,
+   "label": "__ability",
+   "form": null,
+   "source": "POV of tv_2026-10-14_r28_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-14_r28_m01",
+   "t_video": 244.4,
+   "label": "Arrows",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r28_top_m01",
+   "source_confidence": "high"
+  }
+ ],
+ "paired_with": "tv_2026-10-14_r28_top_m01",
+ "offset_s": 0.0,
+ "auto": true,
+ "source": "replay"
+}

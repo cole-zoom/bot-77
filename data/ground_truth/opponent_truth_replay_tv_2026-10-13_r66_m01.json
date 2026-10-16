@@ -1,0 +1,213 @@
+{
+ "video_id": "tv_2026-10-13_r66",
+ "side": "opponent",
+ "matches": [
+  "tv_2026-10-13_r66_m01"
+ ],
+ "items": [
+  {
+   "match_id": "tv_2026-10-13_r66_m01",
+   "t_video": 12.9,
+   "label": "Royal Ghost",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r66_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r66_m01",
+   "t_video": 23.2,
+   "label": "Magic Archer",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r66_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r66_m01",
+   "t_video": 24.1,
+   "label": "Battle Ram",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r66_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r66_m01",
+   "t_video": 38.1,
+   "label": "Bandit",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r66_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-13_r66_m01",
+   "t_video": 42.9,
+   "label": "Zap",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r66_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r66_m01",
+   "t_video": 58.9,
+   "label": "Royal Ghost",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r66_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r66_m01",
+   "t_video": 68.5,
+   "label": "Magic Archer",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r66_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r66_m01",
+   "t_video": 78.4,
+   "label": "Electro Wizard",
+   "form": "hero",
+   "source": "POV of tv_2026-10-13_r66_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r66_m01",
+   "t_video": 79.5,
+   "label": "Battle Ram",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r66_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r66_m01",
+   "t_video": 89.9,
+   "label": "Zap",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r66_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r66_m01",
+   "t_video": 94.9,
+   "label": "Bandit",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r66_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r66_m01",
+   "t_video": 103.4,
+   "label": "Royal Ghost",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r66_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-13_r66_m01",
+   "t_video": 125.4,
+   "label": "P.E.K.K.A",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r66_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-13_r66_m01",
+   "t_video": 132.7,
+   "label": "Battle Ram",
+   "form": "evo",
+   "source": "POV of tv_2026-10-13_r66_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r66_m01",
+   "t_video": 135.3,
+   "label": "Magic Archer",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r66_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r66_m01",
+   "t_video": 139.0,
+   "label": "Bandit",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r66_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r66_m01",
+   "t_video": 145.6,
+   "label": "Zap",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r66_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r66_m01",
+   "t_video": 151.9,
+   "label": "Void",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r66_top_m01",
+   "source_confidence": "low"
+  },
+  {
+   "match_id": "tv_2026-10-13_r66_m01",
+   "t_video": 154.5,
+   "label": "Electro Wizard",
+   "form": "hero",
+   "source": "POV of tv_2026-10-13_r66_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-13_r66_m01",
+   "t_video": 154.5,
+   "label": "Electro Wizard",
+   "form": null,
+   "source": "next-card advance in tv_2026-10-13_r66_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-13_r66_m01",
+   "t_video": 160.5,
+   "label": "Battle Ram",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r66_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r66_m01",
+   "t_video": 164.2,
+   "label": "Bandit",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r66_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-13_r66_m01",
+   "t_video": 168.8,
+   "label": "Zap",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r66_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r66_m01",
+   "t_video": 173.8,
+   "label": "Magic Archer",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r66_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-13_r66_m01",
+   "t_video": 179.6,
+   "label": "Void",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r66_top_m01",
+   "source_confidence": "medium"
+  }
+ ],
+ "paired_with": "tv_2026-10-13_r66_top_m01",
+ "offset_s": 0.0,
+ "auto": true,
+ "source": "replay"
+}

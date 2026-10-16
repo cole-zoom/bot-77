@@ -1,0 +1,397 @@
+{
+ "video_id": "tv_2026-10-13_r127",
+ "side": "opponent",
+ "matches": [
+  "tv_2026-10-13_r127_m01"
+ ],
+ "items": [
+  {
+   "match_id": "tv_2026-10-13_r127_m01",
+   "t_video": 15.4,
+   "label": "Skeleton Army",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r127_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r127_m01",
+   "t_video": 18.1,
+   "label": "Valkyrie",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r127_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r127_m01",
+   "t_video": 35.7,
+   "label": "Ram Rider",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r127_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r127_m01",
+   "t_video": 43.6,
+   "label": "Prince",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r127_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r127_m01",
+   "t_video": 57.6,
+   "label": "The Log",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r127_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r127_m01",
+   "t_video": 64.2,
+   "label": "Inferno Tower",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r127_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r127_m01",
+   "t_video": 67.3,
+   "label": "Skeleton Army",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r127_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r127_m01",
+   "t_video": 89.4,
+   "label": "Valkyrie",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r127_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r127_m01",
+   "t_video": 91.4,
+   "label": "Prince",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r127_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r127_m01",
+   "t_video": 114.3,
+   "label": "Ram Rider",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r127_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r127_m01",
+   "t_video": 116.7,
+   "label": "The Log",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r127_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r127_m01",
+   "t_video": 119.2,
+   "label": "Skeleton Army",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r127_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r127_m01",
+   "t_video": 134.1,
+   "label": "Wizard",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r127_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r127_m01",
+   "t_video": 141.0,
+   "label": "Prince",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r127_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r127_m01",
+   "t_video": 147.9,
+   "label": "Ram Rider",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r127_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r127_m01",
+   "t_video": 149.1,
+   "label": "Valkyrie",
+   "form": "evo",
+   "source": "POV of tv_2026-10-13_r127_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r127_m01",
+   "t_video": 156.3,
+   "label": "Lightning",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r127_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r127_m01",
+   "t_video": 160.4,
+   "label": "The Log",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r127_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r127_m01",
+   "t_video": 163.3,
+   "label": "Skeleton Army",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r127_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r127_m01",
+   "t_video": 170.3,
+   "label": "Ram Rider",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r127_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r127_m01",
+   "t_video": 176.2,
+   "label": "Valkyrie",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r127_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r127_m01",
+   "t_video": 189.3,
+   "label": "Prince",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r127_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r127_m01",
+   "t_video": 195.6,
+   "label": "Lightning",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r127_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r127_m01",
+   "t_video": 198.1,
+   "label": "Skeleton Army",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r127_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r127_m01",
+   "t_video": 201.0,
+   "label": "The Log",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r127_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r127_m01",
+   "t_video": 206.4,
+   "label": "Valkyrie",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r127_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r127_m01",
+   "t_video": 211.3,
+   "label": "Prince",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r127_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r127_m01",
+   "t_video": 224.4,
+   "label": "Wizard",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r127_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r127_m01",
+   "t_video": 228.7,
+   "label": "Ram Rider",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r127_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r127_m01",
+   "t_video": 230.8,
+   "label": "Skeleton Army",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r127_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r127_m01",
+   "t_video": 238.2,
+   "label": "Valkyrie",
+   "form": "evo",
+   "source": "POV of tv_2026-10-13_r127_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r127_m01",
+   "t_video": 242.3,
+   "label": "Prince",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r127_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r127_m01",
+   "t_video": 252.2,
+   "label": "Wizard",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r127_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r127_m01",
+   "t_video": 257.3,
+   "label": "The Log",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r127_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r127_m01",
+   "t_video": 259.0,
+   "label": "Inferno Tower",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r127_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r127_m01",
+   "t_video": 259.9,
+   "label": "Skeleton Army",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r127_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r127_m01",
+   "t_video": 265.3,
+   "label": "Valkyrie",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r127_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r127_m01",
+   "t_video": 268.9,
+   "label": "Ram Rider",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r127_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r127_m01",
+   "t_video": 270.7,
+   "label": "The Log",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r127_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r127_m01",
+   "t_video": 274.8,
+   "label": "Prince",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r127_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-13_r127_m01",
+   "t_video": 279.9,
+   "label": "Wizard",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r127_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-13_r127_m01",
+   "t_video": 280.8,
+   "label": "Skeleton Army",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r127_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r127_m01",
+   "t_video": 284.4,
+   "label": "Valkyrie",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r127_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r127_m01",
+   "t_video": 289.2,
+   "label": "Ram Rider",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r127_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-13_r127_m01",
+   "t_video": 291.2,
+   "label": "The Log",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r127_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r127_m01",
+   "t_video": 296.7,
+   "label": "Prince",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r127_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r127_m01",
+   "t_video": 298.8,
+   "label": "Skeleton Army",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r127_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r127_m01",
+   "t_video": 310.1,
+   "label": "Lightning",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r127_top_m01",
+   "source_confidence": "low"
+  }
+ ],
+ "paired_with": "tv_2026-10-13_r127_top_m01",
+ "offset_s": 0.0,
+ "auto": true,
+ "source": "replay"
+}

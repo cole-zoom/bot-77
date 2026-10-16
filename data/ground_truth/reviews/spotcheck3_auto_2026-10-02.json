@@ -1,0 +1,605 @@
+{
+ "exported_at": "2026-10-02T18:56:46.099Z",
+ "frames": [
+  {
+   "id": "cole_2026-10-01_e_m08_1216.25_royal-ghost-evolution",
+   "entity": "royal-ghost-evolution",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "cole_2026-10-01_c_m06_1010.25_baby-dragon-evolution",
+   "entity": "baby-dragon-evolution",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "XuM18Vfd-xc_m03_0843.00_knight-hero",
+   "entity": "knight-hero",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "i0ErCwqf8Mg_m01_0110.25_mortar-evolution",
+   "entity": "mortar-evolution",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "dIT3p1kmf3M_m05_1007.00_spirit-empress-air",
+   "entity": "spirit-empress-air",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "0m7iCgw8sYc_m05_0906.25_cannon-evolution",
+   "entity": "cannon-evolution",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "Ka99f8HJHcE_m02_0417.50_giant-snowball-evolution",
+   "entity": "giant-snowball-evolution",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "Ka99f8HJHcE_m05_1254.00_giant-snowball-evolution",
+   "entity": "giant-snowball-evolution",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "Rd1o7LHSUzU_m06_1583.75_executioner-evolution",
+   "entity": "executioner-evolution",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "i0ErCwqf8Mg_m01_0148.25_barbarian-barrel-hero",
+   "entity": "barbarian-barrel-hero",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "SN-X0HLK-gQ_m11_1121.00_archer-evolution",
+   "entity": "archer-evolution",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "XuM18Vfd-xc_m04_1045.75_goblin-demolisher",
+   "entity": "goblin-demolisher",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "unnaLsLzabw_m02_0446.25_berserker-hero",
+   "entity": "berserker-hero",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "9HqAjiFqAlk_m02_0375.00_tombstone-hero",
+   "entity": "tombstone-hero",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "unnaLsLzabw_m02_0444.25_berserker-hero",
+   "entity": "berserker-hero",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "XuM18Vfd-xc_m01_0133.25_giant-snowball-evolution",
+   "entity": "giant-snowball-evolution",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "XuM18Vfd-xc_m05_1263.25_goblin-drill-evolution",
+   "entity": "goblin-drill-evolution",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "cole_2026-10-01_m03_0858.75_goblins-hero",
+   "entity": "goblins-hero",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "0m7iCgw8sYc_m05_0910.25_cannon-evolution",
+   "entity": "cannon-evolution",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "dIT3p1kmf3M_m05_1008.00_spirit-empress-air",
+   "entity": "spirit-empress-air",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "cole_2026-10-01_e_m08_1212.75_royal-ghost-evolution",
+   "entity": "royal-ghost-evolution",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "Rd1o7LHSUzU_m04_1098.00_valkyrie-evolution",
+   "entity": "valkyrie-evolution",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "8tr33SZQ9GQ_m03_0572.50_ice-spirit-evolution",
+   "entity": "ice-spirit-evolution",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "8Y5yJQVqZpU_m02_0353.50_goblin-curse",
+   "entity": "goblin-curse",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "SN-X0HLK-gQ_m01_0147.75_archer-evolution",
+   "entity": "archer-evolution",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "dIT3p1kmf3M_m03_0628.25_tombstone-hero",
+   "entity": "tombstone-hero",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "dIT3p1kmf3M_m02_0345.50_dark-prince-hero",
+   "entity": "dark-prince-hero",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "SN-X0HLK-gQ_m08_1051.00_giant-snowball-evolution",
+   "entity": "giant-snowball-evolution",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "Ka99f8HJHcE_m02_0357.00_goblin-drill-evolution",
+   "entity": "goblin-drill-evolution",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "9HqAjiFqAlk_m03_0489.00_tombstone-hero",
+   "entity": "tombstone-hero",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "ZXPr1gwF9ys_m08_1563.50_royal-giant-evolution",
+   "entity": "royal-giant-evolution",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "FZlpciW8KlM_m02_0293.25_goblins-hero",
+   "entity": "goblins-hero",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "Rd1o7LHSUzU_m10_2695.75_executioner-evolution",
+   "entity": "executioner-evolution",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "KjQYOTotuYE_m06_1202.25_valkyrie-evolution",
+   "entity": "valkyrie-evolution",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "cole_2026-10-01_e_m01_0164.50_wizard-evolution",
+   "entity": "wizard-evolution",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "b1ORaMah-78_m03_0531.50_royal-giant-evolution",
+   "entity": "royal-giant-evolution",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "cole_2026-10-01_e_m02_0298.75_wizard-evolution",
+   "entity": "wizard-evolution",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "PQz8QNWU13E_m04_1000.25_executioner-evolution",
+   "entity": "executioner-evolution",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "cole_2026-10-01_c_m06_1012.00_baby-dragon-evolution",
+   "entity": "baby-dragon-evolution",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "cole_2026-10-01_e_m02_0309.50_dark-prince-hero",
+   "entity": "dark-prince-hero",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "9HqAjiFqAlk_m04_0776.00_goblin-curse",
+   "entity": "goblin-curse",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "KjQYOTotuYE_m01_0290.25_executioner-evolution",
+   "entity": "executioner-evolution",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "Pn15Nh1xWoM_m04_1053.75_knight-hero",
+   "entity": "knight-hero",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "cole_2026-10-01_e_m08_1216.75_dark-prince-hero",
+   "entity": "dark-prince-hero",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "H35F0vVMTHg_m01_0106.25_royal-ghost-evolution",
+   "entity": "royal-ghost-evolution",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "ZXPr1gwF9ys_m08_1558.50_royal-giant-evolution",
+   "entity": "royal-giant-evolution",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "cole_2026-10-01_d_m02_0477.00_valkyrie-hero",
+   "entity": "valkyrie-hero",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "0m7iCgw8sYc_m03_0525.75_cannon-evolution",
+   "entity": "cannon-evolution",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "cole_2026-10-01_m05_1168.75_valkyrie-evolution",
+   "entity": "valkyrie-evolution",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "i0ErCwqf8Mg_m05_0849.25_mortar-evolution",
+   "entity": "mortar-evolution",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "0m7iCgw8sYc_m05_0908.25_cannon-evolution",
+   "entity": "cannon-evolution",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "unnaLsLzabw_m02_0447.50_berserker-hero",
+   "entity": "berserker-hero",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "9HqAjiFqAlk_m04_0775.75_goblin-curse",
+   "entity": "goblin-curse",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "b1ORaMah-78_m02_0314.00_royal-giant-evolution",
+   "entity": "royal-giant-evolution",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "cole_2026-10-01_m03_0811.50_goblins-hero",
+   "entity": "goblins-hero",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "cole_2026-10-01_m04_1058.00_goblins-hero",
+   "entity": "goblins-hero",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "uTnbDte_WXM_m06_1001.00_wizard-hero",
+   "entity": "wizard-hero",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "cole_2026-10-01_c_m06_1013.50_baby-dragon-evolution",
+   "entity": "baby-dragon-evolution",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "9HqAjiFqAlk_m06_1163.25_tombstone-hero",
+   "entity": "tombstone-hero",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "uTnbDte_WXM_m01_0084.25_wizard-hero",
+   "entity": "wizard-hero",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "SN-X0HLK-gQ_m01_0146.75_archer-evolution",
+   "entity": "archer-evolution",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "SN-X0HLK-gQ_m11_1120.75_archer-evolution",
+   "entity": "archer-evolution",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "eZGhxo3pMkc_m05_1193.00_goblin-demolisher",
+   "entity": "goblin-demolisher",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "cole_2026-09-30_m05_1119.00_spirit-empress-ground",
+   "entity": "spirit-empress-ground",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "cole_2026-10-01_d_m04_0894.25_valkyrie-hero",
+   "entity": "valkyrie-hero",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "cole_2026-10-01_d_m02_0474.50_valkyrie-hero",
+   "entity": "valkyrie-hero",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "uTnbDte_WXM_m02_0268.75_wizard-hero",
+   "entity": "wizard-hero",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "q1dZZ5OyFQE_m02_0524.25_knight-hero",
+   "entity": "knight-hero",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "cole_2026-10-01_e_m08_1215.00_royal-ghost-evolution",
+   "entity": "royal-ghost-evolution",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "KjQYOTotuYE_m03_0673.00_executioner-evolution",
+   "entity": "executioner-evolution",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "XuM18Vfd-xc_m04_1042.75_goblin-demolisher",
+   "entity": "goblin-demolisher",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "ZXPr1gwF9ys_m08_1430.00_royal-giant-evolution",
+   "entity": "royal-giant-evolution",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "Pn15Nh1xWoM_m05_1340.25_giant-snowball-evolution",
+   "entity": "giant-snowball-evolution",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "unnaLsLzabw_m02_0443.00_berserker-hero",
+   "entity": "berserker-hero",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "dIT3p1kmf3M_m01_0132.00_zap-evolution",
+   "entity": "zap-evolution",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "cole_2026-10-01_m01_0223.50_valkyrie-evolution",
+   "entity": "valkyrie-evolution",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "q1dZZ5OyFQE_m03_0620.25_goblin-demolisher",
+   "entity": "goblin-demolisher",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "cole_2026-10-01_e_m02_0297.75_wizard-evolution",
+   "entity": "wizard-evolution",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "uTnbDte_WXM_m01_0160.50_wizard-hero",
+   "entity": "wizard-hero",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "eZGhxo3pMkc_m05_1177.75_skeletons-evolution",
+   "entity": "skeletons-evolution",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "cole_2026-10-01_d_m04_0896.75_valkyrie-hero",
+   "entity": "valkyrie-hero",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "cole_2026-10-01_e_m08_1217.75_royal-ghost-evolution",
+   "entity": "royal-ghost-evolution",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "cole_2026-09-29_c_m08_1654.25_spirit-empress-ground",
+   "entity": "spirit-empress-ground",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "cole_2026-10-01_e_m03_0576.25_dark-prince-hero",
+   "entity": "dark-prince-hero",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "cole_2026-09-30_m02_0242.00_spirit-empress-ground",
+   "entity": "spirit-empress-ground",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "8Y5yJQVqZpU_m02_0308.75_goblin-curse",
+   "entity": "goblin-curse",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "Rd1o7LHSUzU_m04_1009.00_goblins-hero",
+   "entity": "goblins-hero",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "8tr33SZQ9GQ_m03_0573.75_ice-spirit-evolution",
+   "entity": "ice-spirit-evolution",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "eZGhxo3pMkc_m04_0930.25_berserker-hero",
+   "entity": "berserker-hero",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "dIT3p1kmf3M_m01_0132.25_zap-evolution",
+   "entity": "zap-evolution",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "h_XT-wveQgk_m01_0226.50_knight-hero",
+   "entity": "knight-hero",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "cole_2026-10-01_e_m01_0166.00_wizard-evolution",
+   "entity": "wizard-evolution",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "9HqAjiFqAlk_m04_0793.75_goblin-curse",
+   "entity": "goblin-curse",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "XuM18Vfd-xc_m02_0408.25_knight-hero",
+   "entity": "knight-hero",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "Pn15Nh1xWoM_m02_0480.75_goblin-demolisher",
+   "entity": "goblin-demolisher",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "SN-X0HLK-gQ_m01_0149.75_archer-evolution",
+   "entity": "archer-evolution",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "i0ErCwqf8Mg_m01_0109.25_mortar-evolution",
+   "entity": "mortar-evolution",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "0m7iCgw8sYc_m03_0527.25_cannon-evolution",
+   "entity": "cannon-evolution",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "cole_2026-10-01_e_m02_0243.00_dark-prince-hero",
+   "entity": "dark-prince-hero",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "cole_2026-09-30_m05_1120.25_spirit-empress-ground",
+   "entity": "spirit-empress-ground",
+   "source": "POV",
+   "verdict": "right"
+  }
+ ]
+}

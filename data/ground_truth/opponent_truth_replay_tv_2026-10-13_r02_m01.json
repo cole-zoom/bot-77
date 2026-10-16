@@ -1,0 +1,549 @@
+{
+ "video_id": "tv_2026-10-13_r02",
+ "side": "opponent",
+ "matches": [
+  "tv_2026-10-13_r02_m01"
+ ],
+ "items": [
+  {
+   "match_id": "tv_2026-10-13_r02_m01",
+   "t_video": 14.4,
+   "label": "Skeletons",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r02_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r02_m01",
+   "t_video": 18.3,
+   "label": "Electro Spirit",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r02_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r02_m01",
+   "t_video": 22.6,
+   "label": "Minion Giant",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r02_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r02_m01",
+   "t_video": 33.6,
+   "label": "Mighty Miner",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r02_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r02_m01",
+   "t_video": 47.3,
+   "label": "Baby Dragon",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r02_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r02_m01",
+   "t_video": 49.2,
+   "label": "Skeletons",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r02_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r02_m01",
+   "t_video": 56.3,
+   "label": "Barbarian Barrel",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r02_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r02_m01",
+   "t_video": 56.7,
+   "label": "Electro Spirit",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r02_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r02_m01",
+   "t_video": 64.3,
+   "label": "Minion Giant",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r02_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r02_m01",
+   "t_video": 66.8,
+   "label": "Mighty Miner",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r02_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r02_m01",
+   "t_video": 68.2,
+   "label": "Skeletons",
+   "form": "evo",
+   "source": "POV of tv_2026-10-13_r02_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-13_r02_m01",
+   "t_video": 73.7,
+   "label": "Barbarian Barrel",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r02_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r02_m01",
+   "t_video": 85.0,
+   "label": "Electro Spirit",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r02_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r02_m01",
+   "t_video": 92.2,
+   "label": "Goblin Hut",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r02_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r02_m01",
+   "t_video": 115.4,
+   "label": "Mighty Miner",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r02_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r02_m01",
+   "t_video": 119.4,
+   "label": "Skeletons",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r02_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r02_m01",
+   "t_video": 124.9,
+   "label": "Minion Giant",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r02_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r02_m01",
+   "t_video": 129.5,
+   "label": "__ability",
+   "form": null,
+   "source": "POV of tv_2026-10-13_r02_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-13_r02_m01",
+   "t_video": 134.3,
+   "label": "Barbarian Barrel",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r02_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r02_m01",
+   "t_video": 137.0,
+   "label": "Goblin Hut",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r02_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r02_m01",
+   "t_video": 142.1,
+   "label": "Electro Spirit",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r02_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r02_m01",
+   "t_video": 145.1,
+   "label": "Mighty Miner",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r02_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r02_m01",
+   "t_video": 150.9,
+   "label": "Baby Dragon",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r02_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r02_m01",
+   "t_video": 152.7,
+   "label": "Minion Giant",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r02_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r02_m01",
+   "t_video": 160.8,
+   "label": "Skeletons",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r02_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-13_r02_m01",
+   "t_video": 160.8,
+   "label": "Barbarian Barrel",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r02_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-13_r02_m01",
+   "t_video": 162.4,
+   "label": "Electro Spirit",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r02_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r02_m01",
+   "t_video": 166.0,
+   "label": "Mighty Miner",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r02_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r02_m01",
+   "t_video": 167.8,
+   "label": "Minion Giant",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r02_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r02_m01",
+   "t_video": 171.0,
+   "label": "__ability",
+   "form": null,
+   "source": "POV of tv_2026-10-13_r02_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-13_r02_m01",
+   "t_video": 180.1,
+   "label": "Goblin Hut",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r02_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r02_m01",
+   "t_video": 185.2,
+   "label": "Barbarian Barrel",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r02_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r02_m01",
+   "t_video": 187.1,
+   "label": "Baby Dragon",
+   "form": "evo",
+   "source": "POV of tv_2026-10-13_r02_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r02_m01",
+   "t_video": 190.3,
+   "label": "Mighty Miner",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r02_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r02_m01",
+   "t_video": 195.8,
+   "label": "Minion Giant",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r02_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r02_m01",
+   "t_video": 197.2,
+   "label": "Skeletons",
+   "form": "evo",
+   "source": "POV of tv_2026-10-13_r02_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r02_m01",
+   "t_video": 198.8,
+   "label": "Electro Spirit",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r02_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r02_m01",
+   "t_video": 209.6,
+   "label": "Lightning",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r02_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r02_m01",
+   "t_video": 210.4,
+   "label": "Barbarian Barrel",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r02_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r02_m01",
+   "t_video": 215.6,
+   "label": "Goblin Hut",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r02_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r02_m01",
+   "t_video": 218.8,
+   "label": "Skeletons",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r02_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r02_m01",
+   "t_video": 223.6,
+   "label": "Minion Giant",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r02_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r02_m01",
+   "t_video": 233.5,
+   "label": "Electro Spirit",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r02_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r02_m01",
+   "t_video": 236.4,
+   "label": "Baby Dragon",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r02_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r02_m01",
+   "t_video": 241.8,
+   "label": "Lightning",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r02_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r02_m01",
+   "t_video": 247.8,
+   "label": "Mighty Miner",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r02_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r02_m01",
+   "t_video": 250.9,
+   "label": "Goblin Hut",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r02_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r02_m01",
+   "t_video": 255.1,
+   "label": "Skeletons",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r02_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r02_m01",
+   "t_video": 255.5,
+   "label": "Electro Spirit",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r02_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r02_m01",
+   "t_video": 258.2,
+   "label": "Lightning",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r02_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-13_r02_m01",
+   "t_video": 261.5,
+   "label": "Barbarian Barrel",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r02_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r02_m01",
+   "t_video": 263.9,
+   "label": "Goblin Hut",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r02_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r02_m01",
+   "t_video": 265.9,
+   "label": "Electro Spirit",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r02_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r02_m01",
+   "t_video": 268.4,
+   "label": "Mighty Miner",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r02_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r02_m01",
+   "t_video": 272.1,
+   "label": "Baby Dragon",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r02_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r02_m01",
+   "t_video": 273.0,
+   "label": "Skeletons",
+   "form": "evo",
+   "source": "POV of tv_2026-10-13_r02_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r02_m01",
+   "t_video": 275.4,
+   "label": "Barbarian Barrel",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r02_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-13_r02_m01",
+   "t_video": 277.0,
+   "label": "Electro Spirit",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r02_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r02_m01",
+   "t_video": 280.0,
+   "label": "Minion Giant",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r02_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r02_m01",
+   "t_video": 283.4,
+   "label": "Baby Dragon",
+   "form": "evo",
+   "source": "POV of tv_2026-10-13_r02_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-13_r02_m01",
+   "t_video": 288.9,
+   "label": "Mighty Miner",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r02_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-13_r02_m01",
+   "t_video": 292.8,
+   "label": "Barbarian Barrel",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r02_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r02_m01",
+   "t_video": 297.0,
+   "label": "Goblin Hut",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r02_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r02_m01",
+   "t_video": 300.3,
+   "label": "Lightning",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r02_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-13_r02_m01",
+   "t_video": 301.5,
+   "label": "Skeletons",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r02_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r02_m01",
+   "t_video": 302.1,
+   "label": "Electro Spirit",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r02_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r02_m01",
+   "t_video": 303.9,
+   "label": "Barbarian Barrel",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r02_top_m01",
+   "source_confidence": "high"
+  }
+ ],
+ "paired_with": "tv_2026-10-13_r02_top_m01",
+ "offset_s": 0.0,
+ "auto": true,
+ "source": "replay"
+}

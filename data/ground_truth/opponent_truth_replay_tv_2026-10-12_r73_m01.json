@@ -1,0 +1,189 @@
+{
+ "video_id": "tv_2026-10-12_r73",
+ "side": "opponent",
+ "matches": [
+  "tv_2026-10-12_r73_m01"
+ ],
+ "items": [
+  {
+   "match_id": "tv_2026-10-12_r73_m01",
+   "t_video": 15.8,
+   "label": "Skeleton Barrel",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r73_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r73_m01",
+   "t_video": 21.9,
+   "label": "Tesla",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r73_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r73_m01",
+   "t_video": 25.4,
+   "label": "Cannon Cart",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r73_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r73_m01",
+   "t_video": 48.1,
+   "label": "Giant Skeleton",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r73_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-12_r73_m01",
+   "t_video": 51.6,
+   "label": "Berserker",
+   "form": "hero",
+   "source": "POV of tv_2026-10-12_r73_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r73_m01",
+   "t_video": 62.1,
+   "label": "Witch",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r73_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r73_m01",
+   "t_video": 72.7,
+   "label": "Skeleton Barrel",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r73_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-12_r73_m01",
+   "t_video": 76.2,
+   "label": "Clone",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r73_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-12_r73_m01",
+   "t_video": 90.1,
+   "label": "Cannon Cart",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r73_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r73_m01",
+   "t_video": 95.9,
+   "label": "Berserker",
+   "form": "hero",
+   "source": "POV of tv_2026-10-12_r73_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r73_m01",
+   "t_video": 112.5,
+   "label": "Witch",
+   "form": "evo",
+   "source": "POV of tv_2026-10-12_r73_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r73_m01",
+   "t_video": 126.0,
+   "label": "Giant Skeleton",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r73_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r73_m01",
+   "t_video": 129.8,
+   "label": "Skeleton Barrel",
+   "form": "evo",
+   "source": "POV of tv_2026-10-12_r73_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-12_r73_m01",
+   "t_video": 133.9,
+   "label": "Clone",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r73_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r73_m01",
+   "t_video": 137.9,
+   "label": "Tornado",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r73_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-12_r73_m01",
+   "t_video": 151.5,
+   "label": "Berserker",
+   "form": "hero",
+   "source": "POV of tv_2026-10-12_r73_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r73_m01",
+   "t_video": 155.4,
+   "label": "Witch",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r73_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r73_m01",
+   "t_video": 160.1,
+   "label": "Tesla",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r73_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r73_m01",
+   "t_video": 165.4,
+   "label": "Giant Skeleton",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r73_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r73_m01",
+   "t_video": 170.6,
+   "label": "Cannon Cart",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r73_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r73_m01",
+   "t_video": 176.7,
+   "label": "Skeleton Barrel",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r73_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r73_m01",
+   "t_video": 179.1,
+   "label": "Clone",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r73_top_m01",
+   "source_confidence": "medium"
+  }
+ ],
+ "paired_with": "tv_2026-10-12_r73_top_m01",
+ "offset_s": 0.0,
+ "auto": true,
+ "source": "replay"
+}

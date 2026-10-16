@@ -1,0 +1,405 @@
+{
+ "video_id": "tv_2026-10-13_r105",
+ "side": "opponent",
+ "matches": [
+  "tv_2026-10-13_r105_m01"
+ ],
+ "items": [
+  {
+   "match_id": "tv_2026-10-13_r105_m01",
+   "t_video": 12.9,
+   "label": "Inferno Dragon",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r105_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r105_m01",
+   "t_video": 16.9,
+   "label": "Bowler",
+   "form": "hero",
+   "source": "POV of tv_2026-10-13_r105_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r105_m01",
+   "t_video": 28.7,
+   "label": "__ability",
+   "form": null,
+   "source": "POV of tv_2026-10-13_r105_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-13_r105_m01",
+   "t_video": 40.0,
+   "label": "Tornado",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r105_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r105_m01",
+   "t_video": 56.7,
+   "label": "Baby Dragon",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r105_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r105_m01",
+   "t_video": 67.2,
+   "label": "Witch",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r105_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r105_m01",
+   "t_video": 81.0,
+   "label": "Inferno Dragon",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r105_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r105_m01",
+   "t_video": 95.4,
+   "label": "Bowler",
+   "form": "hero",
+   "source": "POV of tv_2026-10-13_r105_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r105_m01",
+   "t_video": 103.5,
+   "label": "Guards",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r105_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r105_m01",
+   "t_video": 105.8,
+   "label": "Vines",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r105_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r105_m01",
+   "t_video": 113.8,
+   "label": "__ability",
+   "form": null,
+   "source": "POV of tv_2026-10-13_r105_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-13_r105_m01",
+   "t_video": 120.8,
+   "label": "Witch",
+   "form": "evo",
+   "source": "POV of tv_2026-10-13_r105_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-13_r105_m01",
+   "t_video": 130.5,
+   "label": "Tornado",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r105_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r105_m01",
+   "t_video": 134.6,
+   "label": "Inferno Dragon",
+   "form": "evo",
+   "source": "POV of tv_2026-10-13_r105_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r105_m01",
+   "t_video": 136.7,
+   "label": "Guards",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r105_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r105_m01",
+   "t_video": 142.2,
+   "label": "Vines",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r105_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-13_r105_m01",
+   "t_video": 149.5,
+   "label": "Bowler",
+   "form": "hero",
+   "source": "POV of tv_2026-10-13_r105_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r105_m01",
+   "t_video": 152.4,
+   "label": "Baby Dragon",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r105_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r105_m01",
+   "t_video": 156.7,
+   "label": "Tornado",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r105_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r105_m01",
+   "t_video": 169.8,
+   "label": "Inferno Dragon",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r105_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r105_m01",
+   "t_video": 175.2,
+   "label": "Witch",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r105_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r105_m01",
+   "t_video": 177.4,
+   "label": "Bowler",
+   "form": "hero",
+   "source": "POV of tv_2026-10-13_r105_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r105_m01",
+   "t_video": 182.2,
+   "label": "Baby Dragon",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r105_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r105_m01",
+   "t_video": 186.4,
+   "label": "Tornado",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r105_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r105_m01",
+   "t_video": 190.7,
+   "label": "Vines",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r105_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r105_m01",
+   "t_video": 202.5,
+   "label": "Witch",
+   "form": "evo",
+   "source": "POV of tv_2026-10-13_r105_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r105_m01",
+   "t_video": 210.2,
+   "label": "Graveyard",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r105_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-13_r105_m01",
+   "t_video": 211.2,
+   "label": "Inferno Dragon",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r105_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r105_m01",
+   "t_video": 214.8,
+   "label": "Tornado",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r105_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r105_m01",
+   "t_video": 218.7,
+   "label": "Vines",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r105_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-13_r105_m01",
+   "t_video": 226.0,
+   "label": "Bowler",
+   "form": "hero",
+   "source": "POV of tv_2026-10-13_r105_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r105_m01",
+   "t_video": 230.8,
+   "label": "Guards",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r105_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-13_r105_m01",
+   "t_video": 238.9,
+   "label": "Inferno Dragon",
+   "form": "evo",
+   "source": "POV of tv_2026-10-13_r105_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r105_m01",
+   "t_video": 241.7,
+   "label": "Baby Dragon",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r105_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r105_m01",
+   "t_video": 247.4,
+   "label": "Tornado",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r105_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r105_m01",
+   "t_video": 254.8,
+   "label": "Bowler",
+   "form": "hero",
+   "source": "POV of tv_2026-10-13_r105_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r105_m01",
+   "t_video": 259.4,
+   "label": "Witch",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r105_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r105_m01",
+   "t_video": 261.3,
+   "label": "Vines",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r105_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r105_m01",
+   "t_video": 263.0,
+   "label": "Inferno Dragon",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r105_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r105_m01",
+   "t_video": 265.3,
+   "label": "Guards",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r105_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r105_m01",
+   "t_video": 271.3,
+   "label": "Bowler",
+   "form": "hero",
+   "source": "POV of tv_2026-10-13_r105_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-13_r105_m01",
+   "t_video": 273.9,
+   "label": "Baby Dragon",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r105_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r105_m01",
+   "t_video": 278.3,
+   "label": "Graveyard",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r105_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r105_m01",
+   "t_video": 281.1,
+   "label": "Tornado",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r105_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r105_m01",
+   "t_video": 285.2,
+   "label": "Vines",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r105_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r105_m01",
+   "t_video": 288.5,
+   "label": "Witch",
+   "form": "evo",
+   "source": "POV of tv_2026-10-13_r105_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r105_m01",
+   "t_video": 291.4,
+   "label": "Guards",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r105_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r105_m01",
+   "t_video": 295.1,
+   "label": "Inferno Dragon",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r105_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r105_m01",
+   "t_video": 299.7,
+   "label": "Graveyard",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r105_top_m01",
+   "source_confidence": "high"
+  }
+ ],
+ "paired_with": "tv_2026-10-13_r105_top_m01",
+ "offset_s": 0.0,
+ "auto": true,
+ "source": "replay"
+}

@@ -1,0 +1,253 @@
+{
+ "video_id": "tv_2026-10-13_r05",
+ "side": "opponent",
+ "matches": [
+  "tv_2026-10-13_r05_m01"
+ ],
+ "items": [
+  {
+   "match_id": "tv_2026-10-13_r05_m01",
+   "t_video": 13.4,
+   "label": "Goblin Barrel",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r05_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r05_m01",
+   "t_video": 22.5,
+   "label": "Skeleton Army",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r05_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r05_m01",
+   "t_video": 23.2,
+   "label": "Ice Spirit",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r05_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r05_m01",
+   "t_video": 27.3,
+   "label": "Dart Goblin",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r05_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r05_m01",
+   "t_video": 27.7,
+   "label": "Wall Breakers",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r05_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r05_m01",
+   "t_video": 47.4,
+   "label": "Princess",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r05_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r05_m01",
+   "t_video": 53.5,
+   "label": "Valkyrie",
+   "form": "hero",
+   "source": "POV of tv_2026-10-13_r05_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r05_m01",
+   "t_video": 60.4,
+   "label": "Skeleton Army",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r05_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r05_m01",
+   "t_video": 61.6,
+   "label": "Goblin Barrel",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r05_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r05_m01",
+   "t_video": 73.6,
+   "label": "Cannon",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r05_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r05_m01",
+   "t_video": 75.4,
+   "label": "Dart Goblin",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r05_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r05_m01",
+   "t_video": 80.2,
+   "label": "Ice Spirit",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r05_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-13_r05_m01",
+   "t_video": 88.8,
+   "label": "Wall Breakers",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r05_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r05_m01",
+   "t_video": 99.2,
+   "label": "Skeleton Army",
+   "form": "evo",
+   "source": "POV of tv_2026-10-13_r05_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r05_m01",
+   "t_video": 102.7,
+   "label": "Valkyrie",
+   "form": "hero",
+   "source": "POV of tv_2026-10-13_r05_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r05_m01",
+   "t_video": 113.7,
+   "label": "Dart Goblin",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r05_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r05_m01",
+   "t_video": 125.1,
+   "label": "Princess",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r05_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-13_r05_m01",
+   "t_video": 125.1,
+   "label": "Ice Spirit",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r05_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-13_r05_m01",
+   "t_video": 127.5,
+   "label": "Wall Breakers",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r05_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r05_m01",
+   "t_video": 137.1,
+   "label": "Cannon",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r05_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r05_m01",
+   "t_video": 142.1,
+   "label": "Valkyrie",
+   "form": "hero",
+   "source": "POV of tv_2026-10-13_r05_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r05_m01",
+   "t_video": 144.0,
+   "label": "Dart Goblin",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r05_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r05_m01",
+   "t_video": 151.1,
+   "label": "Princess",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r05_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-13_r05_m01",
+   "t_video": 152.0,
+   "label": "Ice Spirit",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r05_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r05_m01",
+   "t_video": 154.4,
+   "label": "Cannon",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r05_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r05_m01",
+   "t_video": 157.0,
+   "label": "Skeleton Army",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r05_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r05_m01",
+   "t_video": 161.2,
+   "label": "Valkyrie",
+   "form": "hero",
+   "source": "POV of tv_2026-10-13_r05_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r05_m01",
+   "t_video": 176.3,
+   "label": "Goblin Barrel",
+   "form": "evo",
+   "source": "POV of tv_2026-10-13_r05_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r05_m01",
+   "t_video": 177.9,
+   "label": "Wall Breakers",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r05_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-13_r05_m01",
+   "t_video": 177.9,
+   "label": "Ice Spirit",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r05_top_m01",
+   "source_confidence": "medium"
+  }
+ ],
+ "paired_with": "tv_2026-10-13_r05_top_m01",
+ "offset_s": 0.0,
+ "auto": true,
+ "source": "replay"
+}

@@ -1,0 +1,197 @@
+{
+ "video_id": "tv_2026-10-14_r36",
+ "side": "opponent",
+ "matches": [
+  "tv_2026-10-14_r36_m01"
+ ],
+ "items": [
+  {
+   "match_id": "tv_2026-10-14_r36_m01",
+   "t_video": 14.0,
+   "label": "Skeleton Barrel",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r36_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r36_m01",
+   "t_video": 22.5,
+   "label": "Fireball",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r36_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r36_m01",
+   "t_video": 27.3,
+   "label": "Bowler",
+   "form": "hero",
+   "source": "POV of tv_2026-10-14_r36_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r36_m01",
+   "t_video": 46.2,
+   "label": "Tesla",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r36_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r36_m01",
+   "t_video": 46.7,
+   "label": "Ronin",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r36_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r36_m01",
+   "t_video": 66.5,
+   "label": "Bats",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r36_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r36_m01",
+   "t_video": 71.7,
+   "label": "Skeleton Barrel",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r36_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r36_m01",
+   "t_video": 74.5,
+   "label": "Bowler",
+   "form": "hero",
+   "source": "POV of tv_2026-10-14_r36_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r36_m01",
+   "t_video": 86.9,
+   "label": "Mortar",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r36_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r36_m01",
+   "t_video": 101.8,
+   "label": "Ronin",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r36_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r36_m01",
+   "t_video": 110.4,
+   "label": "Bats",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r36_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r36_m01",
+   "t_video": 115.8,
+   "label": "Arrows",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r36_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r36_m01",
+   "t_video": 128.5,
+   "label": "Bowler",
+   "form": "hero",
+   "source": "POV of tv_2026-10-14_r36_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r36_m01",
+   "t_video": 135.6,
+   "label": "Skeleton Barrel",
+   "form": "evo",
+   "source": "POV of tv_2026-10-14_r36_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r36_m01",
+   "t_video": 139.0,
+   "label": "Fireball",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r36_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r36_m01",
+   "t_video": 144.5,
+   "label": "Mortar",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r36_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r36_m01",
+   "t_video": 154.3,
+   "label": "Arrows",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r36_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r36_m01",
+   "t_video": 157.5,
+   "label": "Bowler",
+   "form": "hero",
+   "source": "POV of tv_2026-10-14_r36_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r36_m01",
+   "t_video": 160.5,
+   "label": "Ronin",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r36_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r36_m01",
+   "t_video": 162.5,
+   "label": "Bats",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r36_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r36_m01",
+   "t_video": 171.9,
+   "label": "Mortar",
+   "form": "evo",
+   "source": "POV of tv_2026-10-14_r36_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r36_m01",
+   "t_video": 177.4,
+   "label": "Fireball",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r36_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r36_m01",
+   "t_video": 178.3,
+   "label": "Arrows",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r36_top_m01",
+   "source_confidence": "high"
+  }
+ ],
+ "paired_with": "tv_2026-10-14_r36_top_m01",
+ "offset_s": 0.0,
+ "auto": true,
+ "source": "replay"
+}

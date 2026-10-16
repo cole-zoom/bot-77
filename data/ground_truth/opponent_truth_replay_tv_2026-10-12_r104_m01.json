@@ -1,0 +1,165 @@
+{
+ "video_id": "tv_2026-10-12_r104",
+ "side": "opponent",
+ "matches": [
+  "tv_2026-10-12_r104_m01"
+ ],
+ "items": [
+  {
+   "match_id": "tv_2026-10-12_r104_m01",
+   "t_video": 13.3,
+   "label": "Dark Prince",
+   "form": "hero",
+   "source": "POV of tv_2026-10-12_r104_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r104_m01",
+   "t_video": 15.8,
+   "label": "Inferno Tower",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r104_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r104_m01",
+   "t_video": 27.4,
+   "label": "Wizard",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r104_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r104_m01",
+   "t_video": 46.1,
+   "label": "Skeleton Army",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r104_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r104_m01",
+   "t_video": 63.3,
+   "label": "Witch",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r104_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r104_m01",
+   "t_video": 70.0,
+   "label": "Mega Knight",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r104_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r104_m01",
+   "t_video": 88.6,
+   "label": "Dark Prince",
+   "form": "hero",
+   "source": "POV of tv_2026-10-12_r104_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r104_m01",
+   "t_video": 96.2,
+   "label": "Balloon",
+   "form": "hero",
+   "source": "POV of tv_2026-10-12_r104_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r104_m01",
+   "t_video": 101.8,
+   "label": "__ability",
+   "form": null,
+   "source": "POV of tv_2026-10-12_r104_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-12_r104_m01",
+   "t_video": 109.6,
+   "label": "__ability",
+   "form": null,
+   "source": "POV of tv_2026-10-12_r104_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-12_r104_m01",
+   "t_video": 128.1,
+   "label": "Wizard",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r104_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r104_m01",
+   "t_video": 136.6,
+   "label": "Skeleton Army",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r104_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r104_m01",
+   "t_video": 143.4,
+   "label": "Inferno Tower",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r104_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r104_m01",
+   "t_video": 150.9,
+   "label": "Witch",
+   "form": "evo",
+   "source": "POV of tv_2026-10-12_r104_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-12_r104_m01",
+   "t_video": 158.3,
+   "label": "Dark Prince",
+   "form": "hero",
+   "source": "POV of tv_2026-10-12_r104_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r104_m01",
+   "t_video": 162.3,
+   "label": "Mega Knight",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r104_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r104_m01",
+   "t_video": 165.3,
+   "label": "Skeleton Army",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r104_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r104_m01",
+   "t_video": 172.0,
+   "label": "Balloon",
+   "form": "hero",
+   "source": "POV of tv_2026-10-12_r104_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-12_r104_m01",
+   "t_video": 178.9,
+   "label": "Inferno Tower",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r104_top_m01",
+   "source_confidence": "high"
+  }
+ ],
+ "paired_with": "tv_2026-10-12_r104_top_m01",
+ "offset_s": 0.0,
+ "auto": true,
+ "source": "replay"
+}

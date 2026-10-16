@@ -1,0 +1,305 @@
+{
+ "exported_at": "2026-10-02T18:59:20.037Z",
+ "frames": [
+  {
+   "id": "kWTdrSkGfr8_m04_0631.00_royal-giant-evolution",
+   "entity": "royal-giant-evolution",
+   "source": "click",
+   "verdict": "right"
+  },
+  {
+   "id": "cole_2026-09-30_m05_1120.10_spirit-empress-ground",
+   "entity": "spirit-empress-ground",
+   "source": "click",
+   "verdict": "off"
+  },
+  {
+   "id": "friend_2026-09-29_c_m07_0980.30_tombstone-hero",
+   "entity": "tombstone-hero",
+   "source": "click",
+   "verdict": "off"
+  },
+  {
+   "id": "friend_2026-09-29_b_m06_1107.10_berserker",
+   "entity": "berserker",
+   "source": "click",
+   "verdict": "right"
+  },
+  {
+   "id": "2elEncccZwQ_m03_0523.25_mega-minion-hero",
+   "entity": "mega-minion-hero",
+   "source": "click",
+   "verdict": "off"
+  },
+  {
+   "id": "cole_2026-09-28_phone_m06_1296.60_firecracker-evolution",
+   "entity": "firecracker-evolution",
+   "source": "click",
+   "verdict": "right"
+  },
+  {
+   "id": "txYlMgXaGF8_m01_0248.10_baby-dragon-evolution",
+   "entity": "baby-dragon-evolution",
+   "source": "click",
+   "verdict": "off"
+  },
+  {
+   "id": "friend_2026-09-29_b_m01_0292.20_void",
+   "entity": "void",
+   "source": "click",
+   "verdict": "right"
+  },
+  {
+   "id": "cole_2026-09-29_c_m02_0364.30_suspicious-bush",
+   "entity": "suspicious-bush",
+   "source": "click",
+   "verdict": "off"
+  },
+  {
+   "id": "KjQYOTotuYE_m03_0673.00_executioner-evolution",
+   "entity": "executioner-evolution",
+   "source": "click",
+   "verdict": "right"
+  },
+  {
+   "id": "PuJls1qTZsU_m01_0239.00_berserker-hero",
+   "entity": "berserker-hero",
+   "source": "click",
+   "verdict": "right"
+  },
+  {
+   "id": "b9nXaMBejRw_m01_0220.30_skeletons-evolution",
+   "entity": "skeletons-evolution",
+   "source": "click",
+   "verdict": "right"
+  },
+  {
+   "id": "ge_HXewYAhg_m02_0595.00_cannon-evolution",
+   "entity": "cannon-evolution",
+   "source": "click",
+   "verdict": "right"
+  },
+  {
+   "id": "friend_2026-09-29_c_m06_0922.20_vines",
+   "entity": "vines",
+   "source": "click",
+   "verdict": "right"
+  },
+  {
+   "id": "kJxB8oaQ9zc_m03_0541.75_furnace-evolution",
+   "entity": "furnace-evolution",
+   "source": "click",
+   "verdict": "off"
+  },
+  {
+   "id": "7R5FP2IYWsw_m01_0172.70_goblin-barrel-evolution",
+   "entity": "goblin-barrel-evolution",
+   "source": "click",
+   "verdict": "off"
+  },
+  {
+   "id": "HuwsYOmuVao_m01_0234.30_bats-evolution",
+   "entity": "bats-evolution",
+   "source": "click",
+   "verdict": "right"
+  },
+  {
+   "id": "cole_2026-10-01_m07_1623.90_ice-spirit-evolution",
+   "entity": "ice-spirit-evolution",
+   "source": "click",
+   "verdict": "right"
+  },
+  {
+   "id": "cole_2026-10-01_e_m02_0364.90_dark-prince-hero-dismounted",
+   "entity": "dark-prince-hero-dismounted",
+   "source": "click",
+   "verdict": "right"
+  },
+  {
+   "id": "cole_2026-09-29_c_m01_0105.90_dark-prince-hero",
+   "entity": "dark-prince-hero",
+   "source": "click",
+   "verdict": "right"
+  },
+  {
+   "id": "6rCdZkKZiis_m04_0992.40_skeleton-barrel-evolution",
+   "entity": "skeleton-barrel-evolution",
+   "source": "click",
+   "verdict": "off"
+  },
+  {
+   "id": "kWTdrSkGfr8_m01_0121.40_hunter-evolution",
+   "entity": "hunter-evolution",
+   "source": "click",
+   "verdict": "off"
+  },
+  {
+   "id": "cole_2026-09-29_c_m05_1126.80_boss-bandit",
+   "entity": "boss-bandit",
+   "source": "click",
+   "verdict": "right"
+  },
+  {
+   "id": "nLcU_Kvx4xk_m05_0828.00_musketeer-evolution",
+   "entity": "musketeer-evolution",
+   "source": "click",
+   "verdict": "right"
+  },
+  {
+   "id": "txYlMgXaGF8_m04_0746.60_valkyrie-evolution",
+   "entity": "valkyrie-evolution",
+   "source": "click",
+   "verdict": "off"
+  },
+  {
+   "id": "oPDyLHWbu08_m02_0382.10_battle-ram-evolution",
+   "entity": "battle-ram-evolution",
+   "source": "click",
+   "verdict": "right"
+  },
+  {
+   "id": "b9nXaMBejRw_m03_0633.80_valkyrie-hero",
+   "entity": "valkyrie-hero",
+   "source": "click",
+   "verdict": "right"
+  },
+  {
+   "id": "kdav8AdQPc0_m06_1423.40_goblin-drill-evolution",
+   "entity": "goblin-drill-evolution",
+   "source": "click",
+   "verdict": "right"
+  },
+  {
+   "id": "7R5FP2IYWsw_m06_1328.50_knight-hero",
+   "entity": "knight-hero",
+   "source": "click",
+   "verdict": "right"
+  },
+  {
+   "id": "cole_2026-09-28_phone_m02_0318.00_ronin",
+   "entity": "ronin",
+   "source": "click",
+   "verdict": "off"
+  },
+  {
+   "id": "cole_2026-09-29_b_m03_0734.90_minion-giant",
+   "entity": "minion-giant",
+   "source": "click",
+   "verdict": "right"
+  },
+  {
+   "id": "6rCdZkKZiis_m05_1106.70_goblins-hero",
+   "entity": "goblins-hero",
+   "source": "click",
+   "verdict": "off"
+  },
+  {
+   "id": "6rCdZkKZiis_m03_0723.30_dart-goblin-evolution",
+   "entity": "dart-goblin-evolution",
+   "source": "click",
+   "verdict": "right"
+  },
+  {
+   "id": "friend_2026-09-29_b_m05_1017.30_goblin-demolisher",
+   "entity": "goblin-demolisher",
+   "source": "click",
+   "verdict": "right"
+  },
+  {
+   "id": "cole_2026-09-29_c_m10_2116.00_barbarian-barrel-hero",
+   "entity": "barbarian-barrel-hero",
+   "source": "click",
+   "verdict": "right"
+  },
+  {
+   "id": "friend_2026-09-29_c_m04_0638.40_goblinstein-doctor",
+   "entity": "goblinstein-doctor",
+   "source": "click",
+   "verdict": "right"
+  },
+  {
+   "id": "kdav8AdQPc0_m06_1298.20_giant-snowball-evolution",
+   "entity": "giant-snowball-evolution",
+   "source": "click",
+   "verdict": "right"
+  },
+  {
+   "id": "cole_2026-09-30_m01_0163.80_tomb-queen",
+   "entity": "tomb-queen",
+   "source": "click",
+   "verdict": "right"
+  },
+  {
+   "id": "cole_2026-09-29_b_m03_0471.90_rune-giant",
+   "entity": "rune-giant",
+   "source": "click",
+   "verdict": "right"
+  },
+  {
+   "id": "2elEncccZwQ_m01_0134.20_royal-ghost-evolution",
+   "entity": "royal-ghost-evolution",
+   "source": "click",
+   "verdict": "off"
+  },
+  {
+   "id": "friend_2026-09-29_a_m02_0328.60_goblinstein-monster",
+   "entity": "goblinstein-monster",
+   "source": "click",
+   "verdict": "right"
+  },
+  {
+   "id": "PuJls1qTZsU_m06_1313.10_royal-hogs-evolution",
+   "entity": "royal-hogs-evolution",
+   "source": "click",
+   "verdict": "right"
+  },
+  {
+   "id": "3r9-35N9yE8_m03_0540.00_ice-golem-hero",
+   "entity": "ice-golem-hero",
+   "source": "click",
+   "verdict": "off"
+  },
+  {
+   "id": "txYlMgXaGF8_m02_0421.70_pekka-evolution",
+   "entity": "pekka-evolution",
+   "source": "click",
+   "verdict": "off"
+  },
+  {
+   "id": "7wwlikDO7J0_m05_1083.70_ice-wizard-hero",
+   "entity": "ice-wizard-hero",
+   "source": "click",
+   "verdict": "right"
+  },
+  {
+   "id": "cole_2026-09-29_c_m01_0226.40_goblin-machine",
+   "entity": "goblin-machine",
+   "source": "click",
+   "verdict": "right"
+  },
+  {
+   "id": "cole_2026-09-29_c_m06_1368.70_spirit-empress-air",
+   "entity": "spirit-empress-air",
+   "source": "click",
+   "verdict": "right"
+  },
+  {
+   "id": "b9nXaMBejRw_m04_0757.30_knight-evolution",
+   "entity": "knight-evolution",
+   "source": "click",
+   "verdict": "off"
+  },
+  {
+   "id": "UFQFnrtWUE4_m07_1484.70_tesla-evolution",
+   "entity": "tesla-evolution",
+   "source": "click",
+   "verdict": "off"
+  },
+  {
+   "id": "friend_2026-09-29_a_m02_0317.70_goblin-curse",
+   "entity": "goblin-curse",
+   "source": "click",
+   "verdict": "right"
+  }
+ ]
+}

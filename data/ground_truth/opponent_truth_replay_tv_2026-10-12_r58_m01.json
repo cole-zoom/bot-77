@@ -1,0 +1,589 @@
+{
+ "video_id": "tv_2026-10-12_r58",
+ "side": "opponent",
+ "matches": [
+  "tv_2026-10-12_r58_m01"
+ ],
+ "items": [
+  {
+   "match_id": "tv_2026-10-12_r58_m01",
+   "t_video": 14.0,
+   "label": "Skeletons",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r58_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r58_m01",
+   "t_video": 19.1,
+   "label": "Knight",
+   "form": "hero",
+   "source": "POV of tv_2026-10-12_r58_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r58_m01",
+   "t_video": 27.3,
+   "label": "Electro Spirit",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r58_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r58_m01",
+   "t_video": 31.6,
+   "label": "The Log",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r58_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r58_m01",
+   "t_video": 33.3,
+   "label": "Archers",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r58_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r58_m01",
+   "t_video": 39.6,
+   "label": "Skeletons",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r58_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r58_m01",
+   "t_video": 44.0,
+   "label": "Knight",
+   "form": "hero",
+   "source": "POV of tv_2026-10-12_r58_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r58_m01",
+   "t_video": 49.6,
+   "label": "X-Bow",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r58_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r58_m01",
+   "t_video": 63.5,
+   "label": "The Log",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r58_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r58_m01",
+   "t_video": 70.0,
+   "label": "Electro Spirit",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r58_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-12_r58_m01",
+   "t_video": 73.8,
+   "label": "Skeletons",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r58_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r58_m01",
+   "t_video": 83.7,
+   "label": "Archers",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r58_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r58_m01",
+   "t_video": 90.6,
+   "label": "X-Bow",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r58_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r58_m01",
+   "t_video": 96.1,
+   "label": "Knight",
+   "form": "hero",
+   "source": "POV of tv_2026-10-12_r58_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r58_m01",
+   "t_video": 99.3,
+   "label": "The Log",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r58_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r58_m01",
+   "t_video": 101.1,
+   "label": "Skeletons",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r58_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r58_m01",
+   "t_video": 104.2,
+   "label": "Electro Spirit",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r58_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r58_m01",
+   "t_video": 111.3,
+   "label": "Archers",
+   "form": "evo",
+   "source": "POV of tv_2026-10-12_r58_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r58_m01",
+   "t_video": 126.2,
+   "label": "Knight",
+   "form": "hero",
+   "source": "POV of tv_2026-10-12_r58_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r58_m01",
+   "t_video": 130.3,
+   "label": "The Log",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r58_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r58_m01",
+   "t_video": 131.4,
+   "label": "Fireball",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r58_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r58_m01",
+   "t_video": 132.6,
+   "label": "Skeletons",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r58_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r58_m01",
+   "t_video": 134.9,
+   "label": "Electro Spirit",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r58_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r58_m01",
+   "t_video": 139.6,
+   "label": "Archers",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r58_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r58_m01",
+   "t_video": 146.5,
+   "label": "Knight",
+   "form": "hero",
+   "source": "POV of tv_2026-10-12_r58_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r58_m01",
+   "t_video": 154.3,
+   "label": "Tesla",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r58_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r58_m01",
+   "t_video": 156.7,
+   "label": "Skeletons",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r58_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r58_m01",
+   "t_video": 158.1,
+   "label": "Fireball",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r58_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r58_m01",
+   "t_video": 159.1,
+   "label": "The Log",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r58_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-12_r58_m01",
+   "t_video": 159.1,
+   "label": "Electro Spirit",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r58_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-12_r58_m01",
+   "t_video": 164.9,
+   "label": "Archers",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r58_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r58_m01",
+   "t_video": 174.1,
+   "label": "Skeletons",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r58_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r58_m01",
+   "t_video": 174.9,
+   "label": "Knight",
+   "form": "hero",
+   "source": "POV of tv_2026-10-12_r58_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r58_m01",
+   "t_video": 176.3,
+   "label": "__ability",
+   "form": null,
+   "source": "POV of tv_2026-10-12_r58_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-12_r58_m01",
+   "t_video": 177.4,
+   "label": "Tesla",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r58_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r58_m01",
+   "t_video": 185.4,
+   "label": "X-Bow",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r58_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r58_m01",
+   "t_video": 188.2,
+   "label": "Electro Spirit",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r58_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r58_m01",
+   "t_video": 190.6,
+   "label": "The Log",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r58_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r58_m01",
+   "t_video": 199.6,
+   "label": "Archers",
+   "form": "evo",
+   "source": "POV of tv_2026-10-12_r58_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r58_m01",
+   "t_video": 202.6,
+   "label": "Skeletons",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r58_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r58_m01",
+   "t_video": 207.2,
+   "label": "Knight",
+   "form": "hero",
+   "source": "POV of tv_2026-10-12_r58_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r58_m01",
+   "t_video": 209.3,
+   "label": "Electro Spirit",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r58_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r58_m01",
+   "t_video": 213.1,
+   "label": "Tesla",
+   "form": "evo",
+   "source": "POV of tv_2026-10-12_r58_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r58_m01",
+   "t_video": 214.1,
+   "label": "Fireball",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r58_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r58_m01",
+   "t_video": 219.3,
+   "label": "The Log",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r58_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r58_m01",
+   "t_video": 220.3,
+   "label": "Archers",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r58_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r58_m01",
+   "t_video": 224.8,
+   "label": "Electro Spirit",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r58_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r58_m01",
+   "t_video": 226.6,
+   "label": "Skeletons",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r58_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r58_m01",
+   "t_video": 229.5,
+   "label": "Knight",
+   "form": "hero",
+   "source": "POV of tv_2026-10-12_r58_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r58_m01",
+   "t_video": 234.5,
+   "label": "X-Bow",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r58_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r58_m01",
+   "t_video": 238.3,
+   "label": "Archers",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r58_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r58_m01",
+   "t_video": 241.8,
+   "label": "Electro Spirit",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r58_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r58_m01",
+   "t_video": 249.1,
+   "label": "Skeletons",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r58_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r58_m01",
+   "t_video": 251.3,
+   "label": "Tesla",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r58_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r58_m01",
+   "t_video": 254.6,
+   "label": "Fireball",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r58_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r58_m01",
+   "t_video": 261.2,
+   "label": "X-Bow",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r58_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r58_m01",
+   "t_video": 263.9,
+   "label": "The Log",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r58_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r58_m01",
+   "t_video": 264.6,
+   "label": "Electro Spirit",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r58_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r58_m01",
+   "t_video": 266.7,
+   "label": "Skeletons",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r58_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r58_m01",
+   "t_video": 269.0,
+   "label": "Fireball",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r58_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r58_m01",
+   "t_video": 273.0,
+   "label": "X-Bow",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r58_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-12_r58_m01",
+   "t_video": 275.1,
+   "label": "Knight",
+   "form": "hero",
+   "source": "POV of tv_2026-10-12_r58_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r58_m01",
+   "t_video": 277.6,
+   "label": "The Log",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r58_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-12_r58_m01",
+   "t_video": 278.8,
+   "label": "Electro Spirit",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r58_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r58_m01",
+   "t_video": 279.7,
+   "label": "Skeletons",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r58_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r58_m01",
+   "t_video": 282.3,
+   "label": "Fireball",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r58_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r58_m01",
+   "t_video": 286.8,
+   "label": "Archers",
+   "form": "evo",
+   "source": "POV of tv_2026-10-12_r58_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r58_m01",
+   "t_video": 289.2,
+   "label": "The Log",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r58_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r58_m01",
+   "t_video": 291.1,
+   "label": "Electro Spirit",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r58_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r58_m01",
+   "t_video": 292.8,
+   "label": "Skeletons",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r58_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r58_m01",
+   "t_video": 294.9,
+   "label": "Fireball",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r58_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r58_m01",
+   "t_video": 297.3,
+   "label": "Knight",
+   "form": "hero",
+   "source": "POV of tv_2026-10-12_r58_top_m01",
+   "source_confidence": "medium"
+  }
+ ],
+ "paired_with": "tv_2026-10-12_r58_top_m01",
+ "offset_s": 0.0,
+ "auto": true,
+ "source": "replay"
+}

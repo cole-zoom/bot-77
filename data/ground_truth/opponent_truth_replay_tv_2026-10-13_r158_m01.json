@@ -1,0 +1,469 @@
+{
+ "video_id": "tv_2026-10-13_r158",
+ "side": "opponent",
+ "matches": [
+  "tv_2026-10-13_r158_m01"
+ ],
+ "items": [
+  {
+   "match_id": "tv_2026-10-13_r158_m01",
+   "t_video": 12.8,
+   "label": "Bowler",
+   "form": "hero",
+   "source": "POV of tv_2026-10-13_r158_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r158_m01",
+   "t_video": 14.4,
+   "label": "__ability",
+   "form": null,
+   "source": "POV of tv_2026-10-13_r158_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-13_r158_m01",
+   "t_video": 25.7,
+   "label": "Tombstone",
+   "form": "hero",
+   "source": "POV of tv_2026-10-13_r158_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r158_m01",
+   "t_video": 27.5,
+   "label": "Bomber",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r158_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r158_m01",
+   "t_video": 29.7,
+   "label": "Bandit",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r158_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-13_r158_m01",
+   "t_video": 55.4,
+   "label": "Spirit Empress",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r158_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r158_m01",
+   "t_video": 58.3,
+   "label": "Archers",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r158_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r158_m01",
+   "t_video": 79.3,
+   "label": "Bowler",
+   "form": "hero",
+   "source": "POV of tv_2026-10-13_r158_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r158_m01",
+   "t_video": 84.8,
+   "label": "Tombstone",
+   "form": "hero",
+   "source": "POV of tv_2026-10-13_r158_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r158_m01",
+   "t_video": 87.3,
+   "label": "Zap",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r158_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-13_r158_m01",
+   "t_video": 97.2,
+   "label": "Bandit",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r158_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r158_m01",
+   "t_video": 101.2,
+   "label": "__ability",
+   "form": null,
+   "source": "POV of tv_2026-10-13_r158_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-13_r158_m01",
+   "t_video": 107.7,
+   "label": "Bomber",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r158_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r158_m01",
+   "t_video": 121.8,
+   "label": "Bowler",
+   "form": "hero",
+   "source": "POV of tv_2026-10-13_r158_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r158_m01",
+   "t_video": 126.5,
+   "label": "Spirit Empress",
+   "form": null,
+   "source": "next-card advance in tv_2026-10-13_r158_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-13_r158_m01",
+   "t_video": 137.1,
+   "label": "__ability",
+   "form": null,
+   "source": "POV of tv_2026-10-13_r158_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-13_r158_m01",
+   "t_video": 138.7,
+   "label": "Zap",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r158_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r158_m01",
+   "t_video": 139.9,
+   "label": "Tombstone",
+   "form": "hero",
+   "source": "POV of tv_2026-10-13_r158_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-13_r158_m01",
+   "t_video": 142.2,
+   "label": "Bomber",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r158_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r158_m01",
+   "t_video": 144.0,
+   "label": "Archers",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r158_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-13_r158_m01",
+   "t_video": 149.7,
+   "label": "__ability",
+   "form": null,
+   "source": "POV of tv_2026-10-13_r158_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-13_r158_m01",
+   "t_video": 154.4,
+   "label": "Bandit",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r158_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r158_m01",
+   "t_video": 161.6,
+   "label": "Void",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r158_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r158_m01",
+   "t_video": 171.4,
+   "label": "Tombstone",
+   "form": "hero",
+   "source": "POV of tv_2026-10-13_r158_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r158_m01",
+   "t_video": 173.2,
+   "label": "Bowler",
+   "form": "hero",
+   "source": "POV of tv_2026-10-13_r158_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r158_m01",
+   "t_video": 176.1,
+   "label": "Archers",
+   "form": "evo",
+   "source": "POV of tv_2026-10-13_r158_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r158_m01",
+   "t_video": 181.1,
+   "label": "Bandit",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r158_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r158_m01",
+   "t_video": 183.8,
+   "label": "Bomber",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r158_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r158_m01",
+   "t_video": 190.7,
+   "label": "__ability",
+   "form": null,
+   "source": "POV of tv_2026-10-13_r158_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-13_r158_m01",
+   "t_video": 195.1,
+   "label": "Zap",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r158_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r158_m01",
+   "t_video": 197.5,
+   "label": "Bowler",
+   "form": "hero",
+   "source": "POV of tv_2026-10-13_r158_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r158_m01",
+   "t_video": 199.4,
+   "label": "__ability",
+   "form": null,
+   "source": "POV of tv_2026-10-13_r158_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-13_r158_m01",
+   "t_video": 204.3,
+   "label": "Tombstone",
+   "form": "hero",
+   "source": "POV of tv_2026-10-13_r158_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r158_m01",
+   "t_video": 214.8,
+   "label": "Archers",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r158_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-13_r158_m01",
+   "t_video": 215.4,
+   "label": "Archers",
+   "form": null,
+   "source": "next-card advance in tv_2026-10-13_r158_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-13_r158_m01",
+   "t_video": 223.7,
+   "label": "Void",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r158_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r158_m01",
+   "t_video": 230.7,
+   "label": "Spirit Empress",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r158_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r158_m01",
+   "t_video": 236.2,
+   "label": "Zap",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r158_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r158_m01",
+   "t_video": 237.8,
+   "label": "Tombstone",
+   "form": "hero",
+   "source": "POV of tv_2026-10-13_r158_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r158_m01",
+   "t_video": 239.7,
+   "label": "Bomber",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r158_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r158_m01",
+   "t_video": 245.8,
+   "label": "Bowler",
+   "form": "hero",
+   "source": "POV of tv_2026-10-13_r158_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-13_r158_m01",
+   "t_video": 253.4,
+   "label": "Bandit",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r158_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r158_m01",
+   "t_video": 255.6,
+   "label": "__ability",
+   "form": null,
+   "source": "POV of tv_2026-10-13_r158_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-13_r158_m01",
+   "t_video": 261.5,
+   "label": "Spirit Empress",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r158_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r158_m01",
+   "t_video": 263.5,
+   "label": "Tombstone",
+   "form": "hero",
+   "source": "POV of tv_2026-10-13_r158_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r158_m01",
+   "t_video": 265.2,
+   "label": "Archers",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r158_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r158_m01",
+   "t_video": 269.0,
+   "label": "Bowler",
+   "form": "hero",
+   "source": "POV of tv_2026-10-13_r158_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r158_m01",
+   "t_video": 273.7,
+   "label": "Void",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r158_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-13_r158_m01",
+   "t_video": 276.9,
+   "label": "Bandit",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r158_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r158_m01",
+   "t_video": 280.0,
+   "label": "Tombstone",
+   "form": "hero",
+   "source": "POV of tv_2026-10-13_r158_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r158_m01",
+   "t_video": 281.7,
+   "label": "Zap",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r158_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r158_m01",
+   "t_video": 285.8,
+   "label": "Bowler",
+   "form": "hero",
+   "source": "POV of tv_2026-10-13_r158_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-13_r158_m01",
+   "t_video": 290.3,
+   "label": "Bomber",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r158_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r158_m01",
+   "t_video": 292.0,
+   "label": "Archers",
+   "form": "evo",
+   "source": "POV of tv_2026-10-13_r158_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r158_m01",
+   "t_video": 294.5,
+   "label": "Tombstone",
+   "form": "hero",
+   "source": "POV of tv_2026-10-13_r158_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r158_m01",
+   "t_video": 298.4,
+   "label": "Void",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r158_top_m01",
+   "source_confidence": "low"
+  },
+  {
+   "match_id": "tv_2026-10-13_r158_m01",
+   "t_video": 302.6,
+   "label": "Zap",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r158_top_m01",
+   "source_confidence": "high"
+  }
+ ],
+ "paired_with": "tv_2026-10-13_r158_top_m01",
+ "offset_s": 0.0,
+ "auto": true,
+ "source": "replay"
+}

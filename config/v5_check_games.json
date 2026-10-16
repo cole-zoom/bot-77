@@ -1,0 +1,5 @@
+{
+  "_doc": "Dev games kept out of the V5 clock-spot labels (both POVs of each game), so V5's gain from those labels is measured on games it never learned them from (decisions.md, 2026-10-11). They were in real_v3/real_v4 training like the rest of dev.",
+  "matches": ["cole_2026-09-29_b_m03", "friend_2026-09-29_b_m05", "cole_2026-09-29_c_m02", "friend_2026-09-29_c_m03",
+              "cole_2026-09-29_c_m06", "friend_2026-09-29_c_m09"]
+}

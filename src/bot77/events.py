@@ -40,6 +40,7 @@ DROP_MIN = 0.6  # elixir fall that counts as spending
 COST_TOLERANCE = 0.4  # |measured drop - card cost| allowed
 VACATE_LOOKBACK_S = 4.0  # a card must have left the hand within this long before the drop
 NEXT_ADVANCE_S = 2.0  # the next card should change within this long after the drop
+SWAP_AHEAD_S = 1.0  # swap mode: the slot may switch to the next card up to this long after the drop
 MID_SLIDE_SETTLE_S = 1.0  # a card dragged mid-slide doesn't appear in a slot within this long after the drop
 SMALL_UNEXPLAINED = 1.5
 PAIR_TOLERANCE = 0.7  # two cards released together: two sources of measurement error
@@ -48,7 +49,12 @@ CUT_GUARD_S = 1.5  # elixir jumps at jump cuts in edited videos; ignore unexplai
 MISMATCH_MIN_FRACTION = 0.5  # a cost-mismatch guess needs the drop to be at least this share of the card's cost
 ABILITY_STATE_MIN_FRAMES = 3  # a button state must hold this long to count (drags flicker over it)
 ABILITY_BUTTON_LEAD_S = 0.5  # the button can change this long before the elixir drop starts ...
-ABILITY_BUTTON_LAG_S = 1.5  # ... or this long after it ends  # drops below this with no card leaving the hand and no usable ability are ignored
+ABILITY_BUTTON_LAG_S = 1.5  # ... or this long after it ends
+GONE_SETTLE_S = (1.0, 3.0)  # an unexplained drop: the hand this long after it, once the slide animations settle ...
+GONE_COST_TOLERANCE = 0.8  # ... is missing a card whose cost is within this of the drop
+UNREADABLE_NOTE = "slot refilled with an unreadable card"
+GONE_NOTE = "card gone from the hand once it settled"
+CYCLE_GAP = 4  # a played card can't come back before this many other plays: names from the weak cues above that break it are dropped  # drops below this with no card leaving the hand and no usable ability are ignored
 
 
 @dataclass(frozen=True)
@@ -227,15 +233,38 @@ def _vacated(series: list, i_drop: int, times: list[float], lookback_s: float):
     return None
 
 
+def _swapped(series: list, i: int, times: list[float], lookback_s: float, ahead_s: float):
+    """Swap mode: the slot switched from one card to another near frame i, directly or via a few empty frames (the
+    drop can finish after the refill: bl_2026-10-12_r03 at 69.4 s, Cole's review). Returns (old card, frame it was
+    last seen) for the switch closest to i."""
+    best, prev, prev_k = None, None, None
+    for k in range(len(series)):
+        dt = times[k] - times[i]
+        if dt > ahead_s:
+            break
+        b = series[k]
+        if b is None:
+            continue
+        if prev is not None and b != prev and dt >= -lookback_s and (best is None or abs(dt) < best[0]):
+            best = (abs(dt), prev, prev_k)
+        prev, prev_k = b, k
+    return (best[1], best[2]) if best else None
+
+
 def detect_plays(states: list[FrameState], costs: dict[int, int], names: dict[int, str],
                  ability_costs: dict[int, int] | None = None,
                  ability_uses: dict[int, int] | None = None,
-                 cut_times: list[float] | None = None) -> list[Play]:
+                 cut_times: list[float] | None = None, swap_plays: bool = False) -> list[Play]:
     """`costs`: card_id -> elixir; `ability_costs`: card_id -> ability elixir for the champions
     and hero-form cards in play; `ability_uses`: card_id -> uses per deploy (default 1);
-    `cut_times`: video times of jump cuts (edited videos)."""
+    `cut_times`: video times of jump cuts (edited videos); `swap_plays`: the hand never shows an empty slot, a
+    played card is replaced directly by the next card (the top player's hand in the replay viewer, layout option
+    `plays_by_swap`, decisions.md 2026-10-12)."""
+    if not states:  # a "match" with no readable frames (a menu or an edit cut): nothing to detect
+        return []
     ctx = _Context(states, costs, names, ability_costs or {}, ability_uses or {})
     ctx.cut_times = cut_times or []
+    ctx.swap = swap_plays
     drops = find_drops(states, ctx.e)
     if ctx.button_mode:
         ctx.add_button_abilities(drops)
@@ -243,7 +272,23 @@ def detect_plays(states: list[FrameState], costs: dict[int, int], names: dict[in
         ctx.explain(d)
     ctx.add_hand_only_plays()
     ctx.plays.sort(key=lambda p: (p.t, p.t_drag or p.t))
+    _cycle_guard(ctx.plays)
     return ctx.plays
+
+
+def _cycle_guard(plays: list[Play]) -> None:
+    """A card named only from a weak cue (an unreadable refill, the settled hand) is dropped back to unknown when the
+    same card is played fewer than CYCLE_GAP plays before or after it: the cycle makes that impossible (on 410
+    replays the unguarded cues added ~150 names and ~70 such repeats)."""
+    seq = [p for p in plays if p.kind == "play"]
+    for i, p in enumerate(seq):
+        if p.card_id is None or not any(n in (UNREADABLE_NOTE, GONE_NOTE) for n in p.notes):
+            continue
+        near = seq[max(i - CYCLE_GAP + 1, 0):i] + seq[i + 1:i + CYCLE_GAP]
+        if any(q.card_id == p.card_id for q in near):
+            p.notes.append(f"{p.name} dropped: played again within {CYCLE_GAP} plays")
+            p.card_id = p.name = p.form = p.slot = None
+            p.confidence = "low"
 
 
 class _Context:
@@ -255,9 +300,11 @@ class _Context:
         self.series = {slot: _slot_series(states, slot) for slot in SLOTS}
         self.nxt = [(s.hand["next"].card_id if s.hand["next"].state == "card" else None) for s in states]
         self.plays: list[Play] = []
+        self.cand_notes: dict[tuple[str, int], str] = {}  # (slot, last seen) -> how a weak candidate was found
         self.used: set[tuple[str, int]] = set()  # (slot, last-seen frame) already attributed
         self.uses_left: dict[int, int] = {}  # champion / hero -> ability uses left since its last deploy
         self.buttons = {k: _button_series(states, k) for k in (0, 1)}
+        self.swap = False
         self.button_mode = any(v != "absent" for ser in self.buttons.values() for v in ser)
 
     # -- explaining one drop, most specific explanation first
@@ -295,8 +342,35 @@ class _Context:
         t_end = self.times[d.i_end]
         if self.times[-1] - t_end <= END_GUARD_S or any(abs(t_end - c) <= CUT_GUARD_S for c in self.cut_times):
             return  # the bar resetting at game end, or elixir jumping across a jump cut
+        gone = self._gone_from_hand(d)
+        if gone:
+            self._card(gone, d.i_end, base, note=GONE_NOTE, cap="medium")
+            return
         self.plays.append(Play(kind="play", card_id=None, name=None, form=None, slot=None, confidence="low",
                                notes=[f"drop of {d.amount:.2f} with no card leaving the hand"], **base))
+
+    def _gone_from_hand(self, d: _Drop):
+        """A drop right after another play, while the hand is still sliding, can miss the card leaving (Guards then
+        Mother Witch 0.8 s apart, tv_2026-10-12_r04 top at 214.7 s, Cole's review). Compare the hand before the drop
+        with the hand once it settles: the one card that's gone, wasn't already attributed, and costs about the drop."""
+        t0, t1 = self.times[d.i_start], self.times[d.i_end]
+        recent = {p.card_id for p in self.plays if p.card_id is not None and t0 - p.t <= VACATE_LOOKBACK_S}
+        last: dict[int, tuple[str, str, int]] = {}  # card -> (slot, form, last frame seen) before the drop
+        for slot in SLOTS:
+            for k in range(len(self.times)):
+                if self.times[k] < t0 - VACATE_LOOKBACK_S or self.times[k] > t1 + GONE_SETTLE_S[1]:
+                    continue
+                v = self.series[slot][k]
+                if v is not None and (self.times[k] <= t0 or v[0] in last):
+                    if v[0] not in last or k > last[v[0]][2]:
+                        last[v[0]] = (slot, v[1], k)
+        after = {self.series[slot][k][0] for slot in SLOTS for k in range(len(self.times))
+                 if GONE_SETTLE_S[0] <= self.times[k] - t1 <= GONE_SETTLE_S[1] and self.series[slot][k] is not None}
+        after |= {self.nxt[k] for k in range(len(self.times)) if GONE_SETTLE_S[0] <= self.times[k] - t1 <= GONE_SETTLE_S[1]}
+        gone = [(slot, cid, form, k) for cid, (slot, form, k) in last.items()
+                if cid not in after and cid not in recent and self.times[k] <= t1 + 0.5 and (slot, k) not in self.used
+                and abs(self.costs.get(cid, -99) - d.amount) <= GONE_COST_TOLERANCE]
+        return gone[0] if len(gone) == 1 else None
 
     def _explain_pieces(self, d: _Drop) -> bool:
         """A drop merged from separate spends: each piece must be a card or an ability."""
@@ -323,14 +397,50 @@ class _Context:
     def _candidates(self, i: int) -> list:
         out = []
         for slot in SLOTS:
-            v = _vacated(self.series[slot], i, self.times, VACATE_LOOKBACK_S)
-            if v and (slot, v[1]) not in self.used:
+            # In swap mode the slot's previous switch (already attributed) mustn't hide a later unreadable refill
+            # (tv_2026-10-12_r04 top at 214.7 s: Mother Witch swapped in at 212.0, played at 214.7).
+            options = [(lambda: _vacated(self.series[slot], i, self.times, VACATE_LOOKBACK_S), None)]
+            if self.swap:
+                options += [(lambda: _swapped(self.series[slot], i, self.times, VACATE_LOOKBACK_S, SWAP_AHEAD_S), None),
+                            (lambda: self._went_unreadable(slot, i), UNREADABLE_NOTE)]
+            v = None
+            for f, note in options:
+                v = f()
+                if v and (slot, v[1]) not in self.used:
+                    if note:
+                        self.cand_notes[(slot, v[1])] = note
+                    break
+                v = None
+            if v:
                 (card_id, form), last_seen = v
                 out.append((slot, card_id, form, last_seen))
         mid_slide = self._dragged_mid_slide(i)
         if mid_slide and (mid_slide[0], mid_slide[3]) not in self.used:
             out.append(mid_slide)
         return out
+
+    def _went_unreadable(self, slot: str, i: int):
+        """Swap mode: the slot's new card can't be read (it holds "unknown" from the drop on), while Next advanced.
+        The card it held before was played (tv_2026-10-12_r04 top at 59.9 s: Mother Witch, then an unreadable
+        Cannon Cart)."""
+        st = [s.hand[slot].state for s in self.states]
+        k = next((j for j in range(len(st)) if self.times[j] >= self.times[i] - SWAP_AHEAD_S), None)
+        if k is None or k == 0:
+            return None
+        # Every unreadable run that starts in the window, not just the first: the whole hand can flicker unreadable
+        # for a frame just before (tv_2026-10-12_r04 top at 214.7 s, Cole's review).
+        for start in range(k, len(st)):
+            if self.times[start] - self.times[i] > SWAP_AHEAD_S:
+                break
+            if st[start] != "unknown" or st[start - 1] == "unknown":
+                continue
+            run = [j for j in range(start, len(st)) if self.times[j] - self.times[start] <= 1.0]
+            if any(st[j] != "unknown" for j in run) or self.series[slot][start - 1] is None:
+                continue
+            if self.nxt[max(start - 5, 0)] == self.nxt[min(start + 5, len(self.nxt) - 1)]:
+                continue  # Next didn't advance: not a play from this hand
+            return self.series[slot][start - 1], start - 1
+        return None
 
     def _dragged_mid_slide(self, i: int):
         """A card can be dragged out while it's still sliding from "next" into an empty slot, so
@@ -356,7 +466,11 @@ class _Context:
                     elixir_after=round(float(self.e[b]), 2), measured_cost=round(amount, 2))
 
     def _refill_evidence(self, slot: str, last_seen: int, i_after: int) -> tuple[bool, bool]:
-        prev_next = self.nxt[max(last_seen, 0)]
+        j = max(last_seen, 0)
+        if self.swap:  # the next card advances in the same frame as the swap: take it from just before
+            while j > 0 and self.times[last_seen] - self.times[j] < 0.5:
+                j -= 1
+        prev_next = self.nxt[j]
         window = [k for k in range(i_after, len(self.states)) if self.times[k] - self.times[i_after] <= NEXT_ADVANCE_S + 1]
         advanced = any(self.nxt[k] != prev_next for k in window if self.times[k] - self.times[i_after] <= NEXT_ADVANCE_S)
         refilled = prev_next is not None and any(
@@ -368,6 +482,9 @@ class _Context:
         self.used.add((slot, last_seen))
         advanced, refilled = self._refill_evidence(slot, last_seen, i_after)
         notes = [note] if note else []
+        if (slot, last_seen) in self.cand_notes:
+            notes.append(self.cand_notes[(slot, last_seen)])
+            cap = "medium" if cap == "high" else cap
         if not advanced:
             notes.append("next card did not advance")
         if not refilled:
@@ -455,7 +572,19 @@ class _Context:
             ser = self.series[slot]
             i = 1
             while i < len(ser):
-                if ser[i] is None and ser[i - 1] is not None:
+                if self.swap and ser[i] is not None and ser[i - 1] is not None and ser[i] != ser[i - 1]:
+                    last_seen, card = i - 1, ser[i - 1]
+                    if ser[i][0] == self.nxt[last_seen] != card[0] and (slot, last_seen) not in self.used:
+                        self.used.add((slot, last_seen))
+                        t = self.times[i]
+                        self.plays.append(Play(
+                            t=t, kind="play", card_id=card[0], name=self.names.get(card[0]), form=card[1], slot=slot,
+                            elixir_before=round(float(self.e[last_seen]), 2), elixir_after=round(float(self.e[i]), 2),
+                            measured_cost=round(float(self.e[last_seen] - self.e[i]), 2), confidence="medium",
+                            notes=["seen in the hand only: replaced by the previous next card, no elixir drop matched"],
+                            t_drag=t))
+                    i += 1
+                elif ser[i] is None and ser[i - 1] is not None:
                     last_seen, card = i - 1, ser[i - 1]
                     k = i
                     while k < len(ser) and ser[k] is None and self.times[k] - self.times[i] <= VACATE_LOOKBACK_S:

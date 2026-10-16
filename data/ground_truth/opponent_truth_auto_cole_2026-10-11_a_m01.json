@@ -1,0 +1,716 @@
+{
+ "video_id": "cole_2026-10-11_a",
+ "side": "opponent",
+ "matches": [
+  "cole_2026-10-11_a_m01"
+ ],
+ "items": [
+  {
+   "match_id": "cole_2026-10-11_a_m01",
+   "t_video": 69.5,
+   "label": "Firecracker",
+   "form": "normal",
+   "source": "POV of cole_2026-10-11_b_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-11_a_m01",
+   "t_video": 75.7,
+   "label": "Electro Spirit",
+   "form": "normal",
+   "source": "POV of cole_2026-10-11_b_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-11_a_m01",
+   "t_video": 77.0,
+   "label": "Fire Spirit",
+   "form": "normal",
+   "source": "POV of cole_2026-10-11_b_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-11_a_m01",
+   "t_video": 78.4,
+   "label": "Skeletons",
+   "form": "normal",
+   "source": "POV of cole_2026-10-11_b_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-11_a_m01",
+   "t_video": 79.1,
+   "label": "Ice Spirit",
+   "form": "normal",
+   "source": "POV of cole_2026-10-11_b_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "cole_2026-10-11_a_m01",
+   "t_video": 85.1,
+   "label": "Firecracker",
+   "form": "normal",
+   "source": "POV of cole_2026-10-11_b_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-11_a_m01",
+   "t_video": 90.0,
+   "label": "Ice Golem",
+   "form": "normal",
+   "source": "POV of cole_2026-10-11_b_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-11_a_m01",
+   "t_video": 96.0,
+   "label": "Electro Spirit",
+   "form": "normal",
+   "source": "POV of cole_2026-10-11_b_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-11_a_m01",
+   "t_video": 108.0,
+   "label": "Goblin Curse",
+   "form": "normal",
+   "source": "POV of cole_2026-10-11_b_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-11_a_m01",
+   "t_video": 109.1,
+   "label": "Goblin Curse",
+   "form": null,
+   "source": "next-card advance in cole_2026-10-11_b_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "cole_2026-10-11_a_m01",
+   "t_video": 109.7,
+   "label": "Skeletons",
+   "form": "normal",
+   "source": "POV of cole_2026-10-11_b_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-11_a_m01",
+   "t_video": 112.2,
+   "label": "Fire Spirit",
+   "form": "normal",
+   "source": "POV of cole_2026-10-11_b_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-11_a_m01",
+   "t_video": 117.7,
+   "label": "Firecracker",
+   "form": "evo",
+   "source": "POV of cole_2026-10-11_b_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "cole_2026-10-11_a_m01",
+   "t_video": 118.5,
+   "label": "Ice Golem",
+   "form": "normal",
+   "source": "POV of cole_2026-10-11_b_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "cole_2026-10-11_a_m01",
+   "t_video": 118.7,
+   "label": "Firecracker",
+   "form": null,
+   "source": "next-card advance in cole_2026-10-11_b_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "cole_2026-10-11_a_m01",
+   "t_video": 125.2,
+   "label": "Electro Spirit",
+   "form": "normal",
+   "source": "POV of cole_2026-10-11_b_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-11_a_m01",
+   "t_video": 127.4,
+   "label": "Skeletons",
+   "form": "evo",
+   "source": "POV of cole_2026-10-11_b_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-11_a_m01",
+   "t_video": 129.4,
+   "label": "Fire Spirit",
+   "form": "normal",
+   "source": "POV of cole_2026-10-11_b_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-11_a_m01",
+   "t_video": 131.5,
+   "label": "Firecracker",
+   "form": "normal",
+   "source": "POV of cole_2026-10-11_b_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-11_a_m01",
+   "t_video": 133.5,
+   "label": "Ice Golem",
+   "form": "normal",
+   "source": "POV of cole_2026-10-11_b_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "cole_2026-10-11_a_m01",
+   "t_video": 146.8,
+   "label": "Electro Spirit",
+   "form": "normal",
+   "source": "POV of cole_2026-10-11_b_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-11_a_m01",
+   "t_video": 149.5,
+   "label": "Skeletons",
+   "form": "normal",
+   "source": "POV of cole_2026-10-11_b_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-11_a_m01",
+   "t_video": 152.3,
+   "label": "Ice Spirit",
+   "form": "normal",
+   "source": "POV of cole_2026-10-11_b_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-11_a_m01",
+   "t_video": 169.8,
+   "label": "Firecracker",
+   "form": "normal",
+   "source": "POV of cole_2026-10-11_b_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-11_a_m01",
+   "t_video": 171.0,
+   "label": "Goblin Curse",
+   "form": "normal",
+   "source": "POV of cole_2026-10-11_b_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "cole_2026-10-11_a_m01",
+   "t_video": 171.8,
+   "label": "Rage",
+   "form": "normal",
+   "source": "POV of cole_2026-10-11_b_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "cole_2026-10-11_a_m01",
+   "t_video": 177.8,
+   "label": "Skeletons",
+   "form": "normal",
+   "source": "POV of cole_2026-10-11_b_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-11_a_m01",
+   "t_video": 181.7,
+   "label": "Ice Golem",
+   "form": "normal",
+   "source": "POV of cole_2026-10-11_b_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-11_a_m01",
+   "t_video": 184.8,
+   "label": "Ice Spirit",
+   "form": "normal",
+   "source": "POV of cole_2026-10-11_b_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-11_a_m01",
+   "t_video": 185.5,
+   "label": "Electro Spirit",
+   "form": "normal",
+   "source": "POV of cole_2026-10-11_b_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "cole_2026-10-11_a_m01",
+   "t_video": 186.3,
+   "label": "Fire Spirit",
+   "form": "normal",
+   "source": "POV of cole_2026-10-11_b_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "cole_2026-10-11_a_m01",
+   "t_video": 188.3,
+   "label": "Skeletons",
+   "form": "evo",
+   "source": "POV of cole_2026-10-11_b_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-11_a_m01",
+   "t_video": 189.8,
+   "label": "Rage",
+   "form": "normal",
+   "source": "POV of cole_2026-10-11_b_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-11_a_m01",
+   "t_video": 191.9,
+   "label": "Ice Spirit",
+   "form": "normal",
+   "source": "POV of cole_2026-10-11_b_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-11_a_m01",
+   "t_video": 210.6,
+   "label": "Firecracker",
+   "form": "evo",
+   "source": "POV of cole_2026-10-11_b_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-11_a_m01",
+   "t_video": 214.9,
+   "label": "Goblin Curse",
+   "form": "normal",
+   "source": "POV of cole_2026-10-11_b_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-11_a_m01",
+   "t_video": 218.9,
+   "label": "Ice Golem",
+   "form": "normal",
+   "source": "POV of cole_2026-10-11_b_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-11_a_m01",
+   "t_video": 219.9,
+   "label": "Skeletons",
+   "form": "normal",
+   "source": "POV of cole_2026-10-11_b_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "cole_2026-10-11_a_m01",
+   "t_video": 219.9,
+   "label": "Ice Golem",
+   "form": null,
+   "source": "next-card advance in cole_2026-10-11_b_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "cole_2026-10-11_a_m01",
+   "t_video": 221.9,
+   "label": "Electro Spirit",
+   "form": "normal",
+   "source": "POV of cole_2026-10-11_b_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-11_a_m01",
+   "t_video": 233.0,
+   "label": "Firecracker",
+   "form": "normal",
+   "source": "POV of cole_2026-10-11_b_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-11_a_m01",
+   "t_video": 234.2,
+   "label": "Fire Spirit",
+   "form": "normal",
+   "source": "POV of cole_2026-10-11_b_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "cole_2026-10-11_a_m01",
+   "t_video": 234.7,
+   "label": "Ice Spirit",
+   "form": "normal",
+   "source": "POV of cole_2026-10-11_b_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "cole_2026-10-11_a_m01",
+   "t_video": 237.5,
+   "label": "Ice Golem",
+   "form": "normal",
+   "source": "POV of cole_2026-10-11_b_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-11_a_m01",
+   "t_video": 239.7,
+   "label": "Skeletons",
+   "form": "normal",
+   "source": "POV of cole_2026-10-11_b_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-11_a_m01",
+   "t_video": 240.5,
+   "label": "Electro Spirit",
+   "form": "normal",
+   "source": "POV of cole_2026-10-11_b_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "cole_2026-10-11_a_m01",
+   "t_video": 240.7,
+   "label": "Skeletons",
+   "form": null,
+   "source": "next-card advance in cole_2026-10-11_b_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "cole_2026-10-11_a_m01",
+   "t_video": 245.1,
+   "label": "Firecracker",
+   "form": "normal",
+   "source": "POV of cole_2026-10-11_b_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-11_a_m01",
+   "t_video": 255.2,
+   "label": "Fire Spirit",
+   "form": "normal",
+   "source": "POV of cole_2026-10-11_b_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "cole_2026-10-11_a_m01",
+   "t_video": 255.2,
+   "label": "Ice Spirit",
+   "form": "normal",
+   "source": "POV of cole_2026-10-11_b_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "cole_2026-10-11_a_m01",
+   "t_video": 256.5,
+   "label": "Ice Golem",
+   "form": "normal",
+   "source": "POV of cole_2026-10-11_b_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-11_a_m01",
+   "t_video": 257.9,
+   "label": "Skeletons",
+   "form": "evo",
+   "source": "POV of cole_2026-10-11_b_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-11_a_m01",
+   "t_video": 259.9,
+   "label": "Firecracker",
+   "form": "evo",
+   "source": "POV of cole_2026-10-11_b_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-11_a_m01",
+   "t_video": 265.7,
+   "label": "Electro Spirit",
+   "form": "normal",
+   "source": "POV of cole_2026-10-11_b_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "cole_2026-10-11_a_m01",
+   "t_video": 265.7,
+   "label": "Fire Spirit",
+   "form": "normal",
+   "source": "POV of cole_2026-10-11_b_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "cole_2026-10-11_a_m01",
+   "t_video": 267.5,
+   "label": "Ice Spirit",
+   "form": "normal",
+   "source": "POV of cole_2026-10-11_b_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-11_a_m01",
+   "t_video": 268.3,
+   "label": "Ice Golem",
+   "form": "normal",
+   "source": "POV of cole_2026-10-11_b_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "cole_2026-10-11_a_m01",
+   "t_video": 276.7,
+   "label": "Firecracker",
+   "form": "normal",
+   "source": "POV of cole_2026-10-11_b_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-11_a_m01",
+   "t_video": 277.5,
+   "label": "Skeletons",
+   "form": "normal",
+   "source": "POV of cole_2026-10-11_b_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "cole_2026-10-11_a_m01",
+   "t_video": 279.4,
+   "label": "Electro Spirit",
+   "form": "normal",
+   "source": "POV of cole_2026-10-11_b_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-11_a_m01",
+   "t_video": 280.2,
+   "label": "Fire Spirit",
+   "form": "normal",
+   "source": "POV of cole_2026-10-11_b_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "cole_2026-10-11_a_m01",
+   "t_video": 281.6,
+   "label": "Ice Spirit",
+   "form": "normal",
+   "source": "POV of cole_2026-10-11_b_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "cole_2026-10-11_a_m01",
+   "t_video": 282.2,
+   "label": "Ice Golem",
+   "form": "normal",
+   "source": "POV of cole_2026-10-11_b_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "cole_2026-10-11_a_m01",
+   "t_video": 287.7,
+   "label": "Firecracker",
+   "form": "normal",
+   "source": "POV of cole_2026-10-11_b_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-11_a_m01",
+   "t_video": 288.1,
+   "label": "Skeletons",
+   "form": "normal",
+   "source": "POV of cole_2026-10-11_b_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "cole_2026-10-11_a_m01",
+   "t_video": 289.8,
+   "label": "Electro Spirit",
+   "form": "normal",
+   "source": "POV of cole_2026-10-11_b_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-11_a_m01",
+   "t_video": 290.4,
+   "label": "Fire Spirit",
+   "form": "normal",
+   "source": "POV of cole_2026-10-11_b_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "cole_2026-10-11_a_m01",
+   "t_video": 295.2,
+   "label": "Ice Golem",
+   "form": "normal",
+   "source": "POV of cole_2026-10-11_b_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-11_a_m01",
+   "t_video": 298.2,
+   "label": "Firecracker",
+   "form": "evo",
+   "source": "POV of cole_2026-10-11_b_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-11_a_m01",
+   "t_video": 298.9,
+   "label": "Ice Spirit",
+   "form": "normal",
+   "source": "POV of cole_2026-10-11_b_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "cole_2026-10-11_a_m01",
+   "t_video": 301.1,
+   "label": "Electro Spirit",
+   "form": "normal",
+   "source": "POV of cole_2026-10-11_b_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-11_a_m01",
+   "t_video": 302.5,
+   "label": "Skeletons",
+   "form": "evo",
+   "source": "POV of cole_2026-10-11_b_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-11_a_m01",
+   "t_video": 303.1,
+   "label": "Fire Spirit",
+   "form": "normal",
+   "source": "POV of cole_2026-10-11_b_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "cole_2026-10-11_a_m01",
+   "t_video": 305.2,
+   "label": "Ice Golem",
+   "form": "normal",
+   "source": "POV of cole_2026-10-11_b_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-11_a_m01",
+   "t_video": 306.8,
+   "label": "Firecracker",
+   "form": "normal",
+   "source": "POV of cole_2026-10-11_b_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-11_a_m01",
+   "t_video": 308.8,
+   "label": "Ice Spirit",
+   "form": "normal",
+   "source": "POV of cole_2026-10-11_b_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-11_a_m01",
+   "t_video": 323.7,
+   "label": "Skeletons",
+   "form": "normal",
+   "source": "POV of cole_2026-10-11_b_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "cole_2026-10-11_a_m01",
+   "t_video": 323.7,
+   "label": "Electro Spirit",
+   "form": "normal",
+   "source": "POV of cole_2026-10-11_b_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "cole_2026-10-11_a_m01",
+   "t_video": 326.2,
+   "label": "Ice Golem",
+   "form": "normal",
+   "source": "POV of cole_2026-10-11_b_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-11_a_m01",
+   "t_video": 327.0,
+   "label": "Fire Spirit",
+   "form": "normal",
+   "source": "POV of cole_2026-10-11_b_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "cole_2026-10-11_a_m01",
+   "t_video": 328.5,
+   "label": "Firecracker",
+   "form": "normal",
+   "source": "POV of cole_2026-10-11_b_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-11_a_m01",
+   "t_video": 341.7,
+   "label": "Rage",
+   "form": "normal",
+   "source": "POV of cole_2026-10-11_b_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-11_a_m01",
+   "t_video": 342.4,
+   "label": "Goblin Curse",
+   "form": "normal",
+   "source": "POV of cole_2026-10-11_b_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "cole_2026-10-11_a_m01",
+   "t_video": 343.1,
+   "label": "Ice Spirit",
+   "form": "normal",
+   "source": "POV of cole_2026-10-11_b_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "cole_2026-10-11_a_m01",
+   "t_video": 343.6,
+   "label": "Skeletons",
+   "form": "normal",
+   "source": "POV of cole_2026-10-11_b_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "cole_2026-10-11_a_m01",
+   "t_video": 344.1,
+   "label": "Electro Spirit",
+   "form": "normal",
+   "source": "POV of cole_2026-10-11_b_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "cole_2026-10-11_a_m01",
+   "t_video": 344.6,
+   "label": "Ice Golem",
+   "form": "normal",
+   "source": "POV of cole_2026-10-11_b_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "cole_2026-10-11_a_m01",
+   "t_video": 345.9,
+   "label": "Firecracker",
+   "form": "evo",
+   "source": "POV of cole_2026-10-11_b_m01",
+   "source_confidence": "medium"
+  }
+ ],
+ "paired_with": "cole_2026-10-11_b_m01",
+ "offset_s": -26.0,
+ "auto": true
+}

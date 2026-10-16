@@ -139,7 +139,7 @@ def process_video(video: Path, layout_id: str, cards: list[dict], db_dir: Path, 
         # 4. Plays.
         champs, uses = _ability_cards(deck, by_id, states)
         cuts = [t for (pt, pr), (t, r) in zip(m.reads, m.reads[1:]) if r.elapsed_s - pr.elapsed_s > (t - pt) + 3]
-        plays = detect_plays(states, costs, names, champs, uses, cuts)
+        plays = detect_plays(states, costs, names, champs, uses, cuts, swap_plays=layout.hand.get("plays_by_swap", False))
         thumbs = _thumbnails(video, layout, plays)
         for k, p in enumerate(plays):
             event_rows.append(_event_row(f"{match_id}_e{k + 1:03d}", match_id, video_id, m.elapsed_at(p.t), p, thumbs.get(k)))
@@ -202,7 +202,7 @@ def redetect_video(video_id: str, cards: list[dict], db_dir: Path, log=print) ->
         champs, uses = _ability_cards(m["deck"], by_id, states)
         cuts = [b["t_video"] for a, b in zip(rows, rows[1:])
                 if b["t_match"] - a["t_match"] > (b["t_video"] - a["t_video"]) + 2]
-        plays = detect_plays(states, costs, names, champs, uses, cuts)
+        plays = detect_plays(states, costs, names, champs, uses, cuts, swap_plays=layout.hand.get("plays_by_swap", False))
         thumbs = _thumbnails(Path(video["path"]), layout, plays)
         hud_t = [r["t_video"] for r in rows]
         for k, p in enumerate(plays):
@@ -278,14 +278,15 @@ def _replace(db, name: str, schema: pa.Schema, rows: list[dict], video_id: str, 
         return
     t = db.open_table(name)
     if set(t.schema.names) != set(schema.names):  # schema changed: rebuild, keeping other videos' rows
-        where_other = f"NOT ({key} LIKE '{video_id}%')" if prefix else f"{key} != '{video_id}'"
+        where_other = f"NOT ({key} LIKE '{video_id}_m%')" if prefix else f"{key} != '{video_id}'"
         keep = t.search().where(where_other).limit(100_000_000).to_arrow().to_pylist()
         for r in keep:
             for col in schema.names:
                 r.setdefault(col, None)
         db.create_table(name, pa.Table.from_pylist(keep + rows, schema=schema), mode="overwrite")
         return
-    where = f"{key} LIKE '{video_id}%'" if prefix else f"{key} = '{video_id}'"
+    # match ids are <video_id>_mNN; a bare '<video_id>%' also hit '<video_id>_top_m01' (replay top views lost their HUD)
+    where = f"{key} LIKE '{video_id}_m%'" if prefix else f"{key} = '{video_id}'"
     t.delete(where)
     if rows:
         t.add(table)

@@ -1,0 +1,181 @@
+{
+ "video_id": "tv_2026-10-13_r94",
+ "side": "opponent",
+ "matches": [
+  "tv_2026-10-13_r94_m01"
+ ],
+ "items": [
+  {
+   "match_id": "tv_2026-10-13_r94_m01",
+   "t_video": 26.1,
+   "label": "Mega Knight",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r94_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r94_m01",
+   "t_video": 32.3,
+   "label": "Arrows",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r94_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r94_m01",
+   "t_video": 35.2,
+   "label": "Bats",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r94_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r94_m01",
+   "t_video": 46.8,
+   "label": "Ram Rider",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r94_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r94_m01",
+   "t_video": 60.9,
+   "label": "Executioner",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r94_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-13_r94_m01",
+   "t_video": 66.4,
+   "label": "Spear Goblins",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r94_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r94_m01",
+   "t_video": 87.8,
+   "label": "Cannon",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r94_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r94_m01",
+   "t_video": 100.1,
+   "label": "Valkyrie",
+   "form": "hero",
+   "source": "POV of tv_2026-10-13_r94_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r94_m01",
+   "t_video": 108.8,
+   "label": "Arrows",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r94_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r94_m01",
+   "t_video": 115.0,
+   "label": "Mega Knight",
+   "form": "evo",
+   "source": "POV of tv_2026-10-13_r94_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r94_m01",
+   "t_video": 119.8,
+   "label": "Bats",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r94_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r94_m01",
+   "t_video": 129.0,
+   "label": "Executioner",
+   "form": "evo",
+   "source": "POV of tv_2026-10-13_r94_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r94_m01",
+   "t_video": 132.3,
+   "label": "Spear Goblins",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r94_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r94_m01",
+   "t_video": 138.8,
+   "label": "Ram Rider",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r94_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r94_m01",
+   "t_video": 146.2,
+   "label": "Arrows",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r94_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r94_m01",
+   "t_video": 155.1,
+   "label": "Mega Knight",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r94_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r94_m01",
+   "t_video": 157.0,
+   "label": "Bats",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r94_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r94_m01",
+   "t_video": 162.6,
+   "label": "Executioner",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r94_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r94_m01",
+   "t_video": 171.6,
+   "label": "Cannon",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r94_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r94_m01",
+   "t_video": 174.7,
+   "label": "Ram Rider",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r94_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-13_r94_m01",
+   "t_video": 176.9,
+   "label": "Spear Goblins",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r94_top_m01",
+   "source_confidence": "high"
+  }
+ ],
+ "paired_with": "tv_2026-10-13_r94_top_m01",
+ "offset_s": 0.0,
+ "auto": true,
+ "source": "replay"
+}

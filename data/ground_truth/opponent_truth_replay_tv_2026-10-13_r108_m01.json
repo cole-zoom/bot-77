@@ -1,0 +1,157 @@
+{
+ "video_id": "tv_2026-10-13_r108",
+ "side": "opponent",
+ "matches": [
+  "tv_2026-10-13_r108_m01"
+ ],
+ "items": [
+  {
+   "match_id": "tv_2026-10-13_r108_m01",
+   "t_video": 31.0,
+   "label": "Minions",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r108_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r108_m01",
+   "t_video": 32.7,
+   "label": "Berserker",
+   "form": "hero",
+   "source": "POV of tv_2026-10-13_r108_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-13_r108_m01",
+   "t_video": 57.2,
+   "label": "Bomber",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r108_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r108_m01",
+   "t_video": 61.9,
+   "label": "Arrows",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r108_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r108_m01",
+   "t_video": 80.3,
+   "label": "Berserker",
+   "form": "hero",
+   "source": "POV of tv_2026-10-13_r108_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r108_m01",
+   "t_video": 99.3,
+   "label": "Barbarian Hut",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r108_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r108_m01",
+   "t_video": 108.8,
+   "label": "Zap",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r108_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-13_r108_m01",
+   "t_video": 110.7,
+   "label": "Bomber",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r108_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r108_m01",
+   "t_video": 123.5,
+   "label": "Musketeer",
+   "form": "evo",
+   "source": "POV of tv_2026-10-13_r108_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r108_m01",
+   "t_video": 133.3,
+   "label": "Berserker",
+   "form": "hero",
+   "source": "POV of tv_2026-10-13_r108_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r108_m01",
+   "t_video": 137.8,
+   "label": "Minions",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r108_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-13_r108_m01",
+   "t_video": 145.4,
+   "label": "Bomber",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r108_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-13_r108_m01",
+   "t_video": 148.8,
+   "label": "Berserker",
+   "form": "hero",
+   "source": "POV of tv_2026-10-13_r108_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r108_m01",
+   "t_video": 158.0,
+   "label": "Zap",
+   "form": "evo",
+   "source": "POV of tv_2026-10-13_r108_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-13_r108_m01",
+   "t_video": 166.4,
+   "label": "Minions",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r108_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r108_m01",
+   "t_video": 178.4,
+   "label": "Arrows",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r108_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-13_r108_m01",
+   "t_video": 184.4,
+   "label": "Zap",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r108_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r108_m01",
+   "t_video": 188.2,
+   "label": "Berserker",
+   "form": "hero",
+   "source": "POV of tv_2026-10-13_r108_top_m01",
+   "source_confidence": "medium"
+  }
+ ],
+ "paired_with": "tv_2026-10-13_r108_top_m01",
+ "offset_s": 0.0,
+ "auto": true,
+ "source": "replay"
+}

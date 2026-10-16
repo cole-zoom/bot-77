@@ -1,0 +1,41 @@
+{
+  "_doc": "Cole's dedicated recordings: the evo/hero cards in the deck. Heroes: every play is the hero. Evos: charged plays inferred from cycles, anchored on any evo play the hand reader caught (decisions.md, 2026-10-07).",
+  "cole_2026-10-06": {
+    "Skeleton Army": "evo",
+    "Lumberjack": "evo",
+    "Magic Archer": "hero"
+  },
+  "cole_2026-10-07": {
+    "Goblin Giant": "evo",
+    "Inferno Dragon": "evo",
+    "Dark Prince": "hero"
+  },
+  "cole_2026-10-09": {
+    "Skeleton Army": "evo",
+    "Lumberjack": "evo",
+    "Dark Prince": "hero"
+  },
+  "cole_2026-10-09_c": {
+    "Inferno Dragon": "evo",
+    "Hunter": "evo",
+    "Goblins": "hero"
+  },
+  "cole_2026-10-09_d": {
+    "Skeleton Army": "evo",
+    "Goblin Giant": "evo",
+    "Electro Wizard": "hero"
+  },
+  "cole_2026-10-09_e": {
+    "Inferno Dragon": "evo",
+    "Hunter": "evo",
+    "Electro Wizard": "hero"
+  },
+  "cole_2026-10-09_f": {
+    "Electro Giant": "evo"
+  },
+  "_note_cole_2026-10-09_f": "evo Electro Giant: the in-game art override also matches greyed normal cards in the evo slot, so evo/normal comes from Cole's clicks, not the reader",
+  "cole_2026-10-09_g": {
+    "Electro Giant": "evo",
+    "Skeleton Army": "evo"
+  }
+}

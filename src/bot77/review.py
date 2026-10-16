@@ -454,8 +454,14 @@ def score_opponent(db_dir: Path, truth: dict, table: str = "opponent_events") ->
     """Opponent deploys vs ground truth: a deploy is *found* if a true play is within the window
     (any card), and *fully right* if the card matches too (one-to-one, card matches first)."""
     db = lancedb.connect(db_dir)
-    events = [e for e in db.open_table(table).search().where(f"video_id = '{truth['video_id']}'")
-              .limit(100_000).select(["match_id", "t_video", "card"]).to_arrow().to_pylist() if e["match_id"] in truth["matches"]]
+    tbl = db.open_table(table)
+    # labels made by eye at unit appearance (Alina's match) are scored against the first-seen time; POV / paired labels
+    # mark the moment the card leaves the hand (decisions.md, 2026-10-10)
+    appearance = truth.get("time_convention") == "appearance" and "t_seen" in tbl.schema.names
+    events = [{**e, "t_video": e["t_seen"] if appearance and e.get("t_seen") is not None else e["t_video"]}
+              for e in tbl.search().where(f"video_id = '{truth['video_id']}'").limit(100_000)
+              .select(["match_id", "t_video", "card"] + (["t_seen"] if appearance else [])).to_arrow().to_pylist()
+              if e["match_id"] in truth["matches"]]
     items = truth["items"]
     win = lambda t: MATCH_WINDOW_S * (3 if t.get("approximate_time") else 1)
     used_t, used_e, right, found = set(), set(), 0, 0

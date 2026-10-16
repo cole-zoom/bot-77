@@ -22,6 +22,19 @@ if sys.argv[1] == "build":
             out += [x for x in al.label(it, rng) if x and x["name"] not in have]
         except Exception as e:  # noqa: BLE001
             print("ERR", it["video_id"], it["t_video"], e, flush=True)
+    # filter with the crop classifier (bot77/cropclf.py): keep p(entity) >= REVIEW_MIN_P, or unscorable entities
+    import cv2
+    from bot77.cropclf import REVIEW_MIN_P, CropClassifier
+    clf, kept = CropClassifier(emb=al.anchor.emb), []
+    for x in out:
+        im = cv2.imread(str(CAND / "images" / f"{x['name']}.jpg")); H, W = im.shape[:2]
+        _, cx, cy, w, h = map(float, (CAND / "labels" / f"{x['name']}.txt").read_text().splitlines()[0].split())
+        crop = im[max(int((cy - h / 2) * H), 0):int((cy + h / 2) * H), max(int((cx - w / 2) * W), 0):int((cx + w / 2) * W)]
+        pe = clf.p_entity(crop, x["entity"])
+        if pe is None or pe >= REVIEW_MIN_P:
+            kept.append({**x, "clf_p": pe})
+    print(f"classifier filter kept {len(kept)} of {len(out)}", flush=True)
+    out = kept
     (CAND / "manifest_0.json").write_text(json.dumps(out, indent=1))
     n = write_spotcheck(CAND, Path("data/reviews/candidates.html"), n=len(out), seed=0)
     print(len(items), "plays,", n, "candidate frames", dict(al.stats), flush=True)

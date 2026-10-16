@@ -1,0 +1,317 @@
+{
+ "video_id": "tv_2026-10-14_r42",
+ "side": "opponent",
+ "matches": [
+  "tv_2026-10-14_r42_m01"
+ ],
+ "items": [
+  {
+   "match_id": "tv_2026-10-14_r42_m01",
+   "t_video": 12.6,
+   "label": "Princess",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r42_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r42_m01",
+   "t_video": 16.5,
+   "label": "Skeletons",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r42_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r42_m01",
+   "t_video": 19.5,
+   "label": "Mighty Miner",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r42_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r42_m01",
+   "t_video": 24.4,
+   "label": "The Log",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r42_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r42_m01",
+   "t_video": 27.7,
+   "label": "Fire Spirit",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r42_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r42_m01",
+   "t_video": 31.4,
+   "label": "Princess",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r42_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r42_m01",
+   "t_video": 37.9,
+   "label": "Skeletons",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r42_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r42_m01",
+   "t_video": 43.7,
+   "label": "Mighty Miner",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r42_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r42_m01",
+   "t_video": 52.2,
+   "label": "Goblin Barrel",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r42_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r42_m01",
+   "t_video": 66.8,
+   "label": "Rocket",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r42_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-14_r42_m01",
+   "t_video": 72.5,
+   "label": "Fire Spirit",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r42_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r42_m01",
+   "t_video": 74.9,
+   "label": "Skeletons",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r42_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r42_m01",
+   "t_video": 78.2,
+   "label": "The Log",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r42_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r42_m01",
+   "t_video": 98.6,
+   "label": "Goblin Barrel",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r42_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r42_m01",
+   "t_video": 108.8,
+   "label": "Princess",
+   "form": "evo",
+   "source": "POV of tv_2026-10-14_r42_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r42_m01",
+   "t_video": 110.3,
+   "label": "Mighty Miner",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r42_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r42_m01",
+   "t_video": 127.4,
+   "label": "Rocket",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r42_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r42_m01",
+   "t_video": 133.8,
+   "label": "The Log",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r42_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r42_m01",
+   "t_video": 137.4,
+   "label": "Skeletons",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r42_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-14_r42_m01",
+   "t_video": 137.9,
+   "label": "Fire Spirit",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r42_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r42_m01",
+   "t_video": 139.1,
+   "label": "Cannon",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r42_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-14_r42_m01",
+   "t_video": 140.1,
+   "label": "Mighty Miner",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r42_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r42_m01",
+   "t_video": 147.7,
+   "label": "Goblin Barrel",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r42_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r42_m01",
+   "t_video": 149.7,
+   "label": "Fire Spirit",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r42_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r42_m01",
+   "t_video": 151.8,
+   "label": "Skeletons",
+   "form": null,
+   "source": "next-card advance in tv_2026-10-14_r42_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-14_r42_m01",
+   "t_video": 154.9,
+   "label": "Princess",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r42_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r42_m01",
+   "t_video": 156.8,
+   "label": "Mighty Miner",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r42_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r42_m01",
+   "t_video": 162.8,
+   "label": "Goblin Barrel",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r42_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r42_m01",
+   "t_video": 164.8,
+   "label": "Fire Spirit",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r42_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r42_m01",
+   "t_video": 166.3,
+   "label": "The Log",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r42_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-14_r42_m01",
+   "t_video": 170.7,
+   "label": "Princess",
+   "form": "evo",
+   "source": "POV of tv_2026-10-14_r42_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r42_m01",
+   "t_video": 171.4,
+   "label": "Skeletons",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r42_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r42_m01",
+   "t_video": 175.0,
+   "label": "Mighty Miner",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r42_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r42_m01",
+   "t_video": 179.5,
+   "label": "Goblin Barrel",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r42_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r42_m01",
+   "t_video": 182.0,
+   "label": "Fire Spirit",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r42_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-14_r42_m01",
+   "t_video": 184.8,
+   "label": "Princess",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r42_top_m01",
+   "source_confidence": "low"
+  },
+  {
+   "match_id": "tv_2026-10-14_r42_m01",
+   "t_video": 193.3,
+   "label": "Rocket",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r42_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r42_m01",
+   "t_video": 195.2,
+   "label": "Skeletons",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r42_top_m01",
+   "source_confidence": "high"
+  }
+ ],
+ "paired_with": "tv_2026-10-14_r42_top_m01",
+ "offset_s": 0.0,
+ "auto": true,
+ "source": "replay"
+}

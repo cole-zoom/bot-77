@@ -1,0 +1,237 @@
+{
+ "video_id": "tv_2026-10-12_r75",
+ "side": "opponent",
+ "matches": [
+  "tv_2026-10-12_r75_m01"
+ ],
+ "items": [
+  {
+   "match_id": "tv_2026-10-12_r75_m01",
+   "t_video": 16.4,
+   "label": "Electro Giant",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r75_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r75_m01",
+   "t_video": 34.2,
+   "label": "Valkyrie",
+   "form": "hero",
+   "source": "POV of tv_2026-10-12_r75_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r75_m01",
+   "t_video": 38.5,
+   "label": "Electro Wizard",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r75_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r75_m01",
+   "t_video": 40.2,
+   "label": "Tornado",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r75_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r75_m01",
+   "t_video": 48.3,
+   "label": "Guards",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r75_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-12_r75_m01",
+   "t_video": 60.6,
+   "label": "__ability",
+   "form": null,
+   "source": "POV of tv_2026-10-12_r75_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-12_r75_m01",
+   "t_video": 76.4,
+   "label": "Elite Barbarians",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r75_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r75_m01",
+   "t_video": 100.9,
+   "label": "Phoenix",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r75_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-12_r75_m01",
+   "t_video": 112.9,
+   "label": "Electro Giant",
+   "form": "evo",
+   "source": "POV of tv_2026-10-12_r75_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r75_m01",
+   "t_video": 126.4,
+   "label": "Electro Wizard",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r75_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r75_m01",
+   "t_video": 129.4,
+   "label": "Valkyrie",
+   "form": "hero",
+   "source": "POV of tv_2026-10-12_r75_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r75_m01",
+   "t_video": 130.9,
+   "label": "Guards",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r75_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r75_m01",
+   "t_video": 135.9,
+   "label": "Phoenix",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r75_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r75_m01",
+   "t_video": 144.3,
+   "label": "Elite Barbarians",
+   "form": "evo",
+   "source": "POV of tv_2026-10-12_r75_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r75_m01",
+   "t_video": 156.2,
+   "label": "Electro Giant",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r75_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-12_r75_m01",
+   "t_video": 159.9,
+   "label": "Valkyrie",
+   "form": "hero",
+   "source": "POV of tv_2026-10-12_r75_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r75_m01",
+   "t_video": 164.1,
+   "label": "__ability",
+   "form": null,
+   "source": "POV of tv_2026-10-12_r75_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-12_r75_m01",
+   "t_video": 176.6,
+   "label": "Electro Wizard",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r75_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r75_m01",
+   "t_video": 180.7,
+   "label": "Phoenix",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r75_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r75_m01",
+   "t_video": 183.6,
+   "label": "Elite Barbarians",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r75_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-12_r75_m01",
+   "t_video": 187.7,
+   "label": "Tornado",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r75_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r75_m01",
+   "t_video": 191.9,
+   "label": "Guards",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r75_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r75_m01",
+   "t_video": 206.4,
+   "label": "Electro Giant",
+   "form": "evo",
+   "source": "POV of tv_2026-10-12_r75_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r75_m01",
+   "t_video": 211.7,
+   "label": "Valkyrie",
+   "form": "hero",
+   "source": "POV of tv_2026-10-12_r75_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r75_m01",
+   "t_video": 217.3,
+   "label": "Elite Barbarians",
+   "form": "evo",
+   "source": "POV of tv_2026-10-12_r75_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r75_m01",
+   "t_video": 221.6,
+   "label": "Tornado",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r75_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r75_m01",
+   "t_video": 227.8,
+   "label": "Electro Wizard",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r75_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r75_m01",
+   "t_video": 231.5,
+   "label": "Guards",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r75_top_m01",
+   "source_confidence": "high"
+  }
+ ],
+ "paired_with": "tv_2026-10-12_r75_top_m01",
+ "offset_s": 0.0,
+ "auto": true,
+ "source": "replay"
+}

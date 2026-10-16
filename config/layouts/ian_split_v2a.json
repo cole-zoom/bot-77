@@ -1,0 +1,177 @@
+{
+  "layout_id": "ian_split_v2a",
+  "description": "Ian77 split, older overlay: hand band of ian_split moved to the 'Next:' label at (979,898), scale 1.02",
+  "frame_size": [
+    1920,
+    1080
+  ],
+  "regions": {
+    "slot1_tab": [
+      1183,
+      724,
+      1331,
+      779
+    ],
+    "slot2_tab": [
+      1364,
+      724,
+      1513,
+      779
+    ],
+    "slot3_tab": [
+      1545,
+      724,
+      1695,
+      779
+    ],
+    "slot4_tab": [
+      1727,
+      724,
+      1876,
+      779
+    ],
+    "slot1": [
+      1173,
+      716,
+      1342,
+      991
+    ],
+    "slot2": [
+      1353,
+      716,
+      1524,
+      991
+    ],
+    "slot3": [
+      1535,
+      716,
+      1705,
+      991
+    ],
+    "slot4": [
+      1716,
+      716,
+      1887,
+      991
+    ],
+    "next": [
+      996,
+      935,
+      1094,
+      1051
+    ],
+    "elixir_number": [
+      1211,
+      984,
+      1282,
+      1045
+    ],
+    "elixir_bar": [
+      1215,
+      1000,
+      1890,
+      1031
+    ],
+    "opp_name": [
+      72,
+      5,
+      330,
+      45
+    ],
+    "opp_clan": [
+      72,
+      48,
+      260,
+      78
+    ],
+    "opp_rating": [
+      72,
+      85,
+      150,
+      112
+    ],
+    "timer_label": [
+      852,
+      5,
+      975,
+      30
+    ],
+    "timer": [
+      852,
+      28,
+      975,
+      76
+    ],
+    "multiplier": [
+      866,
+      98,
+      952,
+      182
+    ],
+    "opp_king_hp": [
+      420,
+      8,
+      620,
+      58
+    ],
+    "opp_left_hp": [
+      252,
+      158,
+      345,
+      194
+    ],
+    "opp_right_hp": [
+      660,
+      158,
+      752,
+      194
+    ],
+    "my_left_hp": [
+      252,
+      853,
+      345,
+      888
+    ],
+    "my_right_hp": [
+      660,
+      853,
+      752,
+      888
+    ],
+    "ability_right": [
+      714,
+      929,
+      862,
+      1051
+    ],
+    "ability_left": [
+      61,
+      929,
+      209,
+      1051
+    ],
+    "arena": [
+      0,
+      60,
+      975,
+      1080
+    ]
+  },
+  "hand": {
+    "ui_scale": 0.8935
+  },
+  "notes": {
+    "hand": "Hand-bar regions are Alina's mapped by x' = 972.1 + 0.876x, y' = 0.876y - 956.7.",
+    "ability_right": "In the arena crop, bottom right, cut off by the frame's bottom edge. States seen: ready (cyan), grey (unaffordable?), dark navy (used).",
+    "ability_left": "Mirrored; not yet seen.",
+    "arena": "Playfield for unit / badge detection (excludes the top HUD and the hand bar).",
+    "katacr_arena": "Crop fed to the KataCR detector (their part2_2.16 box, 576x896), mapped from Alina's via the tower HP anchors; may extend past the frame (padded).",
+    "refit": "2026-10-02: hand panel 16 px left, 27-32 px up and 2-4% larger than ian_split in 11 older videos (Next card never read)"
+  },
+  "katacr_arena": [
+    155,
+    37,
+    818,
+    1111
+  ]
+}

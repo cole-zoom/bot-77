@@ -15,6 +15,14 @@
   },
   {
    "match_id": "cole_2026-09-29_b_m03",
+   "t_video": 473.0,
+   "label": "Mirror",
+   "form": null,
+   "source": "next-card advance in friend_2026-09-29_b_m05",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "cole_2026-09-29_b_m03",
    "t_video": 484.5,
    "label": "Goblinstein",
    "form": "normal",
@@ -51,6 +59,14 @@
    "label": "Goblin Demolisher",
    "form": "normal",
    "source": "POV of friend_2026-09-29_b_m05",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "cole_2026-09-29_b_m03",
+   "t_video": 537.0,
+   "label": "Mirror",
+   "form": null,
+   "source": "next-card advance in friend_2026-09-29_b_m05",
    "source_confidence": "medium"
   },
   {

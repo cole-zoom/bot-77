@@ -1,0 +1,181 @@
+{
+ "video_id": "tv_2026-10-14_r54",
+ "side": "opponent",
+ "matches": [
+  "tv_2026-10-14_r54_m01"
+ ],
+ "items": [
+  {
+   "match_id": "tv_2026-10-14_r54_m01",
+   "t_video": 13.6,
+   "label": "Bandit",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r54_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r54_m01",
+   "t_video": 16.6,
+   "label": "Battle Ram",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r54_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r54_m01",
+   "t_video": 20.9,
+   "label": "Fireball",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r54_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r54_m01",
+   "t_video": 30.6,
+   "label": "Electro Wizard",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r54_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r54_m01",
+   "t_video": 45.9,
+   "label": "Royal Ghost",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r54_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r54_m01",
+   "t_video": 57.6,
+   "label": "P.E.K.K.A",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r54_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-14_r54_m01",
+   "t_video": 72.1,
+   "label": "Magic Archer",
+   "form": "hero",
+   "source": "POV of tv_2026-10-14_r54_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r54_m01",
+   "t_video": 74.3,
+   "label": "Zap",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r54_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r54_m01",
+   "t_video": 83.6,
+   "label": "Bandit",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r54_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r54_m01",
+   "t_video": 99.2,
+   "label": "Royal Ghost",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r54_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r54_m01",
+   "t_video": 110.9,
+   "label": "P.E.K.K.A",
+   "form": "evo",
+   "source": "POV of tv_2026-10-14_r54_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-14_r54_m01",
+   "t_video": 127.9,
+   "label": "Electro Wizard",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r54_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r54_m01",
+   "t_video": 135.4,
+   "label": "Zap",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r54_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r54_m01",
+   "t_video": 142.7,
+   "label": "Battle Ram",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r54_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-14_r54_m01",
+   "t_video": 143.5,
+   "label": "Magic Archer",
+   "form": "hero",
+   "source": "POV of tv_2026-10-14_r54_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r54_m01",
+   "t_video": 145.2,
+   "label": "Royal Ghost",
+   "form": "evo",
+   "source": "POV of tv_2026-10-14_r54_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r54_m01",
+   "t_video": 151.7,
+   "label": "Electro Wizard",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r54_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r54_m01",
+   "t_video": 159.7,
+   "label": "Bandit",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r54_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r54_m01",
+   "t_video": 165.2,
+   "label": "Zap",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r54_top_m01",
+   "source_confidence": "low"
+  },
+  {
+   "match_id": "tv_2026-10-14_r54_m01",
+   "t_video": 168.7,
+   "label": "Battle Ram",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r54_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r54_m01",
+   "t_video": 174.2,
+   "label": "P.E.K.K.A",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r54_top_m01",
+   "source_confidence": "high"
+  }
+ ],
+ "paired_with": "tv_2026-10-14_r54_top_m01",
+ "offset_s": 0.0,
+ "auto": true,
+ "source": "replay"
+}

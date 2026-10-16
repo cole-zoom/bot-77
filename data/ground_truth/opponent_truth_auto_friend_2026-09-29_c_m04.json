@@ -7,6 +7,22 @@
  "items": [
   {
    "match_id": "friend_2026-09-29_c_m04",
+   "t_video": 520.1,
+   "label": "Mirror",
+   "form": null,
+   "source": "next-card advance in cole_2026-09-29_c_m03",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "friend_2026-09-29_c_m04",
+   "t_video": 537.6,
+   "label": "Minion Giant",
+   "form": null,
+   "source": "next-card advance in cole_2026-09-29_c_m03",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "friend_2026-09-29_c_m04",
    "t_video": 626.9,
    "label": "Minion Giant",
    "form": "normal",

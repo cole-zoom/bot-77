@@ -1,0 +1,213 @@
+{
+ "video_id": "tv_2026-10-13_r119",
+ "side": "opponent",
+ "matches": [
+  "tv_2026-10-13_r119_m01"
+ ],
+ "items": [
+  {
+   "match_id": "tv_2026-10-13_r119_m01",
+   "t_video": 10.9,
+   "label": "Zap",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r119_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r119_m01",
+   "t_video": 17.7,
+   "label": "Tornado",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r119_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r119_m01",
+   "t_video": 30.7,
+   "label": "Wizard",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r119_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r119_m01",
+   "t_video": 43.3,
+   "label": "Mini P.E.K.K.A",
+   "form": "hero",
+   "source": "POV of tv_2026-10-13_r119_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r119_m01",
+   "t_video": 54.1,
+   "label": "Heal Spirit",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r119_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r119_m01",
+   "t_video": 57.0,
+   "label": "Zap",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r119_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r119_m01",
+   "t_video": 64.7,
+   "label": "Sparky",
+   "form": null,
+   "source": "next-card advance in tv_2026-10-13_r119_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-13_r119_m01",
+   "t_video": 79.2,
+   "label": "Giant",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r119_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r119_m01",
+   "t_video": 96.0,
+   "label": "Mini P.E.K.K.A",
+   "form": "hero",
+   "source": "POV of tv_2026-10-13_r119_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r119_m01",
+   "t_video": 103.4,
+   "label": "Heal Spirit",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r119_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r119_m01",
+   "t_video": 106.4,
+   "label": "Vines",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r119_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r119_m01",
+   "t_video": 113.8,
+   "label": "Wizard",
+   "form": "evo",
+   "source": "POV of tv_2026-10-13_r119_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-13_r119_m01",
+   "t_video": 127.6,
+   "label": "Giant",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r119_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r119_m01",
+   "t_video": 130.8,
+   "label": "Tornado",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r119_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r119_m01",
+   "t_video": 133.3,
+   "label": "Zap",
+   "form": "evo",
+   "source": "POV of tv_2026-10-13_r119_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r119_m01",
+   "t_video": 142.6,
+   "label": "Sparky",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r119_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r119_m01",
+   "t_video": 150.4,
+   "label": "Heal Spirit",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r119_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-13_r119_m01",
+   "t_video": 152.1,
+   "label": "Mini P.E.K.K.A",
+   "form": "hero",
+   "source": "POV of tv_2026-10-13_r119_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r119_m01",
+   "t_video": 157.5,
+   "label": "Zap",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r119_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r119_m01",
+   "t_video": 159.5,
+   "label": "Tornado",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r119_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r119_m01",
+   "t_video": 161.7,
+   "label": "Heal Spirit",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r119_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-13_r119_m01",
+   "t_video": 168.2,
+   "label": "Giant",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r119_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r119_m01",
+   "t_video": 173.4,
+   "label": "Mini P.E.K.K.A",
+   "form": "hero",
+   "source": "POV of tv_2026-10-13_r119_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r119_m01",
+   "t_video": 175.9,
+   "label": "Zap",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r119_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r119_m01",
+   "t_video": 180.9,
+   "label": "Tornado",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r119_top_m01",
+   "source_confidence": "high"
+  }
+ ],
+ "paired_with": "tv_2026-10-13_r119_top_m01",
+ "offset_s": 0.0,
+ "auto": true,
+ "source": "replay"
+}

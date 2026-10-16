@@ -1,0 +1,205 @@
+{
+ "video_id": "tv_2026-10-13_r24",
+ "side": "opponent",
+ "matches": [
+  "tv_2026-10-13_r24_m01"
+ ],
+ "items": [
+  {
+   "match_id": "tv_2026-10-13_r24_m01",
+   "t_video": 13.9,
+   "label": "Guards",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r24_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r24_m01",
+   "t_video": 22.3,
+   "label": "Wizard",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r24_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r24_m01",
+   "t_video": 30.7,
+   "label": "Boss Bandit",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r24_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r24_m01",
+   "t_video": 39.3,
+   "label": "Zap",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r24_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r24_m01",
+   "t_video": 43.6,
+   "label": "Battle Ram",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r24_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r24_m01",
+   "t_video": 52.1,
+   "label": "Guards",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r24_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r24_m01",
+   "t_video": 79.4,
+   "label": "P.E.K.K.A",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r24_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r24_m01",
+   "t_video": 90.6,
+   "label": "Wizard",
+   "form": "evo",
+   "source": "POV of tv_2026-10-13_r24_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r24_m01",
+   "t_video": 103.5,
+   "label": "Zap",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r24_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r24_m01",
+   "t_video": 108.3,
+   "label": "Battle Ram",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r24_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r24_m01",
+   "t_video": 126.3,
+   "label": "Boss Bandit",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r24_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r24_m01",
+   "t_video": 135.4,
+   "label": "P.E.K.K.A",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r24_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r24_m01",
+   "t_video": 141.8,
+   "label": "Tornado",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r24_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r24_m01",
+   "t_video": 149.7,
+   "label": "Wizard",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r24_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-13_r24_m01",
+   "t_video": 152.3,
+   "label": "Battle Ram",
+   "form": "evo",
+   "source": "POV of tv_2026-10-13_r24_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r24_m01",
+   "t_video": 155.7,
+   "label": "Zap",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r24_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r24_m01",
+   "t_video": 157.9,
+   "label": "Electro Wizard",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r24_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r24_m01",
+   "t_video": 163.7,
+   "label": "Guards",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r24_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r24_m01",
+   "t_video": 174.3,
+   "label": "Wizard",
+   "form": "evo",
+   "source": "POV of tv_2026-10-13_r24_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r24_m01",
+   "t_video": 178.9,
+   "label": "P.E.K.K.A",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r24_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r24_m01",
+   "t_video": 191.1,
+   "label": "Boss Bandit",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r24_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r24_m01",
+   "t_video": 195.2,
+   "label": "Zap",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r24_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r24_m01",
+   "t_video": 197.7,
+   "label": "Battle Ram",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r24_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r24_m01",
+   "t_video": 201.7,
+   "label": "Guards",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r24_top_m01",
+   "source_confidence": "medium"
+  }
+ ],
+ "paired_with": "tv_2026-10-13_r24_top_m01",
+ "offset_s": 0.0,
+ "auto": true,
+ "source": "replay"
+}

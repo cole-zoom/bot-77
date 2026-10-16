@@ -39,6 +39,14 @@
   },
   {
    "match_id": "cole_2026-09-29_c_m10",
+   "t_video": 1947.5,
+   "label": "Goblinstein",
+   "form": null,
+   "source": "next-card advance in friend_2026-09-29_c_m15",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "cole_2026-09-29_c_m10",
    "t_video": 1959.0,
    "label": "__ability",
    "form": null,

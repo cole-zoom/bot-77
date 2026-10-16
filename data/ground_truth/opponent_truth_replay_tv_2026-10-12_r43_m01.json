@@ -1,0 +1,389 @@
+{
+ "video_id": "tv_2026-10-12_r43",
+ "side": "opponent",
+ "matches": [
+  "tv_2026-10-12_r43_m01"
+ ],
+ "items": [
+  {
+   "match_id": "tv_2026-10-12_r43_m01",
+   "t_video": 16.2,
+   "label": "Skeleton Army",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r43_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r43_m01",
+   "t_video": 19.7,
+   "label": "Mega Knight",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r43_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r43_m01",
+   "t_video": 28.4,
+   "label": "Lumberjack",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r43_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r43_m01",
+   "t_video": 47.5,
+   "label": "Royal Hogs",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r43_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r43_m01",
+   "t_video": 48.0,
+   "label": "Bats",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r43_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r43_m01",
+   "t_video": 60.0,
+   "label": "Giant Snowball",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r43_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-12_r43_m01",
+   "t_video": 62.8,
+   "label": "Skeleton Army",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r43_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r43_m01",
+   "t_video": 91.0,
+   "label": "Lumberjack",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r43_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r43_m01",
+   "t_video": 101.9,
+   "label": "Baby Dragon",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r43_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r43_m01",
+   "t_video": 110.3,
+   "label": "Royal Hogs",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r43_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r43_m01",
+   "t_video": 125.5,
+   "label": "Bats",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r43_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r43_m01",
+   "t_video": 129.4,
+   "label": "Giant Snowball",
+   "form": null,
+   "source": "next-card advance in tv_2026-10-12_r43_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-12_r43_m01",
+   "t_video": 131.5,
+   "label": "Skeleton Army",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r43_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r43_m01",
+   "t_video": 137.4,
+   "label": "Baby Dragon",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r43_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r43_m01",
+   "t_video": 144.4,
+   "label": "Giant Snowball",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r43_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-12_r43_m01",
+   "t_video": 155.2,
+   "label": "Giant Snowball",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r43_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r43_m01",
+   "t_video": 155.7,
+   "label": "Bats",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r43_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r43_m01",
+   "t_video": 166.2,
+   "label": "Baby Dragon",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r43_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r43_m01",
+   "t_video": 170.3,
+   "label": "Lumberjack",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r43_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r43_m01",
+   "t_video": 176.2,
+   "label": "Royal Hogs",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r43_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r43_m01",
+   "t_video": 178.0,
+   "label": "Bats",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r43_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r43_m01",
+   "t_video": 187.6,
+   "label": "Skeleton Army",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r43_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r43_m01",
+   "t_video": 193.4,
+   "label": "Baby Dragon",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r43_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r43_m01",
+   "t_video": 198.0,
+   "label": "Giant Snowball",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r43_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r43_m01",
+   "t_video": 201.6,
+   "label": "Lumberjack",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r43_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r43_m01",
+   "t_video": 208.8,
+   "label": "Mega Knight",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r43_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r43_m01",
+   "t_video": 212.5,
+   "label": "Royal Hogs",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r43_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r43_m01",
+   "t_video": 216.7,
+   "label": "Skeleton Army",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r43_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r43_m01",
+   "t_video": 223.0,
+   "label": "Baby Dragon",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r43_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-12_r43_m01",
+   "t_video": 225.2,
+   "label": "Giant Snowball",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r43_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-12_r43_m01",
+   "t_video": 238.7,
+   "label": "Bats",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r43_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-12_r43_m01",
+   "t_video": 247.3,
+   "label": "Royal Hogs",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r43_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-12_r43_m01",
+   "t_video": 247.7,
+   "label": "Lumberjack",
+   "form": null,
+   "source": "next-card advance in tv_2026-10-12_r43_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-12_r43_m01",
+   "t_video": 258.9,
+   "label": "Baby Dragon",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r43_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r43_m01",
+   "t_video": 263.4,
+   "label": "Bats",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r43_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r43_m01",
+   "t_video": 266.2,
+   "label": "Lightning",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r43_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r43_m01",
+   "t_video": 268.4,
+   "label": "Royal Hogs",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r43_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r43_m01",
+   "t_video": 272.7,
+   "label": "Lumberjack",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r43_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r43_m01",
+   "t_video": 275.6,
+   "label": "Baby Dragon",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r43_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-12_r43_m01",
+   "t_video": 278.3,
+   "label": "Bats",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r43_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r43_m01",
+   "t_video": 284.3,
+   "label": "Giant Snowball",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r43_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r43_m01",
+   "t_video": 286.0,
+   "label": "Royal Hogs",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r43_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r43_m01",
+   "t_video": 287.3,
+   "label": "Skeleton Army",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r43_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r43_m01",
+   "t_video": 290.5,
+   "label": "Baby Dragon",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r43_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-12_r43_m01",
+   "t_video": 296.2,
+   "label": "Lightning",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r43_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r43_m01",
+   "t_video": 300.0,
+   "label": "Giant Snowball",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r43_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-12_r43_m01",
+   "t_video": 301.2,
+   "label": "Bats",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r43_top_m01",
+   "source_confidence": "medium"
+  }
+ ],
+ "paired_with": "tv_2026-10-12_r43_top_m01",
+ "offset_s": 0.0,
+ "auto": true,
+ "source": "replay"
+}

@@ -1,0 +1,189 @@
+{
+ "video_id": "tv_2026-10-14_r08",
+ "side": "opponent",
+ "matches": [
+  "tv_2026-10-14_r08_m01"
+ ],
+ "items": [
+  {
+   "match_id": "tv_2026-10-14_r08_m01",
+   "t_video": 13.3,
+   "label": "Barbarian Barrel",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r08_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r08_m01",
+   "t_video": 19.8,
+   "label": "Skeleton Dragons",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r08_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r08_m01",
+   "t_video": 32.8,
+   "label": "Elite Barbarians",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r08_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r08_m01",
+   "t_video": 42.7,
+   "label": "Witch",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r08_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r08_m01",
+   "t_video": 53.6,
+   "label": "Elixir Collector",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r08_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r08_m01",
+   "t_video": 75.2,
+   "label": "Golem",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r08_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r08_m01",
+   "t_video": 86.9,
+   "label": "Skeleton Dragons",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r08_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-14_r08_m01",
+   "t_video": 97.2,
+   "label": "Vines",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r08_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r08_m01",
+   "t_video": 101.3,
+   "label": "Witch",
+   "form": "evo",
+   "source": "POV of tv_2026-10-14_r08_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r08_m01",
+   "t_video": 125.4,
+   "label": "Elixir Collector",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r08_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r08_m01",
+   "t_video": 133.3,
+   "label": "Mini P.E.K.K.A",
+   "form": "hero",
+   "source": "POV of tv_2026-10-14_r08_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-14_r08_m01",
+   "t_video": 138.4,
+   "label": "Skeleton Dragons",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r08_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r08_m01",
+   "t_video": 144.3,
+   "label": "Elite Barbarians",
+   "form": "evo",
+   "source": "POV of tv_2026-10-14_r08_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r08_m01",
+   "t_video": 145.9,
+   "label": "Vines",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r08_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r08_m01",
+   "t_video": 151.9,
+   "label": "Witch",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r08_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r08_m01",
+   "t_video": 153.8,
+   "label": "Barbarian Barrel",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r08_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r08_m01",
+   "t_video": 161.9,
+   "label": "Skeleton Dragons",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r08_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r08_m01",
+   "t_video": 166.4,
+   "label": "Elite Barbarians",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r08_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-14_r08_m01",
+   "t_video": 175.0,
+   "label": "Vines",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r08_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r08_m01",
+   "t_video": 181.0,
+   "label": "Witch",
+   "form": "evo",
+   "source": "POV of tv_2026-10-14_r08_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r08_m01",
+   "t_video": 189.0,
+   "label": "Golem",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r08_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r08_m01",
+   "t_video": 193.0,
+   "label": "Skeleton Dragons",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r08_top_m01",
+   "source_confidence": "high"
+  }
+ ],
+ "paired_with": "tv_2026-10-14_r08_top_m01",
+ "offset_s": 0.0,
+ "auto": true,
+ "source": "replay"
+}

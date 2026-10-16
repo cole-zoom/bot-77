@@ -1,0 +1,905 @@
+{
+ "exported_at": "2026-10-02T18:47:30.058Z",
+ "frames": [
+  {
+   "id": "kJxB8oaQ9zc_m03_0544.00_barbarian-barrel-hero_g13",
+   "entity": "fireball",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "cole_2026-09-29_c_m05_1150.00_minion-giant_g27",
+   "entity": "battle-ram-evolution",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "6rCdZkKZiis_m03_0601.90_goblins-hero_g55",
+   "entity": "skeleton-barrel",
+   "source": "click",
+   "verdict": "off"
+  },
+  {
+   "id": "vVdRjt1PfKA_m02_0310.10_knight-evolution_g35",
+   "entity": "royal-guardian",
+   "source": "click",
+   "verdict": "wrong"
+  },
+  {
+   "id": "cole_2026-10-01_d_m04_0894.25_valkyrie-hero_g21",
+   "entity": "electro-dragon",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "friend_2026-09-29_c_m03_0569.70_tomb-queen_g2",
+   "entity": "queen-tower",
+   "source": "click",
+   "verdict": "right"
+  },
+  {
+   "id": "dIT3p1kmf3M_m04_0924.00_dark-prince-hero_g4",
+   "entity": "phoenix-big",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "nLcU_Kvx4xk_m02_0311.30_musketeer-evolution_g12",
+   "entity": "elixir-golem-big",
+   "source": "click",
+   "verdict": "right"
+  },
+  {
+   "id": "PuJls1qTZsU_m05_1119.10_berserker-hero_g28",
+   "entity": "lava-hound",
+   "source": "click",
+   "verdict": "right"
+  },
+  {
+   "id": "SXCyXJ3h1GE_m03_0692.10_cannon-evolution_g1",
+   "entity": "cannoneer-tower",
+   "source": "click",
+   "verdict": "right"
+  },
+  {
+   "id": "0m7iCgw8sYc_m05_0910.25_cannon-evolution_g3",
+   "entity": "goblin-cage",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "ZXPr1gwF9ys_m04_0658.25_royal-giant-evolution_g16",
+   "entity": "barbarian-hut",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "7wwlikDO7J0_m03_0609.80_ice-wizard-hero_g26",
+   "entity": "wall-breaker-evolution",
+   "source": "click",
+   "verdict": "wrong"
+  },
+  {
+   "id": "cole_2026-10-01_e_m01_0167.90_wizard-evolution_g46",
+   "entity": "princess",
+   "source": "click",
+   "verdict": "right"
+  },
+  {
+   "id": "vp9U0iGUtZA_m05_1216.25_goblins-hero_g12",
+   "entity": "bar-level",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "kdav8AdQPc0_m02_0407.40_giant-snowball-evolution_g5",
+   "entity": "bowler",
+   "source": "click",
+   "verdict": "right"
+  },
+  {
+   "id": "3r9-35N9yE8_m05_0959.20_ice-golem-hero_g38",
+   "entity": "barbarian-evolution",
+   "source": "click",
+   "verdict": "wrong"
+  },
+  {
+   "id": "cole_2026-09-28_phone_m06_1261.00_rune-giant_g4",
+   "entity": "barbarian-barrel",
+   "source": "click",
+   "verdict": "right"
+  },
+  {
+   "id": "unnaLsLzabw_m05_1454.00_executioner-evolution_g24",
+   "entity": "executioner",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "cole_2026-10-01_e_m02_0364.90_dark-prince-hero-dismounted_g15",
+   "entity": "inferno-tower",
+   "source": "click",
+   "verdict": "wrong"
+  },
+  {
+   "id": "KjQYOTotuYE_m01_0135.60_executioner-evolution_g48",
+   "entity": "mega-knight",
+   "source": "click",
+   "verdict": "wrong"
+  },
+  {
+   "id": "cole_2026-09-29_b_m01_0119.00_goblinstein-monster_g22",
+   "entity": "royal-delivery",
+   "source": "paired",
+   "verdict": "wrong"
+  },
+  {
+   "id": "4ul7QISa5Qw_m01_0172.60_executioner-evolution_g26",
+   "entity": "little-prince",
+   "source": "click",
+   "verdict": "wrong"
+  },
+  {
+   "id": "friend_2026-09-29_b_m01_0218.00_goblin-curse_g10",
+   "entity": "cannon",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "cole_2026-09-29_c_m01_0247.40_suspicious-bush_g16",
+   "entity": "guard",
+   "source": "click",
+   "verdict": "wrong"
+  },
+  {
+   "id": "cole_2026-10-01_m06_1305.25_valkyrie-evolution_g4",
+   "entity": "monk",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "cole_2026-10-01_e_m01_0164.90_wizard-evolution_g46",
+   "entity": "bomber-evolution",
+   "source": "click",
+   "verdict": "wrong"
+  },
+  {
+   "id": "kJxB8oaQ9zc_m03_0545.00_barbarian-barrel-hero_g8",
+   "entity": "electro-spirit",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "dIT3p1kmf3M_m04_0930.25_dark-prince-hero_g36",
+   "entity": "elixir-golem-small",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "XuM18Vfd-xc_m02_0408.25_knight-hero_g1",
+   "entity": "mortar-evolution",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "PuJls1qTZsU_m07_1540.10_royal-hogs-evolution_g3",
+   "entity": "pekka",
+   "source": "click",
+   "verdict": "right"
+  },
+  {
+   "id": "3r9-35N9yE8_m05_0958.50_ice-golem-hero_g37",
+   "entity": "goblin",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "Ka99f8HJHcE_m01_0194.00_giant-snowball-evolution_g20",
+   "entity": "ice-spirit-evolution",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "dIT3p1kmf3M_m02_0344.25_dark-prince-hero_g10",
+   "entity": "skeleton-dragon",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "6rCdZkKZiis_m04_0987.90_skeleton-barrel-evolution_g15",
+   "entity": "rascal-girl",
+   "source": "click",
+   "verdict": "right"
+  },
+  {
+   "id": "9TTvAa6ElP0_m02_0402.75_executioner-evolution_g18",
+   "entity": "freeze",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "3r9-35N9yE8_m04_0879.00_ice-golem-hero_g18",
+   "entity": "bomb-tower",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "uTnbDte_WXM_m01_0160.50_wizard-hero_g22",
+   "entity": "ice-spirit-evolution-symbol",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "X1zkb8MeVZQ_m04_1000.75_executioner-evolution_g19",
+   "entity": "valkyrie-evolution",
+   "source": "click",
+   "verdict": "right"
+  },
+  {
+   "id": "cole_2026-09-29_c_m10_1948.25_goblinstein-monster_g8",
+   "entity": "clock",
+   "source": "paired",
+   "verdict": "right"
+  },
+  {
+   "id": "6bLDtHZlcSU_m04_0890.10_goblin-barrel-evolution_g0",
+   "entity": "elixir-collector",
+   "source": "click",
+   "verdict": "right"
+  },
+  {
+   "id": "6rCdZkKZiis_m03_0601.90_goblins-hero_g13",
+   "entity": "the-log",
+   "source": "click",
+   "verdict": "right"
+  },
+  {
+   "id": "M1dZRZ0l7fk_m02_0190.60_valkyrie-hero_g12",
+   "entity": "elite-barbarian",
+   "source": "click",
+   "verdict": "right"
+  },
+  {
+   "id": "cole_2026-09-29_c_m06_1370.20_spirit-empress-air_g19",
+   "entity": "musketeer",
+   "source": "click",
+   "verdict": "wrong"
+  },
+  {
+   "id": "9HqAjiFqAlk_m02_0415.50_goblin-curse_g0",
+   "entity": "king-tower",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "friend_2026-09-29_c_m13_1869.75_vines_g7",
+   "entity": "tower-bar",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "cole_2026-09-29_c_m01_0247.40_suspicious-bush_g28",
+   "entity": "arrows",
+   "source": "click",
+   "verdict": "wrong"
+  },
+  {
+   "id": "M1dZRZ0l7fk_m04_0847.25_firecracker-evolution_g17",
+   "entity": "wall-breaker",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "T4z8FVeoMsE_m05_1300.75_executioner-evolution_g11",
+   "entity": "night-witch",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "cole_2026-09-29_b_m03_0550.80_minion-giant_g12",
+   "entity": "elixir",
+   "source": "click",
+   "verdict": "wrong"
+  },
+  {
+   "id": "h_XT-wveQgk_m04_1109.50_giant-snowball-evolution_g5",
+   "entity": "mega-minion",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "friend_2026-09-29_c_m02_0362.40_tombstone-hero_g34",
+   "entity": "sparky",
+   "source": "click",
+   "verdict": "wrong"
+  },
+  {
+   "id": "friend_2026-09-29_c_m13_1747.40_tombstone-hero_g46",
+   "entity": "goblin-barrel",
+   "source": "click",
+   "verdict": "wrong"
+  },
+  {
+   "id": "Rd1o7LHSUzU_m10_2692.00_executioner-evolution_g21",
+   "entity": "minion",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "KjQYOTotuYE_m06_1295.00_executioner-evolution_g24",
+   "entity": "firecracker-evolution",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "9TTvAa6ElP0_m05_1115.75_executioner-evolution_g23",
+   "entity": "battle-ram",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "6bLDtHZlcSU_m07_1604.10_goblin-barrel-evolution_g30",
+   "entity": "firecracker",
+   "source": "click",
+   "verdict": "right"
+  },
+  {
+   "id": "cole_2026-09-29_c_m03_0564.90_minion-giant_g1",
+   "entity": "goblin-drill",
+   "source": "click",
+   "verdict": "right"
+  },
+  {
+   "id": "-ErsZhzGemc_m04_0589.25_skeletons-evolution_g19",
+   "entity": "barbarian",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "cole_2026-09-29_c_m03_0574.25_goblinstein-doctor_g12",
+   "entity": "ice-spirit",
+   "source": "paired",
+   "verdict": "right"
+  },
+  {
+   "id": "friend_2026-09-29_c_m15_2169.50_void_g17",
+   "entity": "skeleton-evolution",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "4ul7QISa5Qw_m03_0699.00_executioner-evolution_g24",
+   "entity": "giant",
+   "source": "click",
+   "verdict": "off"
+  },
+  {
+   "id": "Ka99f8HJHcE_m02_0413.75_giant-snowball-evolution_g21",
+   "entity": "earthquake",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "h_XT-wveQgk_m05_1208.75_goblin-demolisher_g4",
+   "entity": "king-tower",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "dIT3p1kmf3M_m02_0474.25_dark-prince-hero_g20",
+   "entity": "lumberjack",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "cole_2026-10-01_e_m02_0364.90_dark-prince-hero-dismounted_g39",
+   "entity": "prince",
+   "source": "click",
+   "verdict": "wrong"
+  },
+  {
+   "id": "friend_2026-09-29_c_m07_1152.50_goblin-curse_g18",
+   "entity": "emote",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "dIT3p1kmf3M_m02_0479.25_tombstone-hero_g32",
+   "entity": "bandit",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "q1dZZ5OyFQE_m02_0429.50_giant-snowball-evolution_g5",
+   "entity": "king-tower-bar",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "XuM18Vfd-xc_m06_1581.75_giant-snowball-evolution_g16",
+   "entity": "dart-goblin",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "p2MSIPdQqnM_m05_1006.75_cannon-evolution_g8",
+   "entity": "battle-healer",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "6rCdZkKZiis_m02_0309.90_goblins-hero_g22",
+   "entity": "mortar",
+   "source": "click",
+   "verdict": "right"
+  },
+  {
+   "id": "uTnbDte_WXM_m01_0086.50_wizard-hero_g25",
+   "entity": "bat",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "cole_2026-09-29_c_m08_1683.75_goblin-machine_g22",
+   "entity": "knight-evolution",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "X1zkb8MeVZQ_m02_0398.25_executioner-evolution_g32",
+   "entity": "royal-hog",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "kJxB8oaQ9zc_m04_0635.00_barbarian-barrel-hero_g27",
+   "entity": "golemite",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "cole_2026-09-29_c_m08_1683.75_goblin-machine_g16",
+   "entity": "golem",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "cole_2026-09-29_c_m05_1086.50_tombstone-hero_g23",
+   "entity": "archer-queen",
+   "source": "paired",
+   "verdict": "wrong"
+  },
+  {
+   "id": "kdav8AdQPc0_m06_1423.40_goblin-drill-evolution_g28",
+   "entity": "x-bow",
+   "source": "click",
+   "verdict": "right"
+  },
+  {
+   "id": "cole_2026-09-30_m06_1241.40_spirit-empress-ground_g7",
+   "entity": "electro-wizard",
+   "source": "click",
+   "verdict": "right"
+  },
+  {
+   "id": "Yufu8gJolkQ_m01_0221.00_bats-evolution_g5",
+   "entity": "goblin-giant",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "kdav8AdQPc0_m06_1392.50_giant-snowball-evolution_g10",
+   "entity": "tornado",
+   "source": "click",
+   "verdict": "wrong"
+  },
+  {
+   "id": "kJxB8oaQ9zc_m03_0456.50_vines_g5",
+   "entity": "mighty-miner",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "9HqAjiFqAlk_m04_0748.00_goblin-curse_g5",
+   "entity": "royal-recruit",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "dIT3p1kmf3M_m01_0132.00_zap-evolution_g34",
+   "entity": "archer-evolution",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "9TTvAa6ElP0_m06_1300.75_valkyrie-evolution_g23",
+   "entity": "balloon",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "Yufu8gJolkQ_m02_0559.00_tesla-evolution_g3",
+   "entity": "hog-rider",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "9TTvAa6ElP0_m03_0761.50_valkyrie-evolution_g14",
+   "entity": "bar-level",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "cole_2026-09-29_c_m02_0492.80_boss-bandit_g16",
+   "entity": "royal-giant-evolution",
+   "source": "click",
+   "verdict": "wrong"
+  },
+  {
+   "id": "4ul7QISa5Qw_m05_1203.80_executioner-evolution_g12",
+   "entity": "rascal-boy",
+   "source": "click",
+   "verdict": "right"
+  },
+  {
+   "id": "6bLDtHZlcSU_m02_0436.70_goblin-barrel-evolution_g13",
+   "entity": "skeleton-king-bar",
+   "source": "click",
+   "verdict": "right"
+  },
+  {
+   "id": "friend_2026-09-29_c_m05_0686.00_vines_g23",
+   "entity": "poison",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "KjQYOTotuYE_m06_1297.25_executioner-evolution_g26",
+   "entity": "baby-dragon",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "kJxB8oaQ9zc_m04_0636.00_barbarian-barrel-hero_g12",
+   "entity": "dark-prince",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "6rCdZkKZiis_m05_1243.10_skeleton-barrel-evolution_g52",
+   "entity": "bat-evolution",
+   "source": "click",
+   "verdict": "right"
+  },
+  {
+   "id": "oPDyLHWbu08_m04_0944.00_ice-golem-hero_g33",
+   "entity": "mother-witch",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "X1zkb8MeVZQ_m01_0139.00_valkyrie-evolution_g8",
+   "entity": "ice-golem",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "83d3zofOD44_m04_0663.25_ice-golem-hero_g6",
+   "entity": "wizard",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "Yufu8gJolkQ_m01_0218.30_bats-evolution_g4",
+   "entity": "dagger-duchess-tower",
+   "source": "click",
+   "verdict": "right"
+  },
+  {
+   "id": "Rd1o7LHSUzU_m08_2123.50_valkyrie-evolution_g20",
+   "entity": "elixir-golem-mid",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "b1ORaMah-78_m03_0530.50_royal-giant-evolution_g19",
+   "entity": "spear-goblin",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "FjAPj6-wZhM_m01_0139.00_valkyrie-evolution_g20",
+   "entity": "electro-giant",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "2elEncccZwQ_m04_0750.70_baby-dragon-evolution_g12",
+   "entity": "golden-knight",
+   "source": "click",
+   "verdict": "wrong"
+  },
+  {
+   "id": "XuM18Vfd-xc_m01_0227.50_knight-hero_g4",
+   "entity": "tesla-evolution",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "FjAPj6-wZhM_m02_0430.50_valkyrie-evolution_g18",
+   "entity": "knight",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "T4z8FVeoMsE_m03_0809.00_valkyrie-evolution_g8",
+   "entity": "mini-pekka",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "q1dZZ5OyFQE_m03_0791.75_giant-snowball-evolution_g19",
+   "entity": "giant-snowball",
+   "source": "POV",
+   "verdict": "off"
+  },
+  {
+   "id": "6rCdZkKZiis_m04_0987.90_skeleton-barrel-evolution_g14",
+   "entity": "miner",
+   "source": "click",
+   "verdict": "right"
+  },
+  {
+   "id": "M1dZRZ0l7fk_m05_0953.00_firecracker-evolution_g12",
+   "entity": "royal-recruit-evolution",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "Rd1o7LHSUzU_m10_2694.75_executioner-evolution_g16",
+   "entity": "clone",
+   "source": "click",
+   "verdict": "wrong"
+  },
+  {
+   "id": "vVdRjt1PfKA_m02_0311.60_knight-evolution_g8",
+   "entity": "magic-archer",
+   "source": "click",
+   "verdict": "right"
+  },
+  {
+   "id": "FZlpciW8KlM_m04_0959.75_goblins-hero_g23",
+   "entity": "valkyrie",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "cole_2026-09-29_b_m01_0139.50_rune-giant_g4",
+   "entity": "tower-bar",
+   "source": "click",
+   "verdict": "right"
+  },
+  {
+   "id": "5BjmAo2-b2k_m03_0583.70_ice-wizard-hero_g6",
+   "entity": "goblin-hut",
+   "source": "click",
+   "verdict": "right"
+  },
+  {
+   "id": "cole_2026-09-28_phone_m10_2002.25_firecracker-evolution_g13",
+   "entity": "ice-wizard",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "dIT3p1kmf3M_m04_0928.50_dark-prince-hero_g0",
+   "entity": "rage",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "T4z8FVeoMsE_m05_1300.75_executioner-evolution_g12",
+   "entity": "skeleton-king",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "friend_2026-09-29_c_m04_0630.75_minion-giant_g24",
+   "entity": "goblin-brawler",
+   "source": "paired",
+   "verdict": "wrong"
+  },
+  {
+   "id": "uz4VVzGlOjE_m01_0244.40_tesla-evolution_g40",
+   "entity": "archer",
+   "source": "click",
+   "verdict": "right"
+  },
+  {
+   "id": "6rCdZkKZiis_m02_0424.75_suspicious-bush_g3",
+   "entity": "cannon-cart",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "cole_2026-09-28_phone_m11_2176.00_goblinstein-monster_g28",
+   "entity": "bomb",
+   "source": "click",
+   "verdict": "right"
+  },
+  {
+   "id": "6rCdZkKZiis_m01_0178.00_suspicious-bush_g17",
+   "entity": "skeleton",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "6rCdZkKZiis_m05_1161.60_skeleton-barrel-evolution_g20",
+   "entity": "royal-ghost",
+   "source": "click",
+   "verdict": "wrong"
+  },
+  {
+   "id": "txYlMgXaGF8_m04_0647.50_vines_g15",
+   "entity": "axe",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "M1dZRZ0l7fk_m04_0847.25_firecracker-evolution_g14",
+   "entity": "fisherman",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "oPDyLHWbu08_m04_0944.00_ice-golem-hero_g36",
+   "entity": "hog",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "M1dZRZ0l7fk_m05_1092.25_firecracker-evolution_g6",
+   "entity": "flying-machine",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "cole_2026-09-30_m07_1445.75_firecracker-evolution_g10",
+   "entity": "tesla",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "cole_2026-09-29_c_m05_0929.90_ronin_g27",
+   "entity": "phoenix-egg",
+   "source": "click",
+   "verdict": "wrong"
+  },
+  {
+   "id": "6bLDtHZlcSU_m02_0436.70_goblin-barrel-evolution_g7",
+   "entity": "witch",
+   "source": "click",
+   "verdict": "right"
+  },
+  {
+   "id": "6rCdZkKZiis_m02_0448.70_goblins-hero_g28",
+   "entity": "royal-giant",
+   "source": "click",
+   "verdict": "wrong"
+  },
+  {
+   "id": "3r9-35N9yE8_m02_0420.90_skeletons-evolution_g19",
+   "entity": "zappy",
+   "source": "click",
+   "verdict": "right"
+  },
+  {
+   "id": "9TTvAa6ElP0_m02_0399.50_executioner-evolution_g2",
+   "entity": "hunter",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "8Y5yJQVqZpU_m02_0353.25_goblin-curse_g4",
+   "entity": "phoenix-small",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "T4z8FVeoMsE_m04_1019.50_executioner-evolution_g13",
+   "entity": "dirt",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "T4z8FVeoMsE_m03_0811.50_valkyrie-evolution_g29",
+   "entity": "lightning",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "M1dZRZ0l7fk_m02_0190.60_valkyrie-hero_g23",
+   "entity": "bomber",
+   "source": "click",
+   "verdict": "right"
+  },
+  {
+   "id": "7R5FP2IYWsw_m05_1251.00_knight-hero_g21",
+   "entity": "lava-pup",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "q1dZZ5OyFQE_m02_0524.25_knight-hero_g22",
+   "entity": "heal-spirit",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "2elEncccZwQ_m02_0368.50_battle-ram-evolution_g16",
+   "entity": "evolution-symbol",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "h_XT-wveQgk_m04_1109.50_giant-snowball-evolution_g6",
+   "entity": "inferno-dragon",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "KjQYOTotuYE_m01_0132.00_valkyrie-evolution_g10",
+   "entity": "fire-spirit",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "7R5FP2IYWsw_m05_1182.10_knight-hero_g0",
+   "entity": "tombstone",
+   "source": "click",
+   "verdict": "right"
+  },
+  {
+   "id": "9TTvAa6ElP0_m06_1388.50_valkyrie-evolution_g17",
+   "entity": "bar",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "Pn15Nh1xWoM_m04_1057.25_knight-hero_g15",
+   "entity": "dagger-duchess-tower-bar",
+   "source": "POV",
+   "verdict": "right"
+  },
+  {
+   "id": "3r9-35N9yE8_m04_0773.50_ice-golem-hero_g3",
+   "entity": "giant-skeleton",
+   "source": "click",
+   "verdict": "right"
+  },
+  {
+   "id": "kdav8AdQPc0_m02_0407.40_giant-snowball-evolution_g35",
+   "entity": "graveyard",
+   "source": "click",
+   "verdict": "right"
+  },
+  {
+   "id": "cole_2026-09-29_c_m07_1597.75_goblinstein-doctor_g11",
+   "entity": "rocket",
+   "source": "paired",
+   "verdict": "wrong"
+  },
+  {
+   "id": "h_XT-wveQgk_m01_0191.25_knight-hero_g21",
+   "entity": "zap",
+   "source": "POV",
+   "verdict": "wrong"
+  },
+  {
+   "id": "friend_2026-09-29_c_m02_0362.40_tombstone-hero_g19",
+   "entity": "furnace",
+   "source": "click",
+   "verdict": "wrong"
+  }
+ ]
+}

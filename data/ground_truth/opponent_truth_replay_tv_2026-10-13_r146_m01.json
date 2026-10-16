@@ -1,0 +1,213 @@
+{
+ "video_id": "tv_2026-10-13_r146",
+ "side": "opponent",
+ "matches": [
+  "tv_2026-10-13_r146_m01"
+ ],
+ "items": [
+  {
+   "match_id": "tv_2026-10-13_r146_m01",
+   "t_video": 17.1,
+   "label": "Knight",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r146_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r146_m01",
+   "t_video": 22.5,
+   "label": "Tombstone",
+   "form": "hero",
+   "source": "POV of tv_2026-10-13_r146_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r146_m01",
+   "t_video": 23.9,
+   "label": "Baby Dragon",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r146_top_m01",
+   "source_confidence": "low"
+  },
+  {
+   "match_id": "tv_2026-10-13_r146_m01",
+   "t_video": 28.1,
+   "label": "Ice Wizard",
+   "form": "hero",
+   "source": "POV of tv_2026-10-13_r146_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r146_m01",
+   "t_video": 40.6,
+   "label": "Graveyard",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r146_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r146_m01",
+   "t_video": 54.7,
+   "label": "Knight",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r146_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r146_m01",
+   "t_video": 81.4,
+   "label": "Tombstone",
+   "form": "hero",
+   "source": "POV of tv_2026-10-13_r146_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r146_m01",
+   "t_video": 88.9,
+   "label": "Baby Dragon",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r146_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-13_r146_m01",
+   "t_video": 96.6,
+   "label": "Barbarian Barrel",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r146_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r146_m01",
+   "t_video": 98.8,
+   "label": "Tornado",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r146_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r146_m01",
+   "t_video": 108.7,
+   "label": "Knight",
+   "form": "evo",
+   "source": "POV of tv_2026-10-13_r146_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r146_m01",
+   "t_video": 116.9,
+   "label": "Tombstone",
+   "form": "hero",
+   "source": "POV of tv_2026-10-13_r146_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r146_m01",
+   "t_video": 127.1,
+   "label": "Graveyard",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r146_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r146_m01",
+   "t_video": 129.9,
+   "label": "Poison",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r146_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r146_m01",
+   "t_video": 138.7,
+   "label": "Baby Dragon",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r146_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r146_m01",
+   "t_video": 144.1,
+   "label": "Knight",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r146_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r146_m01",
+   "t_video": 152.4,
+   "label": "Tombstone",
+   "form": "hero",
+   "source": "POV of tv_2026-10-13_r146_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r146_m01",
+   "t_video": 156.4,
+   "label": "Barbarian Barrel",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r146_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r146_m01",
+   "t_video": 159.6,
+   "label": "Poison",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r146_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-13_r146_m01",
+   "t_video": 164.2,
+   "label": "Ice Wizard",
+   "form": "hero",
+   "source": "POV of tv_2026-10-13_r146_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r146_m01",
+   "t_video": 165.8,
+   "label": "Baby Dragon",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r146_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r146_m01",
+   "t_video": 168.9,
+   "label": "Knight",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r146_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r146_m01",
+   "t_video": 174.2,
+   "label": "Tombstone",
+   "form": "hero",
+   "source": "POV of tv_2026-10-13_r146_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r146_m01",
+   "t_video": 176.8,
+   "label": "Barbarian Barrel",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r146_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-13_r146_m01",
+   "t_video": 179.0,
+   "label": "Poison",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r146_top_m01",
+   "source_confidence": "high"
+  }
+ ],
+ "paired_with": "tv_2026-10-13_r146_top_m01",
+ "offset_s": 0.0,
+ "auto": true,
+ "source": "replay"
+}

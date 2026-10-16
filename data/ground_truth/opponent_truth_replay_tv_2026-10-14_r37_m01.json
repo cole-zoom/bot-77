@@ -1,0 +1,437 @@
+{
+ "video_id": "tv_2026-10-14_r37",
+ "side": "opponent",
+ "matches": [
+  "tv_2026-10-14_r37_m01"
+ ],
+ "items": [
+  {
+   "match_id": "tv_2026-10-14_r37_m01",
+   "t_video": 16.6,
+   "label": "Skeleton Barrel",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r37_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r37_m01",
+   "t_video": 27.6,
+   "label": "Cannon Cart",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r37_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r37_m01",
+   "t_video": 29.5,
+   "label": "Minions",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r37_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r37_m01",
+   "t_video": 45.5,
+   "label": "Barbarian Barrel",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r37_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r37_m01",
+   "t_video": 53.0,
+   "label": "Mortar",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r37_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r37_m01",
+   "t_video": 58.0,
+   "label": "Rascals",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r37_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-14_r37_m01",
+   "t_video": 66.5,
+   "label": "Cannon Cart",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r37_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r37_m01",
+   "t_video": 72.8,
+   "label": "Fireball",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r37_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r37_m01",
+   "t_video": 76.4,
+   "label": "Barbarian Barrel",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r37_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r37_m01",
+   "t_video": 82.2,
+   "label": "Minions",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r37_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r37_m01",
+   "t_video": 97.0,
+   "label": "Rascals",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r37_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-14_r37_m01",
+   "t_video": 116.7,
+   "label": "Skeleton Barrel",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r37_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r37_m01",
+   "t_video": 121.7,
+   "label": "Mortar",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r37_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r37_m01",
+   "t_video": 130.4,
+   "label": "Cannon Cart",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r37_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r37_m01",
+   "t_video": 134.3,
+   "label": "Barbarian Barrel",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r37_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r37_m01",
+   "t_video": 137.2,
+   "label": "Rascals",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r37_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r37_m01",
+   "t_video": 141.2,
+   "label": "Fireball",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r37_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r37_m01",
+   "t_video": 145.3,
+   "label": "Mortar",
+   "form": "evo",
+   "source": "POV of tv_2026-10-14_r37_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-14_r37_m01",
+   "t_video": 147.4,
+   "label": "Skeleton Barrel",
+   "form": "evo",
+   "source": "POV of tv_2026-10-14_r37_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r37_m01",
+   "t_video": 150.2,
+   "label": "Berserker",
+   "form": "hero",
+   "source": "POV of tv_2026-10-14_r37_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r37_m01",
+   "t_video": 159.4,
+   "label": "Rascals",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r37_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r37_m01",
+   "t_video": 163.7,
+   "label": "Fireball",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r37_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r37_m01",
+   "t_video": 165.2,
+   "label": "Barbarian Barrel",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r37_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r37_m01",
+   "t_video": 169.0,
+   "label": "Minions",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r37_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r37_m01",
+   "t_video": 173.7,
+   "label": "Cannon Cart",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r37_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r37_m01",
+   "t_video": 177.4,
+   "label": "Berserker",
+   "form": "hero",
+   "source": "POV of tv_2026-10-14_r37_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-14_r37_m01",
+   "t_video": 180.0,
+   "label": "Fireball",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r37_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r37_m01",
+   "t_video": 183.8,
+   "label": "Barbarian Barrel",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r37_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r37_m01",
+   "t_video": 186.5,
+   "label": "Minions",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r37_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-14_r37_m01",
+   "t_video": 193.7,
+   "label": "Rascals",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r37_top_m01",
+   "source_confidence": "low"
+  },
+  {
+   "match_id": "tv_2026-10-14_r37_m01",
+   "t_video": 196.4,
+   "label": "Berserker",
+   "form": "hero",
+   "source": "POV of tv_2026-10-14_r37_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r37_m01",
+   "t_video": 201.8,
+   "label": "Fireball",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r37_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-14_r37_m01",
+   "t_video": 205.7,
+   "label": "Cannon Cart",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r37_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r37_m01",
+   "t_video": 207.0,
+   "label": "Barbarian Barrel",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r37_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r37_m01",
+   "t_video": 210.4,
+   "label": "Skeleton Barrel",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r37_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r37_m01",
+   "t_video": 212.9,
+   "label": "Berserker",
+   "form": "hero",
+   "source": "POV of tv_2026-10-14_r37_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r37_m01",
+   "t_video": 223.8,
+   "label": "Rascals",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r37_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-14_r37_m01",
+   "t_video": 228.4,
+   "label": "Cannon Cart",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r37_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r37_m01",
+   "t_video": 231.3,
+   "label": "Barbarian Barrel",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r37_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r37_m01",
+   "t_video": 233.4,
+   "label": "Fireball",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r37_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r37_m01",
+   "t_video": 236.2,
+   "label": "Rascals",
+   "form": null,
+   "source": "next-card advance in tv_2026-10-14_r37_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-14_r37_m01",
+   "t_video": 239.1,
+   "label": "Berserker",
+   "form": "hero",
+   "source": "POV of tv_2026-10-14_r37_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-14_r37_m01",
+   "t_video": 245.7,
+   "label": "Cannon Cart",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r37_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r37_m01",
+   "t_video": 251.9,
+   "label": "Minions",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r37_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r37_m01",
+   "t_video": 255.7,
+   "label": "Barbarian Barrel",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r37_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r37_m01",
+   "t_video": 257.9,
+   "label": "Berserker",
+   "form": "hero",
+   "source": "POV of tv_2026-10-14_r37_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r37_m01",
+   "t_video": 260.1,
+   "label": "Fireball",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r37_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r37_m01",
+   "t_video": 262.7,
+   "label": "Rascals",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r37_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r37_m01",
+   "t_video": 264.2,
+   "label": "__ability",
+   "form": null,
+   "source": "POV of tv_2026-10-14_r37_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-14_r37_m01",
+   "t_video": 265.3,
+   "label": "Minions",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r37_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r37_m01",
+   "t_video": 267.7,
+   "label": "Barbarian Barrel",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r37_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r37_m01",
+   "t_video": 269.7,
+   "label": "Cannon Cart",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r37_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r37_m01",
+   "t_video": 272.2,
+   "label": "Berserker",
+   "form": "hero",
+   "source": "POV of tv_2026-10-14_r37_top_m01",
+   "source_confidence": "high"
+  }
+ ],
+ "paired_with": "tv_2026-10-14_r37_top_m01",
+ "offset_s": 0.0,
+ "auto": true,
+ "source": "replay"
+}

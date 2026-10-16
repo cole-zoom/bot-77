@@ -1,0 +1,146 @@
+{
+  "layout_id": "replay_bottom",
+  "description": "Replay viewer (Battle Log / TV Royale), BlueStacks 1080x1920 via scrcpy. Both hands shown: the top player's cards, Next and elixir at the top, the bottom player's at the bottom, each at 0.702 of Alina's hand. Arena from the four tower HP bars: x = 92.9 + 0.829*x_alina, y = 196.9 + 0.8014*y_alina (slightly anisotropic: KataCR tile y is ~3% off). Hand-measured on replay_01 (2026-10-12). This one reads the BOTTOM player's hand.",
+  "frame_size": [
+    1080,
+    1920
+  ],
+  "hand": {
+    "ui_scale": 0.702,
+    "next_art_scales": [
+      0.35,
+      0.37,
+      0.39
+    ],
+    "elixir_empty": "any",
+    "plays_by_swap": true
+  },
+  "katacr_arena": [
+    112,
+    334,
+    971,
+    1647
+  ],
+  "regions": {
+    "timer_label": [
+      890,
+      258,
+      1075,
+      292
+    ],
+    "timer": [
+      890,
+      294,
+      1075,
+      346
+    ],
+    "multiplier": [
+      915,
+      370,
+      1075,
+      500
+    ],
+    "arena": [
+      109,
+      280,
+      972,
+      1630
+    ],
+    "opp_left_hp": [
+      238,
+      481,
+      325,
+      516
+    ],
+    "opp_right_hp": [
+      766,
+      481,
+      851,
+      516
+    ],
+    "my_left_hp": [
+      235,
+      1331,
+      313,
+      1363
+    ],
+    "my_right_hp": [
+      766,
+      1331,
+      847,
+      1363
+    ],
+    "slot1_tab": [
+      138,
+      1630,
+      282,
+      1660
+    ],
+    "slot2_tab": [
+      280,
+      1630,
+      424,
+      1660
+    ],
+    "slot3_tab": [
+      422,
+      1630,
+      566,
+      1660
+    ],
+    "slot4_tab": [
+      565,
+      1630,
+      709,
+      1660
+    ],
+    "slot1": [
+      138,
+      1630,
+      282,
+      1855
+    ],
+    "slot2": [
+      280,
+      1630,
+      424,
+      1855
+    ],
+    "slot3": [
+      422,
+      1630,
+      566,
+      1855
+    ],
+    "slot4": [
+      565,
+      1630,
+      709,
+      1855
+    ],
+    "next": [
+      18,
+      1672,
+      114,
+      1778
+    ],
+    "elixir_bar": [
+      70,
+      1855,
+      1040,
+      1885
+    ],
+    "elixir_number": [
+      38,
+      1838,
+      100,
+      1906
+    ],
+    "opp_name": [
+      740,
+      80,
+      1075,
+      130
+    ]
+  }
+}

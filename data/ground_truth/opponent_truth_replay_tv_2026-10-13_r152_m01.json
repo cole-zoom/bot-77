@@ -1,0 +1,445 @@
+{
+ "video_id": "tv_2026-10-13_r152",
+ "side": "opponent",
+ "matches": [
+  "tv_2026-10-13_r152_m01"
+ ],
+ "items": [
+  {
+   "match_id": "tv_2026-10-13_r152_m01",
+   "t_video": 13.4,
+   "label": "Giant Skeleton",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r152_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r152_m01",
+   "t_video": 29.6,
+   "label": "Arrows",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r152_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r152_m01",
+   "t_video": 31.4,
+   "label": "Mega Minion",
+   "form": "hero",
+   "source": "POV of tv_2026-10-13_r152_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r152_m01",
+   "t_video": 33.8,
+   "label": "Mortar",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r152_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r152_m01",
+   "t_video": 41.6,
+   "label": "Berserker",
+   "form": "hero",
+   "source": "POV of tv_2026-10-13_r152_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r152_m01",
+   "t_video": 53.9,
+   "label": "__ability",
+   "form": null,
+   "source": "POV of tv_2026-10-13_r152_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-13_r152_m01",
+   "t_video": 60.0,
+   "label": "Earthquake",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r152_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r152_m01",
+   "t_video": 81.8,
+   "label": "Hog Rider",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r152_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r152_m01",
+   "t_video": 94.3,
+   "label": "Giant Skeleton",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r152_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r152_m01",
+   "t_video": 99.0,
+   "label": "Arrows",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r152_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r152_m01",
+   "t_video": 104.1,
+   "label": "Mortar",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r152_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r152_m01",
+   "t_video": 120.1,
+   "label": "Mega Minion",
+   "form": "hero",
+   "source": "POV of tv_2026-10-13_r152_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r152_m01",
+   "t_video": 130.0,
+   "label": "Berserker",
+   "form": "hero",
+   "source": "POV of tv_2026-10-13_r152_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r152_m01",
+   "t_video": 132.6,
+   "label": "Giant Skeleton",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r152_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r152_m01",
+   "t_video": 134.8,
+   "label": "Arrows",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r152_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r152_m01",
+   "t_video": 141.6,
+   "label": "Hog Rider",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r152_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r152_m01",
+   "t_video": 150.0,
+   "label": "Mortar",
+   "form": "evo",
+   "source": "POV of tv_2026-10-13_r152_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r152_m01",
+   "t_video": 152.7,
+   "label": "Mega Minion",
+   "form": "hero",
+   "source": "POV of tv_2026-10-13_r152_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r152_m01",
+   "t_video": 156.9,
+   "label": "Berserker",
+   "form": "hero",
+   "source": "POV of tv_2026-10-13_r152_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r152_m01",
+   "t_video": 163.0,
+   "label": "Arrows",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r152_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r152_m01",
+   "t_video": 171.6,
+   "label": "Giant Skeleton",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r152_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-13_r152_m01",
+   "t_video": 177.3,
+   "label": "Earthquake",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r152_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r152_m01",
+   "t_video": 179.5,
+   "label": "Mega Minion",
+   "form": "hero",
+   "source": "POV of tv_2026-10-13_r152_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r152_m01",
+   "t_video": 181.1,
+   "label": "Mortar",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r152_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r152_m01",
+   "t_video": 187.5,
+   "label": "Arrows",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r152_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r152_m01",
+   "t_video": 195.2,
+   "label": "Berserker",
+   "form": "hero",
+   "source": "POV of tv_2026-10-13_r152_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r152_m01",
+   "t_video": 197.8,
+   "label": "Hog Rider",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r152_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r152_m01",
+   "t_video": 202.1,
+   "label": "Giant Skeleton",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r152_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r152_m01",
+   "t_video": 208.4,
+   "label": "__ability",
+   "form": null,
+   "source": "POV of tv_2026-10-13_r152_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-13_r152_m01",
+   "t_video": 215.0,
+   "label": "Earthquake",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r152_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r152_m01",
+   "t_video": 217.6,
+   "label": "Mortar",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r152_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r152_m01",
+   "t_video": 221.4,
+   "label": "Arrows",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r152_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r152_m01",
+   "t_video": 230.7,
+   "label": "Berserker",
+   "form": "hero",
+   "source": "POV of tv_2026-10-13_r152_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-13_r152_m01",
+   "t_video": 230.7,
+   "label": "Battle Healer",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r152_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-13_r152_m01",
+   "t_video": 234.1,
+   "label": "Mega Minion",
+   "form": "hero",
+   "source": "POV of tv_2026-10-13_r152_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r152_m01",
+   "t_video": 243.0,
+   "label": "Earthquake",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r152_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r152_m01",
+   "t_video": 245.3,
+   "label": "Arrows",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r152_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r152_m01",
+   "t_video": 251.2,
+   "label": "Giant Skeleton",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r152_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-13_r152_m01",
+   "t_video": 252.5,
+   "label": "Berserker",
+   "form": "hero",
+   "source": "POV of tv_2026-10-13_r152_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-13_r152_m01",
+   "t_video": 255.2,
+   "label": "Mortar",
+   "form": "evo",
+   "source": "POV of tv_2026-10-13_r152_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r152_m01",
+   "t_video": 259.0,
+   "label": "Hog Rider",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r152_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r152_m01",
+   "t_video": 262.6,
+   "label": "Arrows",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r152_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r152_m01",
+   "t_video": 267.4,
+   "label": "Giant Skeleton",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r152_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r152_m01",
+   "t_video": 272.0,
+   "label": "Mega Minion",
+   "form": "hero",
+   "source": "POV of tv_2026-10-13_r152_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r152_m01",
+   "t_video": 279.0,
+   "label": "Battle Healer",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r152_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r152_m01",
+   "t_video": 279.6,
+   "label": "Mortar",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r152_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r152_m01",
+   "t_video": 280.6,
+   "label": "Berserker",
+   "form": "hero",
+   "source": "POV of tv_2026-10-13_r152_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r152_m01",
+   "t_video": 284.6,
+   "label": "Arrows",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r152_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r152_m01",
+   "t_video": 287.2,
+   "label": "Mega Minion",
+   "form": "hero",
+   "source": "POV of tv_2026-10-13_r152_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r152_m01",
+   "t_video": 293.6,
+   "label": "Giant Skeleton",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r152_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-13_r152_m01",
+   "t_video": 297.0,
+   "label": "Earthquake",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r152_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r152_m01",
+   "t_video": 299.0,
+   "label": "Berserker",
+   "form": "hero",
+   "source": "POV of tv_2026-10-13_r152_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r152_m01",
+   "t_video": 299.6,
+   "label": "Battle Healer",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r152_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r152_m01",
+   "t_video": 303.4,
+   "label": "Mortar",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r152_top_m01",
+   "source_confidence": "medium"
+  }
+ ],
+ "paired_with": "tv_2026-10-13_r152_top_m01",
+ "offset_s": 0.0,
+ "auto": true,
+ "source": "replay"
+}

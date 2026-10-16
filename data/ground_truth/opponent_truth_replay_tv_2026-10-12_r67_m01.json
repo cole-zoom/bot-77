@@ -1,0 +1,293 @@
+{
+ "video_id": "tv_2026-10-12_r67",
+ "side": "opponent",
+ "matches": [
+  "tv_2026-10-12_r67_m01"
+ ],
+ "items": [
+  {
+   "match_id": "tv_2026-10-12_r67_m01",
+   "t_video": 14.9,
+   "label": "Magic Archer",
+   "form": "hero",
+   "source": "POV of tv_2026-10-12_r67_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r67_m01",
+   "t_video": 24.2,
+   "label": "Skeletons",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r67_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r67_m01",
+   "t_video": 28.6,
+   "label": "Goblin Demolisher",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r67_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r67_m01",
+   "t_video": 38.9,
+   "label": "Knight",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r67_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r67_m01",
+   "t_video": 46.0,
+   "label": "Tornado",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r67_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-12_r67_m01",
+   "t_video": 55.2,
+   "label": "Goblin Drill",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r67_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r67_m01",
+   "t_video": 58.5,
+   "label": "Skeletons",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r67_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r67_m01",
+   "t_video": 60.7,
+   "label": "Cannon",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r67_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r67_m01",
+   "t_video": 65.9,
+   "label": "Knight",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r67_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r67_m01",
+   "t_video": 71.8,
+   "label": "The Log",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r67_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r67_m01",
+   "t_video": 76.4,
+   "label": "Tornado",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r67_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r67_m01",
+   "t_video": 104.3,
+   "label": "Goblin Drill",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r67_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r67_m01",
+   "t_video": 105.9,
+   "label": "Skeletons",
+   "form": "evo",
+   "source": "POV of tv_2026-10-12_r67_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r67_m01",
+   "t_video": 109.4,
+   "label": "Goblin Demolisher",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r67_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r67_m01",
+   "t_video": 126.2,
+   "label": "The Log",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r67_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r67_m01",
+   "t_video": 130.4,
+   "label": "Knight",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r67_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r67_m01",
+   "t_video": 132.9,
+   "label": "Magic Archer",
+   "form": "hero",
+   "source": "POV of tv_2026-10-12_r67_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r67_m01",
+   "t_video": 134.3,
+   "label": "Cannon",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r67_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r67_m01",
+   "t_video": 138.2,
+   "label": "Goblin Drill",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r67_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r67_m01",
+   "t_video": 144.2,
+   "label": "Skeletons",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r67_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r67_m01",
+   "t_video": 146.2,
+   "label": "Knight",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r67_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-12_r67_m01",
+   "t_video": 148.4,
+   "label": "Goblin Demolisher",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r67_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r67_m01",
+   "t_video": 155.2,
+   "label": "Magic Archer",
+   "form": "hero",
+   "source": "POV of tv_2026-10-12_r67_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r67_m01",
+   "t_video": 161.4,
+   "label": "Cannon",
+   "form": "evo",
+   "source": "POV of tv_2026-10-12_r67_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r67_m01",
+   "t_video": 166.7,
+   "label": "Skeletons",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r67_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r67_m01",
+   "t_video": 173.8,
+   "label": "The Log",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r67_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r67_m01",
+   "t_video": 177.9,
+   "label": "Knight",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r67_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-12_r67_m01",
+   "t_video": 181.5,
+   "label": "Goblin Demolisher",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r67_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r67_m01",
+   "t_video": 184.4,
+   "label": "Goblin Drill",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r67_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r67_m01",
+   "t_video": 190.8,
+   "label": "Magic Archer",
+   "form": "hero",
+   "source": "POV of tv_2026-10-12_r67_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r67_m01",
+   "t_video": 193.9,
+   "label": "Skeletons",
+   "form": "evo",
+   "source": "POV of tv_2026-10-12_r67_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r67_m01",
+   "t_video": 196.0,
+   "label": "Knight",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r67_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r67_m01",
+   "t_video": 199.9,
+   "label": "The Log",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r67_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r67_m01",
+   "t_video": 204.4,
+   "label": "Goblin Drill",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r67_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-12_r67_m01",
+   "t_video": 208.2,
+   "label": "Magic Archer",
+   "form": "hero",
+   "source": "POV of tv_2026-10-12_r67_top_m01",
+   "source_confidence": "high"
+  }
+ ],
+ "paired_with": "tv_2026-10-12_r67_top_m01",
+ "offset_s": 0.0,
+ "auto": true,
+ "source": "replay"
+}

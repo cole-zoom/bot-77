@@ -1,0 +1,453 @@
+{
+ "video_id": "tv_2026-10-13_r143",
+ "side": "opponent",
+ "matches": [
+  "tv_2026-10-13_r143_m01"
+ ],
+ "items": [
+  {
+   "match_id": "tv_2026-10-13_r143_m01",
+   "t_video": 14.0,
+   "label": "Rascals",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r143_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r143_m01",
+   "t_video": 17.3,
+   "label": "Cannon Cart",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r143_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r143_m01",
+   "t_video": 43.0,
+   "label": "Fireball",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r143_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r143_m01",
+   "t_video": 46.4,
+   "label": "Mortar",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r143_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r143_m01",
+   "t_video": 48.4,
+   "label": "Electro Spirit",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r143_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r143_m01",
+   "t_video": 65.2,
+   "label": "Skeleton Barrel",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r143_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r143_m01",
+   "t_video": 78.2,
+   "label": "Cannon Cart",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r143_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r143_m01",
+   "t_video": 82.8,
+   "label": "Rascals",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r143_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r143_m01",
+   "t_video": 91.5,
+   "label": "Fireball",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r143_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r143_m01",
+   "t_video": 94.6,
+   "label": "Electro Spirit",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r143_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r143_m01",
+   "t_video": 102.3,
+   "label": "Minions",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r143_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-13_r143_m01",
+   "t_video": 124.5,
+   "label": "Skeleton Barrel",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r143_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r143_m01",
+   "t_video": 130.0,
+   "label": "Rascals",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r143_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r143_m01",
+   "t_video": 138.6,
+   "label": "Cannon Cart",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r143_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r143_m01",
+   "t_video": 143.8,
+   "label": "Mortar",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r143_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r143_m01",
+   "t_video": 146.7,
+   "label": "Minions",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r143_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r143_m01",
+   "t_video": 148.3,
+   "label": "Fireball",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r143_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r143_m01",
+   "t_video": 155.1,
+   "label": "Rascals",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r143_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-13_r143_m01",
+   "t_video": 159.8,
+   "label": "Barbarian Barrel",
+   "form": "hero",
+   "source": "POV of tv_2026-10-13_r143_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r143_m01",
+   "t_video": 161.1,
+   "label": "Electro Spirit",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r143_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r143_m01",
+   "t_video": 171.9,
+   "label": "Cannon Cart",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r143_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r143_m01",
+   "t_video": 178.6,
+   "label": "Mortar",
+   "form": "evo",
+   "source": "POV of tv_2026-10-13_r143_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r143_m01",
+   "t_video": 184.3,
+   "label": "Minions",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r143_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r143_m01",
+   "t_video": 186.5,
+   "label": "Skeleton Barrel",
+   "form": "evo",
+   "source": "POV of tv_2026-10-13_r143_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r143_m01",
+   "t_video": 193.1,
+   "label": "Rascals",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r143_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r143_m01",
+   "t_video": 197.7,
+   "label": "Electro Spirit",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r143_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r143_m01",
+   "t_video": 200.3,
+   "label": "Barbarian Barrel",
+   "form": "hero",
+   "source": "POV of tv_2026-10-13_r143_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r143_m01",
+   "t_video": 205.6,
+   "label": "Minions",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r143_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r143_m01",
+   "t_video": 207.6,
+   "label": "Skeleton Barrel",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r143_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r143_m01",
+   "t_video": 212.4,
+   "label": "Fireball",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r143_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r143_m01",
+   "t_video": 219.0,
+   "label": "Cannon Cart",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r143_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r143_m01",
+   "t_video": 225.4,
+   "label": "Mortar",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r143_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r143_m01",
+   "t_video": 228.5,
+   "label": "Minions",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r143_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r143_m01",
+   "t_video": 230.9,
+   "label": "Rascals",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r143_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r143_m01",
+   "t_video": 238.8,
+   "label": "Electro Spirit",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r143_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r143_m01",
+   "t_video": 239.7,
+   "label": "Skeleton Barrel",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r143_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r143_m01",
+   "t_video": 243.3,
+   "label": "Fireball",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r143_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r143_m01",
+   "t_video": 251.3,
+   "label": "Barbarian Barrel",
+   "form": "hero",
+   "source": "POV of tv_2026-10-13_r143_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r143_m01",
+   "t_video": 252.5,
+   "label": "Mortar",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r143_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r143_m01",
+   "t_video": 254.5,
+   "label": "Rascals",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r143_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r143_m01",
+   "t_video": 256.4,
+   "label": "Skeleton Barrel",
+   "form": "evo",
+   "source": "POV of tv_2026-10-13_r143_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r143_m01",
+   "t_video": 259.1,
+   "label": "Minions",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r143_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r143_m01",
+   "t_video": 261.5,
+   "label": "Electro Spirit",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r143_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r143_m01",
+   "t_video": 264.3,
+   "label": "Mortar",
+   "form": "evo",
+   "source": "POV of tv_2026-10-13_r143_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r143_m01",
+   "t_video": 268.6,
+   "label": "Rascals",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r143_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r143_m01",
+   "t_video": 271.9,
+   "label": "Fireball",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r143_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r143_m01",
+   "t_video": 275.2,
+   "label": "Barbarian Barrel",
+   "form": "hero",
+   "source": "POV of tv_2026-10-13_r143_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r143_m01",
+   "t_video": 276.8,
+   "label": "Electro Spirit",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r143_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r143_m01",
+   "t_video": 279.0,
+   "label": "Minions",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r143_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r143_m01",
+   "t_video": 281.3,
+   "label": "Mortar",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r143_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r143_m01",
+   "t_video": 285.5,
+   "label": "Fireball",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r143_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r143_m01",
+   "t_video": 289.6,
+   "label": "Rascals",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r143_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r143_m01",
+   "t_video": 291.5,
+   "label": "Electro Spirit",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r143_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r143_m01",
+   "t_video": 293.4,
+   "label": "Minions",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r143_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-13_r143_m01",
+   "t_video": 297.1,
+   "label": "Mortar",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r143_top_m01",
+   "source_confidence": "low"
+  }
+ ],
+ "paired_with": "tv_2026-10-13_r143_top_m01",
+ "offset_s": 0.0,
+ "auto": true,
+ "source": "replay"
+}

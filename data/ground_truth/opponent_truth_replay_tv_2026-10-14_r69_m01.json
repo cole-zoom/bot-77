@@ -1,0 +1,317 @@
+{
+ "video_id": "tv_2026-10-14_r69",
+ "side": "opponent",
+ "matches": [
+  "tv_2026-10-14_r69_m01"
+ ],
+ "items": [
+  {
+   "match_id": "tv_2026-10-14_r69_m01",
+   "t_video": 14.1,
+   "label": "Giant Skeleton",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r69_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r69_m01",
+   "t_video": 31.6,
+   "label": "Mega Knight",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r69_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-14_r69_m01",
+   "t_video": 48.3,
+   "label": "Archers",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r69_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r69_m01",
+   "t_video": 59.2,
+   "label": "Electro Wizard",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r69_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r69_m01",
+   "t_video": 61.9,
+   "label": "Prince",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r69_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r69_m01",
+   "t_video": 98.9,
+   "label": "Executioner",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r69_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-14_r69_m01",
+   "t_video": 109.7,
+   "label": "Giant Skeleton",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r69_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r69_m01",
+   "t_video": 117.2,
+   "label": "Archers",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r69_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r69_m01",
+   "t_video": 133.9,
+   "label": "Prince",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r69_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-14_r69_m01",
+   "t_video": 140.4,
+   "label": "Executioner",
+   "form": "evo",
+   "source": "POV of tv_2026-10-14_r69_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r69_m01",
+   "t_video": 147.7,
+   "label": "Mega Knight",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r69_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-14_r69_m01",
+   "t_video": 158.1,
+   "label": "Electro Wizard",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r69_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r69_m01",
+   "t_video": 164.3,
+   "label": "Tornado",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r69_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r69_m01",
+   "t_video": 167.9,
+   "label": "Giant Skeleton",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r69_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r69_m01",
+   "t_video": 173.9,
+   "label": "Executioner",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r69_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-14_r69_m01",
+   "t_video": 178.1,
+   "label": "Prince",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r69_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r69_m01",
+   "t_video": 190.7,
+   "label": "Archers",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r69_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r69_m01",
+   "t_video": 195.3,
+   "label": "Electro Wizard",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r69_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-14_r69_m01",
+   "t_video": 201.8,
+   "label": "Giant Skeleton",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r69_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r69_m01",
+   "t_video": 210.4,
+   "label": "Executioner",
+   "form": "evo",
+   "source": "POV of tv_2026-10-14_r69_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-14_r69_m01",
+   "t_video": 216.8,
+   "label": "Executioner",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r69_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-14_r69_m01",
+   "t_video": 225.8,
+   "label": "Prince",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r69_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r69_m01",
+   "t_video": 227.7,
+   "label": "Archers",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r69_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r69_m01",
+   "t_video": 230.3,
+   "label": "Tornado",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r69_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r69_m01",
+   "t_video": 241.0,
+   "label": "Executioner",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r69_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r69_m01",
+   "t_video": 247.0,
+   "label": "Mega Knight",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r69_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-14_r69_m01",
+   "t_video": 254.4,
+   "label": "Giant Skeleton",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r69_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r69_m01",
+   "t_video": 259.7,
+   "label": "Archers",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r69_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r69_m01",
+   "t_video": 261.9,
+   "label": "Electro Wizard",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r69_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r69_m01",
+   "t_video": 265.4,
+   "label": "Prince",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r69_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-14_r69_m01",
+   "t_video": 271.8,
+   "label": "Mega Knight",
+   "form": null,
+   "source": "next-card advance in tv_2026-10-14_r69_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-14_r69_m01",
+   "t_video": 275.2,
+   "label": "Tornado",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r69_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r69_m01",
+   "t_video": 279.6,
+   "label": "Archers",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r69_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r69_m01",
+   "t_video": 282.5,
+   "label": "Electro Wizard",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r69_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r69_m01",
+   "t_video": 284.4,
+   "label": "Prince",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r69_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r69_m01",
+   "t_video": 291.3,
+   "label": "Executioner",
+   "form": "evo",
+   "source": "POV of tv_2026-10-14_r69_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r69_m01",
+   "t_video": 296.3,
+   "label": "Mega Knight",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r69_top_m01",
+   "source_confidence": "low"
+  },
+  {
+   "match_id": "tv_2026-10-14_r69_m01",
+   "t_video": 301.7,
+   "label": "Lightning",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r69_top_m01",
+   "source_confidence": "high"
+  }
+ ],
+ "paired_with": "tv_2026-10-14_r69_top_m01",
+ "offset_s": 0.0,
+ "auto": true,
+ "source": "replay"
+}

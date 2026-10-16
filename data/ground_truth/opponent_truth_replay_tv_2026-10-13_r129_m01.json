@@ -1,0 +1,213 @@
+{
+ "video_id": "tv_2026-10-13_r129",
+ "side": "opponent",
+ "matches": [
+  "tv_2026-10-13_r129_m01"
+ ],
+ "items": [
+  {
+   "match_id": "tv_2026-10-13_r129_m01",
+   "t_video": 12.6,
+   "label": "Skeleton Barrel",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r129_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r129_m01",
+   "t_video": 17.9,
+   "label": "Guards",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r129_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r129_m01",
+   "t_video": 18.6,
+   "label": "Valkyrie",
+   "form": "hero",
+   "source": "POV of tv_2026-10-13_r129_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-13_r129_m01",
+   "t_video": 26.5,
+   "label": "Minions",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r129_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r129_m01",
+   "t_video": 45.3,
+   "label": "Witch",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r129_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r129_m01",
+   "t_video": 49.0,
+   "label": "Tombstone",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r129_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r129_m01",
+   "t_video": 57.1,
+   "label": "Skeleton Barrel",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r129_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r129_m01",
+   "t_video": 67.1,
+   "label": "Arrows",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r129_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r129_m01",
+   "t_video": 77.0,
+   "label": "Valkyrie",
+   "form": "hero",
+   "source": "POV of tv_2026-10-13_r129_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r129_m01",
+   "t_video": 88.6,
+   "label": "__ability",
+   "form": null,
+   "source": "POV of tv_2026-10-13_r129_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-13_r129_m01",
+   "t_video": 95.9,
+   "label": "Mini P.E.K.K.A",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r129_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r129_m01",
+   "t_video": 107.8,
+   "label": "Guards",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r129_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r129_m01",
+   "t_video": 112.7,
+   "label": "Minions",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r129_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r129_m01",
+   "t_video": 127.3,
+   "label": "Witch",
+   "form": "evo",
+   "source": "POV of tv_2026-10-13_r129_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r129_m01",
+   "t_video": 135.8,
+   "label": "Skeleton Barrel",
+   "form": "evo",
+   "source": "POV of tv_2026-10-13_r129_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r129_m01",
+   "t_video": 138.0,
+   "label": "Tombstone",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r129_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r129_m01",
+   "t_video": 140.9,
+   "label": "Guards",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r129_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r129_m01",
+   "t_video": 147.9,
+   "label": "Arrows",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r129_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-13_r129_m01",
+   "t_video": 150.6,
+   "label": "Witch",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r129_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r129_m01",
+   "t_video": 159.5,
+   "label": "Valkyrie",
+   "form": "hero",
+   "source": "POV of tv_2026-10-13_r129_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r129_m01",
+   "t_video": 160.8,
+   "label": "Minions",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r129_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r129_m01",
+   "t_video": 164.2,
+   "label": "Guards",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r129_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r129_m01",
+   "t_video": 171.5,
+   "label": "Arrows",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r129_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r129_m01",
+   "t_video": 176.8,
+   "label": "Witch",
+   "form": "evo",
+   "source": "POV of tv_2026-10-13_r129_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r129_m01",
+   "t_video": 181.0,
+   "label": "Valkyrie",
+   "form": "hero",
+   "source": "POV of tv_2026-10-13_r129_top_m01",
+   "source_confidence": "high"
+  }
+ ],
+ "paired_with": "tv_2026-10-13_r129_top_m01",
+ "offset_s": 0.0,
+ "auto": true,
+ "source": "replay"
+}

@@ -111,6 +111,14 @@
   },
   {
    "match_id": "cole_2026-09-29_c_m07",
+   "t_video": 1577.1,
+   "label": "Mirror",
+   "form": null,
+   "source": "next-card advance in friend_2026-09-29_c_m12",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "cole_2026-09-29_c_m07",
    "t_video": 1580.0,
    "label": "Vines",
    "form": "normal",

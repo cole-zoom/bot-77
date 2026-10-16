@@ -39,6 +39,14 @@
   },
   {
    "match_id": "friend_2026-09-29_c_m09",
+   "t_video": 1309.4,
+   "label": "Mirror",
+   "form": null,
+   "source": "next-card advance in cole_2026-09-29_c_m06",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "friend_2026-09-29_c_m09",
    "t_video": 1315.1,
    "label": "Boss Bandit",
    "form": "normal",

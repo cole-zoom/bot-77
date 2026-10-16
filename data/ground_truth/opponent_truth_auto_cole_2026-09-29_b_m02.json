@@ -47,6 +47,14 @@
   },
   {
    "match_id": "cole_2026-09-29_b_m02",
+   "t_video": 284.3,
+   "label": "Vines",
+   "form": null,
+   "source": "next-card advance in friend_2026-09-29_b_m04",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "cole_2026-09-29_b_m02",
    "t_video": 295.4,
    "label": "Void",
    "form": "normal",
@@ -103,6 +111,14 @@
   },
   {
    "match_id": "cole_2026-09-29_b_m02",
+   "t_video": 363.8,
+   "label": "Mirror",
+   "form": null,
+   "source": "next-card advance in friend_2026-09-29_b_m04",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "cole_2026-09-29_b_m02",
    "t_video": 371.3,
    "label": "Berserker",
    "form": "normal",
@@ -116,6 +132,14 @@
    "form": "normal",
    "source": "POV of friend_2026-09-29_b_m04",
    "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-09-29_b_m02",
+   "t_video": 381.0,
+   "label": "Vines",
+   "form": null,
+   "source": "next-card advance in friend_2026-09-29_b_m04",
+   "source_confidence": "medium"
   },
   {
    "match_id": "cole_2026-09-29_b_m02",

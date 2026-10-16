@@ -28,3 +28,4 @@ data/external/
 data/slices/*
 !data/slices/approved/
 *.pt
+data/upload/

@@ -133,7 +133,10 @@ def write_click_page_times(video: Path, layout_id: str, targets: list[dict], out
         layout = Layout.load(t_layout_id)
         x0, y0, x1, y1 = layout.katacr_arena
         for t in tg["times"]:
-            f = read_frame(Path(t_video), t)
+            try:
+                f = read_frame(Path(t_video), t)
+            except cv2.error:  # past the end of the video (late offsets, e.g. Tomb Queen +14 s): skip the frame
+                continue
             if crop_src:
                 cx, cy, cw, ch = crop_src
                 f = cv2.resize(f[cy:cy + ch, cx:cx + cw], src_scale_to, interpolation=cv2.INTER_LANCZOS4)

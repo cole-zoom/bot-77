@@ -1,0 +1,203 @@
+{
+ "exported_at": "2026-10-08T17:41:26.978Z",
+ "frames": [
+  {
+   "id": "cole_2026-09-28_phone_m06_01293_17",
+   "entity": "rune-giant",
+   "source": "hole inside sprite",
+   "verdict": "right"
+  },
+  {
+   "id": "minion-giant_1_uz4VVzGlOjE_m01_0124.75_0",
+   "entity": "minion-giant",
+   "source": "stray pieces",
+   "verdict": "right"
+  },
+  {
+   "id": "goblin-barrel-evolution_1_6bLDtHZlcSU_1852.30",
+   "entity": "goblin-barrel-evolution",
+   "source": "hole inside sprite",
+   "verdict": "right"
+  },
+  {
+   "id": "skeleton-barrel-evolution_1_6rCdZkKZiis_0639.00",
+   "entity": "skeleton-barrel-evolution",
+   "source": "blurry / dusty",
+   "verdict": "right"
+  },
+  {
+   "id": "UFQFnrtWUE4_m07_01437_08",
+   "entity": "goblinstein-monster",
+   "source": "hole inside sprite",
+   "verdict": "wrong"
+  },
+  {
+   "id": "cole_2026-09-28_phone_m06_01296_02",
+   "entity": "rune-giant",
+   "source": "hole inside sprite",
+   "verdict": "right"
+  },
+  {
+   "id": "goblinstein-monster_1_cole_2026-09-28_phone_2171.00",
+   "entity": "goblinstein-monster",
+   "source": "hole inside sprite",
+   "verdict": "right"
+  },
+  {
+   "id": "goblin-barrel-evolution_1_6bLDtHZlcSU_1602.60",
+   "entity": "goblin-barrel-evolution",
+   "source": "hole inside sprite",
+   "verdict": "right"
+  },
+  {
+   "id": "barbarian-barrel-hero_1_cole_2026-09-29_c_1931.10",
+   "entity": "barbarian-barrel-hero",
+   "source": "hole inside sprite",
+   "verdict": "off"
+  },
+  {
+   "id": "barbarian-barrel-hero_1_cole_2026-09-29_c_2141.10",
+   "entity": "barbarian-barrel-hero",
+   "source": "hole inside sprite",
+   "verdict": "right"
+  },
+  {
+   "id": "suspicious-bush_1_cole_2026-09-29_b_0037.00",
+   "entity": "suspicious-bush",
+   "source": "hole inside sprite",
+   "verdict": "right"
+  },
+  {
+   "id": "barbarian-barrel-hero_1_cole_2026-09-29_c_2116.00",
+   "entity": "barbarian-barrel-hero",
+   "source": "hole inside sprite",
+   "verdict": "off"
+  },
+  {
+   "id": "goblins-hero_1_6rCdZkKZiis_0036.90",
+   "entity": "goblins-hero",
+   "source": "hole inside sprite",
+   "verdict": "off"
+  },
+  {
+   "id": "cole_2026-09-28_phone_m06_01285_08",
+   "entity": "rune-giant",
+   "source": "hole inside sprite, blurry / dusty",
+   "verdict": "off"
+  },
+  {
+   "id": "void_1_friend_2026-09-29_b_0292.20",
+   "entity": "void",
+   "source": "blurry / dusty",
+   "verdict": "right"
+  },
+  {
+   "id": "goblin-curse_1_friend_2026-09-29_c_0686.00",
+   "entity": "goblin-curse",
+   "source": "blurry / dusty",
+   "verdict": "off"
+  },
+  {
+   "id": "UFQFnrtWUE4_m07_01348_12",
+   "entity": "goblinstein-monster",
+   "source": "hole inside sprite",
+   "verdict": "right"
+  },
+  {
+   "id": "barbarian-barrel-hero_1_cole_2026-09-29_c_2142.60",
+   "entity": "barbarian-barrel-hero",
+   "source": "hole inside sprite",
+   "verdict": "right"
+  },
+  {
+   "id": "UFQFnrtWUE4_m07_01421_00",
+   "entity": "goblinstein-monster",
+   "source": "hole inside sprite",
+   "verdict": "off"
+  },
+  {
+   "id": "bats-evolution_1_HuwsYOmuVao_0180.30",
+   "entity": "bats-evolution",
+   "source": "hole inside sprite",
+   "verdict": "wrong"
+  },
+  {
+   "id": "skeleton-barrel-evolution_1_6rCdZkKZiis_0085.80",
+   "entity": "skeleton-barrel-evolution",
+   "source": "blurry / dusty",
+   "verdict": "right"
+  },
+  {
+   "id": "cole_2026-09-28_phone_m06_01220_04",
+   "entity": "minion-giant",
+   "source": "hole inside sprite",
+   "verdict": "right"
+  },
+  {
+   "id": "spirit-empress-air_1_cole_2026-09-28_phone_0523.00",
+   "entity": "spirit-empress-air",
+   "source": "hole inside sprite",
+   "verdict": "right"
+  },
+  {
+   "id": "goblin-curse_1_friend_2026-09-29_c_1154.90",
+   "entity": "goblin-curse",
+   "source": "hole inside sprite",
+   "verdict": "off"
+  },
+  {
+   "id": "rune-giant_1_cole_2026-09-29_b_0406.00",
+   "entity": "rune-giant",
+   "source": "hole inside sprite",
+   "verdict": "right"
+  },
+  {
+   "id": "baby-dragon-evolution_1_2elEncccZwQ_0749.20",
+   "entity": "baby-dragon-evolution",
+   "source": "hole inside sprite",
+   "verdict": "right"
+  },
+  {
+   "id": "skeleton-barrel-evolution_1_6rCdZkKZiis_0912.40",
+   "entity": "skeleton-barrel-evolution",
+   "source": "blurry / dusty",
+   "verdict": "right"
+  },
+  {
+   "id": "void_1_friend_2026-09-29_c_1053.30",
+   "entity": "void",
+   "source": "blurry / dusty",
+   "verdict": "right"
+  },
+  {
+   "id": "barbarian-barrel-hero_1_cole_2026-09-29_c_2075.60",
+   "entity": "barbarian-barrel-hero",
+   "source": "hole inside sprite",
+   "verdict": "off"
+  },
+  {
+   "id": "void_1_friend_2026-09-29_c_1051.80",
+   "entity": "void",
+   "source": "blurry / dusty",
+   "verdict": "right"
+  },
+  {
+   "id": "barbarian-barrel-hero_1_cole_2026-09-29_c_2074.10",
+   "entity": "barbarian-barrel-hero",
+   "source": "hole inside sprite",
+   "verdict": "right"
+  },
+  {
+   "id": "skeleton-barrel-evolution_1_b9nXaMBejRw_0345.60",
+   "entity": "skeleton-barrel-evolution",
+   "source": "blurry / dusty",
+   "verdict": "right"
+  },
+  {
+   "id": "goblins-hero_1_6rCdZkKZiis_0450.20",
+   "entity": "goblins-hero",
+   "source": "hole inside sprite",
+   "verdict": "off"
+  }
+ ]
+}

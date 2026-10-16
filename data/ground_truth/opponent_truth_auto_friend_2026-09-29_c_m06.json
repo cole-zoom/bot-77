@@ -7,6 +7,22 @@
  "items": [
   {
    "match_id": "friend_2026-09-29_c_m06",
+   "t_video": 648.7,
+   "label": "Spirit Empress",
+   "form": null,
+   "source": "next-card advance in cole_2026-09-29_c_m04",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "friend_2026-09-29_c_m06",
+   "t_video": 716.4,
+   "label": "Goblin Machine",
+   "form": null,
+   "source": "next-card advance in cole_2026-09-29_c_m04",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "friend_2026-09-29_c_m06",
    "t_video": 758.0,
    "label": "Spirit Empress",
    "form": "normal",

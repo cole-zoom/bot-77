@@ -1,0 +1,109 @@
+{
+ "video_id": "bl_2026-10-12_r19",
+ "side": "opponent",
+ "matches": [
+  "bl_2026-10-12_r19_m01"
+ ],
+ "items": [
+  {
+   "match_id": "bl_2026-10-12_r19_m01",
+   "t_video": 16.1,
+   "label": "Tesla",
+   "form": "normal",
+   "source": "POV of bl_2026-10-12_r19_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "bl_2026-10-12_r19_m01",
+   "t_video": 25.1,
+   "label": "Goblin Gang",
+   "form": "normal",
+   "source": "POV of bl_2026-10-12_r19_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "bl_2026-10-12_r19_m01",
+   "t_video": 29.0,
+   "label": "Ronin",
+   "form": "normal",
+   "source": "POV of bl_2026-10-12_r19_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "bl_2026-10-12_r19_m01",
+   "t_video": 32.7,
+   "label": "Goblin Barrel",
+   "form": "normal",
+   "source": "POV of bl_2026-10-12_r19_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "bl_2026-10-12_r19_m01",
+   "t_video": 60.6,
+   "label": "Spear Goblins",
+   "form": "normal",
+   "source": "POV of bl_2026-10-12_r19_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "bl_2026-10-12_r19_m01",
+   "t_video": 63.0,
+   "label": "Tesla",
+   "form": "normal",
+   "source": "POV of bl_2026-10-12_r19_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "bl_2026-10-12_r19_m01",
+   "t_video": 82.7,
+   "label": "Mini P.E.K.K.A",
+   "form": "normal",
+   "source": "POV of bl_2026-10-12_r19_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "bl_2026-10-12_r19_m01",
+   "t_video": 84.0,
+   "label": "Wizard",
+   "form": "normal",
+   "source": "POV of bl_2026-10-12_r19_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "bl_2026-10-12_r19_m01",
+   "t_video": 89.5,
+   "label": "Goblin Barrel",
+   "form": "normal",
+   "source": "POV of bl_2026-10-12_r19_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "bl_2026-10-12_r19_m01",
+   "t_video": 114.3,
+   "label": "Arrows",
+   "form": "normal",
+   "source": "POV of bl_2026-10-12_r19_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "bl_2026-10-12_r19_m01",
+   "t_video": 115.6,
+   "label": "Goblin Gang",
+   "form": "normal",
+   "source": "POV of bl_2026-10-12_r19_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "bl_2026-10-12_r19_m01",
+   "t_video": 117.9,
+   "label": "Mini P.E.K.K.A",
+   "form": "normal",
+   "source": "POV of bl_2026-10-12_r19_top_m01",
+   "source_confidence": "high"
+  }
+ ],
+ "paired_with": "bl_2026-10-12_r19_top_m01",
+ "offset_s": 0.0,
+ "auto": true,
+ "source": "replay"
+}

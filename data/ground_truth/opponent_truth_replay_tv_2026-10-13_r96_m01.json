@@ -1,0 +1,381 @@
+{
+ "video_id": "tv_2026-10-13_r96",
+ "side": "opponent",
+ "matches": [
+  "tv_2026-10-13_r96_m01"
+ ],
+ "items": [
+  {
+   "match_id": "tv_2026-10-13_r96_m01",
+   "t_video": 18.7,
+   "label": "Goblin Gang",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r96_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r96_m01",
+   "t_video": 26.8,
+   "label": "Goblinstein",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r96_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r96_m01",
+   "t_video": 41.9,
+   "label": "Barbarian Barrel",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r96_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r96_m01",
+   "t_video": 48.3,
+   "label": "Cannon Cart",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r96_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r96_m01",
+   "t_video": 57.5,
+   "label": "Mortar",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r96_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r96_m01",
+   "t_video": 62.6,
+   "label": "Mother Witch",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r96_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r96_m01",
+   "t_video": 67.1,
+   "label": "Goblin Gang",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r96_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r96_m01",
+   "t_video": 76.6,
+   "label": "Barbarian Barrel",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r96_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-13_r96_m01",
+   "t_video": 98.4,
+   "label": "Goblinstein",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r96_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r96_m01",
+   "t_video": 104.4,
+   "label": "Fireball",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r96_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r96_m01",
+   "t_video": 124.2,
+   "label": "Cannon Cart",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r96_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r96_m01",
+   "t_video": 127.8,
+   "label": "Goblin Gang",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r96_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r96_m01",
+   "t_video": 133.0,
+   "label": "Minion Horde",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r96_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r96_m01",
+   "t_video": 136.5,
+   "label": "Goblinstein",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r96_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r96_m01",
+   "t_video": 150.2,
+   "label": "Mother Witch",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r96_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r96_m01",
+   "t_video": 155.6,
+   "label": "Barbarian Barrel",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r96_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r96_m01",
+   "t_video": 158.9,
+   "label": "Goblin Gang",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r96_top_m01",
+   "source_confidence": "low"
+  },
+  {
+   "match_id": "tv_2026-10-13_r96_m01",
+   "t_video": 161.3,
+   "label": "Minion Horde",
+   "form": "evo",
+   "source": "POV of tv_2026-10-13_r96_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r96_m01",
+   "t_video": 164.3,
+   "label": "Cannon Cart",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r96_top_m01",
+   "source_confidence": "low"
+  },
+  {
+   "match_id": "tv_2026-10-13_r96_m01",
+   "t_video": 171.6,
+   "label": "Mother Witch",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r96_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r96_m01",
+   "t_video": 176.8,
+   "label": "Barbarian Barrel",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r96_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r96_m01",
+   "t_video": 185.4,
+   "label": "Goblin Gang",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r96_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r96_m01",
+   "t_video": 190.0,
+   "label": "Cannon Cart",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r96_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r96_m01",
+   "t_video": 196.5,
+   "label": "Goblinstein",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r96_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r96_m01",
+   "t_video": 200.9,
+   "label": "Mother Witch",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r96_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r96_m01",
+   "t_video": 206.6,
+   "label": "Minion Horde",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r96_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r96_m01",
+   "t_video": 213.1,
+   "label": "Mortar",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r96_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-13_r96_m01",
+   "t_video": 220.6,
+   "label": "Goblin Gang",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r96_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-13_r96_m01",
+   "t_video": 220.6,
+   "label": "Cannon Cart",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r96_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-13_r96_m01",
+   "t_video": 224.7,
+   "label": "Barbarian Barrel",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r96_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r96_m01",
+   "t_video": 236.0,
+   "label": "Goblinstein",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r96_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r96_m01",
+   "t_video": 242.3,
+   "label": "Minion Horde",
+   "form": "evo",
+   "source": "POV of tv_2026-10-13_r96_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r96_m01",
+   "t_video": 243.0,
+   "label": "Mortar",
+   "form": "evo",
+   "source": "POV of tv_2026-10-13_r96_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-13_r96_m01",
+   "t_video": 248.3,
+   "label": "Cannon Cart",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r96_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r96_m01",
+   "t_video": 253.9,
+   "label": "Goblin Gang",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r96_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r96_m01",
+   "t_video": 254.6,
+   "label": "Barbarian Barrel",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r96_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r96_m01",
+   "t_video": 261.4,
+   "label": "Goblinstein",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r96_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r96_m01",
+   "t_video": 266.7,
+   "label": "Mother Witch",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r96_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r96_m01",
+   "t_video": 271.2,
+   "label": "Cannon Cart",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r96_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r96_m01",
+   "t_video": 274.9,
+   "label": "Goblin Gang",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r96_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r96_m01",
+   "t_video": 277.4,
+   "label": "Mortar",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r96_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r96_m01",
+   "t_video": 279.4,
+   "label": "Goblinstein",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r96_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r96_m01",
+   "t_video": 285.6,
+   "label": "Minion Horde",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r96_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-13_r96_m01",
+   "t_video": 288.4,
+   "label": "Cannon Cart",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r96_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-13_r96_m01",
+   "t_video": 292.0,
+   "label": "Mother Witch",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r96_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r96_m01",
+   "t_video": 293.9,
+   "label": "Barbarian Barrel",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r96_top_m01",
+   "source_confidence": "high"
+  }
+ ],
+ "paired_with": "tv_2026-10-13_r96_top_m01",
+ "offset_s": 0.0,
+ "auto": true,
+ "source": "replay"
+}

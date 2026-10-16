@@ -95,6 +95,14 @@
   },
   {
    "match_id": "cole_2026-09-29_c_m04",
+   "t_video": 774.8,
+   "label": "Ice Spirit",
+   "form": null,
+   "source": "next-card advance in friend_2026-09-29_c_m06",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "cole_2026-09-29_c_m04",
    "t_video": 774.9,
    "label": "Vines",
    "form": "normal",
@@ -139,6 +147,14 @@
    "label": "Mirror",
    "form": "normal",
    "source": "POV of friend_2026-09-29_c_m06",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "cole_2026-09-29_c_m04",
+   "t_video": 809.1,
+   "label": "Mirror",
+   "form": null,
+   "source": "next-card advance in friend_2026-09-29_c_m06",
    "source_confidence": "medium"
   },
   {

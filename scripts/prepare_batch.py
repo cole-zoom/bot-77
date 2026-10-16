@@ -23,6 +23,7 @@ import time
 while Path("data/raw/youtube/queue_viiper.txt").exists() and "DLV_DONE" not in Path("data/logs/run_all.log").read_text():
     time.sleep(60)  # Viiper is top priority (evo Valkyrie): wait for his downloads to join this batch
 PRIO = [l.strip() for l in Path("data/raw/youtube/priority.txt").read_text().splitlines() if l.strip() and not l.startswith("#")]
+MIN_LAYOUT_SCORE = 0.4  # layoutcheck total: working layouts scored 0.58-0.96, broken ones 0.00-0.18
 PRIORITY_ONLY = "jobs5" in OUT  # batch 5 = Viiper + Tier-1 only (Cole, 2026-10-01); everything else -> batch 6
 
 
@@ -49,26 +50,31 @@ for line in Path("data/raw/youtube/downloaded.txt").read_text().splitlines():
     path = paths[0]
     du = probe(path)["duration"]
     probes = [du * q for q in (0.15, 0.3, 0.45, 0.6, 0.75, 0.9)]
-    cands = list(KNOWN.get(ch, []))
+    cands = set(KNOWN.get(ch, []))
     try:
         derive_layout(path, f"auto_{vid}", [du * q for q in (0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9)], f"{ch} — per-video auto layout")
-        cands.append(f"auto_{vid}")
+        cands.add(f"auto_{vid}")
     except Exception as e:  # noqa: BLE001
         report.append(f"{vid} [{ch}]: auto layout failed ({e})")
-    best, best_n = None, -1
+    # every candidate is scored on clock, elixir, hand and Next card (bot77.layoutcheck): clock-only selection let 20
+    # videos through whose elixir or hand never read (decisions.md, 2026-10-02)
+    from bot77.layoutcheck import score_layout
+    cands |= {f"{p.stem}" for p in Path("config/layouts").glob("ian_split_v2*.json")} if ch.startswith("Ian77") else set()
+    scored = []
     for lid in cands:
         lay = Layout.load(lid)
         if tuple(lay.frame_size) != (probe(path)["width"], probe(path)["height"]) and not lid.startswith("auto_"):
             continue
         try:
-            n = sum(read_clock(read_frame(path, t), lay).elapsed_s is not None for t in probes)
+            scored.append(score_layout(path, lid))
         except Exception as e:  # noqa: BLE001 - a broken file must not stop the batch
-            report.append(f"{vid} [{ch}]: {lid} unreadable ({e.__class__.__name__})"); continue
-        if n > best_n:
-            best, best_n = lid, n
-    report.append(f"{vid} [{ch}]: {best} reads the clock on {best_n}/6 frames")
-    if best and best_n >= 3:
-        jobs.append({"id": vid, "video": str(path), "layout": best, "creator": ch})
+            report.append(f"{vid} [{ch}]: {lid} unreadable ({e.__class__.__name__})")
+    best = max(scored, key=lambda s: s.total, default=None)
+    report.append(f"{vid} [{ch}]: best {best}")
+    if best and best.total >= MIN_LAYOUT_SCORE:
+        jobs.append({"id": vid, "video": str(path), "layout": best.layout_id, "creator": ch})
+    elif best:
+        report.append(f"{vid} [{ch}]: SKIPPED, no layout reads clock+elixir+hand+next (best {best.total:.2f})")
 jobs.sort(key=lambda j: PRIO.index(j["id"]) if j["id"] in PRIO else len(PRIO))  # Viiper + Tier-1 first
 Path(OUT).write_text(json.dumps(jobs, indent=1))
 Path(OUT.replace(".json", "_prepare.log")).write_text("\n".join(report))

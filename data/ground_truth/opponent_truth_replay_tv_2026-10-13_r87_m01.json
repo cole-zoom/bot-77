@@ -1,0 +1,229 @@
+{
+ "video_id": "tv_2026-10-13_r87",
+ "side": "opponent",
+ "matches": [
+  "tv_2026-10-13_r87_m01"
+ ],
+ "items": [
+  {
+   "match_id": "tv_2026-10-13_r87_m01",
+   "t_video": 15.3,
+   "label": "Electro Spirit",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r87_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r87_m01",
+   "t_video": 17.7,
+   "label": "Hunter",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r87_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r87_m01",
+   "t_video": 26.4,
+   "label": "Dark Prince",
+   "form": "hero",
+   "source": "POV of tv_2026-10-13_r87_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r87_m01",
+   "t_video": 38.8,
+   "label": "Royal Giant",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r87_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r87_m01",
+   "t_video": 45.2,
+   "label": "Fireball",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r87_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r87_m01",
+   "t_video": 60.2,
+   "label": "Electro Spirit",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r87_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r87_m01",
+   "t_video": 71.9,
+   "label": "Fisherman",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r87_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r87_m01",
+   "t_video": 77.7,
+   "label": "Hunter",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r87_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r87_m01",
+   "t_video": 79.7,
+   "label": "Dark Prince",
+   "form": "hero",
+   "source": "POV of tv_2026-10-13_r87_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r87_m01",
+   "t_video": 99.9,
+   "label": "Royal Giant",
+   "form": "evo",
+   "source": "POV of tv_2026-10-13_r87_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r87_m01",
+   "t_video": 109.8,
+   "label": "Electro Spirit",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r87_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r87_m01",
+   "t_video": 122.9,
+   "label": "Fisherman",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r87_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r87_m01",
+   "t_video": 128.2,
+   "label": "Skeletons",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r87_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r87_m01",
+   "t_video": 130.5,
+   "label": "Dark Prince",
+   "form": "hero",
+   "source": "POV of tv_2026-10-13_r87_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r87_m01",
+   "t_video": 134.2,
+   "label": "Hunter",
+   "form": "evo",
+   "source": "POV of tv_2026-10-13_r87_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r87_m01",
+   "t_video": 138.7,
+   "label": "Electro Spirit",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r87_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r87_m01",
+   "t_video": 143.7,
+   "label": "Fireball",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r87_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r87_m01",
+   "t_video": 150.9,
+   "label": "Fisherman",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r87_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r87_m01",
+   "t_video": 153.7,
+   "label": "The Log",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r87_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r87_m01",
+   "t_video": 154.8,
+   "label": "Dark Prince",
+   "form": "hero",
+   "source": "POV of tv_2026-10-13_r87_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r87_m01",
+   "t_video": 157.2,
+   "label": "Hunter",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r87_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r87_m01",
+   "t_video": 164.8,
+   "label": "Royal Giant",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r87_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r87_m01",
+   "t_video": 168.1,
+   "label": "Electro Spirit",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r87_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r87_m01",
+   "t_video": 176.7,
+   "label": "Skeletons",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r87_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r87_m01",
+   "t_video": 179.7,
+   "label": "Dark Prince",
+   "form": "hero",
+   "source": "POV of tv_2026-10-13_r87_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r87_m01",
+   "t_video": 182.7,
+   "label": "Hunter",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r87_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r87_m01",
+   "t_video": 186.8,
+   "label": "The Log",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r87_top_m01",
+   "source_confidence": "high"
+  }
+ ],
+ "paired_with": "tv_2026-10-13_r87_top_m01",
+ "offset_s": 0.0,
+ "auto": true,
+ "source": "replay"
+}

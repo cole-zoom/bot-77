@@ -771,3 +771,1381 @@ real run.
     Skeletons) and the small text we read (card name popup, elixir digits, clock).
   - Compression matters more than pixel count.
   - Everything already downloaded stays as it is: re-encoding would cost about as much time as it saves.
+- **Batch 5 error (18:47):** Ian77 1t--8C08vFQ (evo Skeleton Army) crashed in play detection. A "match" with no
+  readable frames (a menu or an edit cut) gave an empty elixir series, and `np.pad` failed on it. `detect_plays`
+  now returns no plays for an empty match. The video was never added to the `videos` table, so batch 6's prep
+  picks it up again. Tests pass.
+- **Recount after clicks 5b / abilities2 / box-off: 2,975 instances; 39 of 69 pass.** Newly passing: evo
+  Executioner, evo Baby Dragon and evo Giant Snowball.
+  - Close: evo Battle Ram 39, hero Ice Wizard 39, evo Royal Ghost 32, evo Goblin Drill 29, Tomb Queen 27.
+  - Dark Prince dismounted is at 19.
+  - 17 forms are still at 0. Their videos are mostly in batch 6, and batch 5's auto-label hasn't run yet.
+- **Quality audit before the paid run (Cole: "I want to make this good. If anything is not gonna perform, tell
+  me").**
+  - **Finding:** the real frames hold 3,001 main boxes (the play's unit: auto-labelled and spot-checked, or clicked)
+    and **68,955 grey boxes** (every other unit, from the v1 detector plus kNN relabel). Grey boxes are about 96%
+    of real-frame labels and their accuracy was never measured. Spot-check 2 only flagged whole frames with
+    clearly wrong grey boxes (1 of 60). Training on them as-is makes v2 copy v1's mistakes, worst on the new cards
+    v1 never knew.
+  - **Measurement plan, spot-check 3** (`scripts/spotcheck3.py`, built after batch 5 by
+    `after_batch5_review.sh`):
+    - A: 100 auto-labels since spot-check 2
+    - B: 50 click labels
+    - C: 150 grey boxes, one per item, stratified over classes, cropped with context
+  - **Decision rules once measured:**
+    - grey boxes mostly right → keep them
+    - wrong on certain classes → drop those classes' grey boxes and mask the regions
+    - wrong broadly → keep only boxes the detector was confident about and the kNN relabel agreed with, and mask
+      the rest
+    - auto "box off" ≥ 30% → SAM-tighten the boxes from the box centre
+    - borderline entities count only ✓-quality instances toward the 40 bar
+- **Batch 5 done (22:08; 31/32, and the failed Skeleton Army video re-ran fine in batch 6). Its chain finished
+  at 23:00.**
+  - Auto-label added about 800 frames: **3,860 instances, 39 of 72 pass**. Three entities joined the list: evo
+    Archers 11, evo Mortar 3 and evo Zap 2. These are KataCR classes that first got labels of ours in this batch.
+    KataCR's own real frames also cover them, but the bar counts only our labels.
+  - **Close:** hero Ice Wizard 39, evo Battle Ram 39, evo Royal Ghost 32, evo Goblin Drill 30.
+  - **Further off:** Tomb Queen 27, hero Wizard 19, Dark Prince dismounted 19, evo Hunter 17, evo Musketeer 15,
+    evo Wizard 15.
+  - **Click page 5** (`data/reviews/click_short5.html`, 210 frames): Tomb Queen 22, evo Goblin Drill 18, hero
+    Wizard 36, evo Archers 24, evo Zap 60, evo Minion Horde 28, and others. evo Zap and evo Archers are lower
+    priority, because KataCR's data already covers them.
+  - **Spot-check 3 ready (23:01):** `spotcheck3_auto.html` (100), `spotcheck3_clicks.html` (50),
+    `spotcheck3_grey.html` (150).
+  - **Batch 6 started 23:01:** 52 videos, including both Viiper retries and the Skeleton Army video.
+- **Batch 6 error (05:25):** embedding for 1t--8C08vFQ failed with HTTP 504. `torch.hub.load` checks GitHub every
+  time, even with DINOv2 already cached. `Embedder` now loads from the local hub cache. Detection had finished, so
+  only `build_crops` was re-run for that video.
+- **Crop classifier on our own labels (Cole: "are we currently not using our own labels for the embedding? I
+  thought that was the point").**
+  - **Before this:** our labels were only *references* for raw DINOv2 cosine similarity. Approved slices anchored
+    the auto-label filter, and grey boxes were relabelled by a kNN vote over **KataCR's 5,051 crops only**, which
+    contain none of the new cards. That second point is likely part of the grey-box problem.
+  - **Built** `scripts/crop_classifier.py`: a 2-layer head on DINOv2 embeddings, trained on KataCR's crops plus
+    our 1,324 verified crops (clicks and approved candidates) with mirrored copies. Our crops are split by
+    video so near-duplicate frames don't leak.
+  - **Results:** on held-out videos the head scored 50–61% versus 37–59% for kNN; the split is small, so the
+    numbers are noisy. On KataCR it scored 90% versus 83%. When it's ≥95% confident it's right 83% of the time,
+    but only on 44% of crops. Main confusions: Goblinstein doctor vs small humanoids, evo Musketeer vs evo
+    Executioner, Spirit Empress air vs ground.
+  - **Fair test against Cole's 234 candidate verdicts**, with all candidate frames held out of training. Keeping
+    p(entity) ≥ 0.3 leaves 42 frames: right 18% → 60%, wrong 40% → 14%. It drops 17 of the 42 approved frames.
+  - **Decision:** use it to **filter and rank review pages** (`bot77/cropclf.py`, threshold 0.3; entities it
+    can't score are kept). It never accepts labels on its own. It goes into the mining pass and future candidate
+    pages. Whether it replaces the grey-box kNN relabel waits for spot-check 3C's baseline.
+  - **To improve it:** add spot-check-3A-verified auto-labels as training data (about 3× more crops), and add
+    clicks for the classes it confuses.
+- **Batch 6 chain done (09:23): 4,858 instances, 46 of 74 pass.** Click page 6 first crashed on a frame past the end
+  of a video (late Tomb Queen offsets). Click pages now skip unreadable frames. `click_short6.html` was rebuilt with
+  429 frames; it supersedes page 5.
+- **Bug found: hero plays logged as the normal form.** hero Giant, Musketeer and Mini P.E.K.K.A stayed at 0 despite
+  dedicated videos.
+  - In those videos each hero card's real play is logged as the **normal** form (high confidence, elixir drop
+    matched), plus a separate "hero" event with no elixir drop ("seen in the hand only: replaced by the previous
+    next card, no elixir drop matched").
+  - Counts: hero Giant 26 hero events vs 47 normal Giant plays; hero Musketeer 29 vs 19; hero Mini P.E.K.K.A 42
+    vs 22. hero Magic Archer is mostly read as normal outright.
+  - **Effect:** the auto-labeler (high confidence only) labels real hero plays as normal-form units and drops
+    the hero events. This also corrupts the event log for goal C. It is probably the long-standing hero Ice
+    Wizard shortfall too.
+  - **Proposed fix, pending Cole's confirmation that a hero card is always in hero form once a player has it:**
+    within a match, if any hero event of card X appears for a player, all of that player's plays of X in the match
+    are hero.
+- **Correction, with a bigger finding behind it.** The "hero logged as normal" diagnosis above was wrong. In hero
+  Giant / Musketeer / Mini P.E.K.K.A videos the hero form *is* read; what fails is confirming the plays. **20 of 129
+  processed videos have almost no high-confidence plays**, so the auto-labeler (high only) got nothing from them,
+  and they are exactly the videos for hero Giant, Musketeer, Mini P.E.K.K.A, Mega Minion and more.
+  - **Ryley ×3 (FRQBRMzwWXE, 9LTuX9QS2gk, Nr04--Oq2Rk) and Mohamed Light uXfDYoNhu5g:** elixir reads 0 all
+    game. They got the hand-fitted layout of a *different* video of the same creator (`auto_0m7iCgw8sYc`,
+    `auto_xONsnIlyu1E`) through the per-creator KNOWN list. Batch prep only checked that the clock reads.
+  - **Ian77 ×10 (`ian_split`):** elixir reads fine, but every play is low confidence ("slot not refilled with
+    the previous next card", "next card did not advance"), so the hand/Next region is misaligned. His overlay
+    differs between older and newer videos; the other 8 `ian_split` videos are fine.
+  - **Plus 6 marginal videos** (16–29% high), with the same causes suspected.
+  - **Lesson:** a layout must be validated on clock, elixir *and* hand, not clock alone. It's the same mistake as
+    Oyassuu's shifting HUD (decisions: calibrate per video).
+  - **The hero rule** (Cole confirmed: once owned, a card is always played as the hero) is kept in
+    `collect_items`. It's correct and harmless, but it wasn't the cause here.
+- **Layout fix (`scripts/fix_layouts.py`, `bot77/layoutcheck.py`).** The check scores clock, elixir (a real
+  value, not a consistent 0), hand slots and Next card, and the total is their product. Working layouts score
+  0.58–0.96, broken ones 0.00–0.18.
+  - **Fixed, 13 videos.**
+    - **Ian77 ×11** with two refit layouts `ian_split_v2a/b`. In his older overlay the hand panel is 16 px left,
+      27–32 px up and 2–4% larger, so the Next card never read. The layouts are anchored on the "Next:" label and
+      score 0.58–0.96 (Next 0% → 75–100%).
+    - **Ryley FRQBRMzwWXE** (its own auto layout, 0.79) and **Nr04--Oq2Rk** (`ryley_portrait`, 0.44).
+  - **Not fixed yet:**
+    - Ryley 9LTuX9QS2gk (elixir 27%) and Mohamed uXfDYoNhu5g (elixir 0%): the elixir region needs refitting.
+    - 4 two-year-old videos (cKuf3-EGV0M, ElIl0ij-Z6o, SBBy2m-flPU, ucNA_I_hBc0) where the hand reads 2–40%.
+      Likely the old card-frame art; they'd need old-art templates and are probably not worth it.
+  - The re-run of the 13 started at 11:44 (`scripts/after_fix.sh`). None of them had auto-labels to drop, because
+    nothing was ever confirmed in them.
+  - **Batch prep now picks layouts with the full check** (minimum 0.4) and skips videos where nothing reads
+    everything, instead of using clock reads alone.
+- **Cole on 3C:** a hero Balloon grey-boxed as "balloon" is ✗. v1 never learned hero forms, so grey boxes on them
+  default to the base card. That's expected and is exactly what 3C should quantify.
+- **Cole on 3A: evo Archers frame with a second yellow box on a Cannon → ✗** (any wrong main box makes the frame ✗).
+  - For multi-unit cards the labeler boxes the N tracks nearest the drop that started around the play time. A
+    Cannon standing beside the drop was picked as "archer #2", while both real archers sat in one box.
+  - **Fix:** a track the detector calls a building is never taken as a unit of a non-building card. This applies
+    to all auto-label runs from now on, including the fix re-run.
+  - **To do:** a group whose units overlap (two archers in one box) should be split or dropped. Check how often
+    that happens in 3A.
+- **Spot-check 3 results (Cole, 2026-10-02):**
+
+  | Page | Right | Box off | Wrong | Notes |
+  |---|---|---|---|---|
+  | 3A auto-labels (100) | 48% | 25% | 27% | worse than spot-check 2 (59/35/6): mostly the new forms (evo Archers groups, evo Royal Ghost, evo Executioner, evo Snowball) |
+  | 3B click labels (50) | 66% | 34% | 0% | never the wrong unit; the SAM box from the click is often loose |
+  | 3C grey boxes (150) | 59% | 2% | 39% | localization is good, classification is bad; all grey labels are KataCR classes, so new cards/forms in the background get old names |
+
+  - **Test: classifier filter on Cole's verdicts** (`bot77/cropclf.py`; no leakage, because none of these frames
+    are in its training data):
+    - grey, keep only when label = classifier top-1: **59% → 88% right**, wrong 39% → 10%, keeps 32%
+    - auto, keep only when p(label) ≥ 0.3: **48% → 86% right**, wrong 27% → 0%, keeps 36%
+  - **Decisions:**
+    1. Grey boxes stay only where the classifier agrees with the label. All other grey boxes are **masked**
+       (filled) in the image, so the model isn't taught that units are background.
+    2. Auto-labels go through the same filter. Frames that fail are dropped.
+    3. Click boxes: investigate the SAM step (likely too big) and tighten it, then re-measure on a small sample.
+    4. Add the 3A ✓ crops to the classifier's training data and retrain.
+    5. Recount coverage with filtered labels only. Some entities will fall back under 40, and that's the honest
+       number.
+  - **Page 6 clicks:** 480, including evo Minion Horde 140, evo Archers 43, evo Electro Dragon 36 and evo Mega
+    Knight 32.
+- **Click boxes:** when a detector box contains Cole's click, label_clicks now uses that box (tightest one,
+  non-HUD classes). It takes only the box from the detector, never the class. SAM from the click is the
+  fallback, and a SAM box that is mostly the deploy stopwatch drops the click.
+  - Test on 25 clicks: 9 detector boxes, 13 SAM, 2 dropped on the stopwatch. Some SAM boxes still sit on the
+    stopwatch, so the clicks need re-measuring after the rebuild.
+- **Classifier retrained** with spot-check ✓ crops (1,460 of ours across 112 videos): held-out ours 54% (kNN 49%),
+  KataCR 91%; when ≥95% confident, 88% right on 50% of crops.
+- **Cleaned dataset** `scripts/clean_dataset.py` → `data/external/real_v2`, with `real_v1` untouched:
+  - verified labels kept
+  - auto frames dropped if any main box has p(label) < 0.3
+  - grey boxes kept only when they match the classifier's top-1; otherwise masked (median fill), or just dropped
+    if they overlap a kept box
+  - **Concern to check visually:** early frames mask about 2/3 of grey boxes, so frames get many filled patches.
+  - **Cleaner, first run stopped:** it masked every tower and HP bar. The classifier never learned HUD classes,
+    because the crop index skips them, so it could never agree with them. Now `KEEP_OLD` classes and any class the
+    classifier doesn't know are kept unjudged.
+  - **Second run:** wrong grey boxes larger than 3 tiles are dropped instead of masked. They're v1 misdetections,
+    and masking left big square patches.
+  - **Known gap, not caused by cleaning:** units v1 never detected (e.g. a deploying Mighty Miner) have no box, so
+    they read as background. v2's own detections on real frames are the fix later (review its new boxes and add
+    them).
+- **Honest recount, first cleaned set: 2,556 instances, 28 of 73 pass (was 46).** Two flaws in the filter showed
+  up in the per-entity drops:
+  1. **Spells** (Vines 176 → 22 frames, Void 75 → 21, Goblin Curse 101 → 26): their labels are effect areas,
+     which a unit classifier can't judge. Spell-radius labels are now exempt, except evo Giant Snowball area boxes,
+     which are dropped (known wrong).
+  2. **Rare forms** (hero Knight 180 → 12, hero Wizard 40 → 9): the classifier calls them their base card. The form
+     comes from the play log, which is trusted, so the filter now scores the **card family**: the sum over the
+     card's normal, evo and hero forms. On the 3A verdicts, with a model that never saw those frames: 80% right,
+     5% wrong, keeps 35/48 of Cole's ✓ (per-label at 0.3: 69/9, 38/48).
+  - Cleaner re-run started (CLEAN2).
+- **Second cleaned set (CLEAN2, 14:09): 2,606 instances, 30 of 73 pass.** Spells are restored (Vines 176, Goblin
+  Curse 104, Void 78) and hero Knight passes (40). This is the honest coverage number from now on; uncleaned counts
+  are no longer used for the bar.
+- **Layout-fix re-run:** 13 videos processed by 14:31 with 0 errors; auto-label is running.
+  `after_fix_clean.sh` then rebuilds real_v2, recounts cleaned, and builds `click_short7.html` from the cleaned
+  shortfall (CLEAN3).
+- **Layout fix done (FIX_DONE 15:21, CLEAN3_DONE 15:39).** 12 of 13 re-run videos now confirm 62–81% of plays (was
+  0–5%). Nr04--Oq2Rk is still 10%. **Cleaned coverage: 3,008 instances, 31 of 74 pass.**
+  - `click_short7.html`: 860 frames across 28 entities, built from the cleaned shortfall.
+- **hero Giant / Mini P.E.K.K.A / Musketeer still at 0–1 after the fix.** Auto-label did produce them (49 / 68 / 35
+  frames in real_v1), but the cleaner dropped them all. The classifier has no crops of those forms, and they look
+  different enough from the base card that even the card-family score is low. The classifier was judging forms it
+  had no basis for.
+  - **477 auto frames** are for forms the classifier never saw: hero Ice Golem 90, hero Mini P.E.K.K.A 68, evo
+    Elite Barbarians 62, hero Giant 49, evo Furnace 40, hero Balloon 36, hero Musketeer 35, evo Goblin Cage 30,
+    hero Bowler 23, and smaller ones.
+  - **Decision:** they go to Cole on a ✓/✗ page (`data/reviews/formreview.html`). ✓ frames count as verified in
+    the cleaner (via `formreview_*.json`). The ✓ crops then train the classifier, so next time it can judge these
+    forms itself.
+- **Cole's form review (`formreview_2026-10-02.json`): 477 frames, 111 right / 197 box off / 169 wrong (23% right).**
+  This confirms that forms the classifier never saw were also the auto-labeler's weakest. The 111 ✓ frames now
+  count as verified in the cleaner.
+  - Best: evo Musketeer 11/15 right, hero Balloon 16/36, evo Goblin Cage 14/30, hero Giant 14/49.
+  - Worst: hero Mini P.E.K.K.A 5/68, evo Elite Barbarians 3/62.
+  - The 197 box-off frames became `click_boxoff2.html` (Cole clicks the unit, the detector or SAM boxes it).
+- **Cole's clicks on page 7 (`clicks_short7_2026-10-02.json`): 677 clicks on 586 frames.** evo Elite Barbarians 85,
+  evo Wall Breakers 61, evo Witch 53, hero Giant 51, hero Musketeer 39, evo Skeletons 35, evo Mortar 35, hero Ice
+  Golem 33, ...
+- **Box-off 2 (`clicks_boxoff2_2026-10-02.json`): 173 clicks.** evo Elite Barbarians 51, evo Furnace 28, hero Ice
+  Golem 23, hero Mini P.E.K.K.A 17, hero Giant 12, ...
+- All clicks are re-labelled with the new box rule, then re-cleaned and recounted (CLEAN5, then CLEAN6 with
+  box-off 2). Spot-check 4 then re-measures 50 click boxes.
+- **Cleaned recount after all clicks (CLEAN6, 2026-10-02 22:58): 3,718 instances, 47 of 74 pass** (was 32).
+  - Within 5: evo Electro Dragon, evo Archers, Berserker, hero Musketeer (39 each), evo Furnace 38, evo Mortar 38,
+    hero Berserker 37, evo Mega Knight 36, Boss Bandit 35.
+  - Further: evo Zap 33, hero Wizard 32, evo Goblin Cage 32, hero Mega Minion 30, evo Royal Ghost 30, evo Bomber
+    29, evo Goblin Drill 28, evo Wizard 27, Tomb Queen 27, evo Hunter 24, evo Princess 20, Dark Prince dismounted
+    19, evo P.E.K.K.A 17, evo Goblin Giant 8, evo Lumberjack 5, evo Inferno Dragon 4, hero Magic Archer 0, evo
+    Skeleton Army 0.
+  - Spot-check 4 (50 click boxes after the box fix) is ready. `click_short8.html` was built from the cleaned
+    shortfall.
+- **Spot-check 4 (50 click boxes after the box fix): 72% right / 26% box off / 2% wrong** (before: 66/34/0). Only a
+  modest improvement. Click labels almost never carry the wrong card, but about a quarter are loose or partial
+  boxes. Telling detector boxes from SAM boxes after the fact didn't work, so the effect of the detector-box rule
+  itself is unmeasured.
+  - **Recommendation:** train v2 with them, then replace click boxes with v2's own box where it overlaps the click,
+    and retrain. The alternatives were point+box SAM prompts or Cole redrawing boxes.
+- **Cole's page 8 clicks:** 31 (hero Mega Minion 9, hero Wizard 6, evo Furnace 5, ...).
+- **Classifier retrained** with every verified label (2,656 of ours across 186 videos plus 5,051 KataCR crops, 208
+  classes): held-out ours **70%** (was 54%), KataCR 88%. At ≥0.9 confidence it's 92.5% right on 67% of crops.
+- **Mining pass on every card** (Cole: "take a mining pass on every single card"): `scripts/mine_all.py` scores all
+  1.92M embedded unit crops with the classifier and keeps up to 40 per non-KataCR entity at p ≥ 0.9.
+  - It prefers the opponent side, at most one crop per match-second and 6 per video, and skips anything within
+    3 s of an existing label for that entity.
+  - Output: a ✓/✗ crop page (`data/reviews/mining.html`).
+- **Mining pass results (run 2):** 2,170 crops, **99% opponent side** (2,156 enemy, 14 friendly), which is exactly
+  what our labels lacked. Most entities reached the 40 cap. evo Lumberjack (1) and evo Inferno Dragon (9) are
+  genuinely rare. hero Magic Archer and evo Skeleton Army are absent because the classifier has no examples of
+  them; Cole is recording both.
+  - Crashed once at the end of scoring: duplicate crop rows broke the heap sort. The cause: `build_crops`
+    *appended* on re-run, so the video re-embedded after the 504 (and the 13 layout-fix re-runs) had doubled
+    crops. 1t--8C08vFQ had 28,896 rows for 14,448 crops. `build_crops` now deletes a video's crops first, and
+    mining skips duplicates. The doubled videos still need their crops rebuilt.
+  - Run 3 adds every entity still under the bar that carries a KataCR name (evo Archers, Zap, Bomber, Mortar, Wall
+    Breakers...). The page is sorted shortest entity first.
+  - `scripts/mine_import.py` turns ✓ crops into full training frames with the auto-labeler's frame writer, and the
+    cleaner treats them as verified.
+- **Mining review (Cole, `mining_2026-10-05.json`, took him two days): 2,330 crops, 776 right / 475 off / 1,036
+  wrong (33% right),** even though the classifier's held-out ≥0.9 confidence measured 92.5% right.
+  - **Why:** its calibration didn't carry over to opponent-side crops. Nearly all its training crops were the
+    POV player's own units.
+  - **Lessons:** measure precision on a small sample before building a big page, and cap review pages at ~150
+    items (Cole: "please try not to give me such massive lists").
+  - Best: evo Cannon 39/40, evo Mortar 38/40, evo Witch 33, evo Archers 32, evo Goblin Cage 32, hero Balloon 31.
+  - Zero right: Dark Prince dismounted, evo Zap, Goblin Curse, evo Goblin Giant, hero Musketeer, evo Royal Hogs.
+  - The 776 ✓ are imported as training frames (`after_mining.sh`).
+- **Failure modes Cole found while reviewing:** evo Goblin Giant ↔ Phoenix, and Vines ↔ Suspicious Bush. ("Lets make
+  sure the actual model doesn't do this.")
+  - **Cause, from looking at our own labels.** They're label contamination, not look-alikes.
+    - evo Goblin Giant: in that deck Phoenix flies over the Giant, so of 17 labels several boxes sit on or
+      include the Phoenix.
+    - Vines: the 204 spell-radius labels are taken 0.3–2 s after the drop, while the "Vines" name popup is
+      showing, so they teach "popup text over whatever's underneath" (towers, troops, often a Bush). Void and
+      Goblin Curse probably have the same problem.
+  - **Plan:**
+    1. Fix the labels: drop Goblin Giant boxes overlapping a Phoenix; re-time spell labels to after the popup
+       (asked Cole for the delays).
+    2. Synthetic data: make sure these four have approved slices, since independent pasting breaks the pairing.
+    3. Targeted gate before any paid run: hand-checked frames where the pairs co-occur, with a per-pair
+       confusion report.
+    4. Recordings: evo Goblin Giant without Phoenix, Vines on open ground.
+- **Spell timing (Cole):** Vines hits ~0.1 s after placement (it misses a moving unit if placed on its edge). Void
+  fully forms ~0.1 s after placement and its beam comes ~0.1 s later. Goblin Curse shows ~0.1 s after placement,
+  and both behave like Poison.
+  - So timing wasn't the problem. Every Vines frame shows Vines, wrapped around the unit it hit.
+  - **The real cause:** that unit (often a Suspicious Bush, which v1 doesn't know) had a wrong grey label, so the
+    cleaner masked or dropped it, leaving an unlabelled unit inside the Vines box.
+  - **Rule:** in a spell-area frame, if any unit inside the spell box would lose its own label, the frame is
+    dropped. Applies to Vines, Void, Goblin Curse and Poison alike.
+- **Recount after importing the 776 mined frames (clean 7, 2026-10-05 16:22): 4,704 instances, 64 of 74 pass**
+  (was 47).
+  - The cleaner dropped 112 spell frames with an unlabelled unit inside the spell and 3 evo Goblin Giant/Phoenix
+    overlaps. Vines, Void and Goblin Curse still pass.
+  - **Remaining 10:** evo Tesla 34, evo Zap 29, evo Princess 26, evo Hunter 25, Dark Prince dismounted 19, evo Goblin
+    Giant 9, evo Inferno Dragon 7, evo Lumberjack 5, evo Skeleton Army 0, hero Magic Archer 0. Mostly recordings;
+    Tesla and Zap may close with a small click page.
+- **Deck rule (Cole):** a deck holds 1 evo, 1 hero and 1 wildcard (a second evo or a second hero).
+- **Session 1 recording** (`cole_2026-10-06`, 20.6 min): evo Skeleton Army, evo Lumberjack, hero Magic Archer. Cole
+  isn't sure he reached 10 deploys each; we'll count from the play log. Standard crop. Chain:
+  `after_cole_1006.sh`.
+- **Session 1 result: 12 labels** (hero Magic Archer 8, evo Lumberjack 4). The hand reader logged nearly every play
+  as the normal form, even though hero Magic Archer's golden card is visibly in hand.
+  - **Fix: declared decks** (`config/recording_decks.json`, `declared_forms()` in autolabel). For Cole's dedicated
+    recordings he declares the evo/hero cards. Every play of a declared hero is the hero. For evos with N cycles:
+    N normal plays, then the evo, repeating, anchored on any evo play the reader did catch. Cole: since an update
+    the first evo sometimes needs one extra play. Session 1's one caught evo Lumberjack was the standard 3rd play,
+    so the extra play isn't consistent.
+  - **The real constraint is evo math:** each card was played 2–3 times per match, and a 2-cycle evo charges every
+    3rd play, so 6 matches gave only 2 evo Skeleton Army and 3 evo Lumberjack plays.
+  - **New recording guidance:** one evo per session in a cheap cycle deck, played every time it's in hand, about 10
+    short matches (~20 evo plays). Heroes are easy because every play counts.
+  - `click_session1.html` (~60 frames): Cole clicks the inferred evo/hero plays.
+  - **Correction (Cole):** he played each evo "at least once a game, sometimes twice", so the 3rd-play rule
+    (from our card data's 2 cycles) undercounts. The card data's cycle counts may be outdated. The session 1 click
+    page now covers **every** Skeleton Army / Lumberjack / Magic Archer play (2 frames each), and Cole picks evo/hero
+    or normal per frame. His picks also give the real cycle pattern, which will fix `declared_forms`.
+- **Hand reader bug found from Cole's timestamps (2026-10-07).** At 2:52 in session 1, evo Lumberjack and hero
+  Magic Archer were plainly in his hand, but the reader returned nothing for both slots (score 0.22–0.27). Their
+  plays never reached the event log, which is why session 1 looked "all normal".
+  - **Cause:** evo and hero cards are drawn larger than the reader's calibration. The template scale sweep peaked at
+    **0.88** (score 0.69–0.70) against the calibrated 0.80; normal cards are at 0.73.
+  - **Fix:** evo/hero templates are now tried at 0.80, 0.84, 0.88 and 0.92, and the best score per card wins.
+    Session 1 now reads evo Lumberjack 0.69 and hero Magic Archer 0.70 with clear margins. 70 tests pass.
+  - **Likely impact everywhere:** evo/hero plays under-detected in all footage. That plausibly explains hero Ice
+    Wizard stuck at 39, the hero Giant/Musketeer zeros, and the evo yields.
+  - **Plan:** re-run the hand-reading (process) stage. Session 1 first, then Cole's recordings, then dedicated
+    videos for short entities, then the rest. About 25 min per video.
+  - Cole asked how to help: timestamps plus a screenshot of a miss are the most useful input. They pinpointed a
+    bug the metrics never showed.
+- **Second reader problem: outdated card art.** Charged evo Skeleton Army shows the **Skeleton General** art in hand,
+  but the API's evo icon is still the old skulls picture, so it scored 0.23. Fix: **in-game art overrides**
+  (`data/cards/art_overrides/<Card>__<form>.png`). These are art patches cut from a real frame at slot scale, at the
+  box where evo art sits; the reader loads them as extra templates.
+  - evo Skeleton Army now reads 0.93–0.98 on frames other than the source, and normal Skeleton Army still reads
+    normal (0.91).
+  - After the scale fix alone, session 1 had hero Magic Archer 20 plays (was 0) → 35 auto-labels, evo Lumberjack 4
+    plays (was 1) → 8, evo Skeleton Army still 0 until this override. Session 1 is being re-run again.
+  - **Other cards may have outdated art too.** A quick check is to compare each evo/hero icon with an in-game
+    crop from Cole's recordings.
+- **Session 1 after both reader fixes (16:37):** play log hero Magic Archer 20, evo Lumberjack 4, evo Skeleton Army
+  6, matching Cole's "about one evo per game". Cleaned counts: hero Magic Archer 25, evo Lumberjack 7, evo Skeleton
+  Army 2 (clicks only). Overall 64 of 74.
+  - evo Skeleton Army got 0 auto-labels: Skeleton Army is a 15-unit group, and frames without every skeleton
+    boxed are dropped.
+  - **Decision (proposed to Cole):** the Skeleton General is labelled `skeleton-army-evolution`, and the plain
+    skeletons are `skeleton`.
+  - `click_session1_evo.html`: the evo plays, 3 frames each.
+- **Session 1 evo clicks:** 22 (evo Lumberjack 12, evo Skeleton Army 10).
+- **Re-read round 1** (`scripts/reprocess_hand_list.sh`, 2 videos at a time): 12 Cole/friend recordings plus 18
+  dedicated hero/evo videos for short entities (evo Princess, Hunter, Goblin Giant, Inferno Dragon, Lumberjack,
+  Skeleton Army; hero Magic Archer, Giant, Musketeer, Mini P.E.K.K.A).
+  - Old auto-labels for those videos are dropped first; verified labels (clicks, reviewed, mined) are kept.
+  - Then auto-label, re-label clicks, re-clean and recount once.
+- **Incident during the round 1 launch:** the job limiter counted `jobs -r` inside `$(...)`, a subshell that sees no
+  jobs, so all 30 videos started at once.
+  - Killed within ~30 s. The events table's version history shows no writes after 15:15 (session 1's re-read), so
+    nothing was lost. Each job writes only at the end of its video.
+  - **Why it mattered:** each video rewrites the shared events table, so concurrent finishes can overwrite each
+    other, besides exhausting memory.
+  - Now `xargs -P 2` with `scripts/reprocess_one.sh`; restart verified at exactly 2 processes.
+- **Round 1 narrowed to videos that play a still-short card** (Cole: "make sure this is only running for cards we
+  need"): 18 of 30, by POV plays in the pre-fix event log (version 317).
+  - Dropped: most of Cole's recent recordings, the friend recordings, and three hero Giant/Musketeer videos (those
+    entities already pass).
+  - **Caveat:** the old log was blind to evo/hero plays, so a video whose only short card is an unlogged evo
+    could be missed.
+  - The chain waits for the 2 in-progress re-reads, re-reads the remaining 16 (2 at a time), then labels all 18.
+- **Early before/after check of the hand-reader fix (Cole: "check the diff after a few vids"),** events v317 vs now:
+  - Ryley evo Princess video tGONo2rzFHw: **evo Princess 4 → 16 plays**, high-confidence plays 214 → 228.
+  - Cole 2026-10-01_e: evo Royal Ghost 2 → 5, high-confidence 72 → 77.
+  - Cole's Sept 28/29 recordings: identical. Their evo/hero cards (hero Dark Prince, evo Tesla, evo Firecracker)
+    were already read, so the bug depends on the card/capture.
+  - Only regression: evo Goblin Barrel 13 → 12 (noise, already passes). **Round 1 continues.**
+- **Session A recording** (`cole_2026-10-07`, 28 min): evo Goblin Giant, evo Inferno Dragon, hero Dark Prince.
+  Deck declared in `config/recording_decks.json`. Standard crop.
+  - It converts now and is processed after re-read round 1 (one writer to the events table at a time).
+  - Then auto-label, a Dark Prince ability page (`click_abilities3.html`), re-clean and recount (`after_cole_1007.sh`).
+- **Re-read round 1 done; recount at 23:00.** The before/after across the 18 videos recovered: evo Princess 9 → 40
+  plays, hero Magic Archer 1 → 46, evo Mega Knight 0 → 14, evo Inferno Dragon 1 → 13, evo Skeleton Army 1 → 11, evo
+  Lumberjack 1 → 9, evo Hunter 1 → 6. High-confidence plays rose in nearly every video; nothing regressed beyond
+  noise.
+  - **Cleaned coverage: 64 of 75.** evo Princess 34, evo Tesla 34, evo Zap 29, evo Hunter 25, hero Magic Archer 24,
+    Dark Prince dismounted 19, evo Lumberjack 19, evo Skeleton Army 11, evo Goblin Giant 9, evo Inferno Dragon 7.
+    A stray `king-tower` main box also showed up (1); it needs a look.
+  - **Labels grew much less than plays:** the cleaner rejected nearly all new auto-labels for these forms (hero
+    Magic Archer 70 auto → 0 kept). The classifier knows hero Magic Archer only from Cole's recording, so pro-video
+    crops look unfamiliar. That's caution about rare forms, not proof the labels are bad.
+  - **Decision:** these go to Cole on `formreview2.html` (capped at 40 per entity). ✓ count as verified (cleaner
+    `formreview_*.json`) and teach the classifier.
+- **Form review 2 (Cole, `formreview_2026-10-08.json`): 126 frames, 29 right / 39 off / 58 wrong.** The cleaner's
+  rejections were mostly correct: hero Magic Archer 2/40 right, evo Princess 2/16, evo Hunter 0/6, evo Inferno Dragon
+  0/4. Exceptions: **evo Tesla 17/30 right**, evo Lumberjack 7/21.
+  - **Conclusion:** for rare evo/hero forms, auto-labels from pro footage are mostly wrong even once the plays are
+    found. Cole's clicks are the reliable source. The 29 ✓ count as verified (cleaner re-run), and the 39 box-off
+    frames went to `click_boxoff3.html`.
+- **Session A** (`cole_2026-10-07`, done 00:23): 8 matches, 185 plays, evo Goblin Giant 8 plays, evo Inferno Dragon 5,
+  hero Dark Prince 24. Only 3 ability uses read, so the ability reader likely misses most. Coverage after: evo Goblin
+  Giant 12, evo Inferno Dragon 7 (its auto-labels were all filtered), Dark Prince dismounted 19.
+  - `click_sessionA.html`, 111 frames: evo plays at +1.5/3/4.5 s; every hero Dark Prince play at +4/7/10 s, so Cole
+    clicks the dismounted Prince when he's off.
+- **Cole on session A:** some +1.5 s frames show the card's "falling down" deploy animation and he couldn't tell
+  what to click. Rule: click only when the unit is clearly recognisable; skip blurry drop-ins, since later frames of
+  the same play show it standing. Default click-page offsets moved from +1.5/3/4.5/6 s to +2.5/4/5.5/7 s
+  (per-card offsets like Goblin Drill and Snowball unchanged).
+- **evo Zap merged into Zap for the detector (Cole, 2026-10-08).** Neither Cole nor I could tell evo Zap from Zap in a
+  board frame, but "u can always tell the evo by the card in the hand".
+  - The detector trains evo Zap boxes as `zap`. The form comes from the hand reader (POV) or opponent cycle counting
+    (the detector sees each opponent Zap). This is the same "use both" design as for evo P.E.K.K.A.
+  - `MERGE_FORMS` in the cleaner; only evo Zap so far, and other board-indistinguishable forms can join.
+  - This removes evo Zap from the 40 bar.
+  - **Reverted the same day (Cole):** evo Zap does look different. It's a truer blue and zaps twice; opponent
+    cycles can be counted as a cross-check. evo Zap stays its own class (`MERGE_FORMS` is empty). Click frames for
+    it should catch the blue colour and the second zap.
+- **evo Zap timing (Cole):** the second zap hits about a full second after the first. Click offsets for evo Zap
+  are +0.3, +1.0 and +1.3 s. `click_evozap.html`: up to 16 unclicked high-confidence evo Zap plays, at most 3 per
+  video; Cole picks evo Zap or Zap per frame.
+  - Only 1 unclicked high-confidence evo Zap play remained (55 evo Zap plays exist: 33 high, 21 medium). The page now
+    includes medium-confidence plays (usually an elixir mismatch, and Cole verifies each): 20 plays, 3 frames each.
+  - The 6 Zap videos not in re-read round 1 (9HqAjiFqAlk, ysEKLO8sMp8, 8Y5yJQVqZpU, dIT3p1kmf3M, -gRfP38ohaE,
+    kjO4VIQpRmM) are queued for the fixed reader after the session A chain (`after_zap_reread.sh`).
+- **Sprite quality (Cole: "some of them could use some better cutting out").** His example had a see-through hole
+  where a badge/HP bar was removed, baked-in deploy dust, and stray specks. The synthetic generator pastes these
+  sprites thousands of times, so one bad sprite repeats in every image that uses it.
+  - **Audit of all 296 approved sprites** (`data/logs/slice_audit*.json`): 24 with a hole enclosed by the sprite,
+    9 mostly dust/blur (low edge density), 1 with stray pieces. 33 flagged.
+  - **Auto-fix:** holes inpainted (Telea) and made opaque; stray pieces removed. Fixed copies are in
+    `data/slices/fixed/`, and originals are untouched until Cole decides.
+  - **Review:** `slice_review_fix.html` (33 items, before | after on a checkerboard). ✓ = replace with the fixed
+    version, ✗ = drop the sprite.
+- **Cole's sprite fix review:** 22 replaced with the fixed version, 2 dropped, 9 queued for recut.
+- **Group boxes (Cole: evo Bats / hero Goblins boxed as the whole group, "I thought we fixed that").** The group fix
+  covered the auto-labeler only.
+  - **Size check:** KataCR single-unit 90th percentiles are bat-evolution 2.18 tiles, goblin 1.40, skeleton 1.15.
+    Our boxes: evo Bats median about 2 tiles, with 33% of click boxes over 2.5; hero Goblins 22% of click boxes over
+    2.5. Clicks are the main leak: the detector box or SAM from one click grabs the flock. All 5 evo Bats / hero
+    Goblins sprites were 3–4-tile blobs.
+  - **Bug found:** `bats-evolution` and `skeletons-evolution` duplicated KataCR's `bat-evolution` /
+    `skeleton-evolution` (same units, two names). Merged into KataCR's names (`FORM_CLASS`, cleaner `MERGE_FORMS`,
+    sprite manifest).
+  - **Fixes:** the cleaner drops main boxes for group cards above a per-card limit (`MAX_UNIT_TILES`); the group
+    sprites are pulled and queued for recut (14 total).
+- **Sprite recut (`clicks_recut_2026-10-08.json`, 28 clicks; Cole skipped the bad Goblinstein monster shots).**
+  The cutter now fills enclosed holes on every sprite it writes (`fill_holes` in slices.py), so badge/bar erasure
+  can't leave see-through holes again.
+  - **Result:** most of the 28 new cuts are unusable. Level badges were left on; hero Goblins / evo Bats cuts still
+    caught 2–3 units (SAM from one click outlines the bunch); the deploy stopwatch was included; Goblin Curse cuts
+    included the floor; evo Bats cuts were motion-blurred.
+  - **Decision:** none of them are added. For small, fast or grouped units, point-click cutting from gameplay frames
+    doesn't produce clean sprites. Those classes learn from real frames (clicks, cleaned labels), and synthetic
+    pastes use KataCR's clean base sprites. The approved library stays at 289 (hole-free).
+- **Group-box filter check:** KataCR single-unit sizes: royal hog 98th percentile 1.94 tiles, goblin 1.49,
+  bat-evolution 2.26. Ours: evo Royal Hogs median 1.45 but 75th percentile 2.86; hero Goblins median 1.76, 75th
+  2.58. The limits (2.4 / 2.2) only remove real group boxes. After the filter (midday recount, 62 of 77): hero Goblins
+  24 and evo Royal Hogs 29 are honestly short of single-unit labels; evo Bats (merged) 39.
+  - Coverage no longer lists merged duplicate names or HUD classes (the stray `king-tower` main box).
+- **Recount after the Zap re-reads and evo Zap clicks: 4,752 instances, 63 of 74 pass** (evo Zap passes).
+  - Left: evo Bats 39, evo Princess 38, hero Magic Archer 32, evo Goblin Giant 32, evo Lumberjack 30, evo Royal Hogs
+    29, Dark Prince dismounted 27, evo Hunter 26, hero Goblins 24, evo Inferno Dragon 18, evo Skeleton Army 11.
+  - `click_short9.html` (76 frames) covers the six closable from existing footage. `build_click_short` now caps
+    pages at 150 frames. For group cards the page says "click EACH unit separately", since every unit needs its
+    own box or the unboxed ones teach "background".
+  - The rest needs sessions B and C.
+- **Page 9 (`clicks_short9_2026-10-08.json`): 214 clicks on 68 frames**, groups clicked unit by unit: hero Goblins 95,
+  evo Royal Hogs 80, evo Bats 21, hero Magic Archer 12, evo Princess 6.
+  - **Recount: 4,851 instances, 67 of 74 pass.** evo Bats, evo Princess, hero Magic Archer and evo Royal Hogs passed.
+    The group filter dropped 192 group-box frames.
+  - **Left:** hero Goblins 37, evo Goblin Giant 32, evo Lumberjack 30, Dark Prince dismounted 27, evo Hunter 26, evo
+    Inferno Dragon 18, evo Skeleton Army 11. Mostly sessions B and C.
+- **Click labelling made incremental** (`scripts/label_clicks.py`): results are cached per click file by content
+  hash plus `CODE_VERSION`, so a review round processes only the new file instead of re-labelling every click
+  (~1 h). `--force` redoes all; bump `CODE_VERSION` when the click-to-box logic changes.
+- **Session B recording** (`cole_2026-10-09`, 36 min): evo Skeleton Army, evo Lumberjack, hero Dark Prince. Deck
+  declared; standard crop. Chain: `scripts/after_session.sh` (process → auto-label → Dark Prince ability page →
+  re-clean → recount).
+- **Session B processed (12:36):** 11 matches; evo Lumberjack 11 plays, evo Skeleton Army 8, hero Dark Prince 37, with 10
+  ability uses read. Auto-labels moved evo Lumberjack 30 → 32 and evo Skeleton Army stayed at 11, so clicks are
+  needed. Pages: `click_sessionB.html` (evo plays at +2.5/4/5.5 s; evo Skeleton Army = click the General) and
+  `click_abilities_cole_2026-10-09.html` (40 frames after the 10 ability uses).
+- **Session B clicks:** 45 (evo Lumberjack 27, evo Skeleton Army 18) plus 29 ability clicks (28 dismounted Dark
+  Prince; using the ability ASAP worked).
+  - **Recount: 4,935 instances, 69 of 74 pass.** evo Lumberjack 58 and Dark Prince dismounted 54 pass.
+  - **Left:** hero Goblins 37, evo Goblin Giant 32, evo Skeleton Army 26, evo Hunter 26, evo Inferno Dragon 18.
+- **Session C recording** (`cole_2026-10-09_c`, 18.5 min; Cole: "not nearly enough"): evo Inferno Dragon, evo
+  Hunter, hero Goblins. Deck declared.
+  - `after_session.sh` now also builds the session's click page automatically (`scripts/session_click_page.py`):
+    every evo/hero play of the declared cards, 3 frames each, capped at 150, with group cards asking for each
+    unit.
+- **Session C processed (14:33):** 6 matches; hero Goblins 20 plays, evo Inferno Dragon 5, evo Hunter 4. Auto-labels
+  added nothing (still 69 of 74). Click page `click_session_cole_2026-10-09_c.html` (29 plays, 87 frames).
+  - Expected after clicks: hero Goblins passes; evo Hunter about 34, evo Inferno Dragon about 28.
+  - Still needed: session C2 (about 10 matches, evo Inferno Dragon + evo Hunter) and a top-up (evo Skeleton Army + evo
+    Goblin Giant, no Phoenix).
+- **Session C clicks:** 170 (hero Goblins 143, each goblin separately; evo Inferno Dragon 15; evo Hunter 12).
+  - **Recount: 4,983 instances, 70 of 74 pass.** hero Goblins 62 passes.
+  - **Left:** evo Hunter 36 (need 4), evo Goblin Giant 32 (8), evo Inferno Dragon 31 (9), evo Skeleton Army 26 (14).
+  - Plan: session D (evo Skeleton Army + evo Goblin Giant, no Phoenix) and session E (evo Inferno Dragon + evo Hunter).
+- **New card forms (Cole, 2026-10-09): hero Electro Wizard and evo Electro Giant.** Cole fetched a fresh API snapshot
+  (`data/cards/api_snapshots/2026-10-09.json`).
+  - The ingest aborted on a 404: Supercell's CDN hadn't uploaded the new heroMedium / evolutionMedium images yet,
+    although the API lists them. `fetch_art` now skips missing images with a warning.
+  - The card table has hero Electro Wizard and evo Electro Giant, and the class list appended
+    `electro-giant-evolution` and `electro-wizard-hero` (217 → 219; existing indices unchanged).
+  - hero Electro Wizard's hand art is cut from Cole's session D at 4:42 (art override). It reads 0.85–0.91 on other
+    frames, including greyed cards.
+- **Session D recording** (`cole_2026-10-09_d`, 37 min): evo Skeleton Army, evo Goblin Giant, hero Electro Wizard. Deck
+  declared; processing via `after_session.sh` (auto click page included).
+- **Session E recording** (`cole_2026-10-09_e`; Cole: "kinda short"): evo Inferno Dragon, evo Hunter, hero Electro
+  Wizard. Deck declared; queued after session D's chain.
+- **Supercell-Extractor (Cole found it; github.com/baraklevy20/Supercell-Extractor).** A Node tool that unpacks
+  Supercell `.sc` asset files (textures, shapes, animated "movie clips") for Clash Royale and other games.
+  - **Why:** the game's own unit sprites, cleanly cut, for every card, evo/hero form and animation frame. That fixes
+    our weakest area: cutting sprites from gameplay fails for small/fast/grouped units, and new forms have no
+    footage yet. It also enriches synthetic data and breaks co-occurrence pairings.
+  - **Cole decided to use it.** Conditions:
+    - extracted assets stay local and gitignored (the repo is public)
+    - follow Supercell's Fan Content Policy
+    - don't vendor the extractor's code (no licence in its README; package.json says ISC)
+    - pilot first: compare extracted sprites with real frames before building on them
+  - **Setup:** cloned to `~/tools/Supercell-Extractor` (outside the repo). Last commit 2022-04, so it may not read
+    current asset formats. One-line patch for Node 26 (`require('yargs')`); native deps (sharp, lzma-native) load.
+  - **Next:** Cole downloads the current Clash Royale APK (APKMirror, Supercell-signed); unzip `assets/sc/*.sc`;
+    pilot extraction for hero Electro Wizard, evo Bats, hero Goblins, Skeleton Army, Goblin Giant.
+  - **APK check (Cole's APKMirror bundle, version 160402020):** no `.sc` / `.sctx` files anywhere in the 30 parts
+    (base plus splits, ~115 MB, mostly code). Current Clash Royale downloads its graphics from Supercell's servers on
+    first launch, so the extractor has nothing to read from the APK.
+  - **Options:**
+    1. Android emulator: install, launch once, copy the downloaded assets out (hours of setup, a game login on an
+       emulator, and the extractor may not read 2026 formats).
+    2. Fetch from Supercell's content servers by imitating the game client. Rejected: beyond fan content.
+    3. Drop it for now.
+  - **Recommendation: 3.** Real-frame labels are the better signal and we're near the bar. Revisit the emulator route
+    if v2's benchmark shows rare forms need clean-sprite synthetic data. The extractor stays set up in `~/tools`,
+    and the APK bundle is in `~/tools/cr_apk`, outside the repo.
+- **Session E processed (19:01):** 6 matches; hero Electro Wizard 23, evo Hunter 5, evo Inferno Dragon 4. Click page
+  96 frames. Cole's session D clicks (101: hero Electro Wizard 64, evo Goblin Giant 25, evo Skeleton Army 12) arrived
+  after E's label step, so they're counted in the next recount.
+- **Session F** (`cole_2026-10-09_f`, 9 min): evo Electro Giant.
+  - Art override cut from the charged card at 2:06 (pink goggles, purple glow). Normal colour cards still read normal
+    (0.87), but **greyed normal cards in the evo slot read as evo**: the reader works in greyscale, and evo vs normal
+    differ mostly by colour (pink vs blue goggles), plus the override includes the evo-slot frame top.
+  - **Decision:** the reader's evo call isn't trusted for Electro Giant. Session F's click page shows every Electro
+    Giant play and Cole picks evo or normal. A colour-aware form check is a to-do if it matters elsewhere.
+- **Session E clicks:** 76 (hero Electro Wizard 50, evo Hunter 14, evo Inferno Dragon 12). These and the session D clicks
+  are counted in a recount queued after session F's chain (`after_recount.sh`).
+- **Prior art: Hasty-CR (github.com/hastylmao/Hasty-CR, MIT; Cole found it).**
+  - **What it is:** a deterministic Clash Royale simulator (integer millitiles, 50 ms ticks; card stats decoded from the
+    game client's own tables), plus PPO self-play (behaviour-cloned from a rule bot first), for one deck (2.6 Hog
+    Cycle). Live play uses YOLO vision (0.959 mAP50) on an Android emulator.
+  - **Reported:** 93.3% vs its rule bot and 86.7% vs meta decks, measured in its own simulator. Its stated vision gap:
+    no unit HP ("a half-dead Musketeer looks healthy").
+  - **Our assessment:** neither approach is strictly better.
+    - Sim + RL can exceed human play and has perfect labels, but carries a sim-to-real gap (they list deadlocks and
+      approximations) and a per-card mechanics burden (one deck).
+    - Learning from pro footage covers every card from real play and is what goals C and A need.
+  - **Decision:** stay on C → A. Plan a hybrid for B:
+    1. initialise the bot from our pro-move predictor (better than a rule bot)
+    2. fine-tune with self-play in a simulator (Hasty-CR's or similar, credited)
+    3. use our pro event logs to validate the simulator against real play
+  - **Ideas to adopt:** read unit HP from the HP-bar classes our detector already has, and decode exact card stats
+    from client data instead of curated YAML.
+- **Recount with session D and E clicks: 5,153 instances, 74 of 76 pass.** hero Electro Wizard 110, evo Goblin Giant 57,
+  evo Hunter 49 and evo Inferno Dragon 43 pass.
+  - **Left:** evo Skeleton Army 36 (need 4) and evo Electro Giant 0 (session F had only 7 Electro Giant plays; its page
+    is 21 frames).
+  - **Plan:** one session with evo Electro Giant (evo) + evo Skeleton Army (wildcard), about 10 matches.
+- **Session F clicks:** 24 (evo Electro Giant 9, normal 15).
+- **Final session** (`cole_2026-10-09_g`): evo Electro Giant + evo Skeleton Army. Deck declared. Its click page shows
+  every Electro Giant play (Cole picks evo or normal) and every evo Skeleton Army play (click the General), capped at 150.
+- **Pre-training audit (Cole: "verify that the GPU pass is right").**
+  - **OK:** real_v2 has 4,771 frames, 0 label errors (class ids, box bounds, sizes), all 896×576, from 134 videos with
+    no video over 6%. synth_v1's 158 classes match classes_v2[:158], so the sets can be mixed. Empty classes are
+    harmless; merged duplicate names stay as unused indices so numbering never changes.
+  - **Gaps (to fix before any paid run):**
+    1. synth_v1 has none of our new classes; 27 approved-sprite classes are absent, so synthetic data must be
+       regenerated with our 289 sprites.
+    2. No video-level train/val split.
+    3. Held-out benchmark not built.
+    4. No v2 data.yaml / training config (current script is v1: 158 classes, synth only, batch 4).
+  - **Order:** benchmark videos first (to prevent leakage) → split by video → synth_v2 → v2 config → 1-epoch local run →
+    ~$1 cloud dry run → full run.
+- **Benchmark hold-out chosen (`config/benchmark_holdout.json`):** Alina uz4VVzGlOjE_m01 (Cole's 52-play truth) plus Cole/friend
+  2026-09-29 match 5 (cole_c_m05 ↔ friend_c_m07; pairing gives exact opponent plays, 34 + 25). That's 111 opponent plays.
+  - Holding these out removes 105 training frames and no entity falls below 40 (the cole_c_m10 alternative would have
+    dropped hero Barbarian Barrel to 37).
+  - The cleaner now skips held-out matches. The crop classifier and mining must exclude them too before v2
+    (to do in the split step).
+- **Final session processed (22:15):** 5 matches; evo Electro Giant 6 (reader call, Cole confirms), evo Skeleton Army 5. Page
+  63 frames.
+  - **Recount with the benchmark held out (125 frames): 73 of 77.** Boss Bandit fell 40 → 36 because the held-out match
+    had 4 of its frames.
+  - Boss Bandit page (`click_bossbandit.html`) uses its unclicked medium-confidence plays outside the hold-out.
+  - Normal Electro Giant (clicked while choosing evo vs normal) is a KataCR class and is excluded from the bar
+    (`INCIDENTAL` in coverage).
+  - Still short after these pages: evo Electro Giant (8, needs about 32), probably one more session.
+- **Recount after the final session's clicks (61) and Boss Bandit clicks (33): 5,154 instances, 75 of 76 pass** (benchmark
+  held out). Boss Bandit 68 and evo Skeleton Army 47 pass. **Only evo Electro Giant is short (23, needs 17)**: one more
+  short session.
+- **Decision (Cole, 2026-10-09): train now; evo Electro Giant goes in at 23 (under the bar).** "lets just try it rn.
+  please make sure nothing will go wrong." Run 1 uses real_v2 (cleaned, benchmark held out) plus synth_v1 as is.
+  synth_v2 (with our 289 sprites) is deferred to run 2: the new cards are covered by real frames, and regenerating
+  costs hours.
+- **Training prep for run 1 (all local, verified before paying):**
+  - `scripts/build_train_v2.py` → `data/external/train_v2`, 219 classes. Train: real_v2 from most videos + synth_v1
+    (12,000). Val: real_v2 from 34 videos + KataCR's 800 hand-labelled real frames (v1's val set, for comparison).
+    16,288 train / 1,294 val images.
+  - **Split fix:** a random 10% of videos took most of some rare cards' frames (Boss Bandit 23 train / 40 val, evo
+    Minion Horde 6 / 29). Val videos are now chosen so every entity keeps ≥75% of its real frames in train.
+  - `scripts/train_v2.py`: same script for Mac and cloud (auto device; batch 4 MPS / 32 GPU; v1 augmentation, no
+    mosaic). **Smoke test** (`--smoke`: 1 epoch, 3% of data, MPS, ~3 min): nc=219, 0 corrupt labels, train + val ran,
+    weights saved. The only warning was benign (auto optimizer).
+  - `scripts/eval_v2.py`: scores any weights on the held-out benchmark into separate tables. Tested with the smoke
+    weights; it now reports "nothing detected" instead of crashing. v1 is being scored as the baseline.
+  - Upload bundle: `data/upload/` (train_v2.tar + script + base weights + sha256), gitignored.
+
+## 2026-10-10 — v1 baseline on the held-out benchmark (the number v2 must beat)
+
+`scripts/eval_v2.py <v1 weights> v1bench` → `data/logs/eval_v1bench.json`. Opponent plays, scored against truth:
+
+| match | true plays | found | fully right | wrong card | false plays | recall | fully right | precision |
+|---|---|---|---|---|---|---|---|---|
+| Alina uz4VVzGlOjE_m01 | 52 | 44 | 22 | 10 | 12 | 0.62 | 0.42 | 0.73 |
+| Cole 2026-09-29_c m05 | 34 | 26 | 2 | 4 | 20 | 0.18 | 0.06 | 0.23 |
+| friend 2026-09-29_c m07 | 25 | 30 | 0 | 10 | 20 | 0.40 | 0.00 | 0.33 |
+
+v1 is usable on an older pro match and close to useless on current-meta games with evo/hero forms and new cards
+(Goblinstein, Rune Giant, etc. are not v1 classes). Target for v2: well above 0.42 fully right on Alina, and real
+numbers (not ~0) on the two 2026-09-29 matches. RunPod plugin installed (runpod@runpod 1.5.0, OAuth, no API key).
+
+## 2026-10-10 — v2 training on RunPod
+
+- Pod `bot77-train-v2` (id 03ouipsy0lqm06): 1× RTX 4090, Secure Cloud, EUR-IS-1, $0.89/hr, image
+  runpod/pytorch:1.0.2-cu1281-torch280-ubuntu2404, 40 GB persistent /workspace (network FS) + 20 GB local disk.
+  Access over direct SSH with Cole's public key (registered via the RunPod MCP; OAuth, no API key).
+- Bundle uploaded with rsync (2.7 GB, ~15 min; `-rt` because the network FS refuses chown), sha256 verified on the
+  pod, unpacked to local disk (/root/data) since 16k small images read slowly from the network FS; data.yaml `path`
+  repointed. ultralytics pinned to 8.4.160 to match the Mac, so weights load back home without version drift.
+  pip on this image needs `--break-system-packages` (PEP 668).
+- Dry run (yolo11s, 1 epoch, batch 32): clean exit, 0.045 h/epoch, GPU 98%, val mAP50 0.441 / mAP50-95 0.294
+  after one epoch. Pipeline proven.
+- Full run: **yolo11m**, 100 epochs, batch 16 (11m at batch 32 won't fit 24 GB at imgsz 896; nbs=64 keeps the
+  effective batch), patience 20. ~4 min/epoch → ≤ ~6.5 h, ≤ ~$6. Weights land on /workspace/bot77/runs/v2m.
+  Then: pull best.pt, stop the pod, run eval_v2 against the v1 baseline above.
+
+## 2026-10-10 — v2m result: not usable yet; root cause is sparse labels in real frames
+
+- Run stopped by early stopping at epoch 23 (1.2 h). Total pod time ~1.75 h ≈ $1.56. Weights + results.csv/png +
+  log pulled to data/models/bot77_detector/v2m/ (sha256 checked), pod stopped then terminated (list-pods empty).
+- Curve: train loss falls throughout; val mAP50 rises 0.58 → 0.68, val mAP50-95 peaks at epoch 3 (0.409) and drifts
+  down while val box loss rises. Early stopping tracks mAP50-95, so best.pt = epoch 3.
+- Split val: last.pt beats best.pt on real frames (mAP50 0.608 vs 0.538, mAP50-95 0.358 vs 0.338); only synth
+  (KataCR hand-labelled) mAP50-95 drops (0.574 → 0.460) — our real boxes are looser than KataCR's.
+- Play benchmark (fully right / true plays):
+
+| weights | Alina | Cole m05 | friend m07 |
+|---|---|---|---|
+| v1 | 22/52 | 2/34 | 0/25 |
+| v2m best (epoch 3) | **25/52** | 3/34 | 0/25 |
+| v2m last (epoch 23) | 17/52 | 2/34 | 1/25 |
+
+- Detector-level check (does any enemy detection of the right card appear 0–3 s after each true play): Alina v1 44/52,
+  v2 39/52; Cole m05 v1 8/34, v2 6/34; friend m07 1/25 both. On Cole's footage v2 finds towers and bars at 0.9+
+  but almost no troops (frames at 939 s / 960 s: skeletons, Electro Spirit, goblins, Tombstone unboxed).
+- **Root cause:** real_v2 frames average 2.6 unit boxes (one verified main box + whatever v1 caught), synth frames 26.
+  Every other troop in a real frame is unlabelled, so the model learns "troops in real footage are background"; the
+  longer it trains, the worse (best.pt at epoch 3 > last.pt at epoch 23 on Alina). Real frames are where all the new
+  cards live, so the new cards suffer most.
+- Also fixed: `class_to_card` dropped every `*-hero` class (and `dark-prince-hero-dismounted`), so hero plays could
+  never reach the opponent log; `tesla-evolution-shock` is now a non-unit.
+- Lesson for the pipeline: pick checkpoints by real-val mAP50 / the play benchmark, not by mAP50-95 on a mixed val.
+
+### Fix plan (run 2)
+1. synth_v2: regenerate KataCR-style synthetic arenas with the 289 approved sprites, so every new card/form appears
+   in fully labelled frames (the KataCR recipe; no unlabelled troops by construction).
+2. Real frames: stop teaching "background" — crop each real frame to a window around its verified box(es) and fill
+   the window with pseudo-labels (v1 + v2m-best ensemble, crop-classifier agreement); anything detected but not agreed
+   is masked. Frames with unlabelled units left in the window are dropped.
+3. Val/selection: real val split reported on its own; checkpoint chosen on real-val mAP50, then the play benchmark.
+
+## 2026-10-10 — Run 2 build: synth_v2 + empty-arena real frames
+
+Cole: "yea do it" (fix plan above), and "I bought $30 of gpu credits. we can and should use all of them."
+Budget used so far ~$1.56. Run 2 is sized to it: synth generated on the pod's 64 cores, yolo11l, ~40 epochs, no
+early stopping, a checkpoint every 5 epochs, chosen by the play benchmark.
+
+**Sprites (`scripts/auto_sprites.py`).** 52 classes had < 8 approved sprites (all hero forms, most evos: synth_v1
+had none of them). Cut up to 10 per class with SAM from verified real_v2 boxes (Cole's clicks / approved / mined /
+form review). real_v2 frames are already the generator's 576×896 arena crop, so no rescaling. Badge/HP bar erased,
+largest component, leftover badge stripped, holes filled; kept if not clipped by the frame edge, the mask fills
+20–97% of the box and the crop classifier gives the card family p ≥ 0.3 — except where < 5 boxes pass (classifier
+never saw hero Magic Archer / evo E-Giant: all rejected), then best-ranked anyway. Max 3 per video. → 472 sprites.
+My look at a sample: hero Balloon, evo P.E.K.K.A, evo E-Giant clean; hero Goblins includes level badges cut as the
+unit; Vines includes a tower; some evo Skeleton Army are blobs. Cole reviews `data/reviews/sprite_review_v2.html`
+(one row per class, keep by default, click the bad ones).
+
+**Generator (`scripts/katacr/setup_synth_v2.py`).** KataCR clone kept at ~/tools/KataCR (the run-1 clone lived in
+a temp folder and was gone). label_list: classes_v2[155:] appended (64 classes) so generator ids == classes_v2 ids;
+evo/hero forms copy their base card's ground/flying/spell lists (KataCR's choices, e.g. Balloon "ground"), new
+cards set by hand. Sprites copied as `<class>_1_*.png`. After setup only Mirror, tesla-evolution-shock,
+zap-evolution and the two merged names have no sprites. Test: ~1 s/image/core, ~76 boxes/image, new classes
+present. `gen_parallel.sh` runs one seed per core on the pod.
+
+**Real frames (`scripts/build_real_v3.py` → data/external/real_v3).** Each real_v2 frame becomes: a window around its
+verified box(es) (+1.5 tiles, grown over any kept box it cuts), pasted (feathered) onto an EMPTY arena of the same
+match — the per-pixel median of frames across that match (units move, the arena doesn't; same crop geometry, real
+theme and lighting). Inside the window: pseudo-labels from v2m-best (epoch 3) where the crop classifier's top-1 is
+the same card family (HUD classes at conf ≥ 0.4), unconfirmed detections painted over with the empty arena. Towers
+and tower bars kept from the frame; a tower standing in the empty arena but destroyed in the frame gets the frame's
+pixels (ruin). Empty arenas where v2m still finds a unit are skipped.
+- First empty arenas had the enemy half tinted red (the "can't place" overlay while a card is held). Fixed: 30
+  frames sampled, the 15 least red used for the median.
+- 40-frame test: every frame kept, 22 pseudo-labels, 14 detections painted over, 5 ruins restored.
+
+**Bundle (`scripts/build_train_v3.py` → data/upload/train_v3).** real_v3 split by the same val videos as train_v2;
+val = real_v3 val + KataCR's 800; extra yamls for real_v2 full-frame val (recall on real footage) and each val alone.
+The generator kit ships in the bundle; `pod_assemble.py` writes train.txt with real frames ×3 + synth_v2.
+`train_v2.py` gained `--patience 0` (off) and `--save-period`.
+
+## 2026-10-10 (evening) — Run 2 launched
+
+- Cole's sprite review (`data/ground_truth/reviews/sprite_review_v2.json`): 472 auto-cut sprites, 112 rejected,
+  360 kept. Spells cut worst (Vines 6/7 bad, Void 8/10, Goblin Curse 3/4). setup_synth_v2.py → 649 sprites in 68
+  classes on top of KataCR's segments.
+- First pod drew a bad machine (no runtime, no logs after 11 min) → deleted, new pod `bot77-train-v3`
+  (id nl4bu55935xmbq), RTX 4090 Secure, $0.89/hr, 80 GB disk + 60 GB volume.
+- macOS tar adds `._*` AppleDouble files; KataCR's background counter matched them (background51.jpg not found) and
+  they would break the sprite-name assert. Deleted on the pod; bundles now built with COPYFILE_DISABLE=1 --no-xattrs.
+- synth_v2 generated ON the pod: 24 processes × 2,000 = 48,000 images in ~12 min. Check on 6,000: 0 bad labels,
+  72 boxes/image, every new class present (~580 boxes per 6,000 images; rarest Vines 565); only the merged names absent.
+- real_v3: 692 empty arenas built (30 frames, 15 least-red, median); 4,357 frames kept (424 dropped: empty arena still
+  had a unit), 2,379 pseudo-labels added, 1,334 unconfirmed detections painted over, 735 tower ruins restored. Cards
+  losing the most frames: Berserker hero 48→29, evo Inferno Dragon 43→29, Goblinstein Doctor 17→11 — all now also
+  in synth_v2.
+- Bundle: 3,909 real train ×3 + 48,000 synth; val = 448 real_v3 + 800 KataCR; extra val sets realfull (494 real_v2
+  full frames) and each alone.
+- Smoke (yolo11l, batch 16, 3%): clean, 20.7 GB of 24. Full run: **yolo11l, 35 epochs, batch 16, no early stopping,
+  checkpoint every 5 epochs**, ~14 min/epoch → ~8–9 h, ~$8.
+- `scripts/watch_run.sh` (on the Mac): pulls each epochN.pt as it lands and runs the play benchmark on it
+  (`data/logs/eval_v3l_eN.json`), then pulls best/last/results at the end.
+- Cole asked about extracting assets from his BlueStacks install: on the list for after run 2 (local files of his
+  own install only; nothing from Supercell's servers, no memory reading; assets stay local and gitignored).
+- **Game asset extraction from Cole's BlueStacks install (2026-10-10, 20:40), no root, no adb.**
+  - Route: BlueStacks Air keeps Android's /data as `/Users/Shared/Library/Application Support/BlueStacks/Engine/Tiramisu64/data.qcow2`.
+    - BlueStacks' own `qemu-img` converts it (read-only, `-U`) to a sparse raw ext4 image in `~/tools/bluestacks/`.
+    - BlueStacks' own `7zz` reads the image. Not encrypted.
+    - Nothing from Supercell's servers, no memory or network reading; only files already on his disk.
+  - Why the APKMirror check found nothing: the art is in a Play Asset Delivery split,
+    `split_install_time_asset_pack.apk` (913 MB), which APKMirror bundles leave out. It holds 2,106 `.sc`, 2,167 `.sctx`
+    and 1,425 `.glb` files, unpacked to `~/tools/bluestacks/pack/` (outside the repo, never committed).
+  - Decoder: sc-editor (danila-schelkov/sc-editor, MIT, v1.6.24) CLI `inspect` / `render` reads SC2 v5 + `.sctx`.
+    - Needs Java (brew openjdk) and Khronos KTX tools for ASTC (unpacked from the official pkg to `~/tools/ktx`, no sudo).
+    - Wrapper: `~/tools/sc-editor/sce`.
+    - First render (red and blue Giant, run direction 3) is pixel-clean with alpha.
+  - Coverage (163 `chr_*.sc` files):
+    - 2D sprite animations for nearly every classic card and most evos, in both team colours
+      (`<unit>_enemy_<anim>1_<dir 1..9>` or `_red_`). New cards: Goblinstein, Berserker, Goblin Demolisher, Goblin Machine.
+    - **3D only** (`sc3d/characters/*.glb`, Supercell "Odin" glTF): all 18 hero forms, Minion Giant, Ronin, Boss Bandit,
+      evo Electro Giant, evo Elite Barbarians. Their `.sc` files hold only effects.
+  - Run 2 so far (epoch 5), plays fully right: Alina 27/52 (v1 22), Cole 9/34 (v1 2), friend 4/25 (v1 0).
+- **Game-art sprites for V3 (2026-10-10, evening).** Cole: "set it up so we got everything and everything is good for V3".
+  - **2D** (`scripts/extract_game_sprites.py`): SPEC maps 147 of our classes to their `.sc` file and red/blue export prefixes.
+    - Many classes go by Supercell codenames: black_knight = Dark Prince, ghost = Royal Ghost, axe_man = Executioner,
+      rage_barbarian = Lumberjack, angry_barbarian = Elite Barbarians, dark_witch = Night Witch, zap_machine = Sparky,
+      guard02 = Royal Recruits, skeletonWarrior = Guards, snowman = Ice Golem, buffing_giant = Rune Giant,
+      merge_maiden (+ _dragon) = Spirit Empress ground/air, furnace_rework = Furnace (now a troop).
+    - Every animation × 9 directions × 2–4 frames, both teams, plus Star Level skins. Skins only hold the overlay
+      pieces, so they're composited over the base unit unless they cover ≥70% of it.
+    - Render on a fixed canvas centred on the unit's origin so layers line up (Ram Rider, Goblin Giant + bag).
+    - Filters: duplicates, mask shapes sc-editor draws as flat dark blocks, clipping.
+    - Result: **32,381 sprites, 145 classes.**
+    - Removed after the contact-sheet review: evo Minion Horde (dark silhouette), Elixir Collector (UI badge),
+      Mother Witch and Cannon Cart skin 2, Archer Queen's ability (cloak).
+    - Check: the 2D Giant matches Giants in Cole's 2026 footage, so the 2D art is what battles show.
+  - Spells are particle compositions, so they keep the real cut-outs. Projectiles that get labelled are included
+    (Goblin Barrel, Royal Delivery, Snowball).
+  - **3D** (`scripts/blender/render_3d_units.py`, background Blender 5.2 + gltf-Supercell-IO, used as a tool):
+    hero forms, Minion Giant, Ronin, evo Electro Giant, evo Elite Barbarians.
+    - Textures: decoded locally (KTX-Software). The extension's texture web service is stubbed out, so no game files
+      are sent anywhere.
+    - Camera: 47° elevation, calibrated against the official 2D Giant rendered from the same model (silhouette IoU 0.83–0.90).
+    - Materials rebuilt from the file's uber_pbr parameters, including the team mask (blue channel of `_spec`).
+    - Animation fixes: the plugin only retargets onto the *selected* rig. The top helper bones (toEngineGrp /
+      EngineJoints) also parent the meshes, so their keyed 90° rotation was applied twice (units lay down);
+      those channels are dropped.
+    - Result: Minion Giant and Ronin render clean. Several hero rigs still come out stretched or with detached
+      props. Each class is triaged by eye; failures keep the real cut-outs.
+  - **Cutouts vs sprites (Cole asked):** sprites are better: clean, every pose/direction/skin, both teams.
+    - Real cut-outs are kept at ~10% of a class's files (uniform sampling within a class), so the model still sees
+      video-looking units.
+    - They remain the only source for spells and failed heroes.
+    - 70% of game sprites get a one-off video degradation (down/up-scale blur + JPEG 55–85).
+  - Scale (`scripts/katacr/setup_synth_v3.py`): game art is drawn at its own resolution (evo sprites ~2×; median ratio
+    to arena-crop size 0.91), so each class is resized to the median height of its real cut-outs, else 0.91.
+  - Run 2 so far: e5 27/9/4, e10 25/10/3 plays fully right (Alina/Cole/friend). Detection recall on Cole's match is up
+    (found 0.41), but 21–25 false plays per match on Cole's and the friend's games. The detections→plays step is now
+    the bottleneck.
+- **Goal set by Cole (2026-10-10, late): ~90% of opponent plays fully right by the next version, without overfitting
+  to the 3 benchmark games.** Working rules:
+  - The benchmark is only ever scored.
+  - Play logic is tuned on a **development set**: the 22 other dual-POV paired matches, 473 exact opponent plays
+    (`scripts/eval_dev.py`; fit/check split cole_* vs friend_* in `scripts/tune_decoder.py`).
+  - Caveat: the detector trained on frames from those videos, so detection there is optimistic.
+- **Dev baseline (run-2 epoch 10, v1 play logic): 67/473 fully right (14.2%), 14.8 fake plays per match.**
+  `scripts/analyze_dev.py` breaks it down:
+  - Missed (334): 151 cards never detected; 56 timing (outside 1.5 s); 53 seen as enemy but no play;
+    27 hero/champion abilities (never output); 27 Mirror; 20 seen as the wrong team only.
+  - Fake (325): mostly spawns and cards the v1 rules predate. Goblinstein's doctor wandering back,
+    Suspicious Bush / Goblin Drill goblins, hero Tombstone's skeletons and Tomb Queen, Spirit Empress form switches,
+    and our own units near the river called enemy.
+- **Play rules v2** (`src/bot77/playrules.py`, `--rules` in eval_dev / eval_v2): continuation, long-lived spawners,
+  Tomb Queen → `__ability`, our-deck cards near the river, per-card timing (`config/play_timing.json` from dev tracks;
+  e.g. Void 3.35 s, Ronin 3.1 s, Goblin Drill 2.7 s, Ice Spirit 1.0 s).
+  - In `spawns.py`: only Tesla resumes after a long gap (a new Tombstone often goes on the same spot), and births get
+    2 s to confirm (1 s lost slow-to-detect new cards).
+  - **Dev: 14.2% → 26.8% fully right; fakes 14.8 → 9.7 per match.**
+  - No gain: Mirror as a quick repeat (8/15/25 s), dismounted hero Dark Prince → ability. Both left off.
+- **Game-rules decoder** (`src/bot77/decode.py`: deck, 4-play cycle as a penalty, Mirror, drop weak candidates):
+  +1 point on the fit half, 0 on the check half, best with the cycle penalty off. With ~40% of plays detected, too many
+  plays are missing for the cycle to help. Kept for when recall is higher; not used yet.
+- **Time convention:**
+  - Paired/POV truth marks the moment the card leaves the hand. Detections come 1.2–1.5 s later.
+  - Alina's hand-made labels mark unit appearance (median detection − label = 0.0 s).
+  - Canonical play time is card-leaves-hand. Events now also store `t_seen` (first unit seen).
+  - Alina's truth file is marked `time_convention: appearance` and scored against `t_seen`. This fixes the label
+    definition, not a fitted parameter.
+- **Benchmark, run-2 epoch 15 (score only):**
+  - v1 logic: 29/52, 9/34, 4/25 = 42/111.
+  - Rules v2: 27/52, 10/34, 6/25 = 43/111. Fakes fell from 14/29/27 to 8/12/21.
+- **Run 2 stopped at epoch 16 (of 35)** to start V3 sooner. e5 → e10 was flat; V3 fine-tunes from epoch 15 anyway.
+- **V3 launched** on the same pod (`scripts/katacr/pod_v3.sh`):
+  - synth_v3: 48k images from `segment_v3.tgz` (32,207 game sprites + 6,276 accepted 3D renders + real cut-outs,
+    166 classes, per-class scale).
+  - Fine-tune from v2 epoch 15 for 30 epochs; run name `v4l` on the pod.
+  - 3D triage: accepted 20 classes; rejected hero Giant (stretched arms), hero mini P.E.K.K.A (props off the body),
+    mounted hero Dark Prince (no rhino), hero Ice Golem (armour floats).
+  - Vines added as layered spell sprites (coil back + front, 5 sizes, 80 sprites). Void and Goblin Curse have no art
+    in the pack.
+- **V4 data engine started** (`scripts/mine_v4_extract.py`): arena crops at 4 fps around the 4,523 trusted plays
+  (benchmark excluded), ~185k frames.
+  - Next: detect them on the pod with V3, then auto-label (exact class from the hand reader) → real_v4 → V4 training.
+- **V3 training (2026-10-11 ~00:10 PDT):** 3,909 real ×3 + 48k synth_v3, from v2 epoch 15 (all 1,015 tensors
+  transferred), 30 epochs at ~15 min each, ending ~07:30 PDT, ~$6.70.
+  - Watcher: `watch_run.sh … v4l` scores the benchmark per checkpoint. Checkpoint choice will use the dev set.
+- **V4 data engine, automated:**
+  - Mining pod `bot77-mine-v4` (A40, $0.59/h, id xo7fugj7naawvp) receives the play-window frames (rsync loop) and
+    detects them with V3's epoch-10 checkpoint (`scripts/mine_v4_chainA.sh`). Terminated right after.
+  - `scripts/mine_v4_chainB.sh`: import → `autolabel_v4.py` (2 workers; 16 GB Mac) → `clean_dataset.py`
+    (now takes src/dst) → `build_real_v3.py` (now takes --src/--dst/--pseudo/--bg-dir) → data/external/real_v4.
+  - Smoke test on 4 dev plays: 18 labelled frames.
+- **Why not upload the videos:** 69 GB at ~2 MB/s would take ~9 h. The arena crops at JPEG quality 80 are ~10 GB, and
+  extraction is resumable.
+- **Hero/champion abilities (5.7% of dev plays) are not handled yet.** Candidate approach for V5: ability-summon
+  classes from the 3D/2D files (Goblins totem, Musketeer turret, Ice Wizard snowman, Magic Archer decoy,
+  Berserker bear, Goblinstein's beam), mapped to `__ability` like Tomb Queen. 612 POV ability presses give real labels.
+- **Dev set, V3 epoch 5 with rules v2: 25.2% fully right** (benchmark is still score-only).
+  - Detection cut-off sweep (`BOT77_MIN_CONF`, dev only): 0.5 → 25.2% (9.8 fakes/match), 0.4 → 26.4% (10.9),
+    0.35 → 24.9% (12.0). The new classes often score 0.35–0.5 this early.
+  - Kept 0.5: 0.4's gain is small and adds fakes. Re-check on the cole/friend split once training is done.
+  - Planned once V4 exists: a learned "detected class → card played" table fitted on one half of dev and checked on
+    the other, combined with the inferred deck (e.g. "poison" → Goblin Curse when Curse is in the deck and Poison
+    isn't). It has to be fitted on the final detector because the confusions change between models.
+- **Mining done (2026-10-11 01:56):** V3 epoch 10 detected all 185,167 frames on the A40 in ~30 min; pod terminated.
+  Chain B (import → auto-label → clean → real_v4) started.
+- **Dev set, V3 epoch 10: 27.3%** fully right (epoch 5: 25.2%). Plays found 37% → 45%; wrong card 54 → 82.
+- **real_v4 built (chain B):**
+  - 8,765 auto-labelled → 5,342 after cleaning → 5,241 composites; split by video: 4,488 train / 753 val.
+  - Mostly the same plays as real_v3 (3,920 of 5,241 frames share match+entity), so it adds new frames of known
+    plays, not new plays.
+  - Paired-opponent spells are still never auto-labelled (mirrored spell spots were 0/9 right in round 1).
+- **What the detector outputs on missed plays** (scratchpad diagnostic, dev only):
+  - Void is detected in 20 of 27 plays, but 16 come out as team "friendly": spells have no badge, and an enemy
+    Void lands on our half.
+  - Goblin Curse is always read as clone/poison.
+  - The "clock" deploy-timer class appears with most Ronin, Bush, Boss Bandit and Minion Giant plays, even when the
+    unit itself isn't recognised.
+- **Fixes (dev, V3 e10 detections, rules v2):**
+  - Spells team-agnostic (`deploys(spell_team="enemy")`; our own spells removed by the POV log): plays found
+    44.6% → 46.7%, fully right 27.3% → 26.6% (the extra spells mostly get the wrong card). Kept, because recall is
+    what the V4 detector and the confusion table build on.
+  - Track card = confidence-weighted vote. Whole track: 25.2% (tracks jump to other units later). First 1 s:
+    27.9% with 10.4 fakes/match (2 s: 27.3%). Kept the 1 s vote (`BOT77_VOTE_WINDOW`).
+  - Both are A/B switches by env var.
+- **Confusion table: no gain, dropped** (`scripts/fit_confusion.py`, V3 e20 dev detections).
+  - Fit on cole_* → friend_*: 21.9% → 21.9%. Fit on friend_* → cole_*: 39.8% → 39.8% at best, and much worse with a
+    weak prior.
+  - The two halves face different opponent decks (each recorder's opponent is the other player), so the confusions
+    don't carry over. A table fitted on one deck is overfitting.
+  - The halves also differ a lot in difficulty: cole_* 39.8%, friend_* 21.9%. The deck in the friend_* recordings
+    (Vines, Ronin, Suspicious Bush, Goblin Curse, Boss Bandit, Void) is where most misses are.
+- **Dev re-score with current play code:** V3 e10 27.9%, e15 30.4%, e20 30.7%.
+- **Opponent spells labelled from paired truth** (`scripts/autolabel_paired_spells.py`):
+  - Paired truth gives the card and time; the detector's new spell boxes 0.3–2.5 s later are relabelled as the
+    true spell. Only classes that look alike may be relabelled (Curse: curse/poison/clone/rage; Void: void;
+    Vines: vines/poison/clone). Unconstrained, about 1 box in 4 was wrong.
+  - 92 frames from 52 of 88 plays → `real_v4s`, added to the V4 bundle (4,580 train / 753 val).
+  - These plays are dev plays, so they make the dev set more optimistic. The benchmark game
+    friend_2026-09-29_c_m07 (same opponent deck) is the honest check.
+- **V3 checkpoints on dev (current play code):** e10 27.9%, e15 30.4%, **e20 30.7%**, e25 29.0%, last 27.9%.
+- **V4 launched 2026-10-11 06:25** (`pod_v4.sh`, run `v5l`): from V3 e20, 25 epochs, training list
+  3,909 real_v3 ×3 + 4,580 real_v4 ×1 + 48k synth_v3. Same RTX 4090 pod. Watcher `watch_run.sh … v5l`.
+- **V4 checkpoints on dev (old play code):** e0 29.8%, e5 32.6%, e10 31.9%, e15 33.0%. Benchmark (score-only):
+  e5 41/111, e10 44/111, e15 46/111. More epochs on the same data stopped helping after e5.
+- **Why V2 → V4 plateaued (dev error analysis, 2026-10-11):**
+  - The big jump was play logic (14.2% → 26.8%), not the detector; each retrain since added ~3 points.
+  - Wrong cards are ~60 plays; plays with no event at all are ~257. Recognition is not the bottleneck.
+  - The auto-labeller only labels plays the detector half-sees, so retraining on mined data improves the same half.
+  - Never-caught groups: spells (Vines/Void/Curse, no deploy clock), hero abilities, Mirror (looks like the copied
+    card), units hidden by towers/spells, and Cole's deck cards in red (the detector sees their level badge but
+    not the unit: Minion Giant named in 2 of 17 clocked plays, Suspicious Bush 3–5 of 16).
+- **Deploy clocks as a play signal** (`src/bot77/clocks.py`, rules `clock` in `playrules.py`, on by default):
+  - Measured first: 91 of 239 missed plays had an enemy clock start within 1.5 s; 153 of 206 fakes had none.
+    Only 44% of all plays show a clock (spells, abilities and some Mirrors never do).
+  - Clock start lags the true play time by a median 0.85 s (cole_*) / 1.10 s (friend_*): offset 1.0 s.
+  - A deploy near a clock takes the clock's time; a clock with no deploy becomes one, named by the detections at
+    its spot over 3 s (cardless clocks dropped: naming them from the cycle gave +5 plays but +5 fakes/match).
+  - Team from the river side (the landing units' badge team: −8 plays). Clocks above y 1.5 tiles are the HUD
+    trophy icon. Requiring a clock for every unit play cut fakes 10.4 → 8.6 but lost 8 plays: not used.
+  - Mirror by the cycle: the same card again within 25 s with < 2 plays in between → Mirror (+4 / +1 on the two
+    halves). The game-rules decoder still drops too many candidates (its keep scores predate clocks).
+  - Candidates left with no deck card are dropped (fakes 12 → 9.7/match, no plays lost).
+  - The crop classifier cannot name the unit at an unnamed clock (9 of 79 right): not used.
+  - Tuned on cole_* vs friend_* halves of dev (V4 e15 detections); both halves gained.
+  - **Dev: V4 e15 33.0% → 42.3% fully right, fakes 10.4 → 9.5/match.** All V4 checkpoints gain 4–10 points
+    (e0 35.3%, e5 40.4%, e10 40.4%, e15 42.3%).
+  - Benchmark (score-only, e15): 49/111 (was 46), fakes 62 → 31. Alina 27/52, cole_m05 11/34, friend_m07 11/25.
+- **Clock-spot labels for V5** (`scripts/autolabel_clock_spots.py`): paired truth names the card, the enemy clock
+  gives the exact spot, the level badge above the unit anchors a SAM point prompt (prompting at the clock boxed
+  the clock icon; flying units are drawn 1–2 tiles above their spot). Single-unit troops/buildings only, DINOv2
+  similarity ≥ 0.4, plays with another play within 2 s skipped. Trial: 18 of 21 boxes right; the 3 wrong ones
+  were all below 0.4 similarity.
+  - Three dev games (both POVs) are kept out of these labels (`config/v5_check_games.json`, 152 plays) to measure
+    V5's gain on games it did not learn the new labels from.
+- **V4 done 2026-10-11 12:27; pod terminated.** Dev with clock logic: e0 35.3%, e5 40.4%, e10 40.4%,
+  **e15 42.3%**, e20 41.0%, last 41.2% (fakes 8.6/match for e20/last). **V4 = epoch 15** (clock settings were tuned
+  on its detections, so it has a slight home advantage). Benchmark (score-only, e15): 49/111.
+- **Clock-spot labels:** 70 frames from 46 plays (`data/external/real_v5c_raw`), about two thirds right by eye;
+  review page `data/reviews/v5_clock_labels.html` for Cole. The dev pool is too small to move the detector: V5
+  needs new paired recordings (target ~40 games, ~8 new decks, spell- and ability-heavy) or both-hands broadcasts.
+- **V5 recordings: Cole plays both sides himself** (two accounts, friendly battles, both screens recorded). Skill
+  doesn't matter to the detector; it needs to see every card in red, in many spots, in fights. One person plays one
+  side at a time, so plays come out more spread apart than in real games. That makes labels cleaner, but the games
+  must still include forced fights, spells on groups and abilities, or the detector only learns isolated drops.
+  These games train the detector only, never the pro move predictor (A).
+- **Tournament broadcasts don't show both hands** (Cole, 2026-10-11), so they can't give opponent truth. YouTube
+  stays an unlabelled pool: at most a source of pseudo-labels (clock spots + confident detections), never scored.
+- **First self-play recording (2026-10-11 2:47 PM):** Cole played both sides; A = 2:47:28 (3024×1898 Mac,
+  1064×1896 window, converted at its own 9:16 aspect, auto layout `auto_cole_2026-10-11_a`), B = 2:47:53
+  (friend's old Mac setup, `friend_iphone_mirroring`). 2 games, paired at −26 s (expected −25, spread 0.00).
+  - Decks read: A Tombstone, Ice Wizard, Skeleton King, Barbarian Barrel, Phoenix, Graveyard, Poison, Tornado;
+    B Firecracker, Skeletons, Electro Spirit, Ice Golem, Fire Spirit, Ice Spirit, Goblin Curse, Rage.
+  - Opponent truth: 84 + 73 plays from B, 33 + 30 from A. B's count is real, not overcounting: an all-cheap cycle
+    deck in triple elixir, and 0 violations of the 4-card cycle in either POV log.
+  - Disk filled at the end of this run (25 GB free after Cole cleared space). Converted `.mp4`s are what the
+    pipeline reads; the `.mov` originals can go once a recording's layout is verified.
+  - Cole confirmed both decks are right. The `.mov` originals are moving to external storage; the pipeline reads only
+    the `.mp4`s, so nothing breaks (the `cole_2026-10-11_*.mov` links will just dangle).
+- **Second self-play session (2026-10-11, 10:44 PM and 11:01 PM), two games, nothing usable yet:**
+  - The Mac recordings (10.44.43, 11.01.34) are black for their full length (5 MB each). They were recorded with
+    "Record Selected Window" (1066×1898), which doesn't capture BlueStacks' game picture. The 2:47 PM full-screen
+    recording worked. Use Record Entire Screen / Selected Portion and do a 10 s test first.
+  - **I destroyed the Mac copies of both iPhone recordings.** I linked `cole_2026-10-11_d.MP4` to the original and
+    wrote the converted file to `cole_2026-10-11_d.mp4`. The Mac filesystem ignores case, so ffmpeg overwrote the
+    original it was reading (now 0.5 s, about 0.5 MB). Same for `_f`. The originals are still in the iPhone's Photos and need
+    exporting again. Rule from now on: a link to a source file always gets a different base name than any output
+    (e.g. `<id>_src.MP4`), never one that differs only in case.
+
+## 2026-10-12 — Replays instead of self-play
+- Cole hates playing both sides, and friends can't record. Decoding replay files was declined: the game streams
+  replays from Supercell's servers in its own encrypted format, so decoding them is the same line as reading memory
+  or the network.
+- **Cole checked: replays show the opponent's hand.** The pipeline reads plays from hand changes, not the
+  "<Card> lvl.N" label (that was only for the spot), so a recorded replay gives exact opponent plays. It may even
+  give both sides from one file. Plan: Cole plays normal ladder games, then records the replays. Top players'
+  battles work the same way, which gives pro games with full truth for step A as well.
+- **`scripts/replay_runner.py`** (teach / run): Cole demonstrates one cycle in BlueStacks (Replay → end screen →
+  back + scroll to the next battle). The runner repeats it and records each replay to
+  `data/raw/replays/<date>/replay_NN.mp4`. It records the whole display cropped to the window, which avoids the
+  black window captures. Replay end = the screen patch at the exit click matches the taught end screen.
+  - It only clicks through menus. It never plays a battle and never reads the game. Run on the alt.
+  - Still needed: one recorded replay to build the replay layout (both hands' positions) and the hand reader for
+    the top side.
+- **Replays show both hands** (first test recording, 2026-10-12): the opponent's 4 cards, Next and elixir bar at the
+  top, ours at the bottom. One replay recording = play truth for both sides, no pairing. The Battle Log entry shows
+  both decks. Replays expire: on Cole's alt, 21 of the log's 25 battles still had Watch, and those from ~6 days back
+  said "Replay no longer available".
+- **`scripts/replay_runner.py` rewritten to use BlueStacks' ADB** (Cole turned ADB on in BlueStacks settings), so
+  Cole can keep using the Mac. Taps are `adb shell input`, screenshots `adb exec-out screencap`, recording is
+  scrcpy (`brew install scrcpy`, ADB=BlueStacks' hd-adb), 1080×1920 at 30 fps, no 3-minute limit.
+  - Loop: Battle Log → the entry after the last one recorded (found again by a fingerprint of both decks; slow
+    250 px swipes, since a 600 px swipe moved the list ~820 px and lost entries under the header) → save the entry
+    crop (decks) → record → Watch → end screen (VS + OK templates) → stop → OK, which returns to the Battle Log at
+    the top.
+  - Walk test: all 21 watchable battles found in ~110 s, stopping at the expired ones.
+  - Screen templates are game frames, kept in `data/raw/replays/_ui/` (gitignored).
+  - End-to-end test: 2 replays recorded back to back (209 s, 184 s), both end screens seen, entry crops were the right
+    battles (battles 2 and 3). The first ADB test recording (battle 1) is kept as `replay_00.mp4`. Each file starts
+    at the Battle Log, then the VS intro, the full game with both hands, and the end screen.
+  - Not usable by the pipeline yet: it needs a replay layout and the hand reader pointed at the top (opponent) hand.
+- **How much replay data (Cole asked what gets us to ~95%, 2026-10-12).** A rough plan, not a fitted curve: we
+  have no scaling measurement yet (every retrain so far reused the same ~22 dev games).
+  - Where the misses are: of the dev misses, ~257 plays produce no event at all and ~60 get the wrong card. Never
+    caught: spells with no deploy clock, hero abilities, Mirror, units hidden by towers, and rare cards in red.
+    Data fixes the rare-card and red-unit misses. Spells, abilities and Mirror also need logic (deck + cycle).
+  - Rough targets, assuming ~35 opponent plays per game and ladder opponents bring varied decks:
+    ~100 replays (~6 h of games) for V5 and a first scaling point; ~300 (~18 h) for most cards to have real red
+    examples; ~800–1,000 (~50–60 h) to give long-tail cards a few hundred plays each.
+  - Measure before committing: train V5 on ~100, rescore dev and benchmark, and fit the gain per 100 games.
+  - 95% "fully right" is probably not reachable from detector data alone; the last points need deck/cycle logic.
+- **First full batch (2026-10-12, 14:00–15:18):** `replay_runner.py -n 25 --skip 3` recorded replays 04–19
+  unattended, then stopped at the expired entries ("no more battles in the Battle Log"). With 00–03: **20 replays,
+  ~72 min of footage, 3.4 GB, every end screen seen**, entry crops all distinct and matching their battles
+  (spot-checked 03, 10, 18, 19). Opponents ~7,600 trophies, all different decks.
+- **TV Royale mode** (`replay_runner.py --source tv`, Cole's idea, 2026-10-12): TV Royale lists top players' games
+  (Ultimate Champion, Ranked: top-100 players) with both decks and a Watch button, the same as the Battle Log, and its
+  replays show both hands. So each one is a **top-ladder game with exact plays for both sides**: truth for the
+  detector and real data for the move predictor (A). Cole: this is high ladder, not pro (tournament) play; it is the
+  best gameplay available outside pro footage. Recordings go to `data/raw/tv_royale/<date>/`. The runner records the
+  tab that is open (it never leaves TV Royale; OK on the end screen returns to it).
+  - Re-runs skip battles recorded on an earlier day: the deck part of each saved entry crop is compared with the
+    screen (≥ 0.98). Different Battle Log battles reach 0.967 (our deck is in all of them); friendly rematches
+    with identical decks can't be told apart and get skipped.
+  - Test: 2 replays (302 s, 211 s), both end screens seen, the right entries. The list changes while the runner
+    works (new games appear at the top); those are picked up by the next run.
+  - TV games are in different arenas (themes), so the replay layout must not depend on the arena art.
+- **`scripts/tv_loop.sh`** (unattended TV recording while Cole is away): waits for a run in progress, then re-runs the
+  TV runner every 30 min for 5 h; already-recorded games are skipped. Started under `caffeinate -i -s`: the Mac's idle
+  sleep is 1 min, which would kill a run. ~170 MB per replay.
+- **TV leagues (Cole: "if we run out of high ladder, go down the ladder"):** each TV run first goes to Ultimate
+  Champion (right arrow until its tab title shows), records it, then taps the left arrow for each league down
+  (`--max-tabs`, default 6). The league changed if the tab title band changed. Each log row has `tab`
+  (0 = Ultimate Champion); the move predictor (A) keeps to tab 0, the detector uses all of them. Not yet seen
+  live: the first switch happens when the running loop's current tab runs out.
+- **Fix: TV Royale loads slowly after OK** (a spinner over the end screen for a minute or more). The runner quit on
+  the unknown screen after replay 9. In TV mode it now waits out unknown screens (loading, or a replay still playing
+  when a run starts) for up to 10 min, taps OK at most every 15 s, and never presses Back (Back offers "Return to the
+  main menu?", which leaves TV Royale).
+- **Replay reader** (2026-10-12): a replay recording is processed twice, `<id>` with layout `replay_bottom` and
+  `<id>_top` with `replay_top` (same file, two links in `data/raw/replay_links/`); the top player's plays become the
+  bottom player's opponent truth, `data/ground_truth/opponent_truth_replay_<id>_m01.json`
+  (`bot77.pairing.write_replay_truth`, offset 0). Separate prefix so the 22-match paired dev set
+  (`opponent_truth_auto_*`) stays fixed and comparable with V4. `scripts/ingest_replays.py` does all new replays
+  (IDs `bl_<date>_rNN` Battle Log, `tv_<date>_rNN` TV Royale); bottom copies also get V4 detections
+  (v5l/epoch15.pt → `unit_detections_v5l_e15`; `run_all.py` job fields `weights`/`table`, `gpu: false` for the top copy).
+  - Layouts, hand-measured on replay_01: both hands at 0.702 of Alina's hand (card centres x 210/352/494/637),
+    timer box top right (y 258–346), x2/x3 drop below it. Arena from the four tower HP bars:
+    x = 92.9 + 0.829·x_alina, y = 196.9 + 0.8014·y_alina (slightly anisotropic: KataCR tile y ~3% off).
+  - Next card is drawn larger relative to the hand: per-layout `next_art_scales` 0.35–0.39 (live: 0.31–0.35).
+  - BlueStacks' framebuffer (screencap/scrcpy) is darker than what the Mac shows: whites cap near 178, pink
+    elixir is ~(B151, G27, R148). Not Android brightness (102/255; setting 255 changed nothing, put back).
+    `_is_pink` also accepts dark saturated pink. Live captures still match the original rule. The live bot (B)
+    will see this same framebuffer, so training on these frames matches its runtime.
+  - Elixir: the bar starts under the number circle (x 70). The top bar's empty part is dark red and both bars'
+    partial segment is grey purple, so on replay layouts (`elixir_empty: "any"`) anything not pink or white is
+    empty/partial. Result: smooth 0.36/s fill and clean drops on both bars.
+  - **Plays by swap:** in the replay viewer a played card never leaves an empty slot; it is highlighted, then
+    replaced directly by the next card. `detect_plays(swap_plays=True)` (layout `plays_by_swap`) adds a slot switch
+    near the drop as a candidate, and "replaced by the previous next card" as a hand-only play; Next is taken 0.5 s
+    before the swap (it advances in the same frame). POV layouts are unchanged.
+  - Test (TV replay_04, top-100 Hog EQ vs Mortar/Goblinstein): bottom 86 events (68 high, 4 unnamed: mostly
+    Mighty Miner abilities), top 49 (43 high, 4 unnamed); **0 cycle violations** on either side (77 and 45 named
+    plays). Four top plays checked by eye (Cannon Cart, Mortar, Fireball, Goblinstein): all right.
+  - To do: V4 detections for tv_2026-10-12_r04 (processed by hand before the script) and the self-play pair
+    cole_2026-10-11_a/b (their GPU stage failed on 2026-10-11 with the full disk).
+- **End of the 2026-10-12 TV session** (paused at Cole's request after game 39): 39 TV replays (24 Ultimate Champion,
+  15 from one league down; the left-arrow league switch worked live) + 20 Battle Log = **59 replays today**.
+  Locking the Mac's screen doesn't affect recording (ADB/scrcpy record inside Android): games after the lock have
+  normal frames. The ingest run covers the 35 replays that existed when it started; TV replays 16–39 need another
+  `scripts/ingest_replays.py` run.
+- **TV runner starts from the home screen** (19:10): TV mode now opens TV Royale itself (home menu → third item,
+  TV Royale, which reopens on the last tab used; the runner then goes right to Ultimate Champion). First run
+  after the break started from home and recorded a new Ultimate Champion game (#157 vs #103, 9 min old).
+- **Cole's review of the replay play reader** (bl_2026-10-12_r03, his side): all right except one Barbarian Barrel
+  counted twice (an unnamed drop + a hand-only play at 69.4 s). Cause: that slot *did* show empty for 0.3 s and
+  the drop ended after the refill, so neither "vacated" nor the direct swap matched. Fixes, swap mode only:
+  - `_swapped` accepts card → empty frames → card.
+  - `_went_unreadable`: a slot that turns "unknown" at a drop while Next advances gives up its previous card
+    (TV r04 top 59.9 s: Mother Witch, then an unreadable Cannon Cart).
+  - Effect on the reviewed games: TV r04 bottom 86 → 81 events (5 double counts gone, 0 unnamed); top pages
+    7 → 2 unnamed drops; 0 cycle violations (Mighty Miner ability uses aside).
+  - All replays redetected with the fixes and their truth rewritten (`data/logs/replay_redo.log`).
+- **Recorder glitch** (19:47): scrcpy didn't start for TV replay 47, so the game played unrecorded and the run
+  crashed remuxing a missing file; the loop then idled 30 min (Cole: "is it stuck?"). The runner now retries the
+  recorder up to 3 times before tapping Watch, and if a recording is missing at the end it skips that game (entry
+  crop removed so a later run retries it) instead of crashing.
+- **Duplicate check tightened** (Cole: "make sure we're not recording games we already recorded"): a pairwise check of
+  all 47 TV entries found TV 44 = TV 30 (same game re-listed, now marked "Watched 1-0"). A watched entry shows its
+  result and score, which pushes the decks 8 px down; the thumbnail compare had no slack and scored 0.80. Now:
+  quarter-size blurred thumbnails compared with ±24 px vertical slack, both ways round; duplicates 0.97 (both
+  known cases), different games ≤ 0.82 (TV and Battle Log), bar 0.90. TV 44 moved out of the dataset (scratchpad).
+- **Leagues stop early** (Cole: don't scroll through a league we already have): TV lists are newest first, so once
+  `KNOWN_RUN` = 4 already-recorded entries come in a row, the rest of that league is older and recorded: the runner
+  moves to the next league at once instead of scrolling to the bottom. 4 rather than 1 because a few re-listed
+  games can sit near the top. Takes effect from the loop's next run.
+- **Replay top views lost their HUD reads** (found after the re-detect: TV 09 top gave 0 plays). Storing a video's
+  HUD rows first deleted `match_id LIKE '<video_id>%'`, which also matched `<video_id>_top_m01`. Whenever the bottom
+  view finished processing after the top view, the top's HUD rows were wiped (7 TV replays: 09, 16–19, 33, 42; their
+  events survived, except 09's). The delete is now scoped to `<video_id>_m%`; those 7 top views were reprocessed and
+  the truth rewritten. The pre-replay videos were unaffected (no ID is a prefix of another).
+- **Replay test set (V4 = v5l e15, clock rules, score-only)**: 67 replays, 2,580 opponent plays read from the top
+  hand (`scripts/eval_dev.py ... --set replay`; none of these games were in V4's training data). **48.2% fully
+  right**, 17.6% wrong card, 34.2% missed, 9.6 fakes/match. Battle Log 55.3% (20 games), TV Royale 45.6% (47 games,
+  top-ladder decks with more cards V4 rarely saw). In line with dev (42.3%) and benchmark (49/111), so the dev set
+  wasn't flattering V4. Caveat: the truth is the hand reader's, spot-checked on 3 review pages, not fully audited.
+  Logs: `data/logs/eval_replay_v4.log`, `data/logs/evaldev_rp_e15.json`.
+- **Overnight recording** (Cole: "keep recording till the morning"): loop restarted at 22:40 as `tv_loop.sh 11 1800`
+  (until ~09:40), on AC power. The dedupe spans every date folder, so games after midnight go to
+  `data/raw/tv_royale/2026-10-13/` (numbering from 1) without re-recording earlier ones. ~180 MB per game; 112 GB free.
+- **Overnight result (2026-10-13)**: recorded TV 85–108 (24 games) until 00:38, then stuck 8 h. TV 108 was an
+  overtime game whose end screen had units fighting over "VS" (0.74 < 0.80), so the runner never saw the end, timed
+  out at 600 s and stopped; every later run found an unknown screen and quit. Fix: `at_end` accepts the OK button
+  alone at ≥ 0.97 (it scored 0.99), and a missed end no longer stops the run. TV 108 is kept (complete game plus a
+  tail on the end screen). Totals: 107 TV + 20 Battle Log = 127 replays.
+- **Processing keeps up with recording** (Cole: "continue to process until everything we've recorded is processed"):
+  `scripts/ingest_loop.sh` waits for the running ingest, then re-runs `ingest_replays.py` every 10 min (only new
+  recordings), and exits once the TV loop has stopped and a pass finds nothing new. Ingest now skips mp4s younger
+  than 2 min (the recorder may still be remuxing). Log: `data/logs/ingest_loop.log`.
+- **Replay test set, 127 games (2026-10-13)**: V4 e15 48.4% fully right on 4,942 plays (16.6% wrong card, 34.5%
+  missed, 9.0 fakes/game); Battle Log 55.3%, TV 47.3%. The 60 new TV games alone: 48.6%. Stable vs the 67-game
+  score (48.2%), so the estimate is settled; the next number to move it is V5.
+- **All leagues** (Cole: "we still have Master 1 plus the other 26 arenas"): the 2026-10-13 run stopped at the 6-league
+  cap after 123 games (250 replays total). `tv_loop.sh` takes a third argument, max leagues; restarted 19:05 as
+  `tv_loop.sh 12 1800 60`, so each run walks down through Master 1 and every arena until the arrow stops changing
+  the league. Lower-arena games are for the detector (more cards, arenas, levels); the move predictor (A) keeps to
+  tab 0. Each runner_log row records its league as `tab`.
+- **Recorder start retries widened** (2026-10-13 20:07): replay 140's recorder failed 3 tries 2.5 s apart and the run
+  ended (the loop retries 30 min later); started by hand right after, it worked. Now 5 tries with 0/5/10/20/30 s
+  waits, and scrcpy's stderr goes to `data/logs/scrcpy_last.log` so the next failure shows its cause.
+- **Replay test set** (`config/replay_test_games.json`): 30 replays held out of all V5+ training, picked by game
+  (seed 0) across leagues: Battle Log 4, Ultimate Champion 8, then 4/4/3/3/2/2 down the leagues. V4 and V5 are
+  compared on these. `autolabel_clock_spots.py --truth replay` labels the other replays (the test set, benchmark
+  and V5 check games are never labelled). Trial: 90 plays -> `data/external/real_v5r_trial`, review page for Cole.
+
+## 2026-10-14 · Replay labels named the wrong play: clock window fixed
+
+Cole's review of the first replay label trial (51 judged): 45 wrong, 3 right, 3 off. The boxes sat on real units but the
+names were wrong. Cause: `autolabel_clock_spots.py` looked for the enemy deploy clock 0.2-2.5 s after the truth's play
+time, which is right for the dev pairs (clock ~1 s after the play) but not for replays. On replays the top-view hand read
+and the clock coincide (1,062 plays from 40 replays: median +0.05 s, almost all within ±0.2 s). So the right clock fell
+outside the window, and the next play's clock (e.g. Wizard 2.5 s after Giant) fell inside it and lent its unit the
+earlier card's name. It also explains the 2,396 "no clock" skips. The window now depends on the truth set: dev
+(0.2, 2.5), replay (-0.3, 0.4). Rerun of the same 90-play trial: a clock found for 75% of plays (was 13%), and 1,103 of
+those were already named correctly by V4, which suggests the pairing is now right. Round 2 review:
+data/reviews/v5_replay_labels2.html (60 frames).
+
+## 2026-10-14 · Replay labels, round 3 method: reference check, V4-confirmed boxes, tracking
+
+Round 2 (60 frames, clock window fixed): 21 right, 7 off, 32 wrong. Wrong ones were mostly buildings, spirits, hidden
+units, and the nearest badge belonging to another unit; 50 of 60 frames had no approved slice to check against.
+Changes in `autolabel_clock_spots.py` for replays:
+- Reference check: `scripts/replay_refs.py` took 2,890 crops (116 entities, max 40 each) from plays where V4 already
+  boxed exactly the truth's entity at the clock (conf >= 0.7), from non-holdout replays. A label is kept only if, among
+  those references (own match left out), its nearest entity is the named one and similarity >= 0.6. Same-arena crops
+  lift every similarity, so "nearest" matters more than the value. On round 2's verdicts: kept ~10/21 right, 1/32 wrong.
+- Buildings and spirits skipped for replays.
+- Plays V4 already named are labelled from V4's own box (still checked); every badge near the clock is tried, not just
+  the nearest; plays 0.8 s apart count as alone (was 2 s); each labelled unit is followed 5 s, a frame a second,
+  re-checked every frame.
+Trial (120 plays): 46% of attempted plays labelled, 3.3 frames per play (396 frames: 157 V4-confirmed, 196 tracked,
+43 badge+SAM). Nearly all labelled plays were ones V4 already named; the new information is in the tracked frames
+where V4 misnames the unit later. Full run estimate: ~5,600 eligible plays in 379 non-holdout replays, so ~2,600
+plays and ~8,500 frames. Round 3 review: data/reviews/v5_replay_labels3.html, 20 of each kind.
+
+## 2026-10-14 · Play logic on replays: own-deck rule, replay timing, clock-weighted deck (fixes 1 and 5)
+
+Why plays are missed (V4, 127 scored replays): 1,429 of 4,942 opponent plays had no event. Spells 35% of misses,
+single troops 40%, groups 11%, hero abilities 9%, buildings 5%. Of 504 missed spells, 353 were detected (conf >= 0.5)
+within 3 s, so most are logic losses, not detector losses; 132 were never seen (Zap 50, Arrows 35).
+Stage trace (60 non-test replays, 610 missed of 2,099): 272 lost in apply_rules, 159 dropped as cardless after the deck
+filter, the rest never became a candidate. Inside apply_rules: 95 deleted by the own-deck rule (card also in the
+bottom player's deck, y > 11; replay players share meta cards), 172 kept but timed 2-4 s off.
+Experiments on 140 non-test replays (70 to calibrate timing, 70 to tune; scratch harness), fully right / wrong / missed /
+fakes per match:
+- current logic 48.7 / 17.5 / 33.7 / 8.0
+- own-deck rule only for cards we played in the last 10 s: 50.4
+- replay timing (clock offset 0.05 s instead of 1.0, per-card table): +0.9; together 51.3
+- deck counts unclocked deploys at 0.6: 52.6 / 14.7 / 32.7 / 6.1 (kept)
+- true deck (oracle): 56.7 with the deck filter, 61-63 with confusion-based renaming of cardless plays. Our inferred deck
+  is 65-70% precise / 69-74% recall; a known-decks kNN prior (310 decks) gave ~+1 and was not kept, nor was renaming
+  (more right, but wrong +7 and fakes +3.5/match).
+Code: `playrules.replay_rules` (applied by `bot77.opponent` for replay layouts): config/play_timing_replay.json,
+own_deck_recent_s 10; `infer_deck(..., w_unclocked)` with rules `deck_w_unclocked` 0.6 everywhere.
+Held-out check (never tuned on): replay test set (30 games) 45.9% -> 48.1% fully right (wrong 212 -> 219, fakes
+9.1 -> 9.5/match); dev (POV recordings, own-deck and timing unchanged, deck weighting only) 46.9% -> 47.3%, fakes
+10.2 -> 9.8. Smaller than on the tuning set. The ceiling says knowing the deck is worth ~+8-10 points; the inferred deck
+is limited by the detector's naming, so V5 is what moves it.
+
+## 2026-10-14 · Replay truth: unknown plays and a cycle guard
+
+Cole's review of tv_2026-10-12_r04 top (49 plays, page built 10-12): 46 right; 3 marked as unknown plays he could name.
+Two (Mother Witch 59.9 s, evo Minion Horde 275.7 s) were already fixed by the 10-13 unreadable-refill rule. The third,
+Mother Witch at 214.7 s 0.8 s after Guards, was still unknown: in swap mode the slot's earlier switch (Mother Witch
+swapping in at 212.0, already attributed) hid the later unreadable refill, and the refill scan only tried the first
+unreadable frame (the whole hand flickered unreadable at 214.0). Across 410 replays 1,053 of 28,494 hand plays (3.7%)
+were unknown; unknown plays are left out of the truth, so they get no labels and a detector hit on one scores as a fake.
+Changes (`bot77.events`): candidates fall through an already-attributed switch to the unreadable-refill check; every
+unreadable run in the window is tried; an unexplained drop is named by the card gone from the settled hand (1-3 s
+after) when its cost is within 0.8. Checked on stored HUD states with the cycle rule (a card can't be played again
+within 4 plays, counted 3 either side): unguarded, unknowns 1,061 -> 905 but impossible repeats 562 -> 636. So names
+from the weak cues (unreadable refill, settled hand), including the 10-13 rule, are dropped back to unknown when they
+break the cycle: unknowns 1,360, impossible repeats 179. That trades ~220 names for ~380 fewer wrong ones; Cole's three
+cases keep their names. Truth rewritten from the redetected events (backup of the previous truth kept locally).
+
+## 2026-10-14 · V5 replay labels: final set and spot check
+
+Full run (`autolabel_clock_spots.py --truth replay`, V4 boxes): 8,563 frames from 2,788 plays (v4-confirmed 3,601,
+track+sam 3,165, clock+sam 1,039, track 758). After the truth fix: 159 frames from 51 plays whose truth was dropped or
+renamed set aside (`real_v5r/dropped/`), 96 frames from 34 newly named plays added (`--only-new`, `real_v5r_new`).
+Bundle (`scripts/build_train_v5.py`): 7,478 train / 1,018 val, split by match (47 val matches by hash); benchmark,
+v5 check games and the 30 replay test games asserted absent. Cole's spot check (`data/reviews/v5_spotcheck.html`,
+60 random frames across all four methods + 10 from new plays): 58 right, 2 right unit with a loose box, 0 wrong.
+- **V5 launched 2026-10-14 ~15:50 PDT** (`scripts/katacr/pod_v5.sh`, run `v6l` on the pod): fresh RTX 4090 Secure pod
+  (bot77-train-v5, $0.89/h, US-NC-1), synth_v3 regenerated from the kit (48,004 frames, ~10 min on 11 processes).
+  From V4 (v5l epoch 15), 15 epochs: 3,909 real_v3 x3 + 4,580 real_v4 + 7,478 real_v5r + 48,004 synth_v3; val adds
+  real5_val. GPU 83-95% busy with 8 loader workers (cache=ram would need ~100 GB), ~17 min/epoch, ~4.5 h, ~$4.50.
+  Watcher `watch_run.sh … v6l` scores each 5-epoch checkpoint on the benchmark.
+- V5 run finished 19:43 (TRAIN_EXIT 0, 15 epochs). Val mAP50 / mAP50-95 peaked at epoch 11 (0.742 / 0.434, = best.pt),
+  epoch 15 0.733 / 0.423. Weights checksummed against the pod, then pod `ygcpxpqac3xccw` terminated (~4 h 20 min, ~$3.90).
+  Benchmark fully right during training (old play logic, 111 plays): V4 46; V5 e0 37, e5 40, e10 43 (fakes 60 / 63 / 57
+  vs V4 62). Scoring best and last vs V4 on dev, the 30 replay test games and the benchmark with the current play logic.
+
+## 2026-10-14 · Mirror rule: clock + deck room, drop impossible repeats
+
+Why V5 still fails (replay test set, V5 best): 409 missed (spells 167/225 missed vs troops 186/807), 212 wrong card,
+239 fakes. Biggest single logic bug: the Mirror rule (any repeat within 2 plays -> Mirror) fired 74 times on the 30 test
+games, which have no Mirror plays, and 276 times on 60 tuning replays; on dev, 73 calls with 9 right (34 real Mirrors).
+A repeat in OUR play sequence is mostly the same unit seen twice or a real play in between that we missed.
+Caveat: replay truth never says Mirror (the hand reader has no Mirror icon); its 33 back-to-back repeats are likely
+Mirrors labelled as the copied card.
+New rule (Cole: Mirror copies the last card played; check the deck can hold Mirror): a repeat is Mirror only if it has
+a deploy clock (a new placement) and the deck has room (fewer than 8 other cards with >= 2 weighted deploys); a repeat
+that fails either test is dropped as a duplicate (the cycle forbids it). Sweep, fully right / wrong / fakes per match
+(dev with V5 dets; 60 non-test replays with V4 dets):
+- old rule: dev 49.8 / 58 / 8.0, replays 51.8 / 360 / 9.0
+- rule off: 49.5 / 70 / 8.8, 54.5 / 339 / 10.0
+- clock + deck room: 50.4 / 62 / 8.4, 53.7 / 340 / 9.6
+- clock + deck room + drop the rest (kept): 49.9 / 45 / 7.0, 53.2 / 293 / 7.2
+Held-out after the change: replay test V5 best 47.0 -> 46.5 fully right, wrong 212 -> 191, fakes 8.0 -> 6.2/match;
+V4 47.9 -> 49.0, wrong 217 -> 160, fakes 9.8 -> 7.8. Benchmark V4 51 / 14 / 22, V5 49 / 7 / 25. Dev V4 47.3 -> 46.5,
+fakes 9.8 -> 8.4. Mostly a precision change: about the same right, far fewer wrong and fake.
+Spells (replay test, V5): only lingering ones are named (Poison 14/30, Rage, Earthquake). Zap 0/27 and Arrows 0/16 are
+never detected in any frame; Log 21 of 50 never seen, Barbarian Barrel 30 of 45 seen in only 1-2 frames. Detection
+runs at 4 fps (DETECT_FPS), so a ~0.3 s Zap usually falls between frames. KataCR (Wu et al. 2025) reports only
+per-frame mAP over all classes (no per-spell or per-play results) and its agent never names opponent plays, so it has
+no answer here; its one relevant finding is that splitting classes across 2-3 detectors by object size raised
+small-object mAP (39.8 -> 48.3).
+V4 vs V5 with the new Mirror rule, fully right / wrong / fakes per match:
+- dev: V4 46.5 / 66 / 8.4; V5 best (e11) 49.9 / 45 / 7.0; V5 last (e15) 49.2 / 51 / 7.2
+- replay test (30): V4 49.0 / 160 / 7.8; V5 best 46.5 / 191 / 6.2; V5 last 43.4 / 205 / 6.4
+- benchmark (111 plays): V4 51 / 14 / 22 fakes; V5 best 49 / 7 / 25
+V5 best wins dev (+3.4) and cuts wrong/fake cards, but loses 2.5 on the held-out replays; e15 is worse than e11
+everywhere. No clear winner: keep V4 as the default for replays, V5 best for POV recordings, pending the spell stage.
+
+## 2026-10-14 · Spell stage (overnight build, Cole's go; RunPod budget $10)
+
+15 fps check (V5 best over [t-0.5, t+3] around every instant-spell play, 30 replay test games), plays seen in any frame
+at 4 fps-equivalent -> 15 fps: Log 29 -> 39 of 50, Barbarian Barrel 37 -> 41 of 45, Fireball 12 -> 16 of 19, Goblin Barrel
+4 -> 5 of 18, Zap 0 -> 0 of 27, Arrows 0 -> 1 of 16. The Zap flash is visible by eye for ~3 frames at 15 fps; the
+detector simply never learned it (6 real Zap labels). So: a separate spell stage, not a denser detector.
+Design (Cole: combine the effect, the clip and the play logic): a clip classifier (R(2+1)D-18, Kinetics weights) over
+1.6 s of the arena at 10 fps, a window every 0.3 s, acting as its own trigger; peaks above a threshold become spell
+plays; our own spells (POV hand log) are removed; detector spell plays nearby are replaced and barrel troops dropped;
+deck inference then sees spells and troops together (`bot77.spells`, rules `spell_probs`). Training clips: every spell
+play of BOTH players in the non-test replays (top from replay truth, bottom from our hand log) plus "no spell" clips
+at troop plays and quiet moments; val = 10% of matches by hash (`scripts/spell_clips.py`). Goal set before building:
+replay-test spells right 10% -> 50-60%, fully right 46.5% -> ~53-55%, dev 49.9% -> ~53-56%, fakes +0.5/game at most.
+Built and run 2026-10-14/15 (pod `9jsrjfg7eig10p`, RTX 4090, 1 h 18 min, ~$1.20, terminated after pulling weights and
+probabilities; data/models/spell_v1/). Clips: 12,597 (4,901 spell, 7,696 no-spell) from 350 non-test replays.
+Classifier, held-back clips (10% of matches): 91% of spells named right, 0.5% of no-spell clips called a spell; Zap 94%,
+Arrows 98%, Log 95%, Fireball 99%, Barbarian Barrel 93%; Royal Delivery 0/28 and Rage 2/4 weak.
+Threshold tuned on the 48 held-back replays only (V4 dets; troops only 53.8% / 6.3 fakes): 0.3 63.1% / 7.9, 0.5 63.2 /
+7.3, 0.7 63.4 / 6.5 (kept), 0.85 62.7 / 6.4, 0.95 62.5 / 6.2. Spell-stage calls there: 289 of 342 exactly right.
+Held-out results, fully right / wrong / fakes per match (troops only -> troops + spells):
+- replay test (30): V5 best 46.5 / 191 / 6.2 -> 59.8 / 141 / 6.5; V4 49.0 / 160 / 7.8 -> 59.8 / 123 / 7.9
+- spells named right on replay test (V5): 22 -> 185 of 225 (Log 0 -> 41/50, Barbarian Barrel 0 -> 42/45, Zap 0 -> 24/27,
+  Fireball 0 -> 17/19, Goblin Barrel 0 -> 17/18, Arrows 0 -> 9/16, Poison 14 -> 25/30); Spirit Empress 3 -> 0 and
+  Earthquake 2 -> 0 (the detector's calls get replaced by a nearby classifier call; to fix)
+- dev (POV recordings): V5 49.9 / 45 / 7.0 -> 59.5 / 40 / 9.2; V4 46.5 / 66 / 8.4 -> 56.6 / 57 / 10.3
+- benchmark (111): V5 49 / 7 / 25 -> 59 / 7 / 31; V4 51 / 14 / 22 -> 59 / 13 / 27
+Beat the goal on replays (59.8% vs 53-55%) and dev (59.5% vs 53-56%), but dev fakes rose +2.2/match (budget +0.5): 32 of
+37 pure spell fakes there are Vines / Goblin Curse / Void (31-114 training clips, Cole's newer-card games), and 33 calls
+sit on our own plays under another name (our Mirror'd Barbarian Barrel, our Vines as Poison). Tried: subtract any of
+our spells at that moment (dev +0.2, held-back replays -1.0; kept off, `spell_any_own`), higher thresholds for the three
+new spells (right and fakes trade ~1:1; not kept). Next: POV-recording clips and more Vines/Curse/Void for training.
+With spells in, V4 and V5 tie on replays (59.8 both; V5 fewer fakes, V4 fewer wrong); V5 wins dev by 2.9. V5 best is
+the default detector from here.
+
+## 2026-10-15 · Back-to-back plays, unread replay cards, abilities (Cole: "focus on fast sequential plays")
+
+Cole's example (playback video, tv_2026-10-12_r46 at 0:08.9): we said Bandit, the answer key said Wall Breakers. Both
+were played ~0.3 s apart (opponent elixir 8.2 -> 4.4, Next advanced twice); the detector saw both units in one deploy
+and kept one. The answer key had only Wall Breakers: the replay viewer draws Bandit with new art, the hand reader never
+read it in any of 400+ replays, so it was missing from every answer key.
+Measured before changing anything (V5 + spell stage, fully right): plays <= 1 s from another 58% (test, n=130) / 58%
+(dev, n=124) vs plays alone 63% / 65%; champion/hero abilities 0% right (43 test, 29 dev; 81% / 93% missed).
+Decision (Cole agreed): no extra "bunch" or ability model. Fix the answer keys, add ability classes to the spell-stage
+clip classifier (same model, no added latency), then let one deploy split into two plays only with evidence (150 of
+1,035 test events hold 2+ unit classes, mostly lookalike noise: a blind split would add fakes).
+Answer-key fixes:
+- 8-card cycle rule: a played card shows as Next 3 advances later (91% of 12,047 logged replay plays agree; 0.9% at 4
+  advances, 0.4% at 5). `bot77.pairing.next_card_plays` uses it to (a)
+  add a play at a Next advance with no logged play near it, (b) name logged plays the hand couldn't name (568 replay top
+  plays had no card, mostly names dropped by the cycle guard), only where the neighbouring logged plays agree with the
+  rule. `scripts/add_next_card_plays.py` appends these to the existing paired / replay keys (tagged "next-card
+  advance"): 167 plays over 438 keys.
+- 150 of 410 replay keys had fewer than 8 different cards. Contact sheets of the unread slots: Mirror (all frames),
+  Lightning (reads as Rage 0.66 vs Lightning 0.56, under the 0.2 margin), Bandit (new art), plus Witch (new art?), Mega
+  Knight in replays, some champions/heroes with glowing frames (less clear; for Cole to check). The replay viewer also
+  draws cosmetic card frames (gold, pink); the art patch mostly avoids them.
+- In-game art overrides from replay frames (`scripts/hand_art_override.py cut/check`, box from a readable normal card
+  in the same frame): Mirror 0.94 vs Rage 0.57-0.66, Lightning 0.83-0.86 vs 0.42-0.44 (gold and grey frames), Bandit
+  0.90-0.92 vs 0.32. The r46 top hand re-read: deck now 8 cards, Bandit and Wall Breakers both logged at 11.9 s.
+- Re-reading the 142 replays whose key had < 8 cards (`bot77 process`, replay_top, ~4.5 min each, 6 at a time).
+Abilities: `scripts/spell_clips.py` adds "<card> ability" positives from both hands' ability events (1,071 in replay
+logs: Valkyrie hero 119, Archer Queen 91, Golden Knight 93, Bowler hero 75, ...); `bot77.spells.merge_spells` turns
+them into "__ability" plays, kept only if the opponent played that card earlier and we didn't use the same ability
+then (rule `spell_ability_thr` 0.7); opponent.py keeps them out of deck inference.
+
+### 2026-10-15 (afternoon) · Answer keys corrected, abilities in the spell stage, storage
+**Answer keys.** Re-read the top hand of the 142 replays whose key had < 8 distinct cards (art overrides for
+Bandit, Lightning, Mirror; 2 workers, ~4 h), regenerated the replay keys and re-ran `add_next_card_plays.py` (214
+plays added from the 8-card cycle rule; Mirror 68 of them, then Skeletons, Ice Spirit). Keys with < 8 cards:
+150 -> 81 of 410. Same model (V5 + spell_v1) rescored, fully right / wrong / fakes per match:
+- replay test: 59.8 / 141 / 6.5 -> 60.2 / 130 / 5.9 (1,171 -> 1,207 true plays): part of "wrong" and "fake" was key error
+- dev: 59.5 / 40 / 9.2 -> 56.1 / 42 / 9.0 (693 -> 738 true plays): the added plays, mostly Mirror, are new misses
+**Mirror** is now the largest group of newly exposed misses: the copy is detected as the mirrored card. Next: a rule.
+
+**Spell stage v2 = abilities** (`data/models/spell_v2/`, pod `eqzl39dbhei3y9`, RTX 4090, ~70 min, ~$1.05, terminated).
+Clips rebuilt with "<card> ability" positives from both hands: 13,489 clips; 15 ability classes cleared the 25-clip
+minimum (Archer Queen, Golden Knight, Boss Bandit, Mighty Miner, Skeleton King, Little Prince, Monk, Goblinstein and
+the hero forms Knight, Valkyrie, Bowler, Balloon, Mega Minion, Mini P.E.K.K.A, Wizard). Held-back clips: spells 88%
+named right (v1 91%), no-spell clips called a spell 1.2%; abilities 44-92% caught at 78-100% precision.
+Tuned on the 48 held-back replays (V4 dets, as for v1): ability cutoff 0.7 (0.5 identical, 0.85/0.95 lose catches).
+Two fixes found by looking at the new fakes:
+- our own Lightning: the replay hand reader can't name it, so our unnamed play wasn't subtracted -> `spell_unnamed_own`
+  (an unnamed play of ours in the own window explains a spell call): held-back fakes -21, right -3;
+- Barbarian Barrel over-called (after Royal Delivery, near Fire Spirit / Wall Breakers) -> class cutoff 0.97;
+- on dev only, Void fired 10-20x per POV recording (17 -> 154 fakes; replays fine: a POV-vs-replay look gap) -> Void
+  cutoff 0.995 (dev 0.9: 56.6 / 258 fakes; 0.97: 56.0 / 223; 0.995: 56.1 / 211).
+These are now the defaults in `playrules` (`spell_unnamed_own` True, `spell_class_thr` BB 0.97 / Void 0.995).
+Held-out results, spell_v1 -> spell_v2 + fixes (corrected keys), fully right / wrong / fakes:
+- replay test (30): 60.2% / 130 / 5.9 -> 60.6% / 140 / 6.6; abilities right 0 -> 22 of 41 (17 ability fakes)
+- dev (26): 56.1% / 42 / 9.0 -> 56.1% / 44 / 8.1; abilities right 0 -> 9 of 29
+- benchmark (116 plays): 60 / 7 / 30 -> 65 / 5 / 28
+- held-back replays (V4 dets): 63.1% / 207 / 6.2 -> 64.2% / 209 / 6.6
+Abilities work; the overall gain is small because the new model also adds spell fakes on replays (+0.7/match, over
+the +0.5 budget). Next for this stage: POV-recording clips in training (the Void gap), then the Mirror rule.
+
+**Storage.** Disk was 94% full. Deleted regenerable upload copies (mine_v4 17 GB, real_v4 bundle/tgz, real_v5r_bundle,
+train_v2.tar, old spell clips, unpacked spell clips/streams), compacted `events` (5.6 -> 3.0 GB) and `hud_states`
+(238 -> 81 MB; thousands of versions -> 1). Moved 532 cold videos (161 GB: everything except replay test, V5 check,
+benchmark and dev games) to Cole's LaCie drive (`/Volumes/LaCie/bot-77-data/raw/`, same layout) with symlinks at the
+old paths, so the `videos` table is unchanged; those videos need the drive plugged in. Free space 56 -> ~230 GB.
+`unit_crops` (1.89M crops, 73 GB, 34,667 versions) not compacted yet: compaction needs room to rewrite it.
+Cloud (Cole): only when one of these happens — the same data re-uploaded to pods often, part B needs a server,
+an off-site backup is wanted, or data outgrows laptop + drive (LanceDB can read from S3).
+
+### 2026-10-15 (evening) · Mirror, back-to-back plays, recording clips (Cole's go on all three)
+**Mirror (Cole's correction).** Mirror copies the card just played, so it is ALWAYS the very next play; by the 8-card
+cycle a card can't return sooner by itself. Rule: the same card twice in a row = the second is Mirror. Measured:
+- the answer keys themselves have the same card twice in a row 46 times without a Mirror label: unread Mirrors in keys;
+- a pure "twice in a row -> Mirror" pass (`mirror_repeat`) changed little (held-back -6 right, test 0, dev +2): most
+  repeats it found were our own double counts (already fakes) or a misread first card; a confidence guard only
+  neutralised it. Kept off.
+- Mirror delay from the copied card varies (median 5.2 s, up to 50 s), so no time limit is possible.
+- the real loss: an older rule. A repeat of a transforming card nearby counts as the same unit wandering back
+  (`continuation_*`), and the old Mirror rule drops unclocked repeats as duplicates. Example (cole 09-29 b m03, 7:50):
+  Goblin Demolisher, Mirror 2.6 s later, two Demolishers visible at once in different lanes, the second dropped.
+  Added `Deploy.twin` (spawns._twin: another unit of the card alive elsewhere at the birth, both seen several times)
+  and `twin_new` (a twin is a new play, never a continuation or duplicate): dev +2 right / +8 fakes, held-back -1 / +4.
+  The example is now called Mirror but 3 s late (copy first detected late), so still scored missed. Kept off.
+**Back-to-back plays.** Of the 64 missed plays within 1 s of another (held-back replays), 35 were seen by the detector,
+but their detections joined the other card's track nearby (tracking allowed a detection to continue a track of a
+different card, for class flicker on one unit). `spawns.CROSS_CARD` (env `BOT77_CROSS_CARD`): off = a track only takes
+its own card; flicker becomes a short extra track that grouping folds into the same deploy anyway.
+Held-back replays (V4 dets, spell_v2): 64.2% / 209 wrong / 318 fakes -> **67.8% / 190 / 329**. An evidence split of
+mixed-card groups (`split_min_dets`, spawns._split) adds nothing on top (4, 6, 10, 16 dets all 67.6-67.7%); kept off.
+Held out (V5 best, spell_v2), cross-card joins on -> off: replay test 60.6% / 140 / 6.6 -> **63.1% / 126 / 6.8**;
+dev 56.1% / 44 / 8.1 -> **57.2% / 48 / 8.6**; benchmark 65 / 5 / 28 -> **72 / 7 / 31**. Now the default (`BOT77_CROSS_CARD=1`
+restores the old tracking).
+**Recording clips in the spell training (spell_v3).** 16,337 clips incl. 2,848 cut from Cole's own recordings (POV),
+14 epochs on a RunPod 4090 (~$1.35; pod terminated), best val macro-F1 0.778 (epoch 11). Alone it trades: on the
+replay test +26 right, on Cole's recordings worse (dev -11 right, benchmark -5): Poison fakes 16 -> 1, Barbarian Barrel
+and Void up, but Goblin Curse (-7 on dev; the missed Curses then show as fake Goblins), Vines (-6) and abilities (-5)
+down. The Void/BB cutoffs no longer help with it (no cutoffs: held-back 67.8 -> 68.2%).
+Mix (`scripts/mix_spell_probs.py` -> `data/models/spell_mix/spell_probs`): v2 and v3 probabilities averaged, but Goblin
+Curse, Vines and ability classes from v2 alone; no per-card cutoffs. Picked on held-back + dev only (plain average
+was close: held-back 1179 / 323 fakes, dev 423 / 204).
+| set | v2 (previous default) | mix (new default) |
+|---|---|---|
+| held-back replays (tuning) | 1178 right / 190 wrong / 329 fakes | 1181 / 187 / 326 |
+| dev (tuning) | 422 / 48 / 224 (57.2%) | 430 / 47 / 215 (58.3%) |
+| replay test (held out) | 762 / 126 / 203 (63.1%) | **780 / 120 / 196 (64.6%)** |
+| benchmark (held out) | 72 / 7 / 31 | 72 / 7 / 31 |
+Now the playrules default (`spell_probs` = the mix dir, `spell_class_thr` = {}). New videos need both v2 and v3
+inference (scripts/katacr/infer_spell.py), then the mix script. Open: why v3 under-calls Goblin Curse / Vines on POV
+(likely some of Cole's recording clips labelled "none" contain an unlabelled opponent spell).

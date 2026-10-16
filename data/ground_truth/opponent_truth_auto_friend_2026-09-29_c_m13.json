@@ -7,6 +7,14 @@
  "items": [
   {
    "match_id": "friend_2026-09-29_c_m13",
+   "t_video": 1687.6,
+   "label": "Mirror",
+   "form": null,
+   "source": "next-card advance in cole_2026-09-29_c_m08",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "friend_2026-09-29_c_m13",
    "t_video": 1714.2,
    "label": "Dark Prince",
    "form": "hero",

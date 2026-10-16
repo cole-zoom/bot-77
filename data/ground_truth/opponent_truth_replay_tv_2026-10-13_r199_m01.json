@@ -1,0 +1,269 @@
+{
+ "video_id": "tv_2026-10-13_r199",
+ "side": "opponent",
+ "matches": [
+  "tv_2026-10-13_r199_m01"
+ ],
+ "items": [
+  {
+   "match_id": "tv_2026-10-13_r199_m01",
+   "t_video": 13.8,
+   "label": "Goblin Barrel",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r199_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r199_m01",
+   "t_video": 22.2,
+   "label": "Bats",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r199_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r199_m01",
+   "t_video": 28.9,
+   "label": "Rascals",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r199_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-13_r199_m01",
+   "t_video": 44.5,
+   "label": "Magic Archer",
+   "form": "hero",
+   "source": "POV of tv_2026-10-13_r199_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r199_m01",
+   "t_video": 48.7,
+   "label": "Giant Snowball",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r199_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r199_m01",
+   "t_video": 59.7,
+   "label": "Goblin Barrel",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r199_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-13_r199_m01",
+   "t_video": 68.8,
+   "label": "Bats",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r199_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r199_m01",
+   "t_video": 77.7,
+   "label": "Barbarian Barrel",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r199_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-13_r199_m01",
+   "t_video": 78.4,
+   "label": "Rascals",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r199_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r199_m01",
+   "t_video": 90.0,
+   "label": "Mega Knight",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r199_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r199_m01",
+   "t_video": 112.8,
+   "label": "Goblin Barrel",
+   "form": "evo",
+   "source": "POV of tv_2026-10-13_r199_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r199_m01",
+   "t_video": 117.7,
+   "label": "Bats",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r199_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r199_m01",
+   "t_video": 121.8,
+   "label": "Giant Snowball",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r199_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r199_m01",
+   "t_video": 129.2,
+   "label": "Magic Archer",
+   "form": "hero",
+   "source": "POV of tv_2026-10-13_r199_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-13_r199_m01",
+   "t_video": 133.0,
+   "label": "Inferno Tower",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r199_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r199_m01",
+   "t_video": 137.9,
+   "label": "Goblin Barrel",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r199_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-13_r199_m01",
+   "t_video": 148.0,
+   "label": "Rascals",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r199_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r199_m01",
+   "t_video": 155.4,
+   "label": "Bats",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r199_top_m01",
+   "source_confidence": "low"
+  },
+  {
+   "match_id": "tv_2026-10-13_r199_m01",
+   "t_video": 161.1,
+   "label": "Magic Archer",
+   "form": "hero",
+   "source": "POV of tv_2026-10-13_r199_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r199_m01",
+   "t_video": 167.7,
+   "label": "Barbarian Barrel",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r199_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r199_m01",
+   "t_video": 175.2,
+   "label": "Giant Snowball",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r199_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r199_m01",
+   "t_video": 176.2,
+   "label": "Mega Knight",
+   "form": "evo",
+   "source": "POV of tv_2026-10-13_r199_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r199_m01",
+   "t_video": 178.7,
+   "label": "Bats",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r199_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-13_r199_m01",
+   "t_video": 183.6,
+   "label": "Goblin Barrel",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r199_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r199_m01",
+   "t_video": 185.9,
+   "label": "Barbarian Barrel",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r199_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r199_m01",
+   "t_video": 192.9,
+   "label": "Rascals",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r199_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-13_r199_m01",
+   "t_video": 198.2,
+   "label": "Magic Archer",
+   "form": "hero",
+   "source": "POV of tv_2026-10-13_r199_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r199_m01",
+   "t_video": 202.7,
+   "label": "Giant Snowball",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r199_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r199_m01",
+   "t_video": 211.8,
+   "label": "Mega Knight",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r199_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-13_r199_m01",
+   "t_video": 214.2,
+   "label": "Barbarian Barrel",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r199_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r199_m01",
+   "t_video": 217.9,
+   "label": "Goblin Barrel",
+   "form": "evo",
+   "source": "POV of tv_2026-10-13_r199_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-13_r199_m01",
+   "t_video": 221.4,
+   "label": "Bats",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r199_top_m01",
+   "source_confidence": "high"
+  }
+ ],
+ "paired_with": "tv_2026-10-13_r199_top_m01",
+ "offset_s": 0.0,
+ "auto": true,
+ "source": "replay"
+}

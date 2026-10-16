@@ -1,0 +1,229 @@
+{
+ "video_id": "tv_2026-10-12_r82",
+ "side": "opponent",
+ "matches": [
+  "tv_2026-10-12_r82_m01"
+ ],
+ "items": [
+  {
+   "match_id": "tv_2026-10-12_r82_m01",
+   "t_video": 13.0,
+   "label": "Tombstone",
+   "form": "hero",
+   "source": "POV of tv_2026-10-12_r82_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r82_m01",
+   "t_video": 17.6,
+   "label": "Firecracker",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r82_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-12_r82_m01",
+   "t_video": 23.3,
+   "label": "Sparky",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r82_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r82_m01",
+   "t_video": 53.6,
+   "label": "Goblin Gang",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r82_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r82_m01",
+   "t_video": 57.7,
+   "label": "Tombstone",
+   "form": "hero",
+   "source": "POV of tv_2026-10-12_r82_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-12_r82_m01",
+   "t_video": 71.9,
+   "label": "Firecracker",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r82_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r82_m01",
+   "t_video": 100.9,
+   "label": "Sparky",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r82_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r82_m01",
+   "t_video": 114.7,
+   "label": "Zap",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r82_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r82_m01",
+   "t_video": 120.6,
+   "label": "Goblin Gang",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r82_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r82_m01",
+   "t_video": 123.8,
+   "label": "Firecracker",
+   "form": "evo",
+   "source": "POV of tv_2026-10-12_r82_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r82_m01",
+   "t_video": 134.2,
+   "label": "Sparky",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r82_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r82_m01",
+   "t_video": 140.7,
+   "label": "Tombstone",
+   "form": "hero",
+   "source": "POV of tv_2026-10-12_r82_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r82_m01",
+   "t_video": 144.2,
+   "label": "__ability",
+   "form": null,
+   "source": "POV of tv_2026-10-12_r82_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-12_r82_m01",
+   "t_video": 154.4,
+   "label": "Goblin Gang",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r82_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r82_m01",
+   "t_video": 159.7,
+   "label": "Firecracker",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r82_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r82_m01",
+   "t_video": 166.1,
+   "label": "Zap",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r82_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r82_m01",
+   "t_video": 169.9,
+   "label": "Tombstone",
+   "form": "hero",
+   "source": "POV of tv_2026-10-12_r82_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r82_m01",
+   "t_video": 174.4,
+   "label": "Goblin Gang",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r82_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r82_m01",
+   "t_video": 178.1,
+   "label": "Firecracker",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r82_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r82_m01",
+   "t_video": 188.7,
+   "label": "Sparky",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r82_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r82_m01",
+   "t_video": 190.6,
+   "label": "Tombstone",
+   "form": "hero",
+   "source": "POV of tv_2026-10-12_r82_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r82_m01",
+   "t_video": 205.3,
+   "label": "__ability",
+   "form": null,
+   "source": "POV of tv_2026-10-12_r82_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-12_r82_m01",
+   "t_video": 210.7,
+   "label": "Zap",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r82_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r82_m01",
+   "t_video": 211.7,
+   "label": "Fireball",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r82_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r82_m01",
+   "t_video": 214.8,
+   "label": "Firecracker",
+   "form": "evo",
+   "source": "POV of tv_2026-10-12_r82_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r82_m01",
+   "t_video": 219.9,
+   "label": "Tombstone",
+   "form": "hero",
+   "source": "POV of tv_2026-10-12_r82_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-12_r82_m01",
+   "t_video": 225.1,
+   "label": "Firecracker",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r82_top_m01",
+   "source_confidence": "high"
+  }
+ ],
+ "paired_with": "tv_2026-10-12_r82_top_m01",
+ "offset_s": 0.0,
+ "auto": true,
+ "source": "replay"
+}

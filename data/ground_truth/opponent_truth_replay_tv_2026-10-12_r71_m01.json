@@ -1,0 +1,517 @@
+{
+ "video_id": "tv_2026-10-12_r71",
+ "side": "opponent",
+ "matches": [
+  "tv_2026-10-12_r71_m01"
+ ],
+ "items": [
+  {
+   "match_id": "tv_2026-10-12_r71_m01",
+   "t_video": 17.3,
+   "label": "Barbarian Barrel",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r71_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r71_m01",
+   "t_video": 25.0,
+   "label": "Little Prince",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r71_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r71_m01",
+   "t_video": 34.3,
+   "label": "Rune Giant",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r71_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r71_m01",
+   "t_video": 48.1,
+   "label": "Cannon",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r71_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r71_m01",
+   "t_video": 50.1,
+   "label": "Poison",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r71_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r71_m01",
+   "t_video": 53.6,
+   "label": "Skeletons",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r71_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r71_m01",
+   "t_video": 54.6,
+   "label": "Bats",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r71_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r71_m01",
+   "t_video": 77.3,
+   "label": "Little Prince",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r71_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r71_m01",
+   "t_video": 85.4,
+   "label": "Rune Giant",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r71_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r71_m01",
+   "t_video": 86.3,
+   "label": "Minion Giant",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r71_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r71_m01",
+   "t_video": 91.5,
+   "label": "Barbarian Barrel",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r71_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r71_m01",
+   "t_video": 108.2,
+   "label": "Bats",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r71_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r71_m01",
+   "t_video": 110.8,
+   "label": "Cannon",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r71_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r71_m01",
+   "t_video": 115.2,
+   "label": "Skeletons",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r71_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r71_m01",
+   "t_video": 116.3,
+   "label": "Little Prince",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r71_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r71_m01",
+   "t_video": 129.6,
+   "label": "Rune Giant",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r71_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r71_m01",
+   "t_video": 131.2,
+   "label": "Minion Giant",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r71_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r71_m01",
+   "t_video": 144.3,
+   "label": "Cannon",
+   "form": "evo",
+   "source": "POV of tv_2026-10-12_r71_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r71_m01",
+   "t_video": 147.4,
+   "label": "Barbarian Barrel",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r71_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r71_m01",
+   "t_video": 148.3,
+   "label": "Skeletons",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r71_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r71_m01",
+   "t_video": 149.3,
+   "label": "Little Prince",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r71_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r71_m01",
+   "t_video": 151.6,
+   "label": "Poison",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r71_top_m01",
+   "source_confidence": "low"
+  },
+  {
+   "match_id": "tv_2026-10-12_r71_m01",
+   "t_video": 153.8,
+   "label": "Bats",
+   "form": "evo",
+   "source": "POV of tv_2026-10-12_r71_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r71_m01",
+   "t_video": 156.1,
+   "label": "Barbarian Barrel",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r71_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r71_m01",
+   "t_video": 165.3,
+   "label": "Cannon",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r71_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r71_m01",
+   "t_video": 171.0,
+   "label": "Little Prince",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r71_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r71_m01",
+   "t_video": 175.1,
+   "label": "Rune Giant",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r71_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r71_m01",
+   "t_video": 177.6,
+   "label": "Bats",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r71_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r71_m01",
+   "t_video": 179.6,
+   "label": "Poison",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r71_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-12_r71_m01",
+   "t_video": 181.9,
+   "label": "Cannon",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r71_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r71_m01",
+   "t_video": 188.3,
+   "label": "Minion Giant",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r71_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r71_m01",
+   "t_video": 190.1,
+   "label": "Skeletons",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r71_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r71_m01",
+   "t_video": 198.5,
+   "label": "Little Prince",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r71_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r71_m01",
+   "t_video": 201.9,
+   "label": "Barbarian Barrel",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r71_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r71_m01",
+   "t_video": 203.1,
+   "label": "Rune Giant",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r71_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r71_m01",
+   "t_video": 209.8,
+   "label": "Poison",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r71_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r71_m01",
+   "t_video": 213.9,
+   "label": "Bats",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r71_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r71_m01",
+   "t_video": 218.6,
+   "label": "Minion Giant",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r71_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r71_m01",
+   "t_video": 220.7,
+   "label": "__ability",
+   "form": null,
+   "source": "POV of tv_2026-10-12_r71_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-12_r71_m01",
+   "t_video": 225.3,
+   "label": "Cannon",
+   "form": "evo",
+   "source": "POV of tv_2026-10-12_r71_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r71_m01",
+   "t_video": 234.3,
+   "label": "Little Prince",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r71_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r71_m01",
+   "t_video": 240.7,
+   "label": "Rune Giant",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r71_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r71_m01",
+   "t_video": 246.8,
+   "label": "Barbarian Barrel",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r71_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r71_m01",
+   "t_video": 248.5,
+   "label": "Minion Giant",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r71_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r71_m01",
+   "t_video": 254.8,
+   "label": "Cannon",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r71_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r71_m01",
+   "t_video": 256.9,
+   "label": "Little Prince",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r71_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r71_m01",
+   "t_video": 261.6,
+   "label": "Poison",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r71_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r71_m01",
+   "t_video": 265.3,
+   "label": "Rune Giant",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r71_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r71_m01",
+   "t_video": 267.6,
+   "label": "Barbarian Barrel",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r71_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r71_m01",
+   "t_video": 268.2,
+   "label": "Bats",
+   "form": "evo",
+   "source": "POV of tv_2026-10-12_r71_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r71_m01",
+   "t_video": 270.6,
+   "label": "Little Prince",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r71_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r71_m01",
+   "t_video": 272.3,
+   "label": "Skeletons",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r71_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r71_m01",
+   "t_video": 274.9,
+   "label": "Rune Giant",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r71_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r71_m01",
+   "t_video": 277.8,
+   "label": "Cannon",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r71_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r71_m01",
+   "t_video": 279.7,
+   "label": "Barbarian Barrel",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r71_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r71_m01",
+   "t_video": 282.1,
+   "label": "Poison",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r71_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r71_m01",
+   "t_video": 282.7,
+   "label": "Bats",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r71_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r71_m01",
+   "t_video": 286.4,
+   "label": "Skeletons",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r71_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r71_m01",
+   "t_video": 290.9,
+   "label": "Little Prince",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r71_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r71_m01",
+   "t_video": 292.7,
+   "label": "Rune Giant",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r71_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r71_m01",
+   "t_video": 296.4,
+   "label": "Cannon",
+   "form": "evo",
+   "source": "POV of tv_2026-10-12_r71_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r71_m01",
+   "t_video": 299.6,
+   "label": "Barbarian Barrel",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r71_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r71_m01",
+   "t_video": 300.9,
+   "label": "Poison",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r71_top_m01",
+   "source_confidence": "high"
+  }
+ ],
+ "paired_with": "tv_2026-10-12_r71_top_m01",
+ "offset_s": 0.0,
+ "auto": true,
+ "source": "replay"
+}

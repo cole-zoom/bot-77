@@ -27,8 +27,11 @@ class ElixirRead:
 
 
 def _is_pink(cols: np.ndarray) -> np.ndarray:
+    """Bright pink (phone and Mac captures), or the darker, more saturated pink of BlueStacks' own framebuffer
+    (screencap / scrcpy: pink ~(B151, G27, R148), whites capped near 178; decisions.md 2026-10-12)."""
     b, g, r = cols[:, 0], cols[:, 1], cols[:, 2]
-    return (r > 150) & (b > 150) & (g < 0.8 * np.minimum(r, b))
+    lo = np.minimum(r, b)
+    return ((r > 150) & (b > 150) & (g < 0.8 * lo)) | ((lo > 100) & (g < 0.35 * lo))
 
 
 def _is_white(cols: np.ndarray) -> np.ndarray:
@@ -43,7 +46,12 @@ def read_elixir(frame: np.ndarray, layout: Layout) -> ElixirRead:
     cols = np.median(bar[int(h * 0.3):int(h * 0.7)].astype(np.float32), axis=0)  # BGR per column
 
     pink, white = _is_pink(cols), _is_white(cols)
-    blue = ~pink & ~white & (cols[:, 0] > cols[:, 2] + 30)  # empty or partial: blue-dominant
+    if layout.hand.get("elixir_empty") == "any":
+        # replay viewer (decisions.md 2026-10-12): the top bar's empty part is dark red, and both bars' partial
+        # segment is a grey purple, so anything that isn't pink or white is empty or partial
+        blue = ~pink & ~white
+    else:
+        blue = ~pink & ~white & (cols[:, 0] > cols[:, 2] + 30)  # empty or partial: blue-dominant
     readable = float((pink | blue).mean())
     if readable < MIN_READABLE:
         return ElixirRead(None, None, False, readable)

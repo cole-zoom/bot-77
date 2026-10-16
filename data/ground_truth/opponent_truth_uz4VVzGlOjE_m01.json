@@ -336,5 +336,7 @@
    "approximate_time": true
   }
  ],
- "reviewed_run": "6f7d69a486"
+ "reviewed_run": "6f7d69a486",
+ "time_convention": "appearance",
+ "time_convention_note": "Labelled by eye when the units appear (median detection - label = 0.0 s), not when the card leaves the hand like POV/paired truth (+1.2-1.5 s). 2026-10-10."
 }

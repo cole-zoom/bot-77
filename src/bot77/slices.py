@@ -115,7 +115,7 @@ def slices_from_truth(truth_path: Path, labels: set[str], db_dir: Path = Path("d
                 d = out / cls
                 d.mkdir(parents=True, exist_ok=True)
                 name = f"{cls}_1_{item['match_id']}_{t:07.2f}_{ti}.png"
-                cv2.imwrite(str(d / name), rgba)
+                cv2.imwrite(str(d / name), fill_holes(rgba))
                 manifest.append({"file": str(d / name), "card": item["label"], "team": "enemy", "video_id": truth["video_id"],
                                  "match_id": item["match_id"], "t_video": round(t, 2), "track": ti,
                                  "detector_class": tr.cls, "size": list(rgba.shape[:2])})
@@ -174,12 +174,30 @@ def slices_from_clicks(clicks_path: Path, db_dir: Path = Path("data/lancedb"), o
         d = out / c["entity"]
         d.mkdir(parents=True, exist_ok=True)
         name = f"{c['entity']}_1_{c['frame']}.png"
-        cv2.imwrite(str(d / name), rgba)
+        cv2.imwrite(str(d / name), fill_holes(rgba))
         manifest.append({"file": str(d / name), "card": card, "entity": c["entity"], "team": "enemy",
                          "video_id": c["video_id"], "match_id": c["match_id"], "t_video": c["t"], "click": [x, y],
                          "size": list(rgba.shape[:2])})
     (out / "manifest.json").write_text(json.dumps(manifest, indent=1))
     return manifest
+
+
+def fill_holes(rgba: np.ndarray) -> np.ndarray:
+    """Make transparent areas enclosed by the sprite opaque again, inpainted from their surroundings. Erasing a badge
+    or HP bar inside the unit left see-through holes that every synthetic paste then showed (Cole, 2026-10-08; 24 of
+    296 approved sprites had one)."""
+    a = (rgba[:, :, 3] > 0).astype(np.uint8)
+    h, w = a.shape
+    outside = np.zeros((h + 2, w + 2), np.uint8)
+    hole = (1 - a).copy()
+    for y, x in [(y, x) for x in range(w) for y in (0, h - 1)] + [(y, x) for y in range(h) for x in (0, w - 1)]:
+        if hole[y, x]:
+            cv2.floodFill(hole, outside, (x, y), 0)
+    if hole.any():
+        rgba = rgba.copy()
+        rgba[:, :, :3] = cv2.inpaint(np.ascontiguousarray(rgba[:, :, :3]), (hole * 255).astype(np.uint8), 5, cv2.INPAINT_TELEA)
+        rgba[:, :, 3][hole > 0] = 255
+    return rgba
 
 
 def strip_leftover_badge(rgba: np.ndarray) -> tuple[np.ndarray, bool]:
@@ -293,7 +311,7 @@ def slices_from_labels(items: list[dict], out: Path, db_dir: Path = Path("data/l
             d = out / slug
             d.mkdir(parents=True, exist_ok=True)
             f = d / f"{slug}_{it['match_id']}_{t:07.2f}.png"
-            cv2.imwrite(str(f), rgba)
+            cv2.imwrite(str(f), fill_holes(rgba))
             manifest.append({"file": str(f), "card": it["label"], "form": it.get("form"), "entity": slug, "team": it["team"],
                              "video_id": it["video_id"], "match_id": it["match_id"], "t_video": round(t, 2),
                              "play_t": it["t_video"], "source": it.get("source", ""),

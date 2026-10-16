@@ -7,6 +7,14 @@
  "items": [
   {
    "match_id": "friend_2026-09-29_c_m07",
+   "t_video": 937.7,
+   "label": "Boss Bandit",
+   "form": null,
+   "source": "next-card advance in cole_2026-09-29_c_m05",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "friend_2026-09-29_c_m07",
    "t_video": 986.6,
    "label": "Minion Giant",
    "form": "normal",

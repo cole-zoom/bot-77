@@ -1,0 +1,189 @@
+{
+ "video_id": "tv_2026-10-14_r43",
+ "side": "opponent",
+ "matches": [
+  "tv_2026-10-14_r43_m01"
+ ],
+ "items": [
+  {
+   "match_id": "tv_2026-10-14_r43_m01",
+   "t_video": 16.1,
+   "label": "Dark Prince",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r43_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r43_m01",
+   "t_video": 25.3,
+   "label": "Electro Wizard",
+   "form": "hero",
+   "source": "POV of tv_2026-10-14_r43_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r43_m01",
+   "t_video": 31.9,
+   "label": "Zap",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r43_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r43_m01",
+   "t_video": 40.1,
+   "label": "Heal Spirit",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r43_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r43_m01",
+   "t_video": 41.9,
+   "label": "Elite Barbarians",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r43_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r43_m01",
+   "t_video": 50.4,
+   "label": "Dark Prince",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r43_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-14_r43_m01",
+   "t_video": 73.7,
+   "label": "Sparky",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r43_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r43_m01",
+   "t_video": 90.1,
+   "label": "Goblin Giant",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r43_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r43_m01",
+   "t_video": 92.6,
+   "label": "Zap",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r43_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r43_m01",
+   "t_video": 95.6,
+   "label": "Rage",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r43_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r43_m01",
+   "t_video": 110.9,
+   "label": "Elite Barbarians",
+   "form": "evo",
+   "source": "POV of tv_2026-10-14_r43_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r43_m01",
+   "t_video": 116.9,
+   "label": "Heal Spirit",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r43_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r43_m01",
+   "t_video": 127.8,
+   "label": "Electro Wizard",
+   "form": "hero",
+   "source": "POV of tv_2026-10-14_r43_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r43_m01",
+   "t_video": 134.7,
+   "label": "Dark Prince",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r43_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r43_m01",
+   "t_video": 142.3,
+   "label": "Sparky",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r43_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r43_m01",
+   "t_video": 147.7,
+   "label": "Zap",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r43_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r43_m01",
+   "t_video": 150.2,
+   "label": "Elite Barbarians",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r43_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-14_r43_m01",
+   "t_video": 153.6,
+   "label": "Heal Spirit",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r43_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r43_m01",
+   "t_video": 154.9,
+   "label": "Rage",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r43_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r43_m01",
+   "t_video": 161.1,
+   "label": "Electro Wizard",
+   "form": "hero",
+   "source": "POV of tv_2026-10-14_r43_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r43_m01",
+   "t_video": 166.5,
+   "label": "Zap",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r43_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r43_m01",
+   "t_video": 175.1,
+   "label": "Sparky",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r43_top_m01",
+   "source_confidence": "medium"
+  }
+ ],
+ "paired_with": "tv_2026-10-14_r43_top_m01",
+ "offset_s": 0.0,
+ "auto": true,
+ "source": "replay"
+}

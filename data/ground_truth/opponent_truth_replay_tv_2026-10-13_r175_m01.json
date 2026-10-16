@@ -1,0 +1,197 @@
+{
+ "video_id": "tv_2026-10-13_r175",
+ "side": "opponent",
+ "matches": [
+  "tv_2026-10-13_r175_m01"
+ ],
+ "items": [
+  {
+   "match_id": "tv_2026-10-13_r175_m01",
+   "t_video": 12.6,
+   "label": "Witch",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r175_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r175_m01",
+   "t_video": 28.6,
+   "label": "Goblin Gang",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r175_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-13_r175_m01",
+   "t_video": 38.2,
+   "label": "Lumberjack",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r175_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r175_m01",
+   "t_video": 39.4,
+   "label": "Graveyard",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r175_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r175_m01",
+   "t_video": 45.1,
+   "label": "Minions",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r175_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r175_m01",
+   "t_video": 59.1,
+   "label": "Witch",
+   "form": "evo",
+   "source": "POV of tv_2026-10-13_r175_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r175_m01",
+   "t_video": 67.4,
+   "label": "Goblin Gang",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r175_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r175_m01",
+   "t_video": 85.6,
+   "label": "Lumberjack",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r175_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r175_m01",
+   "t_video": 96.6,
+   "label": "Giant",
+   "form": "hero",
+   "source": "POV of tv_2026-10-13_r175_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r175_m01",
+   "t_video": 101.7,
+   "label": "Minions",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r175_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-13_r175_m01",
+   "t_video": 108.9,
+   "label": "__ability",
+   "form": null,
+   "source": "POV of tv_2026-10-13_r175_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-13_r175_m01",
+   "t_video": 120.8,
+   "label": "Witch",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r175_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r175_m01",
+   "t_video": 133.1,
+   "label": "Goblin Gang",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r175_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-13_r175_m01",
+   "t_video": 135.2,
+   "label": "Lumberjack",
+   "form": "evo",
+   "source": "POV of tv_2026-10-13_r175_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r175_m01",
+   "t_video": 139.3,
+   "label": "Graveyard",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r175_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r175_m01",
+   "t_video": 154.2,
+   "label": "Minions",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r175_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r175_m01",
+   "t_video": 156.8,
+   "label": "Witch",
+   "form": "evo",
+   "source": "POV of tv_2026-10-13_r175_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r175_m01",
+   "t_video": 162.4,
+   "label": "Giant",
+   "form": "hero",
+   "source": "POV of tv_2026-10-13_r175_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r175_m01",
+   "t_video": 164.3,
+   "label": "__ability",
+   "form": null,
+   "source": "POV of tv_2026-10-13_r175_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-13_r175_m01",
+   "t_video": 166.6,
+   "label": "Goblin Gang",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r175_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r175_m01",
+   "t_video": 173.1,
+   "label": "The Log",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r175_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r175_m01",
+   "t_video": 177.2,
+   "label": "Lumberjack",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r175_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-13_r175_m01",
+   "t_video": 180.6,
+   "label": "Minions",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r175_top_m01",
+   "source_confidence": "high"
+  }
+ ],
+ "paired_with": "tv_2026-10-13_r175_top_m01",
+ "offset_s": 0.0,
+ "auto": true,
+ "source": "replay"
+}

@@ -1,0 +1,293 @@
+{
+ "video_id": "tv_2026-10-12_r35",
+ "side": "opponent",
+ "matches": [
+  "tv_2026-10-12_r35_m01"
+ ],
+ "items": [
+  {
+   "match_id": "tv_2026-10-12_r35_m01",
+   "t_video": 40.3,
+   "label": "Lava Hound",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r35_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r35_m01",
+   "t_video": 63.5,
+   "label": "Flying Machine",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r35_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r35_m01",
+   "t_video": 65.6,
+   "label": "Mega Minion",
+   "form": "hero",
+   "source": "POV of tv_2026-10-12_r35_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r35_m01",
+   "t_video": 84.2,
+   "label": "Skeleton Dragons",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r35_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r35_m01",
+   "t_video": 85.7,
+   "label": "Barbarians",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r35_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r35_m01",
+   "t_video": 90.2,
+   "label": "Miner",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r35_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r35_m01",
+   "t_video": 95.2,
+   "label": "Flying Machine",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r35_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r35_m01",
+   "t_video": 124.8,
+   "label": "Goblin Cage",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r35_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r35_m01",
+   "t_video": 135.0,
+   "label": "Lava Hound",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r35_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r35_m01",
+   "t_video": 144.7,
+   "label": "Skeleton Dragons",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r35_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-12_r35_m01",
+   "t_video": 148.1,
+   "label": "Mega Minion",
+   "form": "hero",
+   "source": "POV of tv_2026-10-12_r35_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-12_r35_m01",
+   "t_video": 149.3,
+   "label": "Barbarians",
+   "form": "evo",
+   "source": "POV of tv_2026-10-12_r35_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r35_m01",
+   "t_video": 154.8,
+   "label": "Flying Machine",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r35_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r35_m01",
+   "t_video": 162.6,
+   "label": "Miner",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r35_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r35_m01",
+   "t_video": 165.4,
+   "label": "Skeleton Dragons",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r35_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r35_m01",
+   "t_video": 169.8,
+   "label": "Mega Minion",
+   "form": "hero",
+   "source": "POV of tv_2026-10-12_r35_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-12_r35_m01",
+   "t_video": 176.2,
+   "label": "Barbarians",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r35_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r35_m01",
+   "t_video": 178.4,
+   "label": "Flying Machine",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r35_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r35_m01",
+   "t_video": 182.6,
+   "label": "Miner",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r35_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r35_m01",
+   "t_video": 195.2,
+   "label": "Goblin Cage",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r35_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r35_m01",
+   "t_video": 200.8,
+   "label": "Lava Hound",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r35_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r35_m01",
+   "t_video": 213.3,
+   "label": "Skeleton Dragons",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r35_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r35_m01",
+   "t_video": 214.6,
+   "label": "Barbarians",
+   "form": "evo",
+   "source": "POV of tv_2026-10-12_r35_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r35_m01",
+   "t_video": 218.9,
+   "label": "Flying Machine",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r35_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r35_m01",
+   "t_video": 227.6,
+   "label": "Mega Minion",
+   "form": "hero",
+   "source": "POV of tv_2026-10-12_r35_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-12_r35_m01",
+   "t_video": 229.3,
+   "label": "Goblin Cage",
+   "form": "evo",
+   "source": "POV of tv_2026-10-12_r35_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r35_m01",
+   "t_video": 232.0,
+   "label": "Skeleton Dragons",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r35_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-12_r35_m01",
+   "t_video": 235.9,
+   "label": "Barbarians",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r35_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r35_m01",
+   "t_video": 239.7,
+   "label": "Flying Machine",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r35_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r35_m01",
+   "t_video": 242.9,
+   "label": "Mega Minion",
+   "form": "hero",
+   "source": "POV of tv_2026-10-12_r35_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r35_m01",
+   "t_video": 249.5,
+   "label": "Lava Hound",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r35_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-12_r35_m01",
+   "t_video": 255.1,
+   "label": "Goblin Cage",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r35_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r35_m01",
+   "t_video": 259.2,
+   "label": "Skeleton Dragons",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r35_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-12_r35_m01",
+   "t_video": 264.1,
+   "label": "Flying Machine",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r35_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r35_m01",
+   "t_video": 268.6,
+   "label": "Arrows",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r35_top_m01",
+   "source_confidence": "medium"
+  }
+ ],
+ "paired_with": "tv_2026-10-12_r35_top_m01",
+ "offset_s": 0.0,
+ "auto": true,
+ "source": "replay"
+}

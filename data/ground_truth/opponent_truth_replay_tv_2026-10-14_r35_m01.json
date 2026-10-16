@@ -1,0 +1,285 @@
+{
+ "video_id": "tv_2026-10-14_r35",
+ "side": "opponent",
+ "matches": [
+  "tv_2026-10-14_r35_m01"
+ ],
+ "items": [
+  {
+   "match_id": "tv_2026-10-14_r35_m01",
+   "t_video": 11.0,
+   "label": "Goblin Barrel",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r35_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r35_m01",
+   "t_video": 15.7,
+   "label": "Valkyrie",
+   "form": "hero",
+   "source": "POV of tv_2026-10-14_r35_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r35_m01",
+   "t_video": 16.7,
+   "label": "Electro Spirit",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r35_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r35_m01",
+   "t_video": 21.5,
+   "label": "__ability",
+   "form": null,
+   "source": "POV of tv_2026-10-14_r35_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-14_r35_m01",
+   "t_video": 22.9,
+   "label": "Ice Spirit",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r35_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-14_r35_m01",
+   "t_video": 24.1,
+   "label": "Fire Spirit",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r35_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r35_m01",
+   "t_video": 35.1,
+   "label": "Goblin Barrel",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r35_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r35_m01",
+   "t_video": 43.6,
+   "label": "Ronin",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r35_top_m01",
+   "source_confidence": "low"
+  },
+  {
+   "match_id": "tv_2026-10-14_r35_m01",
+   "t_video": 52.9,
+   "label": "Cannon",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r35_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r35_m01",
+   "t_video": 55.6,
+   "label": "Ice Spirit",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r35_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r35_m01",
+   "t_video": 57.6,
+   "label": "Electro Spirit",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r35_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r35_m01",
+   "t_video": 61.0,
+   "label": "Fire Spirit",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r35_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-14_r35_m01",
+   "t_video": 70.6,
+   "label": "Goblin Barrel",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r35_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r35_m01",
+   "t_video": 82.9,
+   "label": "Ronin",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r35_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r35_m01",
+   "t_video": 86.4,
+   "label": "Ice Spirit",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r35_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r35_m01",
+   "t_video": 95.3,
+   "label": "Cannon",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r35_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r35_m01",
+   "t_video": 113.9,
+   "label": "Fire Spirit",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r35_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-14_r35_m01",
+   "t_video": 115.3,
+   "label": "Fire Spirit",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r35_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r35_m01",
+   "t_video": 122.7,
+   "label": "Ronin",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r35_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r35_m01",
+   "t_video": 129.0,
+   "label": "Goblin Barrel",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r35_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r35_m01",
+   "t_video": 132.4,
+   "label": "Ice Spirit",
+   "form": null,
+   "source": "next-card advance in tv_2026-10-14_r35_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-14_r35_m01",
+   "t_video": 133.7,
+   "label": "Electro Spirit",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r35_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r35_m01",
+   "t_video": 134.8,
+   "label": "Cannon",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r35_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r35_m01",
+   "t_video": 147.1,
+   "label": "Ice Spirit",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r35_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r35_m01",
+   "t_video": 148.0,
+   "label": "Mirror",
+   "form": null,
+   "source": "next-card advance in tv_2026-10-14_r35_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-14_r35_m01",
+   "t_video": 148.9,
+   "label": "Valkyrie",
+   "form": "hero",
+   "source": "POV of tv_2026-10-14_r35_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r35_m01",
+   "t_video": 151.0,
+   "label": "Goblin Barrel",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r35_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r35_m01",
+   "t_video": 157.7,
+   "label": "Ronin",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r35_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r35_m01",
+   "t_video": 162.7,
+   "label": "Ice Spirit",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r35_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-14_r35_m01",
+   "t_video": 163.9,
+   "label": "Electro Spirit",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r35_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r35_m01",
+   "t_video": 165.5,
+   "label": "Fire Spirit",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r35_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r35_m01",
+   "t_video": 169.4,
+   "label": "Cannon",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r35_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r35_m01",
+   "t_video": 174.0,
+   "label": "Goblin Barrel",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r35_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-14_r35_m01",
+   "t_video": 178.7,
+   "label": "Valkyrie",
+   "form": "hero",
+   "source": "POV of tv_2026-10-14_r35_top_m01",
+   "source_confidence": "high"
+  }
+ ],
+ "paired_with": "tv_2026-10-14_r35_top_m01",
+ "offset_s": 0.0,
+ "auto": true,
+ "source": "replay"
+}

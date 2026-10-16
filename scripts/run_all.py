@@ -49,8 +49,14 @@ def stage_cpu(job: dict) -> dict:
 def stage_gpu(job: dict) -> None:
     lf = ROOT / f"data/logs/run_all_{job['id']}.log"
     t0 = time.time()
-    code = ("from pathlib import Path; from bot77.detect.run import detect_video; from bot77.mine import build_crops; "
-            f"detect_video('{job['id']}', Path('data/lancedb')); print(build_crops('{job['id']}'), 'crops')")
+    if job.get("weights"):  # our own detector into its own table, e.g. V4 = v5l/epoch15.pt -> unit_detections_v5l_e15
+        code = ("from pathlib import Path; from bot77.detect.run import detect_video; "
+                "from bot77.detect.yolo import Bot77Detector; "
+                f"detect_video('{job['id']}', Path('data/lancedb'), detector=Bot77Detector(Path('{job['weights']}')), "
+                f"table='{job['table']}')")
+    else:
+        code = ("from pathlib import Path; from bot77.detect.run import detect_video; from bot77.mine import build_crops; "
+                f"detect_video('{job['id']}', Path('data/lancedb')); print(build_crops('{job['id']}'), 'crops')")
     sh(["uv", "run", "python", "-c", code], lf)
     log(f"{job['id']}: detected + embedded ({time.time() - t0:.0f}s)")
 
@@ -63,7 +69,9 @@ def main(jobs: list[dict]) -> None:
 
         def done_cpu(fut):
             try:
-                gpu_futs.append(gpu.submit(stage_gpu, fut.result()))
+                job = fut.result()
+                if job.get("gpu", True):  # "gpu": false = HUD pass only (e.g. a replay's top-hand copy)
+                    gpu_futs.append(gpu.submit(stage_gpu, job))
             except Exception as e:  # noqa: BLE001
                 errors.append(str(e)); log(f"ERROR {e}")
 

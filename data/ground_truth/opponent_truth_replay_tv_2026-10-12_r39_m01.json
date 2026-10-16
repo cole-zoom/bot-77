@@ -1,0 +1,485 @@
+{
+ "video_id": "tv_2026-10-12_r39",
+ "side": "opponent",
+ "matches": [
+  "tv_2026-10-12_r39_m01"
+ ],
+ "items": [
+  {
+   "match_id": "tv_2026-10-12_r39_m01",
+   "t_video": 15.3,
+   "label": "Fire Spirit",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r39_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r39_m01",
+   "t_video": 16.5,
+   "label": "Tesla",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r39_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r39_m01",
+   "t_video": 20.5,
+   "label": "Skeletons",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r39_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r39_m01",
+   "t_video": 27.1,
+   "label": "Knight",
+   "form": "hero",
+   "source": "POV of tv_2026-10-12_r39_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-12_r39_m01",
+   "t_video": 38.5,
+   "label": "Poison",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r39_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r39_m01",
+   "t_video": 48.8,
+   "label": "Goblin Demolisher",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r39_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r39_m01",
+   "t_video": 51.0,
+   "label": "Giant Snowball",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r39_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r39_m01",
+   "t_video": 58.0,
+   "label": "Goblin Drill",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r39_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r39_m01",
+   "t_video": 73.4,
+   "label": "Knight",
+   "form": "hero",
+   "source": "POV of tv_2026-10-12_r39_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r39_m01",
+   "t_video": 76.2,
+   "label": "Skeletons",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r39_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r39_m01",
+   "t_video": 82.7,
+   "label": "Goblin Demolisher",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r39_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-12_r39_m01",
+   "t_video": 85.7,
+   "label": "__ability",
+   "form": null,
+   "source": "POV of tv_2026-10-12_r39_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-12_r39_m01",
+   "t_video": 92.1,
+   "label": "Fire Spirit",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r39_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-12_r39_m01",
+   "t_video": 100.6,
+   "label": "Giant Snowball",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r39_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r39_m01",
+   "t_video": 121.9,
+   "label": "Knight",
+   "form": "hero",
+   "source": "POV of tv_2026-10-12_r39_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r39_m01",
+   "t_video": 129.7,
+   "label": "Goblin Drill",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r39_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-12_r39_m01",
+   "t_video": 132.5,
+   "label": "Goblin Demolisher",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r39_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r39_m01",
+   "t_video": 134.3,
+   "label": "Fire Spirit",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r39_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r39_m01",
+   "t_video": 135.6,
+   "label": "Poison",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r39_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r39_m01",
+   "t_video": 146.1,
+   "label": "Knight",
+   "form": "hero",
+   "source": "POV of tv_2026-10-12_r39_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r39_m01",
+   "t_video": 151.1,
+   "label": "Tesla",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r39_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-12_r39_m01",
+   "t_video": 152.8,
+   "label": "__ability",
+   "form": null,
+   "source": "POV of tv_2026-10-12_r39_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-12_r39_m01",
+   "t_video": 158.1,
+   "label": "Skeletons",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r39_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r39_m01",
+   "t_video": 159.4,
+   "label": "Goblin Demolisher",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r39_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r39_m01",
+   "t_video": 163.3,
+   "label": "Fire Spirit",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r39_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r39_m01",
+   "t_video": 165.1,
+   "label": "Knight",
+   "form": "hero",
+   "source": "POV of tv_2026-10-12_r39_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r39_m01",
+   "t_video": 168.2,
+   "label": "Giant Snowball",
+   "form": "evo",
+   "source": "POV of tv_2026-10-12_r39_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r39_m01",
+   "t_video": 170.3,
+   "label": "Skeletons",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r39_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r39_m01",
+   "t_video": 175.9,
+   "label": "Goblin Drill",
+   "form": "evo",
+   "source": "POV of tv_2026-10-12_r39_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r39_m01",
+   "t_video": 179.3,
+   "label": "Goblin Demolisher",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r39_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r39_m01",
+   "t_video": 189.2,
+   "label": "Poison",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r39_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-12_r39_m01",
+   "t_video": 196.9,
+   "label": "Tesla",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r39_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r39_m01",
+   "t_video": 198.4,
+   "label": "Knight",
+   "form": "hero",
+   "source": "POV of tv_2026-10-12_r39_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r39_m01",
+   "t_video": 200.3,
+   "label": "__ability",
+   "form": null,
+   "source": "POV of tv_2026-10-12_r39_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-12_r39_m01",
+   "t_video": 201.9,
+   "label": "Giant Snowball",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r39_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r39_m01",
+   "t_video": 204.6,
+   "label": "Skeletons",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r39_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r39_m01",
+   "t_video": 208.2,
+   "label": "Goblin Demolisher",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r39_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r39_m01",
+   "t_video": 209.7,
+   "label": "Fire Spirit",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r39_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r39_m01",
+   "t_video": 213.9,
+   "label": "Knight",
+   "form": "hero",
+   "source": "POV of tv_2026-10-12_r39_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r39_m01",
+   "t_video": 216.8,
+   "label": "Giant Snowball",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r39_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r39_m01",
+   "t_video": 225.0,
+   "label": "Poison",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r39_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r39_m01",
+   "t_video": 234.9,
+   "label": "Goblin Demolisher",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r39_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r39_m01",
+   "t_video": 237.0,
+   "label": "Goblin Drill",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r39_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r39_m01",
+   "t_video": 240.9,
+   "label": "Skeletons",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r39_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r39_m01",
+   "t_video": 243.9,
+   "label": "Knight",
+   "form": "hero",
+   "source": "POV of tv_2026-10-12_r39_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r39_m01",
+   "t_video": 246.8,
+   "label": "Tesla",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r39_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r39_m01",
+   "t_video": 249.8,
+   "label": "__ability",
+   "form": null,
+   "source": "POV of tv_2026-10-12_r39_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-12_r39_m01",
+   "t_video": 254.8,
+   "label": "Goblin Demolisher",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r39_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-12_r39_m01",
+   "t_video": 257.5,
+   "label": "Goblin Drill",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r39_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r39_m01",
+   "t_video": 260.9,
+   "label": "Poison",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r39_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r39_m01",
+   "t_video": 269.5,
+   "label": "Knight",
+   "form": "hero",
+   "source": "POV of tv_2026-10-12_r39_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r39_m01",
+   "t_video": 273.4,
+   "label": "Tesla",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r39_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r39_m01",
+   "t_video": 274.9,
+   "label": "__ability",
+   "form": null,
+   "source": "POV of tv_2026-10-12_r39_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-12_r39_m01",
+   "t_video": 276.1,
+   "label": "Goblin Demolisher",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r39_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r39_m01",
+   "t_video": 277.0,
+   "label": "Skeletons",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r39_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r39_m01",
+   "t_video": 278.1,
+   "label": "Giant Snowball",
+   "form": "evo",
+   "source": "POV of tv_2026-10-12_r39_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r39_m01",
+   "t_video": 280.8,
+   "label": "Fire Spirit",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r39_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r39_m01",
+   "t_video": 282.0,
+   "label": "Knight",
+   "form": "hero",
+   "source": "POV of tv_2026-10-12_r39_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r39_m01",
+   "t_video": 284.9,
+   "label": "Goblin Drill",
+   "form": "evo",
+   "source": "POV of tv_2026-10-12_r39_top_m01",
+   "source_confidence": "high"
+  }
+ ],
+ "paired_with": "tv_2026-10-12_r39_top_m01",
+ "offset_s": 0.0,
+ "auto": true,
+ "source": "replay"
+}

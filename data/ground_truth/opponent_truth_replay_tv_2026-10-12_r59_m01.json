@@ -1,0 +1,189 @@
+{
+ "video_id": "tv_2026-10-12_r59",
+ "side": "opponent",
+ "matches": [
+  "tv_2026-10-12_r59_m01"
+ ],
+ "items": [
+  {
+   "match_id": "tv_2026-10-12_r59_m01",
+   "t_video": 13.9,
+   "label": "Ram Rider",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r59_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r59_m01",
+   "t_video": 18.7,
+   "label": "Wizard",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r59_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r59_m01",
+   "t_video": 31.6,
+   "label": "Electro Spirit",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r59_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r59_m01",
+   "t_video": 33.2,
+   "label": "Bandit",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r59_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r59_m01",
+   "t_video": 50.4,
+   "label": "P.E.K.K.A",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r59_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r59_m01",
+   "t_video": 68.2,
+   "label": "Ram Rider",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r59_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r59_m01",
+   "t_video": 71.7,
+   "label": "Vines",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r59_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r59_m01",
+   "t_video": 83.4,
+   "label": "Golden Knight",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r59_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r59_m01",
+   "t_video": 99.4,
+   "label": "Bandit",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r59_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r59_m01",
+   "t_video": 116.3,
+   "label": "Electro Spirit",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r59_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r59_m01",
+   "t_video": 117.3,
+   "label": "Wizard",
+   "form": "evo",
+   "source": "POV of tv_2026-10-12_r59_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r59_m01",
+   "t_video": 124.4,
+   "label": "Ram Rider",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r59_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r59_m01",
+   "t_video": 127.6,
+   "label": "Vines",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r59_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r59_m01",
+   "t_video": 138.9,
+   "label": "P.E.K.K.A",
+   "form": "evo",
+   "source": "POV of tv_2026-10-12_r59_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r59_m01",
+   "t_video": 141.4,
+   "label": "Bandit",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r59_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r59_m01",
+   "t_video": 143.6,
+   "label": "Electro Spirit",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r59_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r59_m01",
+   "t_video": 148.4,
+   "label": "Golden Knight",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r59_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r59_m01",
+   "t_video": 157.9,
+   "label": "Vines",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r59_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r59_m01",
+   "t_video": 159.6,
+   "label": "Wizard",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r59_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r59_m01",
+   "t_video": 164.4,
+   "label": "Bandit",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r59_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r59_m01",
+   "t_video": 170.8,
+   "label": "Ram Rider",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r59_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r59_m01",
+   "t_video": 181.1,
+   "label": "P.E.K.K.A",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r59_top_m01",
+   "source_confidence": "high"
+  }
+ ],
+ "paired_with": "tv_2026-10-12_r59_top_m01",
+ "offset_s": 0.0,
+ "auto": true,
+ "source": "replay"
+}

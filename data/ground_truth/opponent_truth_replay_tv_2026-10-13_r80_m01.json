@@ -1,0 +1,205 @@
+{
+ "video_id": "tv_2026-10-13_r80",
+ "side": "opponent",
+ "matches": [
+  "tv_2026-10-13_r80_m01"
+ ],
+ "items": [
+  {
+   "match_id": "tv_2026-10-13_r80_m01",
+   "t_video": 19.7,
+   "label": "Mini P.E.K.K.A",
+   "form": "hero",
+   "source": "POV of tv_2026-10-13_r80_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r80_m01",
+   "t_video": 30.4,
+   "label": "Tornado",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r80_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r80_m01",
+   "t_video": 36.2,
+   "label": "Sparky",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r80_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r80_m01",
+   "t_video": 49.2,
+   "label": "Giant",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r80_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r80_m01",
+   "t_video": 54.7,
+   "label": "Mother Witch",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r80_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r80_m01",
+   "t_video": 60.3,
+   "label": "Zap",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r80_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r80_m01",
+   "t_video": 71.5,
+   "label": "Mini P.E.K.K.A",
+   "form": "hero",
+   "source": "POV of tv_2026-10-13_r80_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r80_m01",
+   "t_video": 90.4,
+   "label": "Tornado",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r80_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-13_r80_m01",
+   "t_video": 108.2,
+   "label": "Sparky",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r80_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r80_m01",
+   "t_video": 123.3,
+   "label": "Wizard",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r80_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r80_m01",
+   "t_video": 126.0,
+   "label": "Zap",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r80_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r80_m01",
+   "t_video": 132.5,
+   "label": "Mother Witch",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r80_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r80_m01",
+   "t_video": 137.8,
+   "label": "Mini P.E.K.K.A",
+   "form": "hero",
+   "source": "POV of tv_2026-10-13_r80_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r80_m01",
+   "t_video": 138.4,
+   "label": "Electro Wizard",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r80_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r80_m01",
+   "t_video": 144.5,
+   "label": "Tornado",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r80_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r80_m01",
+   "t_video": 150.7,
+   "label": "Sparky",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r80_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r80_m01",
+   "t_video": 163.3,
+   "label": "Giant",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r80_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r80_m01",
+   "t_video": 165.8,
+   "label": "Wizard",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r80_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r80_m01",
+   "t_video": 169.4,
+   "label": "Zap",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r80_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r80_m01",
+   "t_video": 172.1,
+   "label": "Tornado",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r80_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r80_m01",
+   "t_video": 179.3,
+   "label": "Mother Witch",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r80_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-13_r80_m01",
+   "t_video": 187.1,
+   "label": "Giant",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r80_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r80_m01",
+   "t_video": 189.9,
+   "label": "Mini P.E.K.K.A",
+   "form": "hero",
+   "source": "POV of tv_2026-10-13_r80_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r80_m01",
+   "t_video": 192.8,
+   "label": "Zap",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r80_top_m01",
+   "source_confidence": "high"
+  }
+ ],
+ "paired_with": "tv_2026-10-13_r80_top_m01",
+ "offset_s": 0.0,
+ "auto": true,
+ "source": "replay"
+}

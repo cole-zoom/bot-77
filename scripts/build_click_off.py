@@ -7,8 +7,9 @@ from bot77.autolabel import MULTI, UNITS
 from bot77.clicks import write_click_page_times
 
 review, out = Path(sys.argv[1]), Path(sys.argv[2])
+src = Path(sys.argv[3]) if len(sys.argv) > 3 else Path("data/external/real_v1_candidates/manifest_0.json")  # frames reviewed
 off = {f["id"] for f in json.loads(review.read_text())["frames"] if f.get("verdict") == "off"}
-cand = [x for x in json.loads(Path("data/external/real_v1_candidates/manifest_0.json").read_text()) if x["name"] in off]
+cand = [x for x in json.loads(src.read_text()) if x["name"] in off]
 videos = {v["video_id"]: v for v in lancedb.connect("data/lancedb").open_table("videos").search().limit(10_000).to_arrow().to_pylist()}
 targets = [{"card": f"{x['card']} ({x['entity']})", "entities": MULTI.get(x["entity"], [x["entity"]]), "multi": x["card"] in UNITS,
             "video": videos[x["video_id"]]["path"], "layout": videos[x["video_id"]]["layout_id"], "video_id": x["video_id"],

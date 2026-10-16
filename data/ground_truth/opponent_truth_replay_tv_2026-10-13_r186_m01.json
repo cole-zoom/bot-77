@@ -1,0 +1,85 @@
+{
+ "video_id": "tv_2026-10-13_r186",
+ "side": "opponent",
+ "matches": [
+  "tv_2026-10-13_r186_m01"
+ ],
+ "items": [
+  {
+   "match_id": "tv_2026-10-13_r186_m01",
+   "t_video": 10.8,
+   "label": "Hog Rider",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r186_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r186_m01",
+   "t_video": 21.4,
+   "label": "Knight",
+   "form": "hero",
+   "source": "POV of tv_2026-10-13_r186_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r186_m01",
+   "t_video": 22.2,
+   "label": "Dart Goblin",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r186_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r186_m01",
+   "t_video": 28.4,
+   "label": "Goblin Barrel",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r186_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r186_m01",
+   "t_video": 47.1,
+   "label": "Executioner",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r186_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r186_m01",
+   "t_video": 57.6,
+   "label": "P.E.K.K.A",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r186_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r186_m01",
+   "t_video": 68.8,
+   "label": "Hog Rider",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r186_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r186_m01",
+   "t_video": 77.2,
+   "label": "Dart Goblin",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r186_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r186_m01",
+   "t_video": 87.5,
+   "label": "Goblin Barrel",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r186_top_m01",
+   "source_confidence": "high"
+  }
+ ],
+ "paired_with": "tv_2026-10-13_r186_top_m01",
+ "offset_s": 0.0,
+ "auto": true,
+ "source": "replay"
+}

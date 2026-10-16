@@ -1,0 +1,221 @@
+{
+ "video_id": "tv_2026-10-13_r36",
+ "side": "opponent",
+ "matches": [
+  "tv_2026-10-13_r36_m01"
+ ],
+ "items": [
+  {
+   "match_id": "tv_2026-10-13_r36_m01",
+   "t_video": 21.8,
+   "label": "Bowler",
+   "form": "hero",
+   "source": "POV of tv_2026-10-13_r36_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-13_r36_m01",
+   "t_video": 27.4,
+   "label": "Witch",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r36_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r36_m01",
+   "t_video": 31.7,
+   "label": "Minions",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r36_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r36_m01",
+   "t_video": 43.9,
+   "label": "__ability",
+   "form": null,
+   "source": "POV of tv_2026-10-13_r36_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-13_r36_m01",
+   "t_video": 46.5,
+   "label": "Arrows",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r36_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r36_m01",
+   "t_video": 72.1,
+   "label": "Giant",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r36_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r36_m01",
+   "t_video": 88.4,
+   "label": "Bowler",
+   "form": "hero",
+   "source": "POV of tv_2026-10-13_r36_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r36_m01",
+   "t_video": 89.8,
+   "label": "Zappies",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r36_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r36_m01",
+   "t_video": 104.7,
+   "label": "Witch",
+   "form": "evo",
+   "source": "POV of tv_2026-10-13_r36_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r36_m01",
+   "t_video": 107.8,
+   "label": "Giant Snowball",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r36_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-13_r36_m01",
+   "t_video": 122.6,
+   "label": "Giant",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r36_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r36_m01",
+   "t_video": 128.0,
+   "label": "Minions",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r36_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r36_m01",
+   "t_video": 140.1,
+   "label": "Bowler",
+   "form": "hero",
+   "source": "POV of tv_2026-10-13_r36_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r36_m01",
+   "t_video": 145.0,
+   "label": "Witch",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r36_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r36_m01",
+   "t_video": 154.1,
+   "label": "Zappies",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r36_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-13_r36_m01",
+   "t_video": 161.4,
+   "label": "Giant Snowball",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r36_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r36_m01",
+   "t_video": 162.9,
+   "label": "Giant",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r36_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-13_r36_m01",
+   "t_video": 166.0,
+   "label": "Bowler",
+   "form": "hero",
+   "source": "POV of tv_2026-10-13_r36_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r36_m01",
+   "t_video": 169.8,
+   "label": "Arrows",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r36_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-13_r36_m01",
+   "t_video": 183.4,
+   "label": "Witch",
+   "form": "evo",
+   "source": "POV of tv_2026-10-13_r36_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r36_m01",
+   "t_video": 189.4,
+   "label": "Zappies",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r36_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-13_r36_m01",
+   "t_video": 195.3,
+   "label": "Giant",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r36_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r36_m01",
+   "t_video": 197.5,
+   "label": "Graveyard",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r36_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-13_r36_m01",
+   "t_video": 201.7,
+   "label": "Giant Snowball",
+   "form": "evo",
+   "source": "POV of tv_2026-10-13_r36_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-13_r36_m01",
+   "t_video": 206.9,
+   "label": "Bowler",
+   "form": "hero",
+   "source": "POV of tv_2026-10-13_r36_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r36_m01",
+   "t_video": 212.5,
+   "label": "Zappies",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r36_top_m01",
+   "source_confidence": "medium"
+  }
+ ],
+ "paired_with": "tv_2026-10-13_r36_top_m01",
+ "offset_s": 0.0,
+ "auto": true,
+ "source": "replay"
+}

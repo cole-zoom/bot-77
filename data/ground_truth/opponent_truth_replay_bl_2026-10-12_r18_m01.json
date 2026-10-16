@@ -1,0 +1,173 @@
+{
+ "video_id": "bl_2026-10-12_r18",
+ "side": "opponent",
+ "matches": [
+  "bl_2026-10-12_r18_m01"
+ ],
+ "items": [
+  {
+   "match_id": "bl_2026-10-12_r18_m01",
+   "t_video": 11.7,
+   "label": "Witch",
+   "form": "normal",
+   "source": "POV of bl_2026-10-12_r18_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "bl_2026-10-12_r18_m01",
+   "t_video": 18.4,
+   "label": "Goblin Barrel",
+   "form": "normal",
+   "source": "POV of bl_2026-10-12_r18_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "bl_2026-10-12_r18_m01",
+   "t_video": 34.0,
+   "label": "Skeleton Dragons",
+   "form": "normal",
+   "source": "POV of bl_2026-10-12_r18_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "bl_2026-10-12_r18_m01",
+   "t_video": 46.7,
+   "label": "Electro Wizard",
+   "form": "normal",
+   "source": "POV of bl_2026-10-12_r18_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "bl_2026-10-12_r18_m01",
+   "t_video": 57.8,
+   "label": "Wizard",
+   "form": "hero",
+   "source": "POV of bl_2026-10-12_r18_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "bl_2026-10-12_r18_m01",
+   "t_video": 63.1,
+   "label": "Skeleton Army",
+   "form": "normal",
+   "source": "POV of bl_2026-10-12_r18_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "bl_2026-10-12_r18_m01",
+   "t_video": 72.4,
+   "label": "Witch",
+   "form": "evo",
+   "source": "POV of bl_2026-10-12_r18_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "bl_2026-10-12_r18_m01",
+   "t_video": 81.8,
+   "label": "Skeleton Dragons",
+   "form": "normal",
+   "source": "POV of bl_2026-10-12_r18_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "bl_2026-10-12_r18_m01",
+   "t_video": 105.9,
+   "label": "Electro Wizard",
+   "form": "normal",
+   "source": "POV of bl_2026-10-12_r18_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "bl_2026-10-12_r18_m01",
+   "t_video": 110.1,
+   "label": "Goblin Barrel",
+   "form": "normal",
+   "source": "POV of bl_2026-10-12_r18_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "bl_2026-10-12_r18_m01",
+   "t_video": 120.0,
+   "label": "Wizard",
+   "form": "hero",
+   "source": "POV of bl_2026-10-12_r18_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "bl_2026-10-12_r18_m01",
+   "t_video": 131.3,
+   "label": "Witch",
+   "form": "normal",
+   "source": "POV of bl_2026-10-12_r18_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "bl_2026-10-12_r18_m01",
+   "t_video": 137.7,
+   "label": "Skeleton Dragons",
+   "form": "normal",
+   "source": "POV of bl_2026-10-12_r18_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "bl_2026-10-12_r18_m01",
+   "t_video": 141.5,
+   "label": "Skeleton Army",
+   "form": "normal",
+   "source": "POV of bl_2026-10-12_r18_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "bl_2026-10-12_r18_m01",
+   "t_video": 148.1,
+   "label": "Goblin Barrel",
+   "form": "normal",
+   "source": "POV of bl_2026-10-12_r18_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "bl_2026-10-12_r18_m01",
+   "t_video": 157.8,
+   "label": "Wizard",
+   "form": "hero",
+   "source": "POV of bl_2026-10-12_r18_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "bl_2026-10-12_r18_m01",
+   "t_video": 160.9,
+   "label": "Witch",
+   "form": "evo",
+   "source": "POV of bl_2026-10-12_r18_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "bl_2026-10-12_r18_m01",
+   "t_video": 171.4,
+   "label": "Skeleton Dragons",
+   "form": "normal",
+   "source": "POV of bl_2026-10-12_r18_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "bl_2026-10-12_r18_m01",
+   "t_video": 174.3,
+   "label": "Goblin Barrel",
+   "form": "normal",
+   "source": "POV of bl_2026-10-12_r18_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "bl_2026-10-12_r18_m01",
+   "t_video": 182.1,
+   "label": "Arrows",
+   "form": "normal",
+   "source": "POV of bl_2026-10-12_r18_top_m01",
+   "source_confidence": "medium"
+  }
+ ],
+ "paired_with": "bl_2026-10-12_r18_top_m01",
+ "offset_s": 0.0,
+ "auto": true,
+ "source": "replay"
+}

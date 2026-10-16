@@ -7,6 +7,22 @@
  "items": [
   {
    "match_id": "friend_2026-09-29_c_m15",
+   "t_video": 1909.6,
+   "label": "Mirror",
+   "form": null,
+   "source": "next-card advance in cole_2026-09-29_c_m10",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "friend_2026-09-29_c_m15",
+   "t_video": 1951.1,
+   "label": "Spirit Empress",
+   "form": null,
+   "source": "next-card advance in cole_2026-09-29_c_m10",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "friend_2026-09-29_c_m15",
    "t_video": 1993.1,
    "label": "Barbarian Barrel",
    "form": "hero",
@@ -35,6 +51,14 @@
    "label": "Goblin Machine",
    "form": "normal",
    "source": "POV of cole_2026-09-29_c_m10",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "friend_2026-09-29_c_m15",
+   "t_video": 2013.1,
+   "label": "Mirror",
+   "form": null,
+   "source": "next-card advance in cole_2026-09-29_c_m10",
    "source_confidence": "medium"
   },
   {

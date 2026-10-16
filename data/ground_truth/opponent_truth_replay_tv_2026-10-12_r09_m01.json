@@ -1,0 +1,469 @@
+{
+ "video_id": "tv_2026-10-12_r09",
+ "side": "opponent",
+ "matches": [
+  "tv_2026-10-12_r09_m01"
+ ],
+ "items": [
+  {
+   "match_id": "tv_2026-10-12_r09_m01",
+   "t_video": 13.8,
+   "label": "Royal Ghost",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r09_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r09_m01",
+   "t_video": 22.2,
+   "label": "Furnace",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r09_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r09_m01",
+   "t_video": 34.4,
+   "label": "Golden Knight",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r09_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r09_m01",
+   "t_video": 45.7,
+   "label": "Boss Bandit",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r09_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r09_m01",
+   "t_video": 50.5,
+   "label": "__ability",
+   "form": null,
+   "source": "POV of tv_2026-10-12_r09_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-12_r09_m01",
+   "t_video": 54.8,
+   "label": "__ability",
+   "form": null,
+   "source": "POV of tv_2026-10-12_r09_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-12_r09_m01",
+   "t_video": 59.5,
+   "label": "__ability",
+   "form": null,
+   "source": "POV of tv_2026-10-12_r09_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-12_r09_m01",
+   "t_video": 71.2,
+   "label": "Zap",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r09_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r09_m01",
+   "t_video": 76.4,
+   "label": "Royal Ghost",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r09_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r09_m01",
+   "t_video": 85.0,
+   "label": "Furnace",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r09_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r09_m01",
+   "t_video": 96.5,
+   "label": "Golden Knight",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r09_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r09_m01",
+   "t_video": 110.7,
+   "label": "Boss Bandit",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r09_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r09_m01",
+   "t_video": 125.2,
+   "label": "Ronin",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r09_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r09_m01",
+   "t_video": 130.9,
+   "label": "Royal Ghost",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r09_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r09_m01",
+   "t_video": 135.6,
+   "label": "Furnace",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r09_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r09_m01",
+   "t_video": 141.6,
+   "label": "Golden Knight",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r09_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r09_m01",
+   "t_video": 147.9,
+   "label": "Boss Bandit",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r09_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r09_m01",
+   "t_video": 154.6,
+   "label": "Ronin",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r09_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r09_m01",
+   "t_video": 158.2,
+   "label": "Royal Ghost",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r09_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r09_m01",
+   "t_video": 158.9,
+   "label": "__ability",
+   "form": null,
+   "source": "POV of tv_2026-10-12_r09_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-12_r09_m01",
+   "t_video": 166.3,
+   "label": "Zap",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r09_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r09_m01",
+   "t_video": 172.6,
+   "label": "Golden Knight",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r09_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r09_m01",
+   "t_video": 178.9,
+   "label": "Boss Bandit",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r09_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r09_m01",
+   "t_video": 182.5,
+   "label": "Furnace",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r09_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r09_m01",
+   "t_video": 184.8,
+   "label": "Royal Ghost",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r09_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r09_m01",
+   "t_video": 188.5,
+   "label": "__ability",
+   "form": null,
+   "source": "POV of tv_2026-10-12_r09_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-12_r09_m01",
+   "t_video": 192.9,
+   "label": "__ability",
+   "form": null,
+   "source": "POV of tv_2026-10-12_r09_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-12_r09_m01",
+   "t_video": 201.3,
+   "label": "Mother Witch",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r09_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-12_r09_m01",
+   "t_video": 205.9,
+   "label": "Zap",
+   "form": "evo",
+   "source": "POV of tv_2026-10-12_r09_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r09_m01",
+   "t_video": 206.6,
+   "label": "Golden Knight",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r09_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r09_m01",
+   "t_video": 208.7,
+   "label": "Hunter",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r09_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r09_m01",
+   "t_video": 210.2,
+   "label": "__ability",
+   "form": null,
+   "source": "POV of tv_2026-10-12_r09_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-12_r09_m01",
+   "t_video": 220.5,
+   "label": "Furnace",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r09_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r09_m01",
+   "t_video": 225.4,
+   "label": "Royal Ghost",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r09_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r09_m01",
+   "t_video": 230.3,
+   "label": "Zap",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r09_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r09_m01",
+   "t_video": 235.7,
+   "label": "Golden Knight",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r09_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r09_m01",
+   "t_video": 237.8,
+   "label": "Mother Witch",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r09_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r09_m01",
+   "t_video": 243.4,
+   "label": "Hunter",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r09_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r09_m01",
+   "t_video": 249.5,
+   "label": "__ability",
+   "form": null,
+   "source": "POV of tv_2026-10-12_r09_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-12_r09_m01",
+   "t_video": 251.8,
+   "label": "Furnace",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r09_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r09_m01",
+   "t_video": 253.6,
+   "label": "Royal Ghost",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r09_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r09_m01",
+   "t_video": 257.9,
+   "label": "Boss Bandit",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r09_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-12_r09_m01",
+   "t_video": 259.4,
+   "label": "Mother Witch",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r09_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r09_m01",
+   "t_video": 263.1,
+   "label": "Golden Knight",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r09_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r09_m01",
+   "t_video": 264.1,
+   "label": "__ability",
+   "form": null,
+   "source": "POV of tv_2026-10-12_r09_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-12_r09_m01",
+   "t_video": 267.1,
+   "label": "__ability",
+   "form": null,
+   "source": "POV of tv_2026-10-12_r09_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-12_r09_m01",
+   "t_video": 270.0,
+   "label": "Zap",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r09_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r09_m01",
+   "t_video": 271.4,
+   "label": "Royal Ghost",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r09_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r09_m01",
+   "t_video": 275.3,
+   "label": "Boss Bandit",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r09_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r09_m01",
+   "t_video": 280.2,
+   "label": "Mother Witch",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r09_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r09_m01",
+   "t_video": 283.9,
+   "label": "Golden Knight",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r09_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-12_r09_m01",
+   "t_video": 287.7,
+   "label": "Zap",
+   "form": "evo",
+   "source": "POV of tv_2026-10-12_r09_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r09_m01",
+   "t_video": 292.3,
+   "label": "Hunter",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r09_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r09_m01",
+   "t_video": 295.1,
+   "label": "Furnace",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r09_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r09_m01",
+   "t_video": 297.9,
+   "label": "Royal Ghost",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r09_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r09_m01",
+   "t_video": 301.6,
+   "label": "Mother Witch",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r09_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-12_r09_m01",
+   "t_video": 303.5,
+   "label": "Zap",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r09_top_m01",
+   "source_confidence": "high"
+  }
+ ],
+ "paired_with": "tv_2026-10-12_r09_top_m01",
+ "offset_s": 0.0,
+ "auto": true,
+ "source": "replay"
+}

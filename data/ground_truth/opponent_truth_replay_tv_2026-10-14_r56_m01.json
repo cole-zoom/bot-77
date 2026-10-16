@@ -1,0 +1,205 @@
+{
+ "video_id": "tv_2026-10-14_r56",
+ "side": "opponent",
+ "matches": [
+  "tv_2026-10-14_r56_m01"
+ ],
+ "items": [
+  {
+   "match_id": "tv_2026-10-14_r56_m01",
+   "t_video": 9.8,
+   "label": "Minion Giant",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r56_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r56_m01",
+   "t_video": 22.0,
+   "label": "Mega Knight",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r56_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r56_m01",
+   "t_video": 27.0,
+   "label": "Skeleton Army",
+   "form": null,
+   "source": "next-card advance in tv_2026-10-14_r56_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-14_r56_m01",
+   "t_video": 36.8,
+   "label": "Firecracker",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r56_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r56_m01",
+   "t_video": 54.3,
+   "label": "Boss Bandit",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r56_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-14_r56_m01",
+   "t_video": 62.7,
+   "label": "Rage",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r56_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-14_r56_m01",
+   "t_video": 82.1,
+   "label": "Mega Knight",
+   "form": "evo",
+   "source": "POV of tv_2026-10-14_r56_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r56_m01",
+   "t_video": 89.0,
+   "label": "Minion Giant",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r56_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-14_r56_m01",
+   "t_video": 97.5,
+   "label": "Vines",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r56_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r56_m01",
+   "t_video": 111.7,
+   "label": "Cannon",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r56_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r56_m01",
+   "t_video": 114.0,
+   "label": "Skeleton Army",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r56_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r56_m01",
+   "t_video": 122.5,
+   "label": "Firecracker",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r56_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-14_r56_m01",
+   "t_video": 131.5,
+   "label": "Boss Bandit",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r56_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r56_m01",
+   "t_video": 147.3,
+   "label": "Mega Knight",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r56_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r56_m01",
+   "t_video": 150.0,
+   "label": "Cannon",
+   "form": null,
+   "source": "next-card advance in tv_2026-10-14_r56_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-14_r56_m01",
+   "t_video": 157.5,
+   "label": "Vines",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r56_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r56_m01",
+   "t_video": 160.1,
+   "label": "Firecracker",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r56_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r56_m01",
+   "t_video": 166.7,
+   "label": "Cannon",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r56_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r56_m01",
+   "t_video": 171.0,
+   "label": "Skeleton Army",
+   "form": "evo",
+   "source": "POV of tv_2026-10-14_r56_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-14_r56_m01",
+   "t_video": 171.0,
+   "label": "Minion Giant",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r56_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-14_r56_m01",
+   "t_video": 179.2,
+   "label": "Boss Bandit",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r56_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r56_m01",
+   "t_video": 184.2,
+   "label": "Cannon",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r56_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-14_r56_m01",
+   "t_video": 187.8,
+   "label": "Firecracker",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r56_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-14_r56_m01",
+   "t_video": 191.8,
+   "label": "Skeleton Army",
+   "form": "normal",
+   "source": "POV of tv_2026-10-14_r56_top_m01",
+   "source_confidence": "high"
+  }
+ ],
+ "paired_with": "tv_2026-10-14_r56_top_m01",
+ "offset_s": 0.0,
+ "auto": true,
+ "source": "replay"
+}

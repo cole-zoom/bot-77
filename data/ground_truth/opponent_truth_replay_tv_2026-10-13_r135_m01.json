@@ -1,0 +1,277 @@
+{
+ "video_id": "tv_2026-10-13_r135",
+ "side": "opponent",
+ "matches": [
+  "tv_2026-10-13_r135_m01"
+ ],
+ "items": [
+  {
+   "match_id": "tv_2026-10-13_r135_m01",
+   "t_video": 11.4,
+   "label": "Miner",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r135_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r135_m01",
+   "t_video": 21.2,
+   "label": "Night Witch",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r135_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r135_m01",
+   "t_video": 28.4,
+   "label": "Inferno Dragon",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r135_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-13_r135_m01",
+   "t_video": 32.7,
+   "label": "Goblin Curse",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r135_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r135_m01",
+   "t_video": 34.2,
+   "label": "Zap",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r135_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-13_r135_m01",
+   "t_video": 42.4,
+   "label": "Miner",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r135_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r135_m01",
+   "t_video": 59.9,
+   "label": "Skeleton Army",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r135_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r135_m01",
+   "t_video": 70.9,
+   "label": "Inferno Dragon",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r135_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r135_m01",
+   "t_video": 77.9,
+   "label": "Skeleton King",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r135_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r135_m01",
+   "t_video": 88.4,
+   "label": "Zap",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r135_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r135_m01",
+   "t_video": 92.4,
+   "label": "__ability",
+   "form": null,
+   "source": "POV of tv_2026-10-13_r135_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-13_r135_m01",
+   "t_video": 101.7,
+   "label": "Miner",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r135_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r135_m01",
+   "t_video": 111.2,
+   "label": "Golem",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r135_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-13_r135_m01",
+   "t_video": 126.1,
+   "label": "Night Witch",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r135_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r135_m01",
+   "t_video": 129.0,
+   "label": "Skeleton King",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r135_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r135_m01",
+   "t_video": 138.1,
+   "label": "Inferno Dragon",
+   "form": "evo",
+   "source": "POV of tv_2026-10-13_r135_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r135_m01",
+   "t_video": 141.6,
+   "label": "Miner",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r135_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r135_m01",
+   "t_video": 144.5,
+   "label": "Zap",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r135_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r135_m01",
+   "t_video": 149.4,
+   "label": "__ability",
+   "form": null,
+   "source": "POV of tv_2026-10-13_r135_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-13_r135_m01",
+   "t_video": 150.7,
+   "label": "Skeleton Army",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r135_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r135_m01",
+   "t_video": 154.6,
+   "label": "Skeleton King",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r135_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r135_m01",
+   "t_video": 160.2,
+   "label": "Inferno Dragon",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r135_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r135_m01",
+   "t_video": 166.2,
+   "label": "Miner",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r135_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r135_m01",
+   "t_video": 168.9,
+   "label": "Zap",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r135_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r135_m01",
+   "t_video": 171.7,
+   "label": "Skeleton Army",
+   "form": "evo",
+   "source": "POV of tv_2026-10-13_r135_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r135_m01",
+   "t_video": 183.4,
+   "label": "Skeleton King",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r135_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r135_m01",
+   "t_video": 190.8,
+   "label": "Inferno Dragon",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r135_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r135_m01",
+   "t_video": 199.2,
+   "label": "Golem",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r135_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r135_m01",
+   "t_video": 200.4,
+   "label": "Goblin Curse",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r135_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r135_m01",
+   "t_video": 208.5,
+   "label": "Miner",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r135_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r135_m01",
+   "t_video": 209.9,
+   "label": "Zap",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r135_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "tv_2026-10-13_r135_m01",
+   "t_video": 212.7,
+   "label": "Skeleton Army",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r135_top_m01",
+   "source_confidence": "low"
+  },
+  {
+   "match_id": "tv_2026-10-13_r135_m01",
+   "t_video": 218.5,
+   "label": "Skeleton King",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r135_top_m01",
+   "source_confidence": "high"
+  }
+ ],
+ "paired_with": "tv_2026-10-13_r135_top_m01",
+ "offset_s": 0.0,
+ "auto": true,
+ "source": "replay"
+}

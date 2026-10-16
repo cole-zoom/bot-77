@@ -1,0 +1,993 @@
+{
+ "page": "sprite_review_v2",
+ "rows": [
+  {
+   "cls": "baby-dragon-evolution",
+   "row_bad": false,
+   "bad": [
+    "baby-dragon-evolution_auto_cole_2026-10-01_c_m05_0800.70_baby-dragon-evolution.png",
+    "baby-dragon-evolution_auto_KyRp2YlZWDc_m02_0342.00_baby-dragon-evolution.png"
+   ],
+   "all": [
+    "baby-dragon-evolution_auto_txYlMgXaGF8_m02_0398.50_baby-dragon-evolution.png",
+    "baby-dragon-evolution_auto_cole_2026-10-01_c_m06_1010.10_baby-dragon-evolution.png",
+    "baby-dragon-evolution_auto_txYlMgXaGF8_m02_0397.00_baby-dragon-evolution.png",
+    "baby-dragon-evolution_auto_cole_2026-10-01_c_m05_0800.70_baby-dragon-evolution.png",
+    "baby-dragon-evolution_auto_txYlMgXaGF8_m03_0572.50_baby-dragon-evolution.png",
+    "baby-dragon-evolution_auto_KyRp2YlZWDc_m02_0342.00_baby-dragon-evolution.png",
+    "baby-dragon-evolution_auto_cole_2026-10-01_c_m05_0802.20_baby-dragon-evolution.png",
+    "baby-dragon-evolution_auto_KyRp2YlZWDc_m01_0235.00_baby-dragon-evolution.png",
+    "baby-dragon-evolution_auto_cole_2026-10-01_m03_0802.00_baby-dragon-evolution.png",
+    "baby-dragon-evolution_auto_InqPzjMQ76I_m05_0608.00_baby-dragon-evolution.png"
+   ]
+  },
+  {
+   "cls": "berserker",
+   "row_bad": false,
+   "bad": [
+    "berserker_auto_txYlMgXaGF8_m02_0374.40_berserker.png"
+   ],
+   "all": [
+    "berserker_auto_friend_2026-09-29_b_m02_0384.10_berserker.png",
+    "berserker_auto_friend_2026-09-29_b_m02_0509.40_berserker.png",
+    "berserker_auto_kdav8AdQPc0_m01_0029.20_berserker.png",
+    "berserker_auto_friend_2026-09-29_b_m04_0790.20_berserker.png",
+    "berserker_auto_txYlMgXaGF8_m02_0375.90_berserker.png",
+    "berserker_auto_kdav8AdQPc0_m02_0278.60_berserker.png",
+    "berserker_auto_friend_2026-09-29_a_m02_0397.20_berserker.png",
+    "berserker_auto_kdav8AdQPc0_m01_0172.80_berserker.png",
+    "berserker_auto_cole_2026-09-29_b_m01_0134.00_berserker.png",
+    "berserker_auto_txYlMgXaGF8_m02_0374.40_berserker.png"
+   ]
+  },
+  {
+   "cls": "berserker-hero",
+   "row_bad": false,
+   "bad": [
+    "berserker-hero_auto_unnaLsLzabw_m04_1058.00_berserker-hero.png"
+   ],
+   "all": [
+    "berserker-hero_auto_PuJls1qTZsU_m06_1214.00_berserker-hero.png",
+    "berserker-hero_auto_PuJls1qTZsU_m01_0032.30_berserker-hero.png",
+    "berserker-hero_auto_cole_2026-09-29_b_m03_0697.70_berserker-hero.png",
+    "berserker-hero_auto_cole_2026-09-29_b_m03_0500.00_berserker-hero.png",
+    "berserker-hero_auto_PuJls1qTZsU_m05_0995.00_berserker-hero.png",
+    "berserker-hero_auto_cole_2026-09-29_b_m02_0247.90_berserker-hero.png",
+    "berserker-hero_auto_unnaLsLzabw_m04_1058.00_berserker-hero.png"
+   ]
+  },
+  {
+   "cls": "boss-bandit",
+   "row_bad": false,
+   "bad": [],
+   "all": [
+    "boss-bandit_auto_cole_2026-09-29_b_m02_0276.20_boss-bandit.png",
+    "boss-bandit_auto_cole_2026-09-29_b_m03_0588.10_boss-bandit.png",
+    "boss-bandit_auto_cole_2026-09-29_b_m03_0649.70_boss-bandit.png",
+    "boss-bandit_auto_cole_2026-09-29_c_m06_1386.20_boss-bandit.png",
+    "boss-bandit_auto_cole_2026-09-29_c_m03_0591.50_boss-bandit.png",
+    "boss-bandit_auto_cole_2026-09-29_c_m08_1765.70_boss-bandit.png",
+    "boss-bandit_auto_friend_2026-09-29_b_m05_0979.00_boss-bandit.png",
+    "boss-bandit_auto_friend_2026-09-29_b_m05_1028.00_boss-bandit.png"
+   ]
+  },
+  {
+   "cls": "cannon-evolution",
+   "row_bad": false,
+   "bad": [
+    "cannon-evolution_auto_PuJls1qTZsU_m07_1494.50_cannon-evolution.png",
+    "cannon-evolution_auto_ge_HXewYAhg_m07_1644.00_cannon-evolution.png"
+   ],
+   "all": [
+    "cannon-evolution_auto_Zt6Onn89EVk_m01_0249.00_cannon-evolution.png",
+    "cannon-evolution_auto_iszvnzGwQ9c_m03_0880.00_cannon-evolution.png",
+    "cannon-evolution_auto_iszvnzGwQ9c_m03_0893.00_cannon-evolution.png",
+    "cannon-evolution_auto_iszvnzGwQ9c_m03_0894.00_cannon-evolution.png",
+    "cannon-evolution_auto_7R5FP2IYWsw_m03_0793.00_cannon-evolution.png",
+    "cannon-evolution_auto_Zt6Onn89EVk_m01_0248.00_cannon-evolution.png",
+    "cannon-evolution_auto_PuJls1qTZsU_m07_1494.50_cannon-evolution.png",
+    "cannon-evolution_auto_ge_HXewYAhg_m07_1644.00_cannon-evolution.png",
+    "cannon-evolution_auto_SXCyXJ3h1GE_m03_0732.00_cannon-evolution.png",
+    "cannon-evolution_auto_4N_UD_1Y01M_m03_0322.00_cannon-evolution.png"
+   ]
+  },
+  {
+   "cls": "dark-prince-hero",
+   "row_bad": false,
+   "bad": [
+    "dark-prince-hero_auto_cole_2026-09-29_c_m07_1600.80_dark-prince-hero.png",
+    "dark-prince-hero_auto_cole_2026-09-29_c_m04_0817.90_dark-prince-hero.png"
+   ],
+   "all": [
+    "dark-prince-hero_auto_cole_2026-09-29_c_m04_0754.80_dark-prince-hero.png",
+    "dark-prince-hero_auto_cole_2026-09-29_c_m07_1600.80_dark-prince-hero.png",
+    "dark-prince-hero_auto_cole_2026-10-07_m08_1490.80_dark-prince-hero.png",
+    "dark-prince-hero_auto_cole_2026-09-29_c_m04_0817.90_dark-prince-hero.png",
+    "dark-prince-hero_auto_cole_2026-10-07_m07_1323.40_dark-prince-hero.png",
+    "dark-prince-hero_auto_cole_2026-10-07_m02_0307.70_dark-prince-hero.png",
+    "dark-prince-hero_auto_9G4GU0hEdhQ_m06_1585.00_dark-prince-hero.png",
+    "dark-prince-hero_auto_cole_2026-10-01_e_m04_0580.00_dark-prince-hero.png",
+    "dark-prince-hero_auto_cole_2026-10-09_m01_0138.60_dark-prince-hero.png",
+    "dark-prince-hero_auto_cole_2026-10-01_e_m06_0778.00_dark-prince-hero.png"
+   ]
+  },
+  {
+   "cls": "dark-prince-hero-dismounted",
+   "row_bad": false,
+   "bad": [
+    "dark-prince-hero-dismounted_auto_cole_2026-10-07_m03_0512.90_dark-prince-hero-dismounted.png"
+   ],
+   "all": [
+    "dark-prince-hero-dismounted_auto_cole_2026-10-09_m01_0141.10_dark-prince-hero-dismounted.png",
+    "dark-prince-hero-dismounted_auto_cole_2026-10-09_m02_0322.30_dark-prince-hero-dismounted.png",
+    "dark-prince-hero-dismounted_auto_cole_2026-10-01_e_m03_0442.70_dark-prince-hero-dismounted.png",
+    "dark-prince-hero-dismounted_auto_cole_2026-09-29_c_m02_0557.50_dark-prince-hero-dismounted.png",
+    "dark-prince-hero-dismounted_auto_cole_2026-10-07_m03_0518.90_dark-prince-hero-dismounted.png",
+    "dark-prince-hero-dismounted_auto_cole_2026-09-29_c_m01_0176.60_dark-prince-hero-dismounted.png",
+    "dark-prince-hero-dismounted_auto_cole_2026-10-09_m09_1773.10_dark-prince-hero-dismounted.png",
+    "dark-prince-hero-dismounted_auto_cole_2026-09-29_c_m01_0175.10_dark-prince-hero-dismounted.png",
+    "dark-prince-hero-dismounted_auto_cole_2026-10-01_e_m03_0441.20_dark-prince-hero-dismounted.png",
+    "dark-prince-hero-dismounted_auto_cole_2026-10-07_m03_0512.90_dark-prince-hero-dismounted.png"
+   ]
+  },
+  {
+   "cls": "dart-goblin-evolution",
+   "row_bad": false,
+   "bad": [
+    "dart-goblin-evolution_auto_6rCdZkKZiis_m02_0458.50_dart-goblin-evolution.png"
+   ],
+   "all": [
+    "dart-goblin-evolution_auto_6rCdZkKZiis_m04_1038.00_dart-goblin-evolution.png",
+    "dart-goblin-evolution_auto_6rCdZkKZiis_m02_0458.50_dart-goblin-evolution.png",
+    "dart-goblin-evolution_auto_6rCdZkKZiis_m02_0460.00_dart-goblin-evolution.png",
+    "dart-goblin-evolution_auto_6bLDtHZlcSU_m05_1127.10_dart-goblin-evolution.png",
+    "dart-goblin-evolution_auto_6bLDtHZlcSU_m02_0417.80_dart-goblin-evolution.png",
+    "dart-goblin-evolution_auto_6bLDtHZlcSU_m07_1639.20_dart-goblin-evolution.png",
+    "dart-goblin-evolution_auto_b9nXaMBejRw_m02_0385.00_dart-goblin-evolution.png",
+    "dart-goblin-evolution_auto_XuM18Vfd-xc_m03_0850.00_dart-goblin-evolution.png",
+    "dart-goblin-evolution_auto_XuM18Vfd-xc_m03_0851.00_dart-goblin-evolution.png"
+   ]
+  },
+  {
+   "cls": "goblin-curse",
+   "row_bad": false,
+   "bad": [
+    "goblin-curse_auto_friend_2026-09-29_c_m06_0808.40_goblin-curse.png",
+    "goblin-curse_auto_friend_2026-09-29_c_m06_0809.90_goblin-curse.png",
+    "goblin-curse_auto_friend_2026-09-29_b_m02_0401.90_goblin-curse.png"
+   ],
+   "all": [
+    "goblin-curse_auto_friend_2026-09-29_c_m06_0808.40_goblin-curse.png",
+    "goblin-curse_auto_friend_2026-09-29_c_m05_0686.00_goblin-curse.png",
+    "goblin-curse_auto_friend_2026-09-29_c_m06_0809.90_goblin-curse.png",
+    "goblin-curse_auto_friend_2026-09-29_b_m02_0401.90_goblin-curse.png"
+   ]
+  },
+  {
+   "cls": "goblin-demolisher",
+   "row_bad": false,
+   "bad": [
+    "goblin-demolisher_auto_friend_2026-09-29_a_m02_0313.00_goblin-demolisher.png"
+   ],
+   "all": [
+    "goblin-demolisher_auto_friend_2026-09-29_b_m05_1017.30_goblin-demolisher.png",
+    "goblin-demolisher_auto_friend_2026-09-29_b_m05_0852.00_goblin-demolisher.png",
+    "goblin-demolisher_auto_Pn15Nh1xWoM_m05_1394.00_goblin-demolisher.png",
+    "goblin-demolisher_auto_friend_2026-09-29_a_m02_0313.00_goblin-demolisher.png",
+    "goblin-demolisher_auto_friend_2026-09-29_a_m02_0317.00_goblin-demolisher.png",
+    "goblin-demolisher_auto_XuM18Vfd-xc_m02_0511.00_goblin-demolisher.png",
+    "goblin-demolisher_auto_friend_2026-09-29_b_m01_0241.80_goblin-demolisher.png",
+    "goblin-demolisher_auto_XuM18Vfd-xc_m03_0819.00_goblin-demolisher.png",
+    "goblin-demolisher_auto_XuM18Vfd-xc_m05_1417.00_goblin-demolisher.png",
+    "goblin-demolisher_auto_Ka99f8HJHcE_m04_0843.00_goblin-demolisher.png"
+   ]
+  },
+  {
+   "cls": "goblin-drill-evolution",
+   "row_bad": false,
+   "bad": [
+    "goblin-drill-evolution_auto_Pn15Nh1xWoM_m05_1306.60_goblin-drill-evolution.png",
+    "goblin-drill-evolution_auto_cole_2026-10-01_b_m01_0133.70_goblin-drill-evolution.png",
+    "goblin-drill-evolution_auto_friend_2026-09-29_c_m03_0541.20_goblin-drill-evolution.png",
+    "goblin-drill-evolution_auto_kdav8AdQPc0_m01_0090.50_goblin-drill-evolution.png"
+   ],
+   "all": [
+    "goblin-drill-evolution_auto_Pn15Nh1xWoM_m05_1394.00_goblin-drill-evolution.png",
+    "goblin-drill-evolution_auto_Pn15Nh1xWoM_m05_1306.60_goblin-drill-evolution.png",
+    "goblin-drill-evolution_auto_Pn15Nh1xWoM_m03_0804.70_goblin-drill-evolution.png",
+    "goblin-drill-evolution_auto_kdav8AdQPc0_m02_0339.00_goblin-drill-evolution.png",
+    "goblin-drill-evolution_auto_cole_2026-10-01_b_m01_0133.70_goblin-drill-evolution.png",
+    "goblin-drill-evolution_auto_h_XT-wveQgk_m04_0928.00_goblin-drill-evolution.png",
+    "goblin-drill-evolution_auto_friend_2026-09-29_c_m03_0541.20_goblin-drill-evolution.png",
+    "goblin-drill-evolution_auto_kdav8AdQPc0_m01_0090.50_goblin-drill-evolution.png",
+    "goblin-drill-evolution_auto_kdav8AdQPc0_m06_1423.40_goblin-drill-evolution.png",
+    "goblin-drill-evolution_auto_h_XT-wveQgk_m01_0257.00_goblin-drill-evolution.png"
+   ]
+  },
+  {
+   "cls": "goblin-machine",
+   "row_bad": false,
+   "bad": [
+    "goblin-machine_auto_cole_2026-09-29_c_m04_0783.30_goblin-machine.png",
+    "goblin-machine_auto_cole_2026-09-29_b_m03_0601.00_goblin-machine.png",
+    "goblin-machine_auto_cole_2026-09-29_b_m02_0283.60_goblin-machine.png"
+   ],
+   "all": [
+    "goblin-machine_auto_cole_2026-09-29_c_m08_1677.40_goblin-machine.png",
+    "goblin-machine_auto_cole_2026-09-29_c_m06_1194.40_goblin-machine.png",
+    "goblin-machine_auto_cole_2026-09-29_c_m04_0783.30_goblin-machine.png",
+    "goblin-machine_auto_cole_2026-09-29_b_m03_0601.00_goblin-machine.png",
+    "goblin-machine_auto_cole_2026-09-29_b_m02_0361.00_goblin-machine.png",
+    "goblin-machine_auto_cole_2026-09-29_b_m02_0283.60_goblin-machine.png",
+    "goblin-machine_auto_friend_2026-09-29_c_m15_2144.00_goblin-machine.png",
+    "goblin-machine_auto_friend_2026-09-29_c_m09_1436.00_goblin-machine.png",
+    "goblin-machine_auto_friend_2026-09-29_c_m09_1272.00_goblin-machine.png",
+    "goblin-machine_auto_friend_2026-09-29_b_m04_0665.00_goblin-machine.png"
+   ]
+  },
+  {
+   "cls": "goblins-hero",
+   "row_bad": false,
+   "bad": [
+    "goblins-hero_auto_cole_2026-10-09_c_m03_0407.50_goblins-hero.png",
+    "goblins-hero_auto_cole_2026-10-09_c_m01_0062.10_goblins-hero.png"
+   ],
+   "all": [
+    "goblins-hero_auto_cole_2026-10-01_m07_1514.70_goblins-hero.png",
+    "goblins-hero_auto_cole_2026-10-01_m07_1514.70_goblins-hero.png",
+    "goblins-hero_auto_6rCdZkKZiis_m01_0121.70_goblins-hero.png",
+    "goblins-hero_auto_6rCdZkKZiis_m01_0121.70_goblins-hero.png",
+    "goblins-hero_auto_cole_2026-10-09_c_m03_0407.50_goblins-hero.png",
+    "goblins-hero_auto_cole_2026-10-01_m07_1400.90_goblins-hero.png",
+    "goblins-hero_auto_cole_2026-10-09_c_m01_0062.10_goblins-hero.png",
+    "goblins-hero_auto_cole_2026-10-09_c_m01_0025.60_goblins-hero.png",
+    "goblins-hero_auto_6rCdZkKZiis_m02_0449.20_goblins-hero.png",
+    "goblins-hero_auto_4ul7QISa5Qw_m05_1020.00_goblins-hero.png"
+   ]
+  },
+  {
+   "cls": "ice-golem-hero",
+   "row_bad": false,
+   "bad": [
+    "ice-golem-hero_auto_3r9-35N9yE8_m04_0775.00_ice-golem-hero.png",
+    "ice-golem-hero_auto_tbJ_G489MkI_m04_0670.25_ice-golem-hero.png",
+    "ice-golem-hero_auto_83d3zofOD44_m04_0663.25_ice-golem-hero.png"
+   ],
+   "all": [
+    "ice-golem-hero_auto_3r9-35N9yE8_m04_0879.80_ice-golem-hero.png",
+    "ice-golem-hero_auto_3r9-35N9yE8_m06_1246.00_ice-golem-hero.png",
+    "ice-golem-hero_auto_3r9-35N9yE8_m04_0775.00_ice-golem-hero.png",
+    "ice-golem-hero_auto_83d3zofOD44_m03_0376.25_ice-golem-hero.png",
+    "ice-golem-hero_auto_tbJ_G489MkI_m06_1055.50_ice-golem-hero.png",
+    "ice-golem-hero_auto_oPDyLHWbu08_m04_0944.00_ice-golem-hero.png",
+    "ice-golem-hero_auto_jG6aNXmyG9U_m05_1043.00_ice-golem-hero.png",
+    "ice-golem-hero_auto_tbJ_G489MkI_m01_0028.00_ice-golem-hero.png",
+    "ice-golem-hero_auto_tbJ_G489MkI_m04_0670.25_ice-golem-hero.png",
+    "ice-golem-hero_auto_83d3zofOD44_m04_0663.25_ice-golem-hero.png"
+   ]
+  },
+  {
+   "cls": "ice-wizard-hero",
+   "row_bad": false,
+   "bad": [
+    "ice-wizard-hero_auto_nSXIs16M7Ag_m01_0192.20_ice-wizard-hero.png",
+    "ice-wizard-hero_auto_7wwlikDO7J0_m03_0609.80_ice-wizard-hero.png"
+   ],
+   "all": [
+    "ice-wizard-hero_auto_nSXIs16M7Ag_m01_0192.20_ice-wizard-hero.png",
+    "ice-wizard-hero_auto_nSXIs16M7Ag_m03_0798.90_ice-wizard-hero.png",
+    "ice-wizard-hero_auto_b9nXaMBejRw_m01_0180.00_ice-wizard-hero.png",
+    "ice-wizard-hero_auto_b9nXaMBejRw_m05_1072.60_ice-wizard-hero.png",
+    "ice-wizard-hero_auto_Yufu8gJolkQ_m01_0233.00_ice-wizard-hero.png",
+    "ice-wizard-hero_auto_b9nXaMBejRw_m05_1030.00_ice-wizard-hero.png",
+    "ice-wizard-hero_auto_5BjmAo2-b2k_m04_0627.80_ice-wizard-hero.png",
+    "ice-wizard-hero_auto_5BjmAo2-b2k_m04_0627.80_ice-wizard-hero.png",
+    "ice-wizard-hero_auto_7wwlikDO7J0_m03_0609.80_ice-wizard-hero.png",
+    "ice-wizard-hero_auto_7wwlikDO7J0_m05_1085.20_ice-wizard-hero.png"
+   ]
+  },
+  {
+   "cls": "knight-hero",
+   "row_bad": false,
+   "bad": [
+    "knight-hero_auto_7R5FP2IYWsw_m05_1182.10_knight-hero.png",
+    "knight-hero_auto_unnaLsLzabw_m05_1331.00_knight-hero.png",
+    "knight-hero_auto_h_XT-wveQgk_m06_1662.00_knight-hero.png"
+   ],
+   "all": [
+    "knight-hero_auto_7R5FP2IYWsw_m05_1182.10_knight-hero.png",
+    "knight-hero_auto_unnaLsLzabw_m05_1331.00_knight-hero.png",
+    "knight-hero_auto_7R5FP2IYWsw_m03_0655.20_knight-hero.png",
+    "knight-hero_auto_7R5FP2IYWsw_m01_0243.80_knight-hero.png",
+    "knight-hero_auto_h_XT-wveQgk_m06_1662.00_knight-hero.png",
+    "knight-hero_auto_cole_2026-10-01_c_m01_0066.00_knight-hero.png",
+    "knight-hero_auto_ZXPr1gwF9ys_m05_0837.00_knight-hero.png",
+    "knight-hero_auto_oPDyLHWbu08_m02_0456.00_knight-hero.png",
+    "knight-hero_auto_vp9U0iGUtZA_m03_0818.00_knight-hero.png",
+    "knight-hero_auto_FZlpciW8KlM_m04_0811.00_knight-hero.png"
+   ]
+  },
+  {
+   "cls": "royal-hogs-evolution",
+   "row_bad": false,
+   "bad": [],
+   "all": [
+    "royal-hogs-evolution_auto_PuJls1qTZsU_m02_0367.30_royal-hogs-evolution.png",
+    "royal-hogs-evolution_auto_p2MSIPdQqnM_m03_0452.50_royal-hogs-evolution.png",
+    "royal-hogs-evolution_auto_PuJls1qTZsU_m06_1314.60_royal-hogs-evolution.png",
+    "royal-hogs-evolution_auto_PuJls1qTZsU_m06_1314.60_royal-hogs-evolution.png",
+    "royal-hogs-evolution_auto_p2MSIPdQqnM_m03_0452.50_royal-hogs-evolution.png",
+    "royal-hogs-evolution_auto_p2MSIPdQqnM_m04_0695.90_royal-hogs-evolution.png",
+    "royal-hogs-evolution_auto_7wwlikDO7J0_m03_0658.80_royal-hogs-evolution.png",
+    "royal-hogs-evolution_auto_7wwlikDO7J0_m04_0872.80_royal-hogs-evolution.png",
+    "royal-hogs-evolution_auto_7wwlikDO7J0_m05_1037.90_royal-hogs-evolution.png"
+   ]
+  },
+  {
+   "cls": "skeleton-barrel-evolution",
+   "row_bad": false,
+   "bad": [
+    "skeleton-barrel-evolution_auto_6rCdZkKZiis_m01_0087.30_skeleton-barrel-evolution.png",
+    "skeleton-barrel-evolution_auto_6rCdZkKZiis_m04_0913.90_skeleton-barrel-evolution.png",
+    "skeleton-barrel-evolution_auto_6rCdZkKZiis_m01_0173.50_skeleton-barrel-evolution.png",
+    "skeleton-barrel-evolution_auto_b9nXaMBejRw_m02_0436.20_skeleton-barrel-evolution.png",
+    "skeleton-barrel-evolution_auto_b9nXaMBejRw_m02_0437.70_skeleton-barrel-evolution.png"
+   ],
+   "all": [
+    "skeleton-barrel-evolution_auto_6rCdZkKZiis_m01_0087.30_skeleton-barrel-evolution.png",
+    "skeleton-barrel-evolution_auto_6rCdZkKZiis_m04_0913.90_skeleton-barrel-evolution.png",
+    "skeleton-barrel-evolution_auto_6rCdZkKZiis_m01_0173.50_skeleton-barrel-evolution.png",
+    "skeleton-barrel-evolution_auto_b9nXaMBejRw_m02_0436.20_skeleton-barrel-evolution.png",
+    "skeleton-barrel-evolution_auto_b9nXaMBejRw_m02_0437.70_skeleton-barrel-evolution.png",
+    "skeleton-barrel-evolution_auto_1Y6Ge1bUOOc_m06_1234.00_skeleton-barrel-evolution.png",
+    "skeleton-barrel-evolution_auto_txYlMgXaGF8_m02_0436.00_skeleton-barrel-evolution.png",
+    "skeleton-barrel-evolution_auto_9LTuX9QS2gk_m05_0828.00_skeleton-barrel-evolution.png",
+    "skeleton-barrel-evolution_auto_i0ErCwqf8Mg_m06_0986.00_skeleton-barrel-evolution.png",
+    "skeleton-barrel-evolution_auto_s6y6y3ZIYL4_m03_0602.00_skeleton-barrel-evolution.png"
+   ]
+  },
+  {
+   "cls": "tomb-queen",
+   "row_bad": false,
+   "bad": [],
+   "all": [
+    "tomb-queen_auto_cole_2026-09-28_phone_m05_1034.00_tomb-queen.png",
+    "tomb-queen_auto_cole_2026-09-30_m01_0131.80_tomb-queen.png",
+    "tomb-queen_auto_cole_2026-09-30_m01_0163.80_tomb-queen.png",
+    "tomb-queen_auto_friend_2026-09-29_c_m04_0650.70_tomb-queen.png",
+    "tomb-queen_auto_cole_2026-09-28_phone_m05_1035.00_tomb-queen.png",
+    "tomb-queen_auto_cole_2026-09-28_phone_m05_1037.00_tomb-queen.png",
+    "tomb-queen_auto_friend_2026-09-29_c_m03_0566.70_tomb-queen.png",
+    "tomb-queen_auto_cole_2026-09-30_m06_1234.60_tomb-queen.png",
+    "tomb-queen_auto_friend_2026-09-29_c_m01_0256.40_tomb-queen.png",
+    "tomb-queen_auto_cole_2026-09-29_c_m07_1584.00_tomb-queen.png"
+   ]
+  },
+  {
+   "cls": "tombstone-hero",
+   "row_bad": false,
+   "bad": [],
+   "all": [
+    "tombstone-hero_auto_friend_2026-09-29_c_m01_0101.00_tombstone-hero.png",
+    "tombstone-hero_auto_friend_2026-09-29_c_m02_0360.40_tombstone-hero.png",
+    "tombstone-hero_auto_friend_2026-09-29_c_m09_1262.30_tombstone-hero.png",
+    "tombstone-hero_auto_cole_2026-09-30_m02_0298.10_tombstone-hero.png",
+    "tombstone-hero_auto_cole_2026-09-30_m02_0301.10_tombstone-hero.png",
+    "tombstone-hero_auto_cole_2026-09-30_m04_0848.20_tombstone-hero.png",
+    "tombstone-hero_auto_cole_2026-09-29_c_m10_2120.00_tombstone-hero.png",
+    "tombstone-hero_auto_cole_2026-09-29_c_m08_1688.00_tombstone-hero.png",
+    "tombstone-hero_auto_Wz56aCfNnt0_m06_1152.00_tombstone-hero.png",
+    "tombstone-hero_auto_1Y6Ge1bUOOc_m06_1310.00_tombstone-hero.png"
+   ]
+  },
+  {
+   "cls": "valkyrie-hero",
+   "row_bad": false,
+   "bad": [
+    "valkyrie-hero_auto_b9nXaMBejRw_m03_0633.80_valkyrie-hero.png",
+    "valkyrie-hero_auto_kWTdrSkGfr8_m05_0807.80_valkyrie-hero.png",
+    "valkyrie-hero_auto_kWTdrSkGfr8_m05_0900.20_valkyrie-hero.png",
+    "valkyrie-hero_auto_M1dZRZ0l7fk_m02_0190.60_valkyrie-hero.png",
+    "valkyrie-hero_auto_M1dZRZ0l7fk_m04_0858.30_valkyrie-hero.png",
+    "valkyrie-hero_auto_b9nXaMBejRw_m03_0594.80_valkyrie-hero.png"
+   ],
+   "all": [
+    "valkyrie-hero_auto_b9nXaMBejRw_m03_0526.70_valkyrie-hero.png",
+    "valkyrie-hero_auto_kWTdrSkGfr8_m06_1071.90_valkyrie-hero.png",
+    "valkyrie-hero_auto_b9nXaMBejRw_m03_0633.80_valkyrie-hero.png",
+    "valkyrie-hero_auto_kWTdrSkGfr8_m05_0807.80_valkyrie-hero.png",
+    "valkyrie-hero_auto_M1dZRZ0l7fk_m02_0233.40_valkyrie-hero.png",
+    "valkyrie-hero_auto_kWTdrSkGfr8_m05_0900.20_valkyrie-hero.png",
+    "valkyrie-hero_auto_M1dZRZ0l7fk_m02_0190.60_valkyrie-hero.png",
+    "valkyrie-hero_auto_M1dZRZ0l7fk_m04_0858.30_valkyrie-hero.png",
+    "valkyrie-hero_auto_b9nXaMBejRw_m03_0594.80_valkyrie-hero.png",
+    "valkyrie-hero_auto_cole_2026-10-01_d_m06_1095.60_valkyrie-hero.png"
+   ]
+  },
+  {
+   "cls": "vines",
+   "row_bad": false,
+   "bad": [
+    "vines_auto_friend_2026-09-29_c_m13_1777.70_vines.png",
+    "vines_auto_friend_2026-09-29_c_m03_0438.10_vines.png",
+    "vines_auto_friend_2026-09-29_a_m02_0274.70_vines.png",
+    "vines_auto_friend_2026-09-29_a_m02_0273.20_vines.png",
+    "vines_auto_friend_2026-09-29_b_m01_0300.50_vines.png",
+    "vines_auto_qIcm9pQ8RlM_m01_0049.00_vines.png"
+   ],
+   "all": [
+    "vines_auto_friend_2026-09-29_c_m13_1777.70_vines.png",
+    "vines_auto_friend_2026-09-29_c_m06_0922.20_vines.png",
+    "vines_auto_friend_2026-09-29_c_m03_0438.10_vines.png",
+    "vines_auto_friend_2026-09-29_a_m02_0274.70_vines.png",
+    "vines_auto_friend_2026-09-29_a_m02_0273.20_vines.png",
+    "vines_auto_friend_2026-09-29_b_m01_0300.50_vines.png",
+    "vines_auto_qIcm9pQ8RlM_m01_0049.00_vines.png"
+   ]
+  },
+  {
+   "cls": "void",
+   "row_bad": false,
+   "bad": [
+    "void_auto_friend_2026-09-29_a_m02_0279.70_void.png",
+    "void_auto_friend_2026-09-29_c_m09_1392.40_void.png",
+    "void_auto_friend_2026-09-29_a_m02_0278.20_void.png",
+    "void_auto_friend_2026-09-29_c_m02_0379.20_void.png",
+    "void_auto_friend_2026-09-29_b_m05_0968.30_void.png",
+    "void_auto_friend_2026-09-29_c_m13_1750.80_void.png",
+    "void_auto_cole_2026-09-29_c_m04_0708.00_void.png",
+    "void_auto_cole_2026-09-29_c_m04_0709.00_void.png"
+   ],
+   "all": [
+    "void_auto_friend_2026-09-29_b_m01_0292.20_void.png",
+    "void_auto_friend_2026-09-29_b_m01_0290.70_void.png",
+    "void_auto_friend_2026-09-29_a_m02_0279.70_void.png",
+    "void_auto_friend_2026-09-29_c_m09_1392.40_void.png",
+    "void_auto_friend_2026-09-29_a_m02_0278.20_void.png",
+    "void_auto_friend_2026-09-29_c_m02_0379.20_void.png",
+    "void_auto_friend_2026-09-29_b_m05_0968.30_void.png",
+    "void_auto_friend_2026-09-29_c_m13_1750.80_void.png",
+    "void_auto_cole_2026-09-29_c_m04_0708.00_void.png",
+    "void_auto_cole_2026-09-29_c_m04_0709.00_void.png"
+   ]
+  },
+  {
+   "cls": "balloon-hero",
+   "row_bad": false,
+   "bad": [],
+   "all": [
+    "balloon-hero_auto_ysEKLO8sMp8_m06_1027.50_balloon-hero.png",
+    "balloon-hero_auto_xwQDkyZq4kE_m01_0278.80_balloon-hero.png",
+    "balloon-hero_auto_ysEKLO8sMp8_m01_0193.00_balloon-hero.png",
+    "balloon-hero_auto_ysEKLO8sMp8_m02_0340.10_balloon-hero.png",
+    "balloon-hero_auto_kjO4VIQpRmM_m01_0114.50_balloon-hero.png",
+    "balloon-hero_auto_q1dZZ5OyFQE_m01_0082.00_balloon-hero.png",
+    "balloon-hero_auto_T4z8FVeoMsE_m04_0896.00_balloon-hero.png",
+    "balloon-hero_auto_kjO4VIQpRmM_m01_0030.00_balloon-hero.png",
+    "balloon-hero_auto_oJWATjGWVfw_m04_1125.00_balloon-hero.png",
+    "balloon-hero_auto_3r9-35N9yE8_m06_1101.00_balloon-hero.png"
+   ]
+  },
+  {
+   "cls": "bowler-hero",
+   "row_bad": false,
+   "bad": [],
+   "all": [
+    "bowler-hero_auto_x15brXQpQ8o_m02_0365.40_bowler-hero.png",
+    "bowler-hero_auto_x15brXQpQ8o_m03_0519.40_bowler-hero.png",
+    "bowler-hero_auto_x15brXQpQ8o_m04_0910.40_bowler-hero.png",
+    "bowler-hero_auto_Ut_nI1XYIfU_m01_0142.80_bowler-hero.png",
+    "bowler-hero_auto_Ut_nI1XYIfU_m02_0460.00_bowler-hero.png",
+    "bowler-hero_auto_Ut_nI1XYIfU_m02_0447.10_bowler-hero.png",
+    "bowler-hero_auto_HuwsYOmuVao_m02_0510.00_bowler-hero.png"
+   ]
+  },
+  {
+   "cls": "electro-dragon-evolution",
+   "row_bad": false,
+   "bad": [
+    "electro-dragon-evolution_auto_Sa-ao9-Pwnk_m02_0239.30_electro-dragon-evolution.png"
+   ],
+   "all": [
+    "electro-dragon-evolution_auto_Sa-ao9-Pwnk_m01_0113.00_electro-dragon-evolution.png",
+    "electro-dragon-evolution_auto_Sa-ao9-Pwnk_m02_0239.30_electro-dragon-evolution.png",
+    "electro-dragon-evolution_auto_Sa-ao9-Pwnk_m02_0240.80_electro-dragon-evolution.png",
+    "electro-dragon-evolution_auto_b1ORaMah-78_m04_0736.00_electro-dragon-evolution.png"
+   ]
+  },
+  {
+   "cls": "elite-barbarian-evolution",
+   "row_bad": false,
+   "bad": [],
+   "all": [
+    "elite-barbarian-evolution_auto_PgwX9BTa81o_m05_0852.20_elite-barbarian-evolution.png",
+    "elite-barbarian-evolution_auto_iszvnzGwQ9c_m05_1243.75_elite-barbarian-evolution.png",
+    "elite-barbarian-evolution_auto_PgwX9BTa81o_m05_0852.20_elite-barbarian-evolution.png",
+    "elite-barbarian-evolution_auto_EYZBR5GxSec_m01_0090.90_elite-barbarian-evolution.png",
+    "elite-barbarian-evolution_auto_EYZBR5GxSec_m04_0702.40_elite-barbarian-evolution.png",
+    "elite-barbarian-evolution_auto_EYZBR5GxSec_m04_0658.00_elite-barbarian-evolution.png",
+    "elite-barbarian-evolution_auto_PgwX9BTa81o_m01_0177.10_elite-barbarian-evolution.png",
+    "elite-barbarian-evolution_auto_iszvnzGwQ9c_m05_1244.60_elite-barbarian-evolution.png",
+    "elite-barbarian-evolution_auto_iszvnzGwQ9c_m05_1244.60_elite-barbarian-evolution.png",
+    "elite-barbarian-evolution_auto_nSXIs16M7Ag_m01_0075.00_elite-barbarian-evolution.png"
+   ]
+  },
+  {
+   "cls": "executioner-evolution",
+   "row_bad": false,
+   "bad": [
+    "executioner-evolution_auto_4ul7QISa5Qw_m01_0171.10_executioner-evolution.png"
+   ],
+   "all": [
+    "executioner-evolution_auto_KjQYOTotuYE_m01_0058.30_executioner-evolution.png",
+    "executioner-evolution_auto_4ul7QISa5Qw_m01_0236.00_executioner-evolution.png",
+    "executioner-evolution_auto_KjQYOTotuYE_m01_0224.90_executioner-evolution.png",
+    "executioner-evolution_auto_FZlpciW8KlM_m02_0229.80_executioner-evolution.png",
+    "executioner-evolution_auto_4ul7QISa5Qw_m01_0171.10_executioner-evolution.png",
+    "executioner-evolution_auto_KjQYOTotuYE_m05_1048.60_executioner-evolution.png",
+    "executioner-evolution_auto_9TTvAa6ElP0_m01_0243.00_executioner-evolution.png",
+    "executioner-evolution_auto_FZlpciW8KlM_m01_0157.00_executioner-evolution.png",
+    "executioner-evolution_auto_4ul7QISa5Qw_m03_0699.00_executioner-evolution.png",
+    "executioner-evolution_auto_FZlpciW8KlM_m02_0228.30_executioner-evolution.png"
+   ]
+  },
+  {
+   "cls": "furnace-evolution",
+   "row_bad": false,
+   "bad": [],
+   "all": [
+    "furnace-evolution_auto_wLspCp1d_wU_m02_0422.80_furnace-evolution.png",
+    "furnace-evolution_auto_9G4GU0hEdhQ_m03_0622.80_furnace-evolution.png",
+    "furnace-evolution_auto_wLspCp1d_wU_m02_0361.30_furnace-evolution.png",
+    "furnace-evolution_auto_G2qgxatXOHE_m05_0970.30_furnace-evolution.png",
+    "furnace-evolution_auto_wLspCp1d_wU_m05_1202.40_furnace-evolution.png",
+    "furnace-evolution_auto_kJxB8oaQ9zc_m03_0541.75_furnace-evolution.png",
+    "furnace-evolution_auto_9G4GU0hEdhQ_m01_0152.00_furnace-evolution.png",
+    "furnace-evolution_auto_G2qgxatXOHE_m04_0713.75_furnace-evolution.png",
+    "furnace-evolution_auto_9G4GU0hEdhQ_m06_1522.30_furnace-evolution.png",
+    "furnace-evolution_auto_kJxB8oaQ9zc_m03_0534.30_furnace-evolution.png"
+   ]
+  },
+  {
+   "cls": "giant-hero",
+   "row_bad": false,
+   "bad": [
+    "giant-hero_auto_FRQBRMzwWXE_m05_0793.00_giant-hero.png",
+    "giant-hero_auto_FRQBRMzwWXE_m03_0326.90_giant-hero.png",
+    "giant-hero_auto_Nr04--Oq2Rk_m02_0370.00_giant-hero.png",
+    "giant-hero_auto_01NO-ma-V1I_m03_0233.70_giant-hero.png",
+    "giant-hero_auto_qIcm9pQ8RlM_m05_1060.00_giant-hero.png"
+   ],
+   "all": [
+    "giant-hero_auto_FRQBRMzwWXE_m05_0793.00_giant-hero.png",
+    "giant-hero_auto_FRQBRMzwWXE_m03_0326.90_giant-hero.png",
+    "giant-hero_auto_FRQBRMzwWXE_m05_0699.80_giant-hero.png",
+    "giant-hero_auto_Nr04--Oq2Rk_m02_0370.00_giant-hero.png",
+    "giant-hero_auto_01NO-ma-V1I_m05_0359.30_giant-hero.png",
+    "giant-hero_auto_01NO-ma-V1I_m01_0117.30_giant-hero.png",
+    "giant-hero_auto_01NO-ma-V1I_m03_0233.70_giant-hero.png",
+    "giant-hero_auto_qIcm9pQ8RlM_m05_1060.00_giant-hero.png",
+    "giant-hero_auto_7wwlikDO7J0_m05_0968.00_giant-hero.png"
+   ]
+  },
+  {
+   "cls": "giant-snowball-evolution",
+   "row_bad": false,
+   "bad": [
+    "giant-snowball-evolution_auto_nLcU_Kvx4xk_m01_0142.60_giant-snowball-evolution.png",
+    "giant-snowball-evolution_auto_Pn15Nh1xWoM_m01_0223.00_giant-snowball-evolution.png"
+   ],
+   "all": [
+    "giant-snowball-evolution_auto_kdav8AdQPc0_m06_1298.20_giant-snowball-evolution.png",
+    "giant-snowball-evolution_auto_kdav8AdQPc0_m06_1392.50_giant-snowball-evolution.png",
+    "giant-snowball-evolution_auto_nLcU_Kvx4xk_m01_0142.60_giant-snowball-evolution.png",
+    "giant-snowball-evolution_auto_nLcU_Kvx4xk_m02_0248.10_giant-snowball-evolution.png",
+    "giant-snowball-evolution_auto_nLcU_Kvx4xk_m04_0601.80_giant-snowball-evolution.png",
+    "giant-snowball-evolution_auto_Pn15Nh1xWoM_m01_0223.00_giant-snowball-evolution.png",
+    "giant-snowball-evolution_auto_Pn15Nh1xWoM_m04_0950.50_giant-snowball-evolution.png",
+    "giant-snowball-evolution_auto_XuM18Vfd-xc_m01_0134.30_giant-snowball-evolution.png",
+    "giant-snowball-evolution_auto_XuM18Vfd-xc_m02_0555.90_giant-snowball-evolution.png",
+    "giant-snowball-evolution_auto_XuM18Vfd-xc_m03_0745.30_giant-snowball-evolution.png"
+   ]
+  },
+  {
+   "cls": "goblin-cage-evolution",
+   "row_bad": false,
+   "bad": [
+    "goblin-cage-evolution_auto_ElIl0ij-Z6o_m02_0302.00_goblin-cage-evolution.png",
+    "goblin-cage-evolution_auto_ElIl0ij-Z6o_m01_0100.00_goblin-cage-evolution.png"
+   ],
+   "all": [
+    "goblin-cage-evolution_auto_NX3HsIQRPvY_m04_0772.25_goblin-cage-evolution.png",
+    "goblin-cage-evolution_auto_NX3HsIQRPvY_m02_0260.00_goblin-cage-evolution.png",
+    "goblin-cage-evolution_auto_NX3HsIQRPvY_m04_0771.25_goblin-cage-evolution.png",
+    "goblin-cage-evolution_auto_ElIl0ij-Z6o_m01_0099.00_goblin-cage-evolution.png",
+    "goblin-cage-evolution_auto_ElIl0ij-Z6o_m02_0302.00_goblin-cage-evolution.png",
+    "goblin-cage-evolution_auto_ElIl0ij-Z6o_m01_0100.00_goblin-cage-evolution.png",
+    "goblin-cage-evolution_auto_unnaLsLzabw_m01_0195.00_goblin-cage-evolution.png",
+    "goblin-cage-evolution_auto_1t--8C08vFQ_m08_0902.00_goblin-cage-evolution.png",
+    "goblin-cage-evolution_auto_3r9-35N9yE8_m02_0384.00_goblin-cage-evolution.png",
+    "goblin-cage-evolution_auto_6bLDtHZlcSU_m06_1285.00_goblin-cage-evolution.png"
+   ]
+  },
+  {
+   "cls": "goblin-giant-evolution",
+   "row_bad": false,
+   "bad": [
+    "goblin-giant-evolution_auto_7kxx0Y7Shpc_m02_0263.40_goblin-giant-evolution.png",
+    "goblin-giant-evolution_auto_7kxx0Y7Shpc_m02_0261.90_goblin-giant-evolution.png",
+    "goblin-giant-evolution_auto_7kxx0Y7Shpc_m05_0680.50_goblin-giant-evolution.png"
+   ],
+   "all": [
+    "goblin-giant-evolution_auto_7kxx0Y7Shpc_m02_0263.40_goblin-giant-evolution.png",
+    "goblin-giant-evolution_auto_7kxx0Y7Shpc_m02_0261.90_goblin-giant-evolution.png",
+    "goblin-giant-evolution_auto_7kxx0Y7Shpc_m05_0680.50_goblin-giant-evolution.png",
+    "goblin-giant-evolution_auto_cole_2026-10-07_m01_0089.90_goblin-giant-evolution.png",
+    "goblin-giant-evolution_auto_cole_2026-10-09_d_m08_1563.30_goblin-giant-evolution.png",
+    "goblin-giant-evolution_auto_cole_2026-10-09_d_m10_2070.10_goblin-giant-evolution.png",
+    "goblin-giant-evolution_auto_cole_2026-10-09_d_m08_1561.80_goblin-giant-evolution.png",
+    "goblin-giant-evolution_auto_cole_2026-10-07_m01_0091.40_goblin-giant-evolution.png",
+    "goblin-giant-evolution_auto_cole_2026-10-07_m01_0182.00_goblin-giant-evolution.png"
+   ]
+  },
+  {
+   "cls": "hunter-evolution",
+   "row_bad": false,
+   "bad": [
+    "hunter-evolution_auto_Zt6Onn89EVk_m02_0433.00_hunter-evolution.png",
+    "hunter-evolution_auto_cole_2026-10-09_e_m03_0491.30_hunter-evolution.png"
+   ],
+   "all": [
+    "hunter-evolution_auto_E-foREDXesc_m04_0280.20_hunter-evolution.png",
+    "hunter-evolution_auto_cole_2026-10-09_e_m03_0492.80_hunter-evolution.png",
+    "hunter-evolution_auto_kWTdrSkGfr8_m03_0472.00_hunter-evolution.png",
+    "hunter-evolution_auto_kWTdrSkGfr8_m06_1059.20_hunter-evolution.png",
+    "hunter-evolution_auto_kWTdrSkGfr8_m04_0655.30_hunter-evolution.png",
+    "hunter-evolution_auto_E-foREDXesc_m04_0281.70_hunter-evolution.png",
+    "hunter-evolution_auto_E-foREDXesc_m06_0470.50_hunter-evolution.png",
+    "hunter-evolution_auto_Zt6Onn89EVk_m02_0433.00_hunter-evolution.png",
+    "hunter-evolution_auto_cole_2026-10-09_e_m03_0491.30_hunter-evolution.png",
+    "hunter-evolution_auto_cole_2026-10-09_c_m03_0517.70_hunter-evolution.png"
+   ]
+  },
+  {
+   "cls": "inferno-dragon-evolution",
+   "row_bad": false,
+   "bad": [
+    "inferno-dragon-evolution_auto_cole_2026-10-09_c_m01_0122.40_inferno-dragon-evolution.png",
+    "inferno-dragon-evolution_auto_cole_2026-10-07_m05_0922.40_inferno-dragon-evolution.png"
+   ],
+   "all": [
+    "inferno-dragon-evolution_auto_cole_2026-10-07_m03_0492.50_inferno-dragon-evolution.png",
+    "inferno-dragon-evolution_auto_cole_2026-10-07_m03_0494.00_inferno-dragon-evolution.png",
+    "inferno-dragon-evolution_auto_cole_2026-10-09_c_m02_0327.50_inferno-dragon-evolution.png",
+    "inferno-dragon-evolution_auto_cole_2026-10-09_c_m02_0329.00_inferno-dragon-evolution.png",
+    "inferno-dragon-evolution_auto_cole_2026-10-09_c_m01_0122.40_inferno-dragon-evolution.png",
+    "inferno-dragon-evolution_auto_cole_2026-10-09_e_m01_0147.90_inferno-dragon-evolution.png",
+    "inferno-dragon-evolution_auto_cole_2026-10-09_e_m03_0449.80_inferno-dragon-evolution.png",
+    "inferno-dragon-evolution_auto_cole_2026-10-09_e_m03_0451.30_inferno-dragon-evolution.png",
+    "inferno-dragon-evolution_auto_cole_2026-10-07_m05_0922.40_inferno-dragon-evolution.png"
+   ]
+  },
+  {
+   "cls": "lumberjack-evolution",
+   "row_bad": false,
+   "bad": [
+    "lumberjack-evolution_auto_Ut_nI1XYIfU_m01_0267.80_lumberjack-evolution.png",
+    "lumberjack-evolution_auto_Ut_nI1XYIfU_m01_0266.30_lumberjack-evolution.png"
+   ],
+   "all": [
+    "lumberjack-evolution_auto_Ut_nI1XYIfU_m01_0267.80_lumberjack-evolution.png",
+    "lumberjack-evolution_auto_Ut_nI1XYIfU_m01_0266.30_lumberjack-evolution.png",
+    "lumberjack-evolution_auto_cole_2026-10-09_m04_0804.70_lumberjack-evolution.png",
+    "lumberjack-evolution_auto_zgiAi5kyDGI_m07_0660.50_lumberjack-evolution.png",
+    "lumberjack-evolution_auto_cole_2026-10-09_m01_0185.20_lumberjack-evolution.png",
+    "lumberjack-evolution_auto_cole_2026-10-06_m04_0759.50_lumberjack-evolution.png",
+    "lumberjack-evolution_auto_cole_2026-10-09_m01_0182.20_lumberjack-evolution.png"
+   ]
+  },
+  {
+   "cls": "magic-archer-hero",
+   "row_bad": false,
+   "bad": [
+    "magic-archer-hero_auto_jG6aNXmyG9U_m03_0537.75_magic-archer-hero.png",
+    "magic-archer-hero_auto_1VGZ9_heGow_m02_0351.25_magic-archer-hero.png"
+   ],
+   "all": [
+    "magic-archer-hero_auto_jG6aNXmyG9U_m03_0536.75_magic-archer-hero.png",
+    "magic-archer-hero_auto_1VGZ9_heGow_m04_0673.75_magic-archer-hero.png",
+    "magic-archer-hero_auto_cole_2026-10-06_m03_0451.80_magic-archer-hero.png",
+    "magic-archer-hero_auto_cole_2026-10-06_m05_0838.20_magic-archer-hero.png",
+    "magic-archer-hero_auto_cole_2026-10-06_m06_1025.70_magic-archer-hero.png",
+    "magic-archer-hero_auto_jG6aNXmyG9U_m03_0537.75_magic-archer-hero.png",
+    "magic-archer-hero_auto_1VGZ9_heGow_m02_0351.25_magic-archer-hero.png",
+    "magic-archer-hero_auto_jG6aNXmyG9U_m04_0666.00_magic-archer-hero.png",
+    "magic-archer-hero_auto_1VGZ9_heGow_m05_0730.25_magic-archer-hero.png"
+   ]
+  },
+  {
+   "cls": "mega-knight-evolution",
+   "row_bad": false,
+   "bad": [
+    "mega-knight-evolution_auto_GoQcv9f6dHw_m02_0365.80_mega-knight-evolution.png",
+    "mega-knight-evolution_auto_GoQcv9f6dHw_m04_0641.70_mega-knight-evolution.png",
+    "mega-knight-evolution_auto_GoQcv9f6dHw_m05_0773.60_mega-knight-evolution.png",
+    "mega-knight-evolution_auto_SzXoM-s9LHo_m01_0175.00_mega-knight-evolution.png"
+   ],
+   "all": [
+    "mega-knight-evolution_auto_GoQcv9f6dHw_m02_0365.80_mega-knight-evolution.png",
+    "mega-knight-evolution_auto_GoQcv9f6dHw_m04_0641.70_mega-knight-evolution.png",
+    "mega-knight-evolution_auto_GoQcv9f6dHw_m05_0773.60_mega-knight-evolution.png",
+    "mega-knight-evolution_auto_SzXoM-s9LHo_m01_0175.40_mega-knight-evolution.png",
+    "mega-knight-evolution_auto_bEqy2I3UP80_m12_0965.00_mega-knight-evolution.png",
+    "mega-knight-evolution_auto_-ErsZhzGemc_m01_0126.00_mega-knight-evolution.png",
+    "mega-knight-evolution_auto_SzXoM-s9LHo_m01_0175.00_mega-knight-evolution.png",
+    "mega-knight-evolution_auto_UJQLuTpLXVM_m01_0155.00_mega-knight-evolution.png",
+    "mega-knight-evolution_auto_0m7iCgw8sYc_m03_0523.00_mega-knight-evolution.png",
+    "mega-knight-evolution_auto_4N_UD_1Y01M_m04_0474.00_mega-knight-evolution.png"
+   ]
+  },
+  {
+   "cls": "mega-minion-hero",
+   "row_bad": false,
+   "bad": [
+    "mega-minion-hero_auto_zXMOisRCuFI_m04_0980.40_mega-minion-hero.png",
+    "mega-minion-hero_auto_PgwX9BTa81o_m05_0767.50_mega-minion-hero.png",
+    "mega-minion-hero_auto_PgwX9BTa81o_m04_0592.90_mega-minion-hero.png",
+    "mega-minion-hero_auto_zXMOisRCuFI_m04_0894.00_mega-minion-hero.png",
+    "mega-minion-hero_auto_2elEncccZwQ_m03_0523.25_mega-minion-hero.png"
+   ],
+   "all": [
+    "mega-minion-hero_auto_zXMOisRCuFI_m04_0980.40_mega-minion-hero.png",
+    "mega-minion-hero_auto_PgwX9BTa81o_m05_0767.50_mega-minion-hero.png",
+    "mega-minion-hero_auto_PgwX9BTa81o_m04_0592.90_mega-minion-hero.png",
+    "mega-minion-hero_auto_zXMOisRCuFI_m03_0818.20_mega-minion-hero.png",
+    "mega-minion-hero_auto_cole_2026-10-01_b_m01_0011.00_mega-minion-hero.png",
+    "mega-minion-hero_auto_zXMOisRCuFI_m04_0894.00_mega-minion-hero.png",
+    "mega-minion-hero_auto_PgwX9BTa81o_m02_0256.70_mega-minion-hero.png",
+    "mega-minion-hero_auto_cole_2026-10-01_b_m01_0010.00_mega-minion-hero.png",
+    "mega-minion-hero_auto_2elEncccZwQ_m03_0520.80_mega-minion-hero.png",
+    "mega-minion-hero_auto_2elEncccZwQ_m03_0523.25_mega-minion-hero.png"
+   ]
+  },
+  {
+   "cls": "mini-pekka-hero",
+   "row_bad": false,
+   "bad": [
+    "mini-pekka-hero_auto_FRQBRMzwWXE_m05_0731.10_mini-pekka-hero.png",
+    "mini-pekka-hero_auto_01NO-ma-V1I_m06_0522.30_mini-pekka-hero.png",
+    "mini-pekka-hero_auto_01NO-ma-V1I_m01_0097.30_mini-pekka-hero.png",
+    "mini-pekka-hero_auto_FRQBRMzwWXE_m03_0428.10_mini-pekka-hero.png",
+    "mini-pekka-hero_auto_01NO-ma-V1I_m05_0375.25_mini-pekka-hero.png",
+    "mini-pekka-hero_auto_FRQBRMzwWXE_m05_0820.80_mini-pekka-hero.png"
+   ],
+   "all": [
+    "mini-pekka-hero_auto_FRQBRMzwWXE_m05_0731.10_mini-pekka-hero.png",
+    "mini-pekka-hero_auto_01NO-ma-V1I_m06_0522.30_mini-pekka-hero.png",
+    "mini-pekka-hero_auto_01NO-ma-V1I_m01_0097.30_mini-pekka-hero.png",
+    "mini-pekka-hero_auto_FRQBRMzwWXE_m03_0428.10_mini-pekka-hero.png",
+    "mini-pekka-hero_auto_01NO-ma-V1I_m05_0375.25_mini-pekka-hero.png",
+    "mini-pekka-hero_auto_FRQBRMzwWXE_m05_0820.80_mini-pekka-hero.png",
+    "mini-pekka-hero_auto_bEqy2I3UP80_m09_0775.75_mini-pekka-hero.png",
+    "mini-pekka-hero_auto_bEqy2I3UP80_m11_0921.00_mini-pekka-hero.png",
+    "mini-pekka-hero_auto_bEqy2I3UP80_m09_0776.75_mini-pekka-hero.png",
+    "mini-pekka-hero_auto_9LTuX9QS2gk_m06_1055.00_mini-pekka-hero.png"
+   ]
+  },
+  {
+   "cls": "minion-horde-evolution",
+   "row_bad": false,
+   "bad": [
+    "minion-horde-evolution_auto_i0ErCwqf8Mg_m01_0089.80_minion-horde-evolution.png",
+    "minion-horde-evolution_auto_i0ErCwqf8Mg_m01_0091.30_minion-horde-evolution.png",
+    "minion-horde-evolution_auto_i0ErCwqf8Mg_m01_0091.30_minion-horde-evolution.png"
+   ],
+   "all": [
+    "minion-horde-evolution_auto_i0ErCwqf8Mg_m01_0089.80_minion-horde-evolution.png",
+    "minion-horde-evolution_auto_i0ErCwqf8Mg_m01_0091.30_minion-horde-evolution.png",
+    "minion-horde-evolution_auto_i0ErCwqf8Mg_m01_0091.30_minion-horde-evolution.png",
+    "minion-horde-evolution_auto_kjO4VIQpRmM_m07_0999.00_minion-horde-evolution.png",
+    "minion-horde-evolution_auto_4N_UD_1Y01M_m06_0733.00_minion-horde-evolution.png",
+    "minion-horde-evolution_auto_kjO4VIQpRmM_m07_0998.00_minion-horde-evolution.png",
+    "minion-horde-evolution_auto_kjO4VIQpRmM_m07_1003.00_minion-horde-evolution.png",
+    "minion-horde-evolution_auto_4N_UD_1Y01M_m08_1033.00_minion-horde-evolution.png"
+   ]
+  },
+  {
+   "cls": "musketeer-evolution",
+   "row_bad": false,
+   "bad": [
+    "musketeer-evolution_auto_kJuyRH6R9zU_m02_0227.75_musketeer-evolution.png",
+    "musketeer-evolution_auto_9BvND7VutBQ_m01_0138.00_musketeer-evolution.png",
+    "musketeer-evolution_auto_kJuyRH6R9zU_m08_0896.00_musketeer-evolution.png"
+   ],
+   "all": [
+    "musketeer-evolution_auto_kJuyRH6R9zU_m02_0227.75_musketeer-evolution.png",
+    "musketeer-evolution_auto_kJuyRH6R9zU_m05_0600.10_musketeer-evolution.png",
+    "musketeer-evolution_auto_nLcU_Kvx4xk_m05_0828.00_musketeer-evolution.png",
+    "musketeer-evolution_auto_9BvND7VutBQ_m01_0138.00_musketeer-evolution.png",
+    "musketeer-evolution_auto_9BvND7VutBQ_m01_0136.50_musketeer-evolution.png",
+    "musketeer-evolution_auto_nLcU_Kvx4xk_m02_0310.75_musketeer-evolution.png",
+    "musketeer-evolution_auto_kJuyRH6R9zU_m08_0896.00_musketeer-evolution.png",
+    "musketeer-evolution_auto_9BvND7VutBQ_m10_0982.00_musketeer-evolution.png",
+    "musketeer-evolution_auto_nLcU_Kvx4xk_m02_0314.30_musketeer-evolution.png",
+    "musketeer-evolution_auto_kJxB8oaQ9zc_m02_0247.70_musketeer-evolution.png"
+   ]
+  },
+  {
+   "cls": "musketeer-hero",
+   "row_bad": false,
+   "bad": [
+    "musketeer-hero_auto_Nr04--Oq2Rk_m03_0731.90_musketeer-hero.png",
+    "musketeer-hero_auto_Nr04--Oq2Rk_m02_0453.75_musketeer-hero.png"
+   ],
+   "all": [
+    "musketeer-hero_auto_JvfOnzG1Cag_m03_0304.80_musketeer-hero.png",
+    "musketeer-hero_auto_JvfOnzG1Cag_m03_0344.80_musketeer-hero.png",
+    "musketeer-hero_auto_JvfOnzG1Cag_m04_0408.90_musketeer-hero.png",
+    "musketeer-hero_auto_Nr04--Oq2Rk_m02_0291.30_musketeer-hero.png",
+    "musketeer-hero_auto_Nr04--Oq2Rk_m03_0731.90_musketeer-hero.png",
+    "musketeer-hero_auto_Nr04--Oq2Rk_m02_0453.75_musketeer-hero.png"
+   ]
+  },
+  {
+   "cls": "pekka-evolution",
+   "row_bad": false,
+   "bad": [
+    "pekka-evolution_auto_8x3VZMoynig_m07_1228.00_pekka-evolution.png"
+   ],
+   "all": [
+    "pekka-evolution_auto_8x3VZMoynig_m07_1230.00_pekka-evolution.png",
+    "pekka-evolution_auto_5JGKpChkKuY_m04_0590.50_pekka-evolution.png",
+    "pekka-evolution_auto_5JGKpChkKuY_m02_0248.00_pekka-evolution.png",
+    "pekka-evolution_auto_5JGKpChkKuY_m02_0258.00_pekka-evolution.png",
+    "pekka-evolution_auto_SN-X0HLK-gQ_m08_0989.00_pekka-evolution.png",
+    "pekka-evolution_auto_2elEncccZwQ_m02_0351.00_pekka-evolution.png",
+    "pekka-evolution_auto_83d3zofOD44_m04_0638.00_pekka-evolution.png",
+    "pekka-evolution_auto_83d3zofOD44_m04_0656.00_pekka-evolution.png",
+    "pekka-evolution_auto_8x3VZMoynig_m07_1227.00_pekka-evolution.png",
+    "pekka-evolution_auto_8x3VZMoynig_m07_1228.00_pekka-evolution.png"
+   ]
+  },
+  {
+   "cls": "princess-evolution",
+   "row_bad": false,
+   "bad": [],
+   "all": [
+    "princess-evolution_auto_tGONo2rzFHw_m04_0936.70_princess-evolution.png",
+    "princess-evolution_auto_tbJ_G489MkI_m07_1270.70_princess-evolution.png",
+    "princess-evolution_auto_oJWATjGWVfw_m01_0102.00_princess-evolution.png",
+    "princess-evolution_auto_oJWATjGWVfw_m04_1074.00_princess-evolution.png",
+    "princess-evolution_auto_tGONo2rzFHw_m04_0938.20_princess-evolution.png",
+    "princess-evolution_auto_tbJ_G489MkI_m03_0541.50_princess-evolution.png",
+    "princess-evolution_auto_tGONo2rzFHw_m01_0102.60_princess-evolution.png",
+    "princess-evolution_auto_oJWATjGWVfw_m04_0932.00_princess-evolution.png",
+    "princess-evolution_auto_tbJ_G489MkI_m03_0538.50_princess-evolution.png"
+   ]
+  },
+  {
+   "cls": "royal-ghost-evolution",
+   "row_bad": false,
+   "bad": [],
+   "all": [
+    "royal-ghost-evolution_auto_cole_2026-10-01_e_m08_1214.70_royal-ghost-evolution.png",
+    "royal-ghost-evolution_auto_cole_2026-10-01_e_m02_0347.00_royal-ghost-evolution.png",
+    "royal-ghost-evolution_auto_uTnbDte_WXM_m04_0744.00_royal-ghost-evolution.png",
+    "royal-ghost-evolution_auto_zz4RPz8WG_4_m14_1156.60_royal-ghost-evolution.png",
+    "royal-ghost-evolution_auto_ZXPr1gwF9ys_m08_1602.20_royal-ghost-evolution.png",
+    "royal-ghost-evolution_auto_ZXPr1gwF9ys_m08_1603.70_royal-ghost-evolution.png",
+    "royal-ghost-evolution_auto_uTnbDte_WXM_m03_0476.00_royal-ghost-evolution.png",
+    "royal-ghost-evolution_auto_zz4RPz8WG_4_m01_0114.00_royal-ghost-evolution.png",
+    "royal-ghost-evolution_auto_cole_2026-10-01_e_m08_1213.20_royal-ghost-evolution.png",
+    "royal-ghost-evolution_auto_H35F0vVMTHg_m01_0110.10_royal-ghost-evolution.png"
+   ]
+  },
+  {
+   "cls": "skeleton-army-evolution",
+   "row_bad": false,
+   "bad": [
+    "skeleton-army-evolution_auto_cole_2026-10-06_m06_1160.20_skeleton-army-evolution.png",
+    "skeleton-army-evolution_auto_cole_2026-10-06_m01_0122.50_skeleton-army-evolution.png",
+    "skeleton-army-evolution_auto_cole_2026-10-09_d_m05_0887.70_skeleton-army-evolution.png",
+    "skeleton-army-evolution_auto_cole_2026-10-09_d_m06_1097.60_skeleton-army-evolution.png",
+    "skeleton-army-evolution_auto_cole_2026-10-09_m02_0349.00_skeleton-army-evolution.png"
+   ],
+   "all": [
+    "skeleton-army-evolution_auto_cole_2026-10-06_m06_1160.20_skeleton-army-evolution.png",
+    "skeleton-army-evolution_auto_cole_2026-10-06_m06_1162.20_skeleton-army-evolution.png",
+    "skeleton-army-evolution_auto_cole_2026-10-06_m01_0122.50_skeleton-army-evolution.png",
+    "skeleton-army-evolution_auto_cole_2026-10-09_d_m05_0887.70_skeleton-army-evolution.png",
+    "skeleton-army-evolution_auto_cole_2026-10-09_d_m05_0889.20_skeleton-army-evolution.png",
+    "skeleton-army-evolution_auto_cole_2026-10-09_d_m06_1097.60_skeleton-army-evolution.png",
+    "skeleton-army-evolution_auto_cole_2026-10-09_m02_0349.00_skeleton-army-evolution.png",
+    "skeleton-army-evolution_auto_cole_2026-10-09_m02_0352.00_skeleton-army-evolution.png",
+    "skeleton-army-evolution_auto_cole_2026-10-09_m03_0586.80_skeleton-army-evolution.png",
+    "skeleton-army-evolution_auto_cole_2026-10-09_g_m01_0141.10_skeleton-army-evolution.png"
+   ]
+  },
+  {
+   "cls": "witch-evolution",
+   "row_bad": false,
+   "bad": [
+    "witch-evolution_auto_InqPzjMQ76I_m03_0340.00_witch-evolution.png"
+   ],
+   "all": [
+    "witch-evolution_auto_0WMJEUvFMio_m05_0968.10_witch-evolution.png",
+    "witch-evolution_auto_x15brXQpQ8o_m04_0820.20_witch-evolution.png",
+    "witch-evolution_auto_0WMJEUvFMio_m03_0453.80_witch-evolution.png",
+    "witch-evolution_auto_0WMJEUvFMio_m04_0744.00_witch-evolution.png",
+    "witch-evolution_auto_x15brXQpQ8o_m02_0414.30_witch-evolution.png",
+    "witch-evolution_auto_x15brXQpQ8o_m04_0903.30_witch-evolution.png",
+    "witch-evolution_auto_InqPzjMQ76I_m03_0425.60_witch-evolution.png",
+    "witch-evolution_auto_InqPzjMQ76I_m04_0509.20_witch-evolution.png",
+    "witch-evolution_auto_InqPzjMQ76I_m03_0340.00_witch-evolution.png",
+    "witch-evolution_auto_01NO-ma-V1I_m03_0245.00_witch-evolution.png"
+   ]
+  },
+  {
+   "cls": "wizard-evolution",
+   "row_bad": false,
+   "bad": [
+    "wizard-evolution_auto_NX3HsIQRPvY_m03_0607.30_wizard-evolution.png",
+    "wizard-evolution_auto_NX3HsIQRPvY_m03_0608.80_wizard-evolution.png",
+    "wizard-evolution_auto_cKuf3-EGV0M_m01_0183.80_wizard-evolution.png"
+   ],
+   "all": [
+    "wizard-evolution_auto_cole_2026-10-01_e_m01_0166.40_wizard-evolution.png",
+    "wizard-evolution_auto_cole_2026-10-01_e_m01_0167.90_wizard-evolution.png",
+    "wizard-evolution_auto_cole_2026-10-01_e_m03_0500.00_wizard-evolution.png",
+    "wizard-evolution_auto_NX3HsIQRPvY_m03_0607.30_wizard-evolution.png",
+    "wizard-evolution_auto_5JGKpChkKuY_m05_0854.30_wizard-evolution.png",
+    "wizard-evolution_auto_NX3HsIQRPvY_m03_0608.80_wizard-evolution.png",
+    "wizard-evolution_auto_cKuf3-EGV0M_m01_0183.80_wizard-evolution.png",
+    "wizard-evolution_auto_cKuf3-EGV0M_m01_0186.80_wizard-evolution.png",
+    "wizard-evolution_auto_5JGKpChkKuY_m05_0855.80_wizard-evolution.png",
+    "wizard-evolution_auto_XuM18Vfd-xc_m06_1536.00_wizard-evolution.png"
+   ]
+  },
+  {
+   "cls": "wizard-hero",
+   "row_bad": false,
+   "bad": [],
+   "all": [
+    "wizard-hero_auto_uTnbDte_WXM_m01_0124.80_wizard-hero.png",
+    "wizard-hero_auto_iszvnzGwQ9c_m01_0227.10_wizard-hero.png",
+    "wizard-hero_auto_iszvnzGwQ9c_m01_0252.20_wizard-hero.png",
+    "wizard-hero_auto_nSXIs16M7Ag_m01_0135.00_wizard-hero.png",
+    "wizard-hero_auto_iszvnzGwQ9c_m01_0177.10_wizard-hero.png",
+    "wizard-hero_auto_uTnbDte_WXM_m02_0366.80_wizard-hero.png",
+    "wizard-hero_auto_uTnbDte_WXM_m04_0655.80_wizard-hero.png",
+    "wizard-hero_auto_tbJ_G489MkI_m07_1133.00_wizard-hero.png",
+    "wizard-hero_auto_nSXIs16M7Ag_m01_0134.00_wizard-hero.png",
+    "wizard-hero_auto_cole_2026-10-01_e_m02_0376.00_wizard-hero.png"
+   ]
+  },
+  {
+   "cls": "electro-giant-evolution",
+   "row_bad": false,
+   "bad": [],
+   "all": [
+    "electro-giant-evolution_auto_cole_2026-10-09_f_m02_0372.70_electro-giant-evolution.png",
+    "electro-giant-evolution_auto_cole_2026-10-09_g_m02_0439.20_electro-giant-evolution.png",
+    "electro-giant-evolution_auto_cole_2026-10-09_g_m01_0132.80_electro-giant-evolution.png",
+    "electro-giant-evolution_auto_cole_2026-10-09_f_m02_0371.20_electro-giant-evolution.png",
+    "electro-giant-evolution_auto_cole_2026-10-09_g_m05_1388.70_electro-giant-evolution.png",
+    "electro-giant-evolution_auto_cole_2026-10-09_f_m01_0159.80_electro-giant-evolution.png"
+   ]
+  },
+  {
+   "cls": "electro-wizard-hero",
+   "row_bad": false,
+   "bad": [
+    "electro-wizard-hero_auto_cole_2026-10-09_d_m06_1010.50_electro-wizard-hero.png"
+   ],
+   "all": [
+    "electro-wizard-hero_auto_cole_2026-10-09_d_m06_1010.50_electro-wizard-hero.png",
+    "electro-wizard-hero_auto_cole_2026-10-09_e_m05_0737.90_electro-wizard-hero.png",
+    "electro-wizard-hero_auto_cole_2026-10-09_d_m03_0474.70_electro-wizard-hero.png",
+    "electro-wizard-hero_auto_cole_2026-10-09_e_m04_0555.10_electro-wizard-hero.png",
+    "electro-wizard-hero_auto_cole_2026-10-09_e_m01_0133.50_electro-wizard-hero.png"
+   ]
+  }
+ ]
+}
