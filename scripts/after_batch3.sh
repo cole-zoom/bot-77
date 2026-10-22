@@ -1,6 +1,6 @@
 #!/bin/zsh
 # Chain for batch 3: wait for downloads, pick layouts, process (2 CPU + 2 GPU), rerun zero-match, auto-label, recount.
-cd /Users/coledumanski/Documents/Workspace/bot-77
+cd "$(dirname "$0")/.."
 uv run python scripts/prepare_batch3.py > data/logs/prepare_batch3_stdout.log 2>&1
 cp data/logs/run_all_jobs3.json data/logs/run_all_jobs.json.batch3
 uv run python scripts/run_all.py data/logs/run_all_jobs3.json > data/logs/run_all3_stdout.log 2>&1
