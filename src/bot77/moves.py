@@ -96,12 +96,18 @@ class MovePredictor:
         c, n = self.pair.get(key, (0, 0))
         return (c + self.prior * b) / (n + self.prior)
 
+    @property
+    def uses_board(self) -> bool:
+        return "resp_threat" in self.feats
+
     def scores(self, rows: list[dict]) -> list[float]:
         import numpy as np
         for r in rows:
             r["resp_rate"] = self._rate((r["opp_prev1"], r["cand_card"]), r["cand_card"])
             r["own_rate_after"] = self._rate(("own", r["own_prev1"], r["cand_card"]), r["cand_card"])
             r["elixir_after"] = r["elixir"] - r["cand_cost"]
+            if "resp_threat" in self.feats:  # A v2: rows carry the board features (bot77.board.add_board_features)
+                r["resp_threat"] = self._rate(("threat", r["b_threat_card"], r["cand_card"]), r["cand_card"])
         X = np.array([[(self.code.get(r[f], np.nan) if f in self.cats else r[f]) for f in self.feats] for r in rows],
                      dtype=np.float64)
         return list(self.model.predict_proba(X)[:, 1])

@@ -2406,3 +2406,35 @@ attacker; defending before the attacker crossed; answering a couple of Archers; 
   switch to the listed answer (e.g. Mini P.E.K.K.A instead of Archers on a tank).
   Tuned on the same 144 plays, so this is a sanity check, not a held-out score: the next session's reviews are.
 - `tests/test_live_rules.py`: 11 tests, one per review finding.
+
+## 2026-10-22 · Board state for A, a placement model (Cole: "We can do all 3 ... similar moment search should be held back")
+1. **Full board logged:** every bot play now saves all detected units (`bot_actions.units`: card, class, team, x, y,
+   conf) and the placement model's spot (`model_spot`); the loop adds new columns to the existing table.
+2. **Board states + A v2.** The replays' per-frame detections already existed (`unit_detections_v5l_e15`, every
+   0.25 s, all 524 keyed replays), so `scripts/build_board_states.py` takes the last frame >= 0.25 s before each of the
+   24,142 decisions (none missing) -> table `board_states`, in the deciding player's frame (`bot77.board`: the top
+   player's board turned around about y 27.5, not 2 x river: unit boxes sit ~1.3 tiles above the feet, measured from
+   the two players' answer positions). Features (shared with live play): board summary (enemy elixir on our half per
+   lane, nearest attacker, air / tank / swarm coming, our units, towers standing, the main threat's card) and card vs
+   board (can it hit the threat, air answer when air is coming, spell value of its best target, the answer rate to
+   the threat's card, roles from `config/card_roles.yaml` -- written from general knowledge, for Cole to correct).
+   `train_moves.py --board` -> data/models/moves_v2. **Held-back 46.6% -> 48.4% (McNemar p 0.03), but test 44.0% ->
+   44.0%** (only with an attacker on our half 47.3% -> 48.9%). Not adopted: the bot keeps A v1; v2 stays saved. The
+   board mostly decides *whether* to play and *where*, which the rules / placement model now handle, while A's card
+   choice is driven by the hand and cycle.
+3. **Placement model** (`bot77.place`, `scripts/build_placements.py`, `scripts/train_place.py` -> data/models/place_v1):
+   14,080 plays with a spot and a board (45% of plays: the rest weren't matched to a detection). It ranks candidate
+   spots like A ranks cards: 32 fixed spots (k-means of where players put cards) plus spots anchored on the board (on
+   the main attacker, just in front of it, on other enemy units, behind our tank, a spell's best group, the enemy
+   towers), with per-spot features (distance and lane vs the threat, enemy value nearby, our / their units and towers
+   in that lane). Taps go FEET_DY = 1.27 tiles below the box centre. Lane-context features took held-back from 4.8 to
+   4.1 tiles and same lane 64% -> 74%.
+   **Test (scored once):** median 4.1 tiles from the real spot, 27% within 2 tiles, same lane 77% (nearest candidate,
+   the ceiling: 0.9 tiles). On the answers the playbook covers: model 4.3 tiles / 79% same lane vs the playbook's
+   typical spot 5.0 / 76%, the playbook rules 7.1 / 50%, the earlier rules 7.7 / 51%. The rules are poor as a
+   general placer (they were written for the bot's deck and Cole's principles, and pick a lane by a heuristic).
+   **In the bot: shadow only** -- each play logs where the model would have put the card; the rules still choose the
+   tap. Next: compare both on the next session's reviews, then let the model place where the rules have no principle,
+   with the rules as guard rails (no Giant at the bridge, ranged away from the attacker).
+4. Similar-moment search held back (Cole). The `interactions` table (20,643 answer pairs) already exists and feeds the
+   playbook and the placement comparison.

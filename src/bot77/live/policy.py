@@ -11,6 +11,7 @@ from __future__ import annotations
 from dataclasses import dataclass
 
 from bot77.live.state import RIVER_Y, LiveState, Unit
+from bot77.board import add_board_features, live_board
 from bot77.moves import MovePredictor, candidates
 
 # Our half, in arena tiles (the crop is 18 wide, the river at 14.9)
@@ -35,10 +36,12 @@ class Action:
     y: float
     reason: str
     scores: list[float]
+    model_spot: tuple[float, float] | None = None  # where the placement model would put it (shadow, 2026-10-22)
 
 
 class Policy:
     def __init__(self, cards: list[dict], model_path: str = "data/models/moves_v1/model.pkl", playbook: bool = True, rules: bool = True,
+                 place_path: str = "data/models/place_v1/model.pkl",
                  full_at: float = 9.5, idle_at: float = 7.0, idle_s: float = 6.0, min_gap_s: float = 1.2):
         self.a = MovePredictor(model_path)
         self.cards = {c["id"]: c for c in cards}
@@ -53,6 +56,11 @@ class Policy:
                     self.book[(b["opp_card"], b["opp_zone"], b["answer"])] = b
         self.last_played: dict[int, float] = {}
         self.answered: dict[str, float] = {}  # attacker card -> when we last answered it
+        self.placer = None  # placement model (bot77.place), shadow only: logged next to each play, not tapped
+        from pathlib import Path
+        if Path(place_path).exists():
+            from bot77.place import Placer
+            self.placer = Placer(place_path)
         self.rules = None
         if rules:  # playbook rules from Cole's reviews (config/playbook_rules.yaml, bot77.live.rules)
             from bot77.live.rules import Rules
@@ -64,6 +72,21 @@ class Policy:
             self.last_played[self.names[card]] = t
 
     def decide(self, st: LiveState, opp_plays: list[dict]) -> Action | None:
+        act = self._decide(st, opp_plays)
+        if act is not None and self.placer is not None:
+            try:
+                from bot77.board import summary_features
+                units, towers = live_board(st.units)
+                cid = self.names.get(act.card)
+                info = self.cards.get(cid, {})
+                el = {c["name"]: c.get("elixir") or 0 for c in self.cards.values()}
+                act.model_spot = self.placer.place(act.card, info.get("type"), cid, units, towers,
+                                                   summary_features(units, towers, el, self.names), el)
+            except Exception:  # noqa: BLE001 -- shadow only: never cost a play
+                pass
+        return act
+
+    def _decide(self, st: LiveState, opp_plays: list[dict]) -> Action | None:
         if not st.in_battle or None in st.hand or st.elixir is None:
             return None
         since = st.t - self.own[-1]["t"] if self.own else 99.0
@@ -72,7 +95,7 @@ class Policy:
         if self.rules is None:
             return self._decide_v0(st, opp_plays, since)
         h = {"hand": st.hand, "next": st.next, "elixir": st.elixir, "t_match": st.elapsed_s, "multiplier": st.multiplier}
-        scores = self.a.scores(candidates(h, st.t, self.own, opp_plays, self.last_played, self.cards, self.names))
+        scores = self.a.scores(self._rows(h, st, opp_plays))
         by_a = sorted(range(4), key=lambda k: -scores[k])
         info = [self.cards.get(c, {}) for c in st.hand]
         name = [i.get("name") for i in info]
@@ -110,6 +133,13 @@ class Policy:
                     return Action(k, name[k], spot[0], spot[1], "full elixir (rules)", scores)
         return None
 
+    def _rows(self, h: dict, st: LiveState, opp_plays: list[dict]) -> list[dict]:
+        """A's 4 candidate rows; with the board features when the model was trained with them (A v2)."""
+        rows = candidates(h, st.t, self.own, opp_plays, self.last_played, self.cards, self.names)
+        if self.a.uses_board:
+            add_board_features(rows, *live_board(st.units), self.cards)
+        return rows
+
     def _decide_v0(self, st: LiveState, opp_plays: list[dict], since: float) -> Action | None:
         """B v0 before the playbook rules (2026-10-21): when rules + A's card + playbook / rule spots."""
         threats = st.threats()
@@ -118,8 +148,7 @@ class Policy:
         if why is None:
             return None
         h = {"hand": st.hand, "next": st.next, "elixir": st.elixir, "t_match": st.elapsed_s, "multiplier": st.multiplier}
-        rows = candidates(h, st.t, self.own, opp_plays, self.last_played, self.cards, self.names)
-        scores = self.a.scores(rows)
+        scores = self.a.scores(self._rows(h, st, opp_plays))
         for k in sorted(range(4), key=lambda k: -scores[k]):
             info = self.cards.get(st.hand[k], {})
             cost = info.get("elixir") or 0

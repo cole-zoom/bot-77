@@ -17,6 +17,7 @@ from bot77.moves import CAND_FEATURES, CTX_FEATURES
 ap = argparse.ArgumentParser()
 ap.add_argument("--league", type=int, default=None, help="train only on this TV league (0 = Ultimate Champion)")
 ap.add_argument("--out", default="data/models/moves_v1")
+ap.add_argument("--board", action="store_true", help="A v2: add the board features (bot77.board, table board_states)")
 ap.add_argument("--eval", default="heldback,test")
 ap.add_argument("--c-table", default="", help="opponent_events table: also score the bottom player with the opponent's "
                 "history from C's detections instead of the replay's top hand (what B would see)")
@@ -24,6 +25,20 @@ ap.add_argument("--c-split", default="heldback")
 a = ap.parse_args()
 
 rows = lancedb.connect("data/lancedb").open_table("move_samples").to_arrow().to_pylist()
+if a.board:  # A v2 (2026-10-22): the units on the field at each decision
+    import json
+    from bot77.board import CAND_BOARD_FEATURES, SUMMARY_FEATURES, add_board_features
+    _db = lancedb.connect("data/lancedb")
+    _cards = {c["id"]: c for c in _db.open_table("cards").search().where("kind = 'deck_card'").limit(1000)
+              .select(["id", "name", "elixir", "type"]).to_arrow().to_pylist()}
+    boards = {(b["game"], b["decision"]): b for b in _db.open_table("board_states").to_arrow().to_pylist()}
+    by_dec = defaultdict(list)
+    for r in rows:
+        by_dec[(r["game"], r["decision"])].append(r)
+    for key, rs in by_dec.items():
+        b = boards.get(key)
+        units = [{"card": u[0], "team": u[1], "x": u[2], "y": u[3]} for u in json.loads(b["units"])] if b else []
+        add_board_features(rs, units, json.loads(b["towers"]) if b else {}, _cards)
 
 
 RATE_TABLES = {}
@@ -40,8 +55,11 @@ def add_response_rates(rows, folds=5, prior=20):
     def tables(rs):
         pair, base = defaultdict(lambda: [0, 0]), defaultdict(lambda: [0, 0])
         for r in rs:
-            for key, tab in (((r["opp_prev1"], r["cand_card"]), pair), (("own", r["own_prev1"], r["cand_card"]), pair),
-                             (r["cand_card"], base)):
+            keys = [((r["opp_prev1"], r["cand_card"]), pair), (("own", r["own_prev1"], r["cand_card"]), pair),
+                    (r["cand_card"], base)]
+            if "b_threat_card" in r:  # A v2: answers to the attacker on the board, not just the last play
+                keys.append((("threat", r["b_threat_card"], r["cand_card"]), pair))
+            for key, tab in keys:
                 tab[key][0] += r["chosen"]; tab[key][1] += 1
         return pair, base
 
@@ -58,11 +76,16 @@ def add_response_rates(rows, folds=5, prior=20):
         r["resp_rate"] = rate(pair, base, (r["opp_prev1"], r["cand_card"]), r["cand_card"])
         r["own_rate_after"] = rate(pair, base, ("own", r["own_prev1"], r["cand_card"]), r["cand_card"])
         r["elixir_after"] = r["elixir"] - r["cand_cost"]
+        if "b_threat_card" in r:
+            r["resp_threat"] = rate(pair, base, ("threat", r["b_threat_card"], r["cand_card"]), r["cand_card"])
 
 
 add_response_rates(rows)
 FEATS = CAND_FEATURES + CTX_FEATURES + ["resp_rate", "own_rate_after", "elixir_after"]
 CATS = ["cand_card", "next_card"] + [f for f in CTX_FEATURES if f.startswith(("own_prev", "opp_prev")) and not f.endswith("_dt")]
+if a.board:
+    FEATS += SUMMARY_FEATURES + CAND_BOARD_FEATURES + ["resp_threat"]
+    CATS += ["b_threat_card"]
 ids = sorted({r[f] for r in rows for f in CATS if r[f] is not None and r[f] >= 0})
 code = {c: i for i, c in enumerate(ids)}  # card ids -> 0..n-1 for categorical splits
 assert len(code) < 255, len(code)

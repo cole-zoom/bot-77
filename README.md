@@ -139,6 +139,13 @@ ranks whatever the rules leave open. Each play's reason in the log says which de
 `defend (A)`, `support (rules)`, `full elixir (rules)`. Check the rules offline against the reviewed plays with
 `uv run python scripts/eval_rules_on_reviews.py`.
 
+**Board and placement (2026-10-22):** each play also logs the whole board (`bot_actions.units`) and where the
+placement model (`bot77.place`, data/models/place_v1) would have put the card (`model_spot`; shadow only for now).
+The placement model ranks candidate spots on the board: fixed spots players use, plus spots on / in front of the
+attacker, behind our tank, a spell's best group. On test replays it lands a median 4.1 tiles from where the real
+player put the card, in the right lane 77% of the time. Rebuild: `build_board_states.py` → `build_placements.py` →
+`train_place.py`; the board-aware card model is `train_moves.py --board` (not adopted: no gain on test).
+
 **The playbook** (built 2026-10-21/22 except step 4):
 
 1. **`interactions` table (LanceDB).** From both players of every keyed replay: each opponent play and the other

@@ -45,7 +45,11 @@ class Runner:
             return
         t = pa.Table.from_pylist(rows)
         if table in self.db.table_names(limit=10_000):
-            self.db.open_table(table).add(t)
+            tbl = self.db.open_table(table)
+            new = [f.name for f in t.schema if f.name not in tbl.schema.names]
+            if new:  # a column added since the table was made (e.g. units, 2026-10-22): older rows get null
+                tbl.add_columns({c: "CAST(NULL AS STRING)" for c in new})
+            tbl.add(t)
         else:
             self.db.create_table(table, t)
 
@@ -210,7 +214,11 @@ class Runner:
                "scores": json.dumps([round(float(v), 4) for v in act.scores], default=float),
                "taps": json.dumps([round(float(v)) for v in taps], default=float), "time_left_s": st.time_left_s, "k": k, "shot": shot,
                "frame_w": im.shape[1], "frame_h": im.shape[0],
-               "threats": json.dumps([[u.card, round(u.x, 1), round(u.y, 1)] for u in st.threats()], default=float)}
+               "threats": json.dumps([[u.card, round(u.x, 1), round(u.y, 1)] for u in st.threats()], default=float),
+               "model_spot": json.dumps(None if act.model_spot is None else [round(float(v), 2) for v in act.model_spot]),
+               # the whole board (2026-10-22: for board features and the placement model): card, class, team, x, y, conf
+               "units": json.dumps([[u.card, u.cls, u.team, round(u.x, 2), round(u.y, 2), round(u.conf, 2)] for u in st.units],
+                                   default=float)}
         self.actions.append(row)
         self.log(ui.play_line(st, act))
 
