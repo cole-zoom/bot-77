@@ -70,7 +70,7 @@ def test_hog_counter_push_needs_elixir(policy):
 def test_decide_respects_elixir_and_gap(policy):
     assert policy.decide(state(3.0), []) is None  # nothing to defend, low elixir: wait
     act = policy.decide(state(9.8, t=60.0), [])
-    assert isinstance(act, Action) and act.reason == "full elixir"
+    assert isinstance(act, Action) and act.reason.startswith("full elixir")
     policy.record_own(60.0, act.card)
     assert policy.decide(state(9.8, t=60.5), []) is None  # min gap between plays
 
@@ -87,3 +87,10 @@ def test_deploy_taps_land_on_slot_and_spot(cards):
     assert abs((tx - ox) / tile - 3.5) < 1e-6 and abs((ty - oy) / tile - 16.2) < 1e-6
     ax0, ay0, ax1, ay1 = layout.katacr_arena
     assert ax0 <= tx <= ax1 and ay0 <= ty <= ay1
+
+
+def test_playbook_answer_goes_to_the_threat_lane(policy):
+    st = state(7.0, [enemy("Hog Rider", 14.0, 13.0)], t=40.0)
+    spot = policy.answer_spot("Cannon", st, [{"t": 38.5, "card": "Hog Rider"}])
+    assert spot is not None and spot[0] > 9 and spot[1] > 15  # our half, the Hog's (right) lane
+    assert policy.answer_spot("Cannon", st, [{"t": 20.0, "card": "Hog Rider"}]) is None  # not a recent play

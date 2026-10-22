@@ -14,7 +14,8 @@ import pyarrow as pa
 
 import cv2
 
-from bot77.live.device import POS, between_games_tap, deploy, screen_kind
+from bot77.live import ui
+from bot77.live.device import POS, between_games_tap, deploy, screen_kind, screen_texts
 from bot77.live.policy import Policy
 from bot77.live.state import LiveReader, OpponentTracker
 
@@ -34,7 +35,9 @@ class Runner:
         self.dry_run, self.log, self.record = dry_run, log, record
         self.games, self.actions = [], []
         self.last_nudge = self.last_shot = 0.0
-        self.known_deck: list[int] = []  # learned in the first game, reused after (the deck changes rarely)
+        self.known_deck: list[int] = []
+        self.wins = self.losses = 0
+        self.names = {c["id"]: c["name"] for c in cards}  # learned in the first game, reused after (the deck changes rarely)
         self.probe = LiveReader(layout, cards)  # is a battle on screen? (no detector: clock + elixir are enough)
 
     def _save(self, table: str, rows: list[dict]) -> None:
@@ -79,6 +82,8 @@ class Runner:
                 st = None
             if kind == "end":
                 if game is not None:
+                    game["result"] = self._result(im)
+                    cv2.imwrite(str(GAMES_DIR / game["id"] / "end.jpg"), cv2.resize(im, (SHOT_W, round(im.shape[0] * SHOT_W / im.shape[1]))))
                     self._finish(game, t)
                     game = self.current = None
                 ok = POS.get("end_ok")
@@ -126,7 +131,7 @@ class Runner:
 
     def _new_game(self, t: float) -> dict:
         gid = time.strftime("bot_%Y-%m-%d_%H%M%S")
-        self.log(f"game {gid} starting")
+        self.log(ui.c(f"  … game {gid} starting", "grey"))
         (GAMES_DIR / gid).mkdir(parents=True, exist_ok=True)
         rec = None
         if self.record and not self.dry_run:
@@ -140,7 +145,20 @@ class Runner:
         if len(self.known_deck) == 8:  # our deck from earlier games: read only those 8 cards from the first frame
             reader.deck, reader.reader = list(self.known_deck), reader.full.restrict(set(self.known_deck))  # (~1 s -> ~0.1 s)
         return {"id": gid, "t0": t, "reader": reader,
-                "policy": Policy(self.cards), "opp": OpponentTracker(), "n": 0, "rec": rec, "after": []}
+                "policy": Policy(self.cards), "opp": OpponentTracker(), "n": 0, "rec": rec, "after": [],
+                "num": len(self.games) + 1, "opp_name": None, "last_status": 0.0, "result": "?"}
+
+    @staticmethod
+    def _result(im) -> str:
+        """win / loss from the end screen: "Winner!" sits over the winner's side (ours is the bottom half). The side
+        mapping is checked against known results (end.jpg is kept per game)."""
+        try:
+            ys = [y for t, x, y in screen_texts(im) if "winner" in t]
+        except Exception:  # noqa: BLE001
+            return "?"
+        if not ys:
+            return "?"
+        return "win" if ys[0] > im.shape[0] / 2 else "loss"
 
     def _shot(self, game: dict, im, name: str) -> str:
         f = GAMES_DIR / game["id"] / name
@@ -152,6 +170,15 @@ class Runner:
             if st.t >= due:
                 self._shot(game, im, f"{k:03d}_after.jpg"); game["after"].remove((k, due))
         game["opp"].update(st)
+        if game["opp_name"] is None:  # the opponent's name, once, for the terminal
+            try:
+                from bot77.readers.clock import ocr_text
+                game["opp_name"] = ocr_text(self.layout.crop(im, "opp_name"), 2).strip()[:24]
+            except Exception:  # noqa: BLE001
+                game["opp_name"] = ""
+            self.log(ui.game_start(game["num"], game["opp_name"]))
+        if st.t - game["last_status"] >= 10:
+            self.log(ui.status_line(st, self.names)); game["last_status"] = st.t
         act = game["policy"].decide(st, game["opp"].plays)
         if act is None:
             return
@@ -168,7 +195,7 @@ class Runner:
                "frame_w": im.shape[1], "frame_h": im.shape[0],
                "threats": json.dumps([[u.card, round(u.x, 1), round(u.y, 1)] for u in st.threats()], default=float)}
         self.actions.append(row)
-        self.log(f"  {st.t:7.1f}s  {act.card:16s} -> ({act.x:4.1f}, {act.y:4.1f})  {act.reason}  elixir {st.elixir:.1f}")
+        self.log(ui.play_line(st, act))
 
     def _finish(self, game: dict, t: float) -> None:
         if game.get("rec") is not None:
@@ -183,6 +210,8 @@ class Runner:
              "deck": json.dumps(game["reader"].deck, default=int), "opp_plays": len(game["opp"].plays)}
         self._save("bot_games", [g])
         self.games.append(g)
+        self.wins += game.get("result") == "win"; self.losses += game.get("result") == "loss"
+        g["result"] = game.get("result", "?")
         if len(game["reader"].deck) == 8:
             self.known_deck = list(game["reader"].deck)
-        self.log(f"game {game['id']} over: {game['n']} plays by the bot, {len(game['opp'].plays)} opponent plays seen")
+        self.log(ui.game_end(game["num"], game.get("result", "?"), game["n"], t - game["t0"], self.wins, self.losses))

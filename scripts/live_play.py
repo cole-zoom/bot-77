@@ -13,6 +13,7 @@ import lancedb
 from bot77.detect.yolo import Bot77Detector
 from bot77.layout import Layout
 from bot77.live.device import Device
+from bot77.live import ui
 from bot77.live.loop import STOP_FILE, Runner
 
 ap = argparse.ArgumentParser()
@@ -22,6 +23,7 @@ ap.add_argument("--weights", default="data/models/bot77_detector/v6l/best.pt")
 a = ap.parse_args()
 STOP_FILE.parent.mkdir(parents=True, exist_ok=True)
 STOP_FILE.unlink(missing_ok=True)
+print(ui.banner(a.device, a.layout, getattr(a, "games", 0) or 999, a.hours), flush=True)
 cards = lancedb.connect("data/lancedb").open_table("cards").search().where("kind = 'deck_card'").limit(1000).to_arrow().to_pylist()
 Runner(Device(a.device), Layout.load(a.layout), cards, Bot77Detector(Path(a.weights)), max_games=a.games,
        max_hours=a.hours).run()

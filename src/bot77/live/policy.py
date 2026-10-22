@@ -36,13 +36,19 @@ class Action:
 
 
 class Policy:
-    def __init__(self, cards: list[dict], model_path: str = "data/models/moves_v1/model.pkl",
+    def __init__(self, cards: list[dict], model_path: str = "data/models/moves_v1/model.pkl", playbook: bool = True,
                  full_at: float = 9.5, idle_at: float = 7.0, idle_s: float = 6.0, min_gap_s: float = 1.2):
         self.a = MovePredictor(model_path)
         self.cards = {c["id"]: c for c in cards}
         self.names = {c["name"]: c["id"] for c in cards}
         self.full_at, self.idle_at, self.idle_s, self.min_gap_s = full_at, idle_at, idle_s, min_gap_s
         self.own: list[dict] = []  # our plays {"t", "card"}
+        self.book = {}
+        if playbook:  # LanceDB `playbook` (scripts/build_playbook.py): typical spot of each answer to each card
+            import lancedb
+            for b in lancedb.connect("data/lancedb").open_table("playbook").to_arrow().to_pylist():
+                if b["ans_x"] is not None:
+                    self.book[(b["opp_card"], b["opp_zone"], b["answer"])] = b
         self.last_played: dict[int, float] = {}
 
     def record_own(self, t: float, card: str) -> None:
@@ -69,11 +75,32 @@ class Policy:
             cost = info.get("elixir") or 0
             if cost > st.elixir + 0.05:
                 continue
-            spot = self.place(info.get("name"), info.get("type"), threats, st)
+            spot, how = (self.answer_spot(info.get("name"), st, opp_plays) if info.get("type") != "spell" else None), "playbook"
+            if spot is None:
+                spot, how = self.place(info.get("name"), info.get("type"), threats, st), "rules"
             if spot is None:
                 continue
-            return Action(k, info.get("name"), spot[0], spot[1], why, scores)
+            return Action(k, info.get("name"), spot[0], spot[1], f"{why} ({how})", scores)
         return None
+
+    def answer_spot(self, name: str, st: LiveState, opp_plays: list[dict], recent_s: float = 6.0):
+        """Where strong players put this card when answering the opponent's last play (playbook step 2): their
+        typical spot, in the lane of the opponent's unit. On 48 held-back replays: median 5.0 tiles from the real
+        spot and 75% same lane, vs 8.5 tiles and 31% for the rules (scripts/eval_playbook_place.py). None when the
+        opponent hasn't played in the last few seconds or the playbook has no such answer."""
+        if not self.book or not opp_plays or st.t - opp_plays[-1]["t"] > recent_s:
+            return None
+        opp = opp_plays[-1]["card"]
+        units = [u for u in st.units if u.team == "enemy" and u.card == opp]
+        if not units:
+            return None
+        u = max(units, key=lambda u: u.y)
+        z = "our_half" if u.y > RIVER_Y + 1.5 else "bridge" if u.y > RIVER_Y - 3.0 else "their_half"
+        b = self.book.get((opp, z, name)) or self.book.get((opp, "any", name))
+        if b is None:
+            return None
+        x = b["ans_x"] if (u.x < 9) == (b["ans_x"] < 9) else 18 - b["ans_x"]
+        return x, b["ans_y"]
 
     def place(self, name: str, typ: str, threats: list[Unit], st: LiveState) -> tuple[float, float] | None:
         """Where a card goes; None if it has no sensible target right now (e.g. a spell with nothing to hit)."""
