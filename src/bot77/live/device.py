@@ -68,12 +68,34 @@ class Device:
         return time.time() - self.t0
 
     def cap(self) -> np.ndarray | None:
-        r = subprocess.run([ADB, "-s", self.s, "exec-out", "screencap", "-p"], capture_output=True, timeout=30)
+        try:
+            r = subprocess.run([ADB, "-s", self.s, "exec-out", "screencap", "-p"], capture_output=True, timeout=15)
+        except subprocess.TimeoutExpired:  # ADB wedged (2026-10-22: a stray scrcpy held it): the caller recovers
+            return None
         im = cv2.imdecode(np.frombuffer(r.stdout, np.uint8), cv2.IMREAD_COLOR)
         return im if im is not None and im.shape[:2] == (1920, 1080) else None
 
     def tap(self, x: float, y: float) -> None:
-        subprocess.run([ADB, "-s", self.s, "shell", "input", "tap", str(int(x)), str(int(y))], check=True)
+        try:
+            subprocess.run([ADB, "-s", self.s, "shell", "input", "tap", str(int(x)), str(int(y))], check=True, timeout=10)
+        except (subprocess.TimeoutExpired, subprocess.CalledProcessError):
+            pass
+
+    def recover(self) -> None:
+        """Unwedge ADB: stop stray screen recorders, restart the ADB server, reconnect."""
+        recover_adb(self.s)
+
+
+def recover_adb(serial: str) -> None:
+    subprocess.run(["pkill", "-INT", "-f", f"scrcpy -s {serial}"])
+    time.sleep(3)
+    subprocess.run(["pkill", "-9", "-f", f"scrcpy -s {serial}"])
+    subprocess.run(["pkill", "-f", "scrcpy-server"])
+    subprocess.run([ADB, "kill-server"], capture_output=True)
+    time.sleep(2)
+    subprocess.run([ADB, "start-server"], capture_output=True)
+    if serial.startswith("127.0.0.1"):
+        subprocess.run([ADB, "connect", serial], capture_output=True)
 
 
 class FakeDevice:

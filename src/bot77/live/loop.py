@@ -70,7 +70,10 @@ class Runner:
             im = self.dev.cap()
             if im is None:
                 fails += 1
-                if fails >= 5:
+                if fails == 3 and hasattr(self.dev, "recover"):
+                    self.log(ui.c("  screenshots failing: restarting ADB", "yellow"))
+                    self.dev.recover()
+                if fails >= 8:
                     self.log("screenshots keep failing: stopping"); break
                 time.sleep(2); continue
             fails = 0
