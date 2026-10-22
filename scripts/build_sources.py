@@ -2,7 +2,9 @@
 matches / videos.
 
 Adds to every match (the existing columns are kept):
-  source        replay_tv / replay_bl / pov_cole / pov_friend / youtube / bot
+  source        replay_tv / replay_bl / replay_bot / pov_cole / pov_friend / youtube / bot
+                (replay_bot: a Battle Log replay of the bot's own game -- its bottom player is the bot, so it is never
+                imitation data; the bot's deck on a day the bot played)
   pov_side      bottom / top (a replay is stored twice: once per player's hand, the top one as <id>_top_m01)
   pair_match_id the same game from the other player's side (replays), else null
   truth_set     replay (both hands, exact) / auto (paired POVs) / live (POV keyed by its replay) / none
@@ -64,7 +66,20 @@ for g in bot_games:
                         "deck": json.loads(g["deck"]) if g.get("deck") else None})
 
 
+bot_decks = {frozenset(json.loads(g["deck"])) for g in bot_games if g.get("deck") and json.loads(g["deck"])}
+bot_days = {g["game_id"][4:14] for g in bot_games}
+deck_of = {m["match_id"]: m.get("deck") for m in matches}
+
+
+def is_bot_replay(m: str) -> bool:
+    b = bottom_of(m)
+    d = deck_of.get(b)
+    return m.startswith("bl_") and m[3:13] in bot_days and bool(d) and any(set(d) <= dk for dk in bot_decks)
+
+
 def source(m: str) -> str:
+    if is_bot_replay(m):
+        return "replay_bot"
     return ("replay_tv" if m.startswith("tv_") else "replay_bl" if m.startswith("bl_") else "pov_cole" if m.startswith("cole_")
             else "pov_friend" if m.startswith("friend_") else "bot" if m.startswith("bot_") else "youtube")
 

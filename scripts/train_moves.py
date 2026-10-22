@@ -17,6 +17,7 @@ from bot77.moves import CAND_FEATURES, CTX_FEATURES
 ap = argparse.ArgumentParser()
 ap.add_argument("--league", type=int, default=None, help="train only on this TV league (0 = Ultimate Champion)")
 ap.add_argument("--out", default="data/models/moves_v1")
+ap.add_argument("--table", default="move_samples", help="samples table (move_samples_m: rebuilt from moments)")
 ap.add_argument("--board", action="store_true", help="A v2: add the board features (bot77.board, table board_states)")
 ap.add_argument("--eval", default="heldback,test")
 ap.add_argument("--c-table", default="", help="opponent_events table: also score the bottom player with the opponent's "
@@ -24,7 +25,7 @@ ap.add_argument("--c-table", default="", help="opponent_events table: also score
 ap.add_argument("--c-split", default="heldback")
 a = ap.parse_args()
 
-rows = lancedb.connect("data/lancedb").open_table("move_samples").to_arrow().to_pylist()
+rows = lancedb.connect("data/lancedb").open_table(a.table).to_arrow().to_pylist()
 if a.board:  # A v2 (2026-10-22): the units on the field at each decision
     import json
     from bot77.board import CAND_BOARD_FEATURES, SUMMARY_FEATURES, add_board_features

@@ -63,7 +63,12 @@ numbers before anything new is trained.
       (`build_plays.py`: 70,099 hand plays = events, 1,381 bot plays, 14,080 with a position). The old
       `unit_detections_*` tables stay until their readers move over (phases 2-3). C's detected plays: only the old
       default output (359 rows) survived the cleanup; the current pipeline is rerun into `plays` when needed.
-- [ ] Phase 2 — moments + labels + reviews (A v1 reproduces 46.6% held-back from the new tables)
+- [x] Phase 2 — moments + labels + reviews (2026-10-22): `moments` (`build_moments.py`: 26,467 replay plays,
+      116,575 could-have-played waits, 1,381 bot plays; board from `detections`), `labels` (replay / bot / reviews),
+      `reviews` (`import_reviews.py`: Cole's 60 + Claude's approved 84). **Check passed:** A's rows rebuilt from
+      moments + plays (`check_moments.py`) are identical to `move_samples` (96,568 rows, no field differs) and A v1
+      retrains to 46.6% held-back. Found on the way: the bot's own replays (53 games) were about to become imitation
+      data -- they're now `replay_bot` and kept out of training by default.
 - [ ] Phase 3 — feature library + registry (live bot switched to it, dry run unchanged)
 - [ ] Phase 4 — data browser
 - [ ] Phase 5 — models registry

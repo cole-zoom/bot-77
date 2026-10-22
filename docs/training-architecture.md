@@ -144,6 +144,16 @@ The bot loads "the adopted version of each model" instead of hardcoded paths.
 
 ---
 
+### Conventions settled while building (2026-10-22)
+- **`replay_bot`:** a Battle Log replay of the bot's own game. Its bottom player is the bot, so it's never imitation
+  data (training on it dropped A v1's held-back from 46.6% to 45.5%). Training sets take `replay_tv` + `replay_bl`
+  by default; the bot's replays are still moments (its decisions with the full board) for reviews and the critic.
+- **Positions in labels carry `xy_kind`:** `box` = where the unit was first detected (its box centre: replay plays),
+  `tap` = where the screen was tapped (the bot, review clicks). A tap is ~1.27 tiles below the box centre of the unit
+  it makes (`bot77.place.FEET_DY`).
+- **`board_frame`** on moments says whether a detector frame was found (within 1.5 s); an empty `units` list with
+  `board_frame` true is a genuinely empty board (start of the game).
+
 ## 4. What the models become on top of this
 
 

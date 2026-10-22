@@ -6,7 +6,7 @@ Generated 2026-10-22 by `scripts/inventory.py` (phase 0 of [training-architectur
 
 | Tier | Used | Free |
 |---|---|---|
-| Laptop SSD | 698.2G | 228.1G |
+| Laptop SSD | 696.5G | 229.8G |
 | LaCie HDD (`/Volumes/LaCie/bot-77-data`: 323.3G) | 468.9G | 1.4T |
 
 ## LanceDB tables (`data/lancedb`, laptop)
@@ -17,11 +17,12 @@ Generated 2026-10-22 by `scripts/inventory.py` (phase 0 of [training-architectur
 | `live_outcomes` | analysis (C) | play outcomes on Cole's live (POV) games | 667 | 76K | 1 | — | — |
 | `play_outcomes` | analysis (C) | per detected play: real / fake / missed vs the key; trains the fake filter | 16,909 | 1.0M | 2 | — | build_failures.py, mine_failures.py |
 | `pov_fakes` | analysis (C) | fake plays in Cole's POV games | 1,228 | 140K | 2 | — | — |
-| `bot_actions` | bot | every bot play: card, spot, reason, hand, elixir, threats, full board, model spot | 1,381 | 216K | 1 | loop.py | build_bot_review.py, build_plays.py, eval_rules_on_reviews.py |
+| `bot_actions` | bot | every bot play: card, spot, reason, hand, elixir, threats, full board, model spot | 1,381 | 216K | 1 | loop.py | build_bot_review.py, build_moments.py, build_plays.py, eval_rules_on_reviews.py, import_reviews.py |
 | `bot_games` | bot | every bot game: start / end, plays, result, deck | 57 | 32K | 1 | loop.py | build_bot_review.py, build_sources.py |
+| `reviews` | ground truth | each exported bot-play review (who, when, approved by, raw export) | 2 | 28K | 1 | import_reviews.py | __init__.py, after_batch4.sh, after_batch5.sh, after_batch6.sh, after_clicks8.sh, after_cole_1001.sh, after_cole_1001bcd |
 | `playbook` | model input | interactions aggregated per opponent card: common answers and spots | 4,718 | 176K | 1 | build_playbook.py | eval_playbook_place.py, policy.py, train_place.py |
-| `detections` | observation | every detector run in one table (run_id): boxes, class, card, team, arena tiles | 32,407,283 | 916.9M | 1 | build_detections.py | build_failures.py, eval_v2.py, mine_v4_chainA.sh, mine_v4_chainB.sh, mine_v4_detect.py |
-| `hud_states` | observation | what the HUD showed, every frame read: hand, next, elixir, clock, multiplier | 4,194,766 | 92.0M | 1 | — | build_moves.py, opponent.py, pairing.py, pipeline.py, render_game.py, train_fake_filter.py, train_moves.py |
+| `detections` | observation | every detector run in one table (run_id): boxes, class, card, team, arena tiles | 32,407,283 | 916.9M | 1 | build_detections.py | build_failures.py, build_moments.py, eval_v2.py, mine_v4_chainA.sh, mine_v4_chainB.sh, mine_v4_detect.py |
+| `hud_states` | observation | what the HUD showed, every frame read: hand, next, elixir, clock, multiplier | 4,194,766 | 92.0M | 1 | — | build_moments.py, build_moves.py, opponent.py, pairing.py, pipeline.py, render_game.py, train_fake_filter.py, train_move |
 | `opponent_events` | observation | C's detected opponent plays (default output table) | 359 | 10.2M | 1 | — | build_plays.py, eval_v2.py, opponent.py, review.py, slices.py, train_moves.py |
 | `runs` | observation | what each detector run is and what it's used for | 6 | 16K | 1 | build_detections.py | build_train_v3.py, mine_v4_chainA.sh, pod_v3.sh, pod_v4.sh, pod_v5.sh, pod_v6.sh, pod_v8.sh |
 | `unit_detections` | observation | detector output (older default run) used by mining, slices, autolabel | 14,071,127 | 278.9M | 1 | — | autolabel.py, build_detections.py, mine.py, opponent.py, run.py, slices.py |
@@ -31,13 +32,16 @@ Generated 2026-10-22 by `scripts/inventory.py` (phase 0 of [training-architectur
 | `unit_detections_v7l_best` | observation | detector V7 on a check set (30-ish games) | 1,229,471 | 24.4M | 1 | — | build_detections.py |
 | `unit_detections_v8l_best` | observation | detector V8 on a check set | 1,248,634 | 24.7M | 1 | — | build_detections.py |
 | `events` | observation / ground truth | plays and abilities read from the hand (exact for the player whose hand is shown; replay answer keys) | 70,099 | 3.4G | 1 | pipeline.py | __init__.py, add_next_card_plays.py, after_session_f.sh, after_session_g.sh, analyze_dev.py, autolabel.py, autolabel_pai |
-| `plays` | observation / ground truth | every play: from the hand (exact), detected by C, or made by the bot | 71,839 | 6.9M | 2 | build_plays.py | build_bot_review.py, build_click_short.py, eval_rules_on_reviews.py, mine_failures.py, review_sheets.py |
+| `plays` | observation / ground truth | every play: from the hand (exact), detected by C, or made by the bot | 71,839 | 6.9M | 2 | build_plays.py | build_bot_review.py, build_click_short.py, build_moments.py, check_moments.py, eval_rules_on_reviews.py, import_reviews. |
 | `cards` | reference | the card catalogue: names, elixir, type, rarity, art (from the Clash API) | 127 | 87.3M | 3 | cards.py | __init__.py, add_next_card_plays.py, analyze_dev.py, autolabel.py, autolabel_paired_spells.py, board.py, build_board_sta |
-| `matches` | source | one row per match in a video: start / end, opponent, deck. Split / source / league not here yet | 2,088 | 812K | 3 | build_sources.py | add_next_card_plays.py, analyze_dev.py, autolabel.py, autolabel_clock_spots.py, autolabel_paired_spells.py, autolabel_v4 |
+| `matches` | source | one row per match in a video: start / end, opponent, deck. Split / source / league not here yet | 2,088 | 1020K | 4 | build_sources.py | add_next_card_plays.py, analyze_dev.py, autolabel.py, autolabel_clock_spots.py, autolabel_paired_spells.py, autolabel_v4 |
 | `media` | source | every video / recording file: where it really lives (laptop / LaCie), size, available now | 773 | 352K | 3 | build_media.py | — |
-| `videos` | source | one row per video file: creator, layout, mode, path (laptop or LaCie symlink), size | 1,253 | 580K | 3 | build_sources.py | after_session_f.sh, after_session_g.sh, autolabel.py, build_board_states.py, build_click_abilities.py, build_click_off.p |
+| `videos` | source | one row per video file: creator, layout, mode, path (laptop or LaCie symlink), size | 1,253 | 700K | 4 | build_sources.py | after_session_f.sh, after_session_g.sh, autolabel.py, build_board_states.py, build_click_abilities.py, build_click_off.p |
+| `labels` | training data | what was / should have been done at a moment: replay, bot, review_cole, review_claude | 144,567 | 11.5M | 4 | build_moments.py | after_batch3.sh, auto_sprites.py, autolabel.py, build_real_v3.py, build_train_mined.py, build_train_v2.py, build_train_v |
+| `moments` | training data | one player at one point in time with everything they saw: plays + could-have-played waits + bot plays | 144,423 | 10.2M | 1 | build_moments.py | check_moments.py, import_reviews.py |
 | `board_states` | training data (A) | the board at each of A's decisions (JSON strings for now) | 24,142 | 1.6M | 1 | build_board_states.py | build_placements.py, train_moves.py |
-| `move_samples` | training data (A) | A's samples: one row per (decision, hand card), both players of every keyed replay | 96,568 | 6.1M | 2 | build_moves.py | build_board_states.py, train_moves.py |
+| `move_samples` | training data (A) | A's samples: one row per (decision, hand card), both players of every keyed replay | 96,568 | 6.1M | 2 | build_moves.py | build_board_states.py, check_moments.py, train_moves.py |
+| `move_samples_m` | training data (A) | A's rows rebuilt from moments + plays (identical to move_samples; phase 2 check) | 96,568 | 6.3M | 2 | check_moments.py | — |
 | `mined_candidates` | training data (C) | mined failure candidates for review / labelling | 140 | 2.6M | 3 | — | build_mined_review.py, label_mined.py, mine_failures.py |
 | `real_crop_index` | training data (C) | index of real crops used by the crop classifier | 5,051 | 7.4M | 1 | — | autolabel.py, crop_classifier.py |
 | `slice_index` | training data (C) | index of video slices for labelling | 4,844 | 7.2M | 1 | — | — |
@@ -45,7 +49,7 @@ Generated 2026-10-22 by `scripts/inventory.py` (phase 0 of [training-architectur
 | `placements` | training data (placement) | every play with its spot and the board before it | 14,080 | 1.2M | 1 | build_placements.py | build_plays.py, train_place.py |
 | `interactions` | training data (playbook) | play -> the other player's answer within 8 s, with positions | 20,643 | 848K | 1 | build_playbook.py | — |
 
-Total: 31 tables, 18.8G.
+Total: 35 tables, 18.8G.
 
 ## Data folders
 
