@@ -140,6 +140,8 @@ def between_games_tap(im: np.ndarray) -> tuple[float, float, str] | None:
     """Where to tap on a screen between games, or None: a safe whole-word button (never anything about buying,
     gems, offers or clans); the left card on "Choose your reward" (Cole: press Choose, then pick any card)."""
     texts = screen_texts(im)
+    if any(t == "battle log" for t, _, _ in texts):  # left open by the replay runner ("No Clan" on every entry would
+        return 1011, 219, "close Battle Log"         # trip the never-tap words): its red X, top right
     if any(any(n in t for n in NEVER) for t, _, _ in texts if len(t) < 30) and \
             not any(t in SAFE_BUTTONS for t, _, _ in texts):
         tab = battle_tab(im)  # a shop / clan screen: never its buttons, but the Battle tab in the bottom bar is safe
