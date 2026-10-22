@@ -1,0 +1,271 @@
+{
+ "video_id": "cole_2026-10-20_b",
+ "side": "opponent",
+ "matches": [
+  "cole_2026-10-20_b_m01"
+ ],
+ "items": [
+  {
+   "match_id": "cole_2026-10-20_b_m01",
+   "t_video": 30.7,
+   "label": "Goblin Barrel",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r34_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "cole_2026-10-20_b_m01",
+   "t_video": 33.2,
+   "label": "Archers",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r34_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_b_m01",
+   "t_video": 45.4,
+   "label": "Mini P.E.K.K.A",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r34_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_b_m01",
+   "t_video": 74.9,
+   "label": "Elite Barbarians",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r34_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "cole_2026-10-20_b_m01",
+   "t_video": 82.1,
+   "label": "Elixir Collector",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r34_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_b_m01",
+   "t_video": 92.2,
+   "label": "Princess",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r34_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_b_m01",
+   "t_video": 100.4,
+   "label": "Mini P.E.K.K.A",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r34_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_b_m01",
+   "t_video": 108.3,
+   "label": "Goblin Barrel",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r34_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_b_m01",
+   "t_video": 132.5,
+   "label": "Musketeer",
+   "form": "evo",
+   "source": "POV of bl_2026-10-20_r34_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_b_m01",
+   "t_video": 135.0,
+   "label": "Elixir Collector",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r34_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_b_m01",
+   "t_video": 147.5,
+   "label": "Princess",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r34_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_b_m01",
+   "t_video": 150.8,
+   "label": "Elite Barbarians",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r34_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "cole_2026-10-20_b_m01",
+   "t_video": 159.8,
+   "label": "Ronin",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r34_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "cole_2026-10-20_b_m01",
+   "t_video": 161.3,
+   "label": "Mini P.E.K.K.A",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r34_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_b_m01",
+   "t_video": 165.1,
+   "label": "Goblin Barrel",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r34_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_b_m01",
+   "t_video": 169.1,
+   "label": "Princess",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r34_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "cole_2026-10-20_b_m01",
+   "t_video": 183.7,
+   "label": "Elixir Collector",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r34_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "cole_2026-10-20_b_m01",
+   "t_video": 186.7,
+   "label": "Archers",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r34_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_b_m01",
+   "t_video": 192.2,
+   "label": "Goblin Barrel",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r34_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_b_m01",
+   "t_video": 195.7,
+   "label": "Princess",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r34_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "cole_2026-10-20_b_m01",
+   "t_video": 202.8,
+   "label": "Elite Barbarians",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r34_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_b_m01",
+   "t_video": 207.9,
+   "label": "Mini P.E.K.K.A",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r34_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_b_m01",
+   "t_video": 213.3,
+   "label": "Archers",
+   "form": "evo",
+   "source": "POV of bl_2026-10-20_r34_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_b_m01",
+   "t_video": 221.3,
+   "label": "Elixir Collector",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r34_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_b_m01",
+   "t_video": 226.8,
+   "label": "Ronin",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r34_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_b_m01",
+   "t_video": 231.0,
+   "label": "Princess",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r34_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "cole_2026-10-20_b_m01",
+   "t_video": 236.5,
+   "label": "Princess",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r34_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_b_m01",
+   "t_video": 239.7,
+   "label": "Goblin Barrel",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r34_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_b_m01",
+   "t_video": 245.0,
+   "label": "Mini P.E.K.K.A",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r34_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_b_m01",
+   "t_video": 250.0,
+   "label": "Archers",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r34_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_b_m01",
+   "t_video": 256.8,
+   "label": "Musketeer",
+   "form": "evo",
+   "source": "POV of bl_2026-10-20_r34_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_b_m01",
+   "t_video": 263.5,
+   "label": "Princess",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r34_top_m01",
+   "source_confidence": "high"
+  }
+ ],
+ "paired_with": "bl_2026-10-20_r34_top_m01",
+ "offset_s": -9.299999237060547,
+ "auto": true,
+ "source": "live+replay",
+ "replay": "bl_2026-10-20_r34_m01",
+ "agree": 0.935
+}

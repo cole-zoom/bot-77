@@ -1,0 +1,287 @@
+{
+ "video_id": "cole_2026-10-20_b",
+ "side": "opponent",
+ "matches": [
+  "cole_2026-10-20_b_m11"
+ ],
+ "items": [
+  {
+   "match_id": "cole_2026-10-20_b_m11",
+   "t_video": 2199.2,
+   "label": "Goblin Barrel",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r24_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_b_m11",
+   "t_video": 2202.1,
+   "label": "Mega Knight",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r24_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_b_m11",
+   "t_video": 2207.4,
+   "label": "The Log",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r24_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_b_m11",
+   "t_video": 2216.0,
+   "label": "Goblin Curse",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r24_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_b_m11",
+   "t_video": 2217.7,
+   "label": "Zap",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r24_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_b_m11",
+   "t_video": 2236.0,
+   "label": "Goblin Barrel",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r24_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "cole_2026-10-20_b_m11",
+   "t_video": 2238.9,
+   "label": "Ice Spirit",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r24_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_b_m11",
+   "t_video": 2244.9,
+   "label": "Tesla",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r24_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_b_m11",
+   "t_video": 2258.9,
+   "label": "Hog Rider",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r24_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_b_m11",
+   "t_video": 2268.0,
+   "label": "The Log",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r24_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_b_m11",
+   "t_video": 2269.4,
+   "label": "Zap",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r24_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "cole_2026-10-20_b_m11",
+   "t_video": 2276.6,
+   "label": "Ice Spirit",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r24_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_b_m11",
+   "t_video": 2288.1,
+   "label": "Goblin Barrel",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r24_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_b_m11",
+   "t_video": 2298.2,
+   "label": "Hog Rider",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r24_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_b_m11",
+   "t_video": 2312.3,
+   "label": "Tesla",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r24_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_b_m11",
+   "t_video": 2329.9,
+   "label": "Mega Knight",
+   "form": "evo",
+   "source": "POV of bl_2026-10-20_r24_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_b_m11",
+   "t_video": 2331.0,
+   "label": "The Log",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r24_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_b_m11",
+   "t_video": 2331.9,
+   "label": "Ice Spirit",
+   "form": "evo",
+   "source": "POV of bl_2026-10-20_r24_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_b_m11",
+   "t_video": 2337.0,
+   "label": "Goblin Barrel",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r24_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_b_m11",
+   "t_video": 2341.3,
+   "label": "Hog Rider",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r24_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_b_m11",
+   "t_video": 2345.9,
+   "label": "Zap",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r24_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "cole_2026-10-20_b_m11",
+   "t_video": 2347.0,
+   "label": "Goblin Curse",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r24_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_b_m11",
+   "t_video": 2349.2,
+   "label": "The Log",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r24_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_b_m11",
+   "t_video": 2352.0,
+   "label": "Ice Spirit",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r24_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_b_m11",
+   "t_video": 2358.0,
+   "label": "Tesla",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r24_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_b_m11",
+   "t_video": 2365.7,
+   "label": "Zap",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r24_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_b_m11",
+   "t_video": 2373.1,
+   "label": "Mega Knight",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r24_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_b_m11",
+   "t_video": 2375.1,
+   "label": "The Log",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r24_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_b_m11",
+   "t_video": 2379.4,
+   "label": "Ice Spirit",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r24_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_b_m11",
+   "t_video": 2381.0,
+   "label": "Goblin Barrel",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r24_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_b_m11",
+   "t_video": 2384.0,
+   "label": "Goblin Curse",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r24_top_m01",
+   "source_confidence": "low"
+  },
+  {
+   "match_id": "cole_2026-10-20_b_m11",
+   "t_video": 2389.5,
+   "label": "Tesla",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r24_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_b_m11",
+   "t_video": 2391.9,
+   "label": "Ice Spirit",
+   "form": "evo",
+   "source": "POV of bl_2026-10-20_r24_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_b_m11",
+   "t_video": 2396.6,
+   "label": "Hog Rider",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r24_top_m01",
+   "source_confidence": "high"
+  }
+ ],
+ "paired_with": "bl_2026-10-20_r24_top_m01",
+ "offset_s": -2182.9000968933105,
+ "auto": true,
+ "source": "live+replay",
+ "replay": "bl_2026-10-20_r24_m01",
+ "agree": 1.0
+}

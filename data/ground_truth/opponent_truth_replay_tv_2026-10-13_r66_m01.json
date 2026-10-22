@@ -153,16 +153,16 @@
    "match_id": "tv_2026-10-13_r66_m01",
    "t_video": 154.5,
    "label": "Electro Wizard",
-   "form": "hero",
-   "source": "POV of tv_2026-10-13_r66_top_m01",
+   "form": null,
+   "source": "next-card advance in tv_2026-10-13_r66_top_m01",
    "source_confidence": "medium"
   },
   {
    "match_id": "tv_2026-10-13_r66_m01",
    "t_video": 154.5,
    "label": "Electro Wizard",
-   "form": null,
-   "source": "next-card advance in tv_2026-10-13_r66_top_m01",
+   "form": "hero",
+   "source": "POV of tv_2026-10-13_r66_top_m01",
    "source_confidence": "medium"
   },
   {

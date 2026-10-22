@@ -1,0 +1,389 @@
+{
+ "video_id": "bl_2026-10-17_r22",
+ "side": "opponent",
+ "matches": [
+  "bl_2026-10-17_r22_m01"
+ ],
+ "items": [
+  {
+   "match_id": "bl_2026-10-17_r22_m01",
+   "t_video": 13.2,
+   "label": "Knight",
+   "form": "hero",
+   "source": "POV of bl_2026-10-17_r22_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "bl_2026-10-17_r22_m01",
+   "t_video": 27.6,
+   "label": "Witch",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r22_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "bl_2026-10-17_r22_m01",
+   "t_video": 34.3,
+   "label": "Mini P.E.K.K.A",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r22_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "bl_2026-10-17_r22_m01",
+   "t_video": 36.6,
+   "label": "Goblin Gang",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r22_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "bl_2026-10-17_r22_m01",
+   "t_video": 40.4,
+   "label": "Bats",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r22_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "bl_2026-10-17_r22_m01",
+   "t_video": 48.5,
+   "label": "Goblin Barrel",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r22_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "bl_2026-10-17_r22_m01",
+   "t_video": 63.3,
+   "label": "Knight",
+   "form": "hero",
+   "source": "POV of bl_2026-10-17_r22_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "bl_2026-10-17_r22_m01",
+   "t_video": 67.8,
+   "label": "__ability",
+   "form": null,
+   "source": "POV of bl_2026-10-17_r22_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "bl_2026-10-17_r22_m01",
+   "t_video": 73.7,
+   "label": "Electro Wizard",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r22_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "bl_2026-10-17_r22_m01",
+   "t_video": 83.1,
+   "label": "Goblin Gang",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r22_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "bl_2026-10-17_r22_m01",
+   "t_video": 94.6,
+   "label": "Mini P.E.K.K.A",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r22_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "bl_2026-10-17_r22_m01",
+   "t_video": 104.0,
+   "label": "Bats",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r22_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "bl_2026-10-17_r22_m01",
+   "t_video": 124.1,
+   "label": "Witch",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r22_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "bl_2026-10-17_r22_m01",
+   "t_video": 125.3,
+   "label": "Knight",
+   "form": "hero",
+   "source": "POV of bl_2026-10-17_r22_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "bl_2026-10-17_r22_m01",
+   "t_video": 130.9,
+   "label": "Electro Wizard",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r22_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "bl_2026-10-17_r22_m01",
+   "t_video": 136.1,
+   "label": "Mini P.E.K.K.A",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r22_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "bl_2026-10-17_r22_m01",
+   "t_video": 140.8,
+   "label": "Goblin Gang",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r22_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "bl_2026-10-17_r22_m01",
+   "t_video": 142.5,
+   "label": "Goblin Barrel",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r22_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "bl_2026-10-17_r22_m01",
+   "t_video": 150.8,
+   "label": "Witch",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r22_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "bl_2026-10-17_r22_m01",
+   "t_video": 157.8,
+   "label": "Electro Wizard",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r22_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "bl_2026-10-17_r22_m01",
+   "t_video": 160.6,
+   "label": "Knight",
+   "form": "hero",
+   "source": "POV of bl_2026-10-17_r22_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "bl_2026-10-17_r22_m01",
+   "t_video": 162.3,
+   "label": "Bats",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r22_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "bl_2026-10-17_r22_m01",
+   "t_video": 167.1,
+   "label": "Goblin Barrel",
+   "form": "evo",
+   "source": "POV of bl_2026-10-17_r22_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "bl_2026-10-17_r22_m01",
+   "t_video": 176.2,
+   "label": "Witch",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r22_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "bl_2026-10-17_r22_m01",
+   "t_video": 179.7,
+   "label": "Goblin Gang",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r22_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "bl_2026-10-17_r22_m01",
+   "t_video": 183.2,
+   "label": "Electro Wizard",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r22_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "bl_2026-10-17_r22_m01",
+   "t_video": 188.9,
+   "label": "Knight",
+   "form": "hero",
+   "source": "POV of bl_2026-10-17_r22_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "bl_2026-10-17_r22_m01",
+   "t_video": 191.8,
+   "label": "Goblin Barrel",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r22_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "bl_2026-10-17_r22_m01",
+   "t_video": 199.2,
+   "label": "Witch",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r22_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "bl_2026-10-17_r22_m01",
+   "t_video": 204.8,
+   "label": "Bats",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r22_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "bl_2026-10-17_r22_m01",
+   "t_video": 211.3,
+   "label": "Mini P.E.K.K.A",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r22_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "bl_2026-10-17_r22_m01",
+   "t_video": 212.4,
+   "label": "Goblin Gang",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r22_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "bl_2026-10-17_r22_m01",
+   "t_video": 215.7,
+   "label": "Goblin Barrel",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r22_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "bl_2026-10-17_r22_m01",
+   "t_video": 224.2,
+   "label": "Witch",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r22_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "bl_2026-10-17_r22_m01",
+   "t_video": 230.6,
+   "label": "Electro Wizard",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r22_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "bl_2026-10-17_r22_m01",
+   "t_video": 231.3,
+   "label": "Bats",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r22_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "bl_2026-10-17_r22_m01",
+   "t_video": 235.1,
+   "label": "Goblin Gang",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r22_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "bl_2026-10-17_r22_m01",
+   "t_video": 239.6,
+   "label": "Goblin Barrel",
+   "form": "evo",
+   "source": "POV of bl_2026-10-17_r22_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "bl_2026-10-17_r22_m01",
+   "t_video": 246.3,
+   "label": "Witch",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r22_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "bl_2026-10-17_r22_m01",
+   "t_video": 249.7,
+   "label": "Electro Wizard",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r22_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "bl_2026-10-17_r22_m01",
+   "t_video": 252.1,
+   "label": "Bats",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r22_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "bl_2026-10-17_r22_m01",
+   "t_video": 254.3,
+   "label": "Goblin Gang",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r22_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "bl_2026-10-17_r22_m01",
+   "t_video": 258.1,
+   "label": "Goblin Barrel",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r22_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "bl_2026-10-17_r22_m01",
+   "t_video": 261.3,
+   "label": "Witch",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r22_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "bl_2026-10-17_r22_m01",
+   "t_video": 267.0,
+   "label": "Knight",
+   "form": "hero",
+   "source": "POV of bl_2026-10-17_r22_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "bl_2026-10-17_r22_m01",
+   "t_video": 268.0,
+   "label": "Electro Wizard",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r22_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "bl_2026-10-17_r22_m01",
+   "t_video": 270.5,
+   "label": "Bats",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r22_top_m01",
+   "source_confidence": "high"
+  }
+ ],
+ "paired_with": "bl_2026-10-17_r22_top_m01",
+ "offset_s": 0.0,
+ "auto": true,
+ "source": "replay"
+}

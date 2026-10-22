@@ -1,0 +1,255 @@
+{
+ "video_id": "cole_2026-10-20_a",
+ "side": "opponent",
+ "matches": [
+  "cole_2026-10-20_a_m06"
+ ],
+ "items": [
+  {
+   "match_id": "cole_2026-10-20_a_m06",
+   "t_video": 1140.2,
+   "label": "Electro Spirit",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r16_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_a_m06",
+   "t_video": 1144.7,
+   "label": "Goblinstein",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r16_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_a_m06",
+   "t_video": 1156.3,
+   "label": "Archers",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r16_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_a_m06",
+   "t_video": 1160.0,
+   "label": "Barbarian Barrel",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r16_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_a_m06",
+   "t_video": 1161.5,
+   "label": "Skeletons",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r16_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_a_m06",
+   "t_video": 1163.5,
+   "label": "Electro Spirit",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r16_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_a_m06",
+   "t_video": 1166.1,
+   "label": "Goblinstein",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r16_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "cole_2026-10-20_a_m06",
+   "t_video": 1179.5,
+   "label": "Royal Hogs",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r16_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_a_m06",
+   "t_video": 1206.3,
+   "label": "Archers",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r16_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_a_m06",
+   "t_video": 1213.8,
+   "label": "Skeletons",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r16_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_a_m06",
+   "t_video": 1216.4,
+   "label": "Electro Spirit",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r16_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_a_m06",
+   "t_video": 1220.4,
+   "label": "Bomb Tower",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r16_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_a_m06",
+   "t_video": 1226.6,
+   "label": "Goblinstein",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r16_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_a_m06",
+   "t_video": 1237.0,
+   "label": "Barbarian Barrel",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r16_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_a_m06",
+   "t_video": 1240.9,
+   "label": "Royal Hogs",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r16_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_a_m06",
+   "t_video": 1253.6,
+   "label": "Electro Spirit",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r16_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_a_m06",
+   "t_video": 1258.6,
+   "label": "Skeletons",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r16_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_a_m06",
+   "t_video": 1260.6,
+   "label": "Bomb Tower",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r16_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_a_m06",
+   "t_video": 1263.3,
+   "label": "Goblinstein",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r16_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_a_m06",
+   "t_video": 1267.3,
+   "label": "Archers",
+   "form": "evo",
+   "source": "POV of bl_2026-10-20_r16_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_a_m06",
+   "t_video": 1269.5,
+   "label": "Electro Spirit",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r16_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_a_m06",
+   "t_video": 1273.2,
+   "label": "Skeletons",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r16_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_a_m06",
+   "t_video": 1276.8,
+   "label": "Royal Hogs",
+   "form": "evo",
+   "source": "POV of bl_2026-10-20_r16_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_a_m06",
+   "t_video": 1278.7,
+   "label": "Barbarian Barrel",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r16_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_a_m06",
+   "t_video": 1288.5,
+   "label": "Goblinstein",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r16_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_a_m06",
+   "t_video": 1290.8,
+   "label": "Archers",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r16_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_a_m06",
+   "t_video": 1291.9,
+   "label": "Electro Spirit",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r16_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_a_m06",
+   "t_video": 1294.8,
+   "label": "Skeletons",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r16_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_a_m06",
+   "t_video": 1296.8,
+   "label": "Barbarian Barrel",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r16_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_a_m06",
+   "t_video": 1306.2,
+   "label": "Goblinstein",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r16_top_m01",
+   "source_confidence": "medium"
+  }
+ ],
+ "paired_with": "bl_2026-10-20_r16_top_m01",
+ "offset_s": -1123.700023651123,
+ "auto": true,
+ "source": "live+replay",
+ "replay": "bl_2026-10-20_r16_m01",
+ "agree": 0.833
+}

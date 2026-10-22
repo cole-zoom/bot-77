@@ -1,0 +1,18 @@
+{
+ "_doc": "Recording clips first labelled 'no spell' that hold an opponent spell (Cole's review, 2026-10-16; candidates from spell_v2 scores). Applied by scripts/spell_clips.py.",
+ "relabel": {
+  "friend_2026-09-29_c_m08_015": "Goblin Curse",
+  "friend_2026-09-29_c_m02_024": "Vines",
+  "friend_2026-09-29_c_m14_008": "Goblin Curse",
+  "friend_2026-09-29_c_m10_010": "Goblin Curse",
+  "friend_2026-09-29_c_m02_016": "Vines",
+  "friend_2026-09-29_c_m08_007": "Vines",
+  "friend_2026-09-29_c_m08_013": "Vines",
+  "friend_2026-09-29_c_m11_010": "Goblin Curse",
+  "friend_2026-09-29_c_m16_017": "Goblin Curse",
+  "friend_2026-09-29_c_m10_015": "Goblin Curse",
+  "friend_2026-09-29_c_m14_002": "Vines",
+  "friend_2026-09-29_c_m14_010": "Vines",
+  "friend_2026-09-29_c_m08_010": "Goblin Curse"
+ }
+}

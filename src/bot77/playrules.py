@@ -46,8 +46,24 @@ DEFAULT_RULES = {
     # Replays 2026-10-14 (70 tuning matches): 0.6 vs 1.0 = right +1.3, wrong -3.1, fakes -2.4/match
     "deck_w_unclocked": 0.6,
     # spell stage (bot77.spells): directory of per-match classifier probabilities (scripts/katacr/infer_spell.py)
-    "spell_probs": "data/models/spell_mix/spell_probs",  # v2+v3 mix (scripts/mix_spell_probs.py, 2026-10-15)
+    # POV recordings: v2+v5 mix (v5 learned opponent Curse / Vines / Void from Cole's keyed live games; dev 430 -> 433);
+    # replays keep the v2+v3 mix (REPLAY_SPELL_PROBS; held-back 1212 vs 1206 with v2+v5), 2026-10-18
+    "spell_probs": "data/models/spell_mix25/spell_probs",
     "spell_thr": 0.7, "spell_group_s": 1.2, "spell_class_thr": {}, "spell_any_own": False,  # mix makes the old BB/Void cutoffs unnecessary
+    # detector classes ignored entirely: "rage" fires on any spell circle (Poison, Curse, Tornado...) and its fake Rage
+    # plays took a deck slot in 141 of ~400 replays (failure mining, 2026-10-16); the spell stage still finds Rage
+    # spawns._on_own_half: tiles past the river a new enemy unit may be first seen (None = spawns.OWN_HALF_MARGIN, 0.8).
+    # Replays use REPLAY_HALF_MARGIN: fast units (Hog Rider, Royal Hogs, Prince) and pocket plays are first seen 1-3
+    # tiles past the river (failure mining, 2026-10-16); POV recordings lose with a wider margin
+    "half_margin": None,
+    # bot77.elixir: drop plays the opponent couldn't have afforded (start: elixir at the match start)
+    "elixir_check": {"on": False, "tol": 1.0, "start": 5.0, "burst_s": 12.0},
+    # bot77.fakefilter: learned P(fake) per play (scripts/train_fake_filter.py); thr for replays, thr_pov for recordings
+    "fake_filter": {"model": "data/models/fake_filter_v4/model.pkl", "thr": 0.6, "thr_pov": 0.6},  # v4: + 33 keyed live games, POV weight 3 (2026-10-20)
+    "pocket": True,  # spawns.towers_down: after our princess tower falls, allow POCKET_TILES past the river in that lane
+    "det_ignore": ["clone"],
+    "composite_peak": {"Skeletons": ["skeleton", 5, "Skeleton Army"], "Minions": ["minion", 4, "Minion Horde"]},  # spawns.composites_by_peak: {single card: [det class, min units in one frame, composite]}
+    "det_shadow": {"Rage": 3.0},  # {card: s}: drop a detector-only play of card when another spell is this close in time
     "split_min_dets": 0,  # spawns._split: two cards in one group, each seen this often (0 = off), 2026-10-15
     "twin_new": False,  # a second unit of a card alive elsewhere at once is a new play (spawns.Deploy.twin, 2026-10-15)
     "mirror_repeat": False,  # the same card twice in a row -> the second is Mirror (2026-10-15)
@@ -75,12 +91,18 @@ TIMING_FILE = Path("config/play_timing.json")
 REPLAY_TIMING_FILE = Path("config/play_timing_replay.json")
 
 
+REPLAY_HALF_MARGIN = 3.1
+REPLAY_SPELL_PROBS = "data/models/spell_mix256/spell_probs"  # v2+v5+v6 (held-back 1215 -> 1224 right vs v2+v3, 2026-10-21)
+
+
 def replay_rules(rules: dict | None) -> dict:
     t = json.loads(REPLAY_TIMING_FILE.read_text())
     r = dict(rules or {})
     r.setdefault("timing_file", str(REPLAY_TIMING_FILE))
     r.setdefault("timing_default", t["default"])
     r.setdefault("own_deck_recent_s", 10.0)
+    r.setdefault("half_margin", REPLAY_HALF_MARGIN)
+    r.setdefault("spell_probs", REPLAY_SPELL_PROBS)
     r["clock"] = {"offset_s": t["clock_offset_s"], **r.get("clock", {})}
     return r
 

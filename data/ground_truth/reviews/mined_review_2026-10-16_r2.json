@@ -1,0 +1,401 @@
+{
+ "exported_at": "2026-10-16T15:52:10.640Z",
+ "slices": [
+  {
+   "id": "tv_2026-10-12_r29_m01_12-7_Bandit.jpg",
+   "card": "Bandit",
+   "entity": "bandit",
+   "verdict": "keep"
+  },
+  {
+   "id": "tv_2026-10-13_r157_m01_155-5_Bandit.jpg",
+   "card": "Bandit",
+   "entity": "bandit",
+   "verdict": "keep"
+  },
+  {
+   "id": "tv_2026-10-13_r49_m01_141-7_Bandit.jpg",
+   "card": "Bandit",
+   "entity": "bandit",
+   "verdict": "keep"
+  },
+  {
+   "id": "tv_2026-10-12_r96_m01_235-5_Bandit.jpg",
+   "card": "Bandit",
+   "entity": "bandit",
+   "verdict": "keep"
+  },
+  {
+   "id": "tv_2026-10-13_r03_m01_117-3_Bowler.jpg",
+   "card": "Bowler",
+   "entity": "bowler",
+   "verdict": "keep"
+  },
+  {
+   "id": "tv_2026-10-12_r72_m01_15-8_Bowler.jpg",
+   "card": "Bowler",
+   "entity": "bowler",
+   "verdict": "keep"
+  },
+  {
+   "id": "tv_2026-10-13_r158_m01_79-3_Bowler.jpg",
+   "card": "Bowler",
+   "entity": "bowler",
+   "verdict": "keep"
+  },
+  {
+   "id": "tv_2026-10-12_r59_m01_116-3_Electro_Spirit.jpg",
+   "card": "Electro Spirit",
+   "entity": "electro-spirit",
+   "verdict": "keep"
+  },
+  {
+   "id": "tv_2026-10-12_r60_m01_123-8_Electro_Spirit.jpg",
+   "card": "Electro Spirit",
+   "entity": "electro-spirit",
+   "verdict": "keep"
+  },
+  {
+   "id": "tv_2026-10-12_r53_m01_143-6_Electro_Spirit.jpg",
+   "card": "Electro Spirit",
+   "entity": "electro-spirit",
+   "verdict": "keep"
+  },
+  {
+   "id": "tv_2026-10-12_r34_m01_84-1_Electro_Spirit.jpg",
+   "card": "Electro Spirit",
+   "entity": "electro-spirit",
+   "verdict": "keep"
+  },
+  {
+   "id": "tv_2026-10-12_r60_m01_250-5_Electro_Spirit.jpg",
+   "card": "Electro Spirit",
+   "entity": "electro-spirit",
+   "verdict": "keep"
+  },
+  {
+   "id": "tv_2026-10-14_r34_m01_298-5_Fire_Spirit.jpg",
+   "card": "Fire Spirit",
+   "entity": "fire-spirit",
+   "verdict": "keep"
+  },
+  {
+   "id": "tv_2026-10-14_r35_m01_165-5_Fire_Spirit.jpg",
+   "card": "Fire Spirit",
+   "entity": "fire-spirit",
+   "verdict": "keep"
+  },
+  {
+   "id": "tv_2026-10-14_r53_m01_237-6_Heal_Spirit.jpg",
+   "card": "Heal Spirit",
+   "entity": "heal-spirit",
+   "verdict": "reject"
+  },
+  {
+   "id": "tv_2026-10-14_r53_m01_263-3_Heal_Spirit.jpg",
+   "card": "Heal Spirit",
+   "entity": "heal-spirit",
+   "verdict": "reject"
+  },
+  {
+   "id": "tv_2026-10-14_r53_m01_303-1_Heal_Spirit.jpg",
+   "card": "Heal Spirit",
+   "entity": "heal-spirit",
+   "verdict": "reject"
+  },
+  {
+   "id": "tv_2026-10-14_r51_m01_104-3_Ice_Spirit.jpg",
+   "card": "Ice Spirit",
+   "entity": "ice-spirit",
+   "verdict": "reject"
+  },
+  {
+   "id": "tv_2026-10-13_r128_m01_61-9_Ice_Wizard.jpg",
+   "card": "Ice Wizard",
+   "entity": "ice-wizard",
+   "verdict": "keep"
+  },
+  {
+   "id": "tv_2026-10-13_r128_m01_198-0_Ice_Wizard.jpg",
+   "card": "Ice Wizard",
+   "entity": "ice-wizard",
+   "verdict": "keep"
+  },
+  {
+   "id": "tv_2026-10-12_r95_m01_222-6_Ice_Wizard.jpg",
+   "card": "Ice Wizard",
+   "entity": "ice-wizard",
+   "verdict": "keep"
+  },
+  {
+   "id": "tv_2026-10-12_r42_m01_241-9_Ice_Wizard.jpg",
+   "card": "Ice Wizard",
+   "entity": "ice-wizard",
+   "verdict": "keep"
+  },
+  {
+   "id": "tv_2026-10-13_r39_m01_274-0_Miner.jpg",
+   "card": "Miner",
+   "entity": "miner",
+   "verdict": "reject"
+  },
+  {
+   "id": "tv_2026-10-13_r135_m01_166-2_Miner.jpg",
+   "card": "Miner",
+   "entity": "miner",
+   "verdict": "keep"
+  },
+  {
+   "id": "tv_2026-10-12_r42_m01_204-6_Miner.jpg",
+   "card": "Miner",
+   "entity": "miner",
+   "verdict": "reject"
+  },
+  {
+   "id": "tv_2026-10-13_r39_m01_156-2_Miner.jpg",
+   "card": "Miner",
+   "entity": "miner",
+   "verdict": "reject"
+  },
+  {
+   "id": "tv_2026-10-13_r135_m01_101-7_Miner.jpg",
+   "card": "Miner",
+   "entity": "miner",
+   "verdict": "keep"
+  },
+  {
+   "id": "tv_2026-10-12_r76_m01_52-0_Miner.jpg",
+   "card": "Miner",
+   "entity": "miner",
+   "verdict": "reject"
+  },
+  {
+   "id": "tv_2026-10-13_r84_m01_111-1_Mini_P-E-K-K-A.jpg",
+   "card": "Mini P.E.K.K.A",
+   "entity": "mini-p.e.k.k.a",
+   "verdict": "keep"
+  },
+  {
+   "id": "tv_2026-10-13_r47_m01_155-5_Mini_P-E-K-K-A.jpg",
+   "card": "Mini P.E.K.K.A",
+   "entity": "mini-p.e.k.k.a",
+   "verdict": "keep"
+  },
+  {
+   "id": "tv_2026-10-14_r53_m01_120-7_Mini_P-E-K-K-A.jpg",
+   "card": "Mini P.E.K.K.A",
+   "entity": "mini-p.e.k.k.a",
+   "verdict": "keep"
+  },
+  {
+   "id": "tv_2026-10-13_r89_m01_157-9_Mini_P-E-K-K-A.jpg",
+   "card": "Mini P.E.K.K.A",
+   "entity": "mini-p.e.k.k.a",
+   "verdict": "keep"
+  },
+  {
+   "id": "tv_2026-10-13_r71_m01_162-5_Mini_P-E-K-K-A.jpg",
+   "card": "Mini P.E.K.K.A",
+   "entity": "mini-p.e.k.k.a",
+   "verdict": "keep"
+  },
+  {
+   "id": "tv_2026-10-13_r180_m01_153-1_Mini_P-E-K-K-A.jpg",
+   "card": "Mini P.E.K.K.A",
+   "entity": "mini-p.e.k.k.a",
+   "verdict": "keep"
+  },
+  {
+   "id": "tv_2026-10-12_r86_m01_128-3_Minion_Giant.jpg",
+   "card": "Minion Giant",
+   "entity": "minion-giant",
+   "verdict": "keep"
+  },
+  {
+   "id": "tv_2026-10-12_r86_m01_237-0_Minion_Giant.jpg",
+   "card": "Minion Giant",
+   "entity": "minion-giant",
+   "verdict": "keep"
+  },
+  {
+   "id": "tv_2026-10-13_r26_m01_147-7_Minion_Giant.jpg",
+   "card": "Minion Giant",
+   "entity": "minion-giant",
+   "verdict": "keep"
+  },
+  {
+   "id": "tv_2026-10-13_r26_m01_205-7_Minion_Giant.jpg",
+   "card": "Minion Giant",
+   "entity": "minion-giant",
+   "verdict": "keep"
+  },
+  {
+   "id": "tv_2026-10-13_r63_m01_149-9_Minion_Giant.jpg",
+   "card": "Minion Giant",
+   "entity": "minion-giant",
+   "verdict": "keep"
+  },
+  {
+   "id": "tv_2026-10-14_r46_m01_136-4_Musketeer.jpg",
+   "card": "Musketeer",
+   "entity": "musketeer",
+   "verdict": "keep"
+  },
+  {
+   "id": "tv_2026-10-13_r50_m01_139-4_Musketeer.jpg",
+   "card": "Musketeer",
+   "entity": "musketeer",
+   "verdict": "keep"
+  },
+  {
+   "id": "tv_2026-10-13_r139_m01_129-5_Royal_Ghost.jpg",
+   "card": "Royal Ghost",
+   "entity": "royal-ghost",
+   "verdict": "keep"
+  },
+  {
+   "id": "tv_2026-10-13_r101_m01_106-2_Royal_Ghost.jpg",
+   "card": "Royal Ghost",
+   "entity": "royal-ghost",
+   "verdict": "keep"
+  },
+  {
+   "id": "tv_2026-10-13_r19_m01_266-2_Royal_Ghost.jpg",
+   "card": "Royal Ghost",
+   "entity": "royal-ghost",
+   "verdict": "keep"
+  },
+  {
+   "id": "tv_2026-10-13_r101_m01_201-3_Royal_Ghost.jpg",
+   "card": "Royal Ghost",
+   "entity": "royal-ghost",
+   "verdict": "keep"
+  },
+  {
+   "id": "tv_2026-10-12_r27_m01_217-4_Royal_Ghost.jpg",
+   "card": "Royal Ghost",
+   "entity": "royal-ghost",
+   "verdict": "keep"
+  },
+  {
+   "id": "tv_2026-10-13_r101_m01_13-2_Royal_Ghost.jpg",
+   "card": "Royal Ghost",
+   "entity": "royal-ghost",
+   "verdict": "keep"
+  },
+  {
+   "id": "tv_2026-10-13_r101_m01_145-7_Royal_Ghost.jpg",
+   "card": "Royal Ghost",
+   "entity": "royal-ghost",
+   "verdict": "keep"
+  },
+  {
+   "id": "tv_2026-10-13_r133_m01_111-4_Royal_Ghost.jpg",
+   "card": "Royal Ghost",
+   "entity": "royal-ghost",
+   "verdict": "keep"
+  },
+  {
+   "id": "tv_2026-10-14_r12_m01_78-6_Royal_Ghost.jpg",
+   "card": "Royal Ghost",
+   "entity": "royal-ghost",
+   "verdict": "keep"
+  },
+  {
+   "id": "tv_2026-10-14_r18_m01_174-3_Skeletons.jpg",
+   "card": "Skeletons",
+   "entity": "skeletons",
+   "verdict": "keep"
+  },
+  {
+   "id": "tv_2026-10-14_r42_m01_74-9_Skeletons.jpg",
+   "card": "Skeletons",
+   "entity": "skeletons",
+   "verdict": "keep"
+  },
+  {
+   "id": "tv_2026-10-14_r42_m01_137-4_Skeletons.jpg",
+   "card": "Skeletons",
+   "entity": "skeletons",
+   "verdict": "keep"
+  },
+  {
+   "id": "tv_2026-10-14_r06_m01_279-7_Skeletons.jpg",
+   "card": "Skeletons",
+   "entity": "skeletons",
+   "verdict": "reject"
+  },
+  {
+   "id": "tv_2026-10-12_r63_m01_138-1_Suspicious_Bush.jpg",
+   "card": "Suspicious Bush",
+   "entity": "suspicious-bush",
+   "verdict": "keep"
+  },
+  {
+   "id": "tv_2026-10-12_r63_m01_300-4_Suspicious_Bush.jpg",
+   "card": "Suspicious Bush",
+   "entity": "suspicious-bush",
+   "verdict": "keep"
+  },
+  {
+   "id": "tv_2026-10-13_r112_m01_135-5_Suspicious_Bush.jpg",
+   "card": "Suspicious Bush",
+   "entity": "suspicious-bush",
+   "verdict": "keep"
+  },
+  {
+   "id": "tv_2026-10-14_r63_m01_162-5_Suspicious_Bush.jpg",
+   "card": "Suspicious Bush",
+   "entity": "suspicious-bush",
+   "verdict": "keep"
+  },
+  {
+   "id": "tv_2026-10-14_r60_m01_127-8_Valkyrie.jpg",
+   "card": "Valkyrie",
+   "entity": "valkyrie",
+   "verdict": "keep"
+  },
+  {
+   "id": "tv_2026-10-14_r52_m01_44-0_Valkyrie.jpg",
+   "card": "Valkyrie",
+   "entity": "valkyrie",
+   "verdict": "keep"
+  },
+  {
+   "id": "tv_2026-10-14_r19_m01_177-6_Valkyrie.jpg",
+   "card": "Valkyrie",
+   "entity": "valkyrie",
+   "verdict": "keep"
+  },
+  {
+   "id": "tv_2026-10-14_r47_m01_58-4_Valkyrie.jpg",
+   "card": "Valkyrie",
+   "entity": "valkyrie",
+   "verdict": "keep"
+  },
+  {
+   "id": "tv_2026-10-14_r35_m01_15-7_Valkyrie.jpg",
+   "card": "Valkyrie",
+   "entity": "valkyrie",
+   "verdict": "keep"
+  },
+  {
+   "id": "tv_2026-10-13_r22_m01_79-9_Valkyrie.jpg",
+   "card": "Valkyrie",
+   "entity": "valkyrie",
+   "verdict": "keep"
+  },
+  {
+   "id": "tv_2026-10-14_r47_m01_113-2_Valkyrie.jpg",
+   "card": "Valkyrie",
+   "entity": "valkyrie",
+   "verdict": "keep"
+  },
+  {
+   "id": "tv_2026-10-13_r37_m01_155-6_Valkyrie.jpg",
+   "card": "Valkyrie",
+   "entity": "valkyrie",
+   "verdict": "keep"
+  }
+ ]
+}

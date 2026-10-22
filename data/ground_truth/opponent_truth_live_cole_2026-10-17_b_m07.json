@@ -1,0 +1,271 @@
+{
+ "video_id": "cole_2026-10-17_b",
+ "side": "opponent",
+ "matches": [
+  "cole_2026-10-17_b_m07"
+ ],
+ "items": [
+  {
+   "match_id": "cole_2026-10-17_b_m07",
+   "t_video": 1546.6,
+   "label": "Hog Rider",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r08_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-17_b_m07",
+   "t_video": 1557.1,
+   "label": "Royal Ghost",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r08_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-17_b_m07",
+   "t_video": 1566.0,
+   "label": "Ice Wizard",
+   "form": "hero",
+   "source": "POV of bl_2026-10-17_r08_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-17_b_m07",
+   "t_video": 1573.6,
+   "label": "Barbarian Barrel",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r08_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-17_b_m07",
+   "t_video": 1577.5,
+   "label": "Goblin Hut",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r08_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-17_b_m07",
+   "t_video": 1580.0,
+   "label": "Electro Spirit",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r08_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-17_b_m07",
+   "t_video": 1595.8,
+   "label": "Furnace",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r08_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "cole_2026-10-17_b_m07",
+   "t_video": 1602.1,
+   "label": "Hog Rider",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r08_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-17_b_m07",
+   "t_video": 1617.9,
+   "label": "Royal Ghost",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r08_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-17_b_m07",
+   "t_video": 1620.2,
+   "label": "Goblin Hut",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r08_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-17_b_m07",
+   "t_video": 1623.6,
+   "label": "Ice Wizard",
+   "form": "hero",
+   "source": "POV of bl_2026-10-17_r08_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-17_b_m07",
+   "t_video": 1638.6,
+   "label": "Electro Spirit",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r08_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-17_b_m07",
+   "t_video": 1641.7,
+   "label": "Furnace",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r08_top_m01",
+   "source_confidence": "low"
+  },
+  {
+   "match_id": "cole_2026-10-17_b_m07",
+   "t_video": 1651.3,
+   "label": "Royal Ghost",
+   "form": "evo",
+   "source": "POV of bl_2026-10-17_r08_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-17_b_m07",
+   "t_video": 1657.4,
+   "label": "Hog Rider",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r08_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "cole_2026-10-17_b_m07",
+   "t_video": 1671.2,
+   "label": "Goblin Hut",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r08_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-17_b_m07",
+   "t_video": 1672.8,
+   "label": "Barbarian Barrel",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r08_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-17_b_m07",
+   "t_video": 1674.1,
+   "label": "Ice Wizard",
+   "form": "hero",
+   "source": "POV of bl_2026-10-17_r08_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-17_b_m07",
+   "t_video": 1680.7,
+   "label": "Royal Ghost",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r08_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-17_b_m07",
+   "t_video": 1683.4,
+   "label": "Hog Rider",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r08_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-17_b_m07",
+   "t_video": 1689.9,
+   "label": "Electro Spirit",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r08_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-17_b_m07",
+   "t_video": 1695.5,
+   "label": "Furnace",
+   "form": "evo",
+   "source": "POV of bl_2026-10-17_r08_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-17_b_m07",
+   "t_video": 1699.1,
+   "label": "Ice Wizard",
+   "form": "hero",
+   "source": "POV of bl_2026-10-17_r08_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-17_b_m07",
+   "t_video": 1700.8,
+   "label": "Barbarian Barrel",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r08_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-17_b_m07",
+   "t_video": 1701.4,
+   "label": "Goblin Hut",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r08_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-17_b_m07",
+   "t_video": 1708.1,
+   "label": "Hog Rider",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r08_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-17_b_m07",
+   "t_video": 1717.7,
+   "label": "Royal Ghost",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r08_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "cole_2026-10-17_b_m07",
+   "t_video": 1720.5,
+   "label": "Electro Spirit",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r08_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-17_b_m07",
+   "t_video": 1722.1,
+   "label": "Furnace",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r08_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-17_b_m07",
+   "t_video": 1724.5,
+   "label": "Goblin Hut",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r08_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-17_b_m07",
+   "t_video": 1726.8,
+   "label": "Ice Wizard",
+   "form": "hero",
+   "source": "POV of bl_2026-10-17_r08_top_m01",
+   "source_confidence": "low"
+  },
+  {
+   "match_id": "cole_2026-10-17_b_m07",
+   "t_video": 1730.0,
+   "label": "Barbarian Barrel",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r08_top_m01",
+   "source_confidence": "low"
+  }
+ ],
+ "paired_with": "bl_2026-10-17_r08_top_m01",
+ "offset_s": -1529.4,
+ "auto": true,
+ "source": "live+replay",
+ "replay": "bl_2026-10-17_r08_m01",
+ "agree": 1.0
+}

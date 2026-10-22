@@ -1,0 +1,255 @@
+{
+ "video_id": "cole_2026-10-17_a",
+ "side": "opponent",
+ "matches": [
+  "cole_2026-10-17_a_m05"
+ ],
+ "items": [
+  {
+   "match_id": "cole_2026-10-17_a_m05",
+   "t_video": 817.0,
+   "label": "Minion Giant",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r17_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "cole_2026-10-17_a_m05",
+   "t_video": 817.0,
+   "label": "Skeletons",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r17_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "cole_2026-10-17_a_m05",
+   "t_video": 827.2,
+   "label": "Mother Witch",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r17_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-17_a_m05",
+   "t_video": 832.5,
+   "label": "Mini P.E.K.K.A",
+   "form": "hero",
+   "source": "POV of bl_2026-10-17_r17_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-17_a_m05",
+   "t_video": 836.5,
+   "label": "Mirror",
+   "form": null,
+   "source": "next-card advance in bl_2026-10-17_r17_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "cole_2026-10-17_a_m05",
+   "t_video": 851.5,
+   "label": "Princess",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r17_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-17_a_m05",
+   "t_video": 859.4,
+   "label": "Skeletons",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r17_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-17_a_m05",
+   "t_video": 861.7,
+   "label": "Mother Witch",
+   "form": null,
+   "source": "next-card advance in bl_2026-10-17_r17_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "cole_2026-10-17_a_m05",
+   "t_video": 884.6,
+   "label": "Minion Giant",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r17_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-17_a_m05",
+   "t_video": 897.2,
+   "label": "Barbarian Barrel",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r17_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-17_a_m05",
+   "t_video": 900.1,
+   "label": "Mini P.E.K.K.A",
+   "form": "hero",
+   "source": "POV of bl_2026-10-17_r17_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-17_a_m05",
+   "t_video": 901.0,
+   "label": "Princess",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r17_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-17_a_m05",
+   "t_video": 908.9,
+   "label": "Mother Witch",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r17_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "cole_2026-10-17_a_m05",
+   "t_video": 919.2,
+   "label": "Minion Giant",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r17_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-17_a_m05",
+   "t_video": 923.0,
+   "label": "Heal Spirit",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r17_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-17_a_m05",
+   "t_video": 937.7,
+   "label": "Mini P.E.K.K.A",
+   "form": "hero",
+   "source": "POV of bl_2026-10-17_r17_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "cole_2026-10-17_a_m05",
+   "t_video": 939.9,
+   "label": "Princess",
+   "form": "evo",
+   "source": "POV of bl_2026-10-17_r17_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-17_a_m05",
+   "t_video": 943.7,
+   "label": "Mother Witch",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r17_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-17_a_m05",
+   "t_video": 946.7,
+   "label": "Minion Giant",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r17_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-17_a_m05",
+   "t_video": 950.0,
+   "label": "Heal Spirit",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r17_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-17_a_m05",
+   "t_video": 953.7,
+   "label": "Mini P.E.K.K.A",
+   "form": "hero",
+   "source": "POV of bl_2026-10-17_r17_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-17_a_m05",
+   "t_video": 957.9,
+   "label": "Princess",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r17_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "cole_2026-10-17_a_m05",
+   "t_video": 963.5,
+   "label": "Mother Witch",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r17_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-17_a_m05",
+   "t_video": 969.6,
+   "label": "Skeletons",
+   "form": "evo",
+   "source": "POV of bl_2026-10-17_r17_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-17_a_m05",
+   "t_video": 973.5,
+   "label": "Barbarian Barrel",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r17_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-17_a_m05",
+   "t_video": 975.8,
+   "label": "Mini P.E.K.K.A",
+   "form": "hero",
+   "source": "POV of bl_2026-10-17_r17_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-17_a_m05",
+   "t_video": 978.3,
+   "label": "Princess",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r17_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-17_a_m05",
+   "t_video": 983.1,
+   "label": "Minion Giant",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r17_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-17_a_m05",
+   "t_video": 985.5,
+   "label": "Heal Spirit",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r17_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-17_a_m05",
+   "t_video": 986.3,
+   "label": "Skeletons",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r17_top_m01",
+   "source_confidence": "high"
+  }
+ ],
+ "paired_with": "bl_2026-10-17_r17_top_m01",
+ "offset_s": -806.3,
+ "auto": true,
+ "source": "live+replay",
+ "replay": "bl_2026-10-17_r17_m01",
+ "agree": 1.0
+}

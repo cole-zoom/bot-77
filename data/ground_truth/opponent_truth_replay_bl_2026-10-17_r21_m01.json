@@ -1,0 +1,277 @@
+{
+ "video_id": "bl_2026-10-17_r21",
+ "side": "opponent",
+ "matches": [
+  "bl_2026-10-17_r21_m01"
+ ],
+ "items": [
+  {
+   "match_id": "bl_2026-10-17_r21_m01",
+   "t_video": 13.0,
+   "label": "Little Prince",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r21_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "bl_2026-10-17_r21_m01",
+   "t_video": 20.5,
+   "label": "Miner",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r21_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "bl_2026-10-17_r21_m01",
+   "t_video": 27.8,
+   "label": "Rune Giant",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r21_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "bl_2026-10-17_r21_m01",
+   "t_video": 33.7,
+   "label": "The Log",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r21_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "bl_2026-10-17_r21_m01",
+   "t_video": 46.6,
+   "label": "Goblin Hut",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r21_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "bl_2026-10-17_r21_m01",
+   "t_video": 50.9,
+   "label": "Inferno Dragon",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r21_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "bl_2026-10-17_r21_m01",
+   "t_video": 53.1,
+   "label": "Miner",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r21_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "bl_2026-10-17_r21_m01",
+   "t_video": 68.8,
+   "label": "Zap",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r21_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "bl_2026-10-17_r21_m01",
+   "t_video": 76.0,
+   "label": "Goblin Demolisher",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r21_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "bl_2026-10-17_r21_m01",
+   "t_video": 92.3,
+   "label": "Goblin Hut",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r21_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "bl_2026-10-17_r21_m01",
+   "t_video": 106.3,
+   "label": "Rune Giant",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r21_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "bl_2026-10-17_r21_m01",
+   "t_video": 112.4,
+   "label": "Miner",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r21_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "bl_2026-10-17_r21_m01",
+   "t_video": 114.4,
+   "label": "The Log",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r21_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "bl_2026-10-17_r21_m01",
+   "t_video": 119.9,
+   "label": "Little Prince",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r21_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "bl_2026-10-17_r21_m01",
+   "t_video": 131.9,
+   "label": "Goblin Demolisher",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r21_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "bl_2026-10-17_r21_m01",
+   "t_video": 134.3,
+   "label": "Inferno Dragon",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r21_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "bl_2026-10-17_r21_m01",
+   "t_video": 137.8,
+   "label": "Goblin Hut",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r21_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "bl_2026-10-17_r21_m01",
+   "t_video": 140.0,
+   "label": "Miner",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r21_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "bl_2026-10-17_r21_m01",
+   "t_video": 145.1,
+   "label": "The Log",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r21_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "bl_2026-10-17_r21_m01",
+   "t_video": 147.5,
+   "label": "Little Prince",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r21_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "bl_2026-10-17_r21_m01",
+   "t_video": 159.8,
+   "label": "Rune Giant",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r21_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "bl_2026-10-17_r21_m01",
+   "t_video": 164.8,
+   "label": "Inferno Dragon",
+   "form": "evo",
+   "source": "POV of bl_2026-10-17_r21_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "bl_2026-10-17_r21_m01",
+   "t_video": 169.5,
+   "label": "Goblin Demolisher",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r21_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "bl_2026-10-17_r21_m01",
+   "t_video": 170.8,
+   "label": "Goblin Hut",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r21_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "bl_2026-10-17_r21_m01",
+   "t_video": 174.8,
+   "label": "Miner",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r21_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "bl_2026-10-17_r21_m01",
+   "t_video": 181.0,
+   "label": "Little Prince",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r21_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "bl_2026-10-17_r21_m01",
+   "t_video": 182.3,
+   "label": "The Log",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r21_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "bl_2026-10-17_r21_m01",
+   "t_video": 190.5,
+   "label": "Rune Giant",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r21_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "bl_2026-10-17_r21_m01",
+   "t_video": 192.0,
+   "label": "Inferno Dragon",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r21_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "bl_2026-10-17_r21_m01",
+   "t_video": 196.1,
+   "label": "Miner",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r21_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "bl_2026-10-17_r21_m01",
+   "t_video": 202.2,
+   "label": "Goblin Demolisher",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r21_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "bl_2026-10-17_r21_m01",
+   "t_video": 204.8,
+   "label": "The Log",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r21_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "bl_2026-10-17_r21_m01",
+   "t_video": 207.4,
+   "label": "Zap",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r21_top_m01",
+   "source_confidence": "low"
+  }
+ ],
+ "paired_with": "bl_2026-10-17_r21_top_m01",
+ "offset_s": 0.0,
+ "auto": true,
+ "source": "replay"
+}

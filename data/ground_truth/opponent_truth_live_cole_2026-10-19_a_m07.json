@@ -1,0 +1,383 @@
+{
+ "video_id": "cole_2026-10-19_a",
+ "side": "opponent",
+ "matches": [
+  "cole_2026-10-19_a_m07"
+ ],
+ "items": [
+  {
+   "match_id": "cole_2026-10-19_a_m07",
+   "t_video": 1249.8,
+   "label": "Tesla",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r06_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-19_a_m07",
+   "t_video": 1259.7,
+   "label": "Ice Wizard",
+   "form": "hero",
+   "source": "POV of bl_2026-10-20_r06_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-19_a_m07",
+   "t_video": 1271.2,
+   "label": "The Log",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r06_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-19_a_m07",
+   "t_video": 1273.3,
+   "label": "Ram Rider",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r06_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-19_a_m07",
+   "t_video": 1295.0,
+   "label": "Executioner",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r06_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-19_a_m07",
+   "t_video": 1312.2,
+   "label": "Tesla",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r06_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "cole_2026-10-19_a_m07",
+   "t_video": 1323.1,
+   "label": "Mother Witch",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r06_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-19_a_m07",
+   "t_video": 1333.8,
+   "label": "The Log",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r06_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-19_a_m07",
+   "t_video": 1341.5,
+   "label": "Ram Rider",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r06_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-19_a_m07",
+   "t_video": 1342.4,
+   "label": "Ice Wizard",
+   "form": "hero",
+   "source": "POV of bl_2026-10-20_r06_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-19_a_m07",
+   "t_video": 1364.7,
+   "label": "Ronin",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r06_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "cole_2026-10-19_a_m07",
+   "t_video": 1371.2,
+   "label": "Executioner",
+   "form": "evo",
+   "source": "POV of bl_2026-10-20_r06_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-19_a_m07",
+   "t_video": 1379.2,
+   "label": "Poison",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r06_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-19_a_m07",
+   "t_video": 1383.6,
+   "label": "Tesla",
+   "form": "evo",
+   "source": "POV of bl_2026-10-20_r06_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "cole_2026-10-19_a_m07",
+   "t_video": 1388.2,
+   "label": "The Log",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r06_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-19_a_m07",
+   "t_video": 1394.8,
+   "label": "Mother Witch",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r06_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-19_a_m07",
+   "t_video": 1398.5,
+   "label": "Ram Rider",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r06_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-19_a_m07",
+   "t_video": 1399.7,
+   "label": "Ice Wizard",
+   "form": "hero",
+   "source": "POV of bl_2026-10-20_r06_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-19_a_m07",
+   "t_video": 1410.2,
+   "label": "Executioner",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r06_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-19_a_m07",
+   "t_video": 1419.9,
+   "label": "Ronin",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r06_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-19_a_m07",
+   "t_video": 1422.4,
+   "label": "Poison",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r06_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-19_a_m07",
+   "t_video": 1426.8,
+   "label": "Ram Rider",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r06_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "cole_2026-10-19_a_m07",
+   "t_video": 1436.8,
+   "label": "Mother Witch",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r06_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-19_a_m07",
+   "t_video": 1439.7,
+   "label": "Ice Wizard",
+   "form": "hero",
+   "source": "POV of bl_2026-10-20_r06_top_m01",
+   "source_confidence": "low"
+  },
+  {
+   "match_id": "cole_2026-10-19_a_m07",
+   "t_video": 1451.7,
+   "label": "The Log",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r06_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-19_a_m07",
+   "t_video": 1452.7,
+   "label": "Tesla",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r06_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-19_a_m07",
+   "t_video": 1455.5,
+   "label": "Executioner",
+   "form": "evo",
+   "source": "POV of bl_2026-10-20_r06_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-19_a_m07",
+   "t_video": 1462.7,
+   "label": "Ram Rider",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r06_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "cole_2026-10-19_a_m07",
+   "t_video": 1467.5,
+   "label": "Poison",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r06_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-19_a_m07",
+   "t_video": 1472.0,
+   "label": "Ice Wizard",
+   "form": "hero",
+   "source": "POV of bl_2026-10-20_r06_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-19_a_m07",
+   "t_video": 1477.2,
+   "label": "Tesla",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r06_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-19_a_m07",
+   "t_video": 1484.7,
+   "label": "Ronin",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r06_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "cole_2026-10-19_a_m07",
+   "t_video": 1487.8,
+   "label": "Ram Rider",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r06_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-19_a_m07",
+   "t_video": 1497.8,
+   "label": "Poison",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r06_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-19_a_m07",
+   "t_video": 1503.6,
+   "label": "The Log",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r06_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-19_a_m07",
+   "t_video": 1504.5,
+   "label": "Mother Witch",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r06_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "cole_2026-10-19_a_m07",
+   "t_video": 1506.4,
+   "label": "Ice Wizard",
+   "form": "hero",
+   "source": "POV of bl_2026-10-20_r06_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-19_a_m07",
+   "t_video": 1509.3,
+   "label": "Mother Witch",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r06_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-19_a_m07",
+   "t_video": 1514.6,
+   "label": "Executioner",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r06_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "cole_2026-10-19_a_m07",
+   "t_video": 1520.4,
+   "label": "Ronin",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r06_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-19_a_m07",
+   "t_video": 1522.7,
+   "label": "Tesla",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r06_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "cole_2026-10-19_a_m07",
+   "t_video": 1524.2,
+   "label": "The Log",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r06_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-19_a_m07",
+   "t_video": 1528.8,
+   "label": "Ram Rider",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r06_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-19_a_m07",
+   "t_video": 1532.7,
+   "label": "Poison",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r06_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "cole_2026-10-19_a_m07",
+   "t_video": 1535.7,
+   "label": "Ice Wizard",
+   "form": "hero",
+   "source": "POV of bl_2026-10-20_r06_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-19_a_m07",
+   "t_video": 1545.1,
+   "label": "Mother Witch",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r06_top_m01",
+   "source_confidence": "low"
+  }
+ ],
+ "paired_with": "bl_2026-10-20_r06_top_m01",
+ "offset_s": -1236.1,
+ "auto": true,
+ "source": "live+replay",
+ "replay": "bl_2026-10-20_r06_m01",
+ "agree": 1.0
+}

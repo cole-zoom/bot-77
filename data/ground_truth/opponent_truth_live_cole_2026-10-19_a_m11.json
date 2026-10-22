@@ -1,0 +1,375 @@
+{
+ "video_id": "cole_2026-10-19_a",
+ "side": "opponent",
+ "matches": [
+  "cole_2026-10-19_a_m11"
+ ],
+ "items": [
+  {
+   "match_id": "cole_2026-10-19_a_m11",
+   "t_video": 2284.9,
+   "label": "Wizard",
+   "form": "hero",
+   "source": "POV of bl_2026-10-20_r02_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-19_a_m11",
+   "t_video": 2291.4,
+   "label": "Giant Skeleton",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r02_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-19_a_m11",
+   "t_video": 2301.2,
+   "label": "Battle Ram",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r02_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-19_a_m11",
+   "t_video": 2311.0,
+   "label": "Vines",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r02_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-19_a_m11",
+   "t_video": 2326.4,
+   "label": "Mother Witch",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r02_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-19_a_m11",
+   "t_video": 2342.1,
+   "label": "Zappies",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r02_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-19_a_m11",
+   "t_video": 2349.2,
+   "label": "Barbarian Barrel",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r02_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-19_a_m11",
+   "t_video": 2363.5,
+   "label": "Battle Ram",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r02_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-19_a_m11",
+   "t_video": 2374.9,
+   "label": "Wizard",
+   "form": "hero",
+   "source": "POV of bl_2026-10-20_r02_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-19_a_m11",
+   "t_video": 2387.2,
+   "label": "Giant Skeleton",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r02_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-19_a_m11",
+   "t_video": 2391.0,
+   "label": "Vines",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r02_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-19_a_m11",
+   "t_video": 2398.8,
+   "label": "Zappies",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r02_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-19_a_m11",
+   "t_video": 2408.5,
+   "label": "Royal Ghost",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r02_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-19_a_m11",
+   "t_video": 2414.6,
+   "label": "Wizard",
+   "form": "hero",
+   "source": "POV of bl_2026-10-20_r02_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-19_a_m11",
+   "t_video": 2418.6,
+   "label": "Giant Skeleton",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r02_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-19_a_m11",
+   "t_video": 2423.7,
+   "label": "Barbarian Barrel",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r02_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-19_a_m11",
+   "t_video": 2426.7,
+   "label": "Zappies",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r02_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "cole_2026-10-19_a_m11",
+   "t_video": 2430.8,
+   "label": "Vines",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r02_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "cole_2026-10-19_a_m11",
+   "t_video": 2435.3,
+   "label": "Battle Ram",
+   "form": "evo",
+   "source": "POV of bl_2026-10-20_r02_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-19_a_m11",
+   "t_video": 2445.3,
+   "label": "Wizard",
+   "form": "hero",
+   "source": "POV of bl_2026-10-20_r02_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-19_a_m11",
+   "t_video": 2451.9,
+   "label": "Giant Skeleton",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r02_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-19_a_m11",
+   "t_video": 2456.7,
+   "label": "Barbarian Barrel",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r02_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-19_a_m11",
+   "t_video": 2459.9,
+   "label": "Royal Ghost",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r02_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-19_a_m11",
+   "t_video": 2463.6,
+   "label": "Vines",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r02_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-19_a_m11",
+   "t_video": 2467.6,
+   "label": "Battle Ram",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r02_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-19_a_m11",
+   "t_video": 2476.3,
+   "label": "Wizard",
+   "form": "hero",
+   "source": "POV of bl_2026-10-20_r02_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-19_a_m11",
+   "t_video": 2484.6,
+   "label": "Giant Skeleton",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r02_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "cole_2026-10-19_a_m11",
+   "t_video": 2487.1,
+   "label": "Royal Ghost",
+   "form": null,
+   "source": "next-card advance in bl_2026-10-20_r02_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "cole_2026-10-19_a_m11",
+   "t_video": 2492.7,
+   "label": "Zappies",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r02_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-19_a_m11",
+   "t_video": 2493.7,
+   "label": "__ability",
+   "form": null,
+   "source": "POV of bl_2026-10-20_r02_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "cole_2026-10-19_a_m11",
+   "t_video": 2498.4,
+   "label": "Battle Ram",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r02_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-19_a_m11",
+   "t_video": 2504.1,
+   "label": "Vines",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r02_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-19_a_m11",
+   "t_video": 2508.5,
+   "label": "Mother Witch",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r02_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-19_a_m11",
+   "t_video": 2516.0,
+   "label": "Giant Skeleton",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r02_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "cole_2026-10-19_a_m11",
+   "t_video": 2521.6,
+   "label": "Zappies",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r02_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-19_a_m11",
+   "t_video": 2522.7,
+   "label": "Barbarian Barrel",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r02_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-19_a_m11",
+   "t_video": 2525.4,
+   "label": "Battle Ram",
+   "form": "evo",
+   "source": "POV of bl_2026-10-20_r02_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-19_a_m11",
+   "t_video": 2528.1,
+   "label": "Vines",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r02_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-19_a_m11",
+   "t_video": 2531.6,
+   "label": "Royal Ghost",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r02_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-19_a_m11",
+   "t_video": 2535.6,
+   "label": "Wizard",
+   "form": "hero",
+   "source": "POV of bl_2026-10-20_r02_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-19_a_m11",
+   "t_video": 2539.5,
+   "label": "Mother Witch",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r02_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-19_a_m11",
+   "t_video": 2541.2,
+   "label": "Barbarian Barrel",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r02_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-19_a_m11",
+   "t_video": 2543.9,
+   "label": "Vines",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r02_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "cole_2026-10-19_a_m11",
+   "t_video": 2547.2,
+   "label": "Battle Ram",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r02_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "cole_2026-10-19_a_m11",
+   "t_video": 2550.3,
+   "label": "Royal Ghost",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r02_top_m01",
+   "source_confidence": "low"
+  }
+ ],
+ "paired_with": "bl_2026-10-20_r02_top_m01",
+ "offset_s": -2270.4,
+ "auto": true,
+ "source": "live+replay",
+ "replay": "bl_2026-10-20_r02_m01",
+ "agree": 1.0
+}

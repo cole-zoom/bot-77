@@ -1,0 +1,559 @@
+{
+ "video_id": "cole_2026-10-20_a",
+ "side": "opponent",
+ "matches": [
+  "cole_2026-10-20_a_m11"
+ ],
+ "items": [
+  {
+   "match_id": "cole_2026-10-20_a_m11",
+   "t_video": 2365.1,
+   "label": "Skeletons",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r11_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_a_m11",
+   "t_video": 2370.7,
+   "label": "Hog Rider",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r11_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_a_m11",
+   "t_video": 2376.7,
+   "label": "Electro Spirit",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r11_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_a_m11",
+   "t_video": 2380.6,
+   "label": "Earthquake",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r11_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_a_m11",
+   "t_video": 2387.3,
+   "label": "Firecracker",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r11_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_a_m11",
+   "t_video": 2392.5,
+   "label": "Tesla",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r11_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_a_m11",
+   "t_video": 2397.9,
+   "label": "Mighty Miner",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r11_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_a_m11",
+   "t_video": 2408.7,
+   "label": "Hog Rider",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r11_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_a_m11",
+   "t_video": 2431.6,
+   "label": "Skeletons",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r11_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_a_m11",
+   "t_video": 2438.4,
+   "label": "Electro Spirit",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r11_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_a_m11",
+   "t_video": 2444.3,
+   "label": "Firecracker",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r11_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_a_m11",
+   "t_video": 2453.3,
+   "label": "Mighty Miner",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r11_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_a_m11",
+   "t_video": 2457.8,
+   "label": "Hog Rider",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r11_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_a_m11",
+   "t_video": 2463.1,
+   "label": "Earthquake",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r11_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_a_m11",
+   "t_video": 2472.1,
+   "label": "Skeletons",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r11_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_a_m11",
+   "t_video": 2478.5,
+   "label": "Electro Spirit",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r11_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_a_m11",
+   "t_video": 2485.0,
+   "label": "Barbarian Barrel",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r11_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_a_m11",
+   "t_video": 2487.2,
+   "label": "Hog Rider",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r11_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_a_m11",
+   "t_video": 2496.3,
+   "label": "Firecracker",
+   "form": "evo",
+   "source": "POV of bl_2026-10-20_r11_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_a_m11",
+   "t_video": 2500.8,
+   "label": "Tesla",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r11_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "cole_2026-10-20_a_m11",
+   "t_video": 2506.2,
+   "label": "Mighty Miner",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r11_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_a_m11",
+   "t_video": 2509.4,
+   "label": "Electro Spirit",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r11_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_a_m11",
+   "t_video": 2511.8,
+   "label": "Hog Rider",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r11_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_a_m11",
+   "t_video": 2516.4,
+   "label": "Barbarian Barrel",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r11_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "cole_2026-10-20_a_m11",
+   "t_video": 2519.7,
+   "label": "Firecracker",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r11_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_a_m11",
+   "t_video": 2522.2,
+   "label": "Skeletons",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r11_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_a_m11",
+   "t_video": 2526.0,
+   "label": "Mighty Miner",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r11_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_a_m11",
+   "t_video": 2528.0,
+   "label": "Hog Rider",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r11_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_a_m11",
+   "t_video": 2537.4,
+   "label": "Earthquake",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r11_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_a_m11",
+   "t_video": 2542.5,
+   "label": "Firecracker",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r11_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_a_m11",
+   "t_video": 2544.4,
+   "label": "Tesla",
+   "form": "evo",
+   "source": "POV of bl_2026-10-20_r11_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_a_m11",
+   "t_video": 2549.4,
+   "label": "Mighty Miner",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r11_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_a_m11",
+   "t_video": 2551.5,
+   "label": "Barbarian Barrel",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r11_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_a_m11",
+   "t_video": 2556.7,
+   "label": "Hog Rider",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r11_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_a_m11",
+   "t_video": 2560.6,
+   "label": "Earthquake",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r11_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_a_m11",
+   "t_video": 2570.5,
+   "label": "Firecracker",
+   "form": "evo",
+   "source": "POV of bl_2026-10-20_r11_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_a_m11",
+   "t_video": 2574.3,
+   "label": "Tesla",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r11_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_a_m11",
+   "t_video": 2576.6,
+   "label": "Electro Spirit",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r11_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_a_m11",
+   "t_video": 2578.5,
+   "label": "Mighty Miner",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r11_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_a_m11",
+   "t_video": 2581.4,
+   "label": "Skeletons",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r11_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_a_m11",
+   "t_video": 2585.0,
+   "label": "Firecracker",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r11_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_a_m11",
+   "t_video": 2587.8,
+   "label": "Barbarian Barrel",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r11_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_a_m11",
+   "t_video": 2590.6,
+   "label": "Electro Spirit",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r11_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_a_m11",
+   "t_video": 2592.8,
+   "label": "Tesla",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r11_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_a_m11",
+   "t_video": 2595.7,
+   "label": "Skeletons",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r11_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_a_m11",
+   "t_video": 2598.2,
+   "label": "Firecracker",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r11_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_a_m11",
+   "t_video": 2603.8,
+   "label": "Hog Rider",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r11_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_a_m11",
+   "t_video": 2606.6,
+   "label": "Electro Spirit",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r11_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_a_m11",
+   "t_video": 2608.7,
+   "label": "Earthquake",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r11_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "cole_2026-10-20_a_m11",
+   "t_video": 2615.0,
+   "label": "Barbarian Barrel",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r11_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_a_m11",
+   "t_video": 2617.7,
+   "label": "Firecracker",
+   "form": "evo",
+   "source": "POV of bl_2026-10-20_r11_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_a_m11",
+   "t_video": 2619.9,
+   "label": "Hog Rider",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r11_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_a_m11",
+   "t_video": 2620.7,
+   "label": "Tesla",
+   "form": "evo",
+   "source": "POV of bl_2026-10-20_r11_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_a_m11",
+   "t_video": 2623.6,
+   "label": "Earthquake",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r11_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_a_m11",
+   "t_video": 2629.0,
+   "label": "Electro Spirit",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r11_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_a_m11",
+   "t_video": 2631.5,
+   "label": "Firecracker",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r11_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_a_m11",
+   "t_video": 2635.9,
+   "label": "Mighty Miner",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r11_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_a_m11",
+   "t_video": 2636.9,
+   "label": "Barbarian Barrel",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r11_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_a_m11",
+   "t_video": 2638.3,
+   "label": "Hog Rider",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r11_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "cole_2026-10-20_a_m11",
+   "t_video": 2640.9,
+   "label": "Tesla",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r11_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_a_m11",
+   "t_video": 2643.6,
+   "label": "Firecracker",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r11_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_a_m11",
+   "t_video": 2646.3,
+   "label": "Electro Spirit",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r11_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_a_m11",
+   "t_video": 2648.4,
+   "label": "Mighty Miner",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r11_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_a_m11",
+   "t_video": 2652.1,
+   "label": "Earthquake",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r11_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_a_m11",
+   "t_video": 2653.1,
+   "label": "Barbarian Barrel",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r11_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_a_m11",
+   "t_video": 2663.7,
+   "label": "Firecracker",
+   "form": "evo",
+   "source": "POV of bl_2026-10-20_r11_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "cole_2026-10-20_a_m11",
+   "t_video": 2663.7,
+   "label": "Tesla",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r11_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "cole_2026-10-20_a_m11",
+   "t_video": 2666.8,
+   "label": "Skeletons",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r11_top_m01",
+   "source_confidence": "low"
+  }
+ ],
+ "paired_with": "bl_2026-10-20_r11_top_m01",
+ "offset_s": -2351.599998474121,
+ "auto": true,
+ "source": "live+replay",
+ "replay": "bl_2026-10-20_r11_m01",
+ "agree": 1.0
+}

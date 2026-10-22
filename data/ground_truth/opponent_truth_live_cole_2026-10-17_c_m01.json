@@ -1,0 +1,119 @@
+{
+ "video_id": "cole_2026-10-17_c",
+ "side": "opponent",
+ "matches": [
+  "cole_2026-10-17_c_m01"
+ ],
+ "items": [
+  {
+   "match_id": "cole_2026-10-17_c_m01",
+   "t_video": 31.0,
+   "label": "Ice Wizard",
+   "form": "hero",
+   "source": "POV of bl_2026-10-17_r03_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-17_c_m01",
+   "t_video": 39.8,
+   "label": "Bats",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r03_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-17_c_m01",
+   "t_video": 42.2,
+   "label": "Skeletons",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r03_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-17_c_m01",
+   "t_video": 51.4,
+   "label": "Knight",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r03_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-17_c_m01",
+   "t_video": 61.4,
+   "label": "Cannon",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r03_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "cole_2026-10-17_c_m01",
+   "t_video": 63.6,
+   "label": "Fireball",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r03_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-17_c_m01",
+   "t_video": 74.0,
+   "label": "Barbarian Barrel",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r03_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-17_c_m01",
+   "t_video": 74.5,
+   "label": "Minion Giant",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r03_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-17_c_m01",
+   "t_video": 81.6,
+   "label": "Bats",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r03_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-17_c_m01",
+   "t_video": 85.0,
+   "label": "Skeletons",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r03_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-17_c_m01",
+   "t_video": 89.3,
+   "label": "Cannon",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r03_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-17_c_m01",
+   "t_video": 93.3,
+   "label": "Barbarian Barrel",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r03_top_m01",
+   "source_confidence": "low"
+  },
+  {
+   "match_id": "cole_2026-10-17_c_m01",
+   "t_video": 102.3,
+   "label": "Ice Wizard",
+   "form": "hero",
+   "source": "POV of bl_2026-10-17_r03_top_m01",
+   "source_confidence": "high"
+  }
+ ],
+ "paired_with": "bl_2026-10-17_r03_top_m01",
+ "offset_s": -14.3,
+ "auto": true,
+ "source": "live+replay",
+ "replay": "bl_2026-10-17_r03_m01",
+ "agree": 1.0
+}

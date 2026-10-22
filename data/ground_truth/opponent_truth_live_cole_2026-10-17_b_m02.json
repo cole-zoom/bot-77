@@ -1,0 +1,431 @@
+{
+ "video_id": "cole_2026-10-17_b",
+ "side": "opponent",
+ "matches": [
+  "cole_2026-10-17_b_m02"
+ ],
+ "items": [
+  {
+   "match_id": "cole_2026-10-17_b_m02",
+   "t_video": 280.4,
+   "label": "Spear Goblins",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r13_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "cole_2026-10-17_b_m02",
+   "t_video": 283.2,
+   "label": "Bomb Tower",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r13_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-17_b_m02",
+   "t_video": 296.0,
+   "label": "Miner",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r13_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-17_b_m02",
+   "t_video": 304.5,
+   "label": "Magic Archer",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r13_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-17_b_m02",
+   "t_video": 314.7,
+   "label": "Wall Breakers",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r13_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-17_b_m02",
+   "t_video": 317.0,
+   "label": "Spear Goblins",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r13_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-17_b_m02",
+   "t_video": 324.4,
+   "label": "The Log",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r13_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-17_b_m02",
+   "t_video": 329.4,
+   "label": "Tornado",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r13_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-17_b_m02",
+   "t_video": 331.0,
+   "label": "Valkyrie",
+   "form": "hero",
+   "source": "POV of bl_2026-10-17_r13_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-17_b_m02",
+   "t_video": 333.8,
+   "label": "Wall Breakers",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r13_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-17_b_m02",
+   "t_video": 359.5,
+   "label": "Magic Archer",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r13_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-17_b_m02",
+   "t_video": 361.2,
+   "label": "Miner",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r13_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-17_b_m02",
+   "t_video": 363.5,
+   "label": "Bomb Tower",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r13_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-17_b_m02",
+   "t_video": 376.7,
+   "label": "Spear Goblins",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r13_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-17_b_m02",
+   "t_video": 394.0,
+   "label": "Valkyrie",
+   "form": "hero",
+   "source": "POV of bl_2026-10-17_r13_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-17_b_m02",
+   "t_video": 403.8,
+   "label": "Magic Archer",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r13_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-17_b_m02",
+   "t_video": 406.3,
+   "label": "The Log",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r13_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-17_b_m02",
+   "t_video": 413.6,
+   "label": "Bomb Tower",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r13_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-17_b_m02",
+   "t_video": 415.6,
+   "label": "Spear Goblins",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r13_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-17_b_m02",
+   "t_video": 418.4,
+   "label": "Tornado",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r13_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-17_b_m02",
+   "t_video": 420.0,
+   "label": "Valkyrie",
+   "form": "hero",
+   "source": "POV of bl_2026-10-17_r13_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-17_b_m02",
+   "t_video": 422.4,
+   "label": "The Log",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r13_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-17_b_m02",
+   "t_video": 433.3,
+   "label": "Bomb Tower",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r13_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-17_b_m02",
+   "t_video": 441.9,
+   "label": "Miner",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r13_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-17_b_m02",
+   "t_video": 442.6,
+   "label": "Wall Breakers",
+   "form": "evo",
+   "source": "POV of bl_2026-10-17_r13_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-17_b_m02",
+   "t_video": 443.3,
+   "label": "Spear Goblins",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r13_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-17_b_m02",
+   "t_video": 444.5,
+   "label": "Magic Archer",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r13_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-17_b_m02",
+   "t_video": 452.0,
+   "label": "Valkyrie",
+   "form": "hero",
+   "source": "POV of bl_2026-10-17_r13_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-17_b_m02",
+   "t_video": 455.7,
+   "label": "Miner",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r13_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-17_b_m02",
+   "t_video": 458.4,
+   "label": "Spear Goblins",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r13_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-17_b_m02",
+   "t_video": 467.4,
+   "label": "Wall Breakers",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r13_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-17_b_m02",
+   "t_video": 469.7,
+   "label": "Tornado",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r13_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-17_b_m02",
+   "t_video": 472.6,
+   "label": "Valkyrie",
+   "form": "hero",
+   "source": "POV of bl_2026-10-17_r13_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-17_b_m02",
+   "t_video": 479.0,
+   "label": "Miner",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r13_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-17_b_m02",
+   "t_video": 479.6,
+   "label": "The Log",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r13_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-17_b_m02",
+   "t_video": 481.5,
+   "label": "Spear Goblins",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r13_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-17_b_m02",
+   "t_video": 488.0,
+   "label": "Magic Archer",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r13_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-17_b_m02",
+   "t_video": 490.1,
+   "label": "Tornado",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r13_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-17_b_m02",
+   "t_video": 497.2,
+   "label": "Valkyrie",
+   "form": "hero",
+   "source": "POV of bl_2026-10-17_r13_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-17_b_m02",
+   "t_video": 499.2,
+   "label": "Miner",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r13_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-17_b_m02",
+   "t_video": 501.9,
+   "label": "Wall Breakers",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r13_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-17_b_m02",
+   "t_video": 505.4,
+   "label": "Spear Goblins",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r13_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-17_b_m02",
+   "t_video": 507.6,
+   "label": "The Log",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r13_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-17_b_m02",
+   "t_video": 512.2,
+   "label": "Magic Archer",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r13_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-17_b_m02",
+   "t_video": 515.6,
+   "label": "Tornado",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r13_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-17_b_m02",
+   "t_video": 523.7,
+   "label": "Miner",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r13_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-17_b_m02",
+   "t_video": 524.7,
+   "label": "Valkyrie",
+   "form": "hero",
+   "source": "POV of bl_2026-10-17_r13_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "cole_2026-10-17_b_m02",
+   "t_video": 525.8,
+   "label": "Bomb Tower",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r13_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-17_b_m02",
+   "t_video": 527.6,
+   "label": "The Log",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r13_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-17_b_m02",
+   "t_video": 529.6,
+   "label": "Wall Breakers",
+   "form": "evo",
+   "source": "POV of bl_2026-10-17_r13_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-17_b_m02",
+   "t_video": 531.1,
+   "label": "Tornado",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r13_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "cole_2026-10-17_b_m02",
+   "t_video": 534.3,
+   "label": "Spear Goblins",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r13_top_m01",
+   "source_confidence": "low"
+  }
+ ],
+ "paired_with": "bl_2026-10-17_r13_top_m01",
+ "offset_s": -265.8,
+ "auto": true,
+ "source": "live+replay",
+ "replay": "bl_2026-10-17_r13_m01",
+ "agree": 1.0
+}

@@ -37,14 +37,16 @@ ap.add_argument("table"); ap.add_argument("out")
 ap.add_argument("--all", action="store_true"); ap.add_argument("--limit", type=int, default=0)
 ap.add_argument("--truth", default="auto", help="comma list of truth sets: auto (dev pairs), replay (both-hands replays)")
 ap.add_argument("--only-new", default="", help="previous truth dir: label only plays that aren't in it (same match, time, card)")
+ap.add_argument("--prefix", default="", help="only matches whose id starts with this (e.g. bl_2026-10-17)")
 ap.add_argument("--refs", default="data/external/replay_refs/refs.npz", help="replay reference crops (scripts/replay_refs.py)")
 a = ap.parse_args()
-LAG = {"auto": (0.2, 2.5), "replay": (-0.3, 0.4)}  # clock start after the play: median ~1 s on the dev set; on
+# live (2026-10-17): Cole's recordings keyed by their replays, POV like dev
+LAG = {"auto": (0.2, 2.5), "replay": (-0.3, 0.4), "live": (0.2, 2.5)}  # clock start after the play: median ~1 s on the dev set; on
 # replays the hand read and the clock coincide (±0.2 s, 2026-10-14) and the old window caught the NEXT play's clock
 FRAME_OFFSETS = (0.6, 1.1)  # after the clock's last frame: the unit has landed and barely moved
 BADGE_TILES = 3.0  # the badge is within this of the clock spot (flying units sit higher)
 MIN_SIM = 0.4  # DINOv2 similarity to the card's approved slices (trial: the 3 wrong boxes of 21 were 0.31-0.36)
-ALONE_S = {"auto": 2.0, "replay": 0.8}  # skip a play with another opponent play this close (two plays can share one
+ALONE_S = {"auto": 2.0, "replay": 0.8, "live": 2.0}  # skip a play with another opponent play this close (two plays can share one
 # clock); replay clocks sit within ±0.3 s of the play, so plays 0.8 s apart no longer share one
 BELOW_BADGE = (0.3, 0.9)  # SAM point = badge centre + this many tiles (x, y): the unit's body
 BOX_TILES = (0.6, 4.5)  # plausible unit box side, tiles
@@ -59,6 +61,8 @@ hold = set(json.loads(Path("config/benchmark_holdout.json").read_text())["matche
 check = json.loads(Path("config/v5_check_games.json").read_text())["matches"]
 hold |= set(check)
 hold |= set(json.loads(Path("config/replay_test_games.json").read_text())["matches"])  # replay test set
+from bot77.holdout import held_out
+hold |= held_out()  # + Cole's live test games and their replays (2026-10-17)
 al = AutoLabeler(out=Path(a.out), dets_table=a.table)
 db = al.db
 stats, rows = collections.Counter(), []
@@ -66,7 +70,7 @@ items = []
 for ts, f in sorted((ts, f) for ts in a.truth.split(",") for f in Path("data/ground_truth").glob(f"opponent_truth_{ts}_*.json")):
     tr = json.loads(f.read_text())
     m = tr["matches"][0]
-    if m in hold:
+    if m in hold or not m.startswith(a.prefix):
         continue
     prev = Path(a.only_new) / f.name if a.only_new else None
     seen = {(round(i["t_video"], 1), i["label"]) for i in json.loads(prev.read_text())["items"]} if prev and prev.exists() else set()

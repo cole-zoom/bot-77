@@ -1,0 +1,295 @@
+{
+ "video_id": "cole_2026-10-17_b",
+ "side": "opponent",
+ "matches": [
+  "cole_2026-10-17_b_m09"
+ ],
+ "items": [
+  {
+   "match_id": "cole_2026-10-17_b_m09",
+   "t_video": 1949.4,
+   "label": "Bandit",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r06_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-17_b_m09",
+   "t_video": 1950.6,
+   "label": "Ice Wizard",
+   "form": "hero",
+   "source": "POV of bl_2026-10-17_r06_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-17_b_m09",
+   "t_video": 1974.8,
+   "label": "P.E.K.K.A",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r06_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-17_b_m09",
+   "t_video": 1988.0,
+   "label": "Battle Ram",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r06_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-17_b_m09",
+   "t_video": 1991.4,
+   "label": "Lumberjack",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r06_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-17_b_m09",
+   "t_video": 1995.4,
+   "label": "The Log",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r06_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "cole_2026-10-17_b_m09",
+   "t_video": 2013.8,
+   "label": "Royal Ghost",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r06_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-17_b_m09",
+   "t_video": 2016.5,
+   "label": "Bandit",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r06_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-17_b_m09",
+   "t_video": 2035.2,
+   "label": "Ice Wizard",
+   "form": "hero",
+   "source": "POV of bl_2026-10-17_r06_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-17_b_m09",
+   "t_video": 2047.4,
+   "label": "Lumberjack",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r06_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-17_b_m09",
+   "t_video": 2049.2,
+   "label": "Battle Ram",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r06_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-17_b_m09",
+   "t_video": 2063.3,
+   "label": "Royal Ghost",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r06_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-17_b_m09",
+   "t_video": 2066.7,
+   "label": "Bandit",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r06_top_m01",
+   "source_confidence": "low"
+  },
+  {
+   "match_id": "cole_2026-10-17_b_m09",
+   "t_video": 2069.7,
+   "label": "Ice Wizard",
+   "form": null,
+   "source": "next-card advance in bl_2026-10-17_r06_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "cole_2026-10-17_b_m09",
+   "t_video": 2071.3,
+   "label": "Ice Wizard",
+   "form": "hero",
+   "source": "POV of bl_2026-10-17_r06_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "cole_2026-10-17_b_m09",
+   "t_video": 2073.4,
+   "label": "Lumberjack",
+   "form": "evo",
+   "source": "POV of bl_2026-10-17_r06_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-17_b_m09",
+   "t_video": 2085.4,
+   "label": "Battle Ram",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r06_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-17_b_m09",
+   "t_video": 2091.3,
+   "label": "Lightning",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r06_top_m01",
+   "source_confidence": "low"
+  },
+  {
+   "match_id": "cole_2026-10-17_b_m09",
+   "t_video": 2092.3,
+   "label": "The Log",
+   "form": null,
+   "source": "next-card advance in bl_2026-10-17_r06_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "cole_2026-10-17_b_m09",
+   "t_video": 2100.3,
+   "label": "Ice Wizard",
+   "form": "hero",
+   "source": "POV of bl_2026-10-17_r06_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-17_b_m09",
+   "t_video": 2102.0,
+   "label": "The Log",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r06_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "cole_2026-10-17_b_m09",
+   "t_video": 2103.2,
+   "label": "Lumberjack",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r06_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-17_b_m09",
+   "t_video": 2109.0,
+   "label": "Bandit",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r06_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-17_b_m09",
+   "t_video": 2118.8,
+   "label": "P.E.K.K.A",
+   "form": "evo",
+   "source": "POV of bl_2026-10-17_r06_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-17_b_m09",
+   "t_video": 2122.5,
+   "label": "The Log",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r06_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "cole_2026-10-17_b_m09",
+   "t_video": 2129.9,
+   "label": "Ice Wizard",
+   "form": "hero",
+   "source": "POV of bl_2026-10-17_r06_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-17_b_m09",
+   "t_video": 2134.0,
+   "label": "Lumberjack",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r06_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-17_b_m09",
+   "t_video": 2136.3,
+   "label": "Royal Ghost",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r06_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-17_b_m09",
+   "t_video": 2139.6,
+   "label": "Bandit",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r06_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-17_b_m09",
+   "t_video": 2141.4,
+   "label": "The Log",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r06_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "cole_2026-10-17_b_m09",
+   "t_video": 2149.2,
+   "label": "Ice Wizard",
+   "form": "hero",
+   "source": "POV of bl_2026-10-17_r06_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "cole_2026-10-17_b_m09",
+   "t_video": 2151.5,
+   "label": "Lumberjack",
+   "form": "evo",
+   "source": "POV of bl_2026-10-17_r06_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-17_b_m09",
+   "t_video": 2158.0,
+   "label": "Royal Ghost",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r06_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-17_b_m09",
+   "t_video": 2160.7,
+   "label": "Bandit",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r06_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "cole_2026-10-17_b_m09",
+   "t_video": 2163.6,
+   "label": "The Log",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r06_top_m01",
+   "source_confidence": "low"
+  }
+ ],
+ "paired_with": "bl_2026-10-17_r06_top_m01",
+ "offset_s": -1933.3,
+ "auto": true,
+ "source": "live+replay",
+ "replay": "bl_2026-10-17_r06_m01",
+ "agree": 1.0
+}

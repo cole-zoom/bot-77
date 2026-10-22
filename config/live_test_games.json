@@ -1,0 +1,27 @@
+{
+ "_doc": "Held-out POV test (2026-10-17): Cole's live recording b (10 ladder games keyed by their replays) and the replay recordings of those same games. Never trained or tuned on.",
+ "matches": [
+  "cole_2026-10-17_b_m01",
+  "cole_2026-10-17_b_m02",
+  "cole_2026-10-17_b_m03",
+  "cole_2026-10-17_b_m04",
+  "cole_2026-10-17_b_m05",
+  "cole_2026-10-17_b_m06",
+  "cole_2026-10-17_b_m07",
+  "cole_2026-10-17_b_m08",
+  "cole_2026-10-17_b_m09",
+  "cole_2026-10-17_b_m10"
+ ],
+ "replays": [
+  "bl_2026-10-17_r05_m01",
+  "bl_2026-10-17_r06_m01",
+  "bl_2026-10-17_r07_m01",
+  "bl_2026-10-17_r08_m01",
+  "bl_2026-10-17_r09_m01",
+  "bl_2026-10-17_r10_m01",
+  "bl_2026-10-17_r11_m01",
+  "bl_2026-10-17_r12_m01",
+  "bl_2026-10-17_r13_m01",
+  "bl_2026-10-17_r14_m01"
+ ]
+}

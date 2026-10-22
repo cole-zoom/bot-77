@@ -1,0 +1,199 @@
+{
+ "video_id": "cole_2026-10-19_a",
+ "side": "opponent",
+ "matches": [
+  "cole_2026-10-19_a_m12"
+ ],
+ "items": [
+  {
+   "match_id": "cole_2026-10-19_a_m12",
+   "t_video": 2584.8,
+   "label": "Sparky",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r01_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-19_a_m12",
+   "t_video": 2600.9,
+   "label": "Elixir Golem",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r01_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-19_a_m12",
+   "t_video": 2605.7,
+   "label": "Arrows",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r01_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-19_a_m12",
+   "t_video": 2607.3,
+   "label": "__ability",
+   "form": null,
+   "source": "POV of bl_2026-10-20_r01_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "cole_2026-10-19_a_m12",
+   "t_video": 2633.1,
+   "label": "Mini P.E.K.K.A",
+   "form": "hero",
+   "source": "POV of bl_2026-10-20_r01_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-19_a_m12",
+   "t_video": 2646.6,
+   "label": "Lightning",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r01_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-19_a_m12",
+   "t_video": 2654.6,
+   "label": "Mini P.E.K.K.A",
+   "form": "hero",
+   "source": "POV of bl_2026-10-20_r01_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-19_a_m12",
+   "t_video": 2666.6,
+   "label": "__ability",
+   "form": null,
+   "source": "POV of bl_2026-10-20_r01_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "cole_2026-10-19_a_m12",
+   "t_video": 2675.1,
+   "label": "Wizard",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r01_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-19_a_m12",
+   "t_video": 2695.8,
+   "label": "Sparky",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r01_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-19_a_m12",
+   "t_video": 2697.3,
+   "label": "Elixir Golem",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r01_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "cole_2026-10-19_a_m12",
+   "t_video": 2703.1,
+   "label": "Mini P.E.K.K.A",
+   "form": "hero",
+   "source": "POV of bl_2026-10-20_r01_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-19_a_m12",
+   "t_video": 2708.3,
+   "label": "Arrows",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r01_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-19_a_m12",
+   "t_video": 2713.1,
+   "label": "Elixir Golem",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r01_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-19_a_m12",
+   "t_video": 2721.3,
+   "label": "Sparky",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r01_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-19_a_m12",
+   "t_video": 2725.3,
+   "label": "Musketeer",
+   "form": "evo",
+   "source": "POV of bl_2026-10-20_r01_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-19_a_m12",
+   "t_video": 2738.9,
+   "label": "Wizard",
+   "form": "evo",
+   "source": "POV of bl_2026-10-20_r01_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-19_a_m12",
+   "t_video": 2742.3,
+   "label": "Arrows",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r01_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-19_a_m12",
+   "t_video": 2749.4,
+   "label": "Mega Knight",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r01_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "cole_2026-10-19_a_m12",
+   "t_video": 2756.8,
+   "label": "Mini P.E.K.K.A",
+   "form": "hero",
+   "source": "POV of bl_2026-10-20_r01_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-19_a_m12",
+   "t_video": 2762.4,
+   "label": "Elixir Golem",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r01_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "cole_2026-10-19_a_m12",
+   "t_video": 2766.6,
+   "label": "Arrows",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r01_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-19_a_m12",
+   "t_video": 2769.3,
+   "label": "Elixir Golem",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r01_top_m01",
+   "source_confidence": "low"
+  }
+ ],
+ "paired_with": "bl_2026-10-20_r01_top_m01",
+ "offset_s": -2567.9,
+ "auto": true,
+ "source": "live+replay",
+ "replay": "bl_2026-10-20_r01_m01",
+ "agree": 1.0
+}

@@ -1,0 +1,631 @@
+{
+ "video_id": "cole_2026-10-20_a",
+ "side": "opponent",
+ "matches": [
+  "cole_2026-10-20_a_m07"
+ ],
+ "items": [
+  {
+   "match_id": "cole_2026-10-20_a_m07",
+   "t_video": 1334.4,
+   "label": "Dart Goblin",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r15_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_a_m07",
+   "t_video": 1342.5,
+   "label": "Ice Golem",
+   "form": "hero",
+   "source": "POV of bl_2026-10-20_r15_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_a_m07",
+   "t_video": 1350.0,
+   "label": "Knight",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r15_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_a_m07",
+   "t_video": 1358.2,
+   "label": "Firecracker",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r15_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_a_m07",
+   "t_video": 1363.8,
+   "label": "Bats",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r15_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_a_m07",
+   "t_video": 1366.0,
+   "label": "Vines",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r15_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_a_m07",
+   "t_video": 1370.9,
+   "label": "Dart Goblin",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r15_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_a_m07",
+   "t_video": 1373.8,
+   "label": "Ice Golem",
+   "form": "hero",
+   "source": "POV of bl_2026-10-20_r15_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_a_m07",
+   "t_video": 1392.3,
+   "label": "Knight",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r15_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_a_m07",
+   "t_video": 1396.1,
+   "label": "Cannon",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r15_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_a_m07",
+   "t_video": 1398.3,
+   "label": "Firecracker",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r15_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_a_m07",
+   "t_video": 1401.9,
+   "label": "Vines",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r15_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_a_m07",
+   "t_video": 1416.5,
+   "label": "Dart Goblin",
+   "form": "evo",
+   "source": "POV of bl_2026-10-20_r15_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_a_m07",
+   "t_video": 1418.2,
+   "label": "Barbarian Barrel",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r15_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_a_m07",
+   "t_video": 1422.3,
+   "label": "Bats",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r15_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_a_m07",
+   "t_video": 1437.0,
+   "label": "Ice Golem",
+   "form": "hero",
+   "source": "POV of bl_2026-10-20_r15_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "cole_2026-10-20_a_m07",
+   "t_video": 1445.4,
+   "label": "Knight",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r15_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_a_m07",
+   "t_video": 1449.7,
+   "label": "Firecracker",
+   "form": "evo",
+   "source": "POV of bl_2026-10-20_r15_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_a_m07",
+   "t_video": 1456.7,
+   "label": "Dart Goblin",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r15_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_a_m07",
+   "t_video": 1457.3,
+   "label": "Barbarian Barrel",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r15_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_a_m07",
+   "t_video": 1458.4,
+   "label": "Bats",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r15_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_a_m07",
+   "t_video": 1462.2,
+   "label": "Ice Golem",
+   "form": "hero",
+   "source": "POV of bl_2026-10-20_r15_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_a_m07",
+   "t_video": 1464.6,
+   "label": "Firecracker",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r15_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_a_m07",
+   "t_video": 1468.8,
+   "label": "Cannon",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r15_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_a_m07",
+   "t_video": 1471.2,
+   "label": "Barbarian Barrel",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r15_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_a_m07",
+   "t_video": 1474.2,
+   "label": "Dart Goblin",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r15_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_a_m07",
+   "t_video": 1478.8,
+   "label": "Ice Golem",
+   "form": "hero",
+   "source": "POV of bl_2026-10-20_r15_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_a_m07",
+   "t_video": 1482.0,
+   "label": "Firecracker",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r15_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_a_m07",
+   "t_video": 1483.3,
+   "label": "Bats",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r15_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_a_m07",
+   "t_video": 1486.0,
+   "label": "__ability",
+   "form": null,
+   "source": "POV of bl_2026-10-20_r15_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "cole_2026-10-20_a_m07",
+   "t_video": 1489.9,
+   "label": "Knight",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r15_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_a_m07",
+   "t_video": 1496.0,
+   "label": "Cannon",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r15_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_a_m07",
+   "t_video": 1500.2,
+   "label": "Ice Golem",
+   "form": "hero",
+   "source": "POV of bl_2026-10-20_r15_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_a_m07",
+   "t_video": 1502.2,
+   "label": "Firecracker",
+   "form": "evo",
+   "source": "POV of bl_2026-10-20_r15_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_a_m07",
+   "t_video": 1504.4,
+   "label": "__ability",
+   "form": null,
+   "source": "POV of bl_2026-10-20_r15_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "cole_2026-10-20_a_m07",
+   "t_video": 1514.2,
+   "label": "Dart Goblin",
+   "form": "evo",
+   "source": "POV of bl_2026-10-20_r15_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_a_m07",
+   "t_video": 1515.5,
+   "label": "Bats",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r15_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_a_m07",
+   "t_video": 1516.9,
+   "label": "Knight",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r15_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_a_m07",
+   "t_video": 1519.4,
+   "label": "Ice Golem",
+   "form": "hero",
+   "source": "POV of bl_2026-10-20_r15_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_a_m07",
+   "t_video": 1520.9,
+   "label": "__ability",
+   "form": null,
+   "source": "POV of bl_2026-10-20_r15_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "cole_2026-10-20_a_m07",
+   "t_video": 1523.1,
+   "label": "Barbarian Barrel",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r15_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_a_m07",
+   "t_video": 1529.2,
+   "label": "Dart Goblin",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r15_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_a_m07",
+   "t_video": 1531.5,
+   "label": "Vines",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r15_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_a_m07",
+   "t_video": 1536.4,
+   "label": "Knight",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r15_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_a_m07",
+   "t_video": 1538.8,
+   "label": "Ice Golem",
+   "form": "hero",
+   "source": "POV of bl_2026-10-20_r15_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_a_m07",
+   "t_video": 1542.3,
+   "label": "Cannon",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r15_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_a_m07",
+   "t_video": 1545.2,
+   "label": "Barbarian Barrel",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r15_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_a_m07",
+   "t_video": 1548.3,
+   "label": "Bats",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r15_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_a_m07",
+   "t_video": 1555.2,
+   "label": "Firecracker",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r15_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_a_m07",
+   "t_video": 1556.3,
+   "label": "Dart Goblin",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r15_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_a_m07",
+   "t_video": 1560.9,
+   "label": "Ice Golem",
+   "form": "hero",
+   "source": "POV of bl_2026-10-20_r15_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_a_m07",
+   "t_video": 1562.0,
+   "label": "Knight",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r15_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_a_m07",
+   "t_video": 1566.5,
+   "label": "Cannon",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r15_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_a_m07",
+   "t_video": 1568.2,
+   "label": "Bats",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r15_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_a_m07",
+   "t_video": 1569.5,
+   "label": "Firecracker",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r15_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "cole_2026-10-20_a_m07",
+   "t_video": 1573.3,
+   "label": "Ice Golem",
+   "form": "hero",
+   "source": "POV of bl_2026-10-20_r15_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_a_m07",
+   "t_video": 1576.0,
+   "label": "Dart Goblin",
+   "form": "evo",
+   "source": "POV of bl_2026-10-20_r15_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_a_m07",
+   "t_video": 1577.3,
+   "label": "Vines",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r15_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_a_m07",
+   "t_video": 1579.7,
+   "label": "Knight",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r15_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_a_m07",
+   "t_video": 1581.8,
+   "label": "Barbarian Barrel",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r15_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_a_m07",
+   "t_video": 1584.2,
+   "label": "Bats",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r15_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_a_m07",
+   "t_video": 1586.6,
+   "label": "Firecracker",
+   "form": "evo",
+   "source": "POV of bl_2026-10-20_r15_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_a_m07",
+   "t_video": 1589.0,
+   "label": "Dart Goblin",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r15_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_a_m07",
+   "t_video": 1591.8,
+   "label": "Ice Golem",
+   "form": "hero",
+   "source": "POV of bl_2026-10-20_r15_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_a_m07",
+   "t_video": 1594.6,
+   "label": "Vines",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r15_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "cole_2026-10-20_a_m07",
+   "t_video": 1597.7,
+   "label": "Bats",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r15_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_a_m07",
+   "t_video": 1598.5,
+   "label": "Knight",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r15_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_a_m07",
+   "t_video": 1601.2,
+   "label": "Dart Goblin",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r15_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_a_m07",
+   "t_video": 1602.9,
+   "label": "Barbarian Barrel",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r15_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_a_m07",
+   "t_video": 1607.7,
+   "label": "Ice Golem",
+   "form": "hero",
+   "source": "POV of bl_2026-10-20_r15_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_a_m07",
+   "t_video": 1609.6,
+   "label": "Firecracker",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r15_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "cole_2026-10-20_a_m07",
+   "t_video": 1611.4,
+   "label": "Knight",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r15_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_a_m07",
+   "t_video": 1613.2,
+   "label": "Dart Goblin",
+   "form": "evo",
+   "source": "POV of bl_2026-10-20_r15_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_a_m07",
+   "t_video": 1615.2,
+   "label": "Barbarian Barrel",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r15_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_a_m07",
+   "t_video": 1624.4,
+   "label": "Cannon",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r15_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "cole_2026-10-20_a_m07",
+   "t_video": 1624.4,
+   "label": "Bats",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r15_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "cole_2026-10-20_a_m07",
+   "t_video": 1628.2,
+   "label": "Ice Golem",
+   "form": "hero",
+   "source": "POV of bl_2026-10-20_r15_top_m01",
+   "source_confidence": "low"
+  }
+ ],
+ "paired_with": "bl_2026-10-20_r15_top_m01",
+ "offset_s": -1315.099998474121,
+ "auto": true,
+ "source": "live+replay",
+ "replay": "bl_2026-10-20_r15_m01",
+ "agree": 0.958
+}

@@ -1,0 +1,431 @@
+{
+ "video_id": "cole_2026-10-20_b",
+ "side": "opponent",
+ "matches": [
+  "cole_2026-10-20_b_m04"
+ ],
+ "items": [
+  {
+   "match_id": "cole_2026-10-20_b_m04",
+   "t_video": 675.6,
+   "label": "Ram Rider",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r31_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_b_m04",
+   "t_video": 688.1,
+   "label": "The Log",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r31_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_b_m04",
+   "t_video": 692.7,
+   "label": "Electro Wizard",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r31_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_b_m04",
+   "t_video": 693.5,
+   "label": "Minions",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r31_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_b_m04",
+   "t_video": 697.4,
+   "label": "Skeleton Army",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r31_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_b_m04",
+   "t_video": 722.0,
+   "label": "Ram Rider",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r31_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_b_m04",
+   "t_video": 723.8,
+   "label": "Dart Goblin",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r31_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_b_m04",
+   "t_video": 734.0,
+   "label": "Electro Wizard",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r31_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_b_m04",
+   "t_video": 739.8,
+   "label": "Minions",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r31_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_b_m04",
+   "t_video": 744.9,
+   "label": "The Log",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r31_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_b_m04",
+   "t_video": 767.3,
+   "label": "Skeleton Army",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r31_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_b_m04",
+   "t_video": 770.8,
+   "label": "Ram Rider",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r31_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_b_m04",
+   "t_video": 791.5,
+   "label": "Valkyrie",
+   "form": "hero",
+   "source": "POV of bl_2026-10-20_r31_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_b_m04",
+   "t_video": 797.7,
+   "label": "Zap",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r31_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_b_m04",
+   "t_video": 802.0,
+   "label": "Dart Goblin",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r31_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "cole_2026-10-20_b_m04",
+   "t_video": 804.1,
+   "label": "Skeleton Army",
+   "form": "evo",
+   "source": "POV of bl_2026-10-20_r31_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_b_m04",
+   "t_video": 806.2,
+   "label": "Ram Rider",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r31_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_b_m04",
+   "t_video": 808.8,
+   "label": "__ability",
+   "form": null,
+   "source": "POV of bl_2026-10-20_r31_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "cole_2026-10-20_b_m04",
+   "t_video": 818.2,
+   "label": "The Log",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r31_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_b_m04",
+   "t_video": 821.4,
+   "label": "Electro Wizard",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r31_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_b_m04",
+   "t_video": 822.8,
+   "label": "Valkyrie",
+   "form": "hero",
+   "source": "POV of bl_2026-10-20_r31_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_b_m04",
+   "t_video": 830.8,
+   "label": "Dart Goblin",
+   "form": "evo",
+   "source": "POV of bl_2026-10-20_r31_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_b_m04",
+   "t_video": 833.9,
+   "label": "Ram Rider",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r31_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_b_m04",
+   "t_video": 842.8,
+   "label": "Minions",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r31_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_b_m04",
+   "t_video": 846.6,
+   "label": "Skeleton Army",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r31_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_b_m04",
+   "t_video": 847.9,
+   "label": "Electro Wizard",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r31_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_b_m04",
+   "t_video": 855.4,
+   "label": "Dart Goblin",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r31_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_b_m04",
+   "t_video": 857.2,
+   "label": "The Log",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r31_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_b_m04",
+   "t_video": 868.3,
+   "label": "Valkyrie",
+   "form": "hero",
+   "source": "POV of bl_2026-10-20_r31_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_b_m04",
+   "t_video": 870.4,
+   "label": "Skeleton Army",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r31_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_b_m04",
+   "t_video": 876.3,
+   "label": "Ram Rider",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r31_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_b_m04",
+   "t_video": 884.8,
+   "label": "Dart Goblin",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r31_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_b_m04",
+   "t_video": 887.3,
+   "label": "The Log",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r31_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_b_m04",
+   "t_video": 889.1,
+   "label": "Electro Wizard",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r31_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "cole_2026-10-20_b_m04",
+   "t_video": 894.6,
+   "label": "Skeleton Army",
+   "form": "evo",
+   "source": "POV of bl_2026-10-20_r31_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_b_m04",
+   "t_video": 899.2,
+   "label": "Valkyrie",
+   "form": "hero",
+   "source": "POV of bl_2026-10-20_r31_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_b_m04",
+   "t_video": 903.7,
+   "label": "__ability",
+   "form": null,
+   "source": "POV of bl_2026-10-20_r31_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "cole_2026-10-20_b_m04",
+   "t_video": 907.3,
+   "label": "Minions",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r31_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "cole_2026-10-20_b_m04",
+   "t_video": 916.0,
+   "label": "Ram Rider",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r31_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_b_m04",
+   "t_video": 916.7,
+   "label": "Dart Goblin",
+   "form": "evo",
+   "source": "POV of bl_2026-10-20_r31_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_b_m04",
+   "t_video": 919.4,
+   "label": "The Log",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r31_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_b_m04",
+   "t_video": 921.1,
+   "label": "Skeleton Army",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r31_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_b_m04",
+   "t_video": 923.6,
+   "label": "Minions",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r31_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_b_m04",
+   "t_video": 926.8,
+   "label": "Valkyrie",
+   "form": "hero",
+   "source": "POV of bl_2026-10-20_r31_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_b_m04",
+   "t_video": 933.4,
+   "label": "Electro Wizard",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r31_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_b_m04",
+   "t_video": 935.3,
+   "label": "The Log",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r31_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_b_m04",
+   "t_video": 937.4,
+   "label": "Skeleton Army",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r31_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_b_m04",
+   "t_video": 938.9,
+   "label": "__ability",
+   "form": null,
+   "source": "POV of bl_2026-10-20_r31_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "cole_2026-10-20_b_m04",
+   "t_video": 942.4,
+   "label": "Ram Rider",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r31_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_b_m04",
+   "t_video": 945.2,
+   "label": "Zap",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r31_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_b_m04",
+   "t_video": 949.7,
+   "label": "Valkyrie",
+   "form": "hero",
+   "source": "POV of bl_2026-10-20_r31_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_b_m04",
+   "t_video": 951.6,
+   "label": "The Log",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r31_top_m01",
+   "source_confidence": "high"
+  }
+ ],
+ "paired_with": "bl_2026-10-20_r31_top_m01",
+ "offset_s": -661.9999752044678,
+ "auto": true,
+ "source": "live+replay",
+ "replay": "bl_2026-10-20_r31_m01",
+ "agree": 1.0
+}

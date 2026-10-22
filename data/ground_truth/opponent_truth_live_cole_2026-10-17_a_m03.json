@@ -1,0 +1,135 @@
+{
+ "video_id": "cole_2026-10-17_a",
+ "side": "opponent",
+ "matches": [
+  "cole_2026-10-17_a_m03"
+ ],
+ "items": [
+  {
+   "match_id": "cole_2026-10-17_a_m03",
+   "t_video": 431.2,
+   "label": "Mini P.E.K.K.A",
+   "form": "hero",
+   "source": "POV of bl_2026-10-17_r19_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-17_a_m03",
+   "t_video": 432.5,
+   "label": "Spirit Empress",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r19_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-17_a_m03",
+   "t_video": 437.3,
+   "label": "__ability",
+   "form": null,
+   "source": "POV of bl_2026-10-17_r19_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "cole_2026-10-17_a_m03",
+   "t_video": 473.5,
+   "label": "Mega Knight",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r19_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-17_a_m03",
+   "t_video": 486.1,
+   "label": "Ronin",
+   "form": null,
+   "source": "next-card advance in bl_2026-10-17_r19_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "cole_2026-10-17_a_m03",
+   "t_video": 512.9,
+   "label": "Witch",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r19_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-17_a_m03",
+   "t_video": 519.7,
+   "label": "Sparky",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r19_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "cole_2026-10-17_a_m03",
+   "t_video": 528.0,
+   "label": "Mini P.E.K.K.A",
+   "form": "hero",
+   "source": "POV of bl_2026-10-17_r19_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "cole_2026-10-17_a_m03",
+   "t_video": 533.3,
+   "label": "__ability",
+   "form": null,
+   "source": "POV of bl_2026-10-17_r19_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "cole_2026-10-17_a_m03",
+   "t_video": 550.0,
+   "label": "Mega Knight",
+   "form": "evo",
+   "source": "POV of bl_2026-10-17_r19_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-17_a_m03",
+   "t_video": 558.2,
+   "label": "Electro Giant",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r19_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-17_a_m03",
+   "t_video": 563.8,
+   "label": "Witch",
+   "form": "evo",
+   "source": "POV of bl_2026-10-17_r19_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-17_a_m03",
+   "t_video": 573.5,
+   "label": "Mini P.E.K.K.A",
+   "form": "hero",
+   "source": "POV of bl_2026-10-17_r19_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-17_a_m03",
+   "t_video": 581.0,
+   "label": "Bowler",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r19_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-17_a_m03",
+   "t_video": 590.3,
+   "label": "Electro Giant",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r19_top_m01",
+   "source_confidence": "medium"
+  }
+ ],
+ "paired_with": "bl_2026-10-17_r19_top_m01",
+ "offset_s": -412.3,
+ "auto": true,
+ "source": "live+replay",
+ "replay": "bl_2026-10-17_r19_m01",
+ "agree": 1.0
+}

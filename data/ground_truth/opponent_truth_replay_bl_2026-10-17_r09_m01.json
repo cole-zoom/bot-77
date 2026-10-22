@@ -1,0 +1,237 @@
+{
+ "video_id": "bl_2026-10-17_r09",
+ "side": "opponent",
+ "matches": [
+  "bl_2026-10-17_r09_m01"
+ ],
+ "items": [
+  {
+   "match_id": "bl_2026-10-17_r09_m01",
+   "t_video": 14.8,
+   "label": "Princess",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r09_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "bl_2026-10-17_r09_m01",
+   "t_video": 22.9,
+   "label": "Dart Goblin",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r09_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "bl_2026-10-17_r09_m01",
+   "t_video": 26.7,
+   "label": "Goblin Barrel",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r09_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "bl_2026-10-17_r09_m01",
+   "t_video": 35.7,
+   "label": "Skeleton Army",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r09_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "bl_2026-10-17_r09_m01",
+   "t_video": 37.7,
+   "label": "The Log",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r09_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "bl_2026-10-17_r09_m01",
+   "t_video": 48.0,
+   "label": "Inferno Tower",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r09_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "bl_2026-10-17_r09_m01",
+   "t_video": 65.6,
+   "label": "Princess",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r09_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "bl_2026-10-17_r09_m01",
+   "t_video": 66.9,
+   "label": "Electro Spirit",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r09_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "bl_2026-10-17_r09_m01",
+   "t_video": 74.9,
+   "label": "Skeleton Army",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r09_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "bl_2026-10-17_r09_m01",
+   "t_video": 80.2,
+   "label": "The Log",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r09_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "bl_2026-10-17_r09_m01",
+   "t_video": 81.3,
+   "label": "Knight",
+   "form": "hero",
+   "source": "POV of bl_2026-10-17_r09_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "bl_2026-10-17_r09_m01",
+   "t_video": 88.9,
+   "label": "Dart Goblin",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r09_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "bl_2026-10-17_r09_m01",
+   "t_video": 93.8,
+   "label": "Goblin Barrel",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r09_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "bl_2026-10-17_r09_m01",
+   "t_video": 106.6,
+   "label": "Electro Spirit",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r09_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "bl_2026-10-17_r09_m01",
+   "t_video": 119.4,
+   "label": "Skeleton Army",
+   "form": "evo",
+   "source": "POV of bl_2026-10-17_r09_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "bl_2026-10-17_r09_m01",
+   "t_video": 123.7,
+   "label": "Knight",
+   "form": "hero",
+   "source": "POV of bl_2026-10-17_r09_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "bl_2026-10-17_r09_m01",
+   "t_video": 131.9,
+   "label": "Dart Goblin",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r09_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "bl_2026-10-17_r09_m01",
+   "t_video": 132.8,
+   "label": "Princess",
+   "form": "evo",
+   "source": "POV of bl_2026-10-17_r09_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "bl_2026-10-17_r09_m01",
+   "t_video": 135.4,
+   "label": "Goblin Barrel",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r09_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "bl_2026-10-17_r09_m01",
+   "t_video": 141.5,
+   "label": "Skeleton Army",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r09_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "bl_2026-10-17_r09_m01",
+   "t_video": 143.8,
+   "label": "Knight",
+   "form": "hero",
+   "source": "POV of bl_2026-10-17_r09_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "bl_2026-10-17_r09_m01",
+   "t_video": 150.3,
+   "label": "The Log",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r09_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "bl_2026-10-17_r09_m01",
+   "t_video": 152.0,
+   "label": "Princess",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r09_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "bl_2026-10-17_r09_m01",
+   "t_video": 155.9,
+   "label": "Goblin Barrel",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r09_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "bl_2026-10-17_r09_m01",
+   "t_video": 159.5,
+   "label": "Skeleton Army",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r09_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "bl_2026-10-17_r09_m01",
+   "t_video": 163.3,
+   "label": "Electro Spirit",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r09_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "bl_2026-10-17_r09_m01",
+   "t_video": 166.1,
+   "label": "The Log",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r09_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "bl_2026-10-17_r09_m01",
+   "t_video": 169.0,
+   "label": "Inferno Tower",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r09_top_m01",
+   "source_confidence": "high"
+  }
+ ],
+ "paired_with": "bl_2026-10-17_r09_top_m01",
+ "offset_s": 0.0,
+ "auto": true,
+ "source": "replay"
+}

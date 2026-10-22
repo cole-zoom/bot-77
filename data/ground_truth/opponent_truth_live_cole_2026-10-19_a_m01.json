@@ -1,0 +1,287 @@
+{
+ "video_id": "cole_2026-10-19_a",
+ "side": "opponent",
+ "matches": [
+  "cole_2026-10-19_a_m01"
+ ],
+ "items": [
+  {
+   "match_id": "cole_2026-10-19_a_m01",
+   "t_video": 26.2,
+   "label": "Ice Spirit",
+   "form": "normal",
+   "source": "POV of bl_2026-10-19_r02_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-19_a_m01",
+   "t_video": 27.5,
+   "label": "Cannon",
+   "form": "normal",
+   "source": "POV of bl_2026-10-19_r02_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-19_a_m01",
+   "t_video": 29.8,
+   "label": "Skeletons",
+   "form": "normal",
+   "source": "POV of bl_2026-10-19_r02_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-19_a_m01",
+   "t_video": 45.1,
+   "label": "The Log",
+   "form": "normal",
+   "source": "POV of bl_2026-10-19_r02_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "cole_2026-10-19_a_m01",
+   "t_video": 54.1,
+   "label": "Hog Rider",
+   "form": "normal",
+   "source": "POV of bl_2026-10-19_r02_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-19_a_m01",
+   "t_video": 58.1,
+   "label": "Ice Spirit",
+   "form": "normal",
+   "source": "POV of bl_2026-10-19_r02_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-19_a_m01",
+   "t_video": 61.1,
+   "label": "Skeletons",
+   "form": "normal",
+   "source": "POV of bl_2026-10-19_r02_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-19_a_m01",
+   "t_video": 65.9,
+   "label": "The Log",
+   "form": "normal",
+   "source": "POV of bl_2026-10-19_r02_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-19_a_m01",
+   "t_video": 82.9,
+   "label": "Ice Golem",
+   "form": "normal",
+   "source": "POV of bl_2026-10-19_r02_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-19_a_m01",
+   "t_video": 87.1,
+   "label": "Hog Rider",
+   "form": "normal",
+   "source": "POV of bl_2026-10-19_r02_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-19_a_m01",
+   "t_video": 95.4,
+   "label": "Fireball",
+   "form": "normal",
+   "source": "POV of bl_2026-10-19_r02_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-19_a_m01",
+   "t_video": 97.4,
+   "label": "Ice Spirit",
+   "form": "normal",
+   "source": "POV of bl_2026-10-19_r02_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-19_a_m01",
+   "t_video": 101.9,
+   "label": "The Log",
+   "form": "normal",
+   "source": "POV of bl_2026-10-19_r02_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-19_a_m01",
+   "t_video": 105.2,
+   "label": "Skeletons",
+   "form": "normal",
+   "source": "POV of bl_2026-10-19_r02_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-19_a_m01",
+   "t_video": 121.2,
+   "label": "Ice Golem",
+   "form": "normal",
+   "source": "POV of bl_2026-10-19_r02_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-19_a_m01",
+   "t_video": 125.5,
+   "label": "Cannon",
+   "form": "normal",
+   "source": "POV of bl_2026-10-19_r02_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-19_a_m01",
+   "t_video": 128.5,
+   "label": "Ice Spirit",
+   "form": "normal",
+   "source": "POV of bl_2026-10-19_r02_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-19_a_m01",
+   "t_video": 130.9,
+   "label": "The Log",
+   "form": "normal",
+   "source": "POV of bl_2026-10-19_r02_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-19_a_m01",
+   "t_video": 140.2,
+   "label": "Musketeer",
+   "form": "evo",
+   "source": "POV of bl_2026-10-19_r02_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-19_a_m01",
+   "t_video": 145.4,
+   "label": "Fireball",
+   "form": "normal",
+   "source": "POV of bl_2026-10-19_r02_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-19_a_m01",
+   "t_video": 150.6,
+   "label": "Cannon",
+   "form": "evo",
+   "source": "POV of bl_2026-10-19_r02_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-19_a_m01",
+   "t_video": 155.1,
+   "label": "Hog Rider",
+   "form": "normal",
+   "source": "POV of bl_2026-10-19_r02_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-19_a_m01",
+   "t_video": 155.9,
+   "label": "Ice Spirit",
+   "form": "normal",
+   "source": "POV of bl_2026-10-19_r02_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "cole_2026-10-19_a_m01",
+   "t_video": 158.4,
+   "label": "Skeletons",
+   "form": "normal",
+   "source": "POV of bl_2026-10-19_r02_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-19_a_m01",
+   "t_video": 160.4,
+   "label": "Ice Golem",
+   "form": "normal",
+   "source": "POV of bl_2026-10-19_r02_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-19_a_m01",
+   "t_video": 164.2,
+   "label": "Cannon",
+   "form": "normal",
+   "source": "POV of bl_2026-10-19_r02_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-19_a_m01",
+   "t_video": 168.9,
+   "label": "Hog Rider",
+   "form": "normal",
+   "source": "POV of bl_2026-10-19_r02_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-19_a_m01",
+   "t_video": 171.6,
+   "label": "Ice Spirit",
+   "form": "normal",
+   "source": "POV of bl_2026-10-19_r02_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-19_a_m01",
+   "t_video": 178.9,
+   "label": "Fireball",
+   "form": "normal",
+   "source": "POV of bl_2026-10-19_r02_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-19_a_m01",
+   "t_video": 182.7,
+   "label": "Ice Spirit",
+   "form": "normal",
+   "source": "POV of bl_2026-10-19_r02_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "cole_2026-10-19_a_m01",
+   "t_video": 185.5,
+   "label": "The Log",
+   "form": "normal",
+   "source": "POV of bl_2026-10-19_r02_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-19_a_m01",
+   "t_video": 187.9,
+   "label": "Ice Golem",
+   "form": "normal",
+   "source": "POV of bl_2026-10-19_r02_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-19_a_m01",
+   "t_video": 189.1,
+   "label": "Skeletons",
+   "form": "normal",
+   "source": "POV of bl_2026-10-19_r02_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-19_a_m01",
+   "t_video": 194.0,
+   "label": "Ice Spirit",
+   "form": "normal",
+   "source": "POV of bl_2026-10-19_r02_top_m01",
+   "source_confidence": "medium"
+  }
+ ],
+ "paired_with": "bl_2026-10-19_r02_top_m01",
+ "offset_s": -12.2,
+ "auto": true,
+ "source": "live+replay",
+ "replay": "bl_2026-10-19_r02_m01",
+ "agree": 0.963
+}

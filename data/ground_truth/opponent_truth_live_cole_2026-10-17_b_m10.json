@@ -1,0 +1,183 @@
+{
+ "video_id": "cole_2026-10-17_b",
+ "side": "opponent",
+ "matches": [
+  "cole_2026-10-17_b_m10"
+ ],
+ "items": [
+  {
+   "match_id": "cole_2026-10-17_b_m10",
+   "t_video": 2195.3,
+   "label": "Skeleton Barrel",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r05_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-17_b_m10",
+   "t_video": 2200.0,
+   "label": "Giant Skeleton",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r05_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-17_b_m10",
+   "t_video": 2211.0,
+   "label": "Skeleton Dragons",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r05_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "cole_2026-10-17_b_m10",
+   "t_video": 2217.3,
+   "label": "Clone",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r05_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-17_b_m10",
+   "t_video": 2232.7,
+   "label": "Arrows",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r05_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-17_b_m10",
+   "t_video": 2244.0,
+   "label": "Skeleton Barrel",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r05_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "cole_2026-10-17_b_m10",
+   "t_video": 2259.1,
+   "label": "Barbarians",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r05_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-17_b_m10",
+   "t_video": 2274.3,
+   "label": "Giant Skeleton",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r05_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-17_b_m10",
+   "t_video": 2290.2,
+   "label": "Skeleton Dragons",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r05_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-17_b_m10",
+   "t_video": 2295.6,
+   "label": "Arrows",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r05_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-17_b_m10",
+   "t_video": 2299.7,
+   "label": "Clone",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r05_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-17_b_m10",
+   "t_video": 2303.5,
+   "label": "Skeleton Barrel",
+   "form": "evo",
+   "source": "POV of bl_2026-10-17_r05_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "cole_2026-10-17_b_m10",
+   "t_video": 2315.1,
+   "label": "Barbarians",
+   "form": null,
+   "source": "next-card advance in bl_2026-10-17_r05_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "cole_2026-10-17_b_m10",
+   "t_video": 2325.8,
+   "label": "Skeleton Dragons",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r05_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-17_b_m10",
+   "t_video": 2333.1,
+   "label": "Barbarians",
+   "form": "evo",
+   "source": "POV of bl_2026-10-17_r05_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "cole_2026-10-17_b_m10",
+   "t_video": 2338.4,
+   "label": "Giant Skeleton",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r05_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-17_b_m10",
+   "t_video": 2345.9,
+   "label": "Cannon Cart",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r05_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-17_b_m10",
+   "t_video": 2356.5,
+   "label": "Arrows",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r05_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-17_b_m10",
+   "t_video": 2358.1,
+   "label": "Barbarians",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r05_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "cole_2026-10-17_b_m10",
+   "t_video": 2365.6,
+   "label": "Skeleton Barrel",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r05_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-17_b_m10",
+   "t_video": 2366.9,
+   "label": "Skeleton Dragons",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r05_top_m01",
+   "source_confidence": "high"
+  }
+ ],
+ "paired_with": "bl_2026-10-17_r05_top_m01",
+ "offset_s": -2184.2,
+ "auto": true,
+ "source": "live+replay",
+ "replay": "bl_2026-10-17_r05_m01",
+ "agree": 1.0
+}

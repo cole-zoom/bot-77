@@ -1,0 +1,263 @@
+{
+ "video_id": "cole_2026-10-17_a",
+ "side": "opponent",
+ "matches": [
+  "cole_2026-10-17_a_m07"
+ ],
+ "items": [
+  {
+   "match_id": "cole_2026-10-17_a_m07",
+   "t_video": 1289.2,
+   "label": "Little Prince",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r15_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-17_a_m07",
+   "t_video": 1297.9,
+   "label": "Rune Giant",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r15_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-17_a_m07",
+   "t_video": 1302.7,
+   "label": "Goblin Hut",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r15_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-17_a_m07",
+   "t_video": 1305.4,
+   "label": "Poison",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r15_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-17_a_m07",
+   "t_video": 1332.7,
+   "label": "Miner",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r15_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-17_a_m07",
+   "t_video": 1333.2,
+   "label": "Bats",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r15_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-17_a_m07",
+   "t_video": 1345.0,
+   "label": "Barbarian Barrel",
+   "form": "hero",
+   "source": "POV of bl_2026-10-17_r15_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-17_a_m07",
+   "t_video": 1348.2,
+   "label": "Rune Giant",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r15_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-17_a_m07",
+   "t_video": 1349.5,
+   "label": "Skeletons",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r15_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-17_a_m07",
+   "t_video": 1351.3,
+   "label": "Little Prince",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r15_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-17_a_m07",
+   "t_video": 1363.3,
+   "label": "Bats",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r15_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-17_a_m07",
+   "t_video": 1365.0,
+   "label": "Miner",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r15_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-17_a_m07",
+   "t_video": 1382.8,
+   "label": "Goblin Hut",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r15_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-17_a_m07",
+   "t_video": 1384.4,
+   "label": "Skeletons",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r15_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-17_a_m07",
+   "t_video": 1404.0,
+   "label": "Poison",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r15_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-17_a_m07",
+   "t_video": 1406.8,
+   "label": "Little Prince",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r15_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-17_a_m07",
+   "t_video": 1408.7,
+   "label": "Miner",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r15_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-17_a_m07",
+   "t_video": 1412.7,
+   "label": "Rune Giant",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r15_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-17_a_m07",
+   "t_video": 1414.3,
+   "label": "Bats",
+   "form": "evo",
+   "source": "POV of bl_2026-10-17_r15_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-17_a_m07",
+   "t_video": 1417.3,
+   "label": "Skeletons",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r15_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-17_a_m07",
+   "t_video": 1419.5,
+   "label": "Barbarian Barrel",
+   "form": "hero",
+   "source": "POV of bl_2026-10-17_r15_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-17_a_m07",
+   "t_video": 1425.1,
+   "label": "Miner",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r15_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-17_a_m07",
+   "t_video": 1427.0,
+   "label": "__ability",
+   "form": null,
+   "source": "POV of bl_2026-10-17_r15_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "cole_2026-10-17_a_m07",
+   "t_video": 1432.5,
+   "label": "Poison",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r15_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-17_a_m07",
+   "t_video": 1436.2,
+   "label": "Bats",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r15_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-17_a_m07",
+   "t_video": 1443.4,
+   "label": "Little Prince",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r15_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-17_a_m07",
+   "t_video": 1445.9,
+   "label": "Rune Giant",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r15_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-17_a_m07",
+   "t_video": 1447.0,
+   "label": "Skeletons",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r15_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-17_a_m07",
+   "t_video": 1450.0,
+   "label": "Barbarian Barrel",
+   "form": "hero",
+   "source": "POV of bl_2026-10-17_r15_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-17_a_m07",
+   "t_video": 1452.7,
+   "label": "Miner",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r15_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-17_a_m07",
+   "t_video": 1455.8,
+   "label": "Bats",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r15_top_m01",
+   "source_confidence": "high"
+  }
+ ],
+ "paired_with": "bl_2026-10-17_r15_top_m01",
+ "offset_s": -1275.3,
+ "auto": true,
+ "source": "live+replay",
+ "replay": "bl_2026-10-17_r15_m01",
+ "agree": 0.958
+}

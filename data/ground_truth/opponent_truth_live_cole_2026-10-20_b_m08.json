@@ -1,0 +1,183 @@
+{
+ "video_id": "cole_2026-10-20_b",
+ "side": "opponent",
+ "matches": [
+  "cole_2026-10-20_b_m08"
+ ],
+ "items": [
+  {
+   "match_id": "cole_2026-10-20_b_m08",
+   "t_video": 1624.7,
+   "label": "Wizard",
+   "form": "hero",
+   "source": "POV of bl_2026-10-20_r27_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_b_m08",
+   "t_video": 1633.2,
+   "label": "Mega Knight",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r27_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "cole_2026-10-20_b_m08",
+   "t_video": 1636.2,
+   "label": "Ice Spirit",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r27_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_b_m08",
+   "t_video": 1644.4,
+   "label": "Goblin Barrel",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r27_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_b_m08",
+   "t_video": 1660.5,
+   "label": "Witch",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r27_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_b_m08",
+   "t_video": 1670.2,
+   "label": "Inferno Dragon",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r27_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_b_m08",
+   "t_video": 1685.0,
+   "label": "Valkyrie",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r27_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_b_m08",
+   "t_video": 1698.7,
+   "label": "Skeleton Army",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r27_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_b_m08",
+   "t_video": 1700.2,
+   "label": "Ice Spirit",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r27_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_b_m08",
+   "t_video": 1711.9,
+   "label": "Witch",
+   "form": "evo",
+   "source": "POV of bl_2026-10-20_r27_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_b_m08",
+   "t_video": 1726.1,
+   "label": "Goblin Barrel",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r27_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_b_m08",
+   "t_video": 1728.4,
+   "label": "Valkyrie",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r27_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_b_m08",
+   "t_video": 1749.0,
+   "label": "Mega Knight",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r27_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_b_m08",
+   "t_video": 1751.2,
+   "label": "Ice Spirit",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r27_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "cole_2026-10-20_b_m08",
+   "t_video": 1752.5,
+   "label": "Skeleton Army",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r27_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_b_m08",
+   "t_video": 1759.2,
+   "label": "Goblin Barrel",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r27_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_b_m08",
+   "t_video": 1762.7,
+   "label": "Witch",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r27_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_b_m08",
+   "t_video": 1768.2,
+   "label": "Valkyrie",
+   "form": "evo",
+   "source": "POV of bl_2026-10-20_r27_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_b_m08",
+   "t_video": 1773.9,
+   "label": "Inferno Dragon",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r27_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_b_m08",
+   "t_video": 1782.3,
+   "label": "Wizard",
+   "form": "hero",
+   "source": "POV of bl_2026-10-20_r27_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_b_m08",
+   "t_video": 1790.8,
+   "label": "Mega Knight",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r27_top_m01",
+   "source_confidence": "high"
+  }
+ ],
+ "paired_with": "bl_2026-10-20_r27_top_m01",
+ "offset_s": -1611.1000480651855,
+ "auto": true,
+ "source": "live+replay",
+ "replay": "bl_2026-10-20_r27_m01",
+ "agree": 0.969
+}

@@ -1,0 +1,159 @@
+{
+ "video_id": "cole_2026-10-20_b",
+ "side": "opponent",
+ "matches": [
+  "cole_2026-10-20_b_m03"
+ ],
+ "items": [
+  {
+   "match_id": "cole_2026-10-20_b_m03",
+   "t_video": 488.4,
+   "label": "Minion Horde",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r32_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_b_m03",
+   "t_video": 493.6,
+   "label": "Skeleton King",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r32_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_b_m03",
+   "t_video": 499.2,
+   "label": "Skeleton Army",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r32_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_b_m03",
+   "t_video": 514.8,
+   "label": "Mega Knight",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r32_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_b_m03",
+   "t_video": 526.0,
+   "label": "Hog Rider",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r32_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_b_m03",
+   "t_video": 540.1,
+   "label": "Wizard",
+   "form": "hero",
+   "source": "POV of bl_2026-10-20_r32_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_b_m03",
+   "t_video": 556.0,
+   "label": "Minion Horde",
+   "form": "evo",
+   "source": "POV of bl_2026-10-20_r32_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_b_m03",
+   "t_video": 564.2,
+   "label": "Skeleton Army",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r32_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_b_m03",
+   "t_video": 584.7,
+   "label": "Mega Knight",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r32_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_b_m03",
+   "t_video": 604.9,
+   "label": "Hog Rider",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r32_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_b_m03",
+   "t_video": 609.1,
+   "label": "Wizard",
+   "form": "hero",
+   "source": "POV of bl_2026-10-20_r32_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_b_m03",
+   "t_video": 613.1,
+   "label": "Minion Horde",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r32_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_b_m03",
+   "t_video": 619.2,
+   "label": "Skeleton King",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r32_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_b_m03",
+   "t_video": 627.5,
+   "label": "Mega Knight",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r32_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_b_m03",
+   "t_video": 631.8,
+   "label": "Skeleton Army",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r32_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_b_m03",
+   "t_video": 637.2,
+   "label": "Hog Rider",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r32_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_b_m03",
+   "t_video": 644.3,
+   "label": "Minion Horde",
+   "form": "evo",
+   "source": "POV of bl_2026-10-20_r32_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_b_m03",
+   "t_video": 651.2,
+   "label": "Wizard",
+   "form": "hero",
+   "source": "POV of bl_2026-10-20_r32_top_m01",
+   "source_confidence": "high"
+  }
+ ],
+ "paired_with": "bl_2026-10-20_r32_top_m01",
+ "offset_s": -472.29999923706055,
+ "auto": true,
+ "source": "live+replay",
+ "replay": "bl_2026-10-20_r32_m01",
+ "agree": 1.0
+}

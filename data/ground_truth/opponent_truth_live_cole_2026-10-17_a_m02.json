@@ -1,0 +1,207 @@
+{
+ "video_id": "cole_2026-10-17_a",
+ "side": "opponent",
+ "matches": [
+  "cole_2026-10-17_a_m02"
+ ],
+ "items": [
+  {
+   "match_id": "cole_2026-10-17_a_m02",
+   "t_video": 226.8,
+   "label": "Battle Ram",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r20_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-17_a_m02",
+   "t_video": 246.0,
+   "label": "Ram Rider",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r20_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-17_a_m02",
+   "t_video": 248.9,
+   "label": "Firecracker",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r20_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-17_a_m02",
+   "t_video": 257.8,
+   "label": "Goblin Gang",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r20_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-17_a_m02",
+   "t_video": 261.3,
+   "label": "Knight",
+   "form": "hero",
+   "source": "POV of bl_2026-10-17_r20_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-17_a_m02",
+   "t_video": 272.5,
+   "label": "Battle Ram",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r20_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-17_a_m02",
+   "t_video": 289.9,
+   "label": "Ram Rider",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r20_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-17_a_m02",
+   "t_video": 295.8,
+   "label": "Arrows",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r20_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-17_a_m02",
+   "t_video": 301.8,
+   "label": "Goblin Gang",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r20_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-17_a_m02",
+   "t_video": 308.9,
+   "label": "Firecracker",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r20_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-17_a_m02",
+   "t_video": 333.4,
+   "label": "Princess",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r20_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-17_a_m02",
+   "t_video": 344.8,
+   "label": "Ram Rider",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r20_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-17_a_m02",
+   "t_video": 350.3,
+   "label": "Battle Ram",
+   "form": "evo",
+   "source": "POV of bl_2026-10-17_r20_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-17_a_m02",
+   "t_video": 357.7,
+   "label": "Goblin Gang",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r20_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-17_a_m02",
+   "t_video": 360.1,
+   "label": "Hunter",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r20_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-17_a_m02",
+   "t_video": 363.3,
+   "label": "Firecracker",
+   "form": "evo",
+   "source": "POV of bl_2026-10-17_r20_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-17_a_m02",
+   "t_video": 366.7,
+   "label": "Princess",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r20_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-17_a_m02",
+   "t_video": 368.3,
+   "label": "Knight",
+   "form": "hero",
+   "source": "POV of bl_2026-10-17_r20_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-17_a_m02",
+   "t_video": 374.6,
+   "label": "Ram Rider",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r20_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-17_a_m02",
+   "t_video": 379.8,
+   "label": "Goblin Gang",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r20_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-17_a_m02",
+   "t_video": 384.2,
+   "label": "Battle Ram",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r20_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-17_a_m02",
+   "t_video": 389.0,
+   "label": "__ability",
+   "form": null,
+   "source": "POV of bl_2026-10-17_r20_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "cole_2026-10-17_a_m02",
+   "t_video": 393.2,
+   "label": "Hunter",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r20_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-17_a_m02",
+   "t_video": 397.4,
+   "label": "Firecracker",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r20_top_m01",
+   "source_confidence": "high"
+  }
+ ],
+ "paired_with": "bl_2026-10-17_r20_top_m01",
+ "offset_s": -217.2,
+ "auto": true,
+ "source": "live+replay",
+ "replay": "bl_2026-10-17_r20_m01",
+ "agree": 0.955
+}

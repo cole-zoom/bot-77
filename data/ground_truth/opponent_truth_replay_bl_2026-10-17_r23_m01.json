@@ -1,0 +1,237 @@
+{
+ "video_id": "bl_2026-10-17_r23",
+ "side": "opponent",
+ "matches": [
+  "bl_2026-10-17_r23_m01"
+ ],
+ "items": [
+  {
+   "match_id": "bl_2026-10-17_r23_m01",
+   "t_video": 12.6,
+   "label": "Wizard",
+   "form": "hero",
+   "source": "POV of bl_2026-10-17_r23_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "bl_2026-10-17_r23_m01",
+   "t_video": 15.1,
+   "label": "Valkyrie",
+   "form": "hero",
+   "source": "POV of bl_2026-10-17_r23_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "bl_2026-10-17_r23_m01",
+   "t_video": 21.3,
+   "label": "__ability",
+   "form": null,
+   "source": "POV of bl_2026-10-17_r23_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "bl_2026-10-17_r23_m01",
+   "t_video": 27.2,
+   "label": "__ability",
+   "form": null,
+   "source": "POV of bl_2026-10-17_r23_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "bl_2026-10-17_r23_m01",
+   "t_video": 30.1,
+   "label": "Zap",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r23_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "bl_2026-10-17_r23_m01",
+   "t_video": 38.8,
+   "label": "Goblin Barrel",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r23_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "bl_2026-10-17_r23_m01",
+   "t_video": 46.5,
+   "label": "Knight",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r23_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "bl_2026-10-17_r23_m01",
+   "t_video": 58.1,
+   "label": "Hog Rider",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r23_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "bl_2026-10-17_r23_m01",
+   "t_video": 80.0,
+   "label": "Witch",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r23_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "bl_2026-10-17_r23_m01",
+   "t_video": 91.1,
+   "label": "Mega Knight",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r23_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "bl_2026-10-17_r23_m01",
+   "t_video": 98.4,
+   "label": "Zap",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r23_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "bl_2026-10-17_r23_m01",
+   "t_video": 106.7,
+   "label": "Goblin Barrel",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r23_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "bl_2026-10-17_r23_m01",
+   "t_video": 120.1,
+   "label": "Knight",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r23_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "bl_2026-10-17_r23_m01",
+   "t_video": 127.8,
+   "label": "Witch",
+   "form": "evo",
+   "source": "POV of bl_2026-10-17_r23_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "bl_2026-10-17_r23_m01",
+   "t_video": 132.5,
+   "label": "Valkyrie",
+   "form": "hero",
+   "source": "POV of bl_2026-10-17_r23_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "bl_2026-10-17_r23_m01",
+   "t_video": 142.3,
+   "label": "Mega Knight",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r23_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "bl_2026-10-17_r23_m01",
+   "t_video": 146.1,
+   "label": "__ability",
+   "form": null,
+   "source": "POV of bl_2026-10-17_r23_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "bl_2026-10-17_r23_m01",
+   "t_video": 153.6,
+   "label": "Wizard",
+   "form": "hero",
+   "source": "POV of bl_2026-10-17_r23_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "bl_2026-10-17_r23_m01",
+   "t_video": 157.2,
+   "label": "Zap",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r23_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "bl_2026-10-17_r23_m01",
+   "t_video": 162.4,
+   "label": "Hog Rider",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r23_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "bl_2026-10-17_r23_m01",
+   "t_video": 166.2,
+   "label": "Goblin Barrel",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r23_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "bl_2026-10-17_r23_m01",
+   "t_video": 174.5,
+   "label": "Valkyrie",
+   "form": "hero",
+   "source": "POV of bl_2026-10-17_r23_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "bl_2026-10-17_r23_m01",
+   "t_video": 178.9,
+   "label": "Knight",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r23_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "bl_2026-10-17_r23_m01",
+   "t_video": 181.5,
+   "label": "Zap",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r23_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "bl_2026-10-17_r23_m01",
+   "t_video": 184.1,
+   "label": "__ability",
+   "form": null,
+   "source": "POV of bl_2026-10-17_r23_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "bl_2026-10-17_r23_m01",
+   "t_video": 193.7,
+   "label": "Mega Knight",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r23_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "bl_2026-10-17_r23_m01",
+   "t_video": 198.1,
+   "label": "Goblin Barrel",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r23_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "bl_2026-10-17_r23_m01",
+   "t_video": 203.4,
+   "label": "Hog Rider",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r23_top_m01",
+   "source_confidence": "medium"
+  }
+ ],
+ "paired_with": "bl_2026-10-17_r23_top_m01",
+ "offset_s": 0.0,
+ "auto": true,
+ "source": "replay"
+}

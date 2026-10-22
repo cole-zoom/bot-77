@@ -14,8 +14,9 @@ import torch.nn as nn
 from torchvision.models.video import r2plus1d_18
 
 STRIDE = 3
-MEAN = torch.tensor([0.43216, 0.394666, 0.37645]).view(1, 3, 1, 1, 1).cuda()
-STD = torch.tensor([0.22803, 0.22145, 0.216989]).view(1, 3, 1, 1, 1).cuda()
+DEV = "cuda" if torch.cuda.is_available() else "mps" if torch.backends.mps.is_available() else "cpu"  # laptop: mps
+MEAN = torch.tensor([0.43216, 0.394666, 0.37645]).view(1, 3, 1, 1, 1).to(DEV)
+STD = torch.tensor([0.22803, 0.22145, 0.216989]).view(1, 3, 1, 1, 1).to(DEV)
 
 
 def main():
@@ -24,7 +25,7 @@ def main():
     a = ap.parse_args()
     ck = torch.load(a.model, map_location="cpu", weights_only=False)  # our own checkpoint
     model = r2plus1d_18(); model.fc = nn.Linear(model.fc.in_features, len(ck["classes"]))
-    model.load_state_dict(ck["state_dict"]); model = model.cuda().eval().to(memory_format=torch.channels_last_3d)
+    model.load_state_dict(ck["state_dict"]); model = model.to(DEV).eval().to(memory_format=torch.channels_last_3d)
     T, out = ck["T"], Path(a.out); out.mkdir(parents=True, exist_ok=True)
     for d in sorted(Path(a.streams).iterdir()):
         meta = json.loads((d / "meta.json").read_text())
@@ -32,12 +33,12 @@ def main():
             continue
         fr = np.concatenate([cv2.imread(str(p))[:, :, ::-1] for p in sorted(d.glob("*.jpg"))])
         h = ck["h"]; fr = fr.reshape(-1, h, fr.shape[1], 3)[:meta["n"]]
-        x_all = torch.from_numpy(np.ascontiguousarray(fr)).cuda().permute(3, 0, 1, 2)  # C,N,H,W uint8
+        x_all = torch.from_numpy(np.ascontiguousarray(fr)).to(DEV).permute(3, 0, 1, 2)  # C,N,H,W uint8
         starts = list(range(0, len(fr) - T + 1, STRIDE))
         probs = []
-        with torch.no_grad(), torch.autocast("cuda", dtype=torch.bfloat16):
-            for b in range(0, len(starts), 64):
-                x = torch.stack([x_all[:, s:s + T] for s in starts[b:b + 64]]).float() / 255
+        with torch.no_grad(), torch.autocast(DEV if DEV != "mps" else "cpu", dtype=torch.bfloat16, enabled=DEV == "cuda"):
+            for b in range(0, len(starts), 64 if DEV == "cuda" else 16):
+                x = torch.stack([x_all[:, s:s + T] for s in starts[b:b + (64 if DEV == "cuda" else 16)]]).float() / 255
                 x = ((x - MEAN) / STD).to(memory_format=torch.channels_last_3d)
                 probs.append(model(x).float().softmax(1).cpu().numpy())
         t = meta["t_start"] + np.array(starts) / meta["fps"]

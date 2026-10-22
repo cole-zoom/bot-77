@@ -1,0 +1,207 @@
+{
+ "video_id": "cole_2026-10-19_a",
+ "side": "opponent",
+ "matches": [
+  "cole_2026-10-19_a_m04"
+ ],
+ "items": [
+  {
+   "match_id": "cole_2026-10-19_a_m04",
+   "t_video": 649.1,
+   "label": "Skeletons",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r09_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-19_a_m04",
+   "t_video": 658.0,
+   "label": "Tesla",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r09_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-19_a_m04",
+   "t_video": 670.0,
+   "label": "Berserker",
+   "form": "hero",
+   "source": "POV of bl_2026-10-20_r09_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-19_a_m04",
+   "t_video": 672.2,
+   "label": "Rocket",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r09_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "cole_2026-10-19_a_m04",
+   "t_video": 680.9,
+   "label": "Ice Spirit",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r09_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-19_a_m04",
+   "t_video": 681.5,
+   "label": "Royal Delivery",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r09_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-19_a_m04",
+   "t_video": 683.5,
+   "label": "Skeletons",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r09_top_m01",
+   "source_confidence": "low"
+  },
+  {
+   "match_id": "cole_2026-10-19_a_m04",
+   "t_video": 685.9,
+   "label": "The Log",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r09_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-19_a_m04",
+   "t_video": 691.4,
+   "label": "Berserker",
+   "form": "hero",
+   "source": "POV of bl_2026-10-20_r09_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-19_a_m04",
+   "t_video": 704.1,
+   "label": "Ice Spirit",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r09_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-19_a_m04",
+   "t_video": 720.8,
+   "label": "Rocket",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r09_top_m01",
+   "source_confidence": "low"
+  },
+  {
+   "match_id": "cole_2026-10-19_a_m04",
+   "t_video": 729.9,
+   "label": "Tesla",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r09_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-19_a_m04",
+   "t_video": 730.8,
+   "label": "Royal Delivery",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r09_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-19_a_m04",
+   "t_video": 735.0,
+   "label": "Skeletons",
+   "form": "evo",
+   "source": "POV of bl_2026-10-20_r09_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-19_a_m04",
+   "t_video": 738.8,
+   "label": "Ice Spirit",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r09_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-19_a_m04",
+   "t_video": 753.2,
+   "label": "Berserker",
+   "form": "hero",
+   "source": "POV of bl_2026-10-20_r09_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-19_a_m04",
+   "t_video": 754.0,
+   "label": "Mirror",
+   "form": null,
+   "source": "next-card advance in bl_2026-10-20_r09_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "cole_2026-10-19_a_m04",
+   "t_video": 764.9,
+   "label": "Rocket",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r09_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-19_a_m04",
+   "t_video": 772.9,
+   "label": "Tesla",
+   "form": "evo",
+   "source": "POV of bl_2026-10-20_r09_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-19_a_m04",
+   "t_video": 773.7,
+   "label": "Skeletons",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r09_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-19_a_m04",
+   "t_video": 780.2,
+   "label": "Berserker",
+   "form": "hero",
+   "source": "POV of bl_2026-10-20_r09_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-19_a_m04",
+   "t_video": 781.3,
+   "label": "Ice Spirit",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r09_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-19_a_m04",
+   "t_video": 783.3,
+   "label": "Royal Delivery",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r09_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-19_a_m04",
+   "t_video": 784.4,
+   "label": "The Log",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r09_top_m01",
+   "source_confidence": "high"
+  }
+ ],
+ "paired_with": "bl_2026-10-20_r09_top_m01",
+ "offset_s": -635.6,
+ "auto": true,
+ "source": "live+replay",
+ "replay": "bl_2026-10-20_r09_m01",
+ "agree": 1.0
+}

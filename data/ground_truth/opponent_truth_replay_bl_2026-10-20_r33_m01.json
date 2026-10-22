@@ -1,0 +1,181 @@
+{
+ "video_id": "bl_2026-10-20_r33",
+ "side": "opponent",
+ "matches": [
+  "bl_2026-10-20_r33_m01"
+ ],
+ "items": [
+  {
+   "match_id": "bl_2026-10-20_r33_m01",
+   "t_video": 18.4,
+   "label": "Lightning",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r33_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "bl_2026-10-20_r33_m01",
+   "t_video": 22.2,
+   "label": "Wizard",
+   "form": "hero",
+   "source": "POV of bl_2026-10-20_r33_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "bl_2026-10-20_r33_m01",
+   "t_video": 51.5,
+   "label": "Tombstone",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r33_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "bl_2026-10-20_r33_m01",
+   "t_video": 57.8,
+   "label": "Balloon",
+   "form": null,
+   "source": "next-card advance in bl_2026-10-20_r33_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "bl_2026-10-20_r33_m01",
+   "t_video": 77.5,
+   "label": "Witch",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r33_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "bl_2026-10-20_r33_m01",
+   "t_video": 78.2,
+   "label": "Dart Goblin",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r33_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "bl_2026-10-20_r33_m01",
+   "t_video": 84.4,
+   "label": "Elixir Golem",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r33_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "bl_2026-10-20_r33_m01",
+   "t_video": 89.6,
+   "label": "Arrows",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r33_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "bl_2026-10-20_r33_m01",
+   "t_video": 106.5,
+   "label": "Lightning",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r33_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "bl_2026-10-20_r33_m01",
+   "t_video": 115.0,
+   "label": "Tombstone",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r33_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "bl_2026-10-20_r33_m01",
+   "t_video": 127.6,
+   "label": "Dart Goblin",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r33_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "bl_2026-10-20_r33_m01",
+   "t_video": 137.3,
+   "label": "Witch",
+   "form": "evo",
+   "source": "POV of bl_2026-10-20_r33_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "bl_2026-10-20_r33_m01",
+   "t_video": 139.7,
+   "label": "Elixir Golem",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r33_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "bl_2026-10-20_r33_m01",
+   "t_video": 143.0,
+   "label": "Wizard",
+   "form": "hero",
+   "source": "POV of bl_2026-10-20_r33_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "bl_2026-10-20_r33_m01",
+   "t_video": 151.7,
+   "label": "Lightning",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r33_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "bl_2026-10-20_r33_m01",
+   "t_video": 157.9,
+   "label": "Balloon",
+   "form": null,
+   "source": "next-card advance in bl_2026-10-20_r33_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "bl_2026-10-20_r33_m01",
+   "t_video": 166.4,
+   "label": "Witch",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r33_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "bl_2026-10-20_r33_m01",
+   "t_video": 170.2,
+   "label": "Dart Goblin",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r33_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "bl_2026-10-20_r33_m01",
+   "t_video": 176.2,
+   "label": "Wizard",
+   "form": "hero",
+   "source": "POV of bl_2026-10-20_r33_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "bl_2026-10-20_r33_m01",
+   "t_video": 184.5,
+   "label": "Lightning",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r33_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "bl_2026-10-20_r33_m01",
+   "t_video": 190.8,
+   "label": "Tombstone",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r33_top_m01",
+   "source_confidence": "medium"
+  }
+ ],
+ "paired_with": "bl_2026-10-20_r33_top_m01",
+ "offset_s": 0.0,
+ "auto": true,
+ "source": "replay"
+}

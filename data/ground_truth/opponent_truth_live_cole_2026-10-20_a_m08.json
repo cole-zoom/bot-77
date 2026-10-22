@@ -1,0 +1,431 @@
+{
+ "video_id": "cole_2026-10-20_a",
+ "side": "opponent",
+ "matches": [
+  "cole_2026-10-20_a_m08"
+ ],
+ "items": [
+  {
+   "match_id": "cole_2026-10-20_a_m08",
+   "t_video": 1647.7,
+   "label": "Miner",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r14_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_a_m08",
+   "t_video": 1658.5,
+   "label": "Dark Prince",
+   "form": "hero",
+   "source": "POV of bl_2026-10-20_r14_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_a_m08",
+   "t_video": 1660.3,
+   "label": "The Log",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r14_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_a_m08",
+   "t_video": 1673.7,
+   "label": "Skeletons",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r14_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_a_m08",
+   "t_video": 1683.6,
+   "label": "Tesla",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r14_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_a_m08",
+   "t_video": 1693.0,
+   "label": "Royal Delivery",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r14_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_a_m08",
+   "t_video": 1699.1,
+   "label": "Dark Prince",
+   "form": "hero",
+   "source": "POV of bl_2026-10-20_r14_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_a_m08",
+   "t_video": 1712.8,
+   "label": "Miner",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r14_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_a_m08",
+   "t_video": 1714.6,
+   "label": "Skeletons",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r14_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_a_m08",
+   "t_video": 1723.9,
+   "label": "Tesla",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r14_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_a_m08",
+   "t_video": 1729.6,
+   "label": "Royal Delivery",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r14_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_a_m08",
+   "t_video": 1731.4,
+   "label": "The Log",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r14_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_a_m08",
+   "t_video": 1744.2,
+   "label": "Dark Prince",
+   "form": "hero",
+   "source": "POV of bl_2026-10-20_r14_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_a_m08",
+   "t_video": 1755.1,
+   "label": "Miner",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r14_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_a_m08",
+   "t_video": 1760.7,
+   "label": "Rocket",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r14_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "cole_2026-10-20_a_m08",
+   "t_video": 1769.6,
+   "label": "Tesla",
+   "form": "evo",
+   "source": "POV of bl_2026-10-20_r14_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_a_m08",
+   "t_video": 1773.1,
+   "label": "The Log",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r14_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_a_m08",
+   "t_video": 1773.5,
+   "label": "Royal Delivery",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r14_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_a_m08",
+   "t_video": 1778.5,
+   "label": "Skeletons",
+   "form": "evo",
+   "source": "POV of bl_2026-10-20_r14_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_a_m08",
+   "t_video": 1784.9,
+   "label": "Rocket",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r14_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "cole_2026-10-20_a_m08",
+   "t_video": 1791.2,
+   "label": "Dark Prince",
+   "form": "hero",
+   "source": "POV of bl_2026-10-20_r14_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_a_m08",
+   "t_video": 1792.7,
+   "label": "Miner",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r14_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_a_m08",
+   "t_video": 1795.2,
+   "label": "The Log",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r14_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_a_m08",
+   "t_video": 1798.0,
+   "label": "Skeletons",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r14_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_a_m08",
+   "t_video": 1801.1,
+   "label": "Royal Delivery",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r14_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_a_m08",
+   "t_video": 1806.5,
+   "label": "Dark Prince",
+   "form": "hero",
+   "source": "POV of bl_2026-10-20_r14_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_a_m08",
+   "t_video": 1816.2,
+   "label": "Tesla",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r14_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_a_m08",
+   "t_video": 1821.4,
+   "label": "Miner",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r14_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_a_m08",
+   "t_video": 1823.3,
+   "label": "Skeletons",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r14_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_a_m08",
+   "t_video": 1824.5,
+   "label": "The Log",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r14_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_a_m08",
+   "t_video": 1830.1,
+   "label": "Dark Prince",
+   "form": "hero",
+   "source": "POV of bl_2026-10-20_r14_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_a_m08",
+   "t_video": 1833.3,
+   "label": "Royal Delivery",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r14_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_a_m08",
+   "t_video": 1842.7,
+   "label": "Miner",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r14_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_a_m08",
+   "t_video": 1845.2,
+   "label": "Skeletons",
+   "form": "evo",
+   "source": "POV of bl_2026-10-20_r14_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_a_m08",
+   "t_video": 1850.0,
+   "label": "Tesla",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r14_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_a_m08",
+   "t_video": 1854.2,
+   "label": "The Log",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r14_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_a_m08",
+   "t_video": 1856.8,
+   "label": "Dark Prince",
+   "form": "hero",
+   "source": "POV of bl_2026-10-20_r14_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_a_m08",
+   "t_video": 1857.7,
+   "label": "Royal Delivery",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r14_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_a_m08",
+   "t_video": 1859.2,
+   "label": "Skeletons",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r14_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_a_m08",
+   "t_video": 1863.0,
+   "label": "Miner",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r14_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_a_m08",
+   "t_video": 1865.2,
+   "label": "The Log",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r14_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_a_m08",
+   "t_video": 1871.5,
+   "label": "Dark Prince",
+   "form": "hero",
+   "source": "POV of bl_2026-10-20_r14_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_a_m08",
+   "t_video": 1878.9,
+   "label": "Rocket",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r14_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "cole_2026-10-20_a_m08",
+   "t_video": 1882.1,
+   "label": "Skeletons",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r14_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_a_m08",
+   "t_video": 1885.2,
+   "label": "Miner",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r14_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_a_m08",
+   "t_video": 1888.0,
+   "label": "The Log",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r14_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "cole_2026-10-20_a_m08",
+   "t_video": 1892.7,
+   "label": "Royal Delivery",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r14_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_a_m08",
+   "t_video": 1893.2,
+   "label": "Dark Prince",
+   "form": "hero",
+   "source": "POV of bl_2026-10-20_r14_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_a_m08",
+   "t_video": 1897.1,
+   "label": "Skeletons",
+   "form": "evo",
+   "source": "POV of bl_2026-10-20_r14_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_a_m08",
+   "t_video": 1899.7,
+   "label": "Tornado",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r14_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "cole_2026-10-20_a_m08",
+   "t_video": 1899.7,
+   "label": "Tesla",
+   "form": "evo",
+   "source": "POV of bl_2026-10-20_r14_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "cole_2026-10-20_a_m08",
+   "t_video": 1902.6,
+   "label": "The Log",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r14_top_m01",
+   "source_confidence": "low"
+  }
+ ],
+ "paired_with": "bl_2026-10-20_r14_top_m01",
+ "offset_s": -1632.9999504089355,
+ "auto": true,
+ "source": "live+replay",
+ "replay": "bl_2026-10-20_r14_m01",
+ "agree": 1.0
+}

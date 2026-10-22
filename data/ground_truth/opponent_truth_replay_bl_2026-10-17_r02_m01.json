@@ -1,0 +1,237 @@
+{
+ "video_id": "bl_2026-10-17_r02",
+ "side": "opponent",
+ "matches": [
+  "bl_2026-10-17_r02_m01"
+ ],
+ "items": [
+  {
+   "match_id": "bl_2026-10-17_r02_m01",
+   "t_video": 15.4,
+   "label": "Goblin Gang",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r02_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "bl_2026-10-17_r02_m01",
+   "t_video": 40.5,
+   "label": "Royal Hogs",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r02_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "bl_2026-10-17_r02_m01",
+   "t_video": 45.1,
+   "label": "Valkyrie",
+   "form": "hero",
+   "source": "POV of bl_2026-10-17_r02_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "bl_2026-10-17_r02_m01",
+   "t_video": 57.6,
+   "label": "Ice Spirit",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r02_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "bl_2026-10-17_r02_m01",
+   "t_video": 58.4,
+   "label": "Dart Goblin",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r02_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "bl_2026-10-17_r02_m01",
+   "t_video": 59.6,
+   "label": "Goblin Gang",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r02_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "bl_2026-10-17_r02_m01",
+   "t_video": 82.6,
+   "label": "Royal Hogs",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r02_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "bl_2026-10-17_r02_m01",
+   "t_video": 96.2,
+   "label": "Ronin",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r02_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "bl_2026-10-17_r02_m01",
+   "t_video": 102.9,
+   "label": "Ice Spirit",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r02_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "bl_2026-10-17_r02_m01",
+   "t_video": 114.4,
+   "label": "Poison",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r02_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "bl_2026-10-17_r02_m01",
+   "t_video": 129.6,
+   "label": "Dart Goblin",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r02_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "bl_2026-10-17_r02_m01",
+   "t_video": 132.7,
+   "label": "Goblin Gang",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r02_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "bl_2026-10-17_r02_m01",
+   "t_video": 134.2,
+   "label": "Valkyrie",
+   "form": "hero",
+   "source": "POV of bl_2026-10-17_r02_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "bl_2026-10-17_r02_m01",
+   "t_video": 140.1,
+   "label": "Royal Hogs",
+   "form": "evo",
+   "source": "POV of bl_2026-10-17_r02_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "bl_2026-10-17_r02_m01",
+   "t_video": 144.6,
+   "label": "__ability",
+   "form": null,
+   "source": "POV of bl_2026-10-17_r02_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "bl_2026-10-17_r02_m01",
+   "t_video": 154.4,
+   "label": "Musketeer",
+   "form": null,
+   "source": "next-card advance in bl_2026-10-17_r02_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "bl_2026-10-17_r02_m01",
+   "t_video": 154.4,
+   "label": "Ice Spirit",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r02_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "bl_2026-10-17_r02_m01",
+   "t_video": 157.1,
+   "label": "Goblin Gang",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r02_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "bl_2026-10-17_r02_m01",
+   "t_video": 159.8,
+   "label": "Valkyrie",
+   "form": "hero",
+   "source": "POV of bl_2026-10-17_r02_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "bl_2026-10-17_r02_m01",
+   "t_video": 164.3,
+   "label": "Dart Goblin",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r02_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "bl_2026-10-17_r02_m01",
+   "t_video": 182.1,
+   "label": "Musketeer",
+   "form": "evo",
+   "source": "POV of bl_2026-10-17_r02_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "bl_2026-10-17_r02_m01",
+   "t_video": 185.6,
+   "label": "Ice Spirit",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r02_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "bl_2026-10-17_r02_m01",
+   "t_video": 188.1,
+   "label": "Poison",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r02_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "bl_2026-10-17_r02_m01",
+   "t_video": 189.1,
+   "label": "Goblin Gang",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r02_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "bl_2026-10-17_r02_m01",
+   "t_video": 196.8,
+   "label": "Royal Hogs",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r02_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "bl_2026-10-17_r02_m01",
+   "t_video": 198.6,
+   "label": "Valkyrie",
+   "form": "hero",
+   "source": "POV of bl_2026-10-17_r02_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "bl_2026-10-17_r02_m01",
+   "t_video": 201.1,
+   "label": "Ice Spirit",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r02_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "bl_2026-10-17_r02_m01",
+   "t_video": 205.4,
+   "label": "Poison",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r02_top_m01",
+   "source_confidence": "medium"
+  }
+ ],
+ "paired_with": "bl_2026-10-17_r02_top_m01",
+ "offset_s": 0.0,
+ "auto": true,
+ "source": "replay"
+}

@@ -1,0 +1,207 @@
+{
+ "video_id": "cole_2026-10-17_b",
+ "side": "opponent",
+ "matches": [
+  "cole_2026-10-17_b_m05"
+ ],
+ "items": [
+  {
+   "match_id": "cole_2026-10-17_b_m05",
+   "t_video": 979.6,
+   "label": "Royal Ghost",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r10_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "cole_2026-10-17_b_m05",
+   "t_video": 986.9,
+   "label": "Dark Prince",
+   "form": "hero",
+   "source": "POV of bl_2026-10-17_r10_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-17_b_m05",
+   "t_video": 991.9,
+   "label": "P.E.K.K.A",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r10_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-17_b_m05",
+   "t_video": 1003.2,
+   "label": "Fireball",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r10_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-17_b_m05",
+   "t_video": 1008.8,
+   "label": "Zap",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r10_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-17_b_m05",
+   "t_video": 1020.5,
+   "label": "Battle Ram",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r10_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-17_b_m05",
+   "t_video": 1029.3,
+   "label": "Bandit",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r10_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-17_b_m05",
+   "t_video": 1039.5,
+   "label": "Royal Ghost",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r10_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-17_b_m05",
+   "t_video": 1063.5,
+   "label": "Dark Prince",
+   "form": "hero",
+   "source": "POV of bl_2026-10-17_r10_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-17_b_m05",
+   "t_video": 1068.2,
+   "label": "P.E.K.K.A",
+   "form": "evo",
+   "source": "POV of bl_2026-10-17_r10_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "cole_2026-10-17_b_m05",
+   "t_video": 1079.0,
+   "label": "Fireball",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r10_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-17_b_m05",
+   "t_video": 1087.4,
+   "label": "Bandit",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r10_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-17_b_m05",
+   "t_video": 1094.2,
+   "label": "Battle Ram",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r10_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-17_b_m05",
+   "t_video": 1102.8,
+   "label": "Dark Prince",
+   "form": "hero",
+   "source": "POV of bl_2026-10-17_r10_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-17_b_m05",
+   "t_video": 1108.3,
+   "label": "Royal Ghost",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r10_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-17_b_m05",
+   "t_video": 1113.8,
+   "label": "Fireball",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r10_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-17_b_m05",
+   "t_video": 1119.5,
+   "label": "__ability",
+   "form": null,
+   "source": "POV of bl_2026-10-17_r10_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "cole_2026-10-17_b_m05",
+   "t_video": 1120.8,
+   "label": "Bandit",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r10_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-17_b_m05",
+   "t_video": 1123.6,
+   "label": "Battle Ram",
+   "form": "evo",
+   "source": "POV of bl_2026-10-17_r10_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-17_b_m05",
+   "t_video": 1129.0,
+   "label": "Dark Prince",
+   "form": "hero",
+   "source": "POV of bl_2026-10-17_r10_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-17_b_m05",
+   "t_video": 1133.2,
+   "label": "Royal Ghost",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r10_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-17_b_m05",
+   "t_video": 1138.8,
+   "label": "Electro Wizard",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r10_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-17_b_m05",
+   "t_video": 1143.0,
+   "label": "Bandit",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r10_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "cole_2026-10-17_b_m05",
+   "t_video": 1145.9,
+   "label": "Zap",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r10_top_m01",
+   "source_confidence": "high"
+  }
+ ],
+ "paired_with": "bl_2026-10-17_r10_top_m01",
+ "offset_s": -964.8,
+ "auto": true,
+ "source": "live+replay",
+ "replay": "bl_2026-10-17_r10_m01",
+ "agree": 1.0
+}

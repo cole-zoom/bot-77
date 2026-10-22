@@ -55,6 +55,8 @@ def main():
         want[m] = "bench" if m in bench else "dev"
     for m in bench:
         want.setdefault(m, "bench")
+    for f in glob.glob("data/ground_truth/opponent_truth_live_*.json"):  # Cole's live games keyed by their replays
+        want[json.loads(Path(f).read_text())["matches"][0]] = "live"
     jobs = []
     for m, s in sorted(want.items()):
         mt = db.open_table("matches").search().where(f"match_id = '{m}'").to_arrow().to_pylist()
@@ -64,7 +66,7 @@ def main():
         v = db.open_table("videos").search().where(f"video_id = '{mt['video_id']}'").to_arrow().to_pylist()[0]
         arena = Layout.load(v["layout_id"]).katacr_arena
         jobs.append((m, v["path"], arena, mt["t_start"], mt["t_end"], s))
-    print({s: sum(j[5] == s for j in jobs) for s in ("test", "val", "dev", "bench")}, flush=True)
+    print({s: sum(j[5] == s for j in jobs) for s in ("test", "val", "dev", "bench", "live")}, flush=True)
     with Pool(a.procs) as pool:
         for k, (m, err) in enumerate(pool.imap_unordered(one, jobs)):
             if err:

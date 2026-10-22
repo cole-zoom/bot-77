@@ -1,0 +1,319 @@
+{
+ "video_id": "cole_2026-10-19_a",
+ "side": "opponent",
+ "matches": [
+  "cole_2026-10-19_a_m09"
+ ],
+ "items": [
+  {
+   "match_id": "cole_2026-10-19_a_m09",
+   "t_video": 1800.8,
+   "label": "Skeletons",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r04_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-19_a_m09",
+   "t_video": 1806.7,
+   "label": "Hog Rider",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r04_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "cole_2026-10-19_a_m09",
+   "t_video": 1817.7,
+   "label": "Archers",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r04_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-19_a_m09",
+   "t_video": 1821.3,
+   "label": "Tesla",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r04_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-19_a_m09",
+   "t_video": 1840.4,
+   "label": "Knight",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r04_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-19_a_m09",
+   "t_video": 1847.1,
+   "label": "Skeletons",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r04_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-19_a_m09",
+   "t_video": 1853.8,
+   "label": "Knight",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r04_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-19_a_m09",
+   "t_video": 1856.4,
+   "label": "Hog Rider",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r04_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "cole_2026-10-19_a_m09",
+   "t_video": 1875.8,
+   "label": "Tesla",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r04_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-19_a_m09",
+   "t_video": 1880.9,
+   "label": "Skeletons",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r04_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-19_a_m09",
+   "t_video": 1898.2,
+   "label": "Earthquake",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r04_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "cole_2026-10-19_a_m09",
+   "t_video": 1911.1,
+   "label": "Archers",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r04_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-19_a_m09",
+   "t_video": 1911.9,
+   "label": "Knight",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r04_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-19_a_m09",
+   "t_video": 1912.6,
+   "label": "Hog Rider",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r04_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-19_a_m09",
+   "t_video": 1925.1,
+   "label": "Skeletons",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r04_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "cole_2026-10-19_a_m09",
+   "t_video": 1932.2,
+   "label": "Knight",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r04_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "cole_2026-10-19_a_m09",
+   "t_video": 1934.1,
+   "label": "Archers",
+   "form": "evo",
+   "source": "POV of bl_2026-10-20_r04_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-19_a_m09",
+   "t_video": 1936.1,
+   "label": "Hog Rider",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r04_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-19_a_m09",
+   "t_video": 1951.2,
+   "label": "Earthquake",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r04_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-19_a_m09",
+   "t_video": 1957.2,
+   "label": "Skeletons",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r04_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-19_a_m09",
+   "t_video": 1961.7,
+   "label": "Knight",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r04_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-19_a_m09",
+   "t_video": 1963.2,
+   "label": "Tesla",
+   "form": "evo",
+   "source": "POV of bl_2026-10-20_r04_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-19_a_m09",
+   "t_video": 1966.2,
+   "label": "Hog Rider",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r04_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "cole_2026-10-19_a_m09",
+   "t_video": 1969.1,
+   "label": "The Log",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r04_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-19_a_m09",
+   "t_video": 1973.3,
+   "label": "Earthquake",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r04_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-19_a_m09",
+   "t_video": 1977.6,
+   "label": "Skeletons",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r04_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-19_a_m09",
+   "t_video": 1981.1,
+   "label": "Archers",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r04_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-19_a_m09",
+   "t_video": 1989.9,
+   "label": "Hog Rider",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r04_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-19_a_m09",
+   "t_video": 1990.7,
+   "label": "Hog Rider",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r04_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "cole_2026-10-19_a_m09",
+   "t_video": 1998.7,
+   "label": "Tesla",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r04_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-19_a_m09",
+   "t_video": 2001.3,
+   "label": "Skeletons",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r04_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-19_a_m09",
+   "t_video": 2005.0,
+   "label": "Knight",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r04_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-19_a_m09",
+   "t_video": 2009.3,
+   "label": "Hog Rider",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r04_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "cole_2026-10-19_a_m09",
+   "t_video": 2012.5,
+   "label": "Earthquake",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r04_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "cole_2026-10-19_a_m09",
+   "t_video": 2018.8,
+   "label": "Archers",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r04_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-19_a_m09",
+   "t_video": 2020.9,
+   "label": "Skeletons",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r04_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-19_a_m09",
+   "t_video": 2021.9,
+   "label": "The Log",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r04_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-19_a_m09",
+   "t_video": 2025.4,
+   "label": "Hog Rider",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r04_top_m01",
+   "source_confidence": "medium"
+  }
+ ],
+ "paired_with": "bl_2026-10-20_r04_top_m01",
+ "offset_s": -1788.9,
+ "auto": true,
+ "source": "live+replay",
+ "replay": "bl_2026-10-20_r04_m01",
+ "agree": 0.967
+}

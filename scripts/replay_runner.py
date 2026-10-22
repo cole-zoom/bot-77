@@ -243,6 +243,8 @@ def main() -> None:
     ap = argparse.ArgumentParser()
     ap.add_argument("-n", type=int, default=25, help="replays to record (the Battle Log holds 25)")
     ap.add_argument("--skip", type=int, default=0, help="skip this many of the newest battles first")
+    ap.add_argument("--no-known", action="store_true", help="don't skip entries that look recorded before: with the same "
+                    "deck every game, the both-decks thumbnail can match an older game (2026-10-19: stopped after 2 of 12)")
     ap.add_argument("--device", default="emulator-5554")
     ap.add_argument("--source", choices=SOURCES, default="log", help="log = Battle Log, tv = TV Royale")
     ap.add_argument("--max-tabs", type=int, default=6, help="TV: leagues to go through, from the top")
@@ -251,7 +253,7 @@ def main() -> None:
     TITLE, folder = SOURCES[a.source]
     d = Device(a.device)
     root = ROOT / "data/raw" / folder
-    known = known_fps(root)
+    known = [] if a.no_known else known_fps(root)
     out_dir = root / time.strftime("%Y-%m-%d")
     out_dir.mkdir(parents=True, exist_ok=True)
     first = 1 + max([int(p.stem.split("_")[1]) for p in out_dir.glob("replay_*.mp4")] or [0])

@@ -1,0 +1,495 @@
+{
+ "video_id": "cole_2026-10-20_b",
+ "side": "opponent",
+ "matches": [
+  "cole_2026-10-20_b_m06"
+ ],
+ "items": [
+  {
+   "match_id": "cole_2026-10-20_b_m06",
+   "t_video": 1162.8,
+   "label": "Goblin Barrel",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r29_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_b_m06",
+   "t_video": 1164.0,
+   "label": "Princess",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r29_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_b_m06",
+   "t_video": 1175.4,
+   "label": "Skeletons",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r29_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_b_m06",
+   "t_video": 1176.0,
+   "label": "Knight",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r29_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_b_m06",
+   "t_video": 1178.4,
+   "label": "Ice Wizard",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r29_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_b_m06",
+   "t_video": 1182.7,
+   "label": "Dart Goblin",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r29_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_b_m06",
+   "t_video": 1189.1,
+   "label": "The Log",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r29_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_b_m06",
+   "t_video": 1195.2,
+   "label": "Goblin Barrel",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r29_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_b_m06",
+   "t_video": 1208.0,
+   "label": "Skeletons",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r29_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_b_m06",
+   "t_video": 1211.8,
+   "label": "Knight",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r29_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_b_m06",
+   "t_video": 1217.7,
+   "label": "Ice Wizard",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r29_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_b_m06",
+   "t_video": 1227.9,
+   "label": "Cannon",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r29_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_b_m06",
+   "t_video": 1237.4,
+   "label": "Dart Goblin",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r29_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_b_m06",
+   "t_video": 1241.3,
+   "label": "Goblin Barrel",
+   "form": "evo",
+   "source": "POV of bl_2026-10-20_r29_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_b_m06",
+   "t_video": 1253.8,
+   "label": "Knight",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r29_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_b_m06",
+   "t_video": 1254.3,
+   "label": "The Log",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r29_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_b_m06",
+   "t_video": 1266.9,
+   "label": "Princess",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r29_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_b_m06",
+   "t_video": 1271.1,
+   "label": "Skeletons",
+   "form": "evo",
+   "source": "POV of bl_2026-10-20_r29_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_b_m06",
+   "t_video": 1274.5,
+   "label": "Goblin Barrel",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r29_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_b_m06",
+   "t_video": 1278.7,
+   "label": "Knight",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r29_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_b_m06",
+   "t_video": 1282.6,
+   "label": "Ice Wizard",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r29_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_b_m06",
+   "t_video": 1289.4,
+   "label": "Princess",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r29_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_b_m06",
+   "t_video": 1293.4,
+   "label": "Dart Goblin",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r29_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_b_m06",
+   "t_video": 1295.7,
+   "label": "Goblin Barrel",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r29_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_b_m06",
+   "t_video": 1298.3,
+   "label": "The Log",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r29_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_b_m06",
+   "t_video": 1299.6,
+   "label": "Skeletons",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r29_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_b_m06",
+   "t_video": 1305.0,
+   "label": "Princess",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r29_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_b_m06",
+   "t_video": 1309.1,
+   "label": "Knight",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r29_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_b_m06",
+   "t_video": 1312.3,
+   "label": "Goblin Barrel",
+   "form": "evo",
+   "source": "POV of bl_2026-10-20_r29_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_b_m06",
+   "t_video": 1316.5,
+   "label": "Ice Wizard",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r29_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_b_m06",
+   "t_video": 1322.5,
+   "label": "Skeletons",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r29_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_b_m06",
+   "t_video": 1325.2,
+   "label": "Princess",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r29_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_b_m06",
+   "t_video": 1329.5,
+   "label": "Knight",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r29_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_b_m06",
+   "t_video": 1331.8,
+   "label": "Goblin Barrel",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r29_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_b_m06",
+   "t_video": 1337.2,
+   "label": "Ice Wizard",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r29_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_b_m06",
+   "t_video": 1343.2,
+   "label": "Skeletons",
+   "form": "evo",
+   "source": "POV of bl_2026-10-20_r29_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_b_m06",
+   "t_video": 1344.3,
+   "label": "Dart Goblin",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r29_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_b_m06",
+   "t_video": 1347.2,
+   "label": "Princess",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r29_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_b_m06",
+   "t_video": 1350.0,
+   "label": "Goblin Barrel",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r29_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_b_m06",
+   "t_video": 1351.8,
+   "label": "The Log",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r29_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_b_m06",
+   "t_video": 1354.1,
+   "label": "Skeletons",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r29_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_b_m06",
+   "t_video": 1356.2,
+   "label": "Dart Goblin",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r29_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_b_m06",
+   "t_video": 1361.1,
+   "label": "Ice Wizard",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r29_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_b_m06",
+   "t_video": 1365.5,
+   "label": "Goblin Barrel",
+   "form": "evo",
+   "source": "POV of bl_2026-10-20_r29_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_b_m06",
+   "t_video": 1368.1,
+   "label": "The Log",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r29_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_b_m06",
+   "t_video": 1376.8,
+   "label": "Princess",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r29_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_b_m06",
+   "t_video": 1377.6,
+   "label": "Knight",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r29_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_b_m06",
+   "t_video": 1380.0,
+   "label": "Cannon",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r29_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_b_m06",
+   "t_video": 1382.2,
+   "label": "Skeletons",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r29_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_b_m06",
+   "t_video": 1384.6,
+   "label": "The Log",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r29_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_b_m06",
+   "t_video": 1390.0,
+   "label": "Goblin Barrel",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r29_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_b_m06",
+   "t_video": 1393.3,
+   "label": "Knight",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r29_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "cole_2026-10-20_b_m06",
+   "t_video": 1396.8,
+   "label": "Princess",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r29_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_b_m06",
+   "t_video": 1400.5,
+   "label": "Cannon",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r29_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_b_m06",
+   "t_video": 1402.0,
+   "label": "Skeletons",
+   "form": "evo",
+   "source": "POV of bl_2026-10-20_r29_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_b_m06",
+   "t_video": 1404.5,
+   "label": "Goblin Barrel",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r29_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_b_m06",
+   "t_video": 1405.7,
+   "label": "The Log",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r29_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_b_m06",
+   "t_video": 1409.6,
+   "label": "Dart Goblin",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r29_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_b_m06",
+   "t_video": 1410.5,
+   "label": "Knight",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r29_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_b_m06",
+   "t_video": 1412.9,
+   "label": "Princess",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r29_top_m01",
+   "source_confidence": "high"
+  }
+ ],
+ "paired_with": "bl_2026-10-20_r29_top_m01",
+ "offset_s": -1148.8000240325928,
+ "auto": true,
+ "source": "live+replay",
+ "replay": "bl_2026-10-20_r29_m01",
+ "agree": 1.0
+}

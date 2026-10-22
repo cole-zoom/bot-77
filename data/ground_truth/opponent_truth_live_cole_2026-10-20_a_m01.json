@@ -1,0 +1,373 @@
+{
+ "video_id": "cole_2026-10-20_a",
+ "side": "opponent",
+ "matches": [
+  "cole_2026-10-20_a_m01"
+ ],
+ "items": [
+  {
+   "match_id": "cole_2026-10-20_a_m01",
+   "t_video": 7.2,
+   "label": "Skeleton Barrel",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r21_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_a_m01",
+   "t_video": 15.84,
+   "label": "Goblin Barrel",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r21_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_a_m01",
+   "t_video": 17.89,
+   "label": "Goblin Gang",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r21_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_a_m01",
+   "t_video": 25.55,
+   "label": "Bowler",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r21_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_a_m01",
+   "t_video": 35.46,
+   "label": "Dart Goblin",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r21_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_a_m01",
+   "t_video": 37.5,
+   "label": "Vines",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r21_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_a_m01",
+   "t_video": 64.26,
+   "label": "Goblin Barrel",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r21_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_a_m01",
+   "t_video": 68.14,
+   "label": "Skeleton Barrel",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r21_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "cole_2026-10-20_a_m01",
+   "t_video": 69.77,
+   "label": "Goblin Gang",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r21_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_a_m01",
+   "t_video": 71.89,
+   "label": "Dart Goblin",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r21_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_a_m01",
+   "t_video": 98.68,
+   "label": "Valkyrie",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r21_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_a_m01",
+   "t_video": 106.3,
+   "label": "Archer Queen",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r21_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_a_m01",
+   "t_video": 109.96,
+   "label": "Vines",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r21_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_a_m01",
+   "t_video": 116.6,
+   "label": "Skeleton Barrel",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r21_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_a_m01",
+   "t_video": 127.87,
+   "label": "Dart Goblin",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r21_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_a_m01",
+   "t_video": 133.57,
+   "label": "Valkyrie",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r21_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_a_m01",
+   "t_video": 140.3,
+   "label": "Archer Queen",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r21_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_a_m01",
+   "t_video": 147.9,
+   "label": "Bowler",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r21_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_a_m01",
+   "t_video": 150.7,
+   "label": "Skeleton Barrel",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r21_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_a_m01",
+   "t_video": 154.7,
+   "label": "Goblin Gang",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r21_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_a_m01",
+   "t_video": 158.94,
+   "label": "Valkyrie",
+   "form": "evo",
+   "source": "POV of bl_2026-10-20_r21_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_a_m01",
+   "t_video": 161.91,
+   "label": "Dart Goblin",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r21_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_a_m01",
+   "t_video": 164.93,
+   "label": "Vines",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r21_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_a_m01",
+   "t_video": 168.79,
+   "label": "Skeleton Barrel",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r21_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_a_m01",
+   "t_video": 174.5,
+   "label": "Goblin Gang",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r21_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_a_m01",
+   "t_video": 174.5,
+   "label": "Valkyrie",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r21_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_a_m01",
+   "t_video": 174.5,
+   "label": "Dart Goblin",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r21_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_a_m01",
+   "t_video": 174.5,
+   "label": "Goblin Barrel",
+   "form": "evo",
+   "source": "POV of bl_2026-10-20_r21_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_a_m01",
+   "t_video": 174.5,
+   "label": "Vines",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r21_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_a_m01",
+   "t_video": 174.5,
+   "label": "Archer Queen",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r21_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_a_m01",
+   "t_video": 174.5,
+   "label": "Goblin Gang",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r21_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_a_m01",
+   "t_video": 174.5,
+   "label": "Valkyrie",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r21_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_a_m01",
+   "t_video": 174.5,
+   "label": "Skeleton Barrel",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r21_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_a_m01",
+   "t_video": 174.5,
+   "label": "Goblin Barrel",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r21_top_m01",
+   "source_confidence": "low"
+  }
+ ],
+ "paired_with": "bl_2026-10-20_r21_top_m01",
+ "offset_s": 0.0,
+ "auto": true,
+ "time_map": [
+  [
+   7.199999809265137,
+   14.800000190734863
+  ],
+  [
+   9.100000381469727,
+   16.700000762939453
+  ],
+  [
+   18.299999237060547,
+   27.899999618530273
+  ],
+  [
+   31.799999237060547,
+   41.29999923706055
+  ],
+  [
+   37.70000076293945,
+   47.099998474121094
+  ],
+  [
+   52.599998474121094,
+   62.0
+  ],
+  [
+   67.9000015258789,
+   78.4000015258789
+  ],
+  [
+   72.69999694824219,
+   84.30000305175781
+  ],
+  [
+   84.5999984741211,
+   97.0999984741211
+  ],
+  [
+   97.80000305175781,
+   111.19999694824219
+  ],
+  [
+   106.30000305175781,
+   119.9000015258789
+  ],
+  [
+   110.5,
+   123.80000305175781
+  ],
+  [
+   119.80000305175781,
+   133.39999389648438
+  ],
+  [
+   134.10000610351562,
+   149.6999969482422
+  ],
+  [
+   142.60000610351562,
+   158.1999969482422
+  ],
+  [
+   145.6999969482422,
+   161.5
+  ],
+  [
+   153.3000030517578,
+   169.10000610351562
+  ],
+  [
+   154.5,
+   170.1999969482422
+  ],
+  [
+   162.39999389648438,
+   178.1999969482422
+  ],
+  [
+   169.6999969482422,
+   185.39999389648438
+  ],
+  [
+   174.5,
+   190.1999969482422
+  ]
+ ],
+ "source": "live+replay",
+ "replay": "bl_2026-10-20_r21_m01",
+ "agree": 1.0
+}

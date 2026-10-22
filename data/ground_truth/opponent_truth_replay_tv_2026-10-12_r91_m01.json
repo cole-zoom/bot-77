@@ -112,17 +112,17 @@
   {
    "match_id": "tv_2026-10-12_r91_m01",
    "t_video": 98.9,
-   "label": "Knight",
-   "form": "hero",
-   "source": "POV of tv_2026-10-12_r91_top_m01",
+   "label": "Hunter",
+   "form": null,
+   "source": "next-card advance in tv_2026-10-12_r91_top_m01",
    "source_confidence": "medium"
   },
   {
    "match_id": "tv_2026-10-12_r91_m01",
    "t_video": 98.9,
-   "label": "Hunter",
-   "form": null,
-   "source": "next-card advance in tv_2026-10-12_r91_top_m01",
+   "label": "Knight",
+   "form": "hero",
+   "source": "POV of tv_2026-10-12_r91_top_m01",
    "source_confidence": "medium"
   },
   {

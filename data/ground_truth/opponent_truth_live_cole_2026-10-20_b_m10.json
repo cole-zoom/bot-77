@@ -1,0 +1,247 @@
+{
+ "video_id": "cole_2026-10-20_b",
+ "side": "opponent",
+ "matches": [
+  "cole_2026-10-20_b_m10"
+ ],
+ "items": [
+  {
+   "match_id": "cole_2026-10-20_b_m10",
+   "t_video": 2005.2,
+   "label": "Mini P.E.K.K.A",
+   "form": "hero",
+   "source": "POV of bl_2026-10-20_r25_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_b_m10",
+   "t_video": 2007.8,
+   "label": "Electro Spirit",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r25_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_b_m10",
+   "t_video": 2017.0,
+   "label": "Prince",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r25_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_b_m10",
+   "t_video": 2018.1,
+   "label": "Zap",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r25_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_b_m10",
+   "t_video": 2031.5,
+   "label": "Tesla",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r25_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_b_m10",
+   "t_video": 2052.0,
+   "label": "Mini P.E.K.K.A",
+   "form": "hero",
+   "source": "POV of bl_2026-10-20_r25_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_b_m10",
+   "t_video": 2058.9,
+   "label": "Electro Spirit",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r25_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_b_m10",
+   "t_video": 2061.4,
+   "label": "Giant Snowball",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r25_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_b_m10",
+   "t_video": 2063.3,
+   "label": "Valkyrie",
+   "form": "hero",
+   "source": "POV of bl_2026-10-20_r25_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_b_m10",
+   "t_video": 2065.9,
+   "label": "Zap",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r25_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_b_m10",
+   "t_video": 2070.3,
+   "label": "__ability",
+   "form": null,
+   "source": "POV of bl_2026-10-20_r25_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "cole_2026-10-20_b_m10",
+   "t_video": 2073.1,
+   "label": "__ability",
+   "form": null,
+   "source": "POV of bl_2026-10-20_r25_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "cole_2026-10-20_b_m10",
+   "t_video": 2084.2,
+   "label": "Mini P.E.K.K.A",
+   "form": "hero",
+   "source": "POV of bl_2026-10-20_r25_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_b_m10",
+   "t_video": 2090.1,
+   "label": "Electro Spirit",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r25_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_b_m10",
+   "t_video": 2094.1,
+   "label": "Giant Snowball",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r25_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_b_m10",
+   "t_video": 2108.3,
+   "label": "Valkyrie",
+   "form": "hero",
+   "source": "POV of bl_2026-10-20_r25_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_b_m10",
+   "t_video": 2118.9,
+   "label": "Prince",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r25_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_b_m10",
+   "t_video": 2126.1,
+   "label": "Zap",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r25_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_b_m10",
+   "t_video": 2128.9,
+   "label": "Electro Spirit",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r25_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_b_m10",
+   "t_video": 2136.8,
+   "label": "Mini P.E.K.K.A",
+   "form": "hero",
+   "source": "POV of bl_2026-10-20_r25_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_b_m10",
+   "t_video": 2137.7,
+   "label": "Tesla",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r25_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_b_m10",
+   "t_video": 2140.7,
+   "label": "Valkyrie",
+   "form": "hero",
+   "source": "POV of bl_2026-10-20_r25_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_b_m10",
+   "t_video": 2147.5,
+   "label": "__ability",
+   "form": null,
+   "source": "POV of bl_2026-10-20_r25_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "cole_2026-10-20_b_m10",
+   "t_video": 2151.9,
+   "label": "Prince",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r25_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_b_m10",
+   "t_video": 2153.6,
+   "label": "__ability",
+   "form": null,
+   "source": "POV of bl_2026-10-20_r25_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "cole_2026-10-20_b_m10",
+   "t_video": 2160.0,
+   "label": "Electro Spirit",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r25_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_b_m10",
+   "t_video": 2161.7,
+   "label": "Wizard",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r25_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_b_m10",
+   "t_video": 2167.5,
+   "label": "Mini P.E.K.K.A",
+   "form": "hero",
+   "source": "POV of bl_2026-10-20_r25_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-20_b_m10",
+   "t_video": 2172.9,
+   "label": "Valkyrie",
+   "form": "hero",
+   "source": "POV of bl_2026-10-20_r25_top_m01",
+   "source_confidence": "high"
+  }
+ ],
+ "paired_with": "bl_2026-10-20_r25_top_m01",
+ "offset_s": -1992.1999759674072,
+ "auto": true,
+ "source": "live+replay",
+ "replay": "bl_2026-10-20_r25_m01",
+ "agree": 1.0
+}

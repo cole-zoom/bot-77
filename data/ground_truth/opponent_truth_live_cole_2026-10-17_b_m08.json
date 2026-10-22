@@ -1,0 +1,175 @@
+{
+ "video_id": "cole_2026-10-17_b",
+ "side": "opponent",
+ "matches": [
+  "cole_2026-10-17_b_m08"
+ ],
+ "items": [
+  {
+   "match_id": "cole_2026-10-17_b_m08",
+   "t_video": 1761.3,
+   "label": "Wizard",
+   "form": "hero",
+   "source": "POV of bl_2026-10-17_r07_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-17_b_m08",
+   "t_video": 1764.4,
+   "label": "Barbarian Barrel",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r07_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-17_b_m08",
+   "t_video": 1770.2,
+   "label": "Mother Witch",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r07_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-17_b_m08",
+   "t_video": 1776.3,
+   "label": "Battle Ram",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r07_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-17_b_m08",
+   "t_video": 1804.8,
+   "label": "Royal Ghost",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r07_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-17_b_m08",
+   "t_video": 1816.4,
+   "label": "Zappies",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r07_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-17_b_m08",
+   "t_video": 1829.7,
+   "label": "Giant Skeleton",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r07_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-17_b_m08",
+   "t_video": 1834.4,
+   "label": "Wizard",
+   "form": "hero",
+   "source": "POV of bl_2026-10-17_r07_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-17_b_m08",
+   "t_video": 1845.7,
+   "label": "Battle Ram",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r07_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-17_b_m08",
+   "t_video": 1855.8,
+   "label": "Barbarian Barrel",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r07_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-17_b_m08",
+   "t_video": 1870.2,
+   "label": "Zappies",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r07_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-17_b_m08",
+   "t_video": 1873.4,
+   "label": "Royal Ghost",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r07_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-17_b_m08",
+   "t_video": 1874.9,
+   "label": "Vines",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r07_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-17_b_m08",
+   "t_video": 1881.8,
+   "label": "Giant Skeleton",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r07_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-17_b_m08",
+   "t_video": 1892.8,
+   "label": "Mother Witch",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r07_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-17_b_m08",
+   "t_video": 1896.1,
+   "label": "Zappies",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r07_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "cole_2026-10-17_b_m08",
+   "t_video": 1898.6,
+   "label": "Royal Ghost",
+   "form": "evo",
+   "source": "POV of bl_2026-10-17_r07_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-17_b_m08",
+   "t_video": 1905.1,
+   "label": "Vines",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r07_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-17_b_m08",
+   "t_video": 1912.1,
+   "label": "Barbarian Barrel",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r07_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-17_b_m08",
+   "t_video": 1914.5,
+   "label": "Mother Witch",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r07_top_m01",
+   "source_confidence": "high"
+  }
+ ],
+ "paired_with": "bl_2026-10-17_r07_top_m01",
+ "offset_s": -1739.8,
+ "auto": true,
+ "source": "live+replay",
+ "replay": "bl_2026-10-17_r07_m01",
+ "agree": 1.0
+}

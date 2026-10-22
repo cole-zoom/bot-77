@@ -1,0 +1,151 @@
+{
+ "video_id": "cole_2026-10-19_a",
+ "side": "opponent",
+ "matches": [
+  "cole_2026-10-19_a_m06"
+ ],
+ "items": [
+  {
+   "match_id": "cole_2026-10-19_a_m06",
+   "t_video": 1061.2,
+   "label": "Goblin Barrel",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r07_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-19_a_m06",
+   "t_video": 1076.5,
+   "label": "Mega Knight",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r07_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-19_a_m06",
+   "t_video": 1085.9,
+   "label": "Mini P.E.K.K.A",
+   "form": "hero",
+   "source": "POV of bl_2026-10-20_r07_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-19_a_m06",
+   "t_video": 1089.0,
+   "label": "Arrows",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r07_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-19_a_m06",
+   "t_video": 1092.6,
+   "label": "Electro Spirit",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r07_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-19_a_m06",
+   "t_video": 1101.1,
+   "label": "Dart Goblin",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r07_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "cole_2026-10-19_a_m06",
+   "t_video": 1119.9,
+   "label": "Mega Knight",
+   "form": "evo",
+   "source": "POV of bl_2026-10-20_r07_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-19_a_m06",
+   "t_video": 1130.0,
+   "label": "Goblin Barrel",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r07_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-19_a_m06",
+   "t_video": 1138.1,
+   "label": "Arrows",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r07_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-19_a_m06",
+   "t_video": 1145.3,
+   "label": "Firecracker",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r07_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-19_a_m06",
+   "t_video": 1148.3,
+   "label": "Electro Spirit",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r07_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-19_a_m06",
+   "t_video": 1159.5,
+   "label": "Mini P.E.K.K.A",
+   "form": "hero",
+   "source": "POV of bl_2026-10-20_r07_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "cole_2026-10-19_a_m06",
+   "t_video": 1167.8,
+   "label": "Dart Goblin",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r07_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-19_a_m06",
+   "t_video": 1175.0,
+   "label": "Arrows",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r07_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-19_a_m06",
+   "t_video": 1176.0,
+   "label": "__ability",
+   "form": null,
+   "source": "POV of bl_2026-10-20_r07_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "cole_2026-10-19_a_m06",
+   "t_video": 1178.9,
+   "label": "Firecracker",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r07_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-19_a_m06",
+   "t_video": 1181.5,
+   "label": "Electro Spirit",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r07_top_m01",
+   "source_confidence": "high"
+  }
+ ],
+ "paired_with": "bl_2026-10-20_r07_top_m01",
+ "offset_s": -1047.8,
+ "auto": true,
+ "source": "live+replay",
+ "replay": "bl_2026-10-20_r07_m01",
+ "agree": 1.0
+}

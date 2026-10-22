@@ -1,0 +1,215 @@
+{
+ "video_id": "cole_2026-10-17_b",
+ "side": "opponent",
+ "matches": [
+  "cole_2026-10-17_b_m01"
+ ],
+ "items": [
+  {
+   "match_id": "cole_2026-10-17_b_m01",
+   "t_video": 68.1,
+   "label": "Knight",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r14_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-17_b_m01",
+   "t_video": 76.7,
+   "label": "Ice Wizard",
+   "form": "hero",
+   "source": "POV of bl_2026-10-17_r14_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-17_b_m01",
+   "t_video": 82.0,
+   "label": "Graveyard",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r14_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "cole_2026-10-17_b_m01",
+   "t_video": 93.5,
+   "label": "Poison",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r14_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-17_b_m01",
+   "t_video": 100.6,
+   "label": "Skeletons",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r14_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-17_b_m01",
+   "t_video": 119.7,
+   "label": "Knight",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r14_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-17_b_m01",
+   "t_video": 125.7,
+   "label": "Goblin Cage",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r14_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-17_b_m01",
+   "t_video": 129.1,
+   "label": "Barbarian Barrel",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r14_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-17_b_m01",
+   "t_video": 131.9,
+   "label": "Skeletons",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r14_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-17_b_m01",
+   "t_video": 143.9,
+   "label": "Knight",
+   "form": "evo",
+   "source": "POV of bl_2026-10-17_r14_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "cole_2026-10-17_b_m01",
+   "t_video": 148.7,
+   "label": "Ice Wizard",
+   "form": "hero",
+   "source": "POV of bl_2026-10-17_r14_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-17_b_m01",
+   "t_video": 169.0,
+   "label": "Baby Dragon",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r14_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-17_b_m01",
+   "t_video": 179.6,
+   "label": "Graveyard",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r14_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-17_b_m01",
+   "t_video": 192.6,
+   "label": "Barbarian Barrel",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r14_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-17_b_m01",
+   "t_video": 197.8,
+   "label": "Knight",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r14_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-17_b_m01",
+   "t_video": 199.7,
+   "label": "Ice Wizard",
+   "form": "hero",
+   "source": "POV of bl_2026-10-17_r14_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "cole_2026-10-17_b_m01",
+   "t_video": 202.1,
+   "label": "Baby Dragon",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r14_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-17_b_m01",
+   "t_video": 207.2,
+   "label": "Skeletons",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r14_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-17_b_m01",
+   "t_video": 209.9,
+   "label": "Goblin Cage",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r14_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-17_b_m01",
+   "t_video": 212.7,
+   "label": "Barbarian Barrel",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r14_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "cole_2026-10-17_b_m01",
+   "t_video": 216.6,
+   "label": "Ice Wizard",
+   "form": "hero",
+   "source": "POV of bl_2026-10-17_r14_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-17_b_m01",
+   "t_video": 220.2,
+   "label": "Knight",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r14_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-17_b_m01",
+   "t_video": 222.8,
+   "label": "Skeletons",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r14_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-17_b_m01",
+   "t_video": 227.4,
+   "label": "Baby Dragon",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r14_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "cole_2026-10-17_b_m01",
+   "t_video": 233.8,
+   "label": "Graveyard",
+   "form": "normal",
+   "source": "POV of bl_2026-10-17_r14_top_m01",
+   "source_confidence": "medium"
+  }
+ ],
+ "paired_with": "bl_2026-10-17_r14_top_m01",
+ "offset_s": -56.5,
+ "auto": true,
+ "source": "live+replay",
+ "replay": "bl_2026-10-17_r14_m01",
+ "agree": 1.0
+}

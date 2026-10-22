@@ -66,7 +66,9 @@ def game(job):
 
 
 def main():
-    ap = argparse.ArgumentParser(); ap.add_argument("--procs", type=int, default=8); a = ap.parse_args()
+    ap = argparse.ArgumentParser(); ap.add_argument("--procs", type=int, default=8)
+    ap.add_argument("--only-new", action="store_true", help="keep the existing clips; cut only games not in index.json")
+    a = ap.parse_args()
     import lancedb
     from bot77.layout import Layout
     db = lancedb.connect("data/lancedb")
@@ -76,6 +78,8 @@ def main():
     hold = set(json.loads(Path("config/benchmark_holdout.json").read_text())["matches"])
     hold |= set(json.loads(Path("config/v5_check_games.json").read_text())["matches"])
     hold |= set(json.loads(Path("config/replay_test_games.json").read_text())["matches"])
+    from bot77.holdout import held_out
+    hold |= held_out()  # + Cole's live test games and their replays (2026-10-17)
     jobs = []
     for f in sorted(glob.glob("data/ground_truth/opponent_truth_replay_*.json")):
         tr = json.loads(Path(f).read_text()); m = tr["matches"][0]
@@ -119,11 +123,21 @@ def main():
         items = [{"t": e["t_video"], "spell": e["kind"] == "ability" or is_spell(e["card"]), "side": "bottom",
                   "label": (f"{e['card']} ability" if e["kind"] == "ability" else e["card"]) if e["card"] else "__unknown"}
                  for e in ev]
+        lt = Path(f"data/ground_truth/opponent_truth_live_{m}.json")  # keyed by its replay (2026-10-17): the
+        if lt.exists():  # opponent's plays are known too, so their spells are positives and negatives avoid them
+            items += [{"t": i["t_video"], "spell": is_spell(i["label"]), "side": "top", "label": i["label"]}
+                      for i in json.loads(lt.read_text())["items"] if i["label"] and i["label"] != "__ability"]
         items = [dict(i, spell=i["spell"] and i["label"] != "__unknown") for i in items]
         split = "val" if int(hashlib.sha1(m.encode()).hexdigest(), 16) % 1000 < VAL_SHARE * 1000 else "train"
         jobs.append((m, v["path"], arena, mt["t_start"], mt["t_end"], items, split))
     (OUT / "clips").mkdir(parents=True, exist_ok=True)
     index, errs = [], []
+    if a.only_new and (OUT / "index.json").exists():
+        index = json.loads((OUT / "index.json").read_text())["clips"]
+        index = [c for c in index if c["match_id"] not in hold]  # a game held out since it was cut
+        done = {c["match_id"] for c in index}
+        jobs = [j for j in jobs if j[0] not in done]
+        print(f"--only-new: {len(index)} clips kept, {len(jobs)} new games", flush=True)
     with Pool(a.procs) as pool:
         for k, (rows, err) in enumerate(pool.imap_unordered(game, jobs)):
             index += rows
@@ -131,6 +145,10 @@ def main():
                 errs.append(err)
             if k % 20 == 0:
                 print(f"{k + 1}/{len(jobs)} games, {len(index)} clips", flush=True)
+    rel = Path("config/spell_clip_relabels.json")  # Cole's fixes of "no spell" clips that hold an opponent spell
+    if rel.exists():
+        fix = json.loads(rel.read_text())["relabel"]
+        index = [dict(c, label=fix[c["name"]], kind="spell") if c["name"] in fix else c for c in index]
     (OUT / "index.json").write_text(json.dumps({"fps": FPS, "w": W, "h": H, "pre_s": PRE_S, "frames": CLIP_FRAMES,
                                                 "clips": index}, indent=0))
     from collections import Counter

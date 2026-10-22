@@ -173,3 +173,146 @@ def write_replay_truth(video_bottom: str, video_top: str, out_dir: Path = Path("
     if len(bottom) != len(top):
         log(f"warning: {video_bottom} has {len(bottom)} matches, {video_top} has {len(top)}")
     return out
+
+
+def _align(pa: list, pb: list) -> list[tuple[float, float]]:
+    """In-order card alignment of two play lists [(t, card)] as (t_a, t_b) anchors: the longest common subsequence, so
+    a play missing on one side (a replay recording that started late, 2026-10-20) is skipped instead of pulling the
+    match onto a later copy of the same card the way a greedy scan does."""
+    n, m = len(pa), len(pb)
+    L = [[0] * (m + 1) for _ in range(n + 1)]
+    for i in range(n - 1, -1, -1):
+        for j in range(m - 1, -1, -1):
+            L[i][j] = L[i + 1][j + 1] + 1 if pa[i][1] == pb[j][1] else max(L[i + 1][j], L[i][j + 1])
+    out, i, j = [], 0, 0
+    while i < n and j < m:
+        if pa[i][1] == pb[j][1]:
+            out.append((pa[i][0], pb[j][0])); i += 1; j += 1
+        elif L[i + 1][j] >= L[i][j + 1]:
+            i += 1
+        else:
+            j += 1
+    return out
+
+
+LIVE_MATCH_S = 1.5  # a live POV play and the replay's bottom-hand play of it agree to this
+LIVE_MIN_AGREE, LIVE_MIN_PLAYS = 0.7, 5
+
+
+def pair_live_replay(live_video: str, replay_video: str, db_dir: Path = Path("data/lancedb")) -> list[dict]:
+    """Pair Cole's live recordings with the in-game replays he records after each game (2026-10-16).
+
+    The wall clock can't pair them (the replay is recorded later) and the match clock alone can't either (any two
+    matches line up at some offset). The game itself does: the replay's bottom hand is Cole's, so his live POV plays
+    must reappear as the replay's bottom-hand plays at the clock offset. A pair needs >= LIVE_MIN_AGREE of the live
+    plays (>= LIVE_MIN_PLAYS) matched by card within LIVE_MATCH_S. `replay_video`: the replay processed with layout
+    replay_bottom. Returns [{"a": live match, "b": replay match, "offset_s", "agree", "n"}]."""
+    db = lancedb.connect(db_dir)
+    ms = lambda v: db.open_table("matches").search().where(f"video_id = '{v}'").to_arrow().to_pylist()
+    plays = lambda mid: [(e["t_video"], e["card"]) for e in db.open_table("events").search()
+                         .where(f"match_id = '{mid}' AND kind = 'play'").limit(10**4).select(["t_video", "card"])
+                         .to_arrow().to_pylist() if e["card"]]
+    pairs = []
+    for ma in ms(live_video):
+        ca, pa = _clock(db, ma["match_id"]), plays(ma["match_id"])
+        if len(pa) < LIVE_MIN_PLAYS:
+            continue
+        best = None
+        for mb in ms(replay_video):
+            cb = _clock(db, mb["match_id"])
+            common = sorted(set(ca) & set(cb))
+            if len(common) < MIN_COMMON_S:
+                continue
+            off = float(np.median([cb[e] - ca[e] for e in common]))
+            pb = plays(mb["match_id"])
+            # the clock shows whole seconds, so its offset is off by up to ~2 s (2026-10-17: 4 of 20 games missed the
+            # 1.5 s window by that); refine it on the plays themselves, which also makes the key's times exact
+            score = lambda o: sum(1 for t, c in pa if any(c2 == c and abs((t2 - o) - t) <= 0.5 for t2, c2 in pb))
+            # the clock can be off by more than that (2026-10-20: overtime replays, same play sequence but < 30%
+            # agreement): also try offsets implied by the plays themselves (each early live play vs each replay
+            # play of the same card) and keep whichever lines up the most plays
+            seeds = [off] + [t2 - t for t, c in pa[:6] for t2, c2 in pb if c2 == c]
+            best_seed = max(seeds, key=lambda s: (score(s), -abs(s - off)))
+            off = max((best_seed + d / 10 for d in range(-30, 31)), key=lambda o: (score(o), -abs(o - best_seed)))
+            hit = sum(1 for t, c in pa if any(c2 == c and abs((t2 - off) - t) <= LIVE_MATCH_S for t2, c2 in pb))
+            agree, anchors = hit / len(pa), None
+            if agree < LIVE_MIN_AGREE:
+                # the live recording can lose seconds mid-game (iPhone Mirroring stalls; 2026-10-20: the offset
+                # drifted 8 s over one match in small jumps), so no single offset fits: line the plays up in order
+                # by card and map times piecewise between those anchors
+                anchors = _align(sorted(pa), sorted(pb))
+                gaps = [b - a for a, b in anchors]
+                steps = [abs(g2 - g1) for g1, g2 in zip(gaps, gaps[1:])]
+                # a different game with the same deck also lines up by card order, but its gaps jump all the time; a
+                # stalled recording of the same game holds a steady gap with rare jumps (2026-10-20: true pair 30/32
+                # plays aligned, median step 0.7 s, 76% of steps <= 2 s, max 8.3 s; five false pairs <= 72% aligned,
+                # median 4.3-9.0 s, 14-29% <= 2 s, max 18-34 s)
+                smooth = len(anchors) >= max(3, 0.85 * len(pa)) and len(steps) >= 2 and \
+                    float(np.median(steps)) <= 1.5 and sum(x <= 2 for x in steps) >= 0.6 * len(steps) and \
+                    max(steps) <= 15 and abs(float(np.median(gaps)) - off) <= 40
+                if smooth:
+                    to_live = lambda tb: float(np.interp(tb, [b for _, b in anchors], [a for a, _ in anchors]))
+                    hit = sum(1 for t, c in pa if any(c2 == c and abs(to_live(t2) - t) <= LIVE_MATCH_S for t2, c2 in pb))
+                    agree = hit / len(pa)
+            if agree >= LIVE_MIN_AGREE and (best is None or agree > best["agree"]):
+                best = {"a": ma["match_id"], "b": mb["match_id"], "offset_s": off, "agree": round(agree, 3), "n": len(pa),
+                        "anchors": anchors if anchors and agree >= LIVE_MIN_AGREE and hit / len(pa) == agree else None}
+        if best:
+            pairs.append(best)
+    return pairs
+
+
+def write_live_pair(p: dict, replay_top_video: str, out_dir: Path = Path("data/ground_truth"),
+                    db_dir: Path = Path("data/lancedb"), log=print) -> Path | None:
+    """Write the answer key for one live match from its paired replay (a pair_live_replay result)."""
+    db = lancedb.connect(db_dir)
+    top = {r["match_id"].rsplit("_m", 1)[1]: r["match_id"] for r in db.open_table("matches").search()
+           .where(f"video_id = '{replay_top_video}'").limit(100).select(["match_id"]).to_arrow().to_pylist()}
+    b_top = top.get(p["b"].rsplit("_m", 1)[1])
+    if not b_top:
+        log(f"{p['b']}: no top-hand match in {replay_top_video}")
+        return None
+    if p.get("anchors"):  # piecewise time map (the live recording lost time mid-game)
+        truth, _ = opponent_truth_from_pair({"a": p["a"], "b": b_top, "offset_s": 0.0}, db_dir)
+        ab, aa = [b for _, b in p["anchors"]], [a for a, _ in p["anchors"]]
+        for i in truth["items"]:
+            i["t_video"] = round(float(np.interp(i["t_video"], ab, aa)), 2)
+        truth["time_map"] = p["anchors"]
+    else:
+        truth, _ = opponent_truth_from_pair({"a": p["a"], "b": b_top, "offset_s": p["offset_s"]}, db_dir)
+    truth.update(source="live+replay", replay=p["b"], agree=p["agree"])
+    path = out_dir / f"opponent_truth_live_{p['a']}.json"
+    path.write_text(json.dumps(truth, indent=1))
+    how = "piecewise time map" if p.get("anchors") else f"offset {p['offset_s']:.2f} s"
+    log(f"{p['a']} <-> {p['b']}: {how}, {p['agree']:.0%} of {p['n']} own plays agree, {len(truth['items'])} opponent plays")
+    return path
+
+
+def write_live_truth(live_video: str, replay_video: str, replay_top_video: str, out_dir: Path = Path("data/ground_truth"),
+                     db_dir: Path = Path("data/lancedb"), log=print) -> list[Path]:
+    """Opponent truth for a live recording from its replay: the top player's plays (the replay processed with
+    replay_top, `replay_top_video`) moved onto the live video's time line. Written as opponent_truth_live_<match>.json
+    (its own set: eval_dev.py --set live), so the dev set stays fixed."""
+    db = lancedb.connect(db_dir)
+    top = {r["match_id"].rsplit("_m", 1)[1]: r["match_id"] for r in db.open_table("matches").search()
+           .where(f"video_id = '{replay_top_video}'").limit(100).select(["match_id"]).to_arrow().to_pylist()}
+    out = []
+    for p in pair_live_replay(live_video, replay_video, db_dir):
+        b_top = top.get(p["b"].rsplit("_m", 1)[1])
+        if not b_top:
+            log(f"{p['b']}: no top-hand match in {replay_top_video}"); continue
+        if p.get("anchors"):  # piecewise time map (the live recording lost time mid-game)
+            truth, _ = opponent_truth_from_pair({"a": p["a"], "b": b_top, "offset_s": 0.0}, db_dir)
+            ab, aa = [b for _, b in p["anchors"]], [a for a, _ in p["anchors"]]
+            for i in truth["items"]:
+                i["t_video"] = round(float(np.interp(i["t_video"], ab, aa)), 2)
+            truth["time_map"] = p["anchors"]
+        else:
+            truth, _ = opponent_truth_from_pair({"a": p["a"], "b": b_top, "offset_s": p["offset_s"]}, db_dir)
+        truth.update(source="live+replay", replay=p["b"], agree=p["agree"])
+        path = out_dir / f"opponent_truth_live_{p['a']}.json"
+        path.write_text(json.dumps(truth, indent=1))
+        log(f"{p['a']} <-> {p['b']}: offset {p['offset_s']:.2f} s, {p['agree']:.0%} of {p['n']} own plays agree, "
+            f"{len(truth['items'])} opponent plays")
+        out.append(path)
+    return out

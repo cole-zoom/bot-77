@@ -1,0 +1,229 @@
+{
+ "video_id": "bl_2026-10-20_r17",
+ "side": "opponent",
+ "matches": [
+  "bl_2026-10-20_r17_m01"
+ ],
+ "items": [
+  {
+   "match_id": "bl_2026-10-20_r17_m01",
+   "t_video": 17.4,
+   "label": "Knight",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r17_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "bl_2026-10-20_r17_m01",
+   "t_video": 29.5,
+   "label": "Bowler",
+   "form": "hero",
+   "source": "POV of bl_2026-10-20_r17_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "bl_2026-10-20_r17_m01",
+   "t_video": 33.0,
+   "label": "Archers",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r17_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "bl_2026-10-20_r17_m01",
+   "t_video": 41.1,
+   "label": "Phoenix",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r17_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "bl_2026-10-20_r17_m01",
+   "t_video": 57.9,
+   "label": "Goblin Hut",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r17_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "bl_2026-10-20_r17_m01",
+   "t_video": 76.8,
+   "label": "Knight",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r17_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "bl_2026-10-20_r17_m01",
+   "t_video": 83.5,
+   "label": "Bowler",
+   "form": "hero",
+   "source": "POV of bl_2026-10-20_r17_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "bl_2026-10-20_r17_m01",
+   "t_video": 88.2,
+   "label": "Archers",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r17_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "bl_2026-10-20_r17_m01",
+   "t_video": 97.6,
+   "label": "__ability",
+   "form": null,
+   "source": "POV of bl_2026-10-20_r17_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "bl_2026-10-20_r17_m01",
+   "t_video": 103.3,
+   "label": "Phoenix",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r17_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "bl_2026-10-20_r17_m01",
+   "t_video": 113.2,
+   "label": "Goblin Hut",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r17_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "bl_2026-10-20_r17_m01",
+   "t_video": 131.7,
+   "label": "Knight",
+   "form": "evo",
+   "source": "POV of bl_2026-10-20_r17_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "bl_2026-10-20_r17_m01",
+   "t_video": 134.5,
+   "label": "Tornado",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r17_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "bl_2026-10-20_r17_m01",
+   "t_video": 142.3,
+   "label": "Archers",
+   "form": "evo",
+   "source": "POV of bl_2026-10-20_r17_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "bl_2026-10-20_r17_m01",
+   "t_video": 147.8,
+   "label": "Bowler",
+   "form": "hero",
+   "source": "POV of bl_2026-10-20_r17_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "bl_2026-10-20_r17_m01",
+   "t_video": 156.6,
+   "label": "Electro Giant",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r17_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "bl_2026-10-20_r17_m01",
+   "t_video": 159.5,
+   "label": "Phoenix",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r17_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "bl_2026-10-20_r17_m01",
+   "t_video": 171.4,
+   "label": "Tornado",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r17_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "bl_2026-10-20_r17_m01",
+   "t_video": 177.1,
+   "label": "Goblin Hut",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r17_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "bl_2026-10-20_r17_m01",
+   "t_video": 177.8,
+   "label": "Archers",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r17_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "bl_2026-10-20_r17_m01",
+   "t_video": 180.5,
+   "label": "Knight",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r17_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "bl_2026-10-20_r17_m01",
+   "t_video": 192.5,
+   "label": "Electro Giant",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r17_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "bl_2026-10-20_r17_m01",
+   "t_video": 195.1,
+   "label": "Phoenix",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r17_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "bl_2026-10-20_r17_m01",
+   "t_video": 200.2,
+   "label": "Tornado",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r17_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "bl_2026-10-20_r17_m01",
+   "t_video": 207.2,
+   "label": "Bowler",
+   "form": "hero",
+   "source": "POV of bl_2026-10-20_r17_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "bl_2026-10-20_r17_m01",
+   "t_video": 210.8,
+   "label": "Knight",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r17_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "bl_2026-10-20_r17_m01",
+   "t_video": 216.3,
+   "label": "Goblin Hut",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r17_top_m01",
+   "source_confidence": "low"
+  }
+ ],
+ "paired_with": "bl_2026-10-20_r17_top_m01",
+ "offset_s": 0.0,
+ "auto": true,
+ "source": "replay"
+}

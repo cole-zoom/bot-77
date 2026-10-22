@@ -2149,3 +2149,198 @@ was close: held-back 1179 / 323 fakes, dev 423 / 204).
 Now the playrules default (`spell_probs` = the mix dir, `spell_class_thr` = {}). New videos need both v2 and v3
 inference (scripts/katacr/infer_spell.py), then the mix script. Open: why v3 under-calls Goblin Curse / Vines on POV
 (likely some of Cole's recording clips labelled "none" contain an unlabelled opponent spell).
+
+## 2026-10-16 · Failure mining with LanceDB (Cole: "use LanceDB to mine for our failure modes")
+**The table.** `scripts/build_failures.py` scores the default pipeline against every answer key outside the test set
+and benchmark (380 replays: 332 train split + 48 held-back, V4 dets; 25 dev recordings, V5 dets) and writes one row
+per true play (right / wrong / missed) and per fake to the LanceDB table `play_outcomes` (16,909 rows), with context:
+was the true card ever detected near the play (`seen_n`, how late), neighbour gaps, repeat of the previous card,
+spell-stage coverage. Spell plays in games without spell-stage probabilities are left out of the analysis.
+**What it showed** (11,691 true plays: 7,634 right / 1,336 wrong / 2,721 missed; 2,096 fakes):
+- most misses are not the detector: 1,508 non-spell misses were seen. A per-stage snapshot (`BOT77_STAGES=1`,
+  `bot77.opponent.STAGES`) says where they were lost: tracking 704 (298 with only 1-2 dets), timing 336 (found but
+  > 1.5 s off), deck re-pick 228, play rules 200, own-unit filter 40;
+- all 228 deck re-pick losses: the true card was pushed out of the inferred deck, mostly by a fake **Rage** (127) —
+  the detector's "rage" class fires on any spell circle (Poison, Goblin Curse, Tornado, Earthquake; frames checked) and
+  was in the inferred deck of 141 of ~400 replays (true Rage: 13 games). Also Clone (53), Mirror (52), Poison (44);
+- wrong cards are mostly swarms read as their unit: Skeleton Army -> Skeletons 89, Furnace -> Fire Spirit 62, Goblin Gang
+  -> Goblins / Spear Goblins 61, Minion Horde -> Minions 39. A deploy's `units` is ~1 even for 15 skeletons, so the
+  count rule (COMPOSITES) never fired;
+- 84% of fakes are within 4 s of a real play: spawned units (Goblins near Curse, Barbarians near Barrel / Hut, Recruits
+  near Delivery, hogs near Mother Witch) and the same play counted twice when its timing is ~2 s off;
+- 151 seen plays were dropped as "first seen past the river": fast units (Hog Rider, Royal Hogs, Prince) and pocket
+  plays, first seen 1-3 tiles past it within a second of the play;
+- truly unseen (no detection of the card at all): ~750, led by Miner 87% missed, Goblin Drill 81%, the spirits, Mini
+  P.E.K.K.A. Frames show the deploy clock and spawn glow covering the unit; spirits die within a second.
+**Fixes** (tuned on held-back replays + dev only), held-back 1181 / 187 / 326 -> 1225 / 171 / 326, dev 430 / 47 / 215 ->
+432 / 47 / 213 (right / wrong / fakes):
+- `det_shadow` {"Rage": 3}: a detector-only Rage with another spell within 3 s is that spell's circle (ignoring "rage"
+  outright lost 3 true Rages on dev that the spell stage misses); `det_ignore` ["clone"];
+- `composite_peak` (spawns.composites_by_peak): peak units of the class in one frame near the deploy -> Skeleton Army at
+  >= 5 skeletons (Skeletons <= 3, Army 4-13), Minion Horde at >= 4 minions: held-back +10 right / -12 wrong;
+- replay timing refit on the 332 train-split replays (was 70): 38 of 73 cards moved >= 0.3 s (Wizard, Bowler, Hunter,
+  Sparky ~3 s after the card leaves the hand, not the 1.2 s default): +3 right / -7 wrong;
+- `half_margin` 3.1 tiles for replays (was 0.8): +28 right / +12 fakes; on POV recordings it lost, so replays only;
+- `pocket` (spawns.towers_down; Cole: pocket = 4 tiles past the river): once our princess tower on a lane is down (its
+  detections stop), new enemy units may be first seen 4 tiles past the river there: dev +2 right;
+- spawners (Cole: cursed hogs / goblins appear where our troop died): Goblin Curse -> Goblins (dev -2 fakes), Mother
+  Witch -> cursed hogs within her reach (7 tiles); a longer birth confirmation window changed nothing.
+**Mining for detector labels.** `scripts/mine_failures.py`: at each never-seen play in the train-split replays, the
+V5 detector re-run at conf 0.05 on six frames 0.4-2.4 s after the play; the best box is kept if called the true card's
+class, or if it looks more like the card than like its own class (DINOv2 top-5 cosine to confident `unit_crops` of
+each class, LanceDB vector search). Frames show why these plays are missed: the unit is under the deploy clock or in its
+spawn glow, and spirits die within a second. Cole's review (scripts/build_mined_review.py, two rounds): round 1 kept 54
+of 74 boxes (184 plays mined), round 2 57 of 66 (246 plays); Miner 4 of 11, Goblin Drill 1 of 4 (Drill found almost
+nothing: it only shows as it surfaces). `scripts/label_mined.py` -> 105 full-frame labels (data/external/real_mined*):
+the mined box SAM-tightened and named by the answer key (evo / hero form too), plus every other confident V4 box.
+Spell clips: Cole confirmed 13 of 15 recording "no spell" clips that the replay-only spell_v2 called Goblin Curse /
+Vines hold an opponent one (config/spell_clip_relabels.json, applied by scripts/spell_clips.py). Of 2,382 recording
+negatives v2 flags 381, mostly Void, the over-call those clips were added to fix: the bigger cause of v3's weak Curse /
+Vines on POV is that Cole's deck has neither, so there are no POV examples of them at all.
+**Retrain (RunPod 4090 Secure, $0.89/h, pod rjkguya7kia80i, 08:56-10:48, ~$1.65; terminated):**
+- detector V7 (`scripts/katacr/pod_v6.sh`): 4 epochs from V5 best on real_v3 x3 + real_v4 + real_v5r + mined x10, no synth
+  (setup alone would cost an hour). Val mAP50 / 50-95 0.725 / 0.412 vs V5 0.742 / 0.434. Plays: dev 421 / 48 / 228 vs V5
+  432 / 47 / 213; held-back replays (both run fresh on the 48 games) 1146 / 192 / 251 vs V5 1166 / 194 / 255. **Not
+  adopted**: dropping synth cost more than 105 frames gained. Mined labels kept for the next full retrain.
+- spell_v4 (v3 data + the 13 relabels, 14 epochs, val macro-F1 0.804 vs v3 0.778): worse on whole games in every mix
+  (held-back / dev right: v2+v4 1221 / 428, full average 1218 / 417, v4 alone 1213 / 409, v2+v3+v4 1223 / 425, vs
+  the v2+v3 mix 1225 / 432). **Not adopted**; 13 clips are too few to rise above run-to-run noise.
+**Final check** (scored once; defaults = the rule fixes above, V5 detector, v2+v3 spell mix), right / wrong / fakes:
+- replay test (30): 780 / 120 / 196 (64.6%) -> **792 / 119 / 193 (65.6%)**; with V4 detections 806 / 95 / 243 (66.8%)
+- benchmark (116): 72 / 7 / 31 -> 72 / 7 / 30
+Smaller than the held-back gain (+44 right): the rules were tuned on held-back with V4 detections. V4 vs V5 on replays:
+held-back (1225 / 171 / 326 vs 1166 / 194 / 255) and test agree that V4 names more plays right with fewer wrong cards
+but more fakes; V5 stays the default for POV recordings (dev, benchmark).
+Budget: ~$5.25 of RunPod's $10 spent, ~$4.75 left.
+
+## 2026-10-16 (afternoon) · Cutting fake plays (Cole: "I just want to get the hallucinations down")
+Where fakes come from now (default rules): held-back replays 326 fakes of 1,722 logged plays (19%): 232 an extra card
+within 4 s of a real play, 36 the same card twice, 35 within 4-10 s, 16 ability calls, 7 invented. Dev recordings
+213 of 692 (31%): 66 invented > 10 s from any play, mostly spells (Goblin Curse 31, Vines 22, Void 17: the spell
+model over-calls on POV), then two-part cards (Goblinstein 17, Spirit Empress 15, Tombstone 8).
+**Elixir check** (`bot77.elixir`, rule `elixir_check`, off): simulate the opponent's elixir (5 at the start, 10 when a
+recording joins mid-match; +1 per 2.8 s x the on-screen multiplier; cap 10; Mirror = copied card + 1, abilities =
+cards.ability_cost) and drop a play when the logged plays overspend. The model holds on the answer keys (43 of 48
+held-back games never below -1.5; the rest are key errors, e.g. one Mirror listed twice), but our play times and costs
+(wrong cards) are rougher: every drop policy (fewest votes, latest play, weaker of a tight pair) cut ~80 fakes for
+~45 right on held-back. Kept off; its elixir estimate is a feature of the filter below.
+**Learned fake filter** (`bot77.fakefilter`, scripts/train_fake_filter.py, rule `fake_filter`): gradient-boosted
+P(fake) per logged play from 31 features (votes and their mix, units, delay, spot, card cost / type / deck rank,
+neighbour gaps, same card nearby, plays within 4 s, simulated elixir before / after, clock, multiplier). Trained on the
+332 train-split replays (10,638 plays, 21% fake; re-scored with today's rules); AUC held-back 0.868, dev 0.648 (trained
+on replays only: the POV gap again). Threshold sweep, right / wrong / fakes:
+- held-back: off 1225 / 171 / 326; 0.7 1220 / 166 / 268; **0.6 1212 / 160 / 224**; 0.5 1200 / 155 / 185
+- dev: off 432 / 47 / 213; **0.7 430 / 45 / 202**; 0.6 423 / 46 / 183; 0.5 411 / 48 / 164
+Default thr 0.6 on replays (fakes 19% -> 14% of logged plays for -1% right), 0.7 on POV recordings; the pipeline
+reproduces the sweep (held-back 1212 / 160 / 223, dev 430 / 45 / 203).
+**Keyed POV footage without a friend** (Cole records each live game, then its in-game replay through the same
+iPhone Mirroring setup): `bot77.pairing.pair_live_replay` pairs a live recording with its replay by the game itself
+(Cole's live POV plays must reappear as the replay's bottom-hand plays at the match-clock offset; >= 70% of >= 5 plays
+by card within 1.5 s), and `write_live_truth` moves the replay's top-hand plays onto the live time line ->
+opponent_truth_live_<match>.json (`eval_dev.py --set live`). Checks: a replay paired with itself -> offset 0, 48/48
+plays agree, the same 45-play key; with three other games -> no pair. `scripts/ingest_live_replays.py` converts and
+processes a folder of <name>_live / <name>_replay recordings; it needs replay layouts for mirroring-size frames
+(cole_replay_bottom / _top), calibrated on Cole's first replay recording. Deck advice for the session: put the cards
+we're worst on in Cole's own deck (own plays are labelled exactly): Goblin Curse, Vines, Void; Goblinstein, Spirit
+Empress, Tombstone; Miner, Goblin Drill, the spirits, Mini P.E.K.K.A; plus Hog EQ games (B's deck).
+
+## 2026-10-17/18 · Cole's keyed live games, full retrain (V8, spell v5), fake filter v2
+**Data.** Cole played ~20 ladder games recorded with iPhone Mirroring (3 recordings, 74 min; decks with Goblin Curse /
+Vines / Void and the two-part cards, as suggested). `scripts/replay_runner.py` recorded the 25 newest Battle Log replays
+in BlueStacks over ADB (one "Connection lost" mid-run: Retry Login, rerun with --skip 11). Live recordings processed as
+cole_2026-10-17_{a,b,c} (20 matches), replays by ingest_replays.py (bl_2026-10-17_r01-r25).
+**Pairing** (`scripts/pair_live_replays.py`, bot77.pairing.pair_live_replay): all 20 live games paired, 96-100% of
+Cole's own plays agreeing; order matched Cole's account (newest replay = last game of the last recording). The match
+clock shows whole seconds, so its offset was 1-2 s off and 4 games first missed the 1.5 s window: the offset is now
+refined on the plays (+-3 s in 0.1 s steps, plays within 0.5 s), which also makes the keys' times exact.
+**Split.** Live test (config/live_test_games.json, never trained or tuned on): recording b, 10 games, AND the replays of
+those same games (bl r05-r14; same match, so training on them would leak the test). bot77.holdout.held_out() lists
+every held-out game and every training builder now refuses them. Live training games: recordings a + c (10).
+Note: V5 trained on 46 of the 48 held-back replays (real_v5r), so held-back can't pick detector checkpoints; rule tuning
+on held-back uses V4 detections (V4 never saw them).
+**Training data added:** 770 spell clips from the new games (Vines 36, Goblin Curse 29, Void 18 in Cole's view; opponent
+spells from the keys); 442 clock-spot detector labels (308 replays with the reference check, 134 live -> Cole's review
+kept 109); the 105 mined boxes. Spell clips: `spell_clips.py --only-new` (keeps the existing 16,337).
+**Pod** (4090 Secure, $0.89/h, uu3z2043yui7hq, 10:45-16:09, ~$4.80; terminated): synth_v3 regenerated (48,015), spell
+v5 (14 epochs on 17,107 clips, val macro-F1 0.781), detector V8 (`scripts/katacr/pod_v8.sh`: real_v3 x3 + real_v4 +
+real_v5r + synth + mined x5 + live x3 + replays 10-17, 12 epochs from V5 best; best epoch 7 val mAP50 / 50-95 0.734 /
+0.445 vs V5 0.742 / 0.434), then v2 / v3 / v5 spell probabilities for all 130 streamed games.
+**Spell choice** (right / wrong / fakes): held-back v2+v3 1212 / 160 / 223 vs v2+v5 1206 / 160 / 218; dev v2+v3 430 /
+45 / 203 vs v2+v5 433 / 45 / 203 (live-train favours v5 but v5 trained on those games). Default now split by source:
+v2+v5 for POV recordings (spell_mix25), v2+v3 for replays (REPLAY_SPELL_PROBS).
+**Detector choice:** dev with today's defaults V5 430 / 44 / 182 vs V8 429 / 40 / 190: no gain, V5 stays the POV
+default (pre-registered rule: adopt V8 only if it beats V5 on dev). V8 is reported on the test sets for information.
+**Fake filter v2:** + the 10 live training games (scored with the filter off, so their fakes are visible): dev AUC
+0.648 -> 0.695, held-back 0.869. POV sample weight x5 = same, x15 worse. Default thr 0.6 for both: dev 434 / 47 / 214
+(off) -> 430 / 44 / 182; held-back 1225 / 171 / 326 -> 1213 / 160 / 221.
+**Final check (scored once; defaults: V5 for POV, v2+v5 spells on POV / v2+v3 on replays, fake filter v2 at 0.6)**,
+right / wrong / fakes (share of logged plays that are fake):
+- live test (Cole's recording b, 10 games, 290 plays): yesterday's setup 130 / 23 / 49 (44.8%, 24% fake) ->
+  **148 / 13 / 51 (51.0%, 24% fake)**; V8 dets 147 / 19 / 44 (50.7%)
+- replay test (30): 792 / 119 / 193 (65.6%, 17% fake) -> **785 / 110 / 134 (65.0%, 13% fake)**; V4 dets 806 / 95 / 243 ->
+  799 / 89 / 162 (66.2%, 15% fake); V8 781 / 105 / 148
+- benchmark (116): 72 / 7 / 30 -> **70 / 6 / 24**; V8 69 / 4 / 22
+The filter cuts replay fakes by ~30% for ~1% of right plays; on Cole's own games the gain is the spells (+18 right, wrong
+23 -> 13) while fakes stay ~5 per game. V8 matches V5 (not adopted). Pod total for the project so far ~$10.05.
+**POV fakes, targeted (Cole: "target them the way the rage fix worked"), dev + live-train with today's defaults:**
+205 fakes: 182 on dev, 23 on the 10 live-train games (2.3 per game). By recording: the 09-29 friendlies vs Cole's
+friend 5-9 per game, 10-11 up to 11.5, the 10-17 ladder games 1.7-2.6. Checks:
+- not our own plays: 3 of 64 Curse / Vines / Void fakes have our same card within 8 s;
+- not key gaps: 11 of 182 dev fakes have an unnamed play in the opponent's own hand within 3 s; 128 have nothing;
+- the opponent owns the spell (54 of 64) but didn't play it then; no link to the last real cast (1.5-117 s before);
+- frames: at 4 of 6 Curse / Vines fakes the POV player is dragging a card (placement preview: ghost unit, range circle,
+  card name, red no-deploy overlay). But hud "selected" is equally common at real spells (16-22% vs 18-27%), and only
+  ~20 fakes vs ~11 real spells fall < 2 s before an own play: a weak signal, no clean rule;
+- spell mix without v2-only Curse / Vines: dev -5 fakes / -6 right (kept as is);
+- champions / two-part cards (Goblinstein, Spirit Empress, Tombstone; all in the friendlies, 18-80 s after a real
+  play): wider continuation (any class, 18 tiles, 60-90 s) dev -13 fakes / -37 right; rejected;
+- the weak own-play signal as filter features (own_next / own_prev / own_same_near, fake filter v3): dev AUC 0.697 vs
+  0.695, held-back equal; v2 stays (v3 code kept; older models load with the first 31 features).
+No Rage-like fix exists for these: the remaining POV fakes are spread over many causes. The lever is more keyed POV
+games for the filter (10 games moved its dev AUC 0.648 -> 0.695).
+**2026-10-19/20 session:** Cole recorded 12 games (cole_2026-10-19_a, 46 min, mostly Hog EQ). BlueStacks' ADB was at
+127.0.0.1:5555 this time (emulator-5554 missing; `--device 127.0.0.1:5555`). The runner stopped after 2: BlueStacks had
+lost its connection and showed a stale Battle Log (Cole); force-stopping and relaunching Clash refreshed it. With the
+same deck every game the "recorded before" thumbnail check can misfire, so `replay_runner.py --no-known` skips it.
+ingest_replays.py skips files younger than 2 min, so the replay finished seconds before an ingest needs a second pass.
+All 12 keyed (96-100% of own plays agreeing): live training games 10 -> 22. Waiting for Cole's next session before one
+pod run for spell probabilities and the fake filter retrain.
+**2026-10-20 session + fake filter v4.** Cole recorded 11 games (cole_2026-10-20_a: log bait / Goblin Curse, then
+E-Giant); 12 replays recorded after relaunching Clash in BlueStacks. 8 paired at once; games 1-3 had the same play
+sequence as their replays but the gap drifted 8-13 s over a match in small jumps (the iPhone Mirroring recording
+stalled). Pairing now (a) seeds the offset from the plays too, not only the clock, and (b) when no single offset fits,
+maps time piecewise between in-order card anchors, accepted only if the gap drifts smoothly (<= 4 s between anchors,
+median within 20 s of the clock offset). A first, looser version paired same-deck games with the wrong replays (any
+game with the same 8 own cards lines up by card order) and later replays overwrote earlier keys; now the gap check
+plus a one-to-one choice (best agreement first, each live match and replay once; old keys of the video deleted first)
+gives 11 / 11 with 11 candidates. Live training games: 33 (+ the 10 test games). Spell probabilities for the 24 new
+games on a 10-minute pod (c7arnzrs25daoa, ~$0.15, terminated).
+Fake filter v4: replays + the 33 live training games (scored with the filter off), POV sample weight 3 (x1 and x6
+worse). Dev AUC 0.695 (v2, 10 games) -> 0.724; held-back 0.865. At thr 0.6: held-back 1213 / 160 / 221 -> 1215 / 160 /
+208, dev 430 / 44 / 182 -> 425 / 46 / 165. Live test (recording b, scored once): v2 148 / 13 / 51 (24% of logged plays
+fake) -> **v4 148 / 14 / 29 (15% fake)**: fakes -43% at no cost in right plays.
+
+## 2026-10-20/21 · Fourth session, spell v6, fake filter v5 (not adopted)
+**Data.** cole_2026-10-20_b: 12 Hog EQ games, 12 replays (r23-r34; recorded with --no-known after relaunching Clash; the
+LaCie had to be plugged in for the live file). 12 / 12 paired. Game 12's replay recording started ~9 s late (first play
+missing) and the gap drifted 39 s with one 8.3 s jump, which broke the greedy in-order anchors (the missing first play
+pulled the match onto a later copy of the card). Anchors are now a longest-common-subsequence alignment, and the
+piecewise map is accepted on a steady-gap test measured on true vs false pairs: >= 85% of plays aligned, median step
+<= 1.5 s, >= 60% of steps <= 2 s, max step <= 15 s (true pair: 94%, 0.7 s, 76%, 8.3 s; five same-deck false pairs: <= 72%,
+4.3-9.0 s, 14-29%, 18-34 s). Re-pairing cole_2026-10-20_a with it: 11 / 11, still no extra candidates.
+Live training games: 45 (+ 10 test). Spell clips: +2,381 from 71 games (19,488 total).
+**Pod** hrwfzngjymhgq8 (4090 Secure, 20:56-01:07, ~$3.70: the 10 GB upload was slow; terminated): spell v6, 14 epochs,
+val macro-F1 0.791 (v5 0.781); v2 / v3 / v5 / v6 probabilities for all 168 streamed games.
+**Spell choice** (right / wrong / fakes): dev v2+v5 425 / 46 / 165 vs v2+v3 420 / 46 / 164, v2+v6 418, v2+v5+v6 417: POV
+keeps v2+v5. Held-back v2+v3 1215 / 160 / 207 vs v2+v6 1219 / 159 / 208 vs **v2+v5+v6 1224 / 152 / 201**: the replay
+default is now v2+v5+v6 (REPLAY_SPELL_PROBS = spell_mix256).
+**Fake filter v5** (383 train replays rescored with the new replay spells + 45 live games, filter off): held-back AUC
+0.878, dev 0.709-0.711 (POV weight 1 / 3 / 6). v4 scored on the same tables (`train_fake_filter.py --model-in`): held-back
+0.869, dev 0.724; at 0.6 v4 1224 / 152 / 202 and 425 / 46 / 165 vs v5 (w1) 1223 / 153 / 214 and 426 / 42 / 181. **v4
+stays**: 12 more games did not help this time (dev is 695 plays; the filter may have learned most of what these features
+carry about POV fakes).
+**Test (scored once after the replay spell change):** replay test V5 dets 785 / 110 / 134 -> 774 / 117 / 128, V4 dets
+799 / 89 / 162 -> 800 / 88 / 169 (within noise; held-back had +9). POV defaults unchanged, so the live test stays
+148 / 14 / 29 (15% of logged plays fake) and the benchmark 70 / 6 / 24.
+Note: the session scratchpad lost its held-back id list and shards mid-run; both are rebuilt from config (heldback_replays,
+holdout) whenever needed.

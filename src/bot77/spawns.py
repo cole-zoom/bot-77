@@ -9,12 +9,14 @@ positions are in tiles of the 18-wide arena grid [Wu et al. 2025, §2.3].
 
 from __future__ import annotations
 
+import json
+import os
+
 from collections import Counter
 from dataclasses import dataclass, field
 
 from bot77.detect.names import DEATH_OR_SUMMON, EVO_SYMBOLS, class_to_card
 
-import os
 MIN_CONF = float(os.environ.get("BOT77_MIN_CONF", "0.5"))  # dev-set sweep override
 TRACK_RADIUS_TILES = 1.6  # a detection continues a track within this distance ...
 TRACK_SPEED_TILES_S = 2.5  # ... plus this much per second since the track was last seen
@@ -29,24 +31,31 @@ VOTE_TRACKS = os.environ.get("BOT77_VOTE_TRACKS", "1") == "1"  # dev A/B switch
 # (Bandit + Wall Breakers) stop vanishing into one track; flicker becomes a short extra track in the same group.
 CROSS_CARD = os.environ.get("BOT77_CROSS_CARD", "0") == "1"  # off by default since 2026-10-15
 VOTE_WINDOW_S = float(os.environ.get("BOT77_VOTE_WINDOW", "1.0"))  # only a track's first seconds vote
-CONFIRM_S, CONFIRM_DETS = 2.0, 2  # a birth needs this many detections within this long (1.0 s lost slow-to-detect
+CONFIRM_S, CONFIRM_DETS = float(os.environ.get("BOT77_CONFIRM_S", "2.0")), 2  # a birth needs this many detections within this long (1.0 s lost slow-to-detect
 # new cards on the dev set, 2026-10-10)
 GROUP_S, GROUP_TILES = 1.0, 3.0  # births within this window and distance are one deploy
 EVO_SYMBOL_S, EVO_SYMBOL_TILES = 1.5, 3.0
 RIVER_Y_TILES = 14.9  # river row in KataCR arena-crop tiles (Alina's crop; the same crop geometry for every layout)
-OWN_HALF_MARGIN = 0.8
+OWN_HALF_MARGIN = float(os.environ.get("BOT77_HALF_MARGIN", "0.8"))  # tiles past the river a new unit may be first seen
 # Units that keep spawning others. A birth of a spawned card near a live spawner of the same
 # team is a spawn, not a card being played.
 SPAWNERS = {
     "Goblin Hut": {"Spear Goblins"}, "Tombstone": {"Skeletons"}, "Furnace": {"Fire Spirit"},
     "Barbarian Hut": {"Barbarians"}, "Witch": {"Skeletons"}, "Night Witch": {"Bats"},
-    "Mother Witch": {"Minions"}, "Goblin Cage": {"Goblin Cage"}, "Graveyard": {"Skeletons"},
+    "Mother Witch": {"Minions", "Royal Hogs"}, "Goblin Cage": {"Goblin Cage"}, "Graveyard": {"Skeletons"},
     "Skeleton King": {"Skeletons"}, "Goblin Giant": {"Spear Goblins"}, "Elixir Golem": {"Elixir Golem"},
     "Golem": {"Golem"}, "Lava Hound": {"Lava Hound"}, "Phoenix": {"Phoenix"}, "Goblin Drill": {"Goblins"},
     "Goblin Barrel": {"Goblins"}, "Skeleton Barrel": {"Skeletons"}, "Royal Delivery": {"Royal Recruits"},
     "Barbarian Barrel": {"Barbarians"},
+    "Goblin Curse": {"Goblins"},  # cursed troops that die become Goblins (failure mining, 2026-10-16: dev -2 fakes)
 }
-SPAWN_RADIUS_TILES = 4.0  # troops and buildings can only be placed on the owner's half (plus a little slack)
+# BOT77_EXTRA_SPAWNERS='{"Goblin Curse": ["Goblins"]}' adds spawner pairs (failure-mining A/B tests, 2026-10-16)
+for _k, _v in json.loads(os.environ.get("BOT77_EXTRA_SPAWNERS", "{}")).items():
+    SPAWNERS[_k] = set(SPAWNERS.get(_k, ())) | set(_v)
+SPAWN_RADIUS_TILES = 4.0
+# spawners whose units appear where an enemy troop died, anywhere in their reach (Cole, 2026-10-16): Mother Witch's
+# cursed hogs (range 5.5 tiles + the troop's size)
+SPAWN_RADIUS = {"Mother Witch": float(os.environ.get("BOT77_MW_RADIUS", "7.0"))}
 
 
 @dataclass
@@ -144,9 +153,30 @@ def track_units(dets: list[dict], card_names: list[str], tile_px: float, is_buil
     return ended + active
 
 
-def _on_own_half(tr: Track) -> bool:
+TOWER_CLASSES = {"queen-tower", "cannoneer-tower", "dagger-duchess-tower"}
+POCKET_TILES = 4.0  # once a princess tower falls, the other side may place this far past the river in that lane (Cole)
+
+
+def towers_down(dets: list[dict], tile_px: float) -> dict[tuple[str, str], float]:
+    """{(team, "L"/"R"): time the princess tower fell}: its detections stop well before the match's last frame."""
+    last: dict[tuple[str, str], float] = {}
+    for d in dets:
+        if d["cls"] in TOWER_CLASSES:
+            k = (d["team"], "L" if (d["x0"] + d["x1"]) / 2 / tile_px < 9 else "R")
+            last[k] = max(last.get(k, -1.0), d["t_video"])
+    end = max((d["t_video"] for d in dets), default=0.0)
+    return {k: t for k, t in last.items() if t < end - 5.0}
+
+
+def _on_own_half(tr: Track, margin: float | None = None, down: dict | None = None) -> bool:
+    m = OWN_HALF_MARGIN if margin is None else margin
+    if down:  # pocket: the defender's tower on this lane is down
+        defender = "friendly" if tr.team == "enemy" else "enemy"
+        fell = down.get((defender, "L" if tr.dets[0][1] < 9 else "R"))
+        if fell is not None and tr.first_t > fell:
+            m = max(m, POCKET_TILES)
     y = tr.dets[0][2]
-    return y >= RIVER_Y_TILES - OWN_HALF_MARGIN if tr.team == "friendly" else y <= RIVER_Y_TILES + OWN_HALF_MARGIN
+    return y >= RIVER_Y_TILES - m if tr.team == "friendly" else y <= RIVER_Y_TILES + m
 
 
 def _spawned(tr: Track, tracks: list[Track]) -> bool:
@@ -154,13 +184,15 @@ def _spawned(tr: Track, tracks: list[Track]) -> bool:
     for o in tracks:
         if o is tr or o.team != tr.team or tr.card not in SPAWNERS.get(o.card, ()):
             continue
-        if o.first_t < tr.first_t <= o.last_t + 0.5 and ((o.x - tr.x) ** 2 + (o.y - tr.y) ** 2) ** 0.5 <= SPAWN_RADIUS_TILES:
+        if o.first_t < tr.first_t <= o.last_t + 0.5 and ((o.x - tr.x) ** 2 + (o.y - tr.y) ** 2) ** 0.5 <= \
+                SPAWN_RADIUS.get(o.card, SPAWN_RADIUS_TILES):
             return True
     return False
 
 
 def deploys(dets: list[dict], card_names: list[str], tile_px: float, is_building, is_spell=lambda c: False,
-            origin: tuple[float, float] = (0.0, 0.0), spell_team: str | None = None, split_min_dets: int = 0) -> list[Deploy]:
+            origin: tuple[float, float] = (0.0, 0.0), spell_team: str | None = None, split_min_dets: int = 0,
+            half_margin: float | None = None, pocket: bool = False) -> list[Deploy]:
     """`origin`: the detector crop's top-left in frame pixels, so positions are arena tiles.
     `spell_team`: give every spell detection this team. Spells carry no badge, so their team is guessed from the
     screen half, but an opponent's Void/Curse/Vines lands on OUR half (dev set, 2026-10-11: 16 of 20 detected Voids
@@ -170,11 +202,12 @@ def deploys(dets: list[dict], card_names: list[str], tile_px: float, is_building
     if spell_team:
         dets = [{**d, "team": spell_team} if is_spell(class_to_card(d["cls"], card_names)[0]) else d for d in dets]
     tracks = track_units(dets, card_names, tile_px, is_building)
+    down = towers_down(dets, tile_px) if pocket else None
     # Troops and buildings are placed on the owner's half; a unit first seen past the river
     # walked, dashed or resurfaced there (e.g. Mighty Miner's ability). Spells go anywhere.
     births = [tr for tr in tracks if not tr.resumed and
               sum(1 for t, _, _ in tr.dets if t - tr.first_t <= CONFIRM_S) >= CONFIRM_DETS and
-              (is_spell(tr.card) or _on_own_half(tr)) and not _spawned(tr, tracks)]
+              (is_spell(tr.card) or _on_own_half(tr, half_margin, down)) and not _spawned(tr, tracks)]
     births.sort(key=lambda tr: tr.first_t)
     symbols = [((d["x0"] + d["x1"]) / 2 / tile_px, (d["y0"] + d["y1"]) / 2 / tile_px, d["t_video"], d["team"])
                for d in dets if d["cls"] in EVO_SYMBOLS and d["conf"] >= MIN_CONF]
@@ -292,6 +325,34 @@ def resolve_composites(events: list[Deploy]) -> list[Deploy]:
                 if e.card_votes and max(e.card_votes, key=e.card_votes.get) == single and e.units >= min_units:
                     e.card_votes = {composite: sum(e.card_votes.values())}
         e.card = max(e.card_votes, key=e.card_votes.get) if e.card_votes else None
+    return events
+
+
+def composites_by_peak(events: list[Deploy], dets: list[dict], tile_px: float, origin: tuple[float, float],
+                       rules: dict, window: tuple[float, float] = (-0.5, 3.0), radius: float = 5.0) -> list[Deploy]:
+    """Swarm cards told apart by how many units are on screen at once. A deploy's `units` is its track count, which is
+    ~1 for a swarm (15 skeletons share a track or two), so COMPOSITES rarely fires: true Skeleton Army reads as
+    Skeletons 89 times in the keyed replays. The peak per-frame count of the unit's boxes near the deploy separates
+    them (Skeletons <= 3, Army 4-13; Minions <= 3, Horde 3-6). rules: {single: [det class, min peak, composite]}
+    (failure mining, 2026-10-16)."""
+    if not rules:
+        return events
+    ox, oy = origin
+    by_cls: dict[str, list[tuple[float, float, float]]] = {}
+    want = {v[0] for v in rules.values()}
+    for d in dets:
+        if d["team"] == "enemy" and d["cls"] in want:
+            by_cls.setdefault(d["cls"], []).append((d["t_video"], ((d["x0"] + d["x1"]) / 2 - ox) / tile_px,
+                                                    ((d["y0"] + d["y1"]) / 2 - oy) / tile_px))
+    for e in events:
+        if e.team != "enemy" or e.card not in rules:
+            continue
+        cls, need, comp = rules[e.card]
+        per_frame = Counter(round(t, 2) for t, x, y in by_cls.get(cls, ())
+                            if window[0] <= t - e.t <= window[1] and ((x - e.x) ** 2 + (y - e.y) ** 2) ** 0.5 <= radius)
+        if per_frame and max(per_frame.values()) >= need:
+            e.card_votes = {comp: sum(e.card_votes.values())}
+            e.card = comp
     return events
 
 

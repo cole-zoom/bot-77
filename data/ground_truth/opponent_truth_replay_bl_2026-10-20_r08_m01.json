@@ -1,0 +1,173 @@
+{
+ "video_id": "bl_2026-10-20_r08",
+ "side": "opponent",
+ "matches": [
+  "bl_2026-10-20_r08_m01"
+ ],
+ "items": [
+  {
+   "match_id": "bl_2026-10-20_r08_m01",
+   "t_video": 14.3,
+   "label": "Inferno Dragon",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r08_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "bl_2026-10-20_r08_m01",
+   "t_video": 24.4,
+   "label": "Night Witch",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r08_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "bl_2026-10-20_r08_m01",
+   "t_video": 37.4,
+   "label": "Baby Dragon",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r08_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "bl_2026-10-20_r08_m01",
+   "t_video": 42.3,
+   "label": "Skeleton King",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r08_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "bl_2026-10-20_r08_m01",
+   "t_video": 50.9,
+   "label": "__ability",
+   "form": null,
+   "source": "POV of bl_2026-10-20_r08_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "bl_2026-10-20_r08_m01",
+   "t_video": 64.4,
+   "label": "Electro Dragon",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r08_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "bl_2026-10-20_r08_m01",
+   "t_video": 78.8,
+   "label": "Inferno Dragon",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r08_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "bl_2026-10-20_r08_m01",
+   "t_video": 90.1,
+   "label": "Night Witch",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r08_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "bl_2026-10-20_r08_m01",
+   "t_video": 97.7,
+   "label": "Baby Dragon",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r08_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "bl_2026-10-20_r08_m01",
+   "t_video": 111.0,
+   "label": "Earthquake",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r08_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "bl_2026-10-20_r08_m01",
+   "t_video": 115.5,
+   "label": "Skeleton King",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r08_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "bl_2026-10-20_r08_m01",
+   "t_video": 127.0,
+   "label": "Elixir Collector",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r08_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "bl_2026-10-20_r08_m01",
+   "t_video": 135.3,
+   "label": "Golem",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r08_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "bl_2026-10-20_r08_m01",
+   "t_video": 145.1,
+   "label": "Night Witch",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r08_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "bl_2026-10-20_r08_m01",
+   "t_video": 152.6,
+   "label": "Baby Dragon",
+   "form": "evo",
+   "source": "POV of bl_2026-10-20_r08_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "bl_2026-10-20_r08_m01",
+   "t_video": 156.0,
+   "label": "Skeleton King",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r08_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "bl_2026-10-20_r08_m01",
+   "t_video": 158.1,
+   "label": "Electro Dragon",
+   "form": "evo",
+   "source": "POV of bl_2026-10-20_r08_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "bl_2026-10-20_r08_m01",
+   "t_video": 166.5,
+   "label": "Inferno Dragon",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r08_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "bl_2026-10-20_r08_m01",
+   "t_video": 175.1,
+   "label": "Golem",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r08_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "bl_2026-10-20_r08_m01",
+   "t_video": 179.1,
+   "label": "Earthquake",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r08_top_m01",
+   "source_confidence": "high"
+  }
+ ],
+ "paired_with": "bl_2026-10-20_r08_top_m01",
+ "offset_s": 0.0,
+ "auto": true,
+ "source": "replay"
+}

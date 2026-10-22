@@ -57,16 +57,16 @@
    "match_id": "tv_2026-10-13_r185_m01",
    "t_video": 58.2,
    "label": "Knight",
-   "form": "normal",
-   "source": "POV of tv_2026-10-13_r185_top_m01",
+   "form": null,
+   "source": "next-card advance in tv_2026-10-13_r185_top_m01",
    "source_confidence": "medium"
   },
   {
    "match_id": "tv_2026-10-13_r185_m01",
    "t_video": 58.2,
    "label": "Knight",
-   "form": null,
-   "source": "next-card advance in tv_2026-10-13_r185_top_m01",
+   "form": "normal",
+   "source": "POV of tv_2026-10-13_r185_top_m01",
    "source_confidence": "medium"
   },
   {

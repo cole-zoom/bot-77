@@ -408,18 +408,18 @@
   {
    "match_id": "tv_2026-10-12_r03_m01",
    "t_video": 290.3,
-   "label": "Knight",
-   "form": "normal",
-   "source": "POV of tv_2026-10-12_r03_top_m01",
-   "source_confidence": "low"
-  },
-  {
-   "match_id": "tv_2026-10-12_r03_m01",
-   "t_video": 290.3,
    "label": "Ice Wizard",
    "form": null,
    "source": "next-card advance in tv_2026-10-12_r03_top_m01",
    "source_confidence": "medium"
+  },
+  {
+   "match_id": "tv_2026-10-12_r03_m01",
+   "t_video": 290.3,
+   "label": "Knight",
+   "form": "normal",
+   "source": "POV of tv_2026-10-12_r03_top_m01",
+   "source_confidence": "low"
   },
   {
    "match_id": "tv_2026-10-12_r03_m01",

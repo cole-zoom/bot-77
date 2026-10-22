@@ -201,16 +201,16 @@
    "match_id": "tv_2026-10-12_r13_m01",
    "t_video": 155.3,
    "label": "Skeleton Army",
-   "form": "evo",
-   "source": "POV of tv_2026-10-12_r13_top_m01",
+   "form": null,
+   "source": "next-card advance in tv_2026-10-12_r13_top_m01",
    "source_confidence": "medium"
   },
   {
    "match_id": "tv_2026-10-12_r13_m01",
    "t_video": 155.3,
    "label": "Skeleton Army",
-   "form": null,
-   "source": "next-card advance in tv_2026-10-12_r13_top_m01",
+   "form": "evo",
+   "source": "POV of tv_2026-10-12_r13_top_m01",
    "source_confidence": "medium"
   },
   {
@@ -520,17 +520,17 @@
   {
    "match_id": "tv_2026-10-12_r13_m01",
    "t_video": 283.1,
-   "label": "__ability",
+   "label": "Skeleton Army",
    "form": null,
-   "source": "POV of tv_2026-10-12_r13_top_m01",
+   "source": "next-card advance in tv_2026-10-12_r13_top_m01",
    "source_confidence": "medium"
   },
   {
    "match_id": "tv_2026-10-12_r13_m01",
    "t_video": 283.1,
-   "label": "Skeleton Army",
+   "label": "__ability",
    "form": null,
-   "source": "next-card advance in tv_2026-10-12_r13_top_m01",
+   "source": "POV of tv_2026-10-12_r13_top_m01",
    "source_confidence": "medium"
   },
   {

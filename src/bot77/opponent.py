@@ -25,6 +25,73 @@ CHAMPIONS = {"Archer Queen", "Golden Knight", "Skeleton King", "Mighty Miner", "
 SPELL_TEAM = os.environ.get("BOT77_SPELL_TEAM", "enemy") or None  # "" = old screen-half rule (dev A/B)
 
 THUMB_DELAY_S = 0.5
+# failure mining (scripts/build_failures.py): BOT77_STAGES=1 keeps a snapshot of the enemy deploys after each stage,
+# STAGES[match_id] = [(stage, [(t_first_seen, card), ...]), ...], to say which stage lost a play the detector saw
+STAGES: dict = {}
+_STAGES_ON = os.environ.get("BOT77_STAGES") == "1"
+
+
+def _snap(match_id: str, stage: str, evs) -> None:
+    if _STAGES_ON:
+        STAGES.setdefault(match_id, []).append((stage, [(getattr(e, "t_seen", e.t), e.card, dict(e.card_votes)) for e in evs]))
+
+
+def _elixir_check(enemy, cards, hud, match_id, cfg):
+    """bot77.elixir: drop plays the opponent couldn't have afforded (failure mining, 2026-10-16)."""
+    from bot77.elixir import check
+    elixir = {c["name"]: c["elixir"] for c in cards}
+    ability = {c["name"]: c["ability_cost"] for c in cards}
+    last = None
+    for e in sorted(enemy, key=lambda e: e.t):
+        if e.card == "__ability":
+            names = [c[: -len(" ability")] for c in e.classes if c.endswith(" ability")]
+            e._cost = (ability.get(names[0]) if names else None) or 1
+        elif e.card == "Mirror":
+            e._cost = (elixir.get(last) or 0) + 1 if last else None
+        else:
+            e._cost = elixir.get(e.card)
+            if e.card:
+                last = e.card
+    tl = sorted((r["t_video"], r["t_match"], r["multiplier"]) for r in hud.search().where(f"match_id = '{match_id}'")
+                .limit(10**6).select(["t_video", "t_match", "multiplier"]).to_arrow().to_pylist())
+    start = cfg["start"] if tl and tl[0][1] is not None and tl[0][1] < 3 else 10.0  # joined mid-match: assume full
+    kept, _ = check(enemy, [(t, mu) for t, _, mu in tl], lambda e: e._cost, start, tol=cfg["tol"], burst_s=cfg["burst_s"],
+                     policy=cfg.get("policy", "pair"), pair_s=cfg.get("pair_s", 4.0))
+    return kept
+
+
+_FF = {}
+
+
+def _fake_filter(enemy, deck, cards, hud, match_id, cfg, replay, own=()):
+    """bot77.fakefilter: drop plays the learned filter calls fake (failure mining, 2026-10-16)."""
+    import pickle
+    from bot77.fakefilter import as_row, features
+    if cfg["model"] not in _FF:
+        _FF[cfg["model"]] = pickle.loads(Path(cfg["model"]).read_bytes())["model"]
+    if not enemy:
+        return enemy
+    rows = [as_row(e) for e in sorted(enemy, key=lambda e: e.t)]
+    tl = [(r["t_video"], r["t_match"], r["multiplier"]) for r in hud.search().where(f"match_id = '{match_id}'")
+          .limit(10**6).select(["t_video", "t_match", "multiplier"]).to_arrow().to_pylist()]
+    X = features(rows, list(deck), tl, {c["name"]: c for c in cards}, own)
+    if X.shape[1] != _FF[cfg["model"]].n_features_in_:  # a model trained before the own-play features
+        X = X[:, :_FF[cfg["model"]].n_features_in_]
+    p = _FF[cfg["model"]].predict_proba(X)[:, 1]
+    thr = cfg["thr"] if replay else cfg["thr_pov"]
+    return [e for e, q in zip(sorted(enemy, key=lambda e: e.t), p) if q < thr]
+
+
+def merged_rules_(rules):
+    from bot77.playrules import merged_rules
+    return merged_rules(rules)
+
+
+def _half_margin(rules, layout_id):
+    if rules is None:
+        return None
+    from bot77.playrules import merged_rules, replay_rules
+    return merged_rules(replay_rules(rules) if layout_id.startswith("replay") else rules)["half_margin"]
 
 
 def _split_dets(rules):
@@ -50,7 +117,8 @@ def opponent_events(video_id: str, db_dir: Path, matches: list[int] | None = Non
     db = lancedb.connect(db_dir)
     video = db.open_table("videos").search().where(f"video_id = '{video_id}'").to_arrow().to_pylist()[0]
     layout = Layout.load(video["layout_id"])
-    cards = db.open_table("cards").search().where("kind = 'deck_card'").limit(1000).select(["name", "type"]).to_arrow().to_pylist()
+    cards = db.open_table("cards").search().where("kind = 'deck_card'").limit(1000).select(
+        ["name", "type", "elixir", "ability_cost"]).to_arrow().to_pylist()
     names = [c["name"] for c in cards]
     ctype = {c["name"]: c["type"] for c in cards}
     ax0, ay0, ax1, ay1 = layout.katacr_arena
@@ -65,16 +133,30 @@ def opponent_events(video_id: str, db_dir: Path, matches: list[int] | None = Non
         dets = db.open_table(det_table).search().where(f"match_id = '{m['match_id']}'").limit(10**7).to_arrow().to_pylist()
         if not dets:
             continue
+        if rules is not None:
+            from bot77.playrules import merged_rules as _mr
+            ign = set(_mr(rules)["det_ignore"])
+            if ign:  # detector classes that fire on other cards' effects (failure mining, 2026-10-16)
+                dets = [d for d in dets if d["cls"] not in ign]
         ev = deploys(dets, names, tile, lambda c: ctype.get(c) == "building", lambda c: ctype.get(c) == "spell", (ax0, ay0),
                      spell_team=SPELL_TEAM,
-                     split_min_dets=_split_dets(rules))
+                     split_min_dets=_split_dets(rules),
+                     half_margin=_half_margin(rules, video["layout_id"]),
+                     pocket=rules is not None and merged_rules_(rules)["pocket"])
         pov_all = [(p["t_video"], p["card"]) for p in db.open_table("events").search()
                    .where(f"match_id = '{m['match_id']}' AND kind = 'play'").limit(10**5).select(["t_video", "card"])
                    .to_arrow().to_pylist()]
         pov = [(p["t_video"], p["card"]) for p in db.open_table("events").search()
                .where(f"match_id = '{m['match_id']}'").limit(10**5).select(["t_video", "card"]).to_arrow().to_pylist()
                if p["card"]]
-        enemy, dropped = drop_pov_units(resolve_composites([e for e in ev if e.team == "enemy"]), pov)
+        _snap(m["match_id"], "tracking", [e for e in ev if e.team == "enemy"])
+        enemy = resolve_composites([e for e in ev if e.team == "enemy"])
+        if rules is not None:
+            from bot77.playrules import merged_rules as _mr
+            from bot77.spawns import composites_by_peak
+            enemy = composites_by_peak(enemy, dets, tile, (ax0, ay0), _mr(rules)["composite_peak"])
+        enemy, dropped = drop_pov_units(enemy, pov)
+        _snap(m["match_id"], "own_units", enemy)
         abil = []
         if rules is not None:  # play rules v2 (bot77.playrules); {} = defaults
             from bot77.playrules import apply_rules, merged_rules, replay_rules
@@ -84,7 +166,9 @@ def opponent_events(video_id: str, db_dir: Path, matches: list[int] | None = Non
             if cr["on"]:
                 from bot77.clocks import fuse_clocks
                 enemy = fuse_clocks(enemy, dets, names, tile, (ax0, ay0), pov, lambda c: ctype.get(c) == "spell", cr)
+            _snap(m["match_id"], "clocks", enemy)
             enemy = apply_rules(enemy, pov, ctype, rules)
+            _snap(m["match_id"], "rules", enemy)
             mr = merged_rules(rules)
             if mr["spell_probs"]:  # spell stage (bot77.spells): classifier spell plays replace/join the detector's
                 from bot77.spells import load_probs, merge_spells, spell_peaks
@@ -98,6 +182,13 @@ def opponent_events(video_id: str, db_dir: Path, matches: list[int] | None = Non
                     enemy = merge_spells(enemy, peaks, pov, lambda c: ctype.get(c) == "spell", any_own=mr["spell_any_own"],
                                          own_abilities=own_ab, ability_thr=mr["spell_ability_thr"],
                                          unnamed_own=[t for t, c in pov_all if not c] if mr["spell_unnamed_own"] else ())
+        if rules is not None and merged_rules(rules)["det_shadow"]:
+            # a detector-only call of one of these classes with another spell within the window is that spell's circle
+            # (e.g. "rage" on Poison / Curse / Tornado areas), not a play (failure mining, 2026-10-16)
+            shadow = merged_rules(rules)["det_shadow"]
+            spells_ = [e for e in enemy if e.card and ctype.get(e.card) == "spell"]
+            enemy = [e for e in enemy if not (e.card in shadow and "spell-stage" not in e.classes and any(
+                o is not e and o.card != e.card and abs(o.t - e.t) <= shadow[e.card] for o in spells_))]
         # spell-stage ability plays stay out of deck inference and card re-picking; they rejoin after
         abil = [e for e in enemy if e.card == "__ability" and "spell-stage" in e.classes]
         enemy = [e for e in enemy if not (e.card == "__ability" and "spell-stage" in e.classes)]
@@ -135,6 +226,12 @@ def opponent_events(video_id: str, db_dir: Path, matches: list[int] | None = Non
                     e.card = "Mirror"
                 prev = e
         enemy = sorted(enemy + abil, key=lambda e: e.t)
+        if rules is not None and merged_rules(rules)["elixir_check"]["on"]:
+            enemy = _elixir_check(enemy, cards, hud, m["match_id"], merged_rules(rules)["elixir_check"])
+        if rules is not None and merged_rules(rules)["fake_filter"]["model"]:
+            enemy = _fake_filter(enemy, deck, cards, hud, m["match_id"], merged_rules(rules)["fake_filter"],
+                                 video["layout_id"].startswith("replay"), [(t, c) for t, c in pov_all])
+        _snap(m["match_id"], "final", enemy)
         clock = sorted(hud.search().where(f"match_id = '{m['match_id']}'").limit(10**7).select(["t_video", "t_match"])
                        .to_arrow().to_pylist(), key=lambda r: r["t_video"])
         for k, e in enumerate(enemy):

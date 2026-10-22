@@ -1,0 +1,189 @@
+{
+ "video_id": "bl_2026-10-20_r19",
+ "side": "opponent",
+ "matches": [
+  "bl_2026-10-20_r19_m01"
+ ],
+ "items": [
+  {
+   "match_id": "bl_2026-10-20_r19_m01",
+   "t_video": 11.3,
+   "label": "Electro Dragon",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r19_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "bl_2026-10-20_r19_m01",
+   "t_video": 22.3,
+   "label": "Tornado",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r19_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "bl_2026-10-20_r19_m01",
+   "t_video": 31.2,
+   "label": "Tesla",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r19_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "bl_2026-10-20_r19_m01",
+   "t_video": 38.8,
+   "label": "Knight",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r19_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "bl_2026-10-20_r19_m01",
+   "t_video": 45.8,
+   "label": "Lumberjack",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r19_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "bl_2026-10-20_r19_m01",
+   "t_video": 57.0,
+   "label": "Golden Knight",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r19_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "bl_2026-10-20_r19_m01",
+   "t_video": 68.5,
+   "label": "__ability",
+   "form": null,
+   "source": "POV of bl_2026-10-20_r19_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "bl_2026-10-20_r19_m01",
+   "t_video": 71.4,
+   "label": "Tornado",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r19_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "bl_2026-10-20_r19_m01",
+   "t_video": 89.3,
+   "label": "Tesla",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r19_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "bl_2026-10-20_r19_m01",
+   "t_video": 97.3,
+   "label": "Knight",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r19_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "bl_2026-10-20_r19_m01",
+   "t_video": 101.6,
+   "label": "Lumberjack",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r19_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "bl_2026-10-20_r19_m01",
+   "t_video": 113.1,
+   "label": "Inferno Dragon",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r19_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "bl_2026-10-20_r19_m01",
+   "t_video": 122.1,
+   "label": "Tornado",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r19_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "bl_2026-10-20_r19_m01",
+   "t_video": 140.2,
+   "label": "Golem",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r19_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "bl_2026-10-20_r19_m01",
+   "t_video": 145.6,
+   "label": "Electro Dragon",
+   "form": "evo",
+   "source": "POV of bl_2026-10-20_r19_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "bl_2026-10-20_r19_m01",
+   "t_video": 150.9,
+   "label": "Knight",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r19_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "bl_2026-10-20_r19_m01",
+   "t_video": 157.6,
+   "label": "Inferno Dragon",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r19_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "bl_2026-10-20_r19_m01",
+   "t_video": 165.2,
+   "label": "Lumberjack",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r19_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "bl_2026-10-20_r19_m01",
+   "t_video": 170.3,
+   "label": "Tornado",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r19_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "bl_2026-10-20_r19_m01",
+   "t_video": 176.4,
+   "label": "Electro Dragon",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r19_top_m01",
+   "source_confidence": "high"
+  },
+  {
+   "match_id": "bl_2026-10-20_r19_m01",
+   "t_video": 180.6,
+   "label": "Knight",
+   "form": "normal",
+   "source": "POV of bl_2026-10-20_r19_top_m01",
+   "source_confidence": "medium"
+  },
+  {
+   "match_id": "bl_2026-10-20_r19_m01",
+   "t_video": 187.3,
+   "label": "Inferno Dragon",
+   "form": "evo",
+   "source": "POV of bl_2026-10-20_r19_top_m01",
+   "source_confidence": "high"
+  }
+ ],
+ "paired_with": "bl_2026-10-20_r19_top_m01",
+ "offset_s": 0.0,
+ "auto": true,
+ "source": "replay"
+}
