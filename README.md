@@ -1,5 +1,7 @@
 # bot-77
 
+What we're doing next: [ROADMAP.md](ROADMAP.md).
+
 A Clash Royale AI built from gameplay footage, in three steps:
 
 - **C — analysis engine.** Turns recorded games into a play-by-play event log in LanceDB: both players' cards, times and
@@ -51,6 +53,8 @@ art override from a frame (`data/cards/art_overrides/<Card>__normal.png`, see de
 ```bash
 uv run python scripts/live_play.py --games 1                 # one game — watch it the first time
 uv run python scripts/live_play.py --games 40 --hours 4      # a session
+caffeinate -i -s uv run python scripts/live_session.py --hours 2   # a long session: chunks of 20 games, replays
+                                                                    # pulled between chunks, all output in the terminal
 ```
 
 The bot taps **Battle** from the home screen (or joins a battle already on screen), plays, taps through the end

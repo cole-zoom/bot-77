@@ -1,9 +1,10 @@
 # Card roles for board features (bot77.board, 2026-10-22). Written from general Clash Royale knowledge by Claude for
-# Cole to correct; cards I wasn't sure of (newer cards) are left out, which only means their role features are 0.
+# Cole to correct. Newer cards marked  # guess  are Claude's guesses, waiting on Cole.
 # Spell kill lists live in config/playbook_rules.yaml (spells:), shared with the rules.
 
 air: [Baby Dragon, Balloon, Bats, Electro Dragon, Flying Machine, Inferno Dragon, Lava Hound, Mega Minion, Minion Horde,
       Minions, Phoenix, Skeleton Dragons, Skeleton Barrel]
+# guess: Spirit Empress is air in its expensive form, ground in its cheap one -- left out
 
 # can't hit air units
 ground_only: [Bandit, Barbarians, Battle Ram, Bomber, Bowler, Cannon Cart, Dark Prince, Elite Barbarians, Electro Giant,
@@ -11,15 +12,18 @@ ground_only: [Bandit, Barbarians, Battle Ram, Bomber, Bowler, Cannon Cart, Dark 
               Knight, Lumberjack, Mega Knight, Mighty Miner, Miner, Mini P.E.K.K.A, Monk, P.E.K.K.A, Prince, Ram Rider,
               Royal Ghost, Royal Giant, Royal Hogs, Royal Recruits, Skeleton Army, Skeletons, Skeleton King, Sparky,
               Valkyrie, Wall Breakers, Bomb Tower, Cannon, Mortar, X-Bow, Goblin Drill, Barbarian Hut, Tombstone,
-              Goblin Cage, Elixir Collector, The Log, Earthquake, Barbarian Barrel]
+              Goblin Cage, Elixir Collector, The Log, Earthquake, Barbarian Barrel,
+              Berserker, Boss Bandit, Goblin Demolisher, Rune Giant, Goblinstein, Suspicious Bush]  # last line: guess
 
-# go for buildings / towers: the pushes
+# Cole (2026-10-22): the card you rely on to do damage to the tower -- not "targets buildings" (P.E.K.K.A is one)
 win_conditions: [Hog Rider, Royal Hogs, Ram Rider, Battle Ram, Giant, Golem, Electro Giant, Goblin Giant, Lava Hound,
                  Balloon, Elixir Golem, Wall Breakers, Royal Giant, Mega Knight, P.E.K.K.A, Goblin Drill, Skeleton Barrel,
-                 Goblin Barrel, Miner, Graveyard, X-Bow, Mortar, Sparky]
+                 Goblin Barrel, Miner, Graveyard, X-Bow, Mortar, Sparky, Three Musketeers,
+                 Suspicious Bush, Rune Giant, Goblinstein]  # last line: guess
 
 tanks: [Giant, Golem, Royal Giant, Goblin Giant, Electro Giant, Elixir Golem, Lava Hound, P.E.K.K.A, Mega Knight,
-        Giant Skeleton, Ice Golem]
+        Giant Skeleton, Ice Golem,
+        Rune Giant, Goblinstein]  # last line: guess
 
 # many small units: what small spells are for
 swarm: [Skeletons, Skeleton Army, Goblins, Goblin Gang, Spear Goblins, Minions, Minion Horde, Bats, Barbarians, Guards,
@@ -28,4 +32,5 @@ swarm: [Skeletons, Skeleton Army, Goblins, Goblin Gang, Spear Goblins, Minions, 
 # shoot from range: placed away from what they shoot
 ranged: [Musketeer, Archers, Wizard, Electro Wizard, Ice Wizard, Dart Goblin, Princess, Firecracker, Magic Archer,
          Executioner, Witch, Mother Witch, Baby Dragon, Spear Goblins, Hunter, Three Musketeers, Archer Queen,
-         Electro Dragon, Flying Machine, Little Prince, Zappies, Bowler]
+         Electro Dragon, Flying Machine, Little Prince, Zappies, Bowler,
+         Goblin Demolisher]  # last line: guess

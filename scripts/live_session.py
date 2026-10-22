@@ -64,11 +64,16 @@ while time.time() < end and not STOP_FILE.exists():
     tab = battle_tab(im) if im is not None else None
     if tab:
         dev.tap(*tab); time.sleep(3)
-    try:
-        rr = subprocess.run([sys.executable, "scripts/replay_runner.py", "-n", str(played), "--no-known", "--device", a.device],
-                            capture_output=True, text=True, timeout=40 * 60)
-        print(f"== replays pulled: {rr.stdout.strip().splitlines()[-1] if rr.stdout.strip() else rr.stderr[-300:]}", flush=True)
-    except subprocess.TimeoutExpired:
-        print("== replay pull timed out", flush=True)
+    # the replay runner's output streams to the terminal (2026-10-22, Cole: "make it output everything to terminal")
+    print(f"== pulling the replays of this chunk's {played} games from the Battle Log", flush=True)
+    rr = subprocess.Popen([sys.executable, "-u", "scripts/replay_runner.py", "-n", str(played), "--no-known", "--device", a.device],
+                          stdout=subprocess.PIPE, stderr=subprocess.STDOUT, text=True)
+    t_pull = time.time()
+    for line in rr.stdout:
+        print(ui.c(f"   [replays] {line.rstrip()}", "grey"), flush=True)
+        if time.time() - t_pull > 40 * 60:
+            rr.kill(); print("== replay pull timed out (40 min)", flush=True); break
+    rr.wait()
+    print(f"== replays pulled (exit {rr.returncode})", flush=True)
     recover_adb(a.device)  # the replay runner's scrcpy can outlive it and wedge ADB for the next chunk
 print(f"session done: {total} games", flush=True)
