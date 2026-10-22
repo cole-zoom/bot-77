@@ -2344,3 +2344,14 @@ carry about POV fakes).
 148 / 14 / 29 (15% of logged plays fake) and the benchmark 70 / 6 / 24.
 Note: the session scratchpad lost its held-back id list and shards mid-run; both are rebuilt from config (heldback_replays,
 holdout) whenever needed.
+
+## 2026-10-21 · Step A starts: move predictor v1 (Cole: "make the commit, and build it out")
+Committed C (dc6b2c7). Correction to what I told Cole the night before: per the 09-24 plan, A is the **pro move
+predictor** (what a strong player plays next; B's starting policy), not an opponent-play predictor. For the acting
+player their own hand, elixir and plays are exact; C only supplies the opponent's history.
+A v1 predicts which of the 4 hand cards is played (docs/move-predictor-spec.md). 24,142 decisions from both players of
+471 keyed replays (`move_samples`). Held-back: random 24.0%, best rule 35.8%, A v1 44.2% top-1 / 72.9% top-2; adding
+response rates (card chosen right after the opponent's / own last card, cross-fitted by game) -> **46.6% / 76.0%**.
+Test, scored once: **44.0% / 72.9%** (top ladder 42.0% / 73.1%). With the opponent's history from C instead of the
+key: held-back 43.6 -> 43.9%, test 43.4 -> 41.1% top-1, top-2 unchanged: C's noise costs A little, because A v1
+mostly uses the player's own state. Next: when, where, and board state / opponent elixir from C.
