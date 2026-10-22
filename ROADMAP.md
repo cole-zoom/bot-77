@@ -42,7 +42,24 @@ caffeinate -i -s uv run python scripts/live_session.py --hours 2
 
 ---
 
-## Next steps
+## Now: get organised (bot sessions paused, Cole 2026-10-22)
+
+We have hundreds of GB of data and it's glued together. Before more sessions or models: rebuild the training data
+infrastructure per **[docs/training-architecture.md](docs/training-architecture.md)**: LanceDB tables for
+matches / observations / moments / labels, one feature library, a models registry, storage tiers (laptop vs LaCie),
+and a data browser (TypeScript + React + Tailwind front end, FastAPI back end). Phases 0–3 must reproduce today's
+numbers before anything new is trained.
+
+- [ ] Phase 0 — inventory + archive (old experiment tables to the LaCie, `unit_crops` old versions dropped: ~57 GB)
+- [ ] Phase 1 — sources + observations (`matches` columns, `detections`, `plays`, `media`)
+- [ ] Phase 2 — moments + labels + reviews (A v1 reproduces 46.6% held-back from the new tables)
+- [ ] Phase 3 — feature library + registry (live bot switched to it, dry run unchanged)
+- [ ] Phase 4 — data browser
+- [ ] Phase 5 — models registry
+- [ ] Phase 6 — new models (card + timing with wait, reviews as weighted labels)
+- [ ] Then resume the loop below with session 2.
+
+## Next steps (after the rebuild)
 
 - [ ] **Session 2 (rules on), 2 h** — first real test of the playbook rules. Every play now also logs the whole
       board and the placement model's spot.
