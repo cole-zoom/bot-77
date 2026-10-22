@@ -62,6 +62,8 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--since", default="", help="only games whose id date is on/after this (YYYY-MM-DD)")
     ap.add_argument("--per-page", type=int, default=150)
+    ap.add_argument("--losses", action="store_true", help="only lost games (data/live/game_results.json or bot_games)")
+    ap.add_argument("--max-plays", type=int, default=0, help="whole games, newest first, up to this many plays")
     a = ap.parse_args()
 
     db = lancedb.connect("data/lancedb")
@@ -69,7 +71,22 @@ def main():
              .select(["id", "name"]).to_arrow().to_pylist()}
     rows = db.open_table("bot_actions").to_arrow().to_pylist()
     rows = [r for r in rows if r.get("shot") and (not a.since or r["game_id"][4:14] >= a.since)]
+    if a.losses:
+        res = json.loads(Path("data/live/game_results.json").read_text()) if Path("data/live/game_results.json").exists() else {}
+        for g in db.open_table("bot_games").to_arrow().to_pylist():
+            if g.get("result") in ("win", "loss"):
+                res[g["game_id"]] = g["result"]
+        rows = [r for r in rows if res.get(r["game_id"]) == "loss"]
     rows.sort(key=lambda r: (r["game_id"], r["t"]), reverse=True)
+    if a.max_plays:  # whole games, newest first
+        keep, n = set(), 0
+        for gid in sorted({r["game_id"] for r in rows}, reverse=True):
+            k = sum(1 for r in rows if r["game_id"] == gid)
+            if n + k > a.max_plays:
+                break
+            keep.add(gid); n += k
+        rows = [r for r in rows if r["game_id"] in keep]
+    rows.sort(key=lambda r: (r["game_id"], r["t"]))  # each game in play order
     out = Path(f"data/reviews/bot_{datetime.date.today()}"); out.mkdir(parents=True, exist_ok=True)
     games_dir = Path("data/raw/live_games").resolve()
     pages = [rows[i:i + a.per_page] for i in range(0, len(rows), a.per_page)]

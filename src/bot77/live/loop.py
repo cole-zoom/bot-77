@@ -223,12 +223,11 @@ class Runner:
                 game["rec"].kill()
         rows = [a for a in self.actions if a["game_id"] == game["id"]]
         self._save("bot_actions", rows)
-        g = {"game_id": game["id"], "t_start": game["t0"], "t_end": t, "n_actions": game["n"],
+        g = {"game_id": game["id"], "t_start": game["t0"], "t_end": t, "n_actions": game["n"], "result": game.get("result", "?"),
              "deck": json.dumps(game["reader"].deck, default=int), "opp_plays": len(game["opp"].plays)}
         self._save("bot_games", [g])
         self.games.append(g)
         self.wins += game.get("result") == "win"; self.losses += game.get("result") == "loss"
-        g["result"] = game.get("result", "?")
         if len(game["reader"].deck) == 8:
             self.known_deck = list(game["reader"].deck)
         self.log(ui.game_end(game["num"], game.get("result", "?"), game["n"], t - game["t0"], self.wins, self.losses))
