@@ -1,4 +1,6 @@
-"""B v0's decision: when to play (rules), which card (step A v1), where (rules by the card's role).
+"""B v0's decision. Since 2026-10-22 the playbook rules (bot77.live.rules, config/playbook_rules.yaml, from Cole's
+reviews) decide when and where and pick the answer to an attack; A v1 ranks the cards the rules leave open. rules=False
+is the earlier B v0: when to play (rules), which card (step A v1), where (playbook spots / rules by the card's role).
 
 Arena positions are KataCR arena-crop tiles: x 0-18 left to right, y down the screen; the river is at y 14.9, so our
 half is y > 15. Every action is logged with its reason, so games can be reviewed and the rules replaced by learned
@@ -36,7 +38,7 @@ class Action:
 
 
 class Policy:
-    def __init__(self, cards: list[dict], model_path: str = "data/models/moves_v1/model.pkl", playbook: bool = True,
+    def __init__(self, cards: list[dict], model_path: str = "data/models/moves_v1/model.pkl", playbook: bool = True, rules: bool = True,
                  full_at: float = 9.5, idle_at: float = 7.0, idle_s: float = 6.0, min_gap_s: float = 1.2):
         self.a = MovePredictor(model_path)
         self.cards = {c["id"]: c for c in cards}
@@ -50,6 +52,11 @@ class Policy:
                 if b["ans_x"] is not None:
                     self.book[(b["opp_card"], b["opp_zone"], b["answer"])] = b
         self.last_played: dict[int, float] = {}
+        self.answered: dict[str, float] = {}  # attacker card -> when we last answered it
+        self.rules = None
+        if rules:  # playbook rules from Cole's reviews (config/playbook_rules.yaml, bot77.live.rules)
+            from bot77.live.rules import Rules
+            self.rules = Rules({c["name"]: c.get("elixir") or 0 for c in cards})
 
     def record_own(self, t: float, card: str) -> None:
         self.own.append({"t": t, "card": card})
@@ -62,6 +69,49 @@ class Policy:
         since = st.t - self.own[-1]["t"] if self.own else 99.0
         if since < self.min_gap_s:
             return None
+        if self.rules is None:
+            return self._decide_v0(st, opp_plays, since)
+        h = {"hand": st.hand, "next": st.next, "elixir": st.elixir, "t_match": st.elapsed_s, "multiplier": st.multiplier}
+        scores = self.a.scores(candidates(h, st.t, self.own, opp_plays, self.last_played, self.cards, self.names))
+        by_a = sorted(range(4), key=lambda k: -scores[k])
+        info = [self.cards.get(c, {}) for c in st.hand]
+        name = [i.get("name") for i in info]
+        ok = [(i.get("elixir") or 0) <= st.elixir + 0.05 for i in info]
+        R = self.rules
+
+        # defend: the playbook's answer to the most dangerous attacker that crossed, else A's pick among the cards that
+        # can answer it; nothing that can -> wait and let the towers work
+        for target in R.threats(st, self.answered):
+            pref = [name.index(n) for n in R.answers(target.card) if n in name]
+            for k in pref + [k for k in by_a if k not in pref]:
+                if not ok[k] or not R.can_answer(name[k], info[k].get("type"), target):
+                    continue
+                spot = R.defend_spot(name[k], info[k].get("type"), target, st)
+                if spot is not None:
+                    self.answered[target.card] = st.t
+                    return Action(k, name[k], spot[0], spot[1], "defend (rules)" if k in pref else "defend (A)", scores)
+
+        # support our tank on its way to the bridge
+        tank = R.support_target(st, self.own)
+        if tank is not None:
+            for n in R.sup["cards"]:
+                if n in name and ok[name.index(n)]:
+                    x, y = R.support_spot(tank)
+                    return Action(name.index(n), n, x, y, "support (rules)", scores)
+
+        # about to waste elixir: build a push from the back, else cycle a cheap card behind the king
+        if st.elixir >= self.full_at:
+            enemies = [u for u in st.units if u.team == "enemy" and u.card]
+            att = _attack_lane([], enemies)
+            order = [name.index(n) for n in R.r["leak_order"] if n in name]
+            for k in order + [k for k in by_a if k not in order]:
+                spot = R.leak_spot(name[k], info[k].get("type"), att) if ok[k] else None
+                if spot is not None:
+                    return Action(k, name[k], spot[0], spot[1], "full elixir (rules)", scores)
+        return None
+
+    def _decide_v0(self, st: LiveState, opp_plays: list[dict], since: float) -> Action | None:
+        """B v0 before the playbook rules (2026-10-21): when rules + A's card + playbook / rule spots."""
         threats = st.threats()
         why = ("defend" if threats else "full elixir" if st.elixir >= self.full_at else
                "idle" if st.elixir >= self.idle_at and since >= self.idle_s else None)

@@ -21,7 +21,7 @@ def banner(device: str, layout: str, games: int, hours: float) -> str:
     return "\n".join([c(line, "magenta"),
                       c("  bot-77 · B v0 — Clash Royale bot", "bold", "magenta"),
                       c(f"  device {device} · layout {layout} · up to {games} games / {hours:g} h", "grey"),
-                      c("  card choice: move predictor (A v1) · answers placed by the playbook · stop: touch data/live/STOP", "grey"),
+                      c("  playbook rules (from Cole's reviews) + move predictor (A v1) · stop: touch data/live/STOP", "grey"),
                       c(line, "magenta")])
 
 
@@ -55,7 +55,7 @@ def clock(time_left_s: int | None) -> str:
 def play_line(st, act) -> str:
     reason = act.reason.split(" (")[0]
     how = act.reason.split("(")[-1].rstrip(")") if "(" in act.reason else ""
-    col = {"defend": "red", "full elixir": "yellow", "idle": "grey"}.get(reason, "cyan")
+    col = {"defend": "red", "full elixir": "yellow", "idle": "grey", "support": "green"}.get(reason, "cyan")
     return (f"  {c(clock(st.time_left_s), 'grey')}  {c(f'{act.card:16s}', 'bold', 'cyan')} → {where(act.x, act.y):24s} "
             f"{c(f'{reason:11s}', col)} {c(how, 'grey'):9s} {elixir_bar(st.elixir)}")
 

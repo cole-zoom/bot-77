@@ -1,0 +1,85 @@
+# Playbook rules (playbook step 3, 2026-10-22), from bot_review_1: Cole's 60 reviews + Claude's 84 that he approved
+# (data/ground_truth/reviews/bot_review_1_*.json; principles in .claude/skills/review-bot-plays/SKILL.md).
+# Read by bot77.live.rules; they override the move predictor (A) when they apply, A ranks whatever is left.
+# Arena tiles: x 0-18 left to right, y down the screen; river 14.9, our princess towers y 20.78, our king ~23.1.
+
+spots:
+  bridge: {left: [3.5, 16.2], right: [14.5, 16.2]}
+  behind_king: {left: [8.0, 25.0], right: [10.0, 25.0]}      # "Giant goes in the back"
+  front_of_king: {left: [7.0, 21.5], right: [11.0, 21.5]}    # "Musketeer in front of the king tower"
+
+when:
+  idle_plays: false        # "whats the point? were not even at a full elixir bar" -- no plays just for having 7 elixir
+  leak_at: 9.5             # spend only when elixir is about to be wasted
+  crossed_y: 15.2          # defenders wait until the attacker is on the bridge (river 14.9), then go on top of it
+  answered_s: 6            # one answer per attacker: don't drop a second defender on it within this many seconds
+                           # (the bot played Minions twice on the same Minions, 051729:17-18)
+
+# Alone, these aren't worth elixir: "archers here aren't rlly a threat and not worth burning 3 elixir",
+# "Skeletons aren't worth a Mini P.E.K.K.A". Defend only if what crossed is worth more than not_worth_below elixir.
+not_threats: [Archers, Skeletons, Bats, Fire Spirit, Ice Spirit, Electro Spirit, Heal Spirit]   # Spear Goblins at the tower: answering was fine
+not_worth_below: 4
+
+# What to answer each attacker with: the first one in hand and affordable is played. Not listed: A's choice among
+# the allowed cards.
+answers:
+  tank: [Mini P.E.K.K.A, Musketeer, Minions, Knight, Archers]   # "the higher-DPS answer is better against tanks"
+  Hog Rider: [Mini P.E.K.K.A, Knight, Musketeer, Minions]
+  Valkyrie: [Minions, Mini P.E.K.K.A, Musketeer, Knight]       # it can't hit air
+  Mini P.E.K.K.A: [Minions, Knight, Mini P.E.K.K.A, Archers]
+  Knight: [Mini P.E.K.K.A, Minions, Knight]
+  Musketeer: [Mini P.E.K.K.A, Knight, Minions]
+  Wizard: [Mini P.E.K.K.A, Knight, Fireball]
+  Witch: [Mini P.E.K.K.A, Knight, Fireball]
+  Bomber: [Minions, Knight, Mini P.E.K.K.A]
+  Mega Minion: [Archers, Musketeer]
+  Minions: [Arrows, Archers, Musketeer]
+  Minion Horde: [Arrows, Fireball, Archers]
+  Bats: [Arrows, Archers]
+  Spear Goblins: [Arrows, Archers, Knight]
+  Goblin Gang: [Arrows, Knight, Valkyrie]
+  Skeleton Army: [Arrows, Knight]
+  Goblin Hut: [Minions, Mini P.E.K.K.A, Knight]
+  Goblin Cage: [Minions, Mini P.E.K.K.A, Knight]
+  Tombstone: [Minions, Knight, Mini P.E.K.K.A]
+tanks: [Giant, Golem, Royal Giant, Goblin Giant, Electro Giant, Elixir Golem, Lava Hound, P.E.K.K.A, Mega Knight,
+        Ice Golem, Balloon]
+
+never_defend_with: [Giant, Golem, Royal Giant, Goblin Giant, Electro Giant, Elixir Golem, Lava Hound, Balloon]
+
+# Ground-only troops can't answer air
+ground_only: [Knight, Mini P.E.K.K.A, Valkyrie, Giant, Golem, P.E.K.K.A, Mega Knight, Bomber, Royal Giant, Hog Rider]
+air: [Minions, Minion Horde, Bats, Mega Minion, Balloon, Lava Hound, Baby Dragon, Inferno Dragon, Electro Dragon,
+      Skeleton Dragons, Phoenix, Flying Machine]
+
+# "Spells must hit everything they're aimed at", never a lone Knight / Valkyrie / Giant / building ("Arrows on a lone
+# Knight: no value"), and the cards hit must be worth at least the spell ("Arrows (3) on Skeletons (1)").
+spells:
+  small: {cards: [Arrows, Zap, The Log, Giant Snowball, Barbarian Barrel],
+          kills: [Skeletons, Spear Goblins, Goblins, Goblin Gang, Skeleton Army, Minions, Minion Horde, Bats, Archers,
+                  Fire Spirit, Ice Spirit, Electro Spirit, Heal Spirit, Princess, Dart Goblin, Wall Breakers, Firecracker,
+                  Skeleton Barrel, Goblin Barrel, Guards, Bomber]}
+  big: {cards: [Fireball, Poison],
+        kills: [Skeletons, Spear Goblins, Goblins, Goblin Gang, Skeleton Army, Minions, Minion Horde, Bats, Archers,
+                Princess, Dart Goblin, Wall Breakers, Firecracker, Bomber, Musketeer, Wizard, Witch, Electro Wizard,
+                Ice Wizard, Mega Minion, Barbarians, Executioner, Magic Archer, Three Musketeers, Goblin Hut,
+                Furnace, Mother Witch, Night Witch, Royal Hogs]}
+  radius: 2.5
+  min_value_ratio: 0.66    # sum of distinct cards hit (elixir) >= 2/3 of the spell (Arrows on Spear Goblins yes, on Skeletons no)
+
+placement:
+  ranged: [Musketeer, Archers, Wizard, Electro Wizard, Ice Wizard, Dart Goblin, Princess, Firecracker, Magic Archer,
+           Executioner, Witch, Baby Dragon, Spear Goblins, Hunter]   # away from what they shoot: in front of the king
+  on_target: [Mini P.E.K.K.A, Minions, Minion Horde, Mega Minion, Bats]   # "Mini P.E.K.K.A directly on its target"
+  melee_ahead: 1.0           # other melee: on top of the attacker, this many tiles toward our towers
+
+# "Support the Giant": the play after our Giant goes behind it, once, while it walks to the bridge.
+support:
+  after: [Giant, Golem, Royal Giant, Goblin Giant, Electro Giant]
+  cards: [Musketeer, Archers, Minions, Mini P.E.K.K.A]
+  behind: 2.5                # tiles behind the tank
+  window: [16.0, 23.5]       # while the tank walks from behind the king to the bridge
+
+# Leaking elixir: build a push from the back, else cycle a cheap card behind the king; Musketeer last ("don't throw it
+# away unprotected"), spells never.
+leak_order: [Giant, Golem, Royal Giant, Knight, Mini P.E.K.K.A, Minions, Archers, Musketeer]

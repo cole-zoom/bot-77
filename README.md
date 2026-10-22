@@ -114,12 +114,13 @@ uv run pytest tests/test_live_policy.py                              # placement
                  ▼                                      │
   ┌─────────────────────────────────────────────────┐   │
   │ policy  (bot77.live.policy)                     │   │
-  │  1. rules file   config/playbook_rules.yaml  ◄──┼── Cole's reviewed mistakes        (planned)
-  │  2. playbook     answer to the opponent's    ◄──┼── `playbook` table: mined from   (planned)
-  │                  last play, placed relative     │   471 keyed replays
-  │                  to the threat                  │
-  │  3. A (move predictor) — which card otherwise ◄─┼── data/models/moves_v1 (built)
-  │  when / where: rules today (learned later)      │
+  │  1. rules file   config/playbook_rules.yaml  ◄──┼── Cole's reviewed mistakes        (built)
+  │     when to play, the answer to each attacker,  │   (bot77.live.rules)
+  │     where it goes, supporting our Giant         │
+  │  2. A (move predictor) — ranks the cards the  ◄─┼── data/models/moves_v1 (built)
+  │     rules leave open                            │
+  │  3. playbook table — answer spots mined from  ◄─┼── `playbook` table (built; used by
+  │     replays                                     │   the pre-rules policy, rules=False)
   └──────────────┬──────────────────────────────────┘   │
                  ▼                                      │
   device (bot77.live.device): tap card → tap spot ──────┼──► bot_actions, bot_games, frames, recording
@@ -127,12 +128,18 @@ uv run pytest tests/test_live_policy.py                              # placement
   after a session: replays → keys → retrain C / A / playbook
 ```
 
-**Today (built):** the policy decides *when* by rules (defend when enemy units are on our half; otherwise at full
-elixir, or after a quiet spell), *which card* with A v1 (a gradient-boosted ranker over the 4 cards in hand: 44% exact
-on held-out test games vs 23% random), and *where* by rules per card role (win conditions at the bridge, buildings in
-the centre, defenders in front of the threat, spells on the biggest enemy group).
+**Today (built):** the playbook rules (`config/playbook_rules.yaml`, written from Cole's reviews of the bot's games)
+decide *when*: defend once an attacker has crossed the bridge (one answer per attacker; cheap units like Archers are
+left to the towers), support our Giant on its way to the bridge, and otherwise only play when elixir is about to be
+wasted (Giant behind the king tower, else a cheap card behind the king). They pick the *answer* to each attacker
+(Mini P.E.K.K.A on a tank, Minions on a Valkyrie, no Arrows on a lone Knight, no ground troops on air) and *where*
+it goes (Mini P.E.K.K.A on its target, Musketeer / Archers in front of the king tower, spells only on groups worth the
+spell). A v1 (a gradient-boosted ranker over the 4 cards in hand: 44% exact on held-out test games vs 23% random)
+ranks whatever the rules leave open. Each play's reason in the log says which decided: `defend (rules)`,
+`defend (A)`, `support (rules)`, `full elixir (rules)`. Check the rules offline against the reviewed plays with
+`uv run python scripts/eval_rules_on_reviews.py`.
 
-**Planned — the playbook** (not built yet):
+**The playbook** (built 2026-10-21/22 except step 4):
 
 1. **`interactions` table (LanceDB).** From both players of every keyed replay: each opponent play and the other
    player's next play within 8 s — card, delay, and placement relative to the opponent's unit (positions from C's
@@ -142,7 +149,8 @@ the centre, defenders in front of the threat, spells on the biggest enemy group)
    best answer that is in hand and affordable is played at the playbook's position relative to the threat; otherwise
    A decides.
 3. **Rules file** (`config/playbook_rules.yaml`). Short forbid / prefer / place rules written from Cole's reviewed
-   mistakes, checked before every play. Readable, easy to delete.
+   mistakes, checked before every play. Readable, easy to delete. Claude pre-reviews new games with the
+   `review-bot-plays` skill (`.claude/skills/`), Cole double-checks on the review page.
 4. **Next for A:** similar-moment search — every moment of the replays stored as a vector (board, elixir, hand,
    clock); at play time LanceDB returns the most similar moments from strong players' games and what they did next.
 

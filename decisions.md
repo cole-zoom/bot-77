@@ -2384,3 +2384,25 @@ says throwaway accounts only — this one starts at 0 trophies, which also track
   tests/test_live_policy.py: 9 tests pass (placement rules, gap, tap geometry). tests/test_cards.py::test_curated_coverage
   fails before and after this work (card metadata grew); left as is.
 Next on BlueStacks: calibrate during the new account's first battle, then one watched game (`live_play.py --games 1`).
+
+## 2026-10-22 · Playbook rules from the play reviews (Cole: "Just use em")
+Cole reviewed 60 of the bot's plays from its lost games; Claude reviewed the other 84 with the principles distilled
+from his (skill `.claude/skills/review-bot-plays`: contact sheets of the frame at each play and 2 s later, 4 plays per
+image) and Cole approved all of them. 73 of 144 plays were mistakes. Commonest: Giant at the bridge with nothing going
+on; idle plays at 7 elixir; Arrows on a lone Knight / Valkyrie / Giant / building; Musketeer or Archers on top of the
+attacker; defending before the attacker crossed; answering a couple of Archers; nothing behind our Giant.
+- **`config/playbook_rules.yaml` + `bot77.live.rules`** (the policy's default; `Policy(rules=False)` is the earlier B v0):
+  no idle plays (play at 9.5 elixir only, Giant behind the king tower, never the bridge); defend only units on the
+  bridge or past it (y >= 15.2), not cheap ones alone (Archers, Skeletons, spirits, Bats under 4 elixir), one answer
+  per attacker per 6 s (the bot dropped Minions twice on the same Minions); per-attacker answer lists (tanks: Mini
+  P.E.K.K.A > Musketeer > Minions; Valkyrie: Minions first; ...), never a Giant as a defender, no ground troops on
+  air, spells only on units they kill and worth >= 2/3 of the spell; Mini P.E.K.K.A / Minions on the target,
+  ranged troops in front of the king tower, other melee on top of the attacker; one support play behind our tank
+  while it walks to the bridge. A ranks the cards the rules leave open.
+- **Offline check** (`scripts/eval_rules_on_reviews.py`, states rebuilt from bot_actions: hand, elixir and the enemy
+  units logged on our half; our own units weren't logged, so support can't fire there): the rules change 70/73 bad
+  plays (32/47 to exactly the reviewer's card or "wait"); of 71 OK plays, 43 keep the card, 15 become waits (mostly
+  opening cycles and units logged just short of the bridge, which the live loop answers a tick later) and the rest
+  switch to the listed answer (e.g. Mini P.E.K.K.A instead of Archers on a tank).
+  Tuned on the same 144 plays, so this is a sanity check, not a held-out score: the next session's reviews are.
+- `tests/test_live_rules.py`: 11 tests, one per review finding.
