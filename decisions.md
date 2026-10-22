@@ -2355,3 +2355,32 @@ response rates (card chosen right after the opponent's / own last card, cross-fi
 Test, scored once: **44.0% / 72.9%** (top ladder 42.0% / 73.1%). With the opponent's history from C instead of the
 key: held-back 43.6 -> 43.9%, test 43.4 -> 41.1% top-1, top-2 unchanged: C's noise costs A little, because A v1
 mostly uses the player's own state. Next: when, where, and board state / opponent elixir from C.
+
+## 2026-10-21 · Step B v0 built offline (Cole: "build everything ... verify it works as best u can without using bluestacks")
+Cole is making a brand-new account for the bot (ToS: automated play can get an account banned; the September plan
+says throwaway accounts only — this one starts at 0 trophies, which also tracks progress). Built `bot77.live`:
+- **state.py:** one frame -> hand, next, elixir, clock, multiplier, enemy units (the pipeline's own readers + V5
+  detector); the deck is learned from the hand, then the reader restricts to it; a briefly unreadable slot keeps its
+  last card. Checked on Cole's recordings vs the stored HUD reads: 426/480 and 430/480 slot reads agree, **0 wrong
+  cards** (the rest are cards animating in); 115 ms per read. OpponentTracker: an enemy card not seen for 6 s is a play.
+- **A at play time:** card features moved into `bot77.moves.candidates` (shared by training and live) and
+  `MovePredictor` loads the model with its response-rate tables: reproduces 46.6% top-1 on held-back exactly.
+- **policy.py:** when = defend if enemy units are on our half, else at 9.5 elixir, or at 7 after 6 s idle (1.2 s
+  minimum gap); which = A v1 ranking among affordable cards with a sensible spot; where = rules by role (win conditions
+  at the bridge, buildings centre, Miner-type on a tower, defenders in front of the threat, spells on the biggest
+  group — on our half while defending). Shadow and dry runs found and fixed: Barbarian Barrel aimed at a group on the
+  enemy side while defending; Earthquake / Mighty Miner sent to a tower during a defence; Hog counter-pushes with
+  < 7 elixir.
+- **device.py / loop.py:** ADB taps (select card, tap spot), screen recognition (battle from the HUD, end screen from
+  the replay runner's VS / OK templates, home from a Battle-button template cut from a BlueStacks screenshot), and the
+  loop with safety stops (data/live/STOP, max games / hours, 4 min unrecognised screen, screenshot failures). Actions
+  and games logged to LanceDB (bot_actions, bot_games).
+- **Calibration:** `scripts/live_calibrate.py` derives the BlueStacks battle layout with bot77.autolayout, then fits
+  the arena crop to the princess towers (`bot77.live.arena`: the HUD fit places the arena only to ~50 px). Offline on
+  two of Cole's recordings: arena within ~5 px of the hand-made layout, our towers off by 0.06-0.08 tiles.
+- **Checks:** `scripts/live_shadow.py` (Cole's game, his plays fed as the bot's history): deck read 8/8, card agrees
+  9/20 (45%, = A's rate), opponent tracker 10 of 23 matches the key. `scripts/live_dryrun.py` (the whole loop on a
+  BlueStacks replay video): battle and end screen recognised, 40 decisions, 0 taps off screen.
+  tests/test_live_policy.py: 9 tests pass (placement rules, gap, tap geometry). tests/test_cards.py::test_curated_coverage
+  fails before and after this work (card metadata grew); left as is.
+Next on BlueStacks: calibrate during the new account's first battle, then one watched game (`live_play.py --games 1`).

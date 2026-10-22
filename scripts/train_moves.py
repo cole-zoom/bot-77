@@ -95,7 +95,9 @@ model = HistGradientBoostingClassifier(max_iter=500, learning_rate=0.05, max_lea
                                        l2_regularization=1.0, categorical_features=cat_mask, random_state=0)
 model.fit(X(train), np.array([r["chosen"] for r in train]))
 out = Path(a.out); out.mkdir(parents=True, exist_ok=True)
-(out / "model.pkl").write_bytes(pickle.dumps({"model": model, "features": FEATS, "cats": CATS, "code": code}))
+pair_full, base_full = RATE_TABLES["full"]
+(out / "model.pkl").write_bytes(pickle.dumps({"model": model, "features": FEATS, "cats": CATS, "code": code,
+                                              "rates": {"pair": dict(pair_full), "base": dict(base_full), "prior": 20}}))
 print(f"trained on {len(decisions(train))} decisions" + (f" (league {a.league})" if a.league is not None else ""))
 
 baselines = {

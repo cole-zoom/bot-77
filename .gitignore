@@ -29,3 +29,4 @@ data/slices/*
 !data/slices/approved/
 *.pt
 data/upload/
+data/live/

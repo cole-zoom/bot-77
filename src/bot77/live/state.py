@@ -1,0 +1,119 @@
+"""One screen frame -> the bot's view of the game, with the same readers the offline pipeline uses (so a layout that
+works for recordings works here), plus an online tracker of the opponent's plays from the unit detector."""
+from __future__ import annotations
+
+from collections import Counter
+from dataclasses import dataclass, field
+
+import numpy as np
+
+from bot77.detect.names import class_to_card
+from bot77.layout import Layout
+from bot77.readers.clock import read_clock
+from bot77.readers.elixir import read_elixir
+from bot77.readers.hand import HandReader, infer_deck
+
+TILES_W = 18  # the arena crop is 18 tiles wide (bot77.spawns)
+RIVER_Y = 14.9
+
+
+@dataclass
+class Unit:
+    card: str | None
+    cls: str
+    team: str
+    x: float  # arena tiles
+    y: float
+    conf: float
+
+
+@dataclass
+class LiveState:
+    t: float
+    hand: list[int | None]  # 4 card ids (None: empty / unreadable slot)
+    next: int | None
+    elixir: float | None
+    time_left_s: int | None
+    elapsed_s: int | None
+    multiplier: int
+    phase: str | None  # regulation | overtime | None: no clock on screen (not in a battle)
+    units: list[Unit] = field(default_factory=list)
+
+    @property
+    def in_battle(self) -> bool:
+        return self.phase is not None and self.elixir is not None
+
+    def threats(self) -> list[Unit]:
+        """Enemy units on our half of the arena."""
+        return [u for u in self.units if u.team == "enemy" and u.y > RIVER_Y and u.card]
+
+
+class LiveReader:
+    def __init__(self, layout: Layout, cards: list[dict], detector=None):
+        self.layout, self.cards, self.detector = layout, cards, detector
+        self.names = [c["name"] for c in cards]
+        self.full = HandReader.from_cards(layout, cards)
+        self.reader, self.reads, self.deck = self.full, [], []
+        self.last_hand: list[int | None] = [None] * 4
+
+    def tile_px(self, frame_w: int) -> tuple[float, float, float]:
+        """(tile size, arena x0, arena y0) in frame pixels."""
+        s = self.layout.scale(frame_w)
+        ax0, ay0, ax1, _ = self.layout.katacr_arena
+        return (ax1 - ax0) / TILES_W * s, ax0 * s, ay0 * s
+
+    def read(self, frame: np.ndarray, t: float) -> LiveState:
+        clock = read_clock(frame, self.layout)
+        hand = self.reader.read(frame)
+        if len(self.deck) < 8:  # learn our deck from the hand, then read against it only (faster, fewer mistakes)
+            self.reads.append(hand)
+            deck = infer_deck(self.reads[-60:])
+            if len(deck) == 8:
+                self.deck, self.reader = deck, self.full.restrict(set(deck))
+        slots = [hand.get(f"slot{k}") for k in range(1, 5)]
+        nxt = hand.get("next")
+        el = read_elixir(frame, self.layout)
+        # a slot briefly unreadable (the card animating in after a play) keeps its last card; empty stays empty
+        cur = [s.card_id if s and s.state == "card" else (None if s and s.state == "empty" else self.last_hand[k])
+               for k, s in enumerate(slots)]
+        self.last_hand = cur
+        st = LiveState(t, cur,
+                       nxt.card_id if nxt and nxt.state == "card" else None, el.elixir, clock.time_left_s, clock.elapsed_s,
+                       clock.multiplier or 1, clock.phase)
+        if self.detector is not None and st.in_battle:
+            tile, ox, oy = self.tile_px(frame.shape[1])
+            for d in self.detector.detect(frame, self.layout):
+                card = class_to_card(d.name, self.names)[0]
+                cx, cy = (d.box[0] + d.box[2]) / 2, (d.box[1] + d.box[3]) / 2
+                st.units.append(Unit(card, d.name, d.team, (cx - ox) / tile, (cy - oy) / tile, d.conf))
+        return st
+
+
+class OpponentTracker:
+    """The opponent's plays, online: an enemy unit of a card that wasn't on the field in the last few seconds is a new
+    play. Coarser than the offline rules (bot77.opponent), but it only feeds A's opponent history, which A v1 barely
+    relies on (C's history cost it 0-2 points, docs/move-predictor-spec.md)."""
+
+    def __init__(self, gap_s: float = 6.0, min_seen: int = 2):
+        self.gap_s, self.min_seen = gap_s, min_seen
+        self.last_seen: dict[str, float] = {}
+        self.pending: Counter = Counter()
+        self.plays: list[dict] = []
+
+    def update(self, st: LiveState) -> list[dict]:
+        new = []
+        cards = {u.card for u in st.units if u.team == "enemy" and u.card and u.conf >= 0.5}
+        for c in cards:
+            fresh = st.t - self.last_seen.get(c, -1e9) > self.gap_s
+            if fresh:
+                self.pending[c] += 1
+                if self.pending[c] >= self.min_seen:  # seen on consecutive reads: a real unit, not a flicker
+                    p = {"t": st.t, "card": c}
+                    self.plays.append(p); new.append(p)
+                    self.last_seen[c] = st.t; self.pending[c] = 0
+            else:
+                self.last_seen[c] = st.t
+        for c in list(self.pending):
+            if c not in cards:
+                self.pending[c] = 0
+        return new
