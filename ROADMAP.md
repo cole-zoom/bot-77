@@ -54,8 +54,9 @@ numbers before anything new is trained.
       `media` table (`scripts/build_media.py`: 775 files, 388 GB, laptop vs LaCie; every `videos` row resolves).
       401 experiment tables → macOS Trash (Cole: bin them; recoverable until the Trash is emptied). Old table
       versions dropped: LanceDB 80 GB → 18 GB (`unit_crops` had 58 GB of version manifests), row counts unchanged.
-      **Waiting on Cole:** `data/upload` (26 GB of RunPod bundles, many both .tgz and unpacked), ~15 model versions
-      no code uses (~1 GB), old review pages (0.9 GB), two broken links on the LaCie (`cole_2026-10-11_a/b.mov`).
+      Then (Cole): `data/upload` RunPod bundles (26 GB) and old review pages (0.9 GB) → Trash; the two broken links
+      on the LaCie (`cole_2026-10-11_a/b.mov`, recordings gone) removed. Old model versions kept as the models'
+      history: they become non-adopted entries in the models registry (phase 5).
 - [ ] Phase 1 — sources + observations (`matches` columns, `detections`, `plays`, `media`)
 - [ ] Phase 2 — moments + labels + reviews (A v1 reproduces 46.6% held-back from the new tables)
 - [ ] Phase 3 — feature library + registry (live bot switched to it, dry run unchanged)

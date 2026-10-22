@@ -31,7 +31,7 @@ Generated 2026-10-22 by `scripts/inventory.py` (phase 0 of [training-architectur
 | `events` | observation / ground truth | plays and abilities read from the hand (exact for the player whose hand is shown; replay answer keys) | 70,099 | 3.4G | 1 | pipeline.py | __init__.py, add_next_card_plays.py, after_session_f.sh, after_session_g.sh, analyze_dev.py, autolabel.py, autolabel_pai |
 | `cards` | reference | the card catalogue: names, elixir, type, rarity, art (from the Clash API) | 127 | 87.3M | 3 | cards.py | __init__.py, add_next_card_plays.py, analyze_dev.py, autolabel.py, autolabel_paired_spells.py, board.py, build_board_sta |
 | `matches` | source | one row per match in a video: start / end, opponent, deck. Split / source / league not here yet | 2,031 | 396K | 1 | — | add_next_card_plays.py, analyze_dev.py, autolabel.py, autolabel_clock_spots.py, autolabel_paired_spells.py, autolabel_v4 |
-| `media` | source | every video / recording file: where it really lives (laptop / LaCie), size, available now | 775 | 232K | 2 | build_media.py | — |
+| `media` | source | every video / recording file: where it really lives (laptop / LaCie), size, available now | 773 | 352K | 3 | build_media.py | — |
 | `videos` | source | one row per video file: creator, layout, mode, path (laptop or LaCie symlink), size | 1,196 | 340K | 1 | — | after_session_f.sh, after_session_g.sh, autolabel.py, build_board_states.py, build_click_abilities.py, build_click_off.p |
 | `board_states` | training data (A) | the board at each of A's decisions (JSON strings for now) | 24,142 | 1.6M | 1 | build_board_states.py | build_placements.py, train_moves.py |
 | `move_samples` | training data (A) | A's samples: one row per (decision, hand card), both players of every keyed replay | 96,568 | 6.1M | 2 | build_moves.py | build_board_states.py, train_moves.py |
@@ -57,8 +57,8 @@ Total: 28 tables, 17.9G.
 | `data/raw/youtube` | YouTube download metadata | 44K | 0 (0) |
 | `data/raw/*` (files at the top) | Cole's POV recordings + YouTube videos (top level) | 12.0G | 154 (152) |
 | `data/external` | datasets for the detector: KataCR, synthetic and real crop sets | 9.7G | 954 (0) |
-| `data/upload` | bundles made for RunPod uploads (tarballs and unpacked copies) | 26.4G | 0 (0) |
-| `data/reviews` | generated review pages (HTML) | 924.1M | 0 (0) |
+| `data/upload` | bundles made for RunPod uploads (tarballs and unpacked copies) | 0B | 0 (0) |
+| `data/reviews` | generated review pages (HTML) | 112K | 0 (0) |
 | `data/ground_truth` | answer keys and Cole's reviews (JSON) | 7.5M | 0 (0) |
 | `data/models` | model weights | 5.9G | 0 (0) |
 | `data/calibration` | layout calibration images | 189.3M | 0 (0) |
