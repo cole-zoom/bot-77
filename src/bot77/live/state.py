@@ -55,6 +55,7 @@ class LiveReader:
         self.full = HandReader.from_cards(layout, cards)
         self.reader, self.reads, self.deck = self.full, [], []
         self.last_hand: list[int | None] = [None] * 4
+        self.unknown_streak = 0
 
     def tile_px(self, frame_w: int) -> tuple[float, float, float]:
         """(tile size, arena x0, arena y0) in frame pixels."""
@@ -65,6 +66,11 @@ class LiveReader:
     def read(self, frame: np.ndarray, t: float) -> LiveState:
         clock = read_clock(frame, self.layout)
         hand = self.reader.read(frame)
+        stuck = any(v is None or v.state == "unknown" for k, v in hand.items() if k.startswith("slot"))
+        self.unknown_streak = self.unknown_streak + 1 if stuck else 0
+        if self.deck and self.unknown_streak >= 15:  # a slot unreadable for ~15 reads: a card outside the known
+            self.deck, self.reader, self.reads = [], self.full, []  # deck (swapped in): relearn from all cards
+            self.unknown_streak = 0
         if len(self.deck) < 8:  # learn our deck from the hand, then read against it only (faster, fewer mistakes)
             self.reads.append(hand)
             deck = infer_deck(self.reads[-60:])

@@ -90,6 +90,56 @@ class FakeDevice:
         self.taps.append((self.now(), x, y))
 
 
+SAFE_BUTTONS = {"choose", "continue", "ok", "claim", "collect", "open", "next", "close", "skip", "done"}
+NEVER = ("buy", "gem", "shop", "purchase", "offer", "pass", "clan", "join", "$", "price", "deal", "sale")
+
+
+def screen_texts(im: np.ndarray) -> list[tuple[str, float, float]]:
+    """(text, x, y) of the words on screen, centres in screen pixels (Apple Vision OCR on a half-size copy, ~0.1 s)."""
+    from ocrmac import ocrmac
+    from PIL import Image
+    h, w = im.shape[:2]
+    small = cv2.resize(im, None, fx=0.5, fy=0.5)
+    out = []
+    for text, _c, (bx, by, bw, bh) in ocrmac.OCR(Image.fromarray(cv2.cvtColor(small, cv2.COLOR_BGR2RGB)),
+                                                 recognition_level="fast").recognize():
+        out.append((text.strip().lower(), (bx + bw / 2) * w, (1 - by - bh / 2) * h))  # Vision boxes: origin bottom-left
+    return out
+
+
+NAV = cv2.imread(str(LIVE_UI / "nav_battle.png")) if (LIVE_UI / "nav_battle.png").exists() else None
+
+
+def battle_tab(im: np.ndarray) -> tuple[float, float] | None:
+    """The Battle tab's lightning icon in the bottom bar, when another tab is open (2026-10-21: the bot sat on the
+    Social tab, where tapping empty space does nothing)."""
+    if NAV is None or im.shape[:2] != (1920, 1080):
+        return None
+    bar = im[1650:1920]
+    r = cv2.matchTemplate(bar, NAV, cv2.TM_CCOEFF_NORMED)
+    _, v, _, (x, y) = cv2.minMaxLoc(r)
+    return (x + NAV.shape[1] / 2, 1650 + y + NAV.shape[0] / 2) if v >= 0.8 else None
+
+
+def between_games_tap(im: np.ndarray) -> tuple[float, float, str] | None:
+    """Where to tap on a screen between games, or None: a safe whole-word button (never anything about buying,
+    gems, offers or clans); the left card on "Choose your reward" (Cole: press Choose, then pick any card)."""
+    texts = screen_texts(im)
+    if any(any(n in t for n in NEVER) for t, _, _ in texts if len(t) < 30) and \
+            not any(t in SAFE_BUTTONS for t, _, _ in texts):
+        tab = battle_tab(im)  # a shop / clan screen: never its buttons, but the Battle tab in the bottom bar is safe
+        return (tab[0], tab[1], "Battle tab") if tab else None
+    for t, x, y in texts:
+        if (t in SAFE_BUTTONS or t.startswith("tap to")) and not any(n in t for n in NEVER):
+            return x, y, f"button '{t}'"
+    if any("choose your reward" in t or "choose a reward" in t for t, _, _ in texts):
+        return 330, 540, "reward: left card"
+    tab = battle_tab(im)
+    if tab:
+        return tab[0], tab[1], "Battle tab"
+    return None
+
+
 def slot_centre(layout, k: int, frame_w: int, frame_h: int) -> tuple[float, float]:
     x0, y0, x1, y1 = layout.box(f"slot{k + 1}", frame_w, frame_h)
     return (x0 + x1) / 2, (y0 + y1) / 2
