@@ -61,7 +61,7 @@ class Runner:
         start, last_known, fails = time.time(), time.time(), 0
         game = None
         while True:
-            if STOP_FILE.exists():
+            if STOP_FILE.exists() and game is None:  # finish the game in progress first, then stop
                 self.log("STOP file found: stopping"); break
             if len(self.games) >= self.max_games and game is None:
                 self.log(f"{len(self.games)} games played: done"); break
@@ -86,9 +86,21 @@ class Runner:
                     cv2.imwrite(str(GAMES_DIR / game["id"] / "end.jpg"), cv2.resize(im, (SHOT_W, round(im.shape[0] * SHOT_W / im.shape[1]))))
                     self._finish(game, t)
                     game = self.current = None
+                # Play Again starts the next game straight away and skips the reward screens (Cole, 2026-10-22); the
+                # last game of a run taps OK instead, so the session can pull the replays
+                more = len(self.games) < self.max_games and not STOP_FILE.exists()
+                again = None
+                try:
+                    texts = screen_texts(im)
+                    again = next(((x, y) for t, x, y in texts if "play again" in t or t == "again"), None)
+                    okb = next(((x, y) for t, x, y in texts if t == "ok"), None)
+                except Exception:  # noqa: BLE001
+                    texts, okb = [], None
                 ok = POS.get("end_ok")
-                if ok and not self.dry_run:
-                    self.dev.tap(ok[0] + 60, ok[1] + 30)
+                tap = again if (more and again) else okb or ((ok[0] + 60, ok[1] + 30) if ok else None)
+                if tap and not self.dry_run:
+                    self.dev.tap(*tap)
+                self.log(ui.c(f"  end screen: {'Play Again' if (more and again) else 'OK'}", "grey"))
                 last_known = time.time(); time.sleep(2.0); continue
             if kind == "home" and game is None:
                 if len(self.games) < self.max_games:
@@ -158,7 +170,9 @@ class Runner:
             return "?"
         if not ys:
             return "?"
-        return "win" if ys[0] > im.shape[0] / 2 else "loss"
+        # "Winner!" sits just above the winner's own banner: ~36% of the height when we (bottom) won, near the top
+        # when the opponent did (Cole's screenshot, 2026-10-22)
+        return "win" if ys[0] > 0.25 * im.shape[0] else "loss"
 
     def _shot(self, game: dict, im, name: str) -> str:
         f = GAMES_DIR / game["id"] / name

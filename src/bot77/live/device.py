@@ -45,6 +45,12 @@ def screen_kind(im: np.ndarray) -> str:
     """end | home | other (battle is decided from the HUD read: clock + elixir)."""
     if seen(im, "end_ok") >= 0.97 or (seen(im, "end_ok") >= MATCH and seen(im, "end_vs") >= MATCH):
         return "end"
+    if seen(im, "end_vs") >= MATCH:  # the battle end screen with Play Again moves OK; confirm by its text
+        try:
+            if any("winner" in t or "play again" in t for t, _, _ in screen_texts(im)):
+                return "end"
+        except Exception:  # noqa: BLE001
+            pass
     if seen(im, "home_battle") >= MATCH:
         return "home"
     return "other"
@@ -110,15 +116,24 @@ def screen_texts(im: np.ndarray) -> list[tuple[str, float, float]]:
 NAV = cv2.imread(str(LIVE_UI / "nav_battle.png")) if (LIVE_UI / "nav_battle.png").exists() else None
 
 
+BOLT_MIN = 0.45
+
+
 def battle_tab(im: np.ndarray) -> tuple[float, float] | None:
     """The Battle tab's lightning icon in the bottom bar, when another tab is open (2026-10-21: the bot sat on the
     Social tab, where tapping empty space does nothing)."""
     if NAV is None or im.shape[:2] != (1920, 1080):
         return None
-    bar = im[1650:1920]
-    r = cv2.matchTemplate(bar, NAV, cv2.TM_CCOEFF_NORMED)
-    _, v, _, (x, y) = cv2.minMaxLoc(r)
-    return (x + NAV.shape[1] / 2, 1650 + y + NAV.shape[0] / 2) if v >= 0.8 else None
+    # match the bolt's outline, not its colours: the tab behind it is grey-blue or gold depending on the screen
+    edges = lambda img: cv2.GaussianBlur(cv2.Canny(cv2.cvtColor(img, cv2.COLOR_BGR2GRAY), 60, 160), (5, 5), 0)
+    bar = edges(im[1650:1920])
+    best = None
+    for k in (0.8, 0.9, 1.0, 1.1, 1.2):  # the icon is drawn smaller / larger depending on which tab is open
+        t = edges(cv2.resize(NAV, None, fx=k, fy=k))
+        _, v, _, (x, y) = cv2.minMaxLoc(cv2.matchTemplate(bar, t, cv2.TM_CCOEFF_NORMED))
+        if best is None or v > best[0]:
+            best = (v, x + t.shape[1] / 2, 1650 + y + t.shape[0] / 2)
+    return (best[1], best[2]) if best[0] >= BOLT_MIN else None
 
 
 def between_games_tap(im: np.ndarray) -> tuple[float, float, str] | None:

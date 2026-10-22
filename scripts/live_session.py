@@ -40,7 +40,19 @@ while time.time() < end and not STOP_FILE.exists():
     if played == 0:
         print("no games played in this chunk: stopping (check data/raw/live_ui/unknown/)", flush=True)
         break
-    # the replays of this chunk's games are the newest entries of the Battle Log
+    # the replays of this chunk's games are the newest entries of the Battle Log. Relaunch Clash first so it opens on
+    # the home screen (after a game it can sit on reward screens the replay runner doesn't know, 2026-10-22)
+    from bot77.live.device import ADB
+    subprocess.run([ADB, "-s", a.device, "shell", "am", "force-stop", "com.supercell.clashroyale"])
+    time.sleep(2)
+    subprocess.run([ADB, "-s", a.device, "shell", "monkey", "-p", "com.supercell.clashroyale", "-c",
+                    "android.intent.category.LAUNCHER", "1"], capture_output=True)
+    time.sleep(45)
+    from bot77.live.device import battle_tab
+    im = dev.cap()  # this account reopens on the Cards tab: go to Battle, where the replay runner starts
+    tab = battle_tab(im) if im is not None else None
+    if tab:
+        dev.tap(*tab); time.sleep(3)
     rr = subprocess.run([sys.executable, "scripts/replay_runner.py", "-n", str(played), "--no-known", "--device", a.device],
                         capture_output=True, text=True)
     print(f"== replays pulled: {rr.stdout.strip().splitlines()[-1] if rr.stdout.strip() else rr.stderr[-300:]}", flush=True)
