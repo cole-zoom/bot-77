@@ -57,7 +57,12 @@ numbers before anything new is trained.
       Then (Cole): `data/upload` RunPod bundles (26 GB) and old review pages (0.9 GB) → Trash; the two broken links
       on the LaCie (`cole_2026-10-11_a/b.mov`, recordings gone) removed. Old model versions kept as the models'
       history: they become non-adopted entries in the models registry (phase 5).
-- [ ] Phase 1 — sources + observations (`matches` columns, `detections`, `plays`, `media`)
+- [x] Phase 1 — sources + observations (2026-10-22): `matches` gets source / split / pov side / pair / truth set /
+      league / result (`build_sources.py`; split agrees with A's samples on all 96,568 rows; the 57 bot games are
+      matches); `detections` + `runs` (`build_detections.py`: 6 runs, 32.4M rows, counts identical); `plays`
+      (`build_plays.py`: 70,099 hand plays = events, 1,381 bot plays, 14,080 with a position). The old
+      `unit_detections_*` tables stay until their readers move over (phases 2-3). C's detected plays: only the old
+      default output (359 rows) survived the cleanup; the current pipeline is rerun into `plays` when needed.
 - [ ] Phase 2 — moments + labels + reviews (A v1 reproduces 46.6% held-back from the new tables)
 - [ ] Phase 3 — feature library + registry (live bot switched to it, dry run unchanged)
 - [ ] Phase 4 — data browser

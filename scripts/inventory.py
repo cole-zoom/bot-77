@@ -17,6 +17,9 @@ CODE_TEXT = {p: p.read_text(errors="ignore") for p in CODE}
 
 # layer: source / observation / ground truth / training data / bot / analysis / model input
 DESCRIBE = {
+    "detections": ("observation", "every detector run in one table (run_id): boxes, class, card, team, arena tiles"),
+    "runs": ("observation", "what each detector run is and what it's used for"),
+    "plays": ("observation / ground truth", "every play: from the hand (exact), detected by C, or made by the bot"),
     "media": ("source", "every video / recording file: where it really lives (laptop / LaCie), size, available now"),
     "videos": ("source", "one row per video file: creator, layout, mode, path (laptop or LaCie symlink), size"),
     "matches": ("source", "one row per match in a video: start / end, opponent, deck. Split / source / league not here yet"),
