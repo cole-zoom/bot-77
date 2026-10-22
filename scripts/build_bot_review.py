@@ -40,7 +40,7 @@ const th=d.threats.map(t=>t[0]).join(", ")||"none";
 c.innerHTML=`<div><strong>${d.card}</strong> <span class="muted">${d.reason} · elixir ${d.elixir} · ${d.t}s · threats: ${th}</span></div>
 <div class="imgs"><div class="wrap at"><img src="${d.at}" alt="at the play"><div class="dot bot" style="left:${d.tap[0]*100}%;top:${d.tap[1]*100}%"></div>
 ${s.spot?`<div class="dot fix" style="left:${s.spot[0]*100}%;top:${s.spot[1]*100}%"></div>`:""}</div>
-<div class="wrap"><img src="${d.after}" alt="2 s later"></div></div>`;
+<div class="wrap"><img src="${d.after}" alt="2 s later" onerror="this.parentNode.textContent='(game ended)'"></div></div>`;
 c.querySelector(".at").onclick=e=>{const r=e.currentTarget.getBoundingClientRect();S[d.id]={...s,verdict:"bad",spot:[(e.clientX-r.left)/r.width,(e.clientY-r.top)/r.height]};save()};
 const row=document.createElement("div");row.className="row";
 const ok=document.createElement("button");ok.className="k";ok.textContent="OK";ok.onclick=()=>{S[d.id]={verdict:"ok"};save()};
