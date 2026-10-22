@@ -1,0 +1,135 @@
+# Data inventory
+
+Generated 2026-10-22 by `scripts/inventory.py` (phase 0 of [training-architecture.md](training-architecture.md)). Regenerate after any data change.
+
+## Storage
+
+| Tier | Used | Free |
+|---|---|---|
+| Laptop SSD | 697.3G | 229.0G |
+| LaCie HDD (`/Volumes/LaCie/bot-77-data`: 323.3G) | 468.9G | 1.4T |
+
+## LanceDB tables (`data/lancedb`, laptop)
+
+| Table | Layer | What it is | Rows | Size | Versions | Written by | Read by |
+|---|---|---|---|---|---|---|---|
+| `fakes_now` | analysis (C) | current fake plays snapshot (fake-filter work) | 3,014 | 256K | 2 | — | — |
+| `live_outcomes` | analysis (C) | play outcomes on Cole's live (POV) games | 667 | 76K | 1 | — | — |
+| `play_outcomes` | analysis (C) | per detected play: real / fake / missed vs the key; trains the fake filter | 16,909 | 1.0M | 2 | — | build_failures.py, mine_failures.py |
+| `pov_fakes` | analysis (C) | fake plays in Cole's POV games | 1,228 | 140K | 2 | — | — |
+| `bot_actions` | bot | every bot play: card, spot, reason, hand, elixir, threats, full board, model spot | 1,381 | 216K | 1 | loop.py | build_bot_review.py, eval_rules_on_reviews.py |
+| `bot_games` | bot | every bot game: start / end, plays, result, deck | 57 | 32K | 1 | loop.py | build_bot_review.py |
+| `playbook` | model input | interactions aggregated per opponent card: common answers and spots | 4,718 | 176K | 1 | build_playbook.py | eval_playbook_place.py, policy.py, train_place.py |
+| `hud_states` | observation | what the HUD showed, every frame read: hand, next, elixir, clock, multiplier | 4,194,766 | 92.0M | 1 | — | build_moves.py, opponent.py, pairing.py, pipeline.py, render_game.py, train_fake_filter.py, train_moves.py |
+| `opponent_events` | observation | C's detected opponent plays (default output table) | 359 | 10.2M | 1 | — | eval_v2.py, opponent.py, review.py, slices.py, train_moves.py |
+| `unit_detections` | observation | detector output (older default run) used by mining, slices, autolabel | 14,071,127 | 278.9M | 1 | — | autolabel.py, mine.py, opponent.py, run.py, slices.py |
+| `unit_detections_mine4` | observation | detections from mining run 4 (RunPod), source of autolabels | 3,862,466 | 76.7M | 1 | — | — |
+| `unit_detections_v5l_e15` | observation | detector V5 on all 524 keyed replays, every 0.25 s: the board for A / placement | 9,529,520 | 189.4M | 1 | — | build_board_states.py, build_placements.py, build_playbook.py, eval_playbook_place.py, ingest_live_replays.py, ingest_re |
+| `unit_detections_v6l_best` | observation | detector V6 (live bot's detector) on the bot's replays | 2,466,065 | 48.9M | 1 | — | ingest_live_replays.py |
+| `unit_detections_v7l_best` | observation | detector V7 on a check set (30-ish games) | 1,229,471 | 24.4M | 1 | — | — |
+| `unit_detections_v8l_best` | observation | detector V8 on a check set | 1,248,634 | 24.7M | 1 | — | — |
+| `events` | observation / ground truth | plays and abilities read from the hand (exact for the player whose hand is shown; replay answer keys) | 70,099 | 3.4G | 1 | pipeline.py | __init__.py, add_next_card_plays.py, after_session_f.sh, after_session_g.sh, analyze_dev.py, autolabel.py, autolabel_pai |
+| `cards` | reference | the card catalogue: names, elixir, type, rarity, art (from the Clash API) | 127 | 87.3M | 3 | cards.py | __init__.py, add_next_card_plays.py, analyze_dev.py, autolabel.py, autolabel_paired_spells.py, board.py, build_board_sta |
+| `matches` | source | one row per match in a video: start / end, opponent, deck. Split / source / league not here yet | 2,031 | 396K | 1 | — | add_next_card_plays.py, analyze_dev.py, autolabel.py, autolabel_clock_spots.py, autolabel_paired_spells.py, autolabel_v4 |
+| `media` | source | every video / recording file: where it really lives (laptop / LaCie), size, available now | 775 | 232K | 2 | build_media.py | — |
+| `videos` | source | one row per video file: creator, layout, mode, path (laptop or LaCie symlink), size | 1,196 | 340K | 1 | — | after_session_f.sh, after_session_g.sh, autolabel.py, build_board_states.py, build_click_abilities.py, build_click_off.p |
+| `board_states` | training data (A) | the board at each of A's decisions (JSON strings for now) | 24,142 | 1.6M | 1 | build_board_states.py | build_placements.py, train_moves.py |
+| `move_samples` | training data (A) | A's samples: one row per (decision, hand card), both players of every keyed replay | 96,568 | 6.1M | 2 | build_moves.py | build_board_states.py, train_moves.py |
+| `mined_candidates` | training data (C) | mined failure candidates for review / labelling | 140 | 2.6M | 3 | — | build_mined_review.py, label_mined.py, mine_failures.py |
+| `real_crop_index` | training data (C) | index of real crops used by the crop classifier | 5,051 | 7.4M | 1 | — | autolabel.py, crop_classifier.py |
+| `slice_index` | training data (C) | index of video slices for labelling | 4,844 | 7.2M | 1 | — | — |
+| `unit_crops` | training data (C) | unit image crops + embeddings: train the card classifier, feed mining | 1,892,719 | 13.7G | 1 | mine.py | dedupe_crops.sh, mine_all.py, mine_failures.py |
+| `placements` | training data (placement) | every play with its spot and the board before it | 14,080 | 1.2M | 1 | build_placements.py | train_place.py |
+| `interactions` | training data (playbook) | play -> the other player's answer within 8 s, with positions | 20,643 | 848K | 1 | build_playbook.py | — |
+
+Total: 28 tables, 17.9G.
+
+## Data folders
+
+| Folder | What it is | On laptop | Symlinks (→ LaCie) |
+|---|---|---|---|
+| `data/raw/replays` | replay recordings from the Battle Log (bot + Cole's account) | 17.0G | 16 (16) |
+| `data/raw/tv_royale` | TV Royale replay recordings (top ladder) | 4.7G | 364 (364) |
+| `data/raw/live_games` | the bot's games: screen recording + a frame at / after every play | 5.6G | 0 (0) |
+| `data/raw/replay_links` | symlinks to replay videos by match id | 0B | 1048 (0) |
+| `data/raw/live_ui` | screens the bot didn't recognise between games | 25.7M | 0 (0) |
+| `data/raw/live_calib` | BlueStacks calibration frames | 2.1M | 0 (0) |
+| `data/raw/youtube` | YouTube download metadata | 44K | 0 (0) |
+| `data/raw/*` (files at the top) | Cole's POV recordings + YouTube videos (top level) | 12.0G | 154 (152) |
+| `data/external` | datasets for the detector: KataCR, synthetic and real crop sets | 9.7G | 954 (0) |
+| `data/upload` | bundles made for RunPod uploads (tarballs and unpacked copies) | 26.4G | 0 (0) |
+| `data/reviews` | generated review pages (HTML) | 924.1M | 0 (0) |
+| `data/ground_truth` | answer keys and Cole's reviews (JSON) | 7.5M | 0 (0) |
+| `data/models` | model weights | 5.9G | 0 (0) |
+| `data/calibration` | layout calibration images | 189.3M | 0 (0) |
+| `data/cards` | card art + overrides | 30.4M | 0 (0) |
+| `data/slices` | video slices for labelling | 56.7M | 0 (0) |
+| `data/logs` | run logs | 17.7M | 0 (0) |
+| `data/opponent` | opponent-pipeline debug images | 1.2M | 0 (0) |
+| `data/live` | the bot's runtime files (STOP flag, game results) | 4K | 0 (0) |
+
+## Models (`data/models`)
+
+| Model | Size | Referenced in code |
+|---|---|---|
+| `bot77_detector` | 4.6G | build_real_v3.py, ingest_live_replays.py, ingest_replays.py, live_calibrate.py, live_dryrun.py |
+| `crop_clf.pt` | 1.2M | crop_classifier.py, cropclf.py |
+| `crop_clf_nocand.pt` | 1.1M | crop_classifier.py |
+| `fake_filter` | 580K | opponent.py, playrules.py, train_fake_filter.py |
+| `fake_filter_v2` | 776K | — (not referenced: old version?) |
+| `fake_filter_v3` | 824K | — (not referenced: old version?) |
+| `fake_filter_v4` | 804K | playrules.py |
+| `katacr` | 334.1M | build_train_mined.py, build_train_v3.py, crop_classifier.py, generate_synth.py, mix_spell_probs.py |
+| `moves_v1` | 1.0M | moves.py, policy.py, train_moves.py |
+| `moves_v2` | 1.3M | — (not referenced: old version?) |
+| `place_v1` | 968K | place.py, policy.py, train_place.py |
+| `probs_new_v2` | 11.8M | — (not referenced: old version?) |
+| `probs_new_v3` | 11.9M | — (not referenced: old version?) |
+| `probs_new_v5` | 11.8M | — (not referenced: old version?) |
+| `sam` | 74.5M | autolabel.py, slices.py |
+| `spell_mix` | 18.1M | build_failures.py, mix_spell_probs.py |
+| `spell_mix235` | 14.7M | — (not referenced: old version?) |
+| `spell_mix25` | 18.1M | playrules.py |
+| `spell_mix256` | 18.1M | playrules.py |
+| `spell_mix25ab` | 14.7M | — (not referenced: old version?) |
+| `spell_mix25avg` | 14.7M | — (not referenced: old version?) |
+| `spell_mix26` | 18.1M | — (not referenced: old version?) |
+| `spell_v1` | 125.4M | — (not referenced: old version?) |
+| `spell_v2` | 134.3M | mix_spell_probs.py |
+| `spell_v3` | 134.3M | mix_spell_probs.py |
+| `spell_v4` | 129.9M | — (not referenced: old version?) |
+| `spell_v5` | 134.3M | — (not referenced: old version?) |
+| `spell_v6` | 134.2M | — (not referenced: old version?) |
+| `yolo11s.pt` | 18.4M | train_detector.py, train_v2.py |
+
+## Ground truth (`data/ground_truth`)
+
+| Group | Files |
+|---|---|
+| `opponent_truth_replay_tv` | 390 |
+| `opponent_truth_replay_bl` | 134 |
+| `opponent_truth_live_cole` | 55 |
+| `opponent_truth_auto_cole` | 16 |
+| `opponent_truth_auto_friend` | 12 |
+| `truth` | 4 |
+| `opponent_truth` | 1 |
+| `reviews/` | 64 |
+
+## Config (`config/`)
+
+| File | Referenced in code |
+|---|---|
+| `benchmark_holdout.json` | analyze_dev.py, autolabel_clock_spots.py, autolabel_paired_spells.py, autolabel_v4.py |
+| `card_roles.yaml` | board.py |
+| `classes_v2.json` | auto_sprites.py, autolabel.py, build_real_v3.py, build_train_v2.py |
+| `heldback_replays.json` | build_failures.py, build_moves.py, build_placements.py, build_playbook.py |
+| `layouts` | __init__.py, layout.py, manual_layouts.py, prepare_batch.py |
+| `live_test_games.json` | holdout.py |
+| `play_timing.json` | play_timing.py, playrules.py |
+| `play_timing_replay.json` | playrules.py |
+| `playbook_rules.yaml` | board.py, build_bot_review.py, rules.py |
+| `recording_decks.json` | autolabel.py, session_click_page.py |
+| `replay_test_games.json` | autolabel_clock_spots.py, build_failures.py, build_moves.py, build_placements.py |
+| `spell_clip_relabels.json` | spell_clips.py |
+| `v5_check_games.json` | autolabel_clock_spots.py, build_train_mined.py, build_train_v5.py, label_mined.py |
+
