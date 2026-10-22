@@ -27,6 +27,7 @@ main{padding:16px;display:grid;grid-template-columns:repeat(auto-fill,minmax(380
 .dot{position:absolute;width:18px;height:18px;margin:-9px 0 0 -9px;border-radius:50%;pointer-events:none}
 .bot{border:3px solid #ffd400}.fix{border:3px solid #18e06a;background:#18e06a55}
 .tag{font-size:12px;padding:1px 6px;border-radius:9px;background:var(--accent);color:#fff}
+textarea.note{width:100%;box-sizing:border-box;min-height:4.5em;resize:vertical;font-family:inherit;font-size:15px;line-height:1.45;color:inherit;background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:6px 8px}
 .row{display:flex;gap:6px;flex-wrap:wrap;align-items:center}.ok .k{background:var(--good);color:#fff}.bad .m{background:var(--bad);color:#fff}
 </style></head><body>
 <header><h1>Bot play review __N__</h1><span class="muted" id="progress"></span>
@@ -51,8 +52,8 @@ const ok=document.createElement("button");ok.className="k";ok.textContent="OK";o
 const bad=document.createElement("button");bad.className="m";bad.textContent="Mistake";bad.onclick=()=>{S[d.id]={...s,by:"cole",verdict:"bad"};save()};
 const sel=document.createElement("select");for(const o of ["(card it should play)",...d.hand.filter(Boolean),"wait (no play)"]){const op=document.createElement("option");op.textContent=o;op.selected=s.card===o;sel.append(op)}
 sel.onchange=()=>{S[d.id]={...s,by:"cole",verdict:"bad",card:sel.value};save()};
-const note=document.createElement("input");note.placeholder="note";note.value=s.note||"";note.onchange=()=>{S[d.id]={...s,by:"cole",verdict:s.verdict||"bad",note:note.value};save()};
-row.append(ok,bad,sel,note);if(s.by==="claude"){const ag=document.createElement("button");ag.textContent="Agree";ag.onclick=()=>{S[d.id]={...s,by:"cole"};save()};row.append(ag)}c.append(row);main.append(c)}
+const note=document.createElement("textarea");note.className="note";note.rows=3;note.placeholder="note";note.value=s.note||"";note.onchange=()=>{S[d.id]={...s,by:"cole",verdict:s.verdict||"bad",note:note.value};save()};
+row.append(ok,bad,sel);if(s.by==="claude"){const ag=document.createElement("button");ag.textContent="Agree";ag.onclick=()=>{S[d.id]={...s,by:"cole"};save()};row.append(ag)}c.append(row,note);main.append(c)}
 const cl=DATA.filter(d=>(S[d.id]||{}).by==="claude").length;
 document.getElementById("progress").textContent=`${done}/${DATA.length} reviewed`+(cl?` · ${cl} by Claude to check`:"")}
 document.getElementById("export").onclick=()=>{const out=DATA.filter(d=>S[d.id]).map(d=>({id:d.id,game:d.game,k:d.k,card:d.card,reason:d.reason,
