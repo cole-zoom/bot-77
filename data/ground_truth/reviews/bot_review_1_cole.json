@@ -1,0 +1,568 @@
+{
+ "exported_at": "2026-10-22T18:28:07.496Z",
+ "plays": [
+  {
+   "id": "bot_2026-10-22_045934:0",
+   "game": "bot_2026-10-22_045934",
+   "k": 0,
+   "card": "wait (no play)",
+   "reason": "idle (rules)",
+   "verdict": "bad",
+   "note": "So the best thing to do at the start would to be to either 1. wait, or 2. cycle cards you don't need. In this case, since we have mostly defensive cards in hand, and we have a heavy deck that were playing, I'd wait until the other person makes a move or cycle minions behind my king tower, to split them up since I don't want the other player to get spell value.",
+   "spot_px": null
+  },
+  {
+   "id": "bot_2026-10-22_045934:1",
+   "game": "bot_2026-10-22_045934",
+   "k": 1,
+   "card": "wait (no play)",
+   "reason": "idle (rules)",
+   "verdict": "bad",
+   "note": "Musketeer is one of our most valuable defensive card. We just cycled 2 air counters, which doens't rlly make sense. It would make more sense to put it behind the king tower to build a push, but we don't do that either.",
+   "spot_px": null
+  },
+  {
+   "id": "bot_2026-10-22_045934:2",
+   "game": "bot_2026-10-22_045934",
+   "k": 2,
+   "card": "wait (no play)",
+   "reason": "idle (rules)",
+   "verdict": "bad",
+   "note": "Now, were just throwing elixir down the drain. we let an unprotected musketeer go, and cycle archers. We've just made ourselves vunerable to an air attack by cycleing three of our air dps cards. if they had played a balloon opposite, we would be screwed",
+   "spot_px": null
+  },
+  {
+   "id": "bot_2026-10-22_045934:3",
+   "game": "bot_2026-10-22_045934",
+   "k": 3,
+   "card": "wait (no play)",
+   "reason": "idle (rules)",
+   "verdict": "bad",
+   "note": "Again, no thought behind this. Why did we play this? we should have waited for the spear golbins opposite lane to cross, and then placed the knght ontop of that",
+   "spot_px": null
+  },
+  {
+   "id": "bot_2026-10-22_045934:4",
+   "game": "bot_2026-10-22_045934",
+   "k": 4,
+   "card": "wait (no play)",
+   "reason": "idle (rules)",
+   "verdict": "bad",
+   "note": "Why are we playing a giant into a musketeer, before the musketeer has crossed the bridge? were practically just feeding the musketeer value by doing this",
+   "spot_px": null
+  },
+  {
+   "id": "bot_2026-10-22_045934:5",
+   "game": "bot_2026-10-22_045934",
+   "k": 5,
+   "card": "Mini P.E.K.K.A",
+   "reason": "defend (playbook)",
+   "verdict": "bad",
+   "note": "Play it ontop of the musketeer next time to make sure the mini pekka survives with more health",
+   "spot_px": null
+  },
+  {
+   "id": "bot_2026-10-22_045934:6",
+   "game": "bot_2026-10-22_045934",
+   "k": 6,
+   "card": "wait (no play)",
+   "reason": "idle (rules)",
+   "verdict": "bad",
+   "note": "We do the exact same sequence as the start - reuse those notes",
+   "spot_px": null
+  },
+  {
+   "id": "bot_2026-10-22_045934:7",
+   "game": "bot_2026-10-22_045934",
+   "k": 7,
+   "card": "wait (no play)",
+   "reason": "idle (rules)",
+   "verdict": "bad",
+   "spot_px": null
+  },
+  {
+   "id": "bot_2026-10-22_045934:8",
+   "game": "bot_2026-10-22_045934",
+   "k": 8,
+   "card": "wait (no play)",
+   "reason": "idle (rules)",
+   "verdict": "bad",
+   "spot_px": null
+  },
+  {
+   "id": "bot_2026-10-22_045934:9",
+   "game": "bot_2026-10-22_045934",
+   "k": 9,
+   "card": "Giant",
+   "reason": "idle (rules)",
+   "verdict": "bad",
+   "note": "This is fine, next time play it in the back to build a push. this is the entire point of the giant, to build a push that they cannot stop",
+   "spot_px": null
+  },
+  {
+   "id": "bot_2026-10-22_045934:10",
+   "game": "bot_2026-10-22_045934",
+   "k": 10,
+   "card": "Mini P.E.K.K.A",
+   "reason": "defend (rules)",
+   "verdict": "bad",
+   "note": "Minipekka is the better play, more dps",
+   "spot_px": null
+  },
+  {
+   "id": "bot_2026-10-22_045934:11",
+   "game": "bot_2026-10-22_045934",
+   "k": 11,
+   "card": "Mini P.E.K.K.A",
+   "reason": "defend (rules)",
+   "verdict": "ok",
+   "spot_px": null
+  },
+  {
+   "id": "bot_2026-10-22_045934:12",
+   "game": "bot_2026-10-22_045934",
+   "k": 12,
+   "card": "Arrows",
+   "reason": "defend (rules)",
+   "verdict": "bad",
+   "note": "You missed the spear goblins",
+   "spot_px": null
+  },
+  {
+   "id": "bot_2026-10-22_045934:13",
+   "game": "bot_2026-10-22_045934",
+   "k": 13,
+   "card": "Archers",
+   "reason": "idle (rules)",
+   "verdict": "bad",
+   "note": "Whats the point? were not even at a full elixir bar?",
+   "spot_px": null
+  },
+  {
+   "id": "bot_2026-10-22_045934:14",
+   "game": "bot_2026-10-22_045934",
+   "k": 14,
+   "card": "Giant",
+   "reason": "idle (rules)",
+   "verdict": "bad",
+   "note": "play it in the back, never Giant the bridge",
+   "spot_px": null
+  },
+  {
+   "id": "bot_2026-10-22_045934:15",
+   "game": "bot_2026-10-22_045934",
+   "k": 15,
+   "card": "Minions",
+   "reason": "idle (rules)",
+   "verdict": "bad",
+   "note": "Why are we not supporting the giant?",
+   "spot_px": null
+  },
+  {
+   "id": "bot_2026-10-22_045934:16",
+   "game": "bot_2026-10-22_045934",
+   "k": 16,
+   "card": "Mini P.E.K.K.A",
+   "reason": "idle (rules)",
+   "verdict": "bad",
+   "note": "There is a giant coming down the other lane and we just randomly play a knight",
+   "spot_px": null
+  },
+  {
+   "id": "bot_2026-10-22_045934:17",
+   "game": "bot_2026-10-22_045934",
+   "k": 17,
+   "card": "Mini P.E.K.K.A",
+   "reason": "defend (rules)",
+   "verdict": "ok",
+   "spot_px": null
+  },
+  {
+   "id": "bot_2026-10-22_045934:18",
+   "game": "bot_2026-10-22_045934",
+   "k": 18,
+   "card": "Archers",
+   "reason": "defend (rules)",
+   "verdict": "bad",
+   "note": "put them farther away from the giant next time, they are ranged troops afterall",
+   "spot_px": null
+  },
+  {
+   "id": "bot_2026-10-22_045934:19",
+   "game": "bot_2026-10-22_045934",
+   "k": 19,
+   "card": "Musketeer",
+   "reason": "defend (rules)",
+   "verdict": "ok",
+   "note": "next time play it infront of king tower to protect it",
+   "spot_px": null
+  },
+  {
+   "id": "bot_2026-10-22_045934:20",
+   "game": "bot_2026-10-22_045934",
+   "k": 20,
+   "card": "Minions",
+   "reason": "defend (rules)",
+   "verdict": "ok",
+   "spot_px": null
+  },
+  {
+   "id": "bot_2026-10-22_045934:21",
+   "game": "bot_2026-10-22_045934",
+   "k": 21,
+   "card": "wait (no play)",
+   "reason": "defend (rules)",
+   "verdict": "bad",
+   "note": "what are u aiming at lol",
+   "spot_px": null
+  },
+  {
+   "id": "bot_2026-10-22_045934:22",
+   "game": "bot_2026-10-22_045934",
+   "k": 22,
+   "card": "Giant",
+   "reason": "idle (rules)",
+   "verdict": "ok",
+   "note": "This is fine, you apply pressure oposite and defend ith mini pekka",
+   "spot_px": null
+  },
+  {
+   "id": "bot_2026-10-22_045934:23",
+   "game": "bot_2026-10-22_045934",
+   "k": 23,
+   "card": "Mini P.E.K.K.A",
+   "reason": "defend (rules)",
+   "verdict": "bad",
+   "spot_px": null
+  },
+  {
+   "id": "bot_2026-10-22_045934:24",
+   "game": "bot_2026-10-22_045934",
+   "k": 24,
+   "card": "Mini P.E.K.K.A",
+   "reason": "defend (rules)",
+   "verdict": "bad",
+   "spot_px": null
+  },
+  {
+   "id": "bot_2026-10-22_045934:25",
+   "game": "bot_2026-10-22_045934",
+   "k": 25,
+   "card": "Minions",
+   "reason": "defend (rules)",
+   "verdict": "ok",
+   "spot_px": null
+  },
+  {
+   "id": "bot_2026-10-22_051219:0",
+   "game": "bot_2026-10-22_051219",
+   "k": 0,
+   "card": "Knight",
+   "reason": "idle (rules)",
+   "verdict": "bad",
+   "spot_px": null
+  },
+  {
+   "id": "bot_2026-10-22_051219:1",
+   "game": "bot_2026-10-22_051219",
+   "k": 1,
+   "card": "Giant",
+   "reason": "idle (rules)",
+   "verdict": "bad",
+   "spot_px": null
+  },
+  {
+   "id": "bot_2026-10-22_051219:2",
+   "game": "bot_2026-10-22_051219",
+   "k": 2,
+   "card": "Fireball",
+   "reason": "defend (rules)",
+   "verdict": "ok",
+   "spot_px": null
+  },
+  {
+   "id": "bot_2026-10-22_051219:3",
+   "game": "bot_2026-10-22_051219",
+   "k": 3,
+   "card": "Minions",
+   "reason": "defend (rules)",
+   "verdict": "ok",
+   "spot_px": null
+  },
+  {
+   "id": "bot_2026-10-22_051219:4",
+   "game": "bot_2026-10-22_051219",
+   "k": 4,
+   "card": "Archers",
+   "reason": "defend (rules)",
+   "verdict": "bad",
+   "spot_px": null
+  },
+  {
+   "id": "bot_2026-10-22_051219:5",
+   "game": "bot_2026-10-22_051219",
+   "k": 5,
+   "card": "Archers",
+   "reason": "defend (rules)",
+   "verdict": "ok",
+   "spot_px": null
+  },
+  {
+   "id": "bot_2026-10-22_051219:6",
+   "game": "bot_2026-10-22_051219",
+   "k": 6,
+   "card": "Musketeer",
+   "reason": "idle (playbook)",
+   "verdict": "bad",
+   "spot_px": null
+  },
+  {
+   "id": "bot_2026-10-22_051219:7",
+   "game": "bot_2026-10-22_051219",
+   "k": 7,
+   "card": "Musketeer",
+   "reason": "defend (rules)",
+   "verdict": "ok",
+   "spot_px": null
+  },
+  {
+   "id": "bot_2026-10-22_051219:8",
+   "game": "bot_2026-10-22_051219",
+   "k": 8,
+   "card": "Minions",
+   "reason": "defend (rules)",
+   "verdict": "ok",
+   "spot_px": null
+  },
+  {
+   "id": "bot_2026-10-22_051219:9",
+   "game": "bot_2026-10-22_051219",
+   "k": 9,
+   "card": "Mini P.E.K.K.A",
+   "reason": "defend (rules)",
+   "verdict": "bad",
+   "spot_px": null
+  },
+  {
+   "id": "bot_2026-10-22_051424:0",
+   "game": "bot_2026-10-22_051424",
+   "k": 0,
+   "card": "Archers",
+   "reason": "idle (rules)",
+   "verdict": "bad",
+   "spot_px": null
+  },
+  {
+   "id": "bot_2026-10-22_051424:1",
+   "game": "bot_2026-10-22_051424",
+   "k": 1,
+   "card": "Knight",
+   "reason": "idle (rules)",
+   "verdict": "bad",
+   "spot_px": null
+  },
+  {
+   "id": "bot_2026-10-22_051424:2",
+   "game": "bot_2026-10-22_051424",
+   "k": 2,
+   "card": "Mini P.E.K.K.A",
+   "reason": "defend (rules)",
+   "verdict": "ok",
+   "spot_px": null
+  },
+  {
+   "id": "bot_2026-10-22_051424:3",
+   "game": "bot_2026-10-22_051424",
+   "k": 3,
+   "card": "Minions",
+   "reason": "defend (rules)",
+   "verdict": "ok",
+   "spot_px": null
+  },
+  {
+   "id": "bot_2026-10-22_051424:4",
+   "game": "bot_2026-10-22_051424",
+   "k": 4,
+   "card": "wait (no play)",
+   "reason": "defend (rules)",
+   "verdict": "bad",
+   "spot_px": null
+  },
+  {
+   "id": "bot_2026-10-22_051424:5",
+   "game": "bot_2026-10-22_051424",
+   "k": 5,
+   "card": "Archers",
+   "reason": "defend (rules)",
+   "verdict": "ok",
+   "note": "bad placement",
+   "spot_px": null
+  },
+  {
+   "id": "bot_2026-10-22_051424:6",
+   "game": "bot_2026-10-22_051424",
+   "k": 6,
+   "card": "wait (no play)",
+   "reason": "defend (rules)",
+   "verdict": "bad",
+   "note": "archers here aren't rlly a threat and not worth burning 3 elixir",
+   "spot_px": null
+  },
+  {
+   "id": "bot_2026-10-22_051424:7",
+   "game": "bot_2026-10-22_051424",
+   "k": 7,
+   "card": "Mini P.E.K.K.A",
+   "reason": "defend (playbook)",
+   "verdict": "ok",
+   "note": "Bad Placement",
+   "spot_px": null
+  },
+  {
+   "id": "bot_2026-10-22_051424:8",
+   "game": "bot_2026-10-22_051424",
+   "k": 8,
+   "card": "wait (no play)",
+   "reason": "defend (rules)",
+   "verdict": "bad",
+   "spot_px": null
+  },
+  {
+   "id": "bot_2026-10-22_051424:9",
+   "game": "bot_2026-10-22_051424",
+   "k": 9,
+   "card": "Musketeer",
+   "reason": "defend (playbook)",
+   "verdict": "ok",
+   "spot_px": null
+  },
+  {
+   "id": "bot_2026-10-22_051424:10",
+   "game": "bot_2026-10-22_051424",
+   "k": 10,
+   "card": "Archers",
+   "reason": "defend (rules)",
+   "verdict": "bad",
+   "spot_px": null
+  },
+  {
+   "id": "bot_2026-10-22_051424:11",
+   "game": "bot_2026-10-22_051424",
+   "k": 11,
+   "card": "wait (no play)",
+   "reason": "defend (playbook)",
+   "verdict": "bad",
+   "spot_px": null
+  },
+  {
+   "id": "bot_2026-10-22_051424:12",
+   "game": "bot_2026-10-22_051424",
+   "k": 12,
+   "card": "Knight",
+   "reason": "defend (rules)",
+   "verdict": "ok",
+   "spot_px": null
+  },
+  {
+   "id": "bot_2026-10-22_051424:13",
+   "game": "bot_2026-10-22_051424",
+   "k": 13,
+   "card": "Minions",
+   "reason": "defend (rules)",
+   "verdict": "bad",
+   "spot_px": null
+  },
+  {
+   "id": "bot_2026-10-22_051424:14",
+   "game": "bot_2026-10-22_051424",
+   "k": 14,
+   "card": "Giant",
+   "reason": "idle (rules)",
+   "verdict": "ok",
+   "spot_px": null
+  },
+  {
+   "id": "bot_2026-10-22_051424:15",
+   "game": "bot_2026-10-22_051424",
+   "k": 15,
+   "card": "Musketeer",
+   "reason": "defend (rules)",
+   "verdict": "ok",
+   "spot_px": null
+  },
+  {
+   "id": "bot_2026-10-22_051424:16",
+   "game": "bot_2026-10-22_051424",
+   "k": 16,
+   "card": "Arrows",
+   "reason": "defend (rules)",
+   "verdict": "ok",
+   "spot_px": null
+  },
+  {
+   "id": "bot_2026-10-22_051424:17",
+   "game": "bot_2026-10-22_051424",
+   "k": 17,
+   "card": "Knight",
+   "reason": "defend (playbook)",
+   "verdict": "ok",
+   "spot_px": null
+  },
+  {
+   "id": "bot_2026-10-22_051424:18",
+   "game": "bot_2026-10-22_051424",
+   "k": 18,
+   "card": "Minions",
+   "reason": "defend (playbook)",
+   "verdict": "ok",
+   "spot_px": null
+  },
+  {
+   "id": "bot_2026-10-22_051424:19",
+   "game": "bot_2026-10-22_051424",
+   "k": 19,
+   "card": "Archers",
+   "reason": "defend (playbook)",
+   "verdict": "ok",
+   "note": "bad placement",
+   "spot_px": null
+  },
+  {
+   "id": "bot_2026-10-22_051424:20",
+   "game": "bot_2026-10-22_051424",
+   "k": 20,
+   "card": "Musketeer",
+   "reason": "defend (playbook)",
+   "verdict": "bad",
+   "note": "Rlly bad placement",
+   "spot_px": null
+  },
+  {
+   "id": "bot_2026-10-22_051424:21",
+   "game": "bot_2026-10-22_051424",
+   "k": 21,
+   "card": "Arrows",
+   "reason": "defend (rules)",
+   "verdict": "ok",
+   "spot_px": null
+  },
+  {
+   "id": "bot_2026-10-22_051424:22",
+   "game": "bot_2026-10-22_051424",
+   "k": 22,
+   "card": "Knight",
+   "reason": "defend (playbook)",
+   "verdict": "ok",
+   "spot_px": null
+  },
+  {
+   "id": "bot_2026-10-22_051729:0",
+   "game": "bot_2026-10-22_051729",
+   "k": 0,
+   "card": "Archers",
+   "reason": "idle (rules)",
+   "verdict": "ok",
+   "spot_px": null
+  }
+ ]
+}
