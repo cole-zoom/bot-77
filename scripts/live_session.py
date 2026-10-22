@@ -51,6 +51,9 @@ while time.time() < end and not STOP_FILE.exists():
     # the replays of this chunk's games are the newest entries of the Battle Log. Relaunch Clash first so it opens on
     # the home screen (after a game it can sit on reward screens the replay runner doesn't know, 2026-10-22)
     from bot77.live.device import ADB
+    # reset ADB first: after a chunk of play the replay runner's scrcpy failed to start twice in a row
+    # (2026-10-22, "timed out after 60 seconds"); the one pull right after an ADB reset worked
+    recover_adb(a.device)
     subprocess.run([ADB, "-s", a.device, "shell", "am", "force-stop", "com.supercell.clashroyale"])
     time.sleep(2)
     subprocess.run([ADB, "-s", a.device, "shell", "monkey", "-p", "com.supercell.clashroyale", "-c",
