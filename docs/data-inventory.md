@@ -32,7 +32,7 @@ Generated 2026-10-22 by `scripts/inventory.py` (phase 0 of [training-architectur
 | `unit_detections_v7l_best` | observation | detector V7 on a check set (30-ish games) | 1,229,471 | 24.4M | 1 | — | build_detections.py |
 | `unit_detections_v8l_best` | observation | detector V8 on a check set | 1,248,634 | 24.7M | 1 | — | build_detections.py |
 | `events` | observation / ground truth | plays and abilities read from the hand (exact for the player whose hand is shown; replay answer keys) | 70,099 | 3.4G | 1 | pipeline.py | __init__.py, add_next_card_plays.py, after_session_f.sh, after_session_g.sh, analyze_dev.py, autolabel.py, autolabel_pai |
-| `plays` | observation / ground truth | every play: from the hand (exact), detected by C, or made by the bot | 71,839 | 6.9M | 2 | build_plays.py | build_bot_review.py, build_click_short.py, build_moments.py, check_moments.py, eval_rules_on_reviews.py, import_reviews. |
+| `plays` | observation / ground truth | every play: from the hand (exact), detected by C, or made by the bot | 75,939 | 14.8M | 4 | build_plays.py | build_bot_review.py, build_click_short.py, build_moments.py, check_moments.py, eval_rules_on_reviews.py, import_reviews. |
 | `cards` | reference | the card catalogue: names, elixir, type, rarity, art (from the Clash API) | 127 | 87.3M | 3 | cards.py | __init__.py, add_next_card_plays.py, analyze_dev.py, autolabel.py, autolabel_paired_spells.py, board.py, build_board_sta |
 | `matches` | source | one row per match in a video: start / end, opponent, deck. Split / source / league not here yet | 2,088 | 1020K | 4 | build_sources.py | add_next_card_plays.py, analyze_dev.py, autolabel.py, autolabel_clock_spots.py, autolabel_paired_spells.py, autolabel_v4 |
 | `media` | source | every video / recording file: where it really lives (laptop / LaCie), size, available now | 773 | 352K | 3 | build_media.py | — |
@@ -48,8 +48,12 @@ Generated 2026-10-22 by `scripts/inventory.py` (phase 0 of [training-architectur
 | `unit_crops` | training data (C) | unit image crops + embeddings: train the card classifier, feed mining | 1,892,719 | 13.7G | 1 | mine.py | dedupe_crops.sh, mine_all.py, mine_failures.py |
 | `placements` | training data (placement) | every play with its spot and the board before it | 14,080 | 1.2M | 1 | build_placements.py | build_plays.py, train_place.py |
 | `interactions` | training data (playbook) | play -> the other player's answer within 8 s, with positions | 20,643 | 848K | 1 | build_playbook.py | — |
+| `opponent_events_dev_dev_s6_m25` | ? | **undocumented** | 636 | 648K | 51 | — | build_plays.py |
+| `opponent_events_dev_lt_s6_m25` | ? | **undocumented** | 830 | 1.2M | 89 | — | build_plays.py |
+| `opponent_events_dev_rt6_v5l_e15` | ? | **undocumented** | 1,057 | 804K | 59 | — | build_plays.py |
+| `opponent_events_dev_va6_m256` | ? | **undocumented** | 1,577 | 1.4M | 95 | — | build_plays.py |
 
-Total: 35 tables, 18.8G.
+Total: 39 tables, 18.9G.
 
 ## Data folders
 

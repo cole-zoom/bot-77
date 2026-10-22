@@ -43,12 +43,17 @@ for e in db.open_table("events").search().where("kind IN ('play', 'ability')").l
                  "side": s, "t": e["t_video"], "t_match": e["t_match"], "card": e["card"], "card_id": e["card_id"],
                  "form": e["form"], "kind": e["kind"], "slot": e["slot"], "elixir_before": e["elixir_before"],
                  "elixir_after": e["elixir_after"], "x": x, "y": y, "reason": None})
-for e in db.open_table("opponent_events").to_arrow().to_pylist():
-    rows.append({"play_id": f"detected:legacy:{e['event_id']}", "source": "detected", "run_id": "legacy",
-                 "match_id": e["match_id"], "game_id": game(e["match_id"]), "side": "top" if side(e["match_id"]) == "bottom" else "bottom",
-                 "t": e["t_video"], "t_match": e["t_match"], "card": e["card"], "card_id": cards.get(e["card"] or "", {}).get("id"),
-                 "form": "evo" if e.get("evo") else "normal", "kind": "play", "slot": None, "elixir_before": None,
-                 "elixir_after": None, "x": e["x_tiles"], "y": e["y_tiles"], "reason": None})
+# C's output with the current defaults on each evaluation set (restored from the binned sweeps, 2026-10-22: V5 dets,
+# fake filter v4, POV spells v2+v5, replay spells v2+v5+v6), plus the old default table
+C_RUNS = {"legacy": "opponent_events", "c_dev": "opponent_events_dev_dev_s6_m25", "c_live": "opponent_events_dev_lt_s6_m25",
+          "c_heldback": "opponent_events_dev_va6_m256", "c_test": "opponent_events_dev_rt6_v5l_e15"}
+for run, tn in C_RUNS.items():
+    for e in db.open_table(tn).to_arrow().to_pylist():
+        rows.append({"play_id": f"detected:{run}:{e['event_id']}", "source": "detected", "run_id": run,
+                     "match_id": e["match_id"], "game_id": game(e["match_id"]), "side": "top" if side(e["match_id"]) == "bottom" else "bottom",
+                     "t": e["t_video"], "t_match": e["t_match"], "card": e["card"], "card_id": cards.get(e["card"] or "", {}).get("id"),
+                     "form": "evo" if e.get("evo") else "normal", "kind": "play", "slot": None, "elixir_before": None,
+                     "elixir_after": None, "x": e["x_tiles"], "y": e["y_tiles"], "reason": None})
 for a in db.open_table("bot_actions").to_arrow().to_pylist():
     rows.append({"play_id": f"bot:{a['game_id']}:{a['k']}", "source": "bot", "run_id": None, "match_id": a["game_id"],
                  "game_id": a["game_id"], "side": "bottom", "t": a["t"], "t_match": None if a["time_left_s"] is None else 180 - a["time_left_s"],
