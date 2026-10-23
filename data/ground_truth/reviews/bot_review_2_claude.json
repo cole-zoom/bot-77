@@ -1,0 +1,1427 @@
+{
+ "exported_at": "2026-10-23T13:06:06.225679",
+ "reviewer": "claude",
+ "round": "session2_round1",
+ "plays": [
+  {
+   "id": "bot_2026-10-22_234548:0",
+   "game": "bot_2026-10-22_234548",
+   "k": 0,
+   "verdict": "bad",
+   "card": "Skeletons",
+   "bot_card": "Mini P.E.K.K.A",
+   "note": "start of the game, nothing to answer. wait or cycle skeletons behind king, don't throw a 4 elixir mini pekka out alone",
+   "confidence": "medium"
+  },
+  {
+   "id": "bot_2026-10-22_234548:1",
+   "game": "bot_2026-10-22_234548",
+   "k": 1,
+   "verdict": "ok",
+   "card": "Minions",
+   "bot_card": "Minions",
+   "note": "good defend, minions on the mini pekka",
+   "confidence": "medium"
+  },
+  {
+   "id": "bot_2026-10-22_234548:2",
+   "game": "bot_2026-10-22_234548",
+   "k": 2,
+   "verdict": "ok",
+   "card": "Musketeer",
+   "bot_card": "Musketeer",
+   "note": "fine, full elixir and behind the king. just don't let it walk in alone",
+   "confidence": "medium"
+  },
+  {
+   "id": "bot_2026-10-22_234548:3",
+   "game": "bot_2026-10-22_234548",
+   "k": 3,
+   "verdict": "ok",
+   "card": "Arrows",
+   "bot_card": "Arrows",
+   "note": "good, arrows on the spear goblins once they crossed",
+   "confidence": "medium"
+  },
+  {
+   "id": "bot_2026-10-22_234548:4",
+   "game": "bot_2026-10-22_234548",
+   "k": 4,
+   "verdict": "bad",
+   "card": "Goblin Hut",
+   "bot_card": "Skeletons",
+   "note": "skeletons get spun by the valk instantly. drop the hut in the centre to pull it off the tower",
+   "confidence": "medium"
+  },
+  {
+   "id": "bot_2026-10-22_234548:5",
+   "game": "bot_2026-10-22_234548",
+   "k": 5,
+   "verdict": "ok",
+   "card": "Giant",
+   "bot_card": "Giant",
+   "note": "good, giant in the back to build a push",
+   "confidence": "high"
+  },
+  {
+   "id": "bot_2026-10-22_234548:6",
+   "game": "bot_2026-10-22_234548",
+   "k": 6,
+   "verdict": "ok",
+   "card": "Minions",
+   "bot_card": "Minions",
+   "note": "good, supporting the giant",
+   "confidence": "high"
+  },
+  {
+   "id": "bot_2026-10-22_234548:7",
+   "game": "bot_2026-10-22_234548",
+   "k": 7,
+   "verdict": "ok",
+   "card": "Mini P.E.K.K.A",
+   "bot_card": "Mini P.E.K.K.A",
+   "note": "good, mini pekka right on top of the giant",
+   "confidence": "high"
+  },
+  {
+   "id": "bot_2026-10-22_234548:8",
+   "game": "bot_2026-10-22_234548",
+   "k": 8,
+   "verdict": "ok",
+   "card": "Musketeer",
+   "bot_card": "Musketeer",
+   "note": "good, musketeer in front of king tower so both towers cover it",
+   "confidence": "medium"
+  },
+  {
+   "id": "bot_2026-10-22_234548:9",
+   "game": "bot_2026-10-22_234548",
+   "k": 9,
+   "verdict": "ok",
+   "card": "Skeletons",
+   "bot_card": "Skeletons",
+   "note": "good cheap answer to the mini pekka",
+   "confidence": "medium"
+  },
+  {
+   "id": "bot_2026-10-22_234548:10",
+   "game": "bot_2026-10-22_234548",
+   "k": 10,
+   "verdict": "ok",
+   "card": "Arrows",
+   "bot_card": "Arrows",
+   "note": "good, arrows hit the skeletons and both spear goblins",
+   "confidence": "medium"
+  },
+  {
+   "id": "bot_2026-10-22_234548:11",
+   "game": "bot_2026-10-22_234548",
+   "k": 11,
+   "verdict": "ok",
+   "card": "Minions",
+   "bot_card": "Minions",
+   "note": "good defend on the mini pekka",
+   "confidence": "medium"
+  },
+  {
+   "id": "bot_2026-10-22_234548:12",
+   "game": "bot_2026-10-22_234548",
+   "k": 12,
+   "verdict": "ok",
+   "card": "Giant",
+   "bot_card": "Giant",
+   "note": "fine, full elixir and giant in the back",
+   "confidence": "medium"
+  },
+  {
+   "id": "bot_2026-10-22_234548:13",
+   "game": "bot_2026-10-22_234548",
+   "k": 13,
+   "verdict": "ok",
+   "card": "Mini P.E.K.K.A",
+   "bot_card": "Mini P.E.K.K.A",
+   "note": "fine, tower is low so the bomber has to die, and its on top of it",
+   "confidence": "medium"
+  },
+  {
+   "id": "bot_2026-10-22_234548:14",
+   "game": "bot_2026-10-22_234548",
+   "k": 14,
+   "verdict": "bad",
+   "card": "Musketeer",
+   "bot_card": "Musketeer",
+   "note": "giant coming down the left on a 148 tower and we send musketeer right. hold it and put it in front of king on the left",
+   "confidence": "medium"
+  },
+  {
+   "id": "bot_2026-10-22_234548:15",
+   "game": "bot_2026-10-22_234548",
+   "k": 15,
+   "verdict": "ok",
+   "card": "Goblin Hut",
+   "bot_card": "Goblin Hut",
+   "note": "good, hut in the centre to pull the giant",
+   "confidence": "high"
+  },
+  {
+   "id": "bot_2026-10-22_234548:16",
+   "game": "bot_2026-10-22_234548",
+   "k": 16,
+   "verdict": "ok",
+   "card": "Minions",
+   "bot_card": "Minions",
+   "note": "fine defend on the giant with the hut pulling it",
+   "confidence": "medium"
+  },
+  {
+   "id": "bot_2026-10-22_234548:17",
+   "game": "bot_2026-10-22_234548",
+   "k": 17,
+   "verdict": "bad",
+   "card": "Arrows",
+   "bot_card": "Skeletons",
+   "note": "their minions are on the giant, arrows them so our defense isn't shredded. skeletons alone don't do much here",
+   "confidence": "low"
+  },
+  {
+   "id": "bot_2026-10-22_234548:18",
+   "game": "bot_2026-10-22_234548",
+   "k": 18,
+   "verdict": "ok",
+   "card": "Giant",
+   "bot_card": "Giant",
+   "note": "fine, giant in the back at full elixir",
+   "confidence": "medium"
+  },
+  {
+   "id": "bot_2026-10-22_234548:19",
+   "game": "bot_2026-10-22_234548",
+   "k": 19,
+   "verdict": "ok",
+   "card": "Musketeer",
+   "bot_card": "Musketeer",
+   "note": "good, musketeer behind the giant",
+   "confidence": "high"
+  },
+  {
+   "id": "bot_2026-10-22_234548:20",
+   "game": "bot_2026-10-22_234548",
+   "k": 20,
+   "verdict": "bad",
+   "card": "Mini P.E.K.K.A",
+   "bot_card": "Mini P.E.K.K.A",
+   "note": "there's a giant coming down the left. wait for it to cross and put the mini pekka on top, behind the king with 9 sec left does nothing",
+   "confidence": "medium"
+  },
+  {
+   "id": "bot_2026-10-22_234548:21",
+   "game": "bot_2026-10-22_234548",
+   "k": 21,
+   "verdict": "ok",
+   "card": "Minions",
+   "bot_card": "Minions",
+   "note": "1 sec left, doesn't matter",
+   "confidence": "low"
+  },
+  {
+   "id": "bot_2026-10-23_001115:0",
+   "game": "bot_2026-10-23_001115",
+   "k": 0,
+   "verdict": "bad",
+   "card": "Goblin Hut",
+   "bot_card": "Giant",
+   "note": "they just dropped a giant in the back, hut in the centre pulls it. dont start a giant down the same lane when you cant support it and defend",
+   "confidence": "medium"
+  },
+  {
+   "id": "bot_2026-10-23_001115:1",
+   "game": "bot_2026-10-23_001115",
+   "k": 1,
+   "verdict": "bad",
+   "card": "Goblin Hut",
+   "bot_card": "Skeletons",
+   "note": "skeletons do nothing to a giant, put the hut in the centre so it pulls the giant off the tower",
+   "confidence": "high"
+  },
+  {
+   "id": "bot_2026-10-23_001115:2",
+   "game": "bot_2026-10-23_001115",
+   "k": 2,
+   "verdict": "ok",
+   "card": "Musketeer",
+   "bot_card": "Musketeer",
+   "note": "fine, shoots the giant from behind the tower. in front of king tower is even better",
+   "confidence": "medium"
+  },
+  {
+   "id": "bot_2026-10-23_001115:3",
+   "game": "bot_2026-10-23_001115",
+   "k": 3,
+   "verdict": "ok",
+   "card": "Minions",
+   "bot_card": "Minions",
+   "note": "good defend on the giant",
+   "confidence": "high"
+  },
+  {
+   "id": "bot_2026-10-23_001115:4",
+   "game": "bot_2026-10-23_001115",
+   "k": 4,
+   "verdict": "bad",
+   "card": "Mini P.E.K.K.A",
+   "bot_card": "Mini P.E.K.K.A",
+   "note": "wait for the mini pekka to cross, then put ours right on top of it",
+   "confidence": "medium"
+  },
+  {
+   "id": "bot_2026-10-23_001115:5",
+   "game": "bot_2026-10-23_001115",
+   "k": 5,
+   "verdict": "ok",
+   "card": "Goblin Hut",
+   "bot_card": "Goblin Hut",
+   "note": "ok, tower's gone so this pulls. a tile or two more to the centre next time",
+   "confidence": "medium"
+  },
+  {
+   "id": "bot_2026-10-23_001115:6",
+   "game": "bot_2026-10-23_001115",
+   "k": 6,
+   "verdict": "ok",
+   "card": "Arrows",
+   "bot_card": "Arrows",
+   "note": "good, hits both minions",
+   "confidence": "high"
+  },
+  {
+   "id": "bot_2026-10-23_001115:7",
+   "game": "bot_2026-10-23_001115",
+   "k": 7,
+   "verdict": "bad",
+   "card": "wait (no play)",
+   "bot_card": "Skeletons",
+   "note": "skeletons just pop the cage and die to the brawler, let the king handle it or musketeer in front of king",
+   "confidence": "low"
+  },
+  {
+   "id": "bot_2026-10-23_001115:8",
+   "game": "bot_2026-10-23_001115",
+   "k": 8,
+   "verdict": "ok",
+   "card": "Giant",
+   "bot_card": "Giant",
+   "note": "good, giant in the back with full elixir",
+   "confidence": "high"
+  },
+  {
+   "id": "bot_2026-10-23_001115:9",
+   "game": "bot_2026-10-23_001115",
+   "k": 9,
+   "verdict": "ok",
+   "card": "Mini P.E.K.K.A",
+   "bot_card": "Mini P.E.K.K.A",
+   "note": "good, mini pekka on the giant after it crosses",
+   "confidence": "high"
+  },
+  {
+   "id": "bot_2026-10-23_001115:10",
+   "game": "bot_2026-10-23_001115",
+   "k": 10,
+   "verdict": "ok",
+   "card": "Minions",
+   "bot_card": "Minions",
+   "note": "good defend",
+   "confidence": "medium"
+  },
+  {
+   "id": "bot_2026-10-23_001115:11",
+   "game": "bot_2026-10-23_001115",
+   "k": 11,
+   "verdict": "ok",
+   "card": "Arrows",
+   "bot_card": "Arrows",
+   "note": "good, arrows on the minions",
+   "confidence": "medium"
+  },
+  {
+   "id": "bot_2026-10-23_001115:12",
+   "game": "bot_2026-10-23_001115",
+   "k": 12,
+   "verdict": "ok",
+   "card": "Skeletons",
+   "bot_card": "Skeletons",
+   "note": "fine, cheap dps on the giant at the king",
+   "confidence": "medium"
+  },
+  {
+   "id": "bot_2026-10-23_001115:13",
+   "game": "bot_2026-10-23_001115",
+   "k": 13,
+   "verdict": "ok",
+   "card": "Giant",
+   "bot_card": "Giant",
+   "note": "good, giant in the back to build a push",
+   "confidence": "high"
+  },
+  {
+   "id": "bot_2026-10-23_001115:14",
+   "game": "bot_2026-10-23_001115",
+   "k": 14,
+   "verdict": "ok",
+   "card": "Mini P.E.K.K.A",
+   "bot_card": "Mini P.E.K.K.A",
+   "note": "good, on the giant right after it crosses",
+   "confidence": "high"
+  },
+  {
+   "id": "bot_2026-10-23_001115:15",
+   "game": "bot_2026-10-23_001115",
+   "k": 15,
+   "verdict": "ok",
+   "card": "Minions",
+   "bot_card": "Minions",
+   "note": "good, minions take out the bomber behind the giant",
+   "confidence": "medium"
+  },
+  {
+   "id": "bot_2026-10-23_001115:16",
+   "game": "bot_2026-10-23_001115",
+   "k": 16,
+   "verdict": "ok",
+   "card": "Musketeer",
+   "bot_card": "Musketeer",
+   "note": "good, musketeer in front of king tower",
+   "confidence": "high"
+  },
+  {
+   "id": "bot_2026-10-23_001115:17",
+   "game": "bot_2026-10-23_001115",
+   "k": 17,
+   "verdict": "ok",
+   "card": "Arrows",
+   "bot_card": "Arrows",
+   "note": "good, arrows on the minions",
+   "confidence": "medium"
+  },
+  {
+   "id": "bot_2026-10-23_001115:18",
+   "game": "bot_2026-10-23_001115",
+   "k": 18,
+   "verdict": "ok",
+   "card": "Giant",
+   "bot_card": "Giant",
+   "note": "good, full elixir giant in the back going opposite lane",
+   "confidence": "medium"
+  },
+  {
+   "id": "bot_2026-10-23_001115:19",
+   "game": "bot_2026-10-23_001115",
+   "k": 19,
+   "verdict": "bad",
+   "card": "Mini P.E.K.K.A",
+   "bot_card": "Mini P.E.K.K.A",
+   "note": "same as before, wait for their mini pekka to cross and drop ours on top of it",
+   "confidence": "medium"
+  },
+  {
+   "id": "bot_2026-10-23_001115:20",
+   "game": "bot_2026-10-23_001115",
+   "k": 20,
+   "verdict": "ok",
+   "card": "Minions",
+   "bot_card": "Minions",
+   "note": "fine, giant was about to hit king tower",
+   "confidence": "medium"
+  },
+  {
+   "id": "bot_2026-10-23_001115:21",
+   "game": "bot_2026-10-23_001115",
+   "k": 21,
+   "verdict": "bad",
+   "card": "Musketeer",
+   "bot_card": "Skeletons",
+   "note": "skeletons cant hit minions lol, musketeer in front of king takes out the minions and the giant",
+   "confidence": "high"
+  },
+  {
+   "id": "bot_2026-10-23_001115:22",
+   "game": "bot_2026-10-23_001115",
+   "k": 22,
+   "verdict": "ok",
+   "card": "Musketeer",
+   "bot_card": "Musketeer",
+   "note": "good, in front of king tower",
+   "confidence": "high"
+  },
+  {
+   "id": "bot_2026-10-23_001115:23",
+   "game": "bot_2026-10-23_001115",
+   "k": 23,
+   "verdict": "ok",
+   "card": "Arrows",
+   "bot_card": "Arrows",
+   "note": "good, arrows on the goblins",
+   "confidence": "medium"
+  },
+  {
+   "id": "bot_2026-10-23_015212:0",
+   "game": "bot_2026-10-23_015212",
+   "k": 0,
+   "verdict": "ok",
+   "card": "Minions",
+   "bot_card": "Minions",
+   "note": "fine, full elixir and nothing coming, minions behind the king is the right cycle",
+   "confidence": "medium"
+  },
+  {
+   "id": "bot_2026-10-23_015212:1",
+   "game": "bot_2026-10-23_015212",
+   "k": 1,
+   "verdict": "ok",
+   "card": "Musketeer",
+   "bot_card": "Musketeer",
+   "note": "good defend, musketeer in front of king tower on the giant",
+   "confidence": "high"
+  },
+  {
+   "id": "bot_2026-10-23_015212:2",
+   "game": "bot_2026-10-23_015212",
+   "k": 2,
+   "verdict": "bad",
+   "card": "Goblin Hut",
+   "bot_card": "Goblin Hut",
+   "note": "bad placement, hut goes in the centre to pull the giant, not hugging the tower",
+   "confidence": "medium"
+  },
+  {
+   "id": "bot_2026-10-23_015212:3",
+   "game": "bot_2026-10-23_015212",
+   "k": 3,
+   "verdict": "ok",
+   "card": "Skeletons",
+   "bot_card": "Skeletons",
+   "note": "fine, only 3.9 elixir so skeletons to distract the giant",
+   "confidence": "medium"
+  },
+  {
+   "id": "bot_2026-10-23_015212:4",
+   "game": "bot_2026-10-23_015212",
+   "k": 4,
+   "verdict": "bad",
+   "card": "Mini P.E.K.K.A",
+   "bot_card": "Arrows",
+   "note": "the giant is on our tower and we arrow the spear goblins (and miss) - mini pekka the giant, we lost the tower here",
+   "confidence": "medium"
+  },
+  {
+   "id": "bot_2026-10-23_015212:5",
+   "game": "bot_2026-10-23_015212",
+   "k": 5,
+   "verdict": "ok",
+   "card": "Minions",
+   "bot_card": "Minions",
+   "note": "good defend, minions on the giant",
+   "confidence": "medium"
+  },
+  {
+   "id": "bot_2026-10-23_015212:6",
+   "game": "bot_2026-10-23_015212",
+   "k": 6,
+   "verdict": "bad",
+   "card": "Mini P.E.K.K.A",
+   "bot_card": "Mini P.E.K.K.A",
+   "note": "wait for the valk to cross, then drop the mini pekka on top of it",
+   "confidence": "medium"
+  },
+  {
+   "id": "bot_2026-10-23_015212:7",
+   "game": "bot_2026-10-23_015212",
+   "k": 7,
+   "verdict": "ok",
+   "card": "Musketeer",
+   "bot_card": "Musketeer",
+   "note": "good defend",
+   "confidence": "high"
+  },
+  {
+   "id": "bot_2026-10-23_015212:8",
+   "game": "bot_2026-10-23_015212",
+   "k": 8,
+   "verdict": "ok",
+   "card": "Skeletons",
+   "bot_card": "Skeletons",
+   "note": "fine, cheap distraction on the giant",
+   "confidence": "medium"
+  },
+  {
+   "id": "bot_2026-10-23_015212:9",
+   "game": "bot_2026-10-23_015212",
+   "k": 9,
+   "verdict": "ok",
+   "card": "Giant",
+   "bot_card": "Giant",
+   "note": "good, giant in the back to build a push",
+   "confidence": "high"
+  },
+  {
+   "id": "bot_2026-10-23_015212:10",
+   "game": "bot_2026-10-23_015212",
+   "k": 10,
+   "verdict": "ok",
+   "card": "Minions",
+   "bot_card": "Minions",
+   "note": "good, supporting the giant",
+   "confidence": "high"
+  },
+  {
+   "id": "bot_2026-10-23_015212:11",
+   "game": "bot_2026-10-23_015212",
+   "k": 11,
+   "verdict": "ok",
+   "card": "Mini P.E.K.K.A",
+   "bot_card": "Mini P.E.K.K.A",
+   "note": "good, mini pekka right on top of the musketeer",
+   "confidence": "medium"
+  },
+  {
+   "id": "bot_2026-10-23_015212:12",
+   "game": "bot_2026-10-23_015212",
+   "k": 12,
+   "verdict": "ok",
+   "card": "Arrows",
+   "bot_card": "Arrows",
+   "note": "fine, full elixir and they're walking to the king",
+   "confidence": "medium"
+  },
+  {
+   "id": "bot_2026-10-23_015212:13",
+   "game": "bot_2026-10-23_015212",
+   "k": 13,
+   "verdict": "ok",
+   "card": "Musketeer",
+   "bot_card": "Musketeer",
+   "note": "good defend",
+   "confidence": "high"
+  },
+  {
+   "id": "bot_2026-10-23_015212:14",
+   "game": "bot_2026-10-23_015212",
+   "k": 14,
+   "verdict": "bad",
+   "card": "wait (no play)",
+   "bot_card": "Skeletons",
+   "note": "skeletons into a valk just die to one spin, let the tower take it and save the elixir",
+   "confidence": "high"
+  },
+  {
+   "id": "bot_2026-10-23_015212:15",
+   "game": "bot_2026-10-23_015212",
+   "k": 15,
+   "verdict": "bad",
+   "card": "Fireball",
+   "bot_card": "Minions",
+   "note": "minions just get shot down by the musketeer and archers - fireball the support and let our musketeer take the giant",
+   "confidence": "low"
+  },
+  {
+   "id": "bot_2026-10-23_015212:16",
+   "game": "bot_2026-10-23_015212",
+   "k": 16,
+   "verdict": "ok",
+   "card": "Mini P.E.K.K.A",
+   "bot_card": "Mini P.E.K.K.A",
+   "note": "good, mini pekka on the giant, more dps",
+   "confidence": "high"
+  },
+  {
+   "id": "bot_2026-10-23_015212:17",
+   "game": "bot_2026-10-23_015212",
+   "k": 17,
+   "verdict": "ok",
+   "card": "Giant",
+   "bot_card": "Giant",
+   "note": "good, giant in the back",
+   "confidence": "high"
+  },
+  {
+   "id": "bot_2026-10-23_015212:18",
+   "game": "bot_2026-10-23_015212",
+   "k": 18,
+   "verdict": "ok",
+   "card": "Musketeer",
+   "bot_card": "Musketeer",
+   "note": "good, musketeer behind the giant",
+   "confidence": "high"
+  },
+  {
+   "id": "bot_2026-10-23_015212:19",
+   "game": "bot_2026-10-23_015212",
+   "k": 19,
+   "verdict": "ok",
+   "card": "Skeletons",
+   "bot_card": "Skeletons",
+   "note": "fine",
+   "confidence": "low"
+  },
+  {
+   "id": "bot_2026-10-23_015212:20",
+   "game": "bot_2026-10-23_015212",
+   "k": 20,
+   "verdict": "ok",
+   "card": "Minions",
+   "bot_card": "Minions",
+   "note": "fine",
+   "confidence": "low"
+  },
+  {
+   "id": "bot_2026-10-23_015212:21",
+   "game": "bot_2026-10-23_015212",
+   "k": 21,
+   "verdict": "ok",
+   "card": "Arrows",
+   "bot_card": "Arrows",
+   "note": "good, arrows hit everything",
+   "confidence": "medium"
+  },
+  {
+   "id": "bot_2026-10-23_015212:22",
+   "game": "bot_2026-10-23_015212",
+   "k": 22,
+   "verdict": "ok",
+   "card": "Mini P.E.K.K.A",
+   "bot_card": "Mini P.E.K.K.A",
+   "note": "good defend",
+   "confidence": "medium"
+  },
+  {
+   "id": "bot_2026-10-23_015212:23",
+   "game": "bot_2026-10-23_015212",
+   "k": 23,
+   "verdict": "ok",
+   "card": "Musketeer",
+   "bot_card": "Musketeer",
+   "note": "good defend",
+   "confidence": "high"
+  },
+  {
+   "id": "bot_2026-10-23_015212:24",
+   "game": "bot_2026-10-23_015212",
+   "k": 24,
+   "verdict": "bad",
+   "card": "Goblin Hut",
+   "bot_card": "Goblin Hut",
+   "note": "hut in the centre to pull the giant away from the king, not in the lane",
+   "confidence": "medium"
+  },
+  {
+   "id": "bot_2026-10-23_015212:25",
+   "game": "bot_2026-10-23_015212",
+   "k": 25,
+   "verdict": "ok",
+   "card": "Minions",
+   "bot_card": "Minions",
+   "note": "good defend",
+   "confidence": "medium"
+  },
+  {
+   "id": "bot_2026-10-23_015212:26",
+   "game": "bot_2026-10-23_015212",
+   "k": 26,
+   "verdict": "ok",
+   "card": "Arrows",
+   "bot_card": "Arrows",
+   "note": "good, arrows on the spear goblins",
+   "confidence": "medium"
+  },
+  {
+   "id": "bot_2026-10-23_015212:27",
+   "game": "bot_2026-10-23_015212",
+   "k": 27,
+   "verdict": "ok",
+   "card": "Skeletons",
+   "bot_card": "Skeletons",
+   "note": "only option at 3.4 elixir, but skeletons in the poison don't do much",
+   "confidence": "low"
+  },
+  {
+   "id": "bot_2026-10-23_015212:28",
+   "game": "bot_2026-10-23_015212",
+   "k": 28,
+   "verdict": "ok",
+   "card": "Mini P.E.K.K.A",
+   "bot_card": "Mini P.E.K.K.A",
+   "note": "good defend",
+   "confidence": "high"
+  },
+  {
+   "id": "bot_2026-10-23_021909:0",
+   "game": "bot_2026-10-23_021909",
+   "k": 0,
+   "verdict": "ok",
+   "card": "Giant",
+   "bot_card": "Giant",
+   "note": "good, giant in the back at full elixir to build a push",
+   "confidence": "high"
+  },
+  {
+   "id": "bot_2026-10-23_021909:1",
+   "game": "bot_2026-10-23_021909",
+   "k": 1,
+   "verdict": "ok",
+   "card": "Minions",
+   "bot_card": "Minions",
+   "note": "good, supporting the giant",
+   "confidence": "high"
+  },
+  {
+   "id": "bot_2026-10-23_021909:2",
+   "game": "bot_2026-10-23_021909",
+   "k": 2,
+   "verdict": "ok",
+   "card": "Mini P.E.K.K.A",
+   "bot_card": "Mini P.E.K.K.A",
+   "note": "fine defend, mini pekka on the valk",
+   "confidence": "medium"
+  },
+  {
+   "id": "bot_2026-10-23_021909:3",
+   "game": "bot_2026-10-23_021909",
+   "k": 3,
+   "verdict": "ok",
+   "card": "Skeletons",
+   "bot_card": "Skeletons",
+   "note": "cheap distraction, all we had elixir for",
+   "confidence": "low"
+  },
+  {
+   "id": "bot_2026-10-23_021909:4",
+   "game": "bot_2026-10-23_021909",
+   "k": 4,
+   "verdict": "bad",
+   "card": "Goblin Hut",
+   "bot_card": "Goblin Hut",
+   "note": "hut goes in the centre to pull the mini pekka, not right in front of the tower at the bridge",
+   "confidence": "medium"
+  },
+  {
+   "id": "bot_2026-10-23_021909:5",
+   "game": "bot_2026-10-23_021909",
+   "k": 5,
+   "verdict": "ok",
+   "card": "Arrows",
+   "bot_card": "Arrows",
+   "note": "got the spear goblins",
+   "confidence": "medium"
+  },
+  {
+   "id": "bot_2026-10-23_021909:6",
+   "game": "bot_2026-10-23_021909",
+   "k": 6,
+   "verdict": "ok",
+   "card": "Minions",
+   "bot_card": "Minions",
+   "note": "good defend, mini pekka cant hit air",
+   "confidence": "high"
+  },
+  {
+   "id": "bot_2026-10-23_021909:7",
+   "game": "bot_2026-10-23_021909",
+   "k": 7,
+   "verdict": "ok",
+   "card": "Mini P.E.K.K.A",
+   "bot_card": "Mini P.E.K.K.A",
+   "note": "fine, on top of the goblins",
+   "confidence": "medium"
+  },
+  {
+   "id": "bot_2026-10-23_021909:8",
+   "game": "bot_2026-10-23_021909",
+   "k": 8,
+   "verdict": "ok",
+   "card": "Musketeer",
+   "bot_card": "Musketeer",
+   "note": "good, musketeer in front of king tower",
+   "confidence": "high"
+  },
+  {
+   "id": "bot_2026-10-23_021909:9",
+   "game": "bot_2026-10-23_021909",
+   "k": 9,
+   "verdict": "bad",
+   "card": "Goblin Hut",
+   "bot_card": "Goblin Hut",
+   "note": "bad placement, hut in the centre so it pulls the valk off the tower",
+   "confidence": "medium"
+  },
+  {
+   "id": "bot_2026-10-23_021909:10",
+   "game": "bot_2026-10-23_021909",
+   "k": 10,
+   "verdict": "ok",
+   "card": "Skeletons",
+   "bot_card": "Skeletons",
+   "note": "cheap distraction on the knight",
+   "confidence": "medium"
+  },
+  {
+   "id": "bot_2026-10-23_021909:11",
+   "game": "bot_2026-10-23_021909",
+   "k": 11,
+   "verdict": "ok",
+   "card": "Giant",
+   "bot_card": "Giant",
+   "note": "good, giant in the back",
+   "confidence": "high"
+  },
+  {
+   "id": "bot_2026-10-23_021909:12",
+   "game": "bot_2026-10-23_021909",
+   "k": 12,
+   "verdict": "ok",
+   "card": "Minions",
+   "bot_card": "Minions",
+   "note": "good defend, mini pekka cant hit air",
+   "confidence": "medium"
+  },
+  {
+   "id": "bot_2026-10-23_021909:13",
+   "game": "bot_2026-10-23_021909",
+   "k": 13,
+   "verdict": "ok",
+   "card": "Arrows",
+   "bot_card": "Arrows",
+   "note": "fine",
+   "confidence": "low"
+  },
+  {
+   "id": "bot_2026-10-23_021909:14",
+   "game": "bot_2026-10-23_021909",
+   "k": 14,
+   "verdict": "bad",
+   "card": "Goblin Hut",
+   "bot_card": "Mini P.E.K.K.A",
+   "note": "mini pekka in the back does nothing, if we're dumping full elixir put the hut in the centre",
+   "confidence": "medium"
+  },
+  {
+   "id": "bot_2026-10-23_021909:15",
+   "game": "bot_2026-10-23_021909",
+   "k": 15,
+   "verdict": "ok",
+   "card": "Musketeer",
+   "bot_card": "Musketeer",
+   "note": "fine, musketeer behind king to back the push",
+   "confidence": "medium"
+  },
+  {
+   "id": "bot_2026-10-23_021909:16",
+   "game": "bot_2026-10-23_021909",
+   "k": 16,
+   "verdict": "ok",
+   "card": "Skeletons",
+   "bot_card": "Skeletons",
+   "note": "fine at full elixir, cheap distraction",
+   "confidence": "medium"
+  },
+  {
+   "id": "bot_2026-10-23_021909:17",
+   "game": "bot_2026-10-23_021909",
+   "k": 17,
+   "verdict": "ok",
+   "card": "Giant",
+   "bot_card": "Giant",
+   "note": "good, giant in the back",
+   "confidence": "high"
+  },
+  {
+   "id": "bot_2026-10-23_021909:18",
+   "game": "bot_2026-10-23_021909",
+   "k": 18,
+   "verdict": "ok",
+   "card": "Minions",
+   "bot_card": "Minions",
+   "note": "good, neither can hit air",
+   "confidence": "high"
+  },
+  {
+   "id": "bot_2026-10-23_021909:19",
+   "game": "bot_2026-10-23_021909",
+   "k": 19,
+   "verdict": "ok",
+   "card": "Mini P.E.K.K.A",
+   "bot_card": "Mini P.E.K.K.A",
+   "note": "good defend",
+   "confidence": "high"
+  },
+  {
+   "id": "bot_2026-10-23_021909:20",
+   "game": "bot_2026-10-23_021909",
+   "k": 20,
+   "verdict": "ok",
+   "card": "Arrows",
+   "bot_card": "Arrows",
+   "note": "good, arrows on the minions",
+   "confidence": "medium"
+  },
+  {
+   "id": "bot_2026-10-23_021909:21",
+   "game": "bot_2026-10-23_021909",
+   "k": 21,
+   "verdict": "ok",
+   "card": "Skeletons",
+   "bot_card": "Skeletons",
+   "note": "cheap distraction, low elixir",
+   "confidence": "medium"
+  },
+  {
+   "id": "bot_2026-10-23_021909:22",
+   "game": "bot_2026-10-23_021909",
+   "k": 22,
+   "verdict": "ok",
+   "card": "Goblin Hut",
+   "bot_card": "Goblin Hut",
+   "note": "fine, hut pulls the push",
+   "confidence": "medium"
+  },
+  {
+   "id": "bot_2026-10-23_021909:23",
+   "game": "bot_2026-10-23_021909",
+   "k": 23,
+   "verdict": "ok",
+   "card": "Minions",
+   "bot_card": "Minions",
+   "note": "fine",
+   "confidence": "low"
+  },
+  {
+   "id": "bot_2026-10-23_041118:0",
+   "game": "bot_2026-10-23_041118",
+   "k": 0,
+   "verdict": "ok",
+   "card": "Giant",
+   "bot_card": "Giant",
+   "note": "good, giant in the back at full elixir to build a push",
+   "confidence": "medium"
+  },
+  {
+   "id": "bot_2026-10-23_041118:1",
+   "game": "bot_2026-10-23_041118",
+   "k": 1,
+   "verdict": "ok",
+   "card": "Musketeer",
+   "bot_card": "Musketeer",
+   "note": "good support behind the giant",
+   "confidence": "high"
+  },
+  {
+   "id": "bot_2026-10-23_041118:2",
+   "game": "bot_2026-10-23_041118",
+   "k": 2,
+   "verdict": "ok",
+   "card": "Skeletons",
+   "bot_card": "Skeletons",
+   "note": "fine, 1 elixir for their goblins while the giant goes left",
+   "confidence": "medium"
+  },
+  {
+   "id": "bot_2026-10-23_041118:3",
+   "game": "bot_2026-10-23_041118",
+   "k": 3,
+   "verdict": "bad",
+   "card": "Goblin Hut",
+   "bot_card": "Minions",
+   "note": "spear gobs are coming down left and we send minions to the empty lane. drop the hut in the middle to pull them instead",
+   "confidence": "medium"
+  },
+  {
+   "id": "bot_2026-10-23_041118:4",
+   "game": "bot_2026-10-23_041118",
+   "k": 4,
+   "verdict": "ok",
+   "card": "Arrows",
+   "bot_card": "Arrows",
+   "note": "good, got both spear gob groups",
+   "confidence": "high"
+  },
+  {
+   "id": "bot_2026-10-23_041118:5",
+   "game": "bot_2026-10-23_041118",
+   "k": 5,
+   "verdict": "ok",
+   "card": "Giant",
+   "bot_card": "Giant",
+   "note": "good, back of the king again",
+   "confidence": "high"
+  },
+  {
+   "id": "bot_2026-10-23_041118:6",
+   "game": "bot_2026-10-23_041118",
+   "k": 6,
+   "verdict": "ok",
+   "card": "Musketeer",
+   "bot_card": "Musketeer",
+   "note": "good support",
+   "confidence": "high"
+  },
+  {
+   "id": "bot_2026-10-23_041118:7",
+   "game": "bot_2026-10-23_041118",
+   "k": 7,
+   "verdict": "bad",
+   "card": "Goblin Hut",
+   "bot_card": "Mini P.E.K.K.A",
+   "note": "theres a push building at the left bridge and we send mini pekka alone down the empty lane. hut in the middle (or keep the pekka for the knight)",
+   "confidence": "medium"
+  },
+  {
+   "id": "bot_2026-10-23_041118:8",
+   "game": "bot_2026-10-23_041118",
+   "k": 8,
+   "verdict": "bad",
+   "card": "Fireball",
+   "bot_card": "Minions",
+   "note": "spear gobs + minions all clumped at the bridge, this is the fireball. our minions just get shot down by the spear gobs",
+   "confidence": "medium"
+  },
+  {
+   "id": "bot_2026-10-23_041118:9",
+   "game": "bot_2026-10-23_041118",
+   "k": 9,
+   "verdict": "bad",
+   "card": "Goblin Hut",
+   "bot_card": "Goblin Hut",
+   "note": "hut goes in the middle to pull the push, not right in front of the tower where it just tanks for a sec",
+   "confidence": "medium"
+  },
+  {
+   "id": "bot_2026-10-23_041118:10",
+   "game": "bot_2026-10-23_041118",
+   "k": 10,
+   "verdict": "ok",
+   "card": "Skeletons",
+   "bot_card": "Skeletons",
+   "note": "fine, skeletons to distract the mini pekka at 1 elixir",
+   "confidence": "medium"
+  },
+  {
+   "id": "bot_2026-10-23_041118:11",
+   "game": "bot_2026-10-23_041118",
+   "k": 11,
+   "verdict": "ok",
+   "card": "Giant",
+   "bot_card": "Giant",
+   "note": "good, giant in the back",
+   "confidence": "high"
+  },
+  {
+   "id": "bot_2026-10-23_041118:12",
+   "game": "bot_2026-10-23_041118",
+   "k": 12,
+   "verdict": "ok",
+   "card": "Musketeer",
+   "bot_card": "Musketeer",
+   "note": "good support",
+   "confidence": "high"
+  },
+  {
+   "id": "bot_2026-10-23_041118:13",
+   "game": "bot_2026-10-23_041118",
+   "k": 13,
+   "verdict": "bad",
+   "card": "Mini P.E.K.K.A",
+   "bot_card": "Mini P.E.K.K.A",
+   "note": "why is mini pekka going the other lane? support the giant, put it behind the giant on the left to clean up their defenders",
+   "confidence": "medium"
+  },
+  {
+   "id": "bot_2026-10-23_041118:14",
+   "game": "bot_2026-10-23_041118",
+   "k": 14,
+   "verdict": "ok",
+   "card": "Arrows",
+   "bot_card": "Arrows",
+   "note": "good, arrows on the minions",
+   "confidence": "high"
+  },
+  {
+   "id": "bot_2026-10-23_041118:15",
+   "game": "bot_2026-10-23_041118",
+   "k": 15,
+   "verdict": "bad",
+   "card": "Goblin Hut",
+   "bot_card": "Minions",
+   "note": "knight + spear gobs coming at our open left side and minions go to the right lane. hut in the middle to pull, or hold minions for the push",
+   "confidence": "medium"
+  },
+  {
+   "id": "bot_2026-10-23_041118:16",
+   "game": "bot_2026-10-23_041118",
+   "k": 16,
+   "verdict": "bad",
+   "card": "Fireball",
+   "bot_card": "Goblin Hut",
+   "note": "huge clump of spear gobs and archers right there, fireball it. and the hut belongs in the middle, not in the lane",
+   "confidence": "medium"
+  },
+  {
+   "id": "bot_2026-10-23_041118:17",
+   "game": "bot_2026-10-23_041118",
+   "k": 17,
+   "verdict": "bad",
+   "card": "Fireball",
+   "bot_card": "Musketeer",
+   "note": "fireball the swarm first, musketeer alone just gets swarmed by all those spear gobs. placement in front of the king is right though",
+   "confidence": "medium"
+  },
+  {
+   "id": "bot_2026-10-23_041118:18",
+   "game": "bot_2026-10-23_041118",
+   "k": 18,
+   "verdict": "bad",
+   "card": "wait (no play)",
+   "bot_card": "Skeletons",
+   "note": "skeletons just die to the spear gob swarm, save up the elixir for the fireball",
+   "confidence": "medium"
+  },
+  {
+   "id": "bot_2026-10-23_041118:19",
+   "game": "bot_2026-10-23_041118",
+   "k": 19,
+   "verdict": "bad",
+   "card": "Fireball",
+   "bot_card": "Mini P.E.K.K.A",
+   "note": "mini pekka is single target, it cant deal with a swarm. fireball (or arrows) the spear gobs and archers",
+   "confidence": "high"
+  },
+  {
+   "id": "bot_2026-10-23_041118:20",
+   "game": "bot_2026-10-23_041118",
+   "k": 20,
+   "verdict": "bad",
+   "card": "Arrows",
+   "bot_card": "Minions",
+   "note": "minions get shredded by the spear gobs, arrows kills that whole swarm for 3",
+   "confidence": "medium"
+  },
+  {
+   "id": "bot_2026-10-23_042701:0",
+   "game": "bot_2026-10-23_042701",
+   "k": 0,
+   "verdict": "bad",
+   "card": "Skeletons",
+   "bot_card": "Musketeer",
+   "note": "at full elixir in the opening just cycle the skellies behind the king, don't send our best defender up alone with nothing behind it",
+   "confidence": "medium"
+  },
+  {
+   "id": "bot_2026-10-23_042701:1",
+   "game": "bot_2026-10-23_042701",
+   "k": 1,
+   "verdict": "ok",
+   "card": "Skeletons",
+   "bot_card": "Skeletons",
+   "note": "fine, cheap cycle at full elixir",
+   "confidence": "medium"
+  },
+  {
+   "id": "bot_2026-10-23_042701:2",
+   "game": "bot_2026-10-23_042701",
+   "k": 2,
+   "verdict": "bad",
+   "card": "Goblin Hut",
+   "bot_card": "Mini P.E.K.K.A",
+   "note": "they've got a push crossing left and we drop the mini pekka behind the king going nowhere. hut in the centre to pull it, or pekka on top of their stuff",
+   "confidence": "medium"
+  },
+  {
+   "id": "bot_2026-10-23_042701:3",
+   "game": "bot_2026-10-23_042701",
+   "k": 3,
+   "verdict": "bad",
+   "card": "Goblin Hut",
+   "bot_card": "Goblin Hut",
+   "note": "hut goes in the centre to pull the mini pekka, not in the lane in front of the tower where it just gets run over. arrows on the goblins too",
+   "confidence": "medium"
+  },
+  {
+   "id": "bot_2026-10-23_042701:4",
+   "game": "bot_2026-10-23_042701",
+   "k": 4,
+   "verdict": "ok",
+   "card": "Minions",
+   "bot_card": "Minions",
+   "note": "good, minions on the bomber as it crosses",
+   "confidence": "high"
+  },
+  {
+   "id": "bot_2026-10-23_042701:5",
+   "game": "bot_2026-10-23_042701",
+   "k": 5,
+   "verdict": "ok",
+   "card": "Fireball",
+   "bot_card": "Fireball",
+   "note": "fireball on the magic archer is a fair trade if it dies, but make sure it's actually worth it",
+   "confidence": "low"
+  },
+  {
+   "id": "bot_2026-10-23_042701:6",
+   "game": "bot_2026-10-23_042701",
+   "k": 6,
+   "verdict": "ok",
+   "card": "Skeletons",
+   "bot_card": "Skeletons",
+   "note": "good, cheap skellies to stall the mini pekka",
+   "confidence": "medium"
+  },
+  {
+   "id": "bot_2026-10-23_042701:7",
+   "game": "bot_2026-10-23_042701",
+   "k": 7,
+   "verdict": "ok",
+   "card": "Mini P.E.K.K.A",
+   "bot_card": "Mini P.E.K.K.A",
+   "note": "good defend, right on top of them",
+   "confidence": "high"
+  },
+  {
+   "id": "bot_2026-10-23_042701:8",
+   "game": "bot_2026-10-23_042701",
+   "k": 8,
+   "verdict": "bad",
+   "card": "Goblin Hut",
+   "bot_card": "Goblin Hut",
+   "note": "again hut in the lane. put it in the middle in front of the king so it pulls the mini pekka off",
+   "confidence": "medium"
+  },
+  {
+   "id": "bot_2026-10-23_042701:9",
+   "game": "bot_2026-10-23_042701",
+   "k": 9,
+   "verdict": "ok",
+   "card": "Minions",
+   "bot_card": "Minions",
+   "note": "fine, arrows would be cleaner on goblins though and keeps minions for air",
+   "confidence": "medium"
+  },
+  {
+   "id": "bot_2026-10-23_042701:10",
+   "game": "bot_2026-10-23_042701",
+   "k": 10,
+   "verdict": "bad",
+   "card": "wait (no play)",
+   "bot_card": "Arrows",
+   "note": "what are u aiming at lol, that's mostly our own minions, their minions aren't in it",
+   "confidence": "low"
+  },
+  {
+   "id": "bot_2026-10-23_042701:11",
+   "game": "bot_2026-10-23_042701",
+   "k": 11,
+   "verdict": "bad",
+   "card": "wait (no play)",
+   "bot_card": "Skeletons",
+   "note": "skellies into a valk is free value for them, let the tower handle it and save elixir",
+   "confidence": "medium"
+  },
+  {
+   "id": "bot_2026-10-23_042701:12",
+   "game": "bot_2026-10-23_042701",
+   "k": 12,
+   "verdict": "ok",
+   "card": "Mini P.E.K.K.A",
+   "bot_card": "Mini P.E.K.K.A",
+   "note": "fine, kills the bomber and we're near full",
+   "confidence": "medium"
+  },
+  {
+   "id": "bot_2026-10-23_042701:13",
+   "game": "bot_2026-10-23_042701",
+   "k": 13,
+   "verdict": "bad",
+   "card": "Goblin Hut",
+   "bot_card": "Musketeer",
+   "note": "musketeer loses to mini pekka. hut in the centre to pull it, that's exactly what the hut is for",
+   "confidence": "medium"
+  },
+  {
+   "id": "bot_2026-10-23_042701:14",
+   "game": "bot_2026-10-23_042701",
+   "k": 14,
+   "verdict": "ok",
+   "card": "Minions",
+   "bot_card": "Minions",
+   "note": "good, minions on the bomber",
+   "confidence": "high"
+  },
+  {
+   "id": "bot_2026-10-23_042701:15",
+   "game": "bot_2026-10-23_042701",
+   "k": 15,
+   "verdict": "ok",
+   "card": "Giant",
+   "bot_card": "Giant",
+   "note": "good, giant in the back at full elixir",
+   "confidence": "high"
+  },
+  {
+   "id": "bot_2026-10-23_042701:16",
+   "game": "bot_2026-10-23_042701",
+   "k": 16,
+   "verdict": "bad",
+   "card": "Goblin Hut",
+   "bot_card": "Goblin Hut",
+   "note": "hut in the lane again, it belongs in the centre. ice golem + skellies aren't worth 4 anyway, support the giant instead",
+   "confidence": "medium"
+  },
+  {
+   "id": "bot_2026-10-23_042701:17",
+   "game": "bot_2026-10-23_042701",
+   "k": 17,
+   "verdict": "ok",
+   "card": "Mini P.E.K.K.A",
+   "bot_card": "Mini P.E.K.K.A",
+   "note": "fine, defends the bomber and goes behind the giant",
+   "confidence": "low"
+  },
+  {
+   "id": "bot_2026-10-23_042701:18",
+   "game": "bot_2026-10-23_042701",
+   "k": 18,
+   "verdict": "bad",
+   "card": "wait (no play)",
+   "bot_card": "Skeletons",
+   "note": "skellies just die to the bomber, whats the point",
+   "confidence": "medium"
+  },
+  {
+   "id": "bot_2026-10-23_042701:19",
+   "game": "bot_2026-10-23_042701",
+   "k": 19,
+   "verdict": "ok",
+   "card": "Minions",
+   "bot_card": "Minions",
+   "note": "fine on the mini pekka, but that clump was fireball value",
+   "confidence": "medium"
+  },
+  {
+   "id": "bot_2026-10-23_042701:20",
+   "game": "bot_2026-10-23_042701",
+   "k": 20,
+   "verdict": "bad",
+   "card": "Arrows",
+   "bot_card": "Musketeer",
+   "note": "we put the musketeer right on top of the goblins and it dies. arrows the goblins at the king first",
+   "confidence": "high"
+  },
+  {
+   "id": "bot_2026-10-23_042701:21",
+   "game": "bot_2026-10-23_042701",
+   "k": 21,
+   "verdict": "ok",
+   "card": "Arrows",
+   "bot_card": "Arrows",
+   "note": "right call, but it should have been the play before",
+   "confidence": "medium"
+  }
+ ]
+}
