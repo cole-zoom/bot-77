@@ -148,10 +148,13 @@ directly.
 - **Fix what's off, in the fork, with a test per fix.** Known gaps to look at first: first-hit delay / load time,
   retarget behaviour, collision radius and mass, Goblin Hut spawn count and interval (their values aren't sourced),
   spell damage to crown towers. Ask Cole when the replays don't settle it. Offer fixes upstream.
-- **Gate (report on held-back windows):** median unit position error ≤ 1.5 tiles at +5 s for walking units; fight
-  winner (which side's units are left) right in ≥ 80% of 1-v-1 / small fights; tower damage within 20% where HP is
-  read. These thresholds are a first guess: if they look wrong once the numbers are in, change them in
-  `decisions.md` with a reason, *before* looking at S3's result.
+- **No pass / fail here (Cole, 2026-10-23).** What matters is whether the sim ranks plays right, which is S3's
+  question; a sim with 2-tile errors can still rank plays right, and one that meets every number can still rank them
+  wrong. S2 *measures* (on held-back windows) and *flags*: units walking a different lane or target, fight winners
+  consistently backwards, tower damage far off. Fix flags before S3. Report alongside each number the replay's own
+  noise floor (detector jitter on a unit standing still, box centre vs feet ≈ 1 tile), so errors read against it.
+  Rough expectations, not gates: unit tracks within ~1.5 tiles at +5 s, small-fight winner right in ~80%, tower damage
+  within ~20%.
 
 ### S3 · Search for the best play (2 days) — the go / no-go
 
@@ -163,16 +166,28 @@ directly.
 - **The opponent during the 10 s:** for a replay (or a bot game paired with its replay) use the opponent's *actual*
   next plays from `plays`, at their real times and spots. Simple, real, and it doesn't need an opponent model.
   (Their plays were answers to what really happened, which is a bias; note it. A model opponent is S6.)
-- **Score:** tower damage dealt − taken (king worth more), elixir traded (value killed − value lost), units left alive
-  that are worth elixir, our elixir left (waiting has to be able to win). Write the weights in one place; choose them on
-  train/dev reviewed moments, not on the gate set.
+- **Score = change in win chance, not hand-set points (Cole, 2026-10-23):** "there is no right answer, it's what
+  will win you the game." The same damage is worth different amounts in different games: down a tower, the king
+  tower's extra HP is there to be spent ("we can allow as much damage as it will take to get even with our other tower
+  that's alive"), and time left changes everything. So:
+  - **Win model** (`bot77.sim.value`, a role in the `models` registry): P(bottom player wins | towers alive, tower HP
+    (`tower_hp`), elixir both sides (estimated for the opponent), time left, multiplier, units on board summary),
+    trained on the replays' states over time and each match's result (`matches.result`; human replays, train split;
+    calibration checked on held-back). Cheap to start (gradient boosting on a handful of features).
+  - A candidate's score = win chance after the ~10 s window − before. Waiting can win: elixir kept is in the state.
+  - Cole's rule is a scenario (S4) the score must get right: down a tower, soaking king-tower damage to save elixir
+    for the even-up push should score above spending it to defend.
 - **The test, on Cole's reviewed plays** (`labels` source `review_cole`, mapped to their replay moments through
   `bot_play_moments`):
   - verdict agreement: the search calls a play bad when the bot's play scores well below the search's best;
     compare with Cole's ok / bad;
   - on Cole's mistakes, is Cole's fix card (or "wait") in the search's top 2?
   - baseline to beat: Claude's pre-review, 59% verdict agreement (26 / 44).
-- **Gate:** verdict agreement ≥ 70% and Cole's fix in the top 2 on ≥ 50% of his mistakes. If it fails, report where
+- **Cole's own ceiling first:** re-show him ~20 round 1 plays blind (no earlier verdict) and measure his agreement
+  with himself. That's the ceiling the search can reach; set the gate from it and write it in `decisions.md` before
+  running the search on the gate set.
+- **Gate (the only one in S0-S3):** verdict agreement ≥ 70% (adjust to the ceiling: e.g. ~10 points under it) and
+  Cole's fix in the top 2 on ≥ 50% of his mistakes. If it fails, report where
   it disagrees (with the frames: Cole will say whether the sim or the review is wrong) before changing anything.
 - If it passes: label every moment of the human replays and the bot's games: `labels` rows with `source = 'sim_search'`,
   `action`, `card_id`, `x`, `y`, `xy_kind = 'tap'`, the score margin, and the engine commit + score weights in a
@@ -182,9 +197,23 @@ directly.
 
 ### S4 · Scenarios (1 day)
 
-- `config/scenarios.yaml`: hand-written set-ups (units, towers HP, elixir, hand, who's doing what), e.g. Cole's cases:
-  "Giant on our 148 HP left tower, Mini P.E.K.K.A in hand", "Valkyrie at the left bridge, we have Skeletons + Goblin
-  Hut", "opponent's Giant is dead, 6 elixir: do we reset?".
+- `config/scenarios.yaml`. **First 10 = Cole's round 1 mistakes** (`data/ground_truth/reviews/bot_review_2_cole.json`),
+  built from their moments with Cole's fix as the expected answer:
+
+  | Play | Bot did | Cole's fix |
+  |---|---|---|
+  | `bot_2026-10-22_234548:14` | Musketeer right while a Giant walks left on our 148 HP tower | Goblin Hut in the centre to pull the Giant |
+  | `bot_2026-10-22_234548:4` | Skeletons onto a Valkyrie (spun instantly) | Skeletons / Hut in the centre to pull it off the tower |
+  | `bot_2026-10-22_234548:6` | Minions "supporting" the Giant | they outrun the Giant and die: let the Giant tank first |
+  | `bot_2026-10-22_234548:8` | Musketeer after our Giant died | nothing: let it go and reset |
+  | `bot_2026-10-22_234548:18` | Giant in the back | Giant at the bridge in front of their big Spear Goblin group: counter-push |
+  | `bot_2026-10-23_001115:5` | Goblin Hut to save the king tower | let it go: king has HP, save 5 elixir for the counter |
+  | `bot_2026-10-23_001115:9` | Mini P.E.K.K.A into Goblins | Minions on the Goblins, Mini P.E.K.K.A on the Giant after |
+  | `bot_2026-10-23_001115:19` | Mini P.E.K.K.A straight on their Mini P.E.K.K.A | Skeletons to pull it to the middle, then Mini P.E.K.K.A |
+  | `bot_2026-10-23_015212:3` | Skeletons | Arrows ("we lost the tower because we refused to play arrows") |
+  | `bot_2026-10-23_015212:6` | Mini P.E.K.K.A after losing a tower | Musketeer opposite lane to snipe the Valkyrie and counter-push |
+
+  Plus Cole's rule: down a tower, soak king damage to save elixir for the even-up push.
 - LanceDB `sim_scenarios` (scenario_id, from = yaml / moment, the state as JSON) and a runner that scores the bot's
   current policy (`bot77.live.policy`, offline) and the search on each. A regression suite: every rule change or new
   model gets run on it.
@@ -205,6 +234,14 @@ directly.
 - **The only number that counts is the real ladder**: win rate in bot sessions, as in `ROADMAP.md`. Never report a
   simulator win rate as progress.
 
+## Decks change: nothing assumes ours
+
+Cole changes the deck between sessions until we get Hog 2.8 ("it's always good to learn new cards"). The rules in
+`config/playbook_rules.yaml` are written per deck; the simulator and search must not be. No card list anywhere in
+`bot77.sim` except what comes from the moment (hand, deck) or the scenario. A new deck should get search labels from its
+first session's replays without anyone reviewing first, which is the biggest win over the review loop. Scenarios name
+situations; when a scenario's cards aren't in the current deck it is skipped, not rewritten.
+
 ## LanceDB: yes, as the data layer only
 
 The engine runs in memory and never reads LanceDB. Everything that goes in or comes out is a table, so it shows up in
@@ -215,7 +252,7 @@ the data browser and joins with what we have:
 | `tower_hp` | match_id, t, tower | S2 OCR | tower HP read from the replay video |
 | `sim_validation` | run, match_id, window, metric | S2 | sim vs replay errors, engine commit |
 | `sim_scenarios` | scenario_id | S4 | start states (from yaml or a moment) |
-| `sim_runs` | run_id, moment_id / scenario_id, candidate | S3 | each candidate's outcome and score parts |
+| `sim_runs` | run_id, moment_id / scenario_id, candidate | S3 | each candidate's outcome, win chance before / after |
 | `labels` (existing) | label_id | S3 | `source = 'sim_search'` best plays |
 | `models` (existing) | role `sim_search` | S3 | engine commit, score weights, gate results |
 
@@ -231,7 +268,7 @@ Report the numbers that missed their gate too.
 
 ## Open questions for Cole
 
-1. Are the S2 gate thresholds right (1.5 tiles at +5 s, 80% fight winner, 20% tower damage)?
-2. Score weights: how much is a king tower hit worth against a princess tower hit, and an elixir trade against tower
-   damage?
-3. Which scenarios first (S4)? Ten of the mistakes from round 1 would be a good start.
+Answered 2026-10-23: S2 measures and doesn't gate (the gate is S3, set from Cole's own blind re-review agreement);
+score = change in win chance from a model trained on the replays, not hand weights; the first scenarios are the 10
+round 1 mistakes above; nothing deck-specific. Still open:
+1. Cole's blind re-review of ~20 plays (to set the S3 gate).
