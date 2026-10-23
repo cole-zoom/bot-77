@@ -72,6 +72,7 @@ def main():
     ap.add_argument("--prefill", nargs="*", default=[], help="exported review JSONs to seed verdicts from (later files win)")
     ap.add_argument("--max-plays", type=int, default=0, help="whole games, newest first, up to this many plays")
     ap.add_argument("--games", nargs="*", default=[], help="only these games (a prioritized review round)")
+    ap.add_argument("--plays", nargs="*", default=[], help="only these plays (game:k), e.g. a blind re-review")
     ap.add_argument("--name", default="review", help="page file name stem (review_<n>.html)")
     ap.add_argument("--dump", default="", help="also write the plays (DATA items) to this JSON, for review_sheets.py")
     a = ap.parse_args()
@@ -81,7 +82,8 @@ def main():
              .select(["id", "name"]).to_arrow().to_pylist()}
     rows = db.open_table("bot_actions").to_arrow().to_pylist()
     rows = [r for r in rows if r.get("shot") and (not a.since or r["game_id"][4:] >= a.since)
-            and (not a.games or r["game_id"] in a.games)]
+            and (not a.games or r["game_id"] in a.games)
+            and (not a.plays or f"{r['game_id']}:{r['k']}" in a.plays)]
     if a.losses:
         res = json.loads(Path("data/live/game_results.json").read_text()) if Path("data/live/game_results.json").exists() else {}
         for g in db.open_table("bot_games").to_arrow().to_pylist():

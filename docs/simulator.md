@@ -23,6 +23,24 @@ The catch is **sim-to-real**: a bot trained in a simulator that is slightly wron
 simulator is checked against our real replays before anything it says is trusted. That check is the core of this
 plan, not an afterthought.
 
+## The goal is exact placement and timing
+
+Cole, 2026-10-23: "Placement and timing are key to winning games, especially at a high level. We should actually aim
+for perfect placement and timing, especially since this is supposed to be a bot." A bot has no excuse for a tile or a
+second of slop, so every part of this plan is held to that:
+- **Search tries timings, not just spots.** Candidates are card × spot × *when*: now, +0.5 s, +1 s, +2 s, +3 s, and
+  event timings ("when their unit crosses the bridge", "when it locks onto the tower"). "Wait" is the same play later.
+- **Spots are searched to the engine's finest placement cell** (coarse grid first, then refine around the best few).
+- **S2 measures the timing- and placement-sensitive mechanics directly**, at sub-tile and per-tick precision: deploy
+  time, first hit, retarget, where a building pulls a unit (Goblin Hut, the centre pull), kiting distances, spell
+  radius edges. A pull that's half a tile off decides whether the tower gets hit; these are the numbers to get right.
+- **The noise floor has to shrink with it**: measure feet positions (box centre + `FEET_DY`), smooth tracks, and say
+  where our own data can't tell a 0.25-tile difference.
+- **Execution counts too (S2b):** the bot's own aim and delay. Where its taps land vs where it meant (`bot_actions`
+  taps vs the unit's first detection in the paired replay), and how long from decision to unit on the field
+  (`bot_play_moments` gives the replay times). A perfect plan played 1 s late is a different play. Report both, and
+  fix the bot's side once measured (aim offset, deciding ahead of time).
+
 ## The base: ClashRoyaleEnv (itzik123), forked
 
 Two open simulators were evaluated on 2026-10-23 (code read only, not run):
@@ -188,6 +206,8 @@ directly.
 - **Cole's own ceiling first:** re-show him ~20 round 1 plays blind (no earlier verdict) and measure his agreement
   with himself. That's the ceiling the search can reach; set the gate from it and write it in `decisions.md` before
   running the search on the gate set.
+- Cole's blind re-review page exists: `data/reviews/bot_2026-10-23/blind_1_1.html` (20 plays: 13 he called mistakes,
+  7 OK, seed 77); his export goes to `data/ground_truth/reviews/blind_1_cole.json`.
 - **Gate (the only one in S0-S3):** verdict agreement ≥ 70% (adjust to the ceiling: e.g. ~10 points under it) and
   Cole's fix in the top 2 on ≥ 50% of his mistakes. If it fails, report where
   it disagrees (with the frames: Cole will say whether the sim or the review is wrong) before changing anything.
