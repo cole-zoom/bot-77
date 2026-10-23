@@ -121,7 +121,8 @@ Time estimates are guesses; if a phase runs 2× over, stop and report instead of
 - Fork, add as a submodule, and build the pybind11 module with Apple clang for **Python 3.12 arm64** (the M5 laptop).
   Their CMake fetches pybind11 and Catch2 with FetchContent; read `CMakeLists.txt` and `CMakePresets.json` before
   building and drop MSVC-only flags. Build it from our side with `scikit-build-core` or a small script, so
-  `uv run python -c "import clash_royale_env"` works.
+  `uv run python -c "import clash_royale_env"` works. This Mac has Apple clang 21 and uv's Python 3.12 but **no
+  `cmake` or `ninja`**: add them as dev dependencies (`uv add --dev cmake ninja`), no system installs.
 - Run their Catch2 suite and their Python tests. Record pass / fail counts.
 - Time one full match and one `snapshot()` fork. Write the numbers down.
 - **Gate:** module imports under 3.12, ≥ 95% of their tests pass, a match runs in < 50 ms. If the build can't be made
@@ -203,14 +204,26 @@ directly.
     compare with Cole's ok / bad;
   - on Cole's mistakes, is Cole's fix card (or "wait") in the search's top 2?
   - baseline to beat: Claude's pre-review, 59% verdict agreement (26 / 44).
-- **Cole's own ceiling first:** re-show him ~20 round 1 plays blind (no earlier verdict) and measure his agreement
-  with himself. That's the ceiling the search can reach; set the gate from it and write it in `decisions.md` before
-  running the search on the gate set.
-- Cole's blind re-review page exists: `data/reviews/bot_2026-10-23/blind_1_1.html` (20 plays: 13 he called mistakes,
-  7 OK, seed 77); his export goes to `data/ground_truth/reviews/blind_1_cole.json`.
-- **Gate (the only one in S0-S3):** verdict agreement ≥ 70% (adjust to the ceiling: e.g. ~10 points under it) and
-  Cole's fix in the top 2 on ≥ 50% of his mistakes. If it fails, report where
-  it disagrees (with the frames: Cole will say whether the sim or the review is wrong) before changing anything.
+- **Cole's own ceiling (measured 2026-10-23):** 20 round 1 plays re-reviewed blind
+  (`data/ground_truth/reviews/blind_1_cole.json`, page `data/reviews/bot_2026-10-23/blind_1_1.html`, seed 77):
+  - Cole agreed with his own earlier verdict on **14 of 20 (70%)**. 5 of the 6 flips went OK → mistake (he got
+    stricter), 1 went mistake → OK (`015212:4`, Arrows that missed; no note: maybe a misclick, ask him).
+  - Where both reviews say mistake, the same fix card **9 of 12 (75%)**; the 3 others are different valid answers
+    (Skeletons vs Goblin Hut for the centre pull).
+  - **The new notes are mostly about timing**: "should have placed skeletons middle 4 seconds ago, when the valkyrie was
+    about to cross", "played them way too late", "play them later, when the giant is just about to cross the bridge",
+    "always play the building first so the giant goes to it". That's the S3 timing candidates' job.
+  - Claude's pre-review on the same 20: 12 of 20 (60%) with Cole's first review, 6 of 20 with his blind one.
+- **Gate (the only one in S0-S3), set before the search runs:**
+  - **Verdict agreement ≥ 65%** on all of Cole's reviewed plays (ceiling ~70%; Claude 59%). With ~110 reviewed plays
+    one standard error is ~4.5 points, so also report it on the 14 plays both of Cole's reviews agree on (the clean
+    set): there the search should get ≥ 12.
+  - **Cole's fix (card, or wait) in the search's top 2 on ≥ 50% of his mistakes**, and where Cole's fix is about timing
+    ("earlier", "later", "when it crosses"), the search's best timing should point the same way on most of them.
+  - Use the blind review where a play has both (it's the later, stricter one); keep both files, don't import
+    `blind_1_cole.json` as extra labels (same plays twice).
+  - If it fails, report where it disagrees (with the frames: Cole will say whether the sim or the review is wrong)
+    before changing anything.
 - If it passes: label every moment of the human replays and the bot's games: `labels` rows with `source = 'sim_search'`,
   `action`, `card_id`, `x`, `y`, `xy_kind = 'tap'`, the score margin, and the engine commit + score weights in a
   `sim_search` row of the `models` registry (`bot77.models.register`). The next review page shows Cole only the
@@ -292,5 +305,5 @@ Report the numbers that missed their gate too.
 
 Answered 2026-10-23: S2 measures and doesn't gate (the gate is S3, set from Cole's own blind re-review agreement);
 score = change in win chance from a model trained on the replays, not hand weights; the first scenarios are the 10
-round 1 mistakes above; nothing deck-specific. Still open:
-1. Cole's blind re-review of ~20 plays (to set the S3 gate).
+round 1 mistakes above; nothing deck-specific; the S3 gate set from Cole's blind re-review (70% self-agreement).
+Nothing open before S0.

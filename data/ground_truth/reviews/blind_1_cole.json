@@ -1,0 +1,238 @@
+{
+ "exported_at": "2026-10-23T23:42:32.353Z",
+ "plays": [
+  {
+   "id": "bot_2026-10-22_234548:1",
+   "game": "bot_2026-10-22_234548",
+   "k": 1,
+   "card": "wait (no play)",
+   "reason": "defend (rules)",
+   "by": "cole",
+   "verdict": "bad",
+   "note": "So here, there isn't really a great play. I think the best play here would be to let it go. The mini pekka will take out the tomb stone, and we can reset. No point in being aggresive here, especially since it's the start of the game and we don't know their deck yet.",
+   "spot_px": null
+  },
+  {
+   "id": "bot_2026-10-22_234548:4",
+   "game": "bot_2026-10-22_234548",
+   "k": 4,
+   "card": "Skeletons",
+   "reason": "defend (A)",
+   "by": "cole",
+   "verdict": "bad",
+   "note": "We should have placed skeletons middle 4 seconds ago, when the valkeryre was about to cross the bridge, to bring the valk into the center so its distracted and our  princess tower can take it out without taking damage",
+   "spot_px": null
+  },
+  {
+   "id": "bot_2026-10-22_234548:6",
+   "game": "bot_2026-10-22_234548",
+   "k": 6,
+   "card": "Minions",
+   "reason": "support (rules)",
+   "by": "cole",
+   "verdict": "bad",
+   "note": "We played them way too early. wait for the giant to cross teh bridge and their princess tower to lock on, then place the the minions behind. This way the minions don't go ahead and die early.",
+   "spot_px": null
+  },
+  {
+   "id": "bot_2026-10-22_234548:9",
+   "game": "bot_2026-10-22_234548",
+   "k": 9,
+   "card": "Goblin Hut",
+   "reason": "defend (A)",
+   "by": "cole",
+   "verdict": "bad",
+   "note": "played them way too late, and should have been in the center to get the mini pekka to the center so both towers can shoot it. since the mini pekka is supported, we should actually use a goblin hut here in the middle, but only if we played it 5 seconds ago.",
+   "spot_px": null
+  },
+  {
+   "id": "bot_2026-10-22_234548:11",
+   "game": "bot_2026-10-22_234548",
+   "k": 11,
+   "card": "Minions",
+   "reason": "defend (rules)",
+   "by": "cole",
+   "verdict": "bad",
+   "note": "I mean we just played them late. the mini pekka got a hit, and now its wasted",
+   "spot_px": null
+  },
+  {
+   "id": "bot_2026-10-22_234548:12",
+   "game": "bot_2026-10-22_234548",
+   "k": 12,
+   "card": "Giant",
+   "reason": "full elixir (rules)",
+   "verdict": "bad",
+   "by": "cole",
+   "note": "Play it in the middle to tank for the bomber, while still being far from bridge to make a decent push",
+   "spot_px": null
+  },
+  {
+   "id": "bot_2026-10-22_234548:14",
+   "game": "bot_2026-10-22_234548",
+   "k": 14,
+   "card": "Goblin Hut",
+   "reason": "full elixir (rules)",
+   "by": "cole",
+   "verdict": "bad",
+   "note": "Way too far back to be supporting the giant. we should be playing a goblin hut center to set up defense",
+   "spot_px": null
+  },
+  {
+   "id": "bot_2026-10-22_234548:16",
+   "game": "bot_2026-10-22_234548",
+   "k": 16,
+   "card": "Minions",
+   "reason": "defend (rules)",
+   "verdict": "ok",
+   "by": "cole",
+   "note": "Only makes sense since we failed to pull the giant to the goblin hut.",
+   "spot_px": null
+  },
+  {
+   "id": "bot_2026-10-22_234548:17",
+   "game": "bot_2026-10-22_234548",
+   "k": 17,
+   "card": "wait (no play)",
+   "reason": "defend (A)",
+   "by": "cole",
+   "verdict": "bad",
+   "note": "giants already dead. whats the point",
+   "spot_px": null
+  },
+  {
+   "id": "bot_2026-10-22_234548:18",
+   "game": "bot_2026-10-22_234548",
+   "k": 18,
+   "card": "Giant",
+   "reason": "full elixir (rules)",
+   "by": "cole",
+   "verdict": "bad",
+   "spot": [
+    0.2422907488986784,
+    0.4109379537314878
+   ],
+   "note": "Play it at bridge to tank and support the hoard of troops we have for a counter attack",
+   "spot_px": [
+    262,
+    789
+   ]
+  },
+  {
+   "id": "bot_2026-10-22_234548:20",
+   "game": "bot_2026-10-22_234548",
+   "k": 20,
+   "card": "Mini P.E.K.K.A",
+   "reason": "full elixir (rules)",
+   "by": "cole",
+   "verdict": "bad",
+   "note": "Support the push already going down on the left lane",
+   "spot": [
+    0.2026431718061674,
+    0.487755299583777
+   ],
+   "spot_px": [
+    219,
+    936
+   ]
+  },
+  {
+   "id": "bot_2026-10-23_001115:6",
+   "game": "bot_2026-10-23_001115",
+   "k": 6,
+   "card": "Arrows",
+   "reason": "defend (rules)",
+   "verdict": "bad",
+   "by": "cole",
+   "note": "We just missed... nothing else to say",
+   "spot_px": null
+  },
+  {
+   "id": "bot_2026-10-23_001115:9",
+   "game": "bot_2026-10-23_001115",
+   "k": 9,
+   "card": "Minions",
+   "reason": "defend (rules)",
+   "by": "cole",
+   "verdict": "bad",
+   "note": "Minions on the goblins, since the golbins here swarm the minipekka",
+   "spot_px": null
+  },
+  {
+   "id": "bot_2026-10-23_001115:16",
+   "game": "bot_2026-10-23_001115",
+   "k": 16,
+   "card": "Goblin Hut",
+   "reason": "defend (rules)",
+   "by": "cole",
+   "verdict": "bad",
+   "note": "Might have been better to play a goblin hut a while back, or a musketeer on the right hand side.",
+   "spot_px": null
+  },
+  {
+   "id": "bot_2026-10-23_015212:1",
+   "game": "bot_2026-10-23_015212",
+   "k": 1,
+   "card": "Goblin Hut",
+   "reason": "defend (rules)",
+   "by": "cole",
+   "verdict": "bad",
+   "note": "Always play the building first to get the giant to go to it first, so that our tower doesn't take damage",
+   "spot_px": null
+  },
+  {
+   "id": "bot_2026-10-23_015212:3",
+   "game": "bot_2026-10-23_015212",
+   "k": 3,
+   "card": "Arrows",
+   "reason": "defend (A)",
+   "verdict": "bad",
+   "by": "cole",
+   "note": "Arrows that. massive value. skeletons just die right away",
+   "spot_px": null
+  },
+  {
+   "id": "bot_2026-10-23_015212:4",
+   "game": "bot_2026-10-23_015212",
+   "k": 4,
+   "card": "Arrows",
+   "reason": "defend (rules)",
+   "verdict": "ok",
+   "by": "cole",
+   "spot_px": null
+  },
+  {
+   "id": "bot_2026-10-23_015212:7",
+   "game": "bot_2026-10-23_015212",
+   "k": 7,
+   "card": "Musketeer",
+   "reason": "defend (rules)",
+   "by": "cole",
+   "verdict": "bad",
+   "note": "Honestly, we need counter attack so a musketeer lower, near behind king tower would have worked. rn it is unprotected",
+   "spot_px": null
+  },
+  {
+   "id": "bot_2026-10-23_015212:9",
+   "game": "bot_2026-10-23_015212",
+   "k": 9,
+   "card": "Giant",
+   "reason": "full elixir (rules)",
+   "verdict": "ok",
+   "by": "cole",
+   "note": "set up for a push, yea thats our only option since were down a tower",
+   "spot_px": null
+  },
+  {
+   "id": "bot_2026-10-23_015212:10",
+   "game": "bot_2026-10-23_015212",
+   "k": 10,
+   "card": "Minions",
+   "reason": "support (rules)",
+   "by": "cole",
+   "verdict": "bad",
+   "note": "Minions are just gonna fly ahead of the giant. lets play them later, when the giant is just about to cross the bridge so the giant tanks ",
+   "spot_px": null
+  }
+ ]
+}

@@ -2483,3 +2483,7 @@ Plan: docs/training-architecture.md; progress: ROADMAP.md. Bot sessions paused u
   snapshot fork; Windows-only build) and Jason-XII's clash-royale-simulator (no license, no Goblin Hut spawning, no
   tests). Decision: fork ClashRoyaleEnv's engine only (not its perception / game-control code), validate it against our
   replays before trusting it; LanceDB holds everything going in and out.
+- Cole's blind re-review of 20 round 1 plays: 14 of 20 verdicts the same as his first review (70%; 5 of 6 flips got
+  stricter), same fix on 9 of 12 shared mistakes; new notes mostly about timing. Claude on the same 20: 60%. So the
+  simulator search's gate (S3) is set at ≥ 65% verdict agreement (ceiling ~70%) + Cole's fix in the top 2 on half his
+  mistakes. Cole: exact placement and timing is the goal; S2 measures and flags but doesn't gate.
