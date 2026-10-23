@@ -59,3 +59,39 @@ class MovePredictor:
         X = np.array([[(self.code.get(r[f], np.nan) if f in self.cats else r[f]) for f in self.feats] for r in rows],
                      dtype=np.float64)
         return list(self.model.predict_proba(X)[:, 1])
+
+
+class TimingPredictor:
+    """A v3 / v4 at play time (data/models/moves_v4/model.pkl from scripts/train_timing.py): scores the 4 cards in hand
+    and "wait" from the same features as training; plays the best card when (best card - wait) clears the threshold
+    tuned on held-back."""
+
+    def __init__(self, path: str = "data/models/moves_v4/model.pkl"):
+        import pickle
+        from pathlib import Path
+        art = pickle.loads(Path(path).read_bytes())
+        self.model, self.feats, self.cats, self.code = art["model"], art["features"], art["cats"], art["code"]
+        self.rates, self.threshold = RateTables.from_dict(art["rates"]), art["play_threshold"]
+
+    def decide(self, h: dict, now: float, own_before: list[dict], opp_plays: list[dict], last_played: dict[int, float],
+               cards: dict[int, dict], names: dict[str, int], units: list[dict], towers: dict) -> dict:
+        """{"play": bool, "slot": best card's slot, "card": its name, "margin": best card - wait, "scores": [5]}."""
+        import numpy as np
+        from bot77.features.board import add_board_features
+        from bot77.features.hand import timing_context, wait_row
+        rows = candidates(h, now, own_before, opp_plays, last_played, cards, names)
+        add_board_features(rows, units, towers, cards)
+        for r in rows:
+            r["cand_is_wait"] = 0.0
+        rows.append(wait_row(rows[0]))
+        tc = timing_context(h, cards)
+        for r in rows:
+            r.update(tc)
+        self.rates.apply(rows)
+        X = np.array([[(self.code.get(r[f], np.nan) if f in self.cats else r.get(f, np.nan)) for f in self.feats] for r in rows],
+                     dtype=np.float64)
+        s = self.model.predict_proba(X)[:, 1]
+        best = int(np.argmax(s[:4]))
+        margin = float(s[best] - s[4])
+        return {"play": margin > self.threshold, "slot": best, "card": cards.get(rows[best]["cand_card"], {}).get("name"),
+                "margin": margin, "scores": [round(float(v), 4) for v in s]}

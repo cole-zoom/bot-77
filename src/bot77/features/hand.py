@@ -50,3 +50,29 @@ def candidates(h: dict, now: float, own_before: list[dict], opp_plays: list[dict
                     "cand_is_cheapest": float(cost == min(costs)), "cand_is_dearest": float(cost == max(costs)),
                     "cand_last_own_gap": sum(1 for q in own_before if names.get(q["card"]) == c)})
     return out
+
+
+# ---- timing (A v3, 2026-10-22): "wait" as a fifth candidate, and what makes now a good time to play
+WAIT_ID = 1  # a pseudo card id for the "wait" candidate (real card ids are 26000000+)
+TIMING_FEATURES = ["cand_is_wait", "n_affordable", "min_cost", "elixir_to_full"]
+
+
+def timing_context(h: dict, cards: dict[int, dict]) -> dict:
+    """Decision-level timing features: how many cards in hand are affordable, the cheapest card's cost, elixir to full."""
+    costs = [cards.get(c, {}).get("elixir") or 0 for c in h["hand"]]
+    el = h["elixir"] if h["elixir"] is not None else -1.0
+    return {"n_affordable": float(sum(el >= c - 0.3 for c in costs)), "min_cost": float(min(costs) if costs else 0),
+            "elixir_to_full": 10.0 - el if el >= 0 else -1.0}
+
+
+def wait_row(base: dict) -> dict:
+    """The "wait" candidate: the decision's context (and board summary) with neutral card features."""
+    r = dict(base)
+    r.update({"cand_card": WAIT_ID, "cand_cost": 0, "cand_type": 3, "cand_slot": 4, "cand_affordable": 1.0,
+              "cand_waited_s": 0.0, "cand_is_cheapest": 0.0, "cand_is_dearest": 0.0, "cand_last_own_gap": 0,
+              "cand_is_wait": 1.0})
+    for k in ("c_can_hit_threat", "c_air_answer", "c_spell_value", "c_cost_vs_threat", "c_wincon", "c_tank", "c_ground_only",
+              "c_air_unit", "c_swarm", "c_ranged", "c_wincon_under_attack"):
+        if k in r:
+            r[k] = 0.0
+    return r

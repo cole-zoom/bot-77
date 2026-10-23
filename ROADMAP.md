@@ -92,8 +92,16 @@ numbers before anything new is trained.
       v4, crop_clf). The bot loads the adopted model of each role (today's files as fallback); `train_moves.py` /
       `train_place.py` register what they save in data/models; `scripts/models.py list / show / adopt`; Models page
       in the browser.
-- [ ] Phase 6 — new models (card + timing with wait, reviews as weighted labels)
-- [ ] Then resume the loop below with session 2.
+- [x] Phase 6 — new models (2026-10-22): **A v3** = card + timing (the 4 cards and "wait" ranked at every play and
+      could-have-played moment; `train_timing.py`). Test (once): card right at plays 44.0% (A v1) → **50.2%**;
+      play-vs-wait AUC 0.78 (elixir alone 0.62); at the rules' false-play rate it catches **60%** of real plays vs the
+      rules' 40%. **A v4** = A v3 + Cole's reviews as labels, read on the bot's paired replays (`pair_bot_replays.py`:
+      49 of 53 replays paired, 94 usable review moments), weight 50 chosen by holding out reviewed games: agreement
+      with Cole 33% → 53%, replay card accuracy -1.4 pts (test 48.8%). In the bot: **shadow** (`bot_shadow`: once a
+      second what A v4 would do next to the rules); the rules still play.
+- [ ] **Next: session 2** (rules play; A v4 + placement model in shadow) → win rate vs 36%, reviews, and rules vs
+      A v4 compared on the same moments. If A v4 agrees with Cole's new reviews more than the rules do, let it decide
+      timing (rules as guard rails).
 
 ## Next steps (after the rebuild)
 

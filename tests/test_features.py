@@ -4,7 +4,7 @@ import lancedb
 import pytest
 
 from bot77.features import (BY_NAME, FEATURES, RateTables, add_board_features, candidates, spot_features, spots,
-                            summary_features)
+                            summary_features, timing_context, wait_row)
 
 
 @pytest.fixture(scope="module")
@@ -21,6 +21,10 @@ def produced(cards):
     rows = candidates(h, 60.0, [{"t": 50.0, "card": "Knight"}], [{"t": 55.0, "card": "Hog Rider"}], {}, cards, names)
     units = [{"card": "Hog Rider", "team": "opp", "x": 4.0, "y": 18.0}, {"card": "Giant", "team": "own", "x": 14.0, "y": 20.0}]
     add_board_features(rows, units, {"own_L": 1}, cards)
+    rows.append(wait_row(rows[0]))
+    for r in rows:
+        r.update(timing_context(h, cards))
+        r.setdefault("cand_is_wait", 0.0)
     for r in rows:
         r["chosen"] = 0
     RateTables.fit(rows).apply(rows)

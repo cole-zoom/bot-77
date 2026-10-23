@@ -8,6 +8,9 @@ half is y > 15. Every action is logged with its reason, so games can be reviewed
 """
 from __future__ import annotations
 
+import json
+from pathlib import Path
+
 from dataclasses import dataclass
 
 from bot77.live.state import RIVER_Y, LiveState, Unit
@@ -59,8 +62,17 @@ class Policy:
                     self.book[(b["opp_card"], b["opp_zone"], b["answer"])] = b
         self.last_played: dict[int, float] = {}
         self.answered: dict[str, float] = {}  # attacker card -> when we last answered it
+        self.timing = None  # card + timing model (A v4, bot77.moves.TimingPredictor), shadow only: logged once a second
+        self.shadow: list[dict] = []  # with what the rules did at the same tick (bot_shadow table)
+        self._shadow_t = -1e9
+        try:
+            from bot77.moves import TimingPredictor
+            tp = adopted_path("card_timing", "data/models/moves_v4/model.pkl")
+            if Path(tp).exists():
+                self.timing = TimingPredictor(tp)
+        except Exception:  # noqa: BLE001 -- shadow only: never stop the bot
+            self.timing = None
         self.placer = None  # placement model (bot77.place), shadow only: logged next to each play, not tapped
-        from pathlib import Path
         if Path(place_path).exists():
             from bot77.place import Placer
             self.placer = Placer(place_path)
@@ -76,6 +88,8 @@ class Policy:
 
     def decide(self, st: LiveState, opp_plays: list[dict]) -> Action | None:
         act = self._decide(st, opp_plays)
+        if self.timing is not None and (act is not None or st.t - self._shadow_t >= 1.0):
+            self._shadow_timing(st, opp_plays, act)
         if act is not None and self.placer is not None:
             try:
                 from bot77.features import summary_features
@@ -88,6 +102,23 @@ class Policy:
             except Exception:  # noqa: BLE001 -- shadow only: never cost a play
                 pass
         return act
+
+    def _shadow_timing(self, st: LiveState, opp_plays: list[dict], act: Action | None) -> None:
+        """What A v4 would do now (play which card, or wait), next to what the rules did: one row a second and at every
+        rules play. Shadow only; errors are swallowed."""
+        if not st.in_battle or None in st.hand or st.elixir is None:
+            return
+        self._shadow_t = st.t
+        try:
+            h = {"hand": st.hand, "next": st.next, "elixir": st.elixir, "t_match": st.elapsed_s, "multiplier": st.multiplier}
+            units, towers = live_board(st.units)
+            d = self.timing.decide(h, st.t, self.own, opp_plays, self.last_played, self.cards, self.names, units, towers)
+            self.shadow.append({"t": float(st.t), "t_match": st.elapsed_s, "elixir": float(st.elixir),
+                                "model_play": bool(d["play"]), "model_card": d["card"], "model_margin": d["margin"],
+                                "model_scores": json.dumps(d["scores"]), "rules_card": act.card if act else None,
+                                "rules_reason": act.reason if act else None})
+        except Exception:  # noqa: BLE001
+            pass
 
     def _decide(self, st: LiveState, opp_plays: list[dict]) -> Action | None:
         if not st.in_battle or None in st.hand or st.elixir is None:

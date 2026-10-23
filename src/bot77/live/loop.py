@@ -231,6 +231,8 @@ class Runner:
                 game["rec"].kill()
         rows = [a for a in self.actions if a["game_id"] == game["id"]]
         self._save("bot_actions", rows)
+        # A v4 in shadow: what it would have done once a second, next to the rules (2026-10-22)
+        self._save("bot_shadow", [{"game_id": game["id"], **r} for r in getattr(game["policy"], "shadow", [])])
         g = {"game_id": game["id"], "t_start": game["t0"], "t_end": t, "n_actions": game["n"], "result": game.get("result", "?"),
              "deck": json.dumps(game["reader"].deck, default=int), "opp_plays": len(game["opp"].plays)}
         self._save("bot_games", [g])

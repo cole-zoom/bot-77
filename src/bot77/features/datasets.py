@@ -48,3 +48,50 @@ def card_rows(db, cards: dict[int, dict], where: str = HUMAN_REPLAYS) -> list[di
                          "side": m["side"], "split": m["split"], "league": m["league"] if m["league"] is not None else -1,
                          "game": f"{m['game_id']}:{m['side']}"})
     return rows
+
+
+def timing_rows(db, cards: dict[int, dict], where: str = HUMAN_REPLAYS) -> list[dict]:
+    """A v3's rows (card + timing), all in one list (small selections; training streams timing_moments)."""
+    return [r for rows in timing_moments(db, cards, where) for r in rows]
+
+
+def timing_moments(db, cards: dict[int, dict], where: str = HUMAN_REPLAYS):
+    """A v3's rows, one moment at a time: for every play and could-have-played (idle) moment, the 4 cards in hand plus a
+    "wait" candidate, with hand / history / board / timing features. chosen = the card played (play moments) or wait
+    (idle moments)."""
+    import bisect
+
+    from bot77.features.board import add_board_features
+    from bot77.features.hand import timing_context, wait_row
+    names = {c["name"]: i for i, c in cards.items()}
+    hist = play_history(db)
+    played = {l["moment_id"]: l["action"] for l in db.open_table("labels").search().where(
+        "source = 'replay' AND action != 'wait'").select(["moment_id", "action"]).limit(10**7).to_arrow().to_pylist()}
+    moms = db.open_table("moments").search().where(where).select(
+        ["moment_id", "game_id", "side", "split", "league", "t", "t_match", "kind", "hand", "next", "elixir", "multiplier",
+         "units", "towers"]).limit(10**7).to_arrow().to_pylist()
+    times = {k: [p["t"] for p in v] for k, v in hist.items()}
+    for m in moms:
+        own_all = hist.get((m["game_id"], m["side"]), [])  # a side can have waits but no plays read
+        own = own_all[:bisect.bisect_left(times.get((m["game_id"], m["side"]), []), m["t"])]
+        opp = hist.get((m["game_id"], "top" if m["side"] == "bottom" else "bottom"), [])
+        last = {}
+        for p in own:
+            if p["card"] and names.get(p["card"]) is not None:
+                last[names[p["card"]]] = p["t"]
+        h = {"hand": m["hand"], "next": m["next"], "elixir": m["elixir"], "t_match": m["t_match"], "multiplier": m["multiplier"]}
+        cand = candidates(h, m["t"], own, opp, last, cards, names)
+        units = [{"card": u["card"], "team": u["team"], "x": u["x"], "y": u["y"]} for u in m["units"]]
+        add_board_features(cand, units, m["towers"] or {}, cards)
+        for r in cand:
+            r["cand_is_wait"] = 0.0
+        cand.append(wait_row(cand[0]))
+        tc = timing_context(h, cards)
+        target = names.get(played.get(m["moment_id"])) if m["kind"] == "play" else None
+        for r in cand:
+            r.update(tc)
+            r.update({"chosen": int((r["cand_is_wait"] == 1.0) if m["kind"] == "idle" else (r["cand_card"] == target)),
+                      "moment_id": m["moment_id"], "kind": m["kind"], "split": m["split"],
+                      "league": m["league"] if m["league"] is not None else -1, "t": m["t"],
+                      "game": f"{m['game_id']}:{m['side']}", "decision": m["moment_id"]})
+        yield cand

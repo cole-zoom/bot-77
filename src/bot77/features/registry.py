@@ -88,6 +88,14 @@ FEATURES: list[Feature] = (
         ("c_ranged", "shoots from range"),
         ("c_wincon_under_attack", "a win condition while there's a threat on our half"),
     ])
+    + _f("timing", "card", "A v3", [
+        ("cand_is_wait", "this candidate is \"wait\" (don't play now)"),
+    ])
+    + _f("timing", "decision", "A v3", [
+        ("n_affordable", "cards in hand affordable now"),
+        ("min_cost", "the cheapest card in hand"),
+        ("elixir_to_full", "elixir until the bar is full (10)"),
+    ])
     + _f("spot", "spot", "place v1", [
         ("s_kind", "what the spot is anchored on: fixed / threat / threat_ahead / opp_unit / behind_tank / spell_group / enemy_tower (categorical)"),
         ("s_x", "spot x (tiles)"), ("s_y", "spot y (tiles)"), ("s_lane", "left 0 / right 1"),

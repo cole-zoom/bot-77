@@ -2453,3 +2453,22 @@ Plan: docs/training-architecture.md; progress: ROADMAP.md. Bot sessions paused u
 - **Phase 3:** `bot77.features` + registry (88 features, docs/features.md). Every model reproduces exactly through
   it given the same card-roles file; the newer roles (Cole's win-condition definition, newer-card guesses) improve the
   placement model 4.1 → 3.9 tiles held-back (`place_v2`, now the bot's shadow placer). A v2 unchanged (not adopted).
+
+## 2026-10-22 · Phases 4-6: data browser, models registry, card + timing model (A v3 / v4)
+- **Data browser** (`uv run python -m bot77.browser`): FastAPI over LanceDB + React / TypeScript / Tailwind. Scalar
+  indexes took a match page from ~5 s to 0.1 s. Bot play times were session time: now video time (game start + a
+  measured 1.5 s recording lag); the bot's index-less .mkv recordings are remuxed to .mp4 on first view.
+- **Models registry** (`bot77.models`, `models` table): 39 versions on disk seeded with their history from this log;
+  one adopted per role; the bot loads adopted models; training scripts register what they save.
+- **A v3 (card + timing):** "wait" as a fifth candidate at every play and could-have-played moment of the human
+  replays (129,844 moments), board + timing features. Held-back: card at plays 51.5% (A v1 46.6%), play-vs-wait AUC
+  0.78 (elixir 0.63, the rules' trigger 0.60). Test, scored once: card 50.2% (A v1 44.0%), AUC 0.78, at the rules'
+  false-play rate 60% of real plays caught vs the rules' 40%. The play threshold is set on held-back so the model plays
+  as often as players do (it catches 45% of plays and keeps 88% of waits there; the rules 40% / 79%).
+- **Reviews as labels (A v4):** the bot's games paired with their Battle Log replays (`pair_bot_replays.py`; the
+  replay's match clock runs 3-5 s ahead of the bot's clock reads, so each pair finds its offset): 49 of 53 paired, 96%
+  median agreement; 118 of 144 reviewed plays land on a replay moment, 94 usable as labels (the rest are spot-only
+  mistakes or a fix card not in hand). Weight chosen by holding out a third of the reviewed games at a time: agreement
+  with the reviewer 0.33 (weight 0) / 0.44 (5) / 0.50 (20) / 0.53 (50) / 0.53 (100); held-back card 51.5 → 51.2% at 50.
+  A v4 = weight 50; test card 48.8%, AUC 0.78. Small sample (94 moments, 7 games): the next session's reviews are the
+  real check. In the bot A v4 runs in shadow (`bot_shadow`), the rules still play.

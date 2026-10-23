@@ -6,7 +6,7 @@ Generated 2026-10-22 by `scripts/inventory.py` (phase 0 of [training-architectur
 
 | Tier | Used | Free |
 |---|---|---|
-| Laptop SSD | 700.6G | 225.7G |
+| Laptop SSD | 701.6G | 224.7G |
 | LaCie HDD (`/Volumes/LaCie/bot-77-data`: 323.3G) | 468.9G | 1.4T |
 
 ## LanceDB tables (`data/lancedb`, laptop)
@@ -17,10 +17,13 @@ Generated 2026-10-22 by `scripts/inventory.py` (phase 0 of [training-architectur
 | `live_outcomes` | analysis (C) | play outcomes on Cole's live (POV) games | 667 | 76K | 1 | — | — |
 | `play_outcomes` | analysis (C) | per detected play: real / fake / missed vs the key; trains the fake filter | 16,909 | 1.0M | 2 | — | build_failures.py, mine_failures.py |
 | `pov_fakes` | analysis (C) | fake plays in Cole's POV games | 1,228 | 140K | 2 | — | — |
-| `bot_actions` | bot | every bot play: card, spot, reason, hand, elixir, threats, full board, model spot | 1,381 | 216K | 1 | loop.py | build_bot_review.py, build_moments.py, build_plays.py, eval_rules_on_reviews.py, import_reviews.py |
+| `bot_actions` | bot | every bot play: card, spot, reason, hand, elixir, threats, full board, model spot | 1,381 | 216K | 1 | loop.py | build_bot_review.py, build_moments.py, build_plays.py, eval_rules_on_reviews.py, import_reviews.py, pair_bot_replays.py, |
 | `bot_games` | bot | every bot game: start / end, plays, result, deck | 57 | 32K | 1 | loop.py | build_bot_review.py, build_moments.py, build_plays.py, build_sources.py, import_reviews.py |
+| `bot_pairs` | bot | each bot game and its Battle Log replay (pair_bot_replays.py) | 49 | 32K | 2 | pair_bot_replays.py | — |
+| `bot_play_moments` | bot | each bot play -> the replay moment it happened on (exact hands, full board) | 1,022 | 56K | 2 | pair_bot_replays.py | train_timing.py |
 | `reviews` | ground truth | each exported bot-play review (who, when, approved by, raw export) | 2 | 76K | 3 | import_reviews.py | __init__.py, after_batch4.sh, after_batch5.sh, after_batch6.sh, after_clicks8.sh, after_cole_1001.sh, after_cole_1001bcd |
 | `playbook` | model input | interactions aggregated per opponent card: common answers and spots | 4,718 | 176K | 1 | build_playbook.py | eval_playbook_place.py, policy.py, train_place.py |
+| `models` | models | the models registry: every model version, role, status, data, features, scores | 41 | 1.1M | 98 | — | app.py, autolabel.py, build_failures.py, build_real_v3.py, crop_classifier.py, cropclf.py, ingest_live_replays.py, inges |
 | `detections` | observation | every detector run in one table (run_id): boxes, class, card, team, arena tiles | 32,407,283 | 1.8G | 10 | build_detections.py | app.py, build_failures.py, build_indexes.py, build_moments.py, eval_v2.py, mine_v4_chainA.sh, mine_v4_chainB.sh, mine_v4 |
 | `hud_states` | observation | what the HUD showed, every frame read: hand, next, elixir, clock, multiplier | 4,194,766 | 157.3M | 4 | — | build_indexes.py, build_moments.py, build_moves.py, opponent.py, pairing.py, pipeline.py, render_game.py, train_fake_fil |
 | `opponent_events` | observation | C's detected opponent plays (default output table) | 359 | 10.2M | 1 | — | build_plays.py, eval_v2.py, opponent.py, review.py, slices.py, train_moves.py |
@@ -38,7 +41,7 @@ Generated 2026-10-22 by `scripts/inventory.py` (phase 0 of [training-architectur
 | `media` | source | every video / recording file: where it really lives (laptop / LaCie), size, available now | 773 | 352K | 3 | build_media.py | app.py |
 | `videos` | source | one row per video file: creator, layout, mode, path (laptop or LaCie symlink), size | 1,253 | 976K | 8 | build_sources.py | after_session_f.sh, after_session_g.sh, app.py, autolabel.py, build_board_states.py, build_click_abilities.py, build_cli |
 | `labels` | training data | what was / should have been done at a moment: replay, bot, review_cole, review_claude | 144,567 | 31.6M | 16 | build_moments.py | after_batch3.sh, app.py, auto_sprites.py, autolabel.py, build_indexes.py, build_real_v3.py, build_train_mined.py, build_ |
-| `moments` | training data | one player at one point in time with everything they saw: plays + could-have-played waits + bot plays | 144,423 | 13.6M | 5 | build_moments.py | app.py, build_indexes.py, datasets.py, import_reviews.py |
+| `moments` | training data | one player at one point in time with everything they saw: plays + could-have-played waits + bot plays | 144,423 | 13.6M | 5 | build_moments.py | app.py, build_indexes.py, datasets.py, import_reviews.py, pair_bot_replays.py, train_timing.py |
 | `board_states` | training data (A) | the board at each of A's decisions (JSON strings for now) | 24,142 | 1.6M | 1 | build_board_states.py | build_placements.py, train_moves.py |
 | `move_samples` | training data (A) | A's samples: one row per (decision, hand card), both players of every keyed replay | 96,568 | 6.1M | 2 | build_moves.py | build_board_states.py, check_moments.py, seed_models.py, train_moves.py |
 | `move_samples_m` | training data (A) | A's rows rebuilt from moments + plays (identical to move_samples; phase 2 check) | 96,568 | 9.4M | 3 | check_moments.py | app.py |
@@ -48,13 +51,12 @@ Generated 2026-10-22 by `scripts/inventory.py` (phase 0 of [training-architectur
 | `unit_crops` | training data (C) | unit image crops + embeddings: train the card classifier, feed mining | 1,892,719 | 13.7G | 1 | mine.py | dedupe_crops.sh, mine_all.py, mine_failures.py |
 | `placements` | training data (placement) | every play with its spot and the board before it | 14,080 | 1.2M | 1 | build_placements.py | build_plays.py, seed_models.py, train_place.py |
 | `interactions` | training data (playbook) | play -> the other player's answer within 8 s, with positions | 20,643 | 848K | 1 | build_playbook.py | — |
-| `models` | ? | **undocumented** | 39 | 1012K | 89 | — | app.py, autolabel.py, build_failures.py, build_real_v3.py, crop_classifier.py, cropclf.py, ingest_live_replays.py, inges |
 | `opponent_events_dev_dev_s6_m25` | ? | **undocumented** | 636 | 648K | 51 | — | build_plays.py |
 | `opponent_events_dev_lt_s6_m25` | ? | **undocumented** | 830 | 1.2M | 89 | — | build_plays.py |
 | `opponent_events_dev_rt6_v5l_e15` | ? | **undocumented** | 1,057 | 804K | 59 | — | build_plays.py |
 | `opponent_events_dev_va6_m256` | ? | **undocumented** | 1,577 | 1.4M | 95 | — | build_plays.py |
 
-Total: 40 tables, 19.9G.
+Total: 42 tables, 19.9G.
 
 ## Data folders
 
@@ -94,6 +96,8 @@ Total: 40 tables, 19.9G.
 | `katacr` | 334.1M | build_train_mined.py, build_train_v3.py, crop_classifier.py, generate_synth.py, mix_spell_probs.py |
 | `moves_v1` | 1.0M | app.py, moves.py, policy.py, seed_models.py, train_moves.py |
 | `moves_v2` | 1.3M | seed_models.py |
+| `moves_v3` | 2.3M | train_timing.py |
+| `moves_v4` | 1.8M | moves.py, policy.py |
 | `place_v1` | 968K | seed_models.py |
 | `place_v2` | 1.1M | app.py, place.py, policy.py, seed_models.py, train_place.py |
 | `probs_new_v2` | 11.8M | seed_models.py |
