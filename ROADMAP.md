@@ -99,9 +99,11 @@ numbers before anything new is trained.
       49 of 53 replays paired, 94 usable review moments), weight 50 chosen by holding out reviewed games: agreement
       with Cole 33% → 53%, replay card accuracy -1.4 pts (test 48.8%). In the bot: **shadow** (`bot_shadow`: once a
       second what A v4 would do next to the rules); the rules still play.
-- [ ] **Next: session 2** (rules play; A v4 + placement model in shadow) → win rate vs 36%, reviews, and rules vs
-      A v4 compared on the same moments. If A v4 agrees with Cole's new reviews more than the rules do, let it decide
-      timing (rules as guard rails).
+- [x] **Session 2** (2026-10-22/23, rules play, A v4 + placement in shadow; new deck: Giant, Mini P.E.K.K.A,
+      Musketeer, Goblin Hut, Fireball, Arrows, Skeletons, Minions): 61 games, **28 W / 32 L (47%)** vs 36% before the
+      rules; **trophies 400 → 606**. 61 replays recorded (two pull bugs fixed on the way). 4,966 shadow rows.
+- [ ] Next: process session 2 (replays → keys, pair with the bot games, moments), Claude pre-reviews the losses,
+      Cole double-checks, then rules vs A v4 on those reviews -> decide whether A v4 takes over timing / cards.
 
 ## Next steps (after the rebuild)
 
