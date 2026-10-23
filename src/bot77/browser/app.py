@@ -379,6 +379,36 @@ def moments_list(game_id: str, kind: str | None = None, limit: int = 500):
         .limit(limit).to_arrow().to_pylist()
 
 
+# ---------------------------------------------------------------- models registry
+class ModelInfo(BaseModel):
+    model_id: str
+    family: str
+    version: str
+    path: str | None
+    role: str
+    adopted: bool
+    status: str
+    trained_at: str | None
+    what: str | None
+    data: dict
+    features: list
+    params: dict
+    metrics: dict
+    notes: str | None
+    on_disk: bool
+
+
+@app.get("/api/models", response_model=list[ModelInfo])
+def models():
+    from bot77.models import list_models
+    out = []
+    for r in list_models():
+        out.append(ModelInfo(**{**r, "data": json.loads(r["data"] or "{}"), "features": json.loads(r["features"] or "[]"),
+                                "params": json.loads(r["params"] or "{}"), "metrics": json.loads(r["metrics"] or "{}"),
+                                "on_disk": bool(r["path"]) and Path(r["path"]).exists()}))
+    return out
+
+
 # ---------------------------------------------------------------- features + training data
 class FeatureInfo(BaseModel):
     name: str

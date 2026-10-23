@@ -23,7 +23,8 @@ from bot77.video import iter_frames
 ap = argparse.ArgumentParser()
 ap.add_argument("match"); ap.add_argument("--fps", type=float, default=2.5)
 ap.add_argument("--layout", default="cole_iphone_mirroring")
-ap.add_argument("--weights", default="data/models/bot77_detector/v6l/best.pt")
+from bot77.models import adopted_path  # the registry's adopted live detector (phase 5)
+ap.add_argument("--weights", default=adopted_path("detector_live", "data/models/bot77_detector/v6l/best.pt"))
 ap.add_argument("--out", default="data/reviews/shadow")
 a = ap.parse_args()
 

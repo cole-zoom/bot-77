@@ -40,9 +40,12 @@ class Action:
 
 
 class Policy:
-    def __init__(self, cards: list[dict], model_path: str = "data/models/moves_v1/model.pkl", playbook: bool = True, rules: bool = True,
-                 place_path: str = "data/models/place_v2/model.pkl",
+    def __init__(self, cards: list[dict], model_path: str | None = None, playbook: bool = True, rules: bool = True,
+                 place_path: str | None = None,
                  full_at: float = 9.5, idle_at: float = 7.0, idle_s: float = 6.0, min_gap_s: float = 1.2):
+        from bot77.models import adopted_path  # the registry's adopted models (phase 5), today's files as fallback
+        model_path = model_path or adopted_path("card", "data/models/moves_v1/model.pkl")
+        place_path = place_path or adopted_path("place", "data/models/place_v2/model.pkl")
         self.a = MovePredictor(model_path)
         self.cards = {c["id"]: c for c in cards}
         self.names = {c["name"]: c["id"] for c in cards}

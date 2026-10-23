@@ -85,7 +85,13 @@ numbers before anything new is trained.
       (`build_indexes.py`) took a match page from ~5 s to 0.1 s. Fixed on the way: bot play times were session time
       (now video time: game start + a measured 1.5 s recording lag); the bot's .mkv recordings are remuxed to .mp4 on
       first view so they can be seeked. Reviews page (phase 4b) still to move in.
-- [ ] Phase 5 — models registry
+- [x] Phase 5 — models registry (2026-10-22): `models` table (`bot77.models`): every model version with its role,
+      status (adopted / superseded / not adopted / reference), what it was trained on, features, params and scores.
+      Seeded with all 39 versions on disk and their history from decisions.md (`scripts/seed_models.py`); one adopted
+      per role (card moves_v1, place place_v2, detector_live v6l, spell_pov mix25, spell_replay mix256, fake_filter
+      v4, crop_clf). The bot loads the adopted model of each role (today's files as fallback); `train_moves.py` /
+      `train_place.py` register what they save in data/models; `scripts/models.py list / show / adopt`; Models page
+      in the browser.
 - [ ] Phase 6 — new models (card + timing with wait, reviews as weighted labels)
 - [ ] Then resume the loop below with session 2.
 

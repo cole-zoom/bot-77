@@ -40,20 +40,21 @@ Generated 2026-10-22 by `scripts/inventory.py` (phase 0 of [training-architectur
 | `labels` | training data | what was / should have been done at a moment: replay, bot, review_cole, review_claude | 144,567 | 31.6M | 16 | build_moments.py | after_batch3.sh, app.py, auto_sprites.py, autolabel.py, build_indexes.py, build_real_v3.py, build_train_mined.py, build_ |
 | `moments` | training data | one player at one point in time with everything they saw: plays + could-have-played waits + bot plays | 144,423 | 13.6M | 5 | build_moments.py | app.py, build_indexes.py, datasets.py, import_reviews.py |
 | `board_states` | training data (A) | the board at each of A's decisions (JSON strings for now) | 24,142 | 1.6M | 1 | build_board_states.py | build_placements.py, train_moves.py |
-| `move_samples` | training data (A) | A's samples: one row per (decision, hand card), both players of every keyed replay | 96,568 | 6.1M | 2 | build_moves.py | build_board_states.py, check_moments.py, train_moves.py |
+| `move_samples` | training data (A) | A's samples: one row per (decision, hand card), both players of every keyed replay | 96,568 | 6.1M | 2 | build_moves.py | build_board_states.py, check_moments.py, seed_models.py, train_moves.py |
 | `move_samples_m` | training data (A) | A's rows rebuilt from moments + plays (identical to move_samples; phase 2 check) | 96,568 | 9.4M | 3 | check_moments.py | app.py |
 | `mined_candidates` | training data (C) | mined failure candidates for review / labelling | 140 | 2.6M | 3 | — | build_mined_review.py, label_mined.py, mine_failures.py |
 | `real_crop_index` | training data (C) | index of real crops used by the crop classifier | 5,051 | 7.4M | 1 | — | autolabel.py, crop_classifier.py |
 | `slice_index` | training data (C) | index of video slices for labelling | 4,844 | 7.2M | 1 | — | — |
 | `unit_crops` | training data (C) | unit image crops + embeddings: train the card classifier, feed mining | 1,892,719 | 13.7G | 1 | mine.py | dedupe_crops.sh, mine_all.py, mine_failures.py |
-| `placements` | training data (placement) | every play with its spot and the board before it | 14,080 | 1.2M | 1 | build_placements.py | build_plays.py, train_place.py |
+| `placements` | training data (placement) | every play with its spot and the board before it | 14,080 | 1.2M | 1 | build_placements.py | build_plays.py, seed_models.py, train_place.py |
 | `interactions` | training data (playbook) | play -> the other player's answer within 8 s, with positions | 20,643 | 848K | 1 | build_playbook.py | — |
+| `models` | ? | **undocumented** | 39 | 1012K | 89 | — | app.py, autolabel.py, build_failures.py, build_real_v3.py, crop_classifier.py, cropclf.py, ingest_live_replays.py, inges |
 | `opponent_events_dev_dev_s6_m25` | ? | **undocumented** | 636 | 648K | 51 | — | build_plays.py |
 | `opponent_events_dev_lt_s6_m25` | ? | **undocumented** | 830 | 1.2M | 89 | — | build_plays.py |
 | `opponent_events_dev_rt6_v5l_e15` | ? | **undocumented** | 1,057 | 804K | 59 | — | build_plays.py |
 | `opponent_events_dev_va6_m256` | ? | **undocumented** | 1,577 | 1.4M | 95 | — | build_plays.py |
 
-Total: 39 tables, 19.9G.
+Total: 40 tables, 19.9G.
 
 ## Data folders
 
@@ -84,35 +85,35 @@ Total: 39 tables, 19.9G.
 | Model | Size | Referenced in code |
 |---|---|---|
 | `bot77_detector` | 4.6G | build_real_v3.py, ingest_live_replays.py, ingest_replays.py, live_calibrate.py, live_dryrun.py |
-| `crop_clf.pt` | 1.2M | crop_classifier.py, cropclf.py |
-| `crop_clf_nocand.pt` | 1.1M | crop_classifier.py |
-| `fake_filter` | 580K | opponent.py, playrules.py, train_fake_filter.py |
-| `fake_filter_v2` | 776K | — (not referenced: old version?) |
-| `fake_filter_v3` | 824K | — (not referenced: old version?) |
-| `fake_filter_v4` | 804K | playrules.py |
+| `crop_clf.pt` | 1.2M | crop_classifier.py, cropclf.py, seed_models.py |
+| `crop_clf_nocand.pt` | 1.1M | crop_classifier.py, seed_models.py |
+| `fake_filter` | 580K | opponent.py, playrules.py, seed_models.py, train_fake_filter.py |
+| `fake_filter_v2` | 776K | seed_models.py |
+| `fake_filter_v3` | 824K | seed_models.py |
+| `fake_filter_v4` | 804K | playrules.py, seed_models.py |
 | `katacr` | 334.1M | build_train_mined.py, build_train_v3.py, crop_classifier.py, generate_synth.py, mix_spell_probs.py |
-| `moves_v1` | 1.0M | app.py, moves.py, policy.py, train_moves.py |
-| `moves_v2` | 1.3M | — (not referenced: old version?) |
-| `place_v1` | 968K | — (not referenced: old version?) |
-| `place_v2` | 1.1M | app.py, place.py, policy.py, train_place.py |
-| `probs_new_v2` | 11.8M | — (not referenced: old version?) |
-| `probs_new_v3` | 11.9M | — (not referenced: old version?) |
-| `probs_new_v5` | 11.8M | — (not referenced: old version?) |
-| `sam` | 74.5M | autolabel.py, slices.py |
-| `spell_mix` | 18.1M | build_failures.py, mix_spell_probs.py |
-| `spell_mix235` | 14.7M | — (not referenced: old version?) |
-| `spell_mix25` | 18.1M | playrules.py |
-| `spell_mix256` | 18.1M | playrules.py |
-| `spell_mix25ab` | 14.7M | — (not referenced: old version?) |
-| `spell_mix25avg` | 14.7M | — (not referenced: old version?) |
-| `spell_mix26` | 18.1M | — (not referenced: old version?) |
-| `spell_v1` | 125.4M | — (not referenced: old version?) |
-| `spell_v2` | 134.3M | mix_spell_probs.py |
-| `spell_v3` | 134.3M | mix_spell_probs.py |
-| `spell_v4` | 129.9M | — (not referenced: old version?) |
-| `spell_v5` | 134.3M | — (not referenced: old version?) |
-| `spell_v6` | 134.2M | — (not referenced: old version?) |
-| `yolo11s.pt` | 18.4M | train_detector.py, train_v2.py |
+| `moves_v1` | 1.0M | app.py, moves.py, policy.py, seed_models.py, train_moves.py |
+| `moves_v2` | 1.3M | seed_models.py |
+| `place_v1` | 968K | seed_models.py |
+| `place_v2` | 1.1M | app.py, place.py, policy.py, seed_models.py, train_place.py |
+| `probs_new_v2` | 11.8M | seed_models.py |
+| `probs_new_v3` | 11.9M | seed_models.py |
+| `probs_new_v5` | 11.8M | seed_models.py |
+| `sam` | 74.5M | autolabel.py, seed_models.py, slices.py |
+| `spell_mix` | 18.1M | build_failures.py, mix_spell_probs.py, seed_models.py |
+| `spell_mix235` | 14.7M | seed_models.py |
+| `spell_mix25` | 18.1M | playrules.py, seed_models.py |
+| `spell_mix256` | 18.1M | playrules.py, seed_models.py |
+| `spell_mix25ab` | 14.7M | seed_models.py |
+| `spell_mix25avg` | 14.7M | seed_models.py |
+| `spell_mix26` | 18.1M | seed_models.py |
+| `spell_v1` | 125.4M | seed_models.py |
+| `spell_v2` | 134.3M | mix_spell_probs.py, seed_models.py |
+| `spell_v3` | 134.3M | mix_spell_probs.py, seed_models.py |
+| `spell_v4` | 129.9M | seed_models.py |
+| `spell_v5` | 134.3M | seed_models.py |
+| `spell_v6` | 134.2M | seed_models.py |
+| `yolo11s.pt` | 18.4M | seed_models.py, train_detector.py, train_v2.py |
 
 ## Ground truth (`data/ground_truth`)
 

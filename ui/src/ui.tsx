@@ -44,5 +44,5 @@ export const SPLIT_COLOR: Record<string, string> = {
   heldout: "bg-rose-950 text-rose-200", dev: "bg-sky-900/60 text-sky-200",
 };
 export function Pill({ text, cls = "bg-zinc-800 text-zinc-300" }: { text: string; cls?: string }) {
-  return <span className={`rounded px-1.5 py-0.5 text-xs ${cls}`}>{text}</span>;
+  return <span className={`whitespace-nowrap rounded px-1.5 py-0.5 text-xs ${cls}`}>{text}</span>;
 }

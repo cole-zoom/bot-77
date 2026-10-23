@@ -17,6 +17,7 @@ from bot77.features import CAND_FEATURES, CTX_FEATURES, add_response_rates
 ap = argparse.ArgumentParser()
 ap.add_argument("--league", type=int, default=None, help="train only on this TV league (0 = Ultimate Champion)")
 ap.add_argument("--out", default="data/models/moves_v1")
+ap.add_argument("--what", default="", help="one line for the models registry: what this version changes")
 ap.add_argument("--table", default="move_samples", help="samples table (move_samples_m: rebuilt from moments)")
 ap.add_argument("--board", action="store_true", help="A v2: add the board features (bot77.board, table board_states)")
 ap.add_argument("--eval", default="heldback,test")
@@ -91,6 +92,7 @@ baselines = {
     "played most so far": lambda d: [r["cand_last_own_gap"] + 0.001 * r["cand_waited_s"] for r in d],
     "A v1": lambda d: list(model.predict_proba(X(d))[:, 1]),
 }
+METRICS = {}
 for split in a.eval.split(","):
     for subset, keep in (("all", lambda r: True), ("top ladder (league 0)", lambda r: r["league"] == 0)):
         decs = decisions([r for r in rows if r["split"] == split and keep(r)])
@@ -100,6 +102,20 @@ for split in a.eval.split(","):
         for name, fn in baselines.items():
             t1, t2 = accuracy(decs, fn)
             print(f"  {name:22s} top-1 {t1:.1%}  top-2 {t2:.1%}")
+            if name == "A v1":
+                tag = split if subset == "all" else f"{split} top ladder"
+                METRICS[f"{tag} top-1"], METRICS[f"{tag} top-2"] = round(t1, 4), round(t2, 4)
+                METRICS[f"{tag} decisions"] = len(decs)
+
+if out.resolve().is_relative_to(Path("data/models").resolve()):  # register what lands in data/models (bot77.models)
+    from bot77.models import register
+    tbl = lancedb.connect("data/lancedb").open_table(a.table)
+    register(f"card:{out.name}", "card", out.name, str(out / "model.pkl"), "card", what=a.what,
+             data={"table": a.table, "table_version": tbl.version, "train_decisions": len(decisions(train)),
+                   "league": a.league, "board": a.board},
+             features=FEATS, params=model.get_params() | {"rates_prior": 20},
+             metrics=METRICS, notes="registered by train_moves.py; adopt with scripts/models.py adopt")
+    print(f"registered card:{out.name} (not adopted)")
 
 if a.c_table:
     # same decisions, the opponent's history from C instead of the key (bottom player of each replay)

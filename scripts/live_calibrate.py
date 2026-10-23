@@ -37,7 +37,8 @@ w.release()
 d = derive_layout(video, a.layout, [t + 0.5 for t in range(1, len(frames) - 1, 3)], description="BlueStacks live battle (B v0)")
 print("layout written:", a.layout, "frame", d["frame_size"], "rough arena", d["katacr_arena"])
 # the arena crop from the HUD fit is only ~50 px close: fit it to the princess towers (bot77.live.arena)
-det = Bot77Detector(Path("data/models/bot77_detector/v6l/best.pt"))
+from bot77.models import adopted_path
+det = Bot77Detector(Path(adopted_path("detector_live", "data/models/bot77_detector/v6l/best.pt")))
 towers = tower_centres(frames, Layout.load(a.layout), det)
 if {"enemy_L", "enemy_R"} <= set(towers):
     arena, err = fit_arena(towers, frames[0].shape[1], d["frame_size"][0])

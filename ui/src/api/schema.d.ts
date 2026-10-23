@@ -92,6 +92,26 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/api/botframe/{game_id}/{k}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Botframe
+         * @description The screenshot the bot saved at its k-th play (which=at) or 2 s later (after): exact, no video seeking.
+         */
+        get: operations["botframe_api_botframe__game_id___k__get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/api/detections/{match_id}": {
         parameters: {
             query?: never;
@@ -138,6 +158,23 @@ export interface paths {
         };
         /** Moments List */
         get: operations["moments_list_api_moments_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/models": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Models */
+        get: operations["models_api_models_get"];
         put?: never;
         post?: never;
         delete?: never;
@@ -334,6 +371,45 @@ export interface components {
             deck_names: string[] | null;
             /** Truth Set */
             truth_set: string | null;
+        };
+        /** ModelInfo */
+        ModelInfo: {
+            /** Model Id */
+            model_id: string;
+            /** Family */
+            family: string;
+            /** Version */
+            version: string;
+            /** Path */
+            path: string | null;
+            /** Role */
+            role: string;
+            /** Adopted */
+            adopted: boolean;
+            /** Status */
+            status: string;
+            /** Trained At */
+            trained_at: string | null;
+            /** What */
+            what: string | null;
+            /** Data */
+            data: {
+                [key: string]: unknown;
+            };
+            /** Features */
+            features: unknown[];
+            /** Params */
+            params: {
+                [key: string]: unknown;
+            };
+            /** Metrics */
+            metrics: {
+                [key: string]: unknown;
+            };
+            /** Notes */
+            notes: string | null;
+            /** On Disk */
+            on_disk: boolean;
         };
         /** MomentDetail */
         MomentDetail: {
@@ -616,6 +692,40 @@ export interface operations {
             };
         };
     };
+    botframe_api_botframe__game_id___k__get: {
+        parameters: {
+            query?: {
+                which?: string;
+            };
+            header?: never;
+            path: {
+                game_id: string;
+                k: number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": unknown;
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
     detections_api_detections__match_id__get: {
         parameters: {
             query: {
@@ -711,6 +821,26 @@ export interface operations {
                 };
                 content: {
                     "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    models_api_models_get: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ModelInfo"][];
                 };
             };
         };

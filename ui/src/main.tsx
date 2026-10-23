@@ -8,11 +8,13 @@ import Match from "./pages/Match";
 import Moment from "./pages/Moment";
 import Training from "./pages/Training";
 import Features from "./pages/Features";
+import Models from "./pages/Models";
 
 const nav = [
   ["/", "Overview"],
   ["/matches", "Matches"],
   ["/training", "Training data"],
+  ["/models", "Models"],
   ["/features", "Features"],
 ] as const;
 
@@ -38,6 +40,7 @@ function Shell() {
           <Route path="/moments/:id" element={<Moment />} />
           <Route path="/training" element={<Training />} />
           <Route path="/features" element={<Features />} />
+          <Route path="/models" element={<Models />} />
         </Routes>
       </main>
     </div>

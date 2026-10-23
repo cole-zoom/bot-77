@@ -19,6 +19,7 @@ from bot77.features import FEET_DY, KINDS, main_threat, spot_features, spots, su
 from bot77.playbook import ANSWER_S, zone
 
 ap = argparse.ArgumentParser()
+ap.add_argument("--what", default="", help="one line for the models registry")
 ap.add_argument("--eval", default="heldback"); ap.add_argument("--out", default="data/models/place_v2")
 a = ap.parse_args()
 
@@ -137,3 +138,19 @@ for subset in ("all plays", "answers", "answers, bottom player", "answers the pl
         if s == subset:
             print(f"  {k:36s} n={len(v):5d}  median {statistics.median(x[0] for x in v):4.1f} tiles  "
                   f"within 2 tiles {sum(x[0] <= 2 for x in v) / len(v):4.0%}  same lane {sum(x[1] for x in v) / len(v):4.0%}")
+
+if out.resolve().is_relative_to(Path("data/models").resolve()):  # register what lands in data/models (bot77.models)
+    from bot77.models import register
+    M = {}
+    for (subset, k), v in res.items():
+        if k == "placement model":
+            M[f"{a.eval} {subset}: median tiles"] = round(statistics.median(x[0] for x in v), 2)
+            M[f"{a.eval} {subset}: same lane"] = round(sum(x[1] for x in v) / len(v), 3)
+            M[f"{a.eval} {subset}: within 2 tiles"] = round(sum(x[0] <= 2 for x in v) / len(v), 3)
+    register(f"place:{out.name}", "place", out.name, str(out / "model.pkl"), "place", what=a.what,
+             data={"table": "placements", "table_version": db.open_table("placements").version, "train_plays": len(train),
+                   "fixed_spots": len(fixed)},
+             features=FEATS, params=model.get_params(), metrics=M,
+             notes="registered by train_place.py; adopt with scripts/models.py adopt")
+    print(f"registered place:{out.name} (not adopted)")
+
