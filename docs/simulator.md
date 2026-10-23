@@ -172,8 +172,10 @@ directly.
   that's alive"), and time left changes everything. So:
   - **Win model** (`bot77.sim.value`, a role in the `models` registry): P(bottom player wins | towers alive, tower HP
     (`tower_hp`), elixir both sides (estimated for the opponent), time left, multiplier, units on board summary),
-    trained on the replays' states over time and each match's result (`matches.result`; human replays, train split;
-    calibration checked on held-back). Cheap to start (gradient boosting on a handful of features).
+    trained on the replays' states over time and each match's result (human replays, train split; calibration
+    checked on held-back). **`matches.result` is empty for all 471 human replays (checked 2026-10-23):** fill it
+    first, from the replay's end (towers left / crowns on the last frames, plus `tower_hp` at the end; overtime ends
+    on the first tower) into `matches.result`, spot-checked by hand on ~20. Cheap to start (gradient boosting on a handful of features).
   - A candidate's score = win chance after the ~10 s window − before. Waiting can win: elixir kept is in the state.
   - Cole's rule is a scenario (S4) the score must get right: down a tower, soaking king-tower damage to save elixir
     for the even-up push should score above spending it to defend.
