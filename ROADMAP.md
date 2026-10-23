@@ -117,6 +117,13 @@ numbers before anything new is trained.
 - [ ] **Card roles:** Cole corrects the guesses for the newer cards in `config/card_roles.yaml`.
 - [ ] Repeat the loop until the win rate stops improving, then look at what's still losing games.
 
+## Simulator (planned 2026-10-23, handoff: `docs/simulator.md`)
+Cole's reviews don't scale and Claude's pre-review agreed with him on only 59% of plays. Plan: fork the MIT
+ClashRoyaleEnv C++ engine (itzik123), build it on the Mac (S0), adapter to our tables (S1), check it against the
+replays (S2), search for the best play at each moment and test it on Cole's reviews (S3: go / no-go), then scenarios,
+a browser view, training. LanceDB is the data layer (`tower_hp`, `sim_validation`, `sim_scenarios`, `sim_runs`,
+`labels` source `sim_search`).
+
 ## Later (only if the loop stalls)
 
 - Retrain the card model on the bot's own reviewed games (needs a few hundred reviewed plays first).

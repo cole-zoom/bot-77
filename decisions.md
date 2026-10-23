@@ -2472,3 +2472,14 @@ Plan: docs/training-architecture.md; progress: ROADMAP.md. Bot sessions paused u
   with the reviewer 0.33 (weight 0) / 0.44 (5) / 0.50 (20) / 0.53 (50) / 0.53 (100); held-back card 51.5 → 51.2% at 50.
   A v4 = weight 50; test card 48.8%, AUC 0.78. Small sample (94 moments, 7 games): the next session's reviews are the
   real check. In the bot A v4 runs in shadow (`bot_shadow`), the rules still play.
+
+## 2026-10-23 · Session 2 processed; Claude's pre-review vs Cole; simulator plan
+- Session 2 (61 games, new deck): all 61 replays keyed (0 errors); 55 of 61 bot games paired with their replays.
+- Review round 1 (6 lost games, 142 plays) pre-reviewed by Claude (skill review-bot-plays). Cole reviewed 47 and
+  discarded the rest: Claude agreed on 26 of 44 (59%), called 17 of Cole's 30 mistakes OK, high confidence right 5 of 13.
+  Claude misses plays whose judgement needs the next seconds (dead Giant: reset; Minions outrun the Giant; kiting).
+- So: a simulator, to search the next ~10 s from every moment (`docs/simulator.md`). Evaluated two (code read, not
+  run): ClashRoyaleEnv (itzik123, MIT, C++ / pybind11, 132 cards incl. all of ours, 734 tests, state injection and
+  snapshot fork; Windows-only build) and Jason-XII's clash-royale-simulator (no license, no Goblin Hut spawning, no
+  tests). Decision: fork ClashRoyaleEnv's engine only (not its perception / game-control code), validate it against our
+  replays before trusting it; LanceDB holds everything going in and out.
