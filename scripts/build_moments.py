@@ -23,8 +23,8 @@ from datetime import timedelta
 import lancedb
 import pyarrow as pa
 
-from bot77.board import TOWER_CLASSES, to_player_frame
-from bot77.moves import hud_before
+from bot77.features import TOWER_CLASSES, to_player_frame
+from bot77.features import hud_before
 
 RUN, LAG, IDLE_STEP, AFTER_PLAY = "v5l_e15", 0.25, 1.0, 0.5
 db = lancedb.connect("data/lancedb")

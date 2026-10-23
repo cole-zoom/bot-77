@@ -11,7 +11,7 @@ from collections import defaultdict
 import lancedb
 import pyarrow as pa
 
-from bot77.board import TOWER_CLASSES, to_player_frame
+from bot77.features import TOWER_CLASSES, to_player_frame
 from bot77.detect.names import class_to_card
 from bot77.layout import Layout
 

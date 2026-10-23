@@ -6,7 +6,7 @@ Generated 2026-10-22 by `scripts/inventory.py` (phase 0 of [training-architectur
 
 | Tier | Used | Free |
 |---|---|---|
-| Laptop SSD | 696.5G | 229.8G |
+| Laptop SSD | 698.0G | 228.3G |
 | LaCie HDD (`/Volumes/LaCie/bot-77-data`: 323.3G) | 468.9G | 1.4T |
 
 ## LanceDB tables (`data/lancedb`, laptop)
@@ -32,16 +32,16 @@ Generated 2026-10-22 by `scripts/inventory.py` (phase 0 of [training-architectur
 | `unit_detections_v7l_best` | observation | detector V7 on a check set (30-ish games) | 1,229,471 | 24.4M | 1 | — | build_detections.py |
 | `unit_detections_v8l_best` | observation | detector V8 on a check set | 1,248,634 | 24.7M | 1 | — | build_detections.py |
 | `events` | observation / ground truth | plays and abilities read from the hand (exact for the player whose hand is shown; replay answer keys) | 70,099 | 3.4G | 1 | pipeline.py | __init__.py, add_next_card_plays.py, after_session_f.sh, after_session_g.sh, analyze_dev.py, autolabel.py, autolabel_pai |
-| `plays` | observation / ground truth | every play: from the hand (exact), detected by C, or made by the bot | 75,939 | 14.8M | 4 | build_plays.py | build_bot_review.py, build_click_short.py, build_moments.py, check_moments.py, eval_rules_on_reviews.py, import_reviews. |
-| `cards` | reference | the card catalogue: names, elixir, type, rarity, art (from the Clash API) | 127 | 87.3M | 3 | cards.py | __init__.py, add_next_card_plays.py, analyze_dev.py, autolabel.py, autolabel_paired_spells.py, board.py, build_board_sta |
+| `plays` | observation / ground truth | every play: from the hand (exact), detected by C, or made by the bot | 75,939 | 14.8M | 4 | build_plays.py | build_bot_review.py, build_click_short.py, build_moments.py, datasets.py, eval_rules_on_reviews.py, import_reviews.py, m |
+| `cards` | reference | the card catalogue: names, elixir, type, rarity, art (from the Clash API) | 127 | 87.3M | 3 | cards.py | __init__.py, add_next_card_plays.py, analyze_dev.py, autolabel.py, autolabel_paired_spells.py, build_board_states.py, bu |
 | `matches` | source | one row per match in a video: start / end, opponent, deck. Split / source / league not here yet | 2,088 | 1020K | 4 | build_sources.py | add_next_card_plays.py, analyze_dev.py, autolabel.py, autolabel_clock_spots.py, autolabel_paired_spells.py, autolabel_v4 |
 | `media` | source | every video / recording file: where it really lives (laptop / LaCie), size, available now | 773 | 352K | 3 | build_media.py | — |
 | `videos` | source | one row per video file: creator, layout, mode, path (laptop or LaCie symlink), size | 1,253 | 700K | 4 | build_sources.py | after_session_f.sh, after_session_g.sh, autolabel.py, build_board_states.py, build_click_abilities.py, build_click_off.p |
 | `labels` | training data | what was / should have been done at a moment: replay, bot, review_cole, review_claude | 144,567 | 11.5M | 4 | build_moments.py | after_batch3.sh, auto_sprites.py, autolabel.py, build_real_v3.py, build_train_mined.py, build_train_v2.py, build_train_v |
-| `moments` | training data | one player at one point in time with everything they saw: plays + could-have-played waits + bot plays | 144,423 | 10.2M | 1 | build_moments.py | check_moments.py, import_reviews.py |
+| `moments` | training data | one player at one point in time with everything they saw: plays + could-have-played waits + bot plays | 144,423 | 10.2M | 1 | build_moments.py | datasets.py, import_reviews.py |
 | `board_states` | training data (A) | the board at each of A's decisions (JSON strings for now) | 24,142 | 1.6M | 1 | build_board_states.py | build_placements.py, train_moves.py |
 | `move_samples` | training data (A) | A's samples: one row per (decision, hand card), both players of every keyed replay | 96,568 | 6.1M | 2 | build_moves.py | build_board_states.py, check_moments.py, train_moves.py |
-| `move_samples_m` | training data (A) | A's rows rebuilt from moments + plays (identical to move_samples; phase 2 check) | 96,568 | 6.3M | 2 | check_moments.py | — |
+| `move_samples_m` | training data (A) | A's rows rebuilt from moments + plays (identical to move_samples; phase 2 check) | 96,568 | 9.4M | 3 | check_moments.py | — |
 | `mined_candidates` | training data (C) | mined failure candidates for review / labelling | 140 | 2.6M | 3 | — | build_mined_review.py, label_mined.py, mine_failures.py |
 | `real_crop_index` | training data (C) | index of real crops used by the crop classifier | 5,051 | 7.4M | 1 | — | autolabel.py, crop_classifier.py |
 | `slice_index` | training data (C) | index of video slices for labelling | 4,844 | 7.2M | 1 | — | — |
@@ -93,7 +93,8 @@ Total: 39 tables, 18.9G.
 | `katacr` | 334.1M | build_train_mined.py, build_train_v3.py, crop_classifier.py, generate_synth.py, mix_spell_probs.py |
 | `moves_v1` | 1.0M | moves.py, policy.py, train_moves.py |
 | `moves_v2` | 1.3M | — (not referenced: old version?) |
-| `place_v1` | 968K | place.py, policy.py, train_place.py |
+| `place_v1` | 968K | — (not referenced: old version?) |
+| `place_v2` | 1.1M | place.py, policy.py, train_place.py |
 | `probs_new_v2` | 11.8M | — (not referenced: old version?) |
 | `probs_new_v3` | 11.9M | — (not referenced: old version?) |
 | `probs_new_v5` | 11.8M | — (not referenced: old version?) |
@@ -131,14 +132,14 @@ Total: 39 tables, 18.9G.
 | File | Referenced in code |
 |---|---|
 | `benchmark_holdout.json` | analyze_dev.py, autolabel_clock_spots.py, autolabel_paired_spells.py, autolabel_v4.py |
-| `card_roles.yaml` | board.py |
+| `card_roles.yaml` | board.py, frames.py |
 | `classes_v2.json` | auto_sprites.py, autolabel.py, build_real_v3.py, build_train_v2.py |
 | `heldback_replays.json` | build_failures.py, build_moves.py, build_placements.py, build_playbook.py |
 | `layouts` | __init__.py, layout.py, manual_layouts.py, prepare_batch.py |
 | `live_test_games.json` | build_sources.py, holdout.py |
 | `play_timing.json` | play_timing.py, playrules.py |
 | `play_timing_replay.json` | playrules.py |
-| `playbook_rules.yaml` | board.py, build_bot_review.py, rules.py |
+| `playbook_rules.yaml` | build_bot_review.py, frames.py, rules.py |
 | `recording_decks.json` | autolabel.py, session_click_page.py |
 | `replay_test_games.json` | autolabel_clock_spots.py, build_failures.py, build_moves.py, build_placements.py |
 | `spell_clip_relabels.json` | spell_clips.py |

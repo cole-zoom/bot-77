@@ -11,7 +11,7 @@ from pathlib import Path
 import lancedb
 import pyarrow as pa
 
-from bot77.board import to_player_frame
+from bot77.features import to_player_frame
 from bot77.holdout import held_out
 from bot77.layout import Layout
 from bot77.playbook import placed

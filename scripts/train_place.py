@@ -3,7 +3,7 @@ playbook (its typical answer spot / offset from the opponent's play), the earlie
 the playbook rules (bot77.live.rules), 2026-10-22. Distances in tiles between the predicted and the real spot (box
 centres; rule spots are taps, so FEET_DY is taken off them for troops).
 
-  uv run python scripts/train_place.py [--eval heldback|test]   -> data/models/place_v1/model.pkl
+  uv run python scripts/train_place.py [--eval heldback|test]   -> data/models/place_v2/model.pkl
 """
 import argparse, json, math, pickle, statistics
 from pathlib import Path
@@ -13,14 +13,13 @@ import numpy as np
 from sklearn.cluster import KMeans
 from sklearn.ensemble import HistGradientBoostingClassifier
 
-from bot77.board import main_threat, summary_features, to_player_frame, SUMMARY_FEATURES
 from bot77.live.policy import Policy
 from bot77.live.state import LiveState, Unit
-from bot77.place import FEET_DY, KINDS, spot_features, spots
+from bot77.features import FEET_DY, KINDS, main_threat, spot_features, spots, summary_features, to_player_frame
 from bot77.playbook import ANSWER_S, zone
 
 ap = argparse.ArgumentParser()
-ap.add_argument("--eval", default="heldback"); ap.add_argument("--out", default="data/models/place_v1")
+ap.add_argument("--eval", default="heldback"); ap.add_argument("--out", default="data/models/place_v2")
 a = ap.parse_args()
 
 db = lancedb.connect("data/lancedb")

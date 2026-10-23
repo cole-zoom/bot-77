@@ -11,37 +11,13 @@ from collections import defaultdict
 import lancedb
 import pyarrow as pa
 
-from bot77.moves import CAND_FEATURES, CTX_FEATURES, candidates
+from bot77.features import CAND_FEATURES, CTX_FEATURES
+from bot77.features.datasets import card_rows
 
 db = lancedb.connect("data/lancedb")
 cards = {c["id"]: c for c in db.open_table("cards").search().where("kind = 'deck_card'").limit(1000)
          .select(["id", "name", "elixir", "type"]).to_arrow().to_pylist()}
-names = {c["name"]: i for i, c in cards.items()}
-plays = defaultdict(list)
-for p in db.open_table("plays").search().where("source = 'hand'").select(["game_id", "side", "t", "card", "kind"]).limit(10**7) \
-        .to_arrow().to_pylist():
-    plays[(p["game_id"], p["side"])].append({"t": p["t"], "card": "__ability" if p["kind"] == "ability" else p["card"]})
-for v in plays.values():
-    v.sort(key=lambda p: p["t"])
-# human replays only: replay_bot's bottom player is the bot, never imitation data
-moms = db.open_table("moments").search().where("kind = 'play' AND source IN ('replay_tv', 'replay_bl')").select(
-    ["game_id", "side", "split", "league", "t", "t_match", "decision", "hand", "next", "elixir", "multiplier"]).limit(10**7).to_arrow().to_pylist()
-lab = {}
-rows = []
-for m in moms:
-    own = plays[(m["game_id"], m["side"])]
-    opp = plays[(m["game_id"], "top" if m["side"] == "bottom" else "bottom")]
-    k = m["decision"]
-    last = {}
-    for p in own[:k]:
-        if p["card"] and names.get(p["card"]) is not None:
-            last[names[p["card"]]] = p["t"]
-    h = {"hand": m["hand"], "next": m["next"], "elixir": m["elixir"], "t_match": m["t_match"], "multiplier": m["multiplier"]}
-    cid = names[own[k]["card"]]
-    for r in candidates(h, m["t"], own[:k], opp, last, cards, names):
-        rows.append({**r, "decision": k, "t": m["t"], "chosen": int(r["cand_card"] == cid), "match_id": m["game_id"],
-                     "side": m["side"], "split": m["split"], "league": m["league"] if m["league"] is not None else -1,
-                     "game": f"{m['game_id']}:{m['side']}"})
+rows = card_rows(db, cards)  # bot77.features.datasets
 db.create_table("move_samples_m", pa.Table.from_pylist(rows), mode="overwrite")
 
 old = {(r["game"], r["decision"], r["cand_slot"]): r for r in db.open_table("move_samples").to_arrow().to_pylist()}

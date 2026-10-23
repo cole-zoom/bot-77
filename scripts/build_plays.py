@@ -19,7 +19,7 @@ from collections import Counter
 import lancedb
 import pyarrow as pa
 
-from bot77.board import to_player_frame
+from bot77.features import to_player_frame
 
 db = lancedb.connect("data/lancedb")
 cards = {c["name"]: c for c in db.open_table("cards").search().where("kind = 'deck_card'").limit(1000)

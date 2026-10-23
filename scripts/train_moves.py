@@ -12,7 +12,7 @@ import lancedb
 import numpy as np
 from sklearn.ensemble import HistGradientBoostingClassifier
 
-from bot77.moves import CAND_FEATURES, CTX_FEATURES
+from bot77.features import CAND_FEATURES, CTX_FEATURES, add_response_rates
 
 ap = argparse.ArgumentParser()
 ap.add_argument("--league", type=int, default=None, help="train only on this TV league (0 = Ultimate Champion)")
@@ -28,7 +28,7 @@ a = ap.parse_args()
 rows = lancedb.connect("data/lancedb").open_table(a.table).to_arrow().to_pylist()
 if a.board:  # A v2 (2026-10-22): the units on the field at each decision
     import json
-    from bot77.board import CAND_BOARD_FEATURES, SUMMARY_FEATURES, add_board_features
+    from bot77.features import CAND_BOARD_FEATURES, SUMMARY_FEATURES, add_board_features
     _db = lancedb.connect("data/lancedb")
     _cards = {c["id"]: c for c in _db.open_table("cards").search().where("kind = 'deck_card'").limit(1000)
               .select(["id", "name", "elixir", "type"]).to_arrow().to_pylist()}
@@ -42,46 +42,7 @@ if a.board:  # A v2 (2026-10-22): the units on the field at each decision
         add_board_features(rs, units, json.loads(b["towers"]) if b else {}, _cards)
 
 
-RATE_TABLES = {}
-
-
-def add_response_rates(rows, folds=5, prior=20):
-    """resp_rate: how often a card is chosen (when in hand) right after the opponent's last card, smoothed toward the
-    card's overall rate; own_rate_after: the same after the player's own last card. Train rows get it cross-fitted by
-    game (a game never informs its own rows); other splits use all train games."""
-    import zlib
-    train_games = sorted({r["game"] for r in rows if r["split"] == "train"})
-    fold = {g: zlib.crc32(g.encode()) % folds for g in train_games}
-
-    def tables(rs):
-        pair, base = defaultdict(lambda: [0, 0]), defaultdict(lambda: [0, 0])
-        for r in rs:
-            keys = [((r["opp_prev1"], r["cand_card"]), pair), (("own", r["own_prev1"], r["cand_card"]), pair),
-                    (r["cand_card"], base)]
-            if "b_threat_card" in r:  # A v2: answers to the attacker on the board, not just the last play
-                keys.append((("threat", r["b_threat_card"], r["cand_card"]), pair))
-            for key, tab in keys:
-                tab[key][0] += r["chosen"]; tab[key][1] += 1
-        return pair, base
-
-    def rate(tab, base, key, card):
-        b = base[card][0] / base[card][1] if base[card][1] else 0.25
-        c, n = tab[key]
-        return (c + prior * b) / (n + prior)
-
-    tr = [r for r in rows if r["split"] == "train"]
-    full = RATE_TABLES.setdefault("full", tables(tr))
-    per_fold = {k: tables([r for r in tr if fold[r["game"]] != k]) for k in range(folds)} if tr else {}
-    for r in rows:
-        pair, base = per_fold[fold[r["game"]]] if r["split"] == "train" else full
-        r["resp_rate"] = rate(pair, base, (r["opp_prev1"], r["cand_card"]), r["cand_card"])
-        r["own_rate_after"] = rate(pair, base, ("own", r["own_prev1"], r["cand_card"]), r["cand_card"])
-        r["elixir_after"] = r["elixir"] - r["cand_cost"]
-        if "b_threat_card" in r:
-            r["resp_threat"] = rate(pair, base, ("threat", r["b_threat_card"], r["cand_card"]), r["cand_card"])
-
-
-add_response_rates(rows)
+RATES = add_response_rates(rows)  # bot77.features.rates: cross-fitted for train rows
 FEATS = CAND_FEATURES + CTX_FEATURES + ["resp_rate", "own_rate_after", "elixir_after"]
 CATS = ["cand_card", "next_card"] + [f for f in CTX_FEATURES if f.startswith(("own_prev", "opp_prev")) and not f.endswith("_dt")]
 if a.board:
@@ -119,9 +80,8 @@ model = HistGradientBoostingClassifier(max_iter=500, learning_rate=0.05, max_lea
                                        l2_regularization=1.0, categorical_features=cat_mask, random_state=0)
 model.fit(X(train), np.array([r["chosen"] for r in train]))
 out = Path(a.out); out.mkdir(parents=True, exist_ok=True)
-pair_full, base_full = RATE_TABLES["full"]
 (out / "model.pkl").write_bytes(pickle.dumps({"model": model, "features": FEATS, "cats": CATS, "code": code,
-                                              "rates": {"pair": dict(pair_full), "base": dict(base_full), "prior": 20}}))
+                                              "rates": RATES.to_dict()}))
 print(f"trained on {len(decisions(train))} decisions" + (f" (league {a.league})" if a.league is not None else ""))
 
 baselines = {
@@ -165,7 +125,7 @@ if a.c_table:
         for r in decision_rows(own, opp_c, h, cards, names):
             c_rows.append({**r, "game": f"{m}:bottom", "split": "c", "league": -1})
         key_rows += [r for r in rows if r["match_id"] == m and r["side"] == "bottom"]
-    add_response_rates(c_rows)
+    add_response_rates(c_rows, full=RATES)
     for name, rs in (("opponent history from the replay key", key_rows), ("opponent history from C", c_rows)):
         decs = decisions(rs)
         t1, t2 = accuracy(decs, baselines["A v1"])

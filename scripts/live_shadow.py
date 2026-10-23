@@ -72,7 +72,7 @@ for p in own:
     if names.get(st.hand[0]) is None or p["card"] not in [names.get(c) for c in st.hand]:
         continue
     h = {"hand": st.hand, "next": st.next, "elixir": st.elixir, "t_match": st.elapsed_s, "multiplier": st.multiplier}
-    from bot77.moves import candidates
+    from bot77.features import candidates
     rows = candidates(h, t, [q for q in own if q["t"] < t], opp.plays, policy.last_played, policy.cards, policy.names)
     s = policy.a.scores(rows)
     n += 1; agree += names.get(st.hand[max(range(4), key=lambda k: s[k])]) == p["card"]

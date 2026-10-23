@@ -11,8 +11,8 @@ from __future__ import annotations
 from dataclasses import dataclass
 
 from bot77.live.state import RIVER_Y, LiveState, Unit
-from bot77.board import add_board_features, live_board
-from bot77.moves import MovePredictor, candidates
+from bot77.features import add_board_features, candidates, live_board
+from bot77.moves import MovePredictor
 
 # Our half, in arena tiles (the crop is 18 wide, the river at 14.9)
 BRIDGE = {"left": (3.5, 16.2), "right": (14.5, 16.2)}
@@ -41,7 +41,7 @@ class Action:
 
 class Policy:
     def __init__(self, cards: list[dict], model_path: str = "data/models/moves_v1/model.pkl", playbook: bool = True, rules: bool = True,
-                 place_path: str = "data/models/place_v1/model.pkl",
+                 place_path: str = "data/models/place_v2/model.pkl",
                  full_at: float = 9.5, idle_at: float = 7.0, idle_s: float = 6.0, min_gap_s: float = 1.2):
         self.a = MovePredictor(model_path)
         self.cards = {c["id"]: c for c in cards}
@@ -75,7 +75,7 @@ class Policy:
         act = self._decide(st, opp_plays)
         if act is not None and self.placer is not None:
             try:
-                from bot77.board import summary_features
+                from bot77.features import summary_features
                 units, towers = live_board(st.units)
                 cid = self.names.get(act.card)
                 info = self.cards.get(cid, {})

@@ -2438,3 +2438,18 @@ attacker; defending before the attacker crossed; answering a couple of Archers; 
    with the rules as guard rails (no Giant at the bridge, ranged away from the attacker).
 4. Similar-moment search held back (Cole). The `interactions` table (20,643 answer pairs) already exists and feeds the
    playbook and the placement comparison.
+
+## 2026-10-22 · Training-data rebuild, phases 0-3 (Cole: "everything feels glued together and half assed")
+Plan: docs/training-architecture.md; progress: ROADMAP.md. Bot sessions paused until it's through.
+- **Phase 0:** inventory (docs/data-inventory.md) and `media` (every video file: laptop or LaCie). 401 experiment
+  tables and 27 GB of RunPod bundles / old review pages to the Trash (Cole: bin them). LanceDB 80 → 18 GB: `unit_crops`
+  carried 58 GB of version manifests (one per append) — `optimize(cleanup_older_than=0)` after big append jobs.
+- **Phase 1:** `matches` gets source / split / pov side / pair / truth set / league / result (split once, from the
+  config lists; agrees with A's samples on every row); `detections` (all 6 detector runs, `run_id`, tiles) + `runs`;
+  `plays` (hand / detected / bot).
+- **Phase 2:** `moments` (replay plays, 116k could-have-played waits, bot plays), `labels`, `reviews`. A's rows rebuilt
+  from them are identical to `move_samples` (96,568 rows); A v1 46.6%. The bot's own replays (53) were about to become
+  imitation data (A dropped to 45.5%): now `replay_bot`, excluded by default.
+- **Phase 3:** `bot77.features` + registry (88 features, docs/features.md). Every model reproduces exactly through
+  it given the same card-roles file; the newer roles (Cole's win-condition definition, newer-card guesses) improve the
+  placement model 4.1 → 3.9 tiles held-back (`place_v2`, now the bot's shadow placer). A v2 unchanged (not adopted).

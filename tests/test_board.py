@@ -1,8 +1,7 @@
-"""Board features (bot77.board) and placement spots (bot77.place) on synthetic boards."""
-from bot77.board import (FLIP_Y, candidate_features, live_board, main_threat, spell_value, summary_features,
-                         to_player_frame)
+"""Board features and placement spots (bot77.features) on synthetic boards."""
+from bot77.features import (FLIP_Y, candidate_features, live_board, main_threat, spell_value, spots, summary_features,
+                            to_player_frame)
 from bot77.live.state import Unit
-from bot77.place import spots
 
 EL = {"Giant": 5, "Minions": 3, "Knight": 3, "Arrows": 3, "Skeletons": 1, "Spear Goblins": 2, "Mini P.E.K.K.A": 4,
       "Musketeer": 4}

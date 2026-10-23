@@ -71,7 +71,12 @@ numbers before anything new is trained.
       moments + plays (`check_moments.py`) are identical to `move_samples` (96,568 rows, no field differs) and A v1
       retrains to 46.6% held-back. Found on the way: the bot's own replays (53 games) were about to become imitation
       data -- they're now `replay_bot` and kept out of training by default.
-- [ ] Phase 3 — feature library + registry (live bot switched to it, dry run unchanged)
+- [x] Phase 3 — feature library + registry (2026-10-22): `bot77.features` (frames, hand, rates, board, spots,
+      datasets, registry; the old `bot77.moves / board / place` are thin wrappers). 88 features registered
+      ([docs/features.md](docs/features.md), `tests/test_features.py` keeps it in step). **Checks:** A's rows identical,
+      A v1 46.6% held-back, A v2 and placement reproduce exactly with the roles file they were trained on (the newer
+      roles moved placement 4.1 → 3.9 tiles: retrained as `place_v2`, the bot's shadow placer now uses it), rules on
+      reviews unchanged (70/73), dry run clean.
 - [ ] Phase 4 — data browser
 - [ ] Phase 5 — models registry
 - [ ] Phase 6 — new models (card + timing with wait, reviews as weighted labels)
