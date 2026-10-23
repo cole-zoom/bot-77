@@ -4,6 +4,7 @@ version = "0.1.0"
 description = "Add your description here"
 requires-python = ">=3.12"
 dependencies = [
+    "fastapi>=0.156.4",
     "lancedb>=0.39.0",
     "numpy>=2.5.3",
     "ocrmac>=1.0.1",
@@ -15,6 +16,7 @@ dependencies = [
     "torch>=2.14.0",
     "torchvision>=0.29.0",
     "ultralytics>=8.4.160",
+    "uvicorn>=0.54.0",
     "yt-dlp>=2026.8.19",
 ]
 

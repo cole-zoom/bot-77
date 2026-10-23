@@ -1,0 +1,28 @@
+{
+  "name": "bot77-browser",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "gen:api": "openapi-typescript http://127.0.0.1:8077/openapi.json -o src/api/schema.d.ts",
+    "typecheck": "tsc -b --noEmit"
+  },
+  "dependencies": {
+    "openapi-fetch": "0.13.5",
+    "react": "18.3.1",
+    "react-dom": "18.3.1",
+    "react-router-dom": "6.28.0"
+  },
+  "devDependencies": {
+    "@tailwindcss/vite": "4.1.4",
+    "@types/react": "18.3.18",
+    "@types/react-dom": "18.3.5",
+    "@vitejs/plugin-react": "4.3.4",
+    "openapi-typescript": "7.6.1",
+    "tailwindcss": "4.1.4",
+    "typescript": "5.6.3",
+    "vite": "6.2.6"
+  }
+}

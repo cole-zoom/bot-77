@@ -103,6 +103,21 @@ uv run pytest tests/test_live_policy.py                              # placement
 
 ---
 
+## Data browser
+
+A local web app for looking at the data: what's in LanceDB, any match's video with the detector's boxes and both
+players' plays, any moment exactly as the models see it (board, features, each card's and spot's score, labels), the
+training rows and their distributions per split, and the feature registry.
+
+```bash
+cd ui && npm install && npm run build && cd ..   # once (and after front-end changes)
+uv run python -m bot77.browser                   # -> http://127.0.0.1:8077
+```
+
+Videos on the LaCie need the drive plugged in. Front-end development: `uv run python -m bot77.browser --reload` and
+`cd ui && npm run dev` (http://localhost:5177, proxies /api); after changing the API, `npm run gen:api` regenerates
+the TypeScript types from it.
+
 ## Architecture
 
 ```

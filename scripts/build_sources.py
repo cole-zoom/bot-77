@@ -101,7 +101,8 @@ for m in matches:
     mid = m["match_id"]
     top = "_top_m" in mid
     pair = bottom_of(mid) if top else mid.replace("_m", "_top_m", 1)
-    m.update({"source": source(mid), "pov_side": "top" if top else "bottom", "pair_match_id": pair if pair in ids else None,
+    m.update({"source": source(mid), "pov_side": "top" if top else "bottom",
+              "pair_match_id": pair if pair in ids and pair != mid else None,
               "truth_set": truth.get(mid) or truth.get(bottom_of(mid)) or "none", "split": split(mid),
               "league": league.get(mid.rsplit("_m", 1)[0].replace("_top", "")) if mid.startswith("tv_") else (-1 if mid.startswith("bl_") else None),
               "result": results.get(mid)})

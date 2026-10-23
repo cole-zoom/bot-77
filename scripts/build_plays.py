@@ -20,6 +20,7 @@ import lancedb
 import pyarrow as pa
 
 from bot77.features import to_player_frame
+from bot77.features.datasets import BOT_VIDEO_LAG_S
 
 db = lancedb.connect("data/lancedb")
 cards = {c["name"]: c for c in db.open_table("cards").search().where("kind = 'deck_card'").limit(1000)
@@ -54,9 +55,12 @@ for run, tn in C_RUNS.items():
                      "t": e["t_video"], "t_match": e["t_match"], "card": e["card"], "card_id": cards.get(e["card"] or "", {}).get("id"),
                      "form": "evo" if e.get("evo") else "normal", "kind": "play", "slot": None, "elixir_before": None,
                      "elixir_after": None, "x": e["x_tiles"], "y": e["y_tiles"], "reason": None})
+# the bot logs session time; its recording starts with the game: video time = t - the game's start (bot_games)
+bot_start = {g["game_id"]: g["t_start"] for g in db.open_table("bot_games").to_arrow().to_pylist()}
 for a in db.open_table("bot_actions").to_arrow().to_pylist():
     rows.append({"play_id": f"bot:{a['game_id']}:{a['k']}", "source": "bot", "run_id": None, "match_id": a["game_id"],
-                 "game_id": a["game_id"], "side": "bottom", "t": a["t"], "t_match": None if a["time_left_s"] is None else 180 - a["time_left_s"],
+                 "game_id": a["game_id"], "side": "bottom", "t": a["t"] - bot_start.get(a["game_id"], 0.0) - BOT_VIDEO_LAG_S,
+                 "t_match": None if a["time_left_s"] is None else 180 - a["time_left_s"],
                  "card": a["card"], "card_id": cards.get(a["card"], {}).get("id"), "form": None, "kind": "play",
                  "slot": f"slot{a['slot'] + 1}", "elixir_before": a["elixir"], "elixir_after": None, "x": a["x_tiles"],
                  "y": a["y_tiles"], "reason": a["reason"]})

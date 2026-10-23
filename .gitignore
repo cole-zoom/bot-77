@@ -30,3 +30,8 @@ data/slices/*
 *.pt
 data/upload/
 data/live/
+
+# data browser front end (phase 4)
+ui/node_modules/
+ui/dist/
+data/cache/

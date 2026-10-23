@@ -77,7 +77,14 @@ numbers before anything new is trained.
       A v1 46.6% held-back, A v2 and placement reproduce exactly with the roles file they were trained on (the newer
       roles moved placement 4.1 → 3.9 tiles: retrained as `place_v2`, the bot's shadow placer now uses it), rules on
       reviews unchanged (70/73), dry run clean.
-- [ ] Phase 4 — data browser
+- [x] Phase 4 — data browser (2026-10-22): `uv run python -m bot77.browser` → http://127.0.0.1:8077 (README → Data
+      browser). FastAPI over LanceDB (`bot77.browser`) + React / TypeScript / Tailwind (`ui/`, types generated from the
+      API). Pages: overview, matches, match timeline (video or frames, detector boxes, both players' plays, waits),
+      moment inspector (board as the model sees it, card scores + features, placement spots, labels), training data
+      (feature distributions per split, rows as the model gets them), features. Scalar indexes
+      (`build_indexes.py`) took a match page from ~5 s to 0.1 s. Fixed on the way: bot play times were session time
+      (now video time: game start + a measured 1.5 s recording lag); the bot's .mkv recordings are remuxed to .mp4 on
+      first view so they can be seeked. Reviews page (phase 4b) still to move in.
 - [ ] Phase 5 — models registry
 - [ ] Phase 6 — new models (card + timing with wait, reviews as weighted labels)
 - [ ] Then resume the loop below with session 2.

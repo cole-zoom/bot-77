@@ -18,10 +18,13 @@ import lancedb
 import pyarrow as pa
 
 from bot77.layout import Layout
+from bot77.features.datasets import BOT_VIDEO_LAG_S
 
 APPROVED = {"bot_review_1_claude.json": "cole"}  # Claude exports Cole approved
 db = lancedb.connect("data/lancedb")
-acts = {(a["game_id"], a["k"]): a for a in db.open_table("bot_actions").to_arrow().to_pylist()}
+bot_start = {g["game_id"]: g["t_start"] for g in db.open_table("bot_games").to_arrow().to_pylist()}
+acts = {(a["game_id"], a["k"]): {**a, "t": a["t"] - bot_start.get(a["game_id"], 0.0) - BOT_VIDEO_LAG_S}  # video time, as in moments
+        for a in db.open_table("bot_actions").to_arrow().to_pylist()}
 lay = Layout.load("bluestacks_live")
 ax0, ay0, ax1, _ = lay.katacr_arena
 

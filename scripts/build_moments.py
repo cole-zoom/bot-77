@@ -25,6 +25,7 @@ import pyarrow as pa
 
 from bot77.features import TOWER_CLASSES, to_player_frame
 from bot77.features import hud_before
+from bot77.features.datasets import BOT_VIDEO_LAG_S
 
 RUN, LAG, IDLE_STEP, AFTER_PLAY = "v5l_e15", 0.25, 1.0, 0.5
 db = lancedb.connect("data/lancedb")
@@ -126,8 +127,10 @@ for n, g in enumerate(games):
     if n % 50 == 0:
         print(f"{n + 1}/{len(games)} games, {len(moments):,} moments", flush=True)
 
-# the bot's plays (no idle moments: the bot only logs plays)
+# the bot's plays (no idle moments: the bot only logs plays). Times: video time (session time - the game's start)
+bot_start = {g["game_id"]: g["t_start"] for g in db.open_table("bot_games").to_arrow().to_pylist()}
 for a in db.open_table("bot_actions").to_arrow().to_pylist():
+    a = {**a, "t": a["t"] - bot_start.get(a["game_id"], 0.0) - BOT_VIDEO_LAG_S}
     m = matches.get(a["game_id"], {})
     full = a.get("units") is not None
     if full:

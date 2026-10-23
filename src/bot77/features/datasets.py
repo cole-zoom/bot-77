@@ -7,6 +7,9 @@ from collections import defaultdict
 
 from bot77.features.hand import candidates
 
+# The bot logs session time; its screen recording starts with the game but ~1-2 s after the logged start (measured on 4
+# games by reading the clock in the recording, 2026-10-22). Video time of a bot play = t - game start - BOT_VIDEO_LAG_S.
+BOT_VIDEO_LAG_S = 1.5
 HUMAN_REPLAYS = "source IN ('replay_tv', 'replay_bl')"  # replay_bot's bottom player is the bot: never imitation data
 
 

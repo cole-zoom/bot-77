@@ -1,0 +1,4 @@
+@import "tailwindcss";
+
+body { font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif; }
+.num { font-variant-numeric: tabular-nums; }
