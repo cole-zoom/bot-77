@@ -15,7 +15,7 @@ import pyarrow as pa
 import cv2
 
 from bot77.live import ui
-from bot77.live.device import POS, between_games_tap, deploy, screen_kind, screen_texts
+from bot77.live.device import END_OK_WITH_AGAIN, POS, between_games_tap, deploy, screen_kind, screen_texts
 from bot77.live.policy import Policy
 from bot77.live.state import LiveReader, OpponentTracker
 
@@ -104,6 +104,9 @@ class Runner:
                 except Exception:  # noqa: BLE001
                     texts, okb = [], None
                 ok = POS.get("end_ok")
+                if again and not okb:  # the Play Again layout: OK sits next to it (its text doesn't OCR)
+                    h_, w_ = im.shape[:2]
+                    okb = (END_OK_WITH_AGAIN[0] * w_, END_OK_WITH_AGAIN[1] * h_)
                 tap = again if (more and again) else okb or ((ok[0] + 60, ok[1] + 30) if ok else None)
                 if tap and not self.dry_run:
                     self.dev.tap(*tap)

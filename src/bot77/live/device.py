@@ -41,6 +41,21 @@ def seen(im: np.ndarray, name: str, slack: int = 60) -> float:
     return float(cv2.matchTemplate(win, t, cv2.TM_CCOEFF_NORMED).max())
 
 
+# the OK button on the battle end screen when Play Again is shown next to it (fractions of the screen; 2026-10-23: its
+# text doesn't OCR, and the end_ok template's spot is the single-OK layout)
+END_OK_WITH_AGAIN = (0.655, 0.906)
+
+
+def end_ok_tap(im: np.ndarray) -> tuple[float, float]:
+    """Where OK is on the battle end screen: read from the screen if possible, else the Play Again layout's spot."""
+    try:
+        okb = next(((x, y) for t, x, y in screen_texts(im) if t == "ok"), None)
+    except Exception:  # noqa: BLE001
+        okb = None
+    h, w = im.shape[:2]
+    return okb or (END_OK_WITH_AGAIN[0] * w, END_OK_WITH_AGAIN[1] * h)
+
+
 def screen_kind(im: np.ndarray) -> str:
     """end | home | other (battle is decided from the HUD read: clock + elixir)."""
     if seen(im, "end_ok") >= 0.97 or (seen(im, "end_ok") >= MATCH and seen(im, "end_vs") >= MATCH):

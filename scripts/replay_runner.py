@@ -121,7 +121,9 @@ def open_log(d: Device) -> np.ndarray:
     to load after OK (a spinner over the end screen), and a replay may still be playing when a run starts, so in TV
     mode an unknown screen is waited out (up to MAX_REPLAY_S), never left: Back would quit to the main menu."""
     t0, last_ok = time.time(), 0.0
-    for _ in range(6 if TITLE == "log_title" else 10**6):
+    # 20 tries for the Battle Log (2026-10-23: 6 ran out while Clash was still loading / a popup sat on the home
+    # screen after the session's relaunch)
+    for _ in range(20 if TITLE == "log_title" else 10**6):
         im = d.cap()
         if seen(im, TITLE):
             return im
@@ -139,11 +141,34 @@ def open_log(d: Device) -> np.ndarray:
         elif seen(im, "home_menu"):
             x, y = POS["home_menu"]; d.tap(x + 50, y + 50); time.sleep(1.5)
             d.tap(645, 129)  # "Battle Log", first item of the menu
-        else:
-            subprocess.run([ADB, "-s", d.s, "shell", "input", "keyevent", "4"])  # back
+        else:  # a popup, a screen still loading, or the bot's own battle end screen (2026-10-23: after the relaunch Clash
+            # came back on "Winner! / Play Again / OK", which Back doesn't leave): tap a safe button by its text, else Back
+            tap = None
+            try:
+                sys.path.insert(0, "src")
+                from bot77.live.device import between_games_tap, end_ok_tap, screen_kind
+                if screen_kind(im) == "end":
+                    tap = end_ok_tap(im)  # the battle end screen: OK (never Play Again)
+                else:
+                    g = between_games_tap(im)
+                    tap = g[:2] if g and g[2] != "close Battle Log" else None
+            except Exception:  # noqa: BLE001
+                tap = None
+            if tap:
+                d.tap(*tap); time.sleep(3.0)
+            else:
+                time.sleep(2.0)
+                subprocess.run([ADB, "-s", d.s, "shell", "input", "keyevent", "4"])  # back
         time.sleep(2.0)
         if TITLE == "tv_title" and time.time() - t0 > MAX_REPLAY_S:
             break
+    try:  # keep the screen it gave up on, for diagnosis
+        out = Path("data/raw/live_ui/unknown") / f"replay_list_fail_{int(time.time())}.png"
+        out.parent.mkdir(parents=True, exist_ok=True)
+        import cv2
+        cv2.imwrite(str(out), im)
+    except Exception:  # noqa: BLE001
+        pass
     sys.exit("couldn't reach the list; open it in BlueStacks and run again")
 
 

@@ -65,16 +65,30 @@ while time.time() < end and not STOP_FILE.exists():
     tab = battle_tab(im) if im is not None else None
     if tab:
         dev.tap(*tab); time.sleep(3)
-    # the replay runner's output streams to the terminal (2026-10-22, Cole: "make it output everything to terminal")
-    print(f"== pulling the replays of this chunk's {played} games from the Battle Log", flush=True)
-    rr = subprocess.Popen([sys.executable, "-u", "scripts/replay_runner.py", "-n", str(played), "--no-known", "--device", a.device],
-                          stdout=subprocess.PIPE, stderr=subprocess.STDOUT, text=True)
-    t_pull = time.time()
-    for line in rr.stdout:
-        print(ui.c(f"   [replays] {line.rstrip()}", "grey"), flush=True)
-        if time.time() - t_pull > 40 * 60:
-            rr.kill(); print("== replay pull timed out (40 min)", flush=True); break
-    rr.wait()
-    print(f"== replays pulled (exit {rr.returncode})", flush=True)
+    # the replay runner's output streams to the terminal (2026-10-22, Cole: "make it output everything to terminal");
+    # a failed pull is retried once after relaunching Clash (2026-10-23: the list wasn't reached once)
+    for attempt in (1, 2):
+        print(f"== pulling the replays of this chunk's {played} games from the Battle Log (try {attempt})", flush=True)
+        rr = subprocess.Popen([sys.executable, "-u", "scripts/replay_runner.py", "-n", str(played), "--no-known",
+                               "--device", a.device], stdout=subprocess.PIPE, stderr=subprocess.STDOUT, text=True)
+        t_pull = time.time()
+        for line in rr.stdout:
+            print(ui.c(f"   [replays] {line.rstrip()}", "grey"), flush=True)
+            if time.time() - t_pull > 40 * 60:
+                rr.kill(); print("== replay pull timed out (40 min)", flush=True); break
+        rr.wait()
+        print(f"== replays pulled (exit {rr.returncode})", flush=True)
+        if rr.returncode == 0:
+            break
+        recover_adb(a.device)
+        subprocess.run([ADB, "-s", a.device, "shell", "am", "force-stop", "com.supercell.clashroyale"])
+        time.sleep(2)
+        subprocess.run([ADB, "-s", a.device, "shell", "monkey", "-p", "com.supercell.clashroyale", "-c",
+                        "android.intent.category.LAUNCHER", "1"], capture_output=True)
+        time.sleep(60)
+        im = dev.cap()
+        tab = battle_tab(im) if im is not None else None
+        if tab:
+            dev.tap(*tab); time.sleep(3)
     recover_adb(a.device)  # the replay runner's scrcpy can outlive it and wedge ADB for the next chunk
 print(f"session done: {total} games", flush=True)
