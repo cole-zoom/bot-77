@@ -5,7 +5,7 @@ Pages hold up to 150 plays (Cole's cap), newest games first.
 --prefill seeds verdicts from exported reviews (e.g. Claude's, skill review-bot-plays, 2026-10-22): they show with a
 "Claude" tag until Cole agrees or changes them; the export keeps who decided each play (by).
 
-  uv run python scripts/build_bot_review.py [--since 2026-10-21] -> data/reviews/bot_<date>/review_<n>.html
+  uv run python scripts/build_bot_review.py [--since 2026-10-21 | 2026-10-22_2200] [--games ...] -> data/reviews/bot_<date>/review_<n>.html
 """
 import argparse, datetime, json
 from pathlib import Path
@@ -71,13 +71,17 @@ def main():
     ap.add_argument("--losses", action="store_true", help="only lost games (data/live/game_results.json or bot_games)")
     ap.add_argument("--prefill", nargs="*", default=[], help="exported review JSONs to seed verdicts from (later files win)")
     ap.add_argument("--max-plays", type=int, default=0, help="whole games, newest first, up to this many plays")
+    ap.add_argument("--games", nargs="*", default=[], help="only these games (a prioritized review round)")
+    ap.add_argument("--name", default="review", help="page file name stem (review_<n>.html)")
+    ap.add_argument("--dump", default="", help="also write the plays (DATA items) to this JSON, for review_sheets.py")
     a = ap.parse_args()
 
     db = lancedb.connect("data/lancedb")
     cards = {c["id"]: c["name"] for c in db.open_table("cards").search().where("kind = 'deck_card'").limit(1000)
              .select(["id", "name"]).to_arrow().to_pylist()}
     rows = db.open_table("bot_actions").to_arrow().to_pylist()
-    rows = [r for r in rows if r.get("shot") and (not a.since or r["game_id"][4:14] >= a.since)]
+    rows = [r for r in rows if r.get("shot") and (not a.since or r["game_id"][4:] >= a.since)
+            and (not a.games or r["game_id"] in a.games)]
     if a.losses:
         res = json.loads(Path("data/live/game_results.json").read_text()) if Path("data/live/game_results.json").exists() else {}
         for g in db.open_table("bot_games").to_arrow().to_pylist():
@@ -102,6 +106,7 @@ def main():
         for q in ex["plays"]:
             prefill[q["id"]] = {"verdict": q["verdict"], "card": q.get("card"), "note": q.get("note", ""),
                                 "by": ex.get("reviewer", "cole"), "confidence": q.get("confidence")}
+    every = []
     pages = [rows[i:i + a.per_page] for i in range(0, len(rows), a.per_page)]
     for n, page in enumerate(pages, 1):
         items = []
@@ -114,8 +119,11 @@ def main():
                           "threats": json.loads(r.get("threats") or "[]"), "hand": hand,
                           "at": (d / r["shot"]).as_uri(), "after": (d / f"{r['k']:03d}_after.jpg").as_uri(),
                           "tap": [taps[2] / r["frame_w"], taps[3] / r["frame_h"]], "frame": [r["frame_w"], r["frame_h"]]})
-        (out / f"review_{n}.html").write_text(PAGE.replace("__DATA__", json.dumps(items)).replace("__PREFILL__", json.dumps({i["id"]: prefill[i["id"]] for i in items if i["id"] in prefill})).replace("__N__", f"{n}/{len(pages)}"))
-    print(len(rows), "plays ->", [str(out / f"review_{n}.html") for n in range(1, len(pages) + 1)])
+        every += items
+        (out / f"{a.name}_{n}.html").write_text(PAGE.replace("__DATA__", json.dumps(items)).replace("__PREFILL__", json.dumps({i["id"]: prefill[i["id"]] for i in items if i["id"] in prefill})).replace("__N__", f"{n}/{len(pages)}"))
+    if a.dump:
+        Path(a.dump).write_text(json.dumps(every))
+    print(len(rows), "plays ->", [str(out / f"{a.name}_{n}.html") for n in range(1, len(pages) + 1)])
 
 
 if __name__ == "__main__":
