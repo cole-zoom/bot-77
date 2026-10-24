@@ -40,6 +40,13 @@ def legal_deck(deck: list[int]) -> list[int]:
     info = sc.engine_cards()
     evo = [c for c in deck if info[c]["evolution"]]
     special = [c for c in deck if info[c]["is_champion"] or info[c]["is_hero"]]
+    # the engine holds at most two Evolutions / Champions-Heroes (slots 0-2): extra Evolutions play as the plain card
+    # (a replay can show three cards played in their evolved form)
+    for c in evo[2:] + (evo[1:] if special[1:] else []):
+        plain = sc.engine_id(info[c]["name"])
+        if plain is not None and plain not in deck:
+            deck = [plain if d == c else d for d in deck]
+    evo = [c for c in deck if info[c]["evolution"]]
     plain = [c for c in deck if c not in evo and c not in special]
     slot0 = evo[:1] or plain[:1]
     slot1 = special[:1] or [c for c in plain if c not in slot0][:1]

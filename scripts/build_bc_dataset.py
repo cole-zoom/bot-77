@@ -59,6 +59,13 @@ def at(ts, rows, t):
 
 
 def build(args) -> tuple[str, int]:
+    try:
+        return _build(args)
+    except Exception as e:  # noqa: BLE001 -- one bad game must not stop the run
+        return f"{args[0]['match_id']}: failed {e!r}", 0
+
+
+def _build(args) -> tuple[str, int]:
     m, top_id, split, results = args
     try:
         g = load_game(m["match_id"], split, m["source"])
