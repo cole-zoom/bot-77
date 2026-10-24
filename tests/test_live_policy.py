@@ -3,7 +3,7 @@ import lancedb
 import pytest
 
 from bot77.layout import Layout
-from bot77.live.device import FakeDevice, deploy, slot_centre
+from bot77.live.device import AIM_DY, FakeDevice, deploy, slot_centre
 from bot77.live.policy import BRIDGE, CENTRE, ENEMY_TOWER, Action, Policy
 from bot77.live.state import LiveReader, LiveState, Unit
 
@@ -84,7 +84,7 @@ def test_deploy_taps_land_on_slot_and_spot(cards):
     x0, y0, x1, y1 = layout.box("slot3", 1080, 2340)
     assert x0 <= sx <= x1 and y0 <= sy <= y1
     tile, ox, oy = reader.tile_px(1080)
-    assert abs((tx - ox) / tile - 3.5) < 1e-6 and abs((ty - oy) / tile - 16.2) < 1e-6
+    assert abs((tx - ox) / tile - 3.5) < 1e-6 and abs((ty - oy) / tile - (16.2 + AIM_DY)) < 1e-6  # measured aim offset
     ax0, ay0, ax1, ay1 = layout.katacr_arena
     assert ax0 <= tx <= ax1 and ay0 <= ty <= ay1
 

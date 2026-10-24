@@ -83,5 +83,18 @@ for label, split, kind in groups:
     life = [r["value"] for r in R if r["metric"] == "life_diff" and (r["match_id"], r["t0"]) in clean]
     if life:
         print(f"  life time sim - replay: median {np.median(life):+.2f} s, |diff| median {np.median(np.abs(life)):.2f} s, n {len(life)}")
+    for side in ("own", "opp"):
+        real = {(r["match_id"], r["t0"]): r["value"] for r in R if r["metric"] == f"tower_dmg_{side}_real"}
+        sim = {(r["match_id"], r["t0"]): r["value"] for r in R if r["metric"] == f"tower_dmg_{side}_sim"}
+        keys = [k for k in real if k in sim and k in clean]
+        if not keys:
+            continue
+        a, b = np.array([real[k] for k in keys]), np.array([sim[k] for k in keys])
+        hit = (a > 0.02) | (b > 0.02)
+        big = a > 0.10
+        print(f"  tower damage to {side} (princess-tower units, {len(keys)} windows with tower HP): real total "
+              f"{a.sum():.2f}, sim {b.sum():.2f}; damaged in either: {hit.sum()}, both agree it was damaged "
+              f"{np.mean((a > 0.02) == (b > 0.02)):.0%}; |sim - real| median {np.median(np.abs(b - a)[hit]) if hit.any() else 0:.3f}"
+              + (f"; where real > 0.10: sim/real median {np.median(b[big] / a[big]):.2f} (n {big.sum()})" if big.any() else ""))
     ref = [r for r in R if r["metric"] == "plays_refused"]
     print(f"  plays refused: {sum(r['value'] for r in ref):.0f} of {sum(r['n'] for r in ref)}")

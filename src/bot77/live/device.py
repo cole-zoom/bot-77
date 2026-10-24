@@ -199,13 +199,19 @@ def slot_centre(layout, k: int, frame_w: int, frame_h: int) -> tuple[float, floa
     return (x0 + x1) / 2, (y0 + y1) / 2
 
 
+# The bot's units landed 0.55 tiles below where it aimed (median over 1,791 plays of session 1-2, unit's first
+# detection in the paired replay vs the intended spot; dx -0.08; Goblin Hut, which never moves, +0.75): docs/simulator.md
+# S2b, decisions.md 2026-10-24. Aim that much higher.
+AIM_DY = -0.55
+
+
 def deploy(dev, layout, reader, action, frame_shape) -> tuple[float, float, float, float]:
     """Select the card, then tap the spot (Clash places a selected card where you tap). Returns the taps (px)."""
     h, w = frame_shape[:2]
     sx, sy = slot_centre(layout, action.slot, w, h)
     tile, ox, oy = reader.tile_px(w)
     # never tap past the river for a troop / building (only spells and Miner-type cards go there)
-    tx, ty = ox + action.x * tile, oy + action.y * tile
+    tx, ty = ox + action.x * tile, oy + (action.y + AIM_DY) * tile
     dev.tap(sx, sy)
     time.sleep(0.08)
     dev.tap(tx, ty)

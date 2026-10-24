@@ -128,7 +128,10 @@ a browser view, training. LanceDB is the data layer (`tower_hp`, `sim_validation
 - [x] S1 — adapter `bot77.sim` (2026-10-23): our y is foreshortened (0.73 of our units per engine row, measured);
       all cards but Minion Giant map; `scenario_from_moment`; 7 tests. Found: the engine's 3x elixir starts at 3:00,
       our replays' at 4:00.
-- [ ] S2 — check against the replays (measures, flags; `tower_hp`, `sim_validation`).
+- [x] S2 — check against the replays (2026-10-24, docs/simulator-validation.md): tracks 1.0-1.25 of our units at
+      +2.5-10 s, lanes 90-98%, fight winner 58-62% (expected ~80%), tower damage often missed. Fixed in the engine:
+      triple elixir at 4:00, first-hit load times. `tower_hp` (OCR), `matches.result` (end screen, 20/20 by hand).
+      S2b: bot aim offset 0.55 fixed.
 - [ ] S3 — search + the go / no-go gate on Cole's reviews.
 
 ## Later (only if the loop stalls)

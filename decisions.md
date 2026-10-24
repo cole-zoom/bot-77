@@ -2541,3 +2541,22 @@ Plan: docs/simulator.md. Forked itzik123/ClashRoyaleAi (MIT) as github.com/cole-
 - Tests: `tests/test_sim.py` (7): coordinate round trip and fixed points, card map, a Giant from our bridge stops at
   box y 8.19 (real 7.97) and hits the tower ~10 s after (real walking speed predicts ~9.5 s), Arrows kill a Skeletons
   group, forced plays, snapshot independence, a scenario from a moment. pytest now only collects `tests/`.
+
+## 2026-10-24 · Simulator S2: measured against the replays (no gate; flags)
+Full write-up: docs/simulator-validation.md. Held-back only (48 games, 346 windows); knobs chosen on 557 train windows.
+- **Windows** on (near-)empty boards, both players' exact plays; spots recovered from the detections where `plays` had
+  none (`bot77.sim.spots`, matches stored spots to median 0.00 / p90 1.12; play coverage ~46% -> ~76%).
+- **Numbers (held-back, empty start):** position error 0.30 at deploy, 1.0-1.25 of our units from +2.5 s (noise floor:
+  building jitter median 0.05); same lane 90% (98% from near-empty starts); fight winner right **57.6% / 62.2%**
+  (plan's rough expectation ~80%: missed); sim units outlive replay ones by **+1.75 / +2.25 s**; tower damage where the
+  replay shows > 0.1 princess tower: sim / real median **0.02-0.55** (expectation within ~20%: missed).
+- **Engine fixes (fork, tests):** triple elixir from 4:00 (586 replays; was 3:00); first-hit load times for 98 cards
+  (RoyaleAPI cr-api-data; units hit 0.1-0.3 s after locking on, real 0.4-1.4 s); tower re-levelling API; read-only
+  `get_units`; sight switch (no effect measured, left off). Towers set to level 11 to match the cards (RoyaleAPI).
+- **Tower HP OCR** (`tower_hp`, Apple Vision on the tower bars) and **matches.result** from the end screen ("Winner!"
+  position; 20 / 20 by hand on held-back; the first try from tower detections was wrong on 4 of 12 because TV
+  replays' `t_end` is past the end screen).
+- **Flags for S3:** lifetimes, big tower damage, squad formations, fast units' spots, siege reach near the river.
+- **S2b:** the bot's units land 0.55 of our units below its aim (1,791 plays): fixed (`AIM_DY`). Decision-to-field delay
+  isn't measurable from clock reads (the two clocks differ by 3-5 s); open.
+- Estimate was 2-3 days; took ~1 day of session time.

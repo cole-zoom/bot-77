@@ -2,7 +2,8 @@
 
 A window: a play on an empty board in a human replay, then every play of both players (`plays`, source hand: exact
 card and time; the spot is the box centre of the unit's first detection) for up to WINDOW_S seconds, ending early at
-the first play with no spot, no engine card, or no card read. The sim starts PRE_S before the first play and gets the
+the first play with no spot (`plays` or recovered from the detections, bot77.sim.spots), no engine card, or no card
+read. The sim starts PRE_S before the first play and gets the
 same plays at the same times; every DET_DT (0.25 s) its units are compared with the replay's detections (v5l_e15):
 per card and team, matched by distance (Hungarian).
 
@@ -22,6 +23,7 @@ from scipy.optimize import linear_sum_assignment
 from bot77.features.frames import FEET_DY
 from bot77.sim import cards as sc
 from bot77.sim.engine import Sim
+from bot77.sim.spots import recover
 from bot77.sim.scenario import SPELL_CLASSES, _engine_deck, _rows, _squad_size, place_units, side_decks
 
 RUN = "v5l_e15"
@@ -58,7 +60,7 @@ class Game:
     missing: list[str] = field(default_factory=list)
 
 
-def load_game(game_id: str, split: str, source: str) -> Game:
+def load_game(game_id: str, split: str, source: str, recover_spots: bool = True) -> Game:
     plays = _rows("plays", f"game_id = '{game_id}' AND source = 'hand'",
                   ["side", "t", "t_match", "card", "card_id", "form", "kind", "elixir_after", "x", "y"])
     plays.sort(key=lambda p: p["t"])
@@ -87,9 +89,46 @@ def load_game(game_id: str, split: str, source: str) -> Game:
              float(np.median(offs)) if offs else 0.0, decks, card_map, missing)
     # first time the bar is seen in a run of >= 4 frames (1 s; one-frame detections are noise)
     g.king_awake = {k: _first_run(v, 4) for k, v in king_bar.items()}
+    g.tower_hp = load_tower_hp(game_id)
     for p in plays:  # an Evolution card plays as 'normal' and 'evo' in turn: always the deck's engine card
         p["engine_card"] = card_map[p["side"]].get(p["card_id"]) if p["card_id"] else None
+        if p["x"] is None and p["card"] and p["kind"] == "play" and recover_spots:
+            p["spot"] = recover(game_id, p)
     return g
+
+
+TOWER_KEYS = {"own_king": ("own", "king"), "own_l": ("own", "l"), "own_r": ("own", "r"),
+              "opp_king": ("opp", "king"), "opp_l": ("opp", "l"), "opp_r": ("opp", "r")}
+KING_PER_PRINCESS = 6144 / 3584  # a king's HP fraction in princess-tower units (cr-api-data, every level)
+
+
+def load_tower_hp(game_id: str) -> dict[str, list[tuple[float, float]]]:
+    """tower -> [(video t, HP fraction)] from `tower_hp` (accepted readings); {} if the match wasn't read."""
+    try:
+        rows = _rows("tower_hp", f"match_id = '{game_id}' AND accepted = true", ["t", "tower", "frac"])
+    except Exception:
+        return {}
+    out: dict[str, list[tuple[float, float]]] = collections.defaultdict(list)
+    for r in sorted(rows, key=lambda r: r["t"]):
+        if r["frac"] is not None:
+            out[r["tower"]].append((r["t"], r["frac"]))
+    return dict(out)
+
+
+def tower_frac(g: Game, tower: str, t: float) -> float | None:
+    """The tower's HP fraction at video time t: the last accepted reading at or before t (None if none yet)."""
+    if not tower.endswith("king"):  # a destroyed tower's bar is gone: the alive flags say 0
+        flags = _towers_at(g, t - g.offset) or {}
+        if flags.get(tower) is False:
+            return 0.0
+    hp = getattr(g, "tower_hp", {})
+    v = hp.get(tower)
+    if tower.endswith("king") and hp and (not v or v[0][0] > t):
+        return 1.0  # a king shows no number until it is damaged: no reading yet = full
+    if not v:
+        return None
+    i = bisect.bisect_right([x[0] for x in v], t) - 1
+    return v[i][1] if i >= 0 else None
 
 
 def _frame(g: Game, t: float) -> list[dict] | None:
@@ -103,10 +142,12 @@ def _frame(g: Game, t: float) -> list[dict] | None:
 
 
 def _play_spot(p: dict) -> tuple[float, float] | None:
-    if p["x"] is None:
+    """Ground spot (bottom frame): `plays` x / y, else recovered from the detections (bot77.sim.spots)."""
+    xy = (p["x"], p["y"]) if p["x"] is not None else p.get("spot")
+    if xy is None:
         return None
     spell = sc.engine_cards().get(_engine_card(p) or -1, {}).get("is_spell")
-    return (p["x"], p["y"]) if spell else (p["x"], p["y"] + FEET_DY)
+    return xy if spell else (xy[0], xy[1] + FEET_DY)
 
 
 def _engine_card(p: dict) -> int | None:
@@ -156,11 +197,16 @@ def run_window(g: Game, w: dict, towers: str = "engine", wake_kings: bool = True
     for key, team, slot in (("own_l", "own", "l"), ("own_r", "own", "r"), ("opp_l", "opp", "l"), ("opp_r", "opp", "r")):
         if tw.get(key) is False:
             sim.set_tower(team, slot, 0.0)
+    for key, (team, slot) in TOWER_KEYS.items():  # measured HP (tower_hp) where read; full otherwise
+        f = tower_frac(g, key, w["t0"] - PRE_S)
+        if f is not None and 0 < f < 0.999 and sim.towers()[key]["hp"] > 0:
+            sim.set_tower(team, slot, f)
     if wake_kings:
         for team in ("own", "opp"):
             t_awake = getattr(g, "king_awake", {}).get(team)
             if t_awake is not None and t_awake < w["t0"]:
                 sim.wake_king(team)
+    towers0 = {k: v["frac"] for k, v in sim.towers().items()}
     start_units = _frame(g, w["t0"] - PRE_S) or []
     injected, _ = place_units(sim, start_units)
     plays = collections.deque(sorted(w["plays"], key=lambda p: p["t"]))
@@ -179,7 +225,7 @@ def run_window(g: Game, w: dict, towers: str = "engine", wake_kings: bool = True
             results.append(sim.play(_engine_card(p), x, y, SIDE[p["side"]]))  # advances one tick
         elif sim.step(1):
             break
-    return {"frames": frames, "plays": results, "sim": sim, "injected": injected}
+    return {"frames": frames, "plays": results, "sim": sim, "injected": injected, "towers0": towers0}
 
 
 def match_frame(sim_units: list[dict], det_units: list[dict]) -> list[tuple[dict | None, dict | None, float]]:
@@ -295,9 +341,47 @@ def metrics(g: Game, w: dict, r: dict) -> list[dict]:
                      "value": float(ws == wd), "n": 1})
         rows.append({**base, "metric": "value_diff_own", "card": "", "dt_bin": -1, "value": vs["own"] - vd["own"], "n": 1})
         rows.append({**base, "metric": "value_diff_opp", "card": "", "dt_bin": -1, "value": vs["opp"] - vd["opp"], "n": 1})
+    if getattr(g, "tower_hp", None) and r["frames"]:
+        t_end = w["t0"] + r["frames"][-1][0]
+        sim_end = r["sim"].towers()
+        for side in ("own", "opp"):  # damage TO this side's towers, in princess-tower units
+            real = sim_ = 0.0
+            known = True
+            for key in (f"{side}_king", f"{side}_l", f"{side}_r"):
+                f0, f1 = tower_frac(g, key, w["t0"] - PRE_S), tower_frac(g, key, t_end)
+                if f0 is None or f1 is None:
+                    known = False
+                    break
+                k = KING_PER_PRINCESS if key.endswith("king") else 1.0
+                real += (f0 - f1) * k
+                sim_ += (r["towers0"][key] - sim_end[key]["frac"]) * k
+            if known:
+                rows.append({**base, "metric": f"tower_dmg_{side}_real", "card": "", "dt_bin": -1, "value": real,
+                             "n": 1})
+                rows.append({**base, "metric": f"tower_dmg_{side}_sim", "card": "", "dt_bin": -1, "value": sim_,
+                             "n": 1})
     pr = r["plays"]
     rows.append({**base, "metric": "plays_refused", "card": "", "dt_bin": -1, "value": float(sum(not p.played for p in pr)),
                  "n": len(pr)})
     rows.append({**base, "metric": "spot_moved", "card": "", "dt_bin": -1,
                  "value": float(np.mean([p.moved for p in pr])) if pr else 0.0, "n": len(pr)})
     return rows
+
+
+def noise_floor(g: Game) -> list[float]:
+    """Detector jitter: distances (our units) of a standing building's detections from its own median position, for
+    every building seen in >= 8 frames at one spot. The replay's own noise, to read the position errors against."""
+    pts: dict[tuple, list[tuple[float, float]]] = collections.defaultdict(list)
+    for t in g.frame_ts:
+        for u in g.frames[t]:
+            e = sc.engine_id(u["card"])
+            if e is None or not sc.engine_cards()[e]["is_building"]:
+                continue
+            # one building per card, team and 2-tile cell (two of a card at once sit apart)
+            pts[(u["card"], u["team"], round(u["x"] / 2), round(u["y"] / 2))].append((u["x"], u["y"]))
+    out = []
+    for v in pts.values():
+        if len(v) >= 8:
+            a = np.array(v)
+            out += list(np.hypot(*(a - np.median(a, axis=0)).T))
+    return out
