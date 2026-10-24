@@ -209,7 +209,7 @@ directly.
   - Cole agreed with his own earlier verdict on **15 of 20 (75%)**. All 5 flips went OK → mistake (he got stricter).
     (`015212:4`, Arrows that missed, first came back OK: he couldn't see the miss on the frame; corrected to mistake.
     So some disagreement is just what a still frame shows, which the sim's playback helps with.)
-  - Where both reviews say mistake, the same fix card **9 of 12 (75%)**; the 3 others are different valid answers
+  - Where both reviews say mistake, the same fix card **10 of 13 (77%)**; the 3 others are different valid answers
     (Skeletons vs Goblin Hut for the centre pull).
   - **The new notes are mostly about timing**: "should have placed skeletons middle 4 seconds ago, when the valkyrie was
     about to cross", "played them way too late", "play them later, when the giant is just about to cross the bridge",
