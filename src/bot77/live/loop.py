@@ -28,8 +28,10 @@ SHOT_W = 540  # saved frames are halved (review pages, not training)  # screens 
 class Runner:
     def __init__(self, dev, layout, cards: list[dict], detector=None, db_dir: Path = Path("data/lancedb"),
                  max_games: int = 1, max_hours: float = 1.0, unknown_limit_s: float = 240.0, step_s: float = 0.1,
-                 dry_run: bool = False, record: bool = True, log=print):
+                 dry_run: bool = False, record: bool = True, log=print, policy_factory=None):
         self.dev, self.layout, self.cards, self.detector = dev, layout, cards, detector
+        # a new policy per game: Policy (rules + A) by default; the self-play agent with --policy selfplay
+        self.policy_factory = policy_factory or (lambda: Policy(self.cards))
         self.db = lancedb.connect(db_dir) if not dry_run else None
         self.max_games, self.max_hours, self.unknown_limit_s, self.step_s = max_games, max_hours, unknown_limit_s, step_s
         self.dry_run, self.log, self.record = dry_run, log, record
@@ -167,7 +169,7 @@ class Runner:
         if len(self.known_deck) == 8:  # our deck from earlier games: read only those 8 cards from the first frame
             reader.deck, reader.reader = list(self.known_deck), reader.full.restrict(set(self.known_deck))  # (~1 s -> ~0.1 s)
         return {"id": gid, "t0": t, "reader": reader,
-                "policy": Policy(self.cards), "opp": OpponentTracker(), "n": 0, "rec": rec, "after": [],
+                "policy": self.policy_factory(), "opp": OpponentTracker(), "n": 0, "rec": rec, "after": [],
                 "num": len(self.games) + 1, "opp_name": None, "last_status": 0.0, "result": "?"}
 
     @staticmethod

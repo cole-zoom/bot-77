@@ -20,6 +20,9 @@ ap.add_argument("--hours", type=float, default=4.0); ap.add_argument("--chunk", 
 ap.add_argument("--device", default="127.0.0.1:5555"); ap.add_argument("--layout", default="bluestacks_live")
 from bot77.models import adopted_path  # the registry's adopted live detector (phase 5)
 ap.add_argument("--weights", default=adopted_path("detector_live", "data/models/bot77_detector/v6l/best.pt"))
+ap.add_argument("--policy", default="rules", choices=["rules", "selfplay"],
+                help="rules: Policy (playbook rules + A); selfplay: the simulator-trained agent (bot77.live.selfplay)")
+ap.add_argument("--ckpt", default="data/models/selfplay_v1/frozen.pth", help="--policy selfplay: the checkpoint")
 a = ap.parse_args()
 STOP_FILE.parent.mkdir(parents=True, exist_ok=True)
 STOP_FILE.unlink(missing_ok=True)
@@ -32,7 +35,11 @@ while time.time() < end and not STOP_FILE.exists():
     chunk_no += 1
     left_h = (end - time.time()) / 3600
     print(f"== chunk {chunk_no}: up to {a.chunk} games, {left_h:.2f} h left", flush=True)
-    r = Runner(dev, layout, cards, det, max_games=a.chunk, max_hours=left_h)
+    factory = None
+    if a.policy == "selfplay":
+        from bot77.live.selfplay import SelfPlayPolicy
+        factory = lambda: SelfPlayPolicy(cards, a.ckpt)  # noqa: E731
+    r = Runner(dev, layout, cards, det, max_games=a.chunk, max_hours=left_h, policy_factory=factory)
     r.known_deck = deck
     try:
         r.run()
