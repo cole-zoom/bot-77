@@ -102,3 +102,31 @@ def test_scenario_from_moment():
     assert sc_.notes["engine_multiplier"] == sc_.notes["moment_multiplier"] == 2
     cards = {(u["card"], u["team"]) for u in s.units()}
     assert {("Mega Knight", "own"), ("Mother Witch", "opp"), ("Dart Goblin", "opp")} <= cards
+
+
+def test_state_features_crowns_and_halves():
+    from bot77.sim.value import state_features
+    tw = {"own_king": 1.0, "own_l": 0.0, "own_r": 0.5, "opp_king": 1.0, "opp_l": 0.0, "opp_r": 0.0}
+    units = [{"card": "Giant", "team": "own", "y": 10.0}, {"card": "Knight", "team": "opp", "y": 20.0}]
+    f = state_features(200.0, tw, 7.0, 3.0, units)
+    assert f["own_crowns"] == 2 and f["opp_crowns"] == 1 and f["crown_diff"] == 1
+    assert f["overtime"] == 1.0 and f["multiplier"] == 2.0  # triple only from 4:00
+    assert f["own_val_opp_half"] == 5.0 and f["opp_val_own_half"] == 3.0 and f["threat_diff"] == 2.0
+    assert f["elixir_diff"] == 4.0 and f["own_min"] == 0.0
+
+
+def test_last_run_ignores_one_frame_flickers():
+    from bot77.sim.validate import _last_run
+    assert _last_run([0.0, 0.25, 0.5, 2.0], 2) == 0.5  # 2.0 alone is a flicker
+    assert _last_run([0.0, 0.25, 0.5, 2.0, 2.25], 2) == 2.25
+    assert _last_run([1.0], 2) is None
+
+
+def test_legal_deck_puts_evolution_and_hero_in_their_slots():
+    import clash_royale_env as cre
+    from bot77.sim.engine import legal_deck
+    plain = [sc.engine_id(n) for n in ("Mini P.E.K.K.A", "Musketeer", "Goblin Hut", "Fireball", "Arrows", "Skeletons")]
+    deck = plain[:3] + [sc.engine_id("Giant", "hero")] + plain[3:] + [sc.engine_id("Knight", "evo")]  # scrambled
+    order = legal_deck(deck)
+    assert cre.validate_deck_slots(order) == ""
+    assert sorted(order) == sorted(deck)
