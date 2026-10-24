@@ -2533,7 +2533,7 @@ Plan: docs/simulator.md. Forked itzik123/ClashRoyaleAi (MIT) as github.com/cole-
   illegal spot to the nearest legal one within 2 tiles, and records each), `snapshot()` forks.
 - **`scenario_from_moment`** (~10 ms): clock, our hand and elixir, both decks (matches.deck + forms seen), towers
   standing, tower troops seen, units (box -> feet; squads clustered within 2.5 tiles, one card per cluster, so a
-  half-dead squad comes back whole), opponent elixir from their last play + real regeneration (2.8 s / elixir).
+  half-dead squad comes back whole), opponent elixir from their last play + real regeneration (2.9 s / elixir, measured in S2).
   Not carried over: unit HP (full; `inject` can take HP once we have it), what units were doing, units still deploying,
   spells on the board, queue order past `next`, king wake-up from damage. Tower HP waits for S2's `tower_hp`.
 - **Found for S2:** our replays' elixir multiplier is 2x from 2:00 to **4:00** and 3x after; the engine goes 3x at

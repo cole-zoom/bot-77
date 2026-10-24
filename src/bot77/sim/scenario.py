@@ -23,7 +23,7 @@ from bot77.sim.engine import Sim
 from bot77.sim.geometry import box_to_feet
 
 DB = "data/lancedb"
-REAL_ELIXIR_S = 2.8  # seconds per elixir at 1x, measured off the recordings (the engine's own runs ~2% slower)
+REAL_ELIXIR_S = 2.9  # seconds per elixir at 1x: our replays (idle moments 1 s apart, 23k pairs, IQR 2.86-2.94); engine 2.857
 SQUAD_RADIUS = 2.5  # bodies of one card closer than this are one deploy
 SPELL_CLASSES = ("tornado", "poison", "freeze", "rage", "earthquake", "graveyard", "zap", "fireball", "arrows",
                  "rocket", "the-log", "barbarian-barrel", "giant-snowball", "lightning", "void", "goblin-curse",
