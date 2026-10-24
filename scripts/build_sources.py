@@ -11,7 +11,8 @@ Adds to every match (the existing columns are kept):
   split         heldout / test / heldback / dev / train -- once, here, from the config lists (precedence in that order;
                 a replay's top side follows its bottom side). Replaces the per-script logic (bot77.holdout, build_*).
   league        TV Royale tab (0 = Ultimate Champion, 1.. down the leagues), -1 for Battle Log games, null otherwise
-  result        win / loss for the bot's games (from bot_games / data/live/game_results.json), null otherwise
+  result        win / loss for the bot's games (from bot_games / data/live/game_results.json); for replays from the
+                `match_results` table (scripts/fill_results.py, read off the end screen); null otherwise
 Bot games (bot_games) become rows of `matches` and `videos` (their screen recordings, layout bluestacks_live).
 
   uv run python scripts/build_sources.py
@@ -49,6 +50,10 @@ for g in bot_games:
     if g.get("result") in ("win", "loss"):
         results[g["game_id"]] = g["result"]
 results = {k: v for k, v in results.items() if v in ("win", "loss")}
+# replays' results read off their end screens (scripts/fill_results.py -> match_results), kept across rebuilds
+if "match_results" in db.table_names():
+    for r in db.open_table("match_results").to_arrow().to_pylist():
+        results.setdefault(r["match_id"], r["result"])
 
 # the bot's games as videos + matches
 have_v = {v["video_id"] for v in videos}

@@ -155,13 +155,19 @@ def main():
     if args.dry_run:
         return
     t = lancedb.connect(store.DB).open_table("matches")
+    rows = []
     for mid, (res, why, m) in out.items():
         if res is None:
             continue
         other = {"win": "loss", "loss": "win", "draw": "draw"}[res]
         t.update(where=f"match_id = '{mid}'", values={"result": res})
+        rows.append({"match_id": mid, "result": res, "how": why})
         if m["pair_match_id"]:
             t.update(where=f"match_id = '{m['pair_match_id']}'", values={"result": other})
+            rows.append({"match_id": m["pair_match_id"], "result": other, "how": why})
+    # its own table too: build_sources.py rebuilds `matches` from scratch and merges these back (2026-10-24: a rebuild
+    # wiped the results once)
+    store.write("match_results", rows, mode="overwrite")
     print(f"matches.result written for {sum(1 for v in out.values() if v[0])} games (both rows)")
 
 
