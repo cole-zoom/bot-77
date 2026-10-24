@@ -132,7 +132,9 @@ a browser view, training. LanceDB is the data layer (`tower_hp`, `sim_validation
       +2.5-10 s, lanes 90-98%, fight winner 58-62% (expected ~80%), tower damage often missed. Fixed in the engine:
       triple elixir at 4:00, first-hit load times. `tower_hp` (OCR), `matches.result` (end screen, 20/20 by hand).
       S2b: bot aim offset 0.55 fixed.
-- [ ] S3 — search + the go / no-go gate on Cole's reviews.
+- [x] S3 — search + gate (2026-10-24): **failed**. Verdict agreement 37.4% (gate 65%, Claude 59%), fix in top 2
+      38.3% (gate 50%). Win model weak (held-back AUC 0.58). Stopped; disagreements page for Cole. No `sim_search`
+      labels written.
 
 ## Later (only if the loop stalls)
 

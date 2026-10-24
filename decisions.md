@@ -2560,3 +2560,29 @@ Full write-up: docs/simulator-validation.md. Held-back only (48 games, 346 windo
 - **S2b:** the bot's units land 0.55 of our units below its aim (1,791 plays): fixed (`AIM_DY`). Decision-to-field delay
   isn't measurable from clock reads (the two clocks differ by 3-5 s); open.
 - Estimate was 2-3 days; took ~1 day of session time.
+
+## 2026-10-24 · Simulator S3: the search fails its gate (stopped here, as agreed)
+- **Prerequisites done:** `matches.result` for 585 of 586 replays (574 from the end screen; 20 / 20 by hand on
+  held-back). Win model `sim_value_v1` (`bot77.sim.value`, models registry role sim_value): **weak**. Held-back log loss
+  0.686 vs 0.693 for a constant, AUC 0.58 (crowns + clock alone 0.58). The default boosting settings memorised games
+  (382 train games behind 105k moments; log loss 0.750, worse than a constant), hence heavy regularisation. Why weak:
+  these pro games are close; only ~15% of moments after 150 s have a crown difference, and most games end on the
+  first tower to fall in overtime, which the state features can't see coming.
+- **Search** (`bot77.sim.search`): each card in hand x legal spots on a 1.5-tile grid x timings (now, +0.5, +1, +2,
+  +3 s) + wait, refined around the best spots; 10 s rollouts with the opponent's actual next plays; score = change in
+  win chance. ~3,000 candidates in ~1 s per moment.
+- **Verdict margin, set from the pros before scoring Cole's plays:** 80th percentile of (best - the pro's actual play)
+  over 300 train-split pro moments = **0.178**.
+- **Gate (91 of 107 reviewed plays scoreable; 16 have no paired replay):** verdict agreement **37.4%** (34 / 91; gate
+  >= 65%, Claude's pre-review 59%); clean set **4 / 14** (gate 12 / 15; one of the 15 has no replay); Cole's fix in the
+  top 2 **38.3%** (23 / 60; gate >= 50%); timing notes saying "later": the search's best delays on 0 of 3. **Failed.**
+- **No signal, not a bad margin:** the gap (best - the bot's play) has median 0.054 on plays Cole called mistakes and
+  0.065 on plays he called OK. No margin separates them (margin 0 = "everything is a mistake" = 65.9%, only because
+  60 of 91 are mistakes).
+- One measurement bug fixed after the first run, without changing the margin: the bot's taps just behind a princess
+  tower are illegal in the engine (the game places the card at the nearest free spot); they're now snapped like the
+  game does. First run (59 scored): 40.7%; after the fix (91 scored): 37.4%.
+- **Not changed, per the plan ("report where it disagrees, with the frames, before changing anything"):** the 57
+  disagreements are on a local page (`scripts/sim_disagreements.py` -> data/reviews/sim_s3_v1/index.html) for Cole.
+  Likely causes, in order: the win model is close to blind over a 10 s window; the sim's fights (S2: winners right
+  58-62%, tower damage often missed); the opponent's actual plays answer what really happened, not the candidate.

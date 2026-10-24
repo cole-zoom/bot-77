@@ -2,8 +2,8 @@
 
   uv run python scripts/train_sim_value.py
 
-Rows: every moment of the human replays (replay_tv, replay_bl; both players), features from the moment + tower_hp,
-label = that player's matches.result (draws and unknown results left out). Fit on train, calibration reported on
+Rows: every moment of the human replays (replay_tv, replay_bl; both players) whose tower HP was read (tower_hp),
+features from the moment + tower_hp, label = that player's matches.result (draws and unknown results left out). Fit on train, calibration reported on
 held-back (log loss, Brier, AUC, reliability) next to two baselines: crowns + clock only, and a constant.
 """
 import bisect
@@ -55,6 +55,8 @@ def rows_for(match: dict, result_top: str | None) -> list[tuple[dict, int, str]]
     gid = match["match_id"]
     res = {"bottom": match["result"], "top": result_top}
     series = tower_series(gid)
+    if not series:  # tower HP not read for this game: every tower would look full
+        return []
     plays = store.read("plays", f"game_id = '{gid}' AND source = 'hand'")
     out = []
     for m in store.read("moments", f"game_id = '{gid}'"):
@@ -91,8 +93,10 @@ def main():
     games = {k: len({g for _, _, g in v}) for k, v in data.items()}
     print({k: (len(v), games[k]) for k, v in data.items()}, "rows, games")
 
-    gb = HistGradientBoostingClassifier(max_iter=300, learning_rate=0.05, max_leaf_nodes=31, l2_regularization=1.0,
-                                        random_state=77).fit(X["train"], y["train"])
+    # strongly regularised: 382 games behind 105k correlated moments; the default settings memorised games (held-back
+    # log loss 0.750, worse than a constant 0.693; this: 0.686)
+    gb = HistGradientBoostingClassifier(max_iter=150, learning_rate=0.03, max_depth=3, min_samples_leaf=2000,
+                                        l2_regularization=5.0, random_state=77).fit(X["train"], y["train"])
     base_cols = [FEATURES.index(c) for c in ("crown_diff", "t_left_reg", "overtime", "own_min", "opp_min")]
     lr = LogisticRegression(max_iter=1000).fit(X["train"][:, base_cols], y["train"])
     metrics = {}

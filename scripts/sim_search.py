@@ -56,7 +56,7 @@ def run_one(moment_id: str, model: WinModel, actual: tuple[str, float, float] | 
         e = None if card == "wait" else sc.engine_id(card)
         extra = [Candidate(e, x, y, 0.0, note="actual")]
     r = search(moment_id, model, tower_hp=tw, extra=extra)
-    act = next((c for c in r.candidates if c.note == "actual"), None)
+    act = next((c for c in r.candidates if c.note.startswith("actual")), None)
     return r, act
 
 
@@ -64,6 +64,7 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--run", required=True)
     ap.add_argument("--calibrate", type=int, default=300)
+    ap.add_argument("--margin", type=float, default=None, help="reuse a margin measured before (skips calibration)")
     args = ap.parse_args()
     model = WinModel.load()
     rows, t0 = [], time.time()
@@ -74,7 +75,7 @@ def main():
     pros = [m for m in store.read("moments", "source IN ('replay_tv', 'replay_bl') AND kind = 'play' AND side = 'bottom'")
             if m["game_id"] in pro_games]
     gaps = []
-    for m in rng.permutation(pros)[: args.calibrate * 2]:
+    for m in ([] if args.margin is not None else rng.permutation(pros)[: args.calibrate * 2]):
         if len(gaps) >= args.calibrate:
             break
         p = store.read("plays", f"game_id = '{m['game_id']}' AND source = 'hand' AND side = 'bottom' "
@@ -94,7 +95,7 @@ def main():
         if act is None or act.score <= -1:
             continue
         gaps.append(r.best().score - act.score)
-    margin = float(np.percentile(gaps, MARGIN_PCT))
+    margin = args.margin if args.margin is not None else float(np.percentile(gaps, MARGIN_PCT))
     print(f"margin from {len(gaps)} pro plays: {MARGIN_PCT}th percentile of (best - pro) = {margin:.4f} "
           f"(median gap {np.median(gaps):.4f}); {time.time() - t0:.0f} s", flush=True)
 
@@ -126,11 +127,12 @@ def main():
         per = sorted(r.best_per_card().items(), key=lambda kv: -kv[1].score)
         top2 = [name(c) for c, _ in per[:2]]
         gap = best.score - a.score if a is not None and a.score > -1 else None
+        refused = a.note if a is not None and a.score <= -1 else ("not scored" if a is None and actual else "")
         results.append({"id": f"{key[0]}:{key[1]}", "status": "ok", "cole": verdict, "first": first_verdict,
                         "blind": b is not None, "fix": fix, "note": (b or lab)["note"] or "",
                         "gap": gap, "search": None if gap is None else ("bad" if gap > margin else "ok"),
                         "top2": top2, "best": (name(best.card), best.x, best.y, best.delay), "p0": r.p0,
-                        "bot_card": actual[0] if actual else None})
+                        "bot_card": actual[0] if actual else None, "refused": refused})
         for c in sorted(r.candidates, key=lambda c: -c.score)[:20] + [v for _, v in per] + ([a] if a else []):
             rows.append({"run": args.run, "moment_id": link["replay_moment_id"], "review_id": f"{key[0]}:{key[1]}",
                          "card": name(c.card), "x": c.x, "y": c.y, "delay": c.delay, "score": c.score,
@@ -149,8 +151,10 @@ def main():
     clean = [r for r in ok if r["blind"] and r["first"] == r["cole"]]
     mistakes = [r for r in ok if r["cole"] == "bad" and r["fix"]]
     top2 = [r["fix"] in r["top2"] for r in mistakes]
-    print(f"\n{len(results)} reviewed plays, {len(ok)} searched ({len(results) - len(ok)} not: "
-          f"{sorted({r['status'] for r in results if r['status'] != 'ok'})})")
+    nomap = [r for r in results if r["status"] != "ok"]
+    unscored = [r for r in results if r["status"] == "ok" and r["search"] is None]
+    print(f"\n{len(results)} reviewed plays: {len(ok)} scored, {len(nomap)} with no replay moment, {len(unscored)} where "
+          f"the bot's own play couldn't be played in the sim ({sorted({r['refused'] for r in unscored})})")
     print(f"GATE verdict agreement: {np.mean(agree):.1%} ({sum(agree)}/{len(agree)}); gate >= 65%")
     print(f"GATE clean set (both reviews agree): {sum(r['search'] == r['cole'] for r in clean)}/{len(clean)}; gate >= 12/15")
     print(f"GATE Cole's fix in top 2: {np.mean(top2):.1%} ({sum(top2)}/{len(top2)}); gate >= 50%")

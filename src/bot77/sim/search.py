@@ -18,8 +18,8 @@ import numpy as np
 
 from bot77.features.frames import FEET_DY
 from bot77.sim import cards as sc
-from bot77.sim.engine import Sim
-from bot77.sim.geometry import Y_SCALE, ours_to_engine
+from bot77.sim.engine import Sim, _nearest_legal
+from bot77.sim.geometry import Y_SCALE, engine_to_ours, ours_to_engine
 from bot77.sim.scenario import _rows, scenario_from_moment
 from bot77.sim.spots import recover
 from bot77.sim.value import WinModel, sim_features
@@ -105,7 +105,7 @@ def rollout(base: Sim, model: WinModel, opp: list[dict], cand: Candidate, t0: fl
         if not played and sim.t >= t0 + cand.delay - 1e-6:
             r = sim.play(cand.card, cand.x, cand.y, "own", force=False)
             if not r.played:
-                cand.note = r.reason or "refused"
+                cand.note = (cand.note + ": " if cand.note else "") + (r.reason or "refused")
                 return -1.0  # not playable as given (elixir, spot): never the best
             played = True
             continue
@@ -150,6 +150,12 @@ def search(moment_id: str, model: WinModel, tower_hp: dict | None = None, timing
     for c in extra or []:  # the deck may hold the card's Evolution / Hero variant: use the hand's id for that card
         if c.card is not None and c.card not in hand:
             c.card = next((h for h in hand if sc.our_name(h) == sc.our_name(c.card)), c.card)
+        if c.card is not None:  # a tap the engine calls illegal (e.g. just behind a tower): the game places the card
+            ex, ey = ours_to_engine(c.x, c.y)  # at the nearest free spot, so does this
+            if not base.env.is_valid_placement(c.card, ex, ey, 0):
+                spot = _nearest_legal(base.env, c.card, ex, ey, 0)
+                if spot is not None:
+                    c.x, c.y = engine_to_ours(*spot)
     for c in fine + (extra or []):
         c.p_end = rollout(base, model, opp, c, t0)
         c.score = c.p_end - p0 if c.p_end >= 0 else -1.0
