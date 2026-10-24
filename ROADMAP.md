@@ -136,6 +136,13 @@ a browser view, training. LanceDB is the data layer (`tower_hp`, `sim_validation
       38.3% (gate 50%). Win model weak (held-back AUC 0.58). Stopped; disagreements page for Cole. No `sim_search`
       labels written.
 
+## Overnight 2026-10-24 (Cole: sim fixes, self-play test, more replays)
+- [x] Simulator fixes measured on replays: spells' and Miner's crown-tower damage, squad formations, towers at level 11
+      (by measurement), tower HP OCR rebuilt (impossible drops 160 -> 19). Win model AUC 0.58 -> 0.62.
+- [x] Self-play test: 26k episodes in the sim, then **20 real games: 10 W / 10 L (50%), 606 -> 614 trophies**.
+- [x] 55 more pro replays (TV Royale); recorder fixed; throughput ~10-11 replays an hour on one Mac.
+- [ ] Next (Cole decides): keep training the self-play agent and test it over a full session; or scale replays.
+
 ## Later (only if the loop stalls)
 
 - Retrain the card model on the bot's own reviewed games (needs a few hundred reviewed plays first).

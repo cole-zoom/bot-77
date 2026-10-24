@@ -2586,3 +2586,32 @@ Full write-up: docs/simulator-validation.md. Held-back only (48 games, 346 windo
   disagreements are on a local page (`scripts/sim_disagreements.py` -> data/reviews/sim_s3_v1/index.html) for Cole.
   Likely causes, in order: the win model is close to blind over a 10 s window; the sim's fights (S2: winners right
   58-62%, tower damage often missed); the opponent's actual plays answer what really happened, not the candidate.
+## 2026-10-24 · Overnight: simulator fixes, self-play test, more pro replays (Cole: "do 1 2 and 3")
+1. **Simulator fixes, measured on the replays** (engine fork, tests per fix):
+   - Card audit vs RoyaleAPI level 11 (docs/simulator-card-audit.md, `get_card_stats`). Fixed: spells hit crown towers
+     for their published fraction (Fireball / Arrows / Zap / Lightning / Freeze / Snowball 30%, Rocket 25%, Log 20%;
+     were 100%), the Miner 25% (replays: ~20%); squad formations fitted on 200 replays (Skeletons get depth; Royal Hogs,
+     Wall Breakers, Guards, Skeleton Dragons, Bats wider). Leads not acted on: 2023 data vs the fork's 2026 balance.
+   - **Tower level, by measurement:** a lone Giant / Knight / Royal Ghost hit takes 0.0832 / 0.0665 / 0.0867 of a
+     princess tower on the replays; engine damage / 3052 = 0.0829 / 0.0662 / 0.0855 (RoyaleAPI's 3584: 0.071-0.073).
+     Towers now default to level 11 at 3052 / 109.
+   - **tower_hp fixed:** per-side max (the bot's games have different tower levels), bars re-read every 5 s, the HP
+     is the largest number on the bar not above the tower's HP, a reading contradicted within 15 s is rejected.
+     Impossible mid-match drops 160 -> 19 (546 matches). Win model on it: held-back AUC 0.58 -> 0.62.
+   - **The fight-winner metric's ceiling:** the replay agrees with itself 1.5 s earlier on only 69% of windows, so
+     the sim's 58-64% is close to what the metric can show; S2's ~80% expectation wasn't reachable with it.
+   - Held-back after the fixes: tracks unchanged (0.99-1.21 at +5 s); big tower damage, sim / real median 0.50 (own)
+     / 0.86 (opp) from near-empty starts (was 0.30 / 0.55); empty starts still poor (n 9-11).
+2. **Self-play test:** the fork's PPO stack for our deck (scripts/selfplay_train.sh, supervised), 02:09-07:15:
+   25,950 episodes against its scripted teacher on the 11-rung ladder (16 meta decks), all in phase 1. Rung 0 for
+   the first ~10k episodes at 25-40% (the cold start the fork's notes describe), then rungs 1-5 by 07:00 (rung 5 = a
+   4 s lookahead teacher; 14-44% there). Then **20 real games** with it (`live_session.py --policy selfplay`,
+   bot77.live.selfplay: the screen mirrored into an engine once a second; towers and unit HP not mirrored; taps with
+   the new AIM_DY): **10 W / 10 L (50%), trophies 606 -> 614** (peak 664). Rules bot, session 2: 47%; before the
+   rules: 36%. 20 games is a small sample (50% +- 11). Its 20 Battle Log replays were pulled for analysis.
+   Gotchas: SIGINT is ignored under nohup, so the deadline stop never landed (a checkpoint from 07:15 was used);
+   the "Exit Clash Royale?" dialog appears if Back is pressed on the home screen.
+3. **More pro replays:** TV Royale recorder fixed (ADB device; scrcpy ignored SIGINT under nohup and left orphans);
+   ingest ~5-6 min per replay under load = recording speed: ~10-11 replays an hour on one Mac. **55 TV Royale
+   replays** recorded overnight (Ultimate Champion first); being ingested and rebuilt into the tables
+   (scripts/after_session_2026-10-24.sh). The ceiling is real-time playback on one emulator (~250 a day at most).
