@@ -206,8 +206,9 @@ directly.
   - baseline to beat: Claude's pre-review, 59% verdict agreement (26 / 44).
 - **Cole's own ceiling (measured 2026-10-23):** 20 round 1 plays re-reviewed blind
   (`data/ground_truth/reviews/blind_1_cole.json`, page `data/reviews/bot_2026-10-23/blind_1_1.html`, seed 77):
-  - Cole agreed with his own earlier verdict on **14 of 20 (70%)**. 5 of the 6 flips went OK → mistake (he got
-    stricter), 1 went mistake → OK (`015212:4`, Arrows that missed; no note: maybe a misclick, ask him).
+  - Cole agreed with his own earlier verdict on **15 of 20 (75%)**. All 5 flips went OK → mistake (he got stricter).
+    (`015212:4`, Arrows that missed, first came back OK: he couldn't see the miss on the frame; corrected to mistake.
+    So some disagreement is just what a still frame shows, which the sim's playback helps with.)
   - Where both reviews say mistake, the same fix card **9 of 12 (75%)**; the 3 others are different valid answers
     (Skeletons vs Goblin Hut for the centre pull).
   - **The new notes are mostly about timing**: "should have placed skeletons middle 4 seconds ago, when the valkyrie was
@@ -215,9 +216,9 @@ directly.
     "always play the building first so the giant goes to it". That's the S3 timing candidates' job.
   - Claude's pre-review on the same 20: 12 of 20 (60%) with Cole's first review, 6 of 20 with his blind one.
 - **Gate (the only one in S0-S3), set before the search runs:**
-  - **Verdict agreement ≥ 65%** on all of Cole's reviewed plays (ceiling ~70%; Claude 59%). With ~110 reviewed plays
-    one standard error is ~4.5 points, so also report it on the 14 plays both of Cole's reviews agree on (the clean
-    set): there the search should get ≥ 12.
+  - **Verdict agreement ≥ 65%** on all of Cole's reviewed plays (ceiling ~75%; Claude 59%). With ~110 reviewed plays
+    one standard error is ~4.5 points, so also report it on the 15 plays both of Cole's reviews agree on (the clean
+    set, now 15): there the search should get ≥ 12.
   - **Cole's fix (card, or wait) in the search's top 2 on ≥ 50% of his mistakes**, and where Cole's fix is about timing
     ("earlier", "later", "when it crosses"), the search's best timing should point the same way on most of them.
   - Use the blind review where a play has both (it's the later, stricter one); keep both files, don't import
@@ -305,5 +306,5 @@ Report the numbers that missed their gate too.
 
 Answered 2026-10-23: S2 measures and doesn't gate (the gate is S3, set from Cole's own blind re-review agreement);
 score = change in win chance from a model trained on the replays, not hand weights; the first scenarios are the 10
-round 1 mistakes above; nothing deck-specific; the S3 gate set from Cole's blind re-review (70% self-agreement).
+round 1 mistakes above; nothing deck-specific; the S3 gate set from Cole's blind re-review (75% self-agreement).
 Nothing open before S0.

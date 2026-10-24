@@ -2487,3 +2487,4 @@ Plan: docs/training-architecture.md; progress: ROADMAP.md. Bot sessions paused u
   stricter), same fix on 9 of 12 shared mistakes; new notes mostly about timing. Claude on the same 20: 60%. So the
   simulator search's gate (S3) is set at ≥ 65% verdict agreement (ceiling ~70%) + Cole's fix in the top 2 on half his
   mistakes. Cole: exact placement and timing is the goal; S2 measures and flags but doesn't gate.
+- Correction: one blind flip (`015212:4`, missed Arrows) was Cole not seeing the miss on the frame; corrected. Self-agreement 15 of 20 (75%); gate stays 65%.

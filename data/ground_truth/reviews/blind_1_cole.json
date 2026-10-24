@@ -197,9 +197,10 @@
    "k": 4,
    "card": "Arrows",
    "reason": "defend (rules)",
-   "verdict": "ok",
+   "verdict": "bad",
    "by": "cole",
-   "spot_px": null
+   "spot_px": null,
+   "note": "missed (Cole, 2026-10-23: couldn't tell it missed when re-reviewing; if it missed it's wrong)"
   },
   {
    "id": "bot_2026-10-23_015212:7",
