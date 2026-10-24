@@ -21,6 +21,15 @@ TICKS_PER_S = 10
 MAX_TICKS = 3000  # 3:00 regulation + 2:00 overtime
 TEAM_NAME = {OWN_TEAM: "own", OPP_TEAM: "opp"}
 TOWER_SLOTS = {"king": 0, "l": 1, "r": 2}  # board coordinates for both teams (left = our left)
+# Tower stats (max hp, damage per shot, cooldown ticks) for (king, princess). The engine's cards are level 11 (Knight
+# 1766 hp / 202 = RoyaleAPI cr-api-data level 11); its default towers are level 9. Candidates, chosen in S2 by fit:
+TOWER_PRESETS = {
+    "engine": None,  # King 4008 / 90 / 1.0 s, Princess 2534 / 90 / 0.8 s
+    # RoyaleAPI cr-api-data (game-file extract) at the cards' level: KingTower / PrincessTower + their projectiles
+    "royaleapi_l11": ((6144, 128, 10), (3584, 128, 8)),
+    # Liquipedia's level-11 Tower Princess (3052 / 109 / 0.8 s); King scaled by cr-api-data's King/Princess ratio
+    "liquipedia_l11": ((5232, 109, 10), (3052, 109, 8)),
+}
 
 
 def legal_deck(deck: list[int]) -> list[int]:
@@ -77,14 +86,31 @@ class Sim:
 
     @classmethod
     def new(cls, own_deck: list[int], opp_deck: list[int], own_tower: str = "queen-tower",
-            opp_tower: str = "queen-tower", max_ticks: int = MAX_TICKS) -> "Sim":
+            opp_tower: str = "queen-tower", max_ticks: int = MAX_TICKS, towers: str = "engine") -> "Sim":
+        """`towers`: a TOWER_PRESETS name, applied to both sides' King and (default) princess towers after reset."""
         env = cre.ClashRoyaleEnv(legal_deck(fill_deck(own_deck)), legal_deck(fill_deck(opp_deck)), max_ticks,
                                  sc.TOWER_TROOPS[own_tower], sc.TOWER_TROOPS[opp_tower])
         env.seed(0)
-        return cls(env)
+        sim = cls(env)
+        sim.towers_preset = towers
+        sim.troops = (own_tower, opp_tower)
+        return sim
+
+    def reset(self) -> None:
+        """Start the match (and level the towers per the preset)."""
+        self.env.reset()
+        preset = TOWER_PRESETS[getattr(self, "towers_preset", "engine")]
+        if preset:
+            for tm in (OWN_TEAM, OPP_TEAM):
+                self.env.set_tower_stats(tm, 0, *preset[0])
+                if sc.TOWER_TROOPS[self.troops[tm]] == cre.TowerTroopType.NONE:
+                    for slot in (1, 2):
+                        self.env.set_tower_stats(tm, slot, *preset[1])
 
     def snapshot(self) -> "Sim":
-        return Sim(self.env.snapshot(), list(self.log))
+        s = Sim(self.env.snapshot(), list(self.log))
+        s.towers_preset, s.troops = getattr(self, "towers_preset", "engine"), getattr(self, "troops", None)
+        return s
 
     # --- clock, elixir, hand ---
     @property
@@ -137,6 +163,13 @@ class Sim:
         if frac <= 0:
             return self.env.destroy_tower(tm, s)
         return self.env.set_tower_hp(tm, s, max(1.0, frac * self.env.get_tower_max_hp(tm, s)))
+
+    def wake_king(self, team: str) -> bool:
+        """Wake a sleeping King the way real damage does (hp just below max: Tower::update latches on hp < maxHp)."""
+        tm = _team(team)
+        mx = self.env.get_tower_max_hp(tm, 0)
+        hp = self.env.get_tower_hp(tm, 0)
+        return hp > 0 and self.env.set_tower_hp(tm, 0, min(hp, mx - 1))
 
     # --- units ---
     def inject(self, card: int, x: float, y: float, team: str, hp: float | None = None, deployed: bool = True) -> None:

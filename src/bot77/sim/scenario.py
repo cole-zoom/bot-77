@@ -60,7 +60,7 @@ def _rows(table: str, where: str, columns: list[str] | None = None, limit: int =
 def _squad_size(card: int) -> int:
     """Bodies one engine card spawns (Skeletons 3, Skeleton Army 15, ...), measured by injection."""
     s = Sim.new([card], [card])
-    s.env.reset()
+    s.reset()
     s.inject(card, 9.0, 20.0, "own")
     s.step(1)
     return max(1, len(s.units()))
@@ -113,6 +113,38 @@ def real_multiplier(t_match: float) -> int:
     return 1 if t_match < 120 else 2 if t_match < 240 else 3
 
 
+def place_units(sim: Sim, units: list[dict]) -> tuple[list[tuple], list[tuple]]:
+    """Inject detected units (card, cls, team own/opp, x, y = FEET) as deployed, full HP. Bodies of one card within
+    SQUAD_RADIUS are one deploy: one card per cluster (so a half-dead squad comes back whole). Spells are skipped.
+    -> (injected: (card, team, x, y, bodies seen, bodies injected), skipped: (card, why))."""
+    injected, skipped, groups = [], [], []
+    for u in units:
+        cls = u.get("cls") or ""
+        if cls in SPELL_CLASSES or any(cls.startswith(s) for s in SPELL_CLASSES):
+            skipped.append((u["card"], "spell"))
+            continue
+        e = sc.engine_id(u["card"], "evo" if cls.endswith("-evo") else "hero" if cls.endswith("-hero")
+                         else "normal") or sc.engine_id(u["card"])
+        if e is None:
+            skipped.append((u["card"], "not in engine"))
+            continue
+        x, y = u["x"], u["y"]
+        for g in groups:
+            if g["card"] == e and g["team"] == u["team"] and ((g["x"] - x) ** 2 + (g["y"] - y) ** 2) ** 0.5 < SQUAD_RADIUS:
+                g["pts"].append((x, y))
+                break
+        else:
+            groups.append({"card": e, "team": u["team"], "x": x, "y": y, "pts": [(x, y)]})
+    for g in groups:
+        n = len(g["pts"])
+        k = -(-n // _squad_size(g["card"]))  # injections for this cluster
+        cx, cy = sum(p[0] for p in g["pts"]) / n, sum(p[1] for p in g["pts"]) / n
+        for _ in range(k):
+            sim.inject(g["card"], cx, cy, g["team"])
+        injected.append((sc.our_name(g["card"]), g["team"], round(cx, 2), round(cy, 2), n, k * _squad_size(g["card"])))
+    return injected, skipped
+
+
 def scenario_from_moment(moment_id: str, tower_hp: dict[str, float] | None = None) -> Scenario:
     """`tower_hp`: optional fractions {'own_l': 0.4, 'opp_king': 1.0, ...} (S2's tower_hp table)."""
     m = _one("moments", f"moment_id = '{moment_id}'")
@@ -131,7 +163,7 @@ def scenario_from_moment(moment_id: str, tower_hp: dict[str, float] | None = Non
     notes = {"missing_cards": own_missing + opp_missing, "unit_hp": "full", "deploying": "injected as deployed"}
 
     sim = Sim.new(own_deck, opp_deck, towers_cls.get("own", "queen-tower"), towers_cls.get("opp", "queen-tower"))
-    sim.env.reset()
+    sim.reset()
     sim.set_clock(m["t_match"])
     notes["engine_multiplier"] = sim.env.get_elixir_multiplier()
     notes["moment_multiplier"] = m["multiplier"]
@@ -154,32 +186,7 @@ def scenario_from_moment(moment_id: str, tower_hp: dict[str, float] | None = Non
             sim.set_tower(team, slot, frac)
     notes["tower_hp"] = "from tower_hp" if tower_hp else "alive flags only (standing towers at full HP)"
 
-    injected, skipped, bodies = [], [], {}
-    groups: list[dict] = []
-    for u in units:
-        if (u["cls"] or "") in SPELL_CLASSES or any(u["cls"].startswith(s) for s in SPELL_CLASSES):
-            skipped.append((u["card"], "spell"))
-            continue
-        e = sc.engine_id(u["card"], "evo" if u["cls"].endswith("-evo") else "hero" if u["cls"].endswith("-hero")
-                         else "normal") or sc.engine_id(u["card"])
-        if e is None:
-            skipped.append((u["card"], "not in engine"))
-            continue
-        x, y = box_to_feet(u["x"], u["y"])
-        for g in groups:
-            if g["card"] == e and g["team"] == u["team"] and ((g["x"] - x) ** 2 + (g["y"] - y) ** 2) ** 0.5 < SQUAD_RADIUS:
-                g["pts"].append((x, y))
-                break
-        else:
-            groups.append({"card": e, "team": u["team"], "x": x, "y": y, "pts": [(x, y)]})
-    for g in groups:
-        n = len(g["pts"])
-        k = -(-n // _squad_size(g["card"]))  # injections for this cluster
-        cx, cy = sum(p[0] for p in g["pts"]) / n, sum(p[1] for p in g["pts"]) / n
-        for _ in range(k):
-            sim.inject(g["card"], cx, cy, g["team"])
-        injected.append((sc.our_name(g["card"]), g["team"], round(cx, 2), round(cy, 2), n, k * _squad_size(g["card"])))
-        bodies[g["team"]] = bodies.get(g["team"], 0) + n
+    injected, skipped = place_units(sim, [{**u, "y": box_to_feet(u["x"], u["y"])[1]} for u in units])
     sim.step(1)  # commit the injected units (one tick)
     notes["injected"] = injected  # (card, team, x, y, bodies detected, bodies injected)
     notes["skipped"] = skipped

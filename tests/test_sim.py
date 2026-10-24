@@ -14,7 +14,7 @@ DECK = ["Giant", "Mini P.E.K.K.A", "Musketeer", "Goblin Hut", "Fireball", "Arrow
 def new_sim() -> Sim:
     deck = [sc.engine_id(n) for n in DECK]
     s = Sim.new(deck, deck)
-    s.env.reset()
+    s.reset()
     return s
 
 
