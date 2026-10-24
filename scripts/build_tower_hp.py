@@ -30,6 +30,7 @@ from PIL import Image
 
 from bot77.sim import store
 
+FUTURE_S = 15.0  # a reading must not be contradicted by a higher one this soon after
 REREAD_S = 5.0  # read a bar again at least this often, even if it looks unchanged (a misread must not stick)
 KING_PER_PRINCESS = 6144 / 3584  # cr-api-data KingTower / PrincessTower hitpoints, every level
 BARS = {"tower-bar": "princess", "dagger-duchess-tower-bar": "princess", "king-tower-bar": "king"}
@@ -40,13 +41,18 @@ LOOKALIKE = str.maketrans({"O": "0", "o": "0", "I": "1", "l": "1", "|": "1", "!"
 
 
 def read_number(img) -> tuple[int | None, str]:
-    """The HP on a bar crop: the rightmost 3-5 digit group, look-alike letters read as digits (I512 = 1512). The level
-    badge (1-2 digits, sometimes read together with the crown icon as "121") is left of the number."""
+    """The HP on a bar crop (OCR text; the number is chosen in clean())."""
     c = cv2.resize(img, None, fx=3, fy=3, interpolation=cv2.INTER_CUBIC)
     res = ocrmac.OCR(Image.fromarray(cv2.cvtColor(c, cv2.COLOR_BGR2RGB)), recognition_level="accurate").recognize()
     text = " ".join(r[0] for r in res)
-    groups = [g for g in re.findall(r"\d+", text.translate(LOOKALIKE)) if 3 <= len(g) <= 5]
-    return (int(groups[-1]) if groups else None), text  # the rightmost: the level badge sits left of the number
+    groups = number_groups(text)
+    return (max(groups) if groups else None), text  # clean() picks among them against the tower's current HP
+
+
+def number_groups(text: str) -> list[int]:
+    """Every 3-5 digit group in a bar's text, look-alike letters read as digits. The level badge with the crown
+    icon reads as 3 digits too ("121", "131"), left or right of the number depending on the replay."""
+    return [int(g) for g in re.findall(r"\d+", (text or "").translate(LOOKALIKE)) if 3 <= len(g) <= 5]
 
 
 def signature(img) -> np.ndarray:
@@ -124,8 +130,8 @@ def process(match: dict, video: dict, step: float) -> list[dict]:
 
 
 def clean(match_id: str, raw: list[dict]) -> list[dict]:
-    """Accept a fresh reading when it is <= the last accepted one and the tower's next fresh reading (within 10 s) is
-    <= it: a dropped digit (480 for 4802) is followed by a higher read, a junk number is above the last accepted value.
+    """Accept a fresh reading when it is <= the last accepted one and no reading of that tower in the next 15 s is
+    higher: a dropped digit (457 for 4574) is followed by a higher read, a junk number is above the last accepted value.
     A cached reading (unchanged bar) shares its fresh reading's verdict. Each side has its own max (the commonest
     princess reading of that side in the first 30 s): the two players' towers can be different levels."""
     rows = []
@@ -135,22 +141,28 @@ def clean(match_id: str, raw: list[dict]) -> list[dict]:
     t_first = min((r["t"] for r in raw), default=0.0)
     caps = {}
     for side in ("own", "opp"):
-        early = [r["hp_raw"] for r in raw if r["hp_raw"] and r["tower"].startswith(side)
+        early = [max(number_groups(r["raw"]), default=None) for r in raw if r["tower"].startswith(side)
                  and not r["tower"].endswith("king") and r["t"] < t_first + 30]
+        early = [e for e in early if e]
         caps[side] = Counter(early).most_common(1)[0][0] if early else None
     for name, rs in by_tower.items():
         side = name[:3]
         cap = caps[side]
+        ceil0 = (cap * KING_PER_PRINCESS if name.endswith("king") else cap) if cap else 10**6
+        for r in rs:  # the HP: the largest group not above the max (the badge is a small number)
+            gs = [g for g in number_groups(r["raw"]) if g <= ceil0]
+            r["hp_raw"] = max(gs) if gs else None
         mx = (cap * KING_PER_PRINCESS if name.endswith("king") else cap) if cap else None
         accepted = cap if (cap and not name.endswith("king")) else None
         verdict = False
         for i, r in enumerate(rs):
             hp = r["hp_raw"]
             if r.get("fresh", True):
-                nxt = next((q["hp_raw"] for q in rs[i + 1:] if q.get("fresh", True) and q["hp_raw"] is not None
-                            and q["t"] - r["t"] <= 10.0), None)
+                # HP only goes down: a reading is wrong if any plausible reading in the next FUTURE_S is higher
+                # (a dropped digit, "457" for 4574, can repeat for a few seconds before the true value is back)
+                future = [q["hp_raw"] for q in rs[i + 1:] if q["hp_raw"] is not None and q["t"] - r["t"] <= FUTURE_S]
                 ceiling = accepted if accepted is not None else (mx + 1 if mx else 10**6)
-                verdict = hp is not None and hp <= ceiling and (nxt is None or nxt <= hp)
+                verdict = hp is not None and hp <= ceiling and all(f <= hp for f in future)
             ok = verdict and hp is not None and hp <= (accepted if accepted is not None else 10**6)
             if ok:
                 accepted = hp
@@ -171,8 +183,16 @@ def main():
     ap.add_argument("--step", type=float, default=1.0)
     ap.add_argument("--shard", default="0/1", help="i/n: this process takes every n-th game")
     ap.add_argument("--merge", action="store_true", help="write every cached match into the tower_hp table")
+    ap.add_argument("--reclean", action="store_true", help="re-parse the cached OCR text (no OCR) before --merge")
     args = ap.parse_args()
     CACHE.mkdir(parents=True, exist_ok=True)
+    if args.reclean:  # re-parse every cached match's OCR text with the current rules (no OCR)
+        for f in sorted(CACHE.glob("*.json")):
+            rows = json.loads(f.read_text())
+            raw = [{"t": r["t"], "tower": r["tower"], "raw": r["raw"], "hp_raw": None} for r in rows]
+            f.write_text(json.dumps(clean(f.stem, raw)))
+        print(f"re-cleaned {len(list(CACHE.glob('*.json')))} matches")
+        return
     if args.merge:
         rows = [r for f in sorted(CACHE.glob("*.json")) for r in json.loads(f.read_text())]
         store.write("tower_hp", rows, mode="overwrite")
