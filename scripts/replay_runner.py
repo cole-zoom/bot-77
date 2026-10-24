@@ -261,7 +261,9 @@ def next_button(d: Device, last_fp: np.ndarray | None, skip: int,
 def record(d: Device, out: Path) -> subprocess.Popen:
     return subprocess.Popen(["scrcpy", "-s", d.s, "--no-window", "--no-audio", "--no-control", "--max-fps", "30",
                              "--video-bit-rate", "12M", f"--record={out}"], env={**os.environ, "ADB": ADB},
-                            stdout=subprocess.DEVNULL, stderr=open(ROOT / "data/logs/scrcpy_last.log", "w"))
+                            stdout=subprocess.DEVNULL, stderr=open(ROOT / "data/logs/scrcpy_last.log", "w"),
+                            # under nohup / `&` SIGINT is ignored and children inherit that; scrcpy must hear the stop
+                            preexec_fn=lambda: signal.signal(signal.SIGINT, signal.SIG_DFL))
 
 
 def main() -> None:
@@ -328,7 +330,14 @@ def main() -> None:
             time.sleep(POLL_S)
         time.sleep(1.5)
         rec.send_signal(signal.SIGINT)
-        rec.wait(60)
+        try:
+            rec.wait(60)
+        except subprocess.TimeoutExpired:  # never let a recorder outlive its replay (2026-10-24: three orphans overnight)
+            rec.terminate()
+            try:
+                rec.wait(20)
+            except subprocess.TimeoutExpired:
+                rec.kill()
         mp4 = mkv.with_suffix(".mp4")
         if not mkv.exists():  # recorder died mid-replay: skip this game (its entry crop goes, so a later run retries it)
             (out_dir / f"replay_{i:02d}_entry.png").unlink(missing_ok=True)

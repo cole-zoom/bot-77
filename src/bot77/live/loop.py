@@ -5,6 +5,7 @@ keyed by the usual pipeline, so the bot's games become training data."""
 from __future__ import annotations
 
 import json
+import signal
 import time
 from dataclasses import asdict
 from pathlib import Path
@@ -164,7 +165,10 @@ class Runner:
             rec = subprocess.Popen(["scrcpy", "-s", self.dev.s, "--no-window", "--no-audio", "--no-control", "--max-fps", "30",
                                     "--video-bit-rate", "8M", f"--record={GAMES_DIR / gid / 'game.mkv'}"],
                                    env={**os.environ, "ADB": ADB}, stdout=subprocess.DEVNULL,
-                                   stderr=open(GAMES_DIR / gid / "scrcpy.log", "w"))
+                                   stderr=open(GAMES_DIR / gid / "scrcpy.log", "w"),
+                                   # under nohup / `&` SIGINT is ignored and children inherit that: restore it, or the
+                                   # recorder never stops (2026-10-24)
+                                   preexec_fn=lambda: signal.signal(signal.SIGINT, signal.SIG_DFL))
         reader = LiveReader(self.layout, self.cards, self.detector)
         if len(self.known_deck) == 8:  # our deck from earlier games: read only those 8 cards from the first frame
             reader.deck, reader.reader = list(self.known_deck), reader.full.restrict(set(self.known_deck))  # (~1 s -> ~0.1 s)
