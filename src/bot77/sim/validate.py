@@ -184,7 +184,7 @@ def _towers_at(g: Game, t_match: float) -> dict | None:
     return g.towers[i][1] if i >= 0 else None
 
 
-def run_window(g: Game, w: dict, towers: str = "engine", wake_kings: bool = True) -> dict:
+def run_window(g: Game, w: dict, towers: str = "liquipedia_l11", wake_kings: bool = True) -> dict:
     """Play the window in the sim. -> {'frames': [(dt, sim units, replay units)], 'plays': [PlayResult], 'sim'}.
     Sim tick = (video t - offset) x 10; a replay frame is compared with the sim at its nearest tick."""
     sim = Sim.new(g.decks["bottom"], g.decks["top"], towers=towers)

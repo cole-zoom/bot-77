@@ -22,7 +22,9 @@ MAX_TICKS = 3000  # 3:00 regulation + 2:00 overtime
 TEAM_NAME = {OWN_TEAM: "own", OPP_TEAM: "opp"}
 TOWER_SLOTS = {"king": 0, "l": 1, "r": 2}  # board coordinates for both teams (left = our left)
 # Tower stats (max hp, damage per shot, cooldown ticks) for (king, princess). The engine's cards are level 11 (Knight
-# 1766 hp / 202 = RoyaleAPI cr-api-data level 11); its default towers are level 9. Candidates, chosen in S2 by fit:
+# 1766 hp / 202 = RoyaleAPI cr-api-data level 11); its default towers are level 9. Chosen 2026-10-24: liquipedia_l11.
+# Measured on replays (tower HP OCR): a lone Giant / Knight / Royal Ghost hit takes 0.0832 / 0.0665 / 0.0867 of a
+# princess tower; engine damage / 3052 gives 0.0829 / 0.0662 / 0.0855, / 3584 gives 0.071 / 0.056 / 0.073.
 TOWER_PRESETS = {
     "engine": None,  # King 4008 / 90 / 1.0 s, Princess 2534 / 90 / 0.8 s
     # RoyaleAPI cr-api-data (game-file extract) at the cards' level: KingTower / PrincessTower + their projectiles
@@ -86,7 +88,7 @@ class Sim:
 
     @classmethod
     def new(cls, own_deck: list[int], opp_deck: list[int], own_tower: str = "queen-tower",
-            opp_tower: str = "queen-tower", max_ticks: int = MAX_TICKS, towers: str = "engine") -> "Sim":
+            opp_tower: str = "queen-tower", max_ticks: int = MAX_TICKS, towers: str = "liquipedia_l11") -> "Sim":
         """`towers`: a TOWER_PRESETS name, applied to both sides' King and (default) princess towers after reset."""
         env = cre.ClashRoyaleEnv(legal_deck(fill_deck(own_deck)), legal_deck(fill_deck(opp_deck)), max_ticks,
                                  sc.TOWER_TROOPS[own_tower], sc.TOWER_TROOPS[opp_tower])
@@ -99,7 +101,7 @@ class Sim:
     def reset(self) -> None:
         """Start the match (and level the towers per the preset)."""
         self.env.reset()
-        preset = TOWER_PRESETS[getattr(self, "towers_preset", "engine")]
+        preset = TOWER_PRESETS[getattr(self, "towers_preset", "liquipedia_l11")]
         if preset:
             for tm in (OWN_TEAM, OPP_TEAM):
                 self.env.set_tower_stats(tm, 0, *preset[0])
@@ -109,7 +111,7 @@ class Sim:
 
     def snapshot(self) -> "Sim":
         s = Sim(self.env.snapshot(), list(self.log))
-        s.towers_preset, s.troops = getattr(self, "towers_preset", "engine"), getattr(self, "troops", None)
+        s.towers_preset, s.troops = getattr(self, "towers_preset", "liquipedia_l11"), getattr(self, "troops", None)
         return s
 
     # --- clock, elixir, hand ---

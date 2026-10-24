@@ -30,18 +30,23 @@ from PIL import Image
 
 from bot77.sim import store
 
+REREAD_S = 5.0  # read a bar again at least this often, even if it looks unchanged (a misread must not stick)
 KING_PER_PRINCESS = 6144 / 3584  # cr-api-data KingTower / PrincessTower hitpoints, every level
 BARS = {"tower-bar": "princess", "dagger-duchess-tower-bar": "princess", "king-tower-bar": "king"}
 TEAM = {"friendly": "own", "enemy": "opp"}
 
 
+LOOKALIKE = str.maketrans({"O": "0", "o": "0", "I": "1", "l": "1", "|": "1", "!": "1", "S": "5", "g": "9", "Z": "2"})
+
+
 def read_number(img) -> tuple[int | None, str]:
-    """The HP on a bar crop: the longest 3-5 digit group (the 1-2 digit level badge is skipped)."""
+    """The HP on a bar crop: the rightmost 3-5 digit group, look-alike letters read as digits (I512 = 1512). The level
+    badge (1-2 digits, sometimes read together with the crown icon as "121") is left of the number."""
     c = cv2.resize(img, None, fx=3, fy=3, interpolation=cv2.INTER_CUBIC)
     res = ocrmac.OCR(Image.fromarray(cv2.cvtColor(c, cv2.COLOR_BGR2RGB)), recognition_level="accurate").recognize()
     text = " ".join(r[0] for r in res)
-    groups = [g for g in re.findall(r"\d+", text.replace("O", "0").replace("o", "0")) if 3 <= len(g) <= 5]
-    return (int(max(groups, key=len)) if groups else None), text
+    groups = [g for g in re.findall(r"\d+", text.translate(LOOKALIKE)) if 3 <= len(g) <= 5]
+    return (int(groups[-1]) if groups else None), text  # the rightmost: the level badge sits left of the number
 
 
 def signature(img) -> np.ndarray:
@@ -89,6 +94,7 @@ def process(match: dict, video: dict, step: float) -> list[dict]:
     width, height = int(video["width"]), int(video["height"])
     last_sig: dict[str, np.ndarray] = {}
     last_read: dict[str, tuple] = {}
+    last_ocr_t: dict[str, float] = {}
     raw = []
     for t, frame in frames_1fps(video["path"], width, height, step):
         if t < ts[0] - 1 or t > ts[-1] + 1 or (match.get("t_end") and t > match["t_end"] - 1.0):
@@ -106,46 +112,51 @@ def process(match: dict, video: dict, step: float) -> list[dict]:
             if crop.size == 0:
                 continue
             sig = signature(crop)
-            if name in last_sig and np.abs(sig - last_sig[name]).mean() < 4.0:
-                hp, text = last_read[name]  # unchanged bar: same reading
-            else:
+            fresh = not (name in last_sig and np.abs(sig - last_sig[name]).mean() < 4.0
+                         and t - last_ocr_t[name] < REREAD_S)
+            if fresh:
                 hp, text = read_number(crop)
-                last_sig[name], last_read[name] = sig, (hp, text)
-            raw.append({"t": t, "tower": name, "hp_raw": hp, "raw": text})
+                last_sig[name], last_read[name], last_ocr_t[name] = sig, (hp, text), t
+            else:
+                hp, text = last_read[name]  # unchanged bar: same reading
+            raw.append({"t": t, "tower": name, "hp_raw": hp, "raw": text, "fresh": fresh})
     return clean(match["match_id"], raw)
 
 
 def clean(match_id: str, raw: list[dict]) -> list[dict]:
-    """Accept a reading when it is <= the last accepted one and the tower's next reading is <= it: a dropped digit
-    (480 for 4802) is followed by a higher read, a junk number is above the last accepted value. Under steady fire the
-    number changes every read, so two equal reads in a row can't be required."""
-    rows, accepted, maxes = [], {}, {}
+    """Accept a fresh reading when it is <= the last accepted one and the tower's next fresh reading (within 10 s) is
+    <= it: a dropped digit (480 for 4802) is followed by a higher read, a junk number is above the last accepted value.
+    A cached reading (unchanged bar) shares its fresh reading's verdict. Each side has its own max (the commonest
+    princess reading of that side in the first 30 s): the two players' towers can be different levels."""
+    rows = []
     by_tower: dict[str, list[dict]] = {}
     for r in sorted(raw, key=lambda r: r["t"]):
         by_tower.setdefault(r["tower"], []).append(r)
-    # the princess max: the commonest princess reading in the first 30 s (towers start full); caps every reading
     t_first = min((r["t"] for r in raw), default=0.0)
-    early = [r["hp_raw"] for r in raw if r["hp_raw"] and not r["tower"].endswith("king") and r["t"] < t_first + 30]
-    cap = Counter(early).most_common(1)[0][0] if early else 10**6
-    for name in by_tower:
-        if not name.endswith("king"):
-            accepted[name] = cap
-            maxes[name] = cap
+    caps = {}
+    for side in ("own", "opp"):
+        early = [r["hp_raw"] for r in raw if r["hp_raw"] and r["tower"].startswith(side)
+                 and not r["tower"].endswith("king") and r["t"] < t_first + 30]
+        caps[side] = Counter(early).most_common(1)[0][0] if early else None
     for name, rs in by_tower.items():
+        side = name[:3]
+        cap = caps[side]
+        mx = (cap * KING_PER_PRINCESS if name.endswith("king") else cap) if cap else None
+        accepted = cap if (cap and not name.endswith("king")) else None
+        verdict = False
         for i, r in enumerate(rs):
             hp = r["hp_raw"]
-            nxt = next((q["hp_raw"] for q in rs[i + 1:] if q["hp_raw"] is not None), None)
-            ceiling = accepted.get(name, cap * KING_PER_PRINCESS + 1)
-            ok = hp is not None and hp <= ceiling and (nxt is None or nxt <= hp)
+            if r.get("fresh", True):
+                nxt = next((q["hp_raw"] for q in rs[i + 1:] if q.get("fresh", True) and q["hp_raw"] is not None
+                            and q["t"] - r["t"] <= 10.0), None)
+                ceiling = accepted if accepted is not None else (mx + 1 if mx else 10**6)
+                verdict = hp is not None and hp <= ceiling and (nxt is None or nxt <= hp)
+            ok = verdict and hp is not None and hp <= (accepted if accepted is not None else 10**6)
             if ok:
-                accepted[name] = hp
-            rows.append({"match_id": match_id, "t": r["t"], "tower": name, "hp": accepted.get(name), "raw": r["raw"],
-                         "accepted": ok})
-    pmax = max(maxes.values()) if maxes else None
-    for r in rows:
-        mx = (pmax * KING_PER_PRINCESS) if r["tower"].endswith("king") and pmax else maxes.get(r["tower"], pmax)
-        r["max_hp"] = float(mx) if mx else None
-        r["frac"] = (r["hp"] / mx) if (mx and r["hp"] is not None) else None
+                accepted = hp
+            rows.append({"match_id": match_id, "t": r["t"], "tower": name, "hp": accepted, "raw": r["raw"],
+                         "accepted": ok, "max_hp": float(mx) if mx else None,
+                         "frac": (accepted / mx) if (mx and accepted is not None) else None})
     return sorted(rows, key=lambda r: (r["t"], r["tower"]))
 
 
