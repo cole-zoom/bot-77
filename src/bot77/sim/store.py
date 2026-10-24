@@ -46,3 +46,12 @@ def read(table: str, where: str | None = None, limit: int = 10**8) -> list[dict]
     if where:
         q = q.where(where)
     return q.limit(limit).to_arrow().to_pylist()
+
+
+def tower_fracs(match_id: str, t: float) -> dict[str, float]:
+    """tower_hp fractions at video time t: the last accepted reading per tower (bottom-frame names)."""
+    last = {}
+    for r in sorted(read("tower_hp", f"match_id = '{match_id}' AND accepted = true AND t <= {t}"), key=lambda r: r["t"]):
+        if r["frac"] is not None:
+            last[r["tower"]] = r["frac"]
+    return last

@@ -162,3 +162,29 @@ def search(moment_id: str, model: WinModel, tower_hp: dict | None = None, timing
     notes = {**scen.notes, "opponent_plays": len(opp), "opponent_plays_without_spot": missing,
              "candidates": len(cands) + len(fine), "y_scale": Y_SCALE}
     return SearchResult(moment_id, p0, cands + fine + (extra or []), notes)
+
+
+def trace(moment_id: str, cand: Candidate, tower_hp: dict | None = None, at=(0.0, 2.0, 4.0, 7.0, 10.0)) -> list[dict]:
+    """Replay one candidate like `rollout`, one tick at a time, and keep the board at the times in `at` (seconds after
+    the moment): [{'dt', 'units', 'towers', 'elixir'}], for drawing what the sim thinks happens."""
+    scen = scenario_from_moment(moment_id, tower_hp=tower_hp)
+    sim, m = scen.sim, scen.moment
+    t0 = sim.t
+    queue, _ = opponent_plays(m["game_id"], m["side"], m["t_match"], HORIZON_S)
+    if cand.card is not None and cand.card not in sim.hand("own"):
+        cand.card = next((h for h in sim.hand("own") if sc.our_name(h) == sc.our_name(cand.card)), cand.card)
+    played, out, marks = cand.card is None, [], list(at)
+    while marks and sim.t <= t0 + HORIZON_S + 1e-6:
+        if sim.t >= t0 + marks[0] - 1e-6:
+            out.append({"dt": marks.pop(0), "units": [u for u in sim.units() if not u["tower"]],
+                        "towers": sim.towers(), "elixir": (sim.elixir("own"), sim.elixir("opp"))})
+            continue
+        if not played and sim.t >= t0 + cand.delay - 1e-6:
+            sim.play(cand.card, cand.x, cand.y, "own")
+            played = True
+        elif queue and sim.t >= queue[0]["t_match"] - 1e-6:
+            p = queue.pop(0)
+            sim.play(p["card"], p["x"], p["y"], "opp")
+        else:
+            sim.step(1)
+    return out

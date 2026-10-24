@@ -33,23 +33,13 @@ TIMING = re.compile(r"\b(earlier|later|ago|too late|too early|wait until|when (t
                     re.I)
 
 
-def tower_fracs(match_id: str, t: float) -> dict:
-    """tower_hp fractions at video time t (bottom frame names = the bottom player's own frame)."""
-    last = {}
-    for r in sorted(store.read("tower_hp", f"match_id = '{match_id}' AND accepted = true AND t <= {t}"),
-                    key=lambda r: r["t"]):
-        if r["frac"] is not None:
-            last[r["tower"]] = r["frac"]
-    return last
-
-
 def name(card) -> str:
     return "wait" if card is None else sc.our_name(card)
 
 
 def run_one(moment_id: str, model: WinModel, actual: tuple[str, float, float] | None) -> tuple:
     m = store.read("moments", f"moment_id = '{moment_id}'")[0]
-    tw = tower_fracs(m["match_id"], m["t"]) if m["side"] == "bottom" else None
+    tw = store.tower_fracs(m["match_id"], m["t"]) if m["side"] == "bottom" else None
     extra = []
     if actual:
         card, x, y = actual
