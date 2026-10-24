@@ -4,6 +4,7 @@ version = "0.1.0"
 description = "Add your description here"
 requires-python = ">=3.12"
 dependencies = [
+    "clash-royale-env",
     "fastapi>=0.156.4",
     "lancedb>=0.39.0",
     "numpy>=2.5.3",
@@ -29,5 +30,12 @@ build-backend = "uv_build"
 
 [dependency-groups]
 dev = [
+    "cmake>=4.4.4",
+    "ninja>=1.13.2",
     "pytest>=9.1.1",
 ]
+
+# The simulator engine (docs/simulator.md): the ClashRoyaleEnv fork, a git
+# submodule, built from source by scikit-build-core on `uv sync`.
+[tool.uv.sources]
+clash-royale-env = { path = "third_party/clash-royale-env" }

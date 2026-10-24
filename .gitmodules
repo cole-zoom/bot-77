@@ -1,0 +1,3 @@
+[submodule "third_party/clash-royale-env"]
+	path = third_party/clash-royale-env
+	url = https://github.com/cole-zoom/clash-royale-env.git

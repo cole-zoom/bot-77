@@ -2488,3 +2488,27 @@ Plan: docs/training-architecture.md; progress: ROADMAP.md. Bot sessions paused u
   simulator search's gate (S3) is set at ≥ 65% verdict agreement (ceiling ~70%) + Cole's fix in the top 2 on half his
   mistakes. Cole: exact placement and timing is the goal; S2 measures and flags but doesn't gate.
 - Correction: one blind flip (`015212:4`, missed Arrows) was Cole not seeing the miss on the frame; corrected. Self-agreement 15 of 20 (75%); gate stays 65%.
+
+## 2026-10-23 · Simulator S0: the ClashRoyaleEnv fork builds on the Mac (gate passed)
+Plan: docs/simulator.md. Forked itzik123/ClashRoyaleAi (MIT) as github.com/cole-zoom/clash-royale-env, submodule
+`third_party/clash-royale-env`; credited in README.md and docs/references.bib. Took ~1 hour of the half-day box.
+- **Build:** no source changes were needed for Apple clang 21 / Python 3.12 arm64. Added a scikit-build-core
+  `pyproject.toml` in the fork and made the `.pyd` copy Windows-only; our pyproject depends on it as a path source, so
+  `uv sync` builds it (~10 s) and `uv run python -c "import clash_royale_env"` works. cmake 4.4 + ninja 1.13 are dev
+  dependencies (for building the Catch2 suite by hand into `build/sim`).
+- **One portability bug, fixed in the fork with a test:** `getAllCardIds()` iterated an `unordered_map`, whose order
+  differs between MSVC and libc++; the Python probes take the first 8 ids as a deck, which on the Mac put a Hero in
+  slot 0, so the whole Python suite failed at conftest. Now sorted (`tests/core/test_card_order.cpp`). Seeded random
+  decks can still differ across platforms (`<random>` distributions aren't specified bit-for-bit); we don't use them.
+- **Tests:** Catch2 **735 passed + 1 expected fail of 736** (the fork's pinned wedge-collision defect,
+  `test_navigation_wedge.cpp`). Python (`python_ai/tests`, run with gymnasium / tensorboard overlaid, not added to our
+  deps): **1,007 passed, 2 failed, 3 skipped** (99.8%). The 2 failures are bit-equality checks in their PPO network's
+  row compaction under torch 2.14 / ARM; training code we don't use.
+- **Speed** (`scripts/sim_bench.py`, 20 seeded random-play matches, session 2 deck both sides, one core of the M5):
+  median **2.3 ms per match** (max 3.4 ms; 1,398 ticks median, Python driving every tick), 1.8 µs per tick;
+  `snapshot()` mid-match median **2.4 µs** (max 14 µs); a 10 s rollout from a fork in one call 0.03 ms. Faster than the
+  fork's own figures (~5 µs / tick, 10 ms / match on an i5 laptop).
+- **Gate:** imports under 3.12 ✅; ≥ 95% of tests pass ✅ (Catch2 100% excluding the expected fail, Python 99.8%);
+  match < 50 ms ✅. Search budget: 8 cards × 600 spots × 100 ticks ≈ 0.5 M ticks ≈ 1 s per moment at this speed.
+- Noticed for S1: `inject()` takes `hp` and `deploy_ticks`, so unit HP can be set at injection (the plan assumed
+  full HP only).

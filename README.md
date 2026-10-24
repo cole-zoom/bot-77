@@ -11,7 +11,9 @@ A Clash Royale AI built from gameplay footage, in three steps:
 - **B — the bot.** Plays in BlueStacks using A, and records every game so its own games become training data.
 
 Every decision, measurement and review is logged in [decisions.md](decisions.md). Related work: KataCR (Wu et al. 2025,
-arXiv:2504.04783) — the unit detector and spell classifier build on its approach.
+arXiv:2504.04783) — the unit detector and spell classifier build on its approach. The simulator
+([docs/simulator.md](docs/simulator.md)) runs the battle engine of ClashRoyaleEnv (itzik123, MIT), forked as the
+submodule `third_party/clash-royale-env` (engine only: none of its perception or game-control code).
 
 > **Account warning.** An automated player breaks Supercell's terms of service; accounts that run bots can be banned.
 > Run the bot only on a throwaway account, never your main one.
@@ -21,7 +23,8 @@ arXiv:2504.04783) — the unit detector and spell classifier build on its approa
 ## Setup
 
 ```bash
-uv sync                                   # Python env (Python 3.12, uv)
+git submodule update --init               # the simulator engine (third_party/clash-royale-env)
+uv sync                                   # Python env (Python 3.12, uv); builds the engine (C++, ~10 s)
 brew install scrcpy                       # records the Android screen
 ```
 
