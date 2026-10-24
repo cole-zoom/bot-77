@@ -39,3 +39,6 @@ dev = [
 # submodule, built from source by scikit-build-core on `uv sync`.
 [tool.uv.sources]
 clash-royale-env = { path = "third_party/clash-royale-env" }
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]  # not the engine submodule's own suites (third_party/clash-royale-env)

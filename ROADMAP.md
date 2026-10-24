@@ -125,7 +125,9 @@ a browser view, training. LanceDB is the data layer (`tower_hp`, `sim_validation
 `labels` source `sim_search`).
 - [x] S0 — fork builds on the Mac (2026-10-23): `uv sync` builds it; Catch2 735 + 1 expected fail / 736, Python
       1,007 / 1,012 (2 PPO-only failures); 2.3 ms per match, `snapshot()` 2.4 µs. One portability fix in the fork.
-- [ ] S1 — adapter `bot77.sim` (coordinates, cards, teams, state from a moment).
+- [x] S1 — adapter `bot77.sim` (2026-10-23): our y is foreshortened (0.73 of our units per engine row, measured);
+      all cards but Minion Giant map; `scenario_from_moment`; 7 tests. Found: the engine's 3x elixir starts at 3:00,
+      our replays' at 4:00.
 - [ ] S2 — check against the replays (measures, flags; `tower_hp`, `sim_validation`).
 - [ ] S3 — search + the go / no-go gate on Cole's reviews.
 

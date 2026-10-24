@@ -2512,3 +2512,32 @@ Plan: docs/simulator.md. Forked itzik123/ClashRoyaleAi (MIT) as github.com/cole-
   match < 50 ms ✅. Search budget: 8 cards × 600 spots × 100 ticks ≈ 0.5 M ticks ≈ 1 s per moment at this speed.
 - Noticed for S1: `inject()` takes `hp` and `deploy_ticks`, so unit HP can be set at injection (the plan assumed
   full HP only).
+
+## 2026-10-23 · Simulator S1: adapter `bot77.sim`
+`src/bot77/sim/` (geometry, cards, engine, scenario); nothing else imports the engine. ~2 h of the 1-day estimate.
+- **Coordinates, measured from our detections (v5l_e15):** x maps 1:1 with the engine's half-cell offset (princess
+  towers 3.45 / 14.50 in ours, both teams, vs 3.0 / 14.0: same 11-tile spread, no perspective in x). **Our y is
+  foreshortened:** 0.7305 of our units per engine row, from the princess towers (box centres 5.94 / 21.28, 21 rows
+  apart), through the river (ours 14.9 = engine 16.5). Checks: that puts both princess boxes 1.29 above their tower
+  centre (FEET_DY for units is 1.27); Giant / Golem / Knight / Valkyrie / Mini P.E.K.K.A walk 0.73-0.74 of our units
+  per engine tile with no trend between y 8 and 18; units cross the river at x 3.7 / 14.2 (the engine's bridges span
+  [2, 4] / [14, 16] in ours). **Known misfit:** the king towers imply 0.76 (~0.45 units off behind each king);
+  S2 refines the map on unit tracks.
+- **Teams:** the bottom / deciding player is engine team 0, in `bot77.sim.geometry` only.
+- **Cards** (`docs/simulator-cards.md`, `scripts/sim_cards.py`): all 127 of ours map by name except **Minion
+  Giant** (211 of 31,389 human-replay plays, 0.7%); the 4 tower troops are the engine's TowerTroopType. Evolutions and
+  Heroes map by the play's `form`; 1,473 plays (4.7%) use a form the engine lacks (Hero Valkyrie, Hero Bowler, Hero Ice
+  Wizard, ... Evo Elite Barbarians, Evo Electro Giant) and fall back to the plain card.
+- **Engine changes (fork, no gameplay change):** `get_units()` read-only entity view + test. Nothing else needed:
+  plays go through the engine's own playCard (`Sim.play(force=True)` puts the card in hand, tops up elixir, moves an
+  illegal spot to the nearest legal one within 2 tiles, and records each), `snapshot()` forks.
+- **`scenario_from_moment`** (~10 ms): clock, our hand and elixir, both decks (matches.deck + forms seen), towers
+  standing, tower troops seen, units (box -> feet; squads clustered within 2.5 tiles, one card per cluster, so a
+  half-dead squad comes back whole), opponent elixir from their last play + real regeneration (2.8 s / elixir).
+  Not carried over: unit HP (full; `inject` can take HP once we have it), what units were doing, units still deploying,
+  spells on the board, queue order past `next`, king wake-up from damage. Tower HP waits for S2's `tower_hp`.
+- **Found for S2:** our replays' elixir multiplier is 2x from 2:00 to **4:00** and 3x after; the engine goes 3x at
+  3:00. And the engine's elixir runs 2.857 s / elixir vs the real 2.8.
+- Tests: `tests/test_sim.py` (7): coordinate round trip and fixed points, card map, a Giant from our bridge stops at
+  box y 8.19 (real 7.97) and hits the tower ~10 s after (real walking speed predicts ~9.5 s), Arrows kill a Skeletons
+  group, forced plays, snapshot independence, a scenario from a moment. pytest now only collects `tests/`.
