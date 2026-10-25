@@ -6,7 +6,7 @@ Data: data/cache/bc/shards (scripts/build_bc_dataset.py): one trajectory per pla
 second. The network is the fork's MicroRoyaleNet (python_ai, MIT), the same one the reinforcement learning trains, so
 the result can be its starting point. Training follows the fork's behaviour cloning (python_ai/trainers/bc_pretrain.py)
 with: rows whose card or cell is unknown left out of that loss, the winner's rows weighted WIN_WEIGHT (Cole: weight
-winners up; results from matches.result), and batched truncated BPTT through `forward_sequence` (random windows of
+winners up; results from matches.result), play rows weighted PLAY_WEIGHT in the card loss, and batched truncated BPTT through `forward_sequence` (random windows of
 WINDOW steps, the first BURN_IN only warming the LSTM). Held-back games are only scored.
 
 Scores (held-back): card at plays (which of the 4 hand cards, given a play happened; A v3 got ~51%), play-vs-wait AUC,
@@ -31,6 +31,7 @@ from python_ai.models.net import MicroRoyaleNet  # noqa: E402
 
 SHARDS = Path("data/cache/bc/shards")
 WIN_WEIGHT = 2.0
+PLAY_WEIGHT = 5.0  # ~90% of decisions are waits: without this the card head barely learns WHICH card (v1: 32%)
 WINDOW, BURN_IN, BATCH = 64, 16, 16
 BOARD_W = 18
 
@@ -90,7 +91,8 @@ def sequence_loss(net, obs, card, cell, valid, w, burn_in=0):
     rows = valid & t_ok & (card >= 0)
     rows = rows & torch.isfinite(cl.gather(2, card_in.unsqueeze(2)).squeeze(2))  # a mask-illegal target: dropped
     ce_card = F.cross_entropy(cl[rows], card[rows], reduction="none")
-    l_card = (ce_card * w[rows]).sum() / w[rows].sum().clamp_min(1e-8)
+    wc = w[rows] * torch.where(card[rows] < net.hand_size, PLAY_WEIGHT, 1.0)
+    l_card = (ce_card * wc).sum() / wc.sum().clamp_min(1e-8)
     prow = rows & (card < net.hand_size) & (cell >= 0)
     cell_in = cell.clamp_min(0)
     prow = prow & torch.isfinite(pl.gather(2, cell_in.unsqueeze(2)).squeeze(2))
@@ -144,6 +146,7 @@ def main():
     ap.add_argument("--lr", type=float, default=3e-4)
     ap.add_argument("--out", default="data/models/bc_v1")
     ap.add_argument("--eval-eps", type=int, default=0)
+    ap.add_argument("--init", default=None, help="continue from this checkpoint (model_weights.pth)")
     a = ap.parse_args()
     torch.manual_seed(77)
     rng = np.random.default_rng(77)
@@ -155,6 +158,9 @@ def main():
           f"({sum(e['n'] for e in held)}); winners weighted {WIN_WEIGHT} "
           f"({sum(e['result'] == 'win' for e in train)} of {len(train)} train episodes are winners)", flush=True)
     net = MicroRoyaleNet().to(device)
+    if a.init:
+        net.load_state_dict(torch.load(a.init, map_location=device, weights_only=False)["model"])
+        print(f"continuing from {a.init}", flush=True)
     opt = torch.optim.Adam(net.parameters(), lr=a.lr)
     out = Path(a.out)
     out.mkdir(parents=True, exist_ok=True)
