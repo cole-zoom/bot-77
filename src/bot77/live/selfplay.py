@@ -20,9 +20,10 @@ from bot77.features.frames import FEET_DY
 from bot77.live.policy import Action
 from bot77.live.state import LiveState
 from bot77.sim import cards as sc
-from bot77.sim.engine import Sim
+from bot77.sim.engine import Sim  # noqa: F401  (type)
 from bot77.sim.geometry import engine_to_ours
-from bot77.sim.scenario import REAL_ELIXIR_S, place_units, real_multiplier
+from bot77.sim.mirror import mirror
+from bot77.sim.scenario import REAL_ELIXIR_S, real_multiplier
 
 FORK = Path(__file__).resolve().parents[3] / "third_party" / "clash-royale-env"
 DECK = ["Giant", "Mini P.E.K.K.A", "Musketeer", "Goblin Hut", "Fireball", "Arrows", "Skeletons", "Minions"]
@@ -54,29 +55,21 @@ class SelfPlayPolicy:
         pass
 
     def _mirror(self, st: LiveState, opp_plays: list[dict]) -> Sim | None:
+        """The screen read -> an engine, through bot77.sim.mirror (the same function the imitation data was built
+        with). The live bot doesn't read tower HP (towers count as full, except one missing from the detections)
+        or the opponent's elixir (estimated)."""
         hand = [sc.engine_id(self.cards[c]["name"]) if c in self.cards else None for c in st.hand]
         if None in hand or st.elixir is None or st.elapsed_s is None:
             return None
-        opp_deck = [e for e in (sc.engine_id(p["card"]) for p in opp_plays) if e is not None]
-        sim = Sim.new(self.deck, opp_deck or [sc.engine_id("Knight")])
-        sim.reset()
-        sim.set_clock(float(st.elapsed_s))
-        if not sim.set_hand("own", hand):
-            return None
-        sim.set_elixir("own", st.elixir)
+        opp_deck = list(dict.fromkeys(e for e in (sc.engine_id(p["card"]) for p in opp_plays) if e is not None))
         spent = sum(sc.cost(e) for e in (sc.engine_id(p["card"]) for p in opp_plays) if e is not None)
         regen = sum(real_multiplier(t) for t in range(int(st.elapsed_s))) / REAL_ELIXIR_S
-        sim.set_elixir("opp", float(np.clip(5.0 + regen - spent, 0.0, 10.0)))
         units = [{"card": u.card, "cls": u.cls, "team": "own" if u.team == "friendly" else "opp", "x": u.x,
                   "y": u.y + FEET_DY} for u in st.units
                  if u.card and u.team in ("friendly", "enemy") and "tower" not in u.cls and "bar" not in u.cls]
-        place_units(sim, units)
-        for p in opp_plays:  # the opponent's card cycle (observation's seen / recency blocks)
-            e = sc.engine_id(p["card"])
-            if e is not None:
-                sim.env.note_played_card(1, e)
-        sim.step(1)  # commit the injected units
-        return sim
+        opp_played = [e for e in (sc.engine_id(p["card"]) for p in opp_plays) if e is not None]
+        return mirror(self.deck, opp_deck[:8], float(st.elapsed_s), hand, st.elixir, 5.0 + regen - spent, units,
+                      None, opp_played)
 
     def decide(self, st: LiveState, opp_plays: list[dict]) -> Action | None:
         if st.t - self.last_t < DECISION_S:
