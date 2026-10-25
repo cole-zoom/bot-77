@@ -165,7 +165,7 @@ def main():
     out = Path(a.out)
     out.mkdir(parents=True, exist_ok=True)
     print("held-back before training:", evaluate(net, held, device, a.eval_eps), flush=True)
-    history = []
+    history, best = [], -1e9
     for epoch in range(a.epochs):
         t0 = time.time()
         steps = a.steps_per_epoch or max(1, len(train) // BATCH)
@@ -184,7 +184,13 @@ def main():
         history.append({"epoch": epoch, "card_loss": lc / steps, "cell_loss": lp / steps, **ev})
         print(f"epoch {epoch}: card loss {lc / steps:.3f}, cell loss {lp / steps:.3f}, held-back {ev} "
               f"({time.time() - t0:.0f} s)", flush=True)
-        torch.save({"model": net.state_dict(), "bc_epoch": epoch, "bc_history": history}, out / "model_weights.pth")
+        torch.save({"model": net.state_dict(), "bc_epoch": epoch, "bc_history": history}, out / "last.pth")
+        # the best held-back checkpoint (card at plays + play/wait AUC - cell distance / 20): placement over-fits
+        # after ~70 epochs (v3: train cell loss falling, held-back distance rising)
+        score = ev["card_at_plays"] + (ev["play_vs_wait_auc"] or 0) - (ev["cell_dist_median_tiles"] or 20) / 20
+        if epoch == 0 or score > best:
+            best = score
+            torch.save({"model": net.state_dict(), "bc_epoch": epoch, "bc_history": history}, out / "model_weights.pth")
     (out / "history.json").write_text(json.dumps(history, indent=1))
     print(f"saved {out / 'model_weights.pth'}")
 
