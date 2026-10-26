@@ -2633,3 +2633,8 @@ Full write-up: docs/simulator-validation.md. Held-back only (48 games, 346 windo
     white by who won); 102 / 102 past end screens with known results right.
   - Two scrcpy recorders from the stuck run were still recording an hour later (killed).
 - Next: confirm `--stream` gets one decision a second, then step 2 (RL from bc_v2 against pro clones).
+- **`--stream` check (2 games, 01:02-01:09):** one decision every 1.3 s (median; 90th percentile 1.5 s) instead of
+  ~4.5 s; p(wait) 0.70 on average; 25 plays a game (the screenshot games: 3-25). 1 W / 1 L. Stream lag from a tap to
+  the change on the stream: 0.14 s. Its speed exposed a navigation race (home seen mid-animation, Battle tapped onto
+  the arena, which opened the trophy road): Battle is now tapped once home has held for 1 s, and a game that never
+  starts is given up after 45 s. Trophies 600 -> 630 over the 20 test games + 2.
