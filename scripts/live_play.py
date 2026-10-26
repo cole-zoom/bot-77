@@ -21,10 +21,17 @@ ap.add_argument("--device", default="127.0.0.1:5555"); ap.add_argument("--layout
 ap.add_argument("--games", type=int, default=1); ap.add_argument("--hours", type=float, default=1.0)
 from bot77.models import adopted_path  # the registry's adopted live detector (phase 5)
 ap.add_argument("--weights", default=adopted_path("detector_live", "data/models/bot77_detector/v6l/best.pt"))
+ap.add_argument("--policy", default="rules", choices=["rules", "selfplay"],
+                help="rules: Policy (playbook rules + A); selfplay: a network checkpoint (bot77.live.selfplay)")
+ap.add_argument("--ckpt", default=None, help="--policy selfplay: the checkpoint")
 a = ap.parse_args()
 STOP_FILE.parent.mkdir(parents=True, exist_ok=True)
 STOP_FILE.unlink(missing_ok=True)
 print(ui.banner(a.device, a.layout, getattr(a, "games", 0) or 999, a.hours), flush=True)
 cards = lancedb.connect("data/lancedb").open_table("cards").search().where("kind = 'deck_card'").limit(1000).to_arrow().to_pylist()
+factory = None
+if a.policy == "selfplay":
+    from bot77.live.selfplay import SelfPlayPolicy
+    factory = lambda: SelfPlayPolicy(cards, a.ckpt)  # noqa: E731
 Runner(Device(a.device), Layout.load(a.layout), cards, Bot77Detector(Path(a.weights)), max_games=a.games,
-       max_hours=a.hours).run()
+       max_hours=a.hours, policy_factory=factory).run()
