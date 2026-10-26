@@ -2637,4 +2637,4 @@ Full write-up: docs/simulator-validation.md. Held-back only (48 games, 346 windo
   ~4.5 s; p(wait) 0.70 on average; 25 plays a game (the screenshot games: 3-25). 1 W / 1 L. Stream lag from a tap to
   the change on the stream: 0.14 s. Its speed exposed a navigation race (home seen mid-animation, Battle tapped onto
   the arena, which opened the trophy road): Battle is now tapped once home has held for 1 s, and a game that never
-  starts is given up after 45 s. Trophies 600 -> 630 over the 20 test games + 2.
+  starts is given up after 45 s. Trophies 600 -> 630 over the 20 test games (read before the 2 stream games).
