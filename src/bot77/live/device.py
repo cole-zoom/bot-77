@@ -47,6 +47,26 @@ END_OK_WITH_AGAIN = (0.655, 0.906)
 END_AGAIN = (370, 1736)  # the Play Again button in that layout (pixels, 1080x1920; from the end_again template)
 
 
+def _bright(im: np.ndarray) -> np.ndarray:
+    return cv2.inRange(cv2.cvtColor(im, cv2.COLOR_BGR2HSV), (0, 0, 205), (180, 255, 255))
+
+
+_WINNER = cv2.imread(str(LIVE_UI / "end_winner.png")) if (LIVE_UI / "end_winner.png").exists() else None
+WINNER_TPL = _bright(_WINNER) if _WINNER is not None else None
+
+
+def winner_y(im: np.ndarray, min_score: float = 0.4) -> float | None:
+    """Height (fraction of the screen) of "Winner!" on the battle end screen, or None. Matched on its bright letters
+    only: they are yellow, cyan or white depending on who won (2026-10-25; OCR misses the lettering). Checked on 102
+    past end screens with known results: all right, weakest match 0.49."""
+    if WINNER_TPL is None:
+        return None
+    im = cv2.resize(im, (1080, round(im.shape[0] * 1080 / im.shape[1])))
+    r = cv2.matchTemplate(_bright(im[:, 300:780]), WINNER_TPL, cv2.TM_CCOEFF_NORMED)
+    _, score, _, (_, y) = cv2.minMaxLoc(r)
+    return y / im.shape[0] if score >= min_score else None
+
+
 def end_ok_tap(im: np.ndarray) -> tuple[float, float]:
     """Where OK is on the battle end screen: read from the screen if possible, else the Play Again layout's spot."""
     try:

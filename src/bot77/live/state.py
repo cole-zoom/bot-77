@@ -66,7 +66,9 @@ class LiveReader:
     def read(self, frame: np.ndarray, t: float) -> LiveState:
         clock = read_clock(frame, self.layout)
         hand = self.reader.read(frame)
-        stuck = any(v is None or v.state == "unknown" for k, v in hand.items() if k.startswith("slot"))
+        n_unknown = sum(v is None or v.state == "unknown" for k, v in hand.items() if k.startswith("slot"))
+        # with a 7-card deck (one card the reader has no art for, 2026-10-25) one unreadable slot is expected
+        stuck = n_unknown > (1 if len(self.deck) == 7 else 0)
         self.unknown_streak = self.unknown_streak + 1 if stuck else 0
         if self.deck and self.unknown_streak >= 15:  # a slot unreadable for ~15 reads: a card outside the known
             self.deck, self.reader, self.reads = [], self.full, []  # deck (swapped in): relearn from all cards
@@ -75,6 +77,10 @@ class LiveReader:
             self.reads.append(hand)
             deck = infer_deck(self.reads[-60:])
             if len(deck) == 8:
+                self.deck, self.reader = deck, self.full.restrict(set(deck))
+            elif len(deck) == 7 and len(self.reads) >= 30 and not self.deck:
+                # 30 reads (~2 cycles) and only 7 cards: the 8th has no art here. Read against the 7 (the full set
+                # took 1.2 s a read and slowed the agent to a decision every ~4.5 s); the 8th stays unknown
                 self.deck, self.reader = deck, self.full.restrict(set(deck))
         slots = [hand.get(f"slot{k}") for k in range(1, 5)]
         nxt = hand.get("next")
