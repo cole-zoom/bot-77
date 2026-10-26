@@ -2615,3 +2615,21 @@ Full write-up: docs/simulator-validation.md. Held-back only (48 games, 346 windo
    ingest ~5-6 min per replay under load = recording speed: ~10-11 replays an hour on one Mac. **55 TV Royale
    replays** recorded overnight (Ultimate Champion first); being ingested and rebuilt into the tables
    (scripts/after_session_2026-10-24.sh). The ceiling is real-time playback on one emulator (~250 a day at most).
+## 2026-10-26 · Option 3 step 1: the imitation agent in real games (20 games)
+- **Agent:** bc_v2 (scripts/train_bc.py: the fork's MicroRoyaleNet cloned from 966 pro trajectories, 483 games;
+  held-back card at plays 40%, play/wait AUC 0.755, cell 4.1 tiles), driven by bot77.live.selfplay, sampling. Cole's
+  new deck (Giant, Battle Ram, Mini P.E.K.K.A, Archers, Goblin Hut, Fireball, Arrows + one 3-elixir card the hand
+  reader has no art for; never played).
+- **Result: 7 W / 13 L (35%)**, Oct 25 23:37 - Oct 26 01:20. For comparison: self-play agent 50% (20 games) then
+  ~36% (afternoon, 22 games); rules bot 47%. Small samples (+-11) and a different deck, so not a clean comparison.
+- **What the games showed was mostly plumbing:**
+  - The agent decided every ~4.5 s, not every 1 s as it was trained: `adb screencap` takes 3.5-5 s on BlueStacks
+    (raw or PNG alike), and the hand reader took 1.2 s a read (it never learned the 7-known-card deck, so it matched
+    every card). Fixed the reader (read against the 7 known: 0.12 s) and added `--stream` (bot77.live.stream:
+    Android screenrecord H.264 over ADB, ~6 frames/s). When it did decide, it chose to play ~50% of the time: it
+    wasn't holding elixir on purpose.
+  - The new "Play Again + OK" end screen wasn't recognised (stuck 4 min): matched by its buttons now.
+  - Results were logged "?": OCR misses the stylised "Winner!". Matched by its bright lettering now (yellow, cyan or
+    white by who won); 102 / 102 past end screens with known results right.
+  - Two scrcpy recorders from the stuck run were still recording an hour later (killed).
+- Next: confirm `--stream` gets one decision a second, then step 2 (RL from bc_v2 against pro clones).
