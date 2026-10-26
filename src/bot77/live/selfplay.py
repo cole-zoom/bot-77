@@ -26,7 +26,6 @@ from bot77.sim.mirror import mirror
 from bot77.sim.scenario import REAL_ELIXIR_S, real_multiplier
 
 FORK = Path(__file__).resolve().parents[3] / "third_party" / "clash-royale-env"
-DECK = ["Giant", "Mini P.E.K.K.A", "Musketeer", "Goblin Hut", "Fireball", "Arrows", "Skeletons", "Minions"]
 DECISION_S = 1.0
 
 
@@ -41,10 +40,12 @@ class SelfPlayPolicy:
         self.hidden = LSTM_HIDDEN
         self.sample = sample
         self.cards = {c["id"]: c for c in cards}
-        self.deck = [sc.engine_id(n) for n in DECK]
         self.reset()
 
     def reset(self) -> None:
+        # our deck, learned from the cards seen in hand this game (the deck changes between sessions; nothing here
+        # assumes one). Until all 8 are seen, Sim pads it with filler cards that are never in the hand.
+        self.deck: list[int] = []
         self.hx = self.torch.zeros(1, self.hidden)
         self.cx = self.torch.zeros(1, self.hidden)
         self.last_t = -1e9
@@ -61,6 +62,9 @@ class SelfPlayPolicy:
         hand = [sc.engine_id(self.cards[c]["name"]) if c in self.cards else None for c in st.hand]
         if None in hand or st.elixir is None or st.elapsed_s is None:
             return None
+        for e in hand + ([sc.engine_id(self.cards[st.next]["name"])] if st.next in self.cards else []):
+            if e is not None and e not in self.deck:
+                self.deck.append(e)
         opp_deck = list(dict.fromkeys(e for e in (sc.engine_id(p["card"]) for p in opp_plays) if e is not None))
         spent = sum(sc.cost(e) for e in (sc.engine_id(p["card"]) for p in opp_plays) if e is not None)
         regen = sum(real_multiplier(t) for t in range(int(st.elapsed_s))) / REAL_ELIXIR_S
