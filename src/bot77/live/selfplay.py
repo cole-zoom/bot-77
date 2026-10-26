@@ -60,11 +60,19 @@ class SelfPlayPolicy:
         with). The live bot doesn't read tower HP (towers count as full, except one missing from the detections)
         or the opponent's elixir (estimated)."""
         hand = [sc.engine_id(self.cards[c]["name"]) if c in self.cards else None for c in st.hand]
-        if None in hand or st.elixir is None or st.elapsed_s is None:
+        if st.elixir is None or st.elapsed_s is None or all(h is None for h in hand):
             return None
         for e in hand + ([sc.engine_id(self.cards[st.next]["name"])] if st.next in self.cards else []):
             if e is not None and e not in self.deck:
                 self.deck.append(e)
+        # an unreadable slot (a card the hand reader doesn't know yet): a stand-in from the deck, never played
+        self.blind = [i for i, h in enumerate(hand) if h is None]
+        for i in self.blind:
+            hand[i] = next((d for d in self.deck if d not in hand), None) or next(
+                e for e in sc.engine_cards() if not sc.engine_cards()[e]["evolution"] and e not in hand
+                and not sc.engine_cards()[e]["is_hero"] and not sc.engine_cards()[e]["is_champion"])
+            if hand[i] not in self.deck:
+                self.deck.append(hand[i])
         opp_deck = list(dict.fromkeys(e for e in (sc.engine_id(p["card"]) for p in opp_plays) if e is not None))
         spent = sum(sc.cost(e) for e in (sc.engine_id(p["card"]) for p in opp_plays) if e is not None)
         regen = sum(real_multiplier(t) for t in range(int(st.elapsed_s))) / REAL_ELIXIR_S
@@ -92,7 +100,7 @@ class SelfPlayPolicy:
             idx = dist.sample() if self.sample else logits.argmax(-1)
             slot = int(idx.item())
             self.log.append({"t": st.t, "value": float(value.item()), "slot": slot})
-            if slot >= 4:  # the no-op arm: wait
+            if slot >= 4 or slot in getattr(self, "blind", []):  # the no-op arm (or an unreadable card): wait
                 return None
             pl = self.net.placement_given_card(self.hx, emb, idx, obs, spatial, hires_map=hires)
             cell = torch.distributions.Categorical(logits=pl).sample() if self.sample else pl.argmax(-1)
