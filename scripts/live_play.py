@@ -17,7 +17,7 @@ from bot77.live import ui
 from bot77.live.loop import STOP_FILE, Runner
 
 ap = argparse.ArgumentParser()
-ap.add_argument("--device", default="127.0.0.1:5555"); ap.add_argument("--layout", default="bluestacks_live")
+ap.add_argument("--device", default="127.0.0.1:5555"); ap.add_argument("--stream", action="store_true", help="read the screen from a live stream (bot77.live.stream), not 3.5-5 s screenshots"); ap.add_argument("--layout", default="bluestacks_live")
 ap.add_argument("--games", type=int, default=1); ap.add_argument("--hours", type=float, default=1.0)
 from bot77.models import adopted_path  # the registry's adopted live detector (phase 5)
 ap.add_argument("--weights", default=adopted_path("detector_live", "data/models/bot77_detector/v6l/best.pt"))
@@ -33,5 +33,5 @@ factory = None
 if a.policy == "selfplay":
     from bot77.live.selfplay import SelfPlayPolicy
     factory = lambda: SelfPlayPolicy(cards, a.ckpt)  # noqa: E731
-Runner(Device(a.device), Layout.load(a.layout), cards, Bot77Detector(Path(a.weights)), max_games=a.games,
+Runner(Device(a.device, stream=a.stream), Layout.load(a.layout), cards, Bot77Detector(Path(a.weights)), max_games=a.games,
        max_hours=a.hours, policy_factory=factory).run()

@@ -95,17 +95,28 @@ def screen_kind(im: np.ndarray) -> str:
 
 
 class Device:
-    def __init__(self, serial: str = "127.0.0.1:5555"):
+    def __init__(self, serial: str = "127.0.0.1:5555", stream: bool = False):
         self.s = serial
         subprocess.run([ADB, "start-server"], capture_output=True)
         if serial.startswith("127.0.0.1"):
             subprocess.run([ADB, "connect", serial], capture_output=True)
         self.t0 = time.time()
+        # the screen as a live stream (bot77.live.stream: ~6 frames/s) instead of 3.5-5 s screenshots
+        self.stream = None
+        if stream:
+            from bot77.live.stream import ScreenStream
+            self.stream = ScreenStream(ADB, serial)
 
     def now(self) -> float:
         return time.time() - self.t0
 
     def cap(self) -> np.ndarray | None:
+        if self.stream is not None:
+            t = time.time()
+            while self.stream.frame is None and time.time() - t < 10:  # the stream (re)starting
+                time.sleep(0.05)
+            if self.stream.frame is not None:
+                return self.stream.latest()
         try:
             r = subprocess.run([ADB, "-s", self.s, "exec-out", "screencap", "-p"], capture_output=True, timeout=15)
         except subprocess.TimeoutExpired:  # ADB wedged (2026-10-22: a stray scrcpy held it): the caller recovers
