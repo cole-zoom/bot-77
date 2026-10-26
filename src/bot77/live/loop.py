@@ -38,6 +38,7 @@ class Runner:
         self.dry_run, self.log, self.record = dry_run, log, record
         self.games, self.actions = [], []
         self.last_nudge = self.last_shot = 0.0
+        self.home_since = None  # when the home screen was first seen in a row (tap Battle once it has settled)
         self.known_deck: list[int] = []
         self.wins = self.losses = 0
         self.names = {c["id"]: c["name"] for c in cards}  # learned in the first game, reused after (the deck changes rarely)
@@ -117,7 +118,14 @@ class Runner:
                     self.dev.tap(*tap)
                 self.log(ui.c(f"  end screen: {'Play Again' if (more and again) else 'OK'}", "grey"))
                 last_known = time.time(); time.sleep(2.0); continue
+            if kind != "home":
+                self.home_since = None
             if kind == "home" and game is None:
+                # with the stream (~6 frames/s) home is seen mid-animation, and a tap then can land on the arena
+                # (opened the trophy road, 2026-10-26): wait until it has been home for 1 s
+                self.home_since = self.home_since or time.time()
+                if time.time() - self.home_since < 1.0:
+                    time.sleep(0.2); continue
                 if len(self.games) < self.max_games:
                     tap = POS.get("home_battle_tap")
                     self.log("home: tapping Battle")
@@ -129,7 +137,15 @@ class Runner:
                 if self.probe.read(im, t).in_battle:
                     game = self.current = self._new_game(t)
                     st = game["reader"].read(im, t)
+            if game is not None and game["n"] == 0 and not game.get("in_battle") and time.time() - game["wall0"] > 45:
+                # Battle was tapped but no battle came (a wrong screen took the tap): back to finding our way
+                self.log(ui.c("  no battle 45 s after tapping Battle: back to navigating", "yellow"))
+                if game.get("rec") is not None:
+                    game["rec"].send_signal(2)
+                game = self.current = None
+                continue
             if st is not None and st.in_battle:
+                game["in_battle"] = True
                 last_known = time.time()
                 try:
                     self._step(game, st, im)
@@ -176,7 +192,7 @@ class Runner:
             reader.deck, reader.reader = list(self.known_deck), reader.full.restrict(set(self.known_deck))  # (~1 s -> ~0.1 s)
         return {"id": gid, "t0": t, "reader": reader,
                 "policy": self.policy_factory(), "opp": OpponentTracker(), "n": 0, "rec": rec, "after": [],
-                "num": len(self.games) + 1, "opp_name": None, "last_status": 0.0, "result": "?"}
+                "num": len(self.games) + 1, "wall0": time.time(), "opp_name": None, "last_status": 0.0, "result": "?"}
 
     @staticmethod
     def _result(im) -> str:
