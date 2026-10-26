@@ -16,7 +16,7 @@ import pyarrow as pa
 import cv2
 
 from bot77.live import ui
-from bot77.live.device import END_OK_WITH_AGAIN, POS, between_games_tap, deploy, screen_kind, screen_texts
+from bot77.live.device import END_AGAIN, END_OK_WITH_AGAIN, MATCH, POS, between_games_tap, deploy, screen_kind, screen_texts, seen
 from bot77.live.policy import Policy
 from bot77.live.state import LiveReader, OpponentTracker
 
@@ -107,6 +107,8 @@ class Runner:
                 except Exception:  # noqa: BLE001
                     texts, okb = [], None
                 ok = POS.get("end_ok")
+                if not again and seen(im, "end_again") >= MATCH:  # the Play Again layout, its text unread (2026-10-25)
+                    again = END_AGAIN
                 if again and not okb:  # the Play Again layout: OK sits next to it (its text doesn't OCR)
                     h_, w_ = im.shape[:2]
                     okb = (END_OK_WITH_AGAIN[0] * w_, END_OK_WITH_AGAIN[1] * h_)
@@ -242,6 +244,10 @@ class Runner:
         self._save("bot_actions", rows)
         # A v4 in shadow: what it would have done once a second, next to the rules (2026-10-22)
         self._save("bot_shadow", [{"game_id": game["id"], **r} for r in getattr(game["policy"], "shadow", [])])
+        # the self-play / imitation agent's every decision (p(wait), the slot it picked, elixir): why it did or didn't play
+        log = getattr(game["policy"], "log", None)
+        if log:
+            (GAMES_DIR / game["id"] / "decisions.json").write_text(json.dumps(log))
         g = {"game_id": game["id"], "t_start": game["t0"], "t_end": t, "n_actions": game["n"], "result": game.get("result", "?"),
              "deck": json.dumps(game["reader"].deck, default=int), "opp_plays": len(game["opp"].plays)}
         self._save("bot_games", [g])

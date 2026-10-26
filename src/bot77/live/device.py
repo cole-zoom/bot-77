@@ -19,7 +19,7 @@ MATCH = 0.8
 
 def _templates():
     tpl, pos = {}, {}
-    for root, names in ((REPLAY_UI, ("end_ok", "end_vs")), (LIVE_UI, ("home_battle",))):
+    for root, names in ((REPLAY_UI, ("end_ok", "end_vs")), (LIVE_UI, ("home_battle", "end_again"))):
         p = json.loads((root / "pos.json").read_text()) if (root / "pos.json").exists() else {}
         for n in names:
             if (root / f"{n}.png").exists():
@@ -44,6 +44,7 @@ def seen(im: np.ndarray, name: str, slack: int = 60) -> float:
 # the OK button on the battle end screen when Play Again is shown next to it (fractions of the screen; 2026-10-23: its
 # text doesn't OCR, and the end_ok template's spot is the single-OK layout)
 END_OK_WITH_AGAIN = (0.655, 0.906)
+END_AGAIN = (370, 1736)  # the Play Again button in that layout (pixels, 1080x1920; from the end_again template)
 
 
 def end_ok_tap(im: np.ndarray) -> tuple[float, float]:
@@ -59,6 +60,8 @@ def end_ok_tap(im: np.ndarray) -> tuple[float, float]:
 def screen_kind(im: np.ndarray) -> str:
     """end | home | other (battle is decided from the HUD read: clock + elixir)."""
     if seen(im, "end_ok") >= 0.97 or (seen(im, "end_ok") >= MATCH and seen(im, "end_vs") >= MATCH):
+        return "end"
+    if seen(im, "end_again") >= MATCH:  # the Play Again + OK buttons (2026-10-25: VS scored 0.72, no text read)
         return "end"
     if seen(im, "end_vs") >= MATCH:  # the battle end screen with Play Again moves OK; confirm by its text
         try:

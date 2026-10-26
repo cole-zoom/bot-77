@@ -99,7 +99,10 @@ class SelfPlayPolicy:
             dist = torch.distributions.Categorical(logits=logits)
             idx = dist.sample() if self.sample else logits.argmax(-1)
             slot = int(idx.item())
-            self.log.append({"t": st.t, "value": float(value.item()), "slot": slot})
+            probs = torch.softmax(logits, -1)[0].tolist()
+            self.log.append({"t": round(st.t, 1), "clock": st.elapsed_s, "elixir": st.elixir, "value": float(value.item()),
+                             "slot": slot, "p": [round(p, 3) for p in probs], "blind": list(self.blind),
+                             "hand": list(st.hand)})
             if slot >= 4 or slot in getattr(self, "blind", []):  # the no-op arm (or an unreadable card): wait
                 return None
             pl = self.net.placement_given_card(self.hx, emb, idx, obs, spatial, hires_map=hires)
@@ -107,5 +110,4 @@ class SelfPlayPolicy:
             ex, ey = self.net.cell_to_xy(cell)
         x, y = engine_to_ours(float(ex.item()), float(ey.item()))
         card = self.cards[st.hand[slot]]["name"]
-        probs = torch.softmax(logits, -1)[0].tolist()
         return Action(slot, card, x, y, "self-play agent", [round(p, 4) for p in probs[:4]])
