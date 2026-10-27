@@ -68,19 +68,22 @@ class LiveReader:
         hand = self.reader.read(frame)
         n_unknown = sum(v is None or v.state == "unknown" for k, v in hand.items() if k.startswith("slot"))
         # with a 7-card deck (one card the reader has no art for, 2026-10-25) one unreadable slot is expected
-        stuck = n_unknown > (1 if len(self.deck) == 7 else 0)
+        # only in battle (the clock reads): the hand leaves the screen at the end, and that wiped the learned deck
+        # before the next game could start from it (2026-10-27)
+        stuck = clock.elapsed_s is not None and n_unknown > (1 if len(self.deck) == 7 else 0)
         self.unknown_streak = self.unknown_streak + 1 if stuck else 0
         if self.deck and self.unknown_streak >= 15:  # a slot unreadable for ~15 reads: a card outside the known
             self.deck, self.reader, self.reads = [], self.full, []  # deck (swapped in): relearn from all cards
             self.unknown_streak = 0
         if len(self.deck) < 8:  # learn our deck from the hand, then read against it only (faster, fewer mistakes)
             self.reads.append(hand)
-            deck = infer_deck(self.reads[-60:])
+            deck = infer_deck(self.reads[-90:])
             if len(deck) == 8:
                 self.deck, self.reader = deck, self.full.restrict(set(deck))
-            elif len(deck) == 7 and len(self.reads) >= 30 and not self.deck:
-                # 30 reads (~2 cycles) and only 7 cards: the 8th has no art here. Read against the 7 (the full set
-                # took 1.2 s a read and slowed the agent to a decision every ~4.5 s); the 8th stays unknown
+            elif len(deck) == 7 and len(self.reads) >= 90 and not self.deck:
+                # 90 reads and only 7 cards: the 8th has no art here. Read against the 7 (the full set took 1.2 s a
+                # read and slowed the agent to a decision every ~4.5 s); the 8th stays unknown. (30 reads was too
+                # few at a read a second: a card at the back of the cycle hadn't shown yet, 2026-10-27)
                 self.deck, self.reader = deck, self.full.restrict(set(deck))
         slots = [hand.get(f"slot{k}") for k in range(1, 5)]
         nxt = hand.get("next")
