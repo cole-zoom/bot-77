@@ -2691,4 +2691,4 @@ Full write-up: docs/simulator-validation.md. Held-back only (48 games, 346 windo
   curation (dedupe by embedding, class gaps, hard-example mining, versioned label sets); Ultralytics trains from image
   folders, so curated versions would be exported. Not now: better labels, faster detection around spells and
   targeted recordings of thin classes come first, and only if the rebuilt board proves to be what costs games.
-- Real test, RL 8k snapshot: game 1 W (39 plays), 2 L, 3 L (1.3 s decisions).
+- Real test, RL 8k snapshot: 3 W / 2 L after 5 games (W 39, L 27, L 25, W 48, W 35 plays; 1.3 s decisions).
