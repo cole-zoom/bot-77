@@ -30,14 +30,19 @@ def main():
     ap.add_argument("--episodes", type=int, default=20000)
     ap.add_argument("--envs", type=int, default=7)
     ap.add_argument("--lr", type=float, default=1e-4, help="fine-tuning, so a third of the fork's from-scratch 3e-4")
+    ap.add_argument("--league-share", type=float, default=0.0,
+                    help="share of episodes against the trainee's own past snapshots (bot77.rl.clone_env)")
+    ap.add_argument("--snapshots", nargs="*", default=[],
+                    help="more snapshot directories for the league (e.g. an earlier run's historical_checkpoints)")
+    ap.add_argument("--init", default=None, help="start the trainee from these weights instead of the clone")
     ap.add_argument("--critic-warmup", type=int, default=500, help="episodes during which only the value head learns")
     a = ap.parse_args()
     run = (ROOT / a.run).resolve()
     run.mkdir(parents=True, exist_ok=True)
     clone = (ROOT / a.clone).resolve()
     bootstrap = run / "bootstrap.pth"
-    if not bootstrap.exists():
-        shutil.copy(clone, bootstrap)  # the trainee starts as the clone; the opponent stays frozen at it
+    if not bootstrap.exists():  # the trainee starts as the clone (or --init); the opponent stays frozen at the clone
+        shutil.copy((ROOT / a.init).resolve() if a.init else clone, bootstrap)
     # the fork reads these at import (python_ai/deck.py, train_selfplay.selfplay_paths, rl/checkpointing.py)
     os.environ.update({
         "CLASH_DECK": os.environ.get("CLASH_DECK", DECK),
@@ -47,6 +52,9 @@ def main():
         "CLASH_NUM_ENVS": str(a.envs),
         "RL_CLONE_CKPT": str(clone),
         "RL_PRO_DECKS": str((ROOT / "data/cache/rl/pro_decks.json").resolve()),
+        "RL_LEAGUE_SHARE": str(a.league_share),
+        "RL_SNAPSHOT_DIRS": os.pathsep.join([str(run / "historical_checkpoints")]
+                                            + [str((ROOT / d).resolve()) for d in a.snapshots]),
     })
     os.environ.setdefault("OMP_NUM_THREADS", str(a.envs))
     sys.path.insert(0, str(FORK))
