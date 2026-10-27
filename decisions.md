@@ -2638,3 +2638,11 @@ Full write-up: docs/simulator-validation.md. Held-back only (48 games, 346 windo
   the change on the stream: 0.14 s. Its speed exposed a navigation race (home seen mid-animation, Battle tapped onto
   the arena, which opened the trophy road): Battle is now tapped once home has held for 1 s, and a game that never
   starts is given up after 45 s. Trophies 600 -> 630 over the 20 test games (read before the 2 stream games).
+- **The imitation agent at full speed (2026-10-27, `--stream`, all 8 cards readable): 8 W / 9 L (47%) in 17 clean
+  games**, 24-41 plays in most games; one decision every 1.3 s (median over the run). Slow-pace games (Oct 26): 35%.
+  Rules bot: 47%; self-play agent: 50% then ~36%. 17 games: +-12, so "about the rules bot", not better.
+  Games left out (bugs, not the agent): 6 from the first stream run (a scrcpy recorder alongside stalled the stream
+  30 s+ at game start) and 6 more (stand-ins for unreadable slots pushed a real card out of the agent's deck and it
+  stopped deciding mid-game; 4 cards played on one stale frame while the stream restarted). Also fixed on the way:
+  Mega Minion art override (the in-game art no longer matches the API icon), the trophy road's OK (template), the
+  learned deck kept through the end screen, the result read up to 4 s after the end screen appears.
