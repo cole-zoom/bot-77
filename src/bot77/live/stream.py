@@ -5,6 +5,9 @@ decision every ~4.5 s (it was trained at one a second). Android's screenrecord s
 ffmpeg decodes it (one thread: frame threading holds frames back) and a reader thread keeps only the newest frame.
 screenrecord stops itself after --time-limit (at most 180 s), so it is restarted; the screen only sends frames when
 something changes, so the last frame is the current screen however old it is.
+
+The game recording comes from the same stream (`record_to`: the H.264 is copied into the game's file as it arrives):
+a scrcpy recorder alongside took the encoder at each game start and stalled the stream for 30 s or more (2026-10-27).
 """
 from __future__ import annotations
 
@@ -26,6 +29,10 @@ class ScreenStream:
         self.frames = 0
         self.alive = True
         self.procs: list[subprocess.Popen] = []
+        self.rec: subprocess.Popen | None = None  # the game recording's muxer (record_to)
+        self.rec_from = 0  # only streams started from this one on feed it (each starts with the H.264 headers)
+        self.starts = 0
+        self.lock = threading.Lock()
         threading.Thread(target=self._run, daemon=True).start()
 
     def _run(self) -> None:
@@ -35,10 +42,11 @@ class ScreenStream:
                                    stdout=subprocess.PIPE, stdin=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
             dec = subprocess.Popen(["ffmpeg", "-loglevel", "quiet", "-threads", "1", "-probesize", "65536",
                                     "-analyzeduration", "0", "-f", "h264", "-i", "pipe:", "-f", "rawvideo",
-                                    "-pix_fmt", "bgr24", "pipe:"], stdin=src.stdout, stdout=subprocess.PIPE,
+                                    "-pix_fmt", "bgr24", "pipe:"], stdin=subprocess.PIPE, stdout=subprocess.PIPE,
                                    stderr=subprocess.DEVNULL)
-            src.stdout.close()  # ffmpeg owns it now
             self.procs = [src, dec]
+            self.starts += 1
+            threading.Thread(target=self._pump, args=(src, dec, self.starts), daemon=True).start()
             n = W * H * 3
             while self.alive:
                 b = dec.stdout.read(n)
@@ -52,10 +60,54 @@ class ScreenStream:
             if self.alive:
                 time.sleep(0.5)
 
+    def _pump(self, src: subprocess.Popen, dec: subprocess.Popen, start: int) -> None:
+        """screenrecord's H.264 -> the decoder, and into the game recording."""
+        try:
+            while True:
+                b = src.stdout.read1(1 << 16)
+                if not b:
+                    break
+                dec.stdin.write(b)
+                dec.stdin.flush()
+                with self.lock:
+                    if self.rec is not None and start >= self.rec_from:
+                        try:
+                            self.rec.stdin.write(b)
+                        except (BrokenPipeError, OSError):
+                            self.rec = None
+        except (BrokenPipeError, ValueError, OSError):
+            pass
+        finally:
+            try:
+                dec.stdin.close()
+            except OSError:
+                pass
+
+    def record_to(self, path) -> None:
+        """Record the stream into `path` (.mkv) until record_to(None): a muxer stamping each frame with its arrival
+        time (screenrecord's H.264 has no timestamps and its frame rate varies), kept across screenrecord's restarts.
+        Starting one restarts the stream (~2 s): screenrecord sends the H.264 headers only when it starts."""
+        with self.lock:
+            if self.rec is not None:
+                try:
+                    self.rec.stdin.close()  # the muxer finishes the file on end of input
+                except OSError:
+                    pass
+                self.rec = None
+            if path is None:
+                return
+            self.rec = subprocess.Popen(["ffmpeg", "-loglevel", "quiet", "-y", "-use_wallclock_as_timestamps", "1",
+                                         "-f", "h264", "-i", "pipe:", "-c", "copy", str(path)],
+                                        stdin=subprocess.PIPE, stderr=subprocess.DEVNULL)
+            self.rec_from = self.starts + 1
+        for p in self.procs:
+            p.kill()
+
     def latest(self) -> np.ndarray | None:
         return None if self.frame is None else self.frame.copy()
 
     def close(self) -> None:
         self.alive = False
+        self.record_to(None)
         for p in self.procs:
             p.kill()

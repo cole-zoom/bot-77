@@ -142,6 +142,8 @@ class Runner:
                 self.log(ui.c("  no battle 45 s after tapping Battle: back to navigating", "yellow"))
                 if game.get("rec") is not None:
                     game["rec"].send_signal(2)
+                if getattr(self.dev, "stream", None) is not None:
+                    self.dev.stream.record_to(None)
                 game = self.current = None
                 continue
             if st is not None and st.in_battle:
@@ -177,7 +179,9 @@ class Runner:
         self.log(ui.c(f"  … game {gid} starting", "grey"))
         (GAMES_DIR / gid).mkdir(parents=True, exist_ok=True)
         rec = None
-        if self.record and not self.dry_run:
+        if self.record and not self.dry_run and getattr(self.dev, "stream", None) is not None:
+            self.dev.stream.record_to(GAMES_DIR / gid / "game.mkv")  # from the stream itself (no second encoder user)
+        elif self.record and not self.dry_run:
             import os, subprocess
             from bot77.live.device import ADB
             rec = subprocess.Popen(["scrcpy", "-s", self.dev.s, "--no-window", "--no-audio", "--no-control", "--max-fps", "30",
@@ -253,6 +257,8 @@ class Runner:
         self.log(ui.play_line(st, act))
 
     def _finish(self, game: dict, t: float) -> None:
+        if getattr(self.dev, "stream", None) is not None:
+            self.dev.stream.record_to(None)
         if game.get("rec") is not None:
             game["rec"].send_signal(2)  # SIGINT: scrcpy finalises the file
             try:
