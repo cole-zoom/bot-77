@@ -2646,3 +2646,18 @@ Full write-up: docs/simulator-validation.md. Held-back only (48 games, 346 windo
   stopped deciding mid-game; 4 cards played on one stale frame while the stream restarted). Also fixed on the way:
   Mega Minion art override (the in-game art no longer matches the API icon), the trophy road's OK (template), the
   learned deck kept through the end screen, the result read up to 4 s after the end screen appears.
+## 2026-10-27 · Option 3 step 2: RL against pro clones
+- **Checked first: did the imitation data lose Mega Minion?** No. In the pro replays the card reads fine (the replay
+  viewer draws the art the reader knows): the 38 player-sides that play it have it in hand on 26,389 reads, with
+  unreadable slots no more often than everyone else (29.8% vs 31.3%), and their plays reach training with a card
+  label as often (4.8% unknown vs 5.2%). The live-screen art change was a BlueStacks-only problem. Nothing to fix.
+- **The setup** (scripts/rl_vs_clones.py, bot77.rl.clone_env): the trainee starts from bc_v2 and plays Cole's deck
+  (Giant, Battle Ram, Mini P.E.K.K.A, Mega Minion, Archers, Goblin Hut, Fireball, Arrows); team 1 is a frozen bc_v2
+  playing a pro's deck, one of 750 from the train-split replays (scripts/pro_decks.py; Heroes as their plain card and
+  Champions without abilities, as the clone has no ability heads; 126 decks with a card the engine lacks left out).
+  The loop is the fork's phase-2 trainer, subclassed (its python_ai/ untouched), without its league. Two changes for
+  fine-tuning from imitation: a critic warm-up (only the value and auxiliary heads learn for the first 500 episodes:
+  the untrained value head made the first update clip 57% of samples) and lr 1e-4 (fork: 3e-4). Smoke run (200
+  episodes, 4 workers): clip fraction 0.14-0.24 after the warm-up, 45% wins against the clone.
+- Run: 20,000 episodes, 7 workers, started 2026-10-27 ~14:15. Real test after it: 20 `--stream` games vs the
+  imitation agent's 47%.
