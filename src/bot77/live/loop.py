@@ -16,7 +16,7 @@ import pyarrow as pa
 import cv2
 
 from bot77.live import ui
-from bot77.live.device import END_AGAIN, END_OK_WITH_AGAIN, MATCH, POS, between_games_tap, deploy, screen_kind, screen_texts, seen, winner_y
+from bot77.live.device import END_AGAIN, END_OK_WITH_AGAIN, MATCH, POS, between_games_tap, deploy, crowns, screen_kind, screen_texts, seen, winner_y
 from bot77.live.policy import Policy
 from bot77.live.state import LiveReader, OpponentTracker
 
@@ -208,6 +208,9 @@ class Runner:
     def _result(im) -> str:
         """win / loss from the end screen: "Winner!" sits over the winner's side (ours is the bottom half). The side
         mapping is checked against known results (end.jpg is kept per game)."""
+        top, ours = crowns(im)  # more crowns won (a tie, e.g. a tiebreak: the "Winner!" lettering decides)
+        if top != ours:
+            return "win" if ours > top else "loss"
         # "Winner!" sits just above the winner's own banner: ~36% of the height when we (bottom) won, near the top
         # when the opponent did (Cole's screenshot, 2026-10-22). Found by its lettering (winner_y), else by OCR.
         y = winner_y(im)

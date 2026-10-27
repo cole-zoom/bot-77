@@ -2698,3 +2698,10 @@ Full write-up: docs/simulator-validation.md. Held-back only (48 games, 346 windo
   the clone (the league the fork already has, switched off here; the plateau at ~72-78% against the one clone looks
   like learning that copy's weaknesses); 20-40k-episode rounds; 20 real `--stream` games per promising snapshot; keep
   recordings, training curves, card-use and drift numbers for the video.
+- **Result reading fixed: crowns, not "Winner!".** Game 6 above (excluded) was a 3-crown loss logged as a win: the
+  "Winner!" lettering had faded out of the end-screen capture and its match landed lower on the screen. Crowns
+  (`device.crowns`: gold vs cushion in each banner's three slots) agree with 149 of 159 recorded results; the 3
+  disagreements were all that misread (losses logged as wins), and 7 crown ties fall back to "Winner!". Corrected:
+  bot_2026-10-26_004442 (slow-pace imitation test: **7-13 -> 6-14, 30%**), bot_2026-10-27_121850 (already excluded),
+  bot_2026-10-27_154333 (excluded). The full-speed imitation tally (8-9) is unchanged. The RL test in progress
+  started before the fix, so its results are re-checked with the crowns at the end.

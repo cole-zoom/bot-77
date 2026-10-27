@@ -67,6 +67,16 @@ def winner_y(im: np.ndarray, min_score: float = 0.4) -> float | None:
     return y / im.shape[0] if score >= min_score else None
 
 
+def crowns(im: np.ndarray) -> tuple[int, int]:
+    """(the opponent's, ours) gold crowns on the battle end screen: each banner's three crown slots, gold vs the empty
+    cushion. More reliable than "Winner!" (2026-10-27: it fades out, and its lettering match then landed lower on
+    the screen and called 3 losses wins); 149 of 159 recorded results agree, the 3 that don't were those misreads."""
+    im = cv2.resize(im, (540, round(im.shape[0] * 540 / im.shape[1])))
+    gold = cv2.inRange(cv2.cvtColor(im, cv2.COLOR_BGR2HSV), (15, 120, 170), (32, 255, 255))
+    return tuple(sum(gold[y0:y1, x0:x0 + 120].mean() / 255 > 0.18 for x0 in (85, 210, 335))
+                 for y0, y1 in ((130, 215), (415, 500)))
+
+
 def end_ok_tap(im: np.ndarray) -> tuple[float, float]:
     """Where OK is on the battle end screen: read from the screen if possible, else the Play Again layout's spot."""
     try:
