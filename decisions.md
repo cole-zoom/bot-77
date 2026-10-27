@@ -2691,7 +2691,8 @@ Full write-up: docs/simulator-validation.md. Held-back only (48 games, 346 windo
   curation (dedupe by embedding, class gaps, hard-example mining, versioned label sets); Ultralytics trains from image
   folders, so curated versions would be exported. Not now: better labels, faster detection around spells and
   targeted recordings of thin classes come first, and only if the rebuilt board proves to be what costs games.
-- Real test, RL 8k snapshot: 3 W / 2 L after 5 games (W 39, L 27, L 25, W 48, W 35 plays; 1.3 s decisions).
+- Real test, RL 8k snapshot (results re-checked with the crowns): **13 W / 5 L in the first 18 clean games (72%)**;
+  2 replacement games running. 1.3 s decisions.
   Games 6 (bot_2026-10-27_154333) and 12 (bot_2026-10-27_160053) excluded: Wi-Fi dropped, Cole restarted Clash mid-game
   (data/live/excluded_games.json); 2 games are added at the end to keep 20 clean.
 - **Direction (Cole, 2026-10-27):** no new detector for now; push the RL as far as it goes, then a video, then maybe
