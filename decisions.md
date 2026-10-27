@@ -2661,3 +2661,22 @@ Full write-up: docs/simulator-validation.md. Held-back only (48 games, 346 windo
   episodes, 4 workers): clip fraction 0.14-0.24 after the warm-up, 45% wins against the clone.
 - Run: 20,000 episodes, 7 workers, started 2026-10-27 ~14:15. Real test after it: 20 `--stream` games vs the
   imitation agent's 47%.
+- **Progress to 10,000 episodes** (2026-10-27, paused at ~10,000 for the real test): win rate against the clone
+  45% at the start -> ~55% (3k) -> 66-74% (4k-8k) -> 78% (10k); noisy (100-episode window swings ~+-10). The trainer's
+  "losing trend" re-boost fires on that noise below 0.50, since against a copy of itself ~0.50 is the null.
+- **What it changed** (12 sampled games per checkpoint, no scenarios): it drops the expensive cards. Plays per game,
+  bc_v2 -> 2.5k -> 6k episodes: Giant 1.2 -> 0.2 -> 0.6, Goblin Hut 2.7 -> 3.0 -> 1.5, Fireball 1.6 -> 1.1 -> 0.6;
+  Archers, Mega Minion, Arrows, Battle Ram, Mini P.E.K.K.A up. Distinct cards per game 7.3 -> 6.2. The fork's own notes
+  say the engine undervalues big units and Fireball (median catch one unit), so this may be a simulator bias; left
+  alone (forcing card use cost the fork's runs win rate) until real games say.
+- **Drift from the pros** (held-back pro trajectories, 40, scripts/train_bc.py evaluate): card at plays 38.8% (bc_v2)
+  -> 37.7% (8k), play/wait AUC 0.745 -> 0.696, placement 4.1 -> 6.0 tiles from the pro's cell. Card choice barely
+  moved; timing and placement moved to what the simulator rewards. 8,000 episodes is ~1.2M decisions, ~6x the
+  imitation data.
+- **Real test:** 20 `--stream` games with the 8,000-episode snapshot, training paused (running both slowed nothing
+  measured yet, but the live bot's decision pace is what spoiled earlier tests). +-11 points at 20 games: it can show a
+  big change against bc_v2's 47%, not a small one.
+- **On LanceDB** (Cole asked): the option-3 loop uses it as an embedded table store (filtered reads, Arrow, appends,
+  binary columns: ingest -> imitation data, the pro deck pool, the live bot's game log). Vector search is used by the
+  detector's crop mining / auto-labelling (bot77.mine, bot77.autolabel), not by option 3. A hosted store (turbopuffer)
+  would break "no game frames to third parties" for the crop tables.
