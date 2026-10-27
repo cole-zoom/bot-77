@@ -19,7 +19,7 @@ MATCH = 0.8
 
 def _templates():
     tpl, pos = {}, {}
-    for root, names in ((REPLAY_UI, ("end_ok", "end_vs")), (LIVE_UI, ("home_battle", "end_again"))):
+    for root, names in ((REPLAY_UI, ("end_ok", "end_vs")), (LIVE_UI, ("home_battle", "end_again", "road_ok"))):
         p = json.loads((root / "pos.json").read_text()) if (root / "pos.json").exists() else {}
         for n in names:
             if (root / f"{n}.png").exists():
@@ -210,6 +210,9 @@ def battle_tab(im: np.ndarray) -> tuple[float, float] | None:
 def between_games_tap(im: np.ndarray) -> tuple[float, float, str] | None:
     """Where to tap on a screen between games, or None: a safe whole-word button (never anything about buying,
     gems, offers or clans); the left card on "Choose your reward" (Cole: press Choose, then pick any card)."""
+    if seen(im, "road_ok") >= MATCH and POS.get("road_ok_tap"):  # the trophy road: its OK doesn't OCR (2026-10-27:
+        x, y = POS["road_ok_tap"]                                  # nudges hit a reward tile for 30 min)
+        return x, y, "trophy road: OK"
     texts = screen_texts(im)
     if any(t == "battle log" for t, _, _ in texts):  # left open by the replay runner ("No Clan" on every entry would
         return 1011, 219, "close Battle Log"         # trip the never-tap words): its red X, top right
