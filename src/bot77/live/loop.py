@@ -94,6 +94,12 @@ class Runner:
             if kind == "end":
                 if game is not None:
                     game["result"] = self._result(im)
+                    t_end = time.time()  # with the stream the end screen is caught before "Winner!" fades in (2026-10-27)
+                    while game["result"] == "?" and time.time() - t_end < 4:
+                        nim = self.dev.cap()
+                        if nim is not None:
+                            im = nim
+                            game["result"] = self._result(im)
                     cv2.imwrite(str(GAMES_DIR / game["id"] / "end.jpg"), cv2.resize(im, (SHOT_W, round(im.shape[0] * SHOT_W / im.shape[1]))))
                     self._finish(game, t)
                     game = self.current = None
