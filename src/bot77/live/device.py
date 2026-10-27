@@ -103,6 +103,7 @@ class Device:
         self.t0 = time.time()
         # the screen as a live stream (bot77.live.stream: ~6 frames/s) instead of 3.5-5 s screenshots
         self.stream = None
+        self.last_frames = -1
         if stream:
             from bot77.live.stream import ScreenStream
             self.stream = ScreenStream(ADB, serial)
@@ -115,7 +116,13 @@ class Device:
             t = time.time()
             while self.stream.frame is None and time.time() - t < 10:  # the stream (re)starting
                 time.sleep(0.05)
+            # a frame not handed out before (up to 3 s): while the stream restarts (each game's recording starts
+            # one) the last frame stayed, and the agent played 4 cards on one stale frame (2026-10-27). Menus can
+            # be still for longer: after 3 s the last frame is the screen.
+            while self.stream.frames == self.last_frames and time.time() - t < 3:
+                time.sleep(0.02)
             if self.stream.frame is not None:
+                self.last_frames = self.stream.frames
                 return self.stream.latest()
         try:
             r = subprocess.run([ADB, "-s", self.s, "exec-out", "screencap", "-p"], capture_output=True, timeout=15)

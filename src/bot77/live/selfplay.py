@@ -65,14 +65,16 @@ class SelfPlayPolicy:
         for e in hand + ([sc.engine_id(self.cards[st.next]["name"])] if st.next in self.cards else []):
             if e is not None and e not in self.deck:
                 self.deck.append(e)
-        # an unreadable slot (a card the hand reader doesn't know yet): a stand-in from the deck, never played
+        # an unreadable slot (a card the hand reader doesn't know yet): a stand-in from the deck, never played. Kept
+        # out of self.deck: stand-ins added there pushed the deck past 8, the engine kept the first 8, a real card
+        # fell out, set_hand failed and the agent stopped deciding for the rest of the game (2026-10-27)
         self.blind = [i for i, h in enumerate(hand) if h is None]
         for i in self.blind:
             hand[i] = next((d for d in self.deck if d not in hand), None) or next(
                 e for e in sc.engine_cards() if not sc.engine_cards()[e]["evolution"] and e not in hand
                 and not sc.engine_cards()[e]["is_hero"] and not sc.engine_cards()[e]["is_champion"])
-            if hand[i] not in self.deck:
-                self.deck.append(hand[i])
+        # the engine's deck: the hand first (it must hold them), then the rest seen, 8 at most (a misread can add a 9th)
+        deck = list(dict.fromkeys(hand + self.deck))[:8]
         opp_deck = list(dict.fromkeys(e for e in (sc.engine_id(p["card"]) for p in opp_plays) if e is not None))
         spent = sum(sc.cost(e) for e in (sc.engine_id(p["card"]) for p in opp_plays) if e is not None)
         regen = sum(real_multiplier(t) for t in range(int(st.elapsed_s))) / REAL_ELIXIR_S
@@ -80,7 +82,7 @@ class SelfPlayPolicy:
                   "y": u.y + FEET_DY} for u in st.units
                  if u.card and u.team in ("friendly", "enemy") and "tower" not in u.cls and "bar" not in u.cls]
         opp_played = [e for e in (sc.engine_id(p["card"]) for p in opp_plays) if e is not None]
-        return mirror(self.deck, opp_deck[:8], float(st.elapsed_s), hand, st.elixir, 5.0 + regen - spent, units,
+        return mirror(deck, opp_deck[:8], float(st.elapsed_s), hand, st.elixir, 5.0 + regen - spent, units,
                       None, opp_played)
 
     def decide(self, st: LiveState, opp_plays: list[dict]) -> Action | None:
