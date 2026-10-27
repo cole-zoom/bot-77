@@ -2680,3 +2680,15 @@ Full write-up: docs/simulator-validation.md. Held-back only (48 games, 346 windo
   binary columns: ingest -> imitation data, the pro deck pool, the live bot's game log). Vector search is used by the
   detector's crop mining / auto-labelling (bot77.mine, bot77.autolabel), not by option 3. A hosted store (turbopuffer)
   would break "no game frames to third parties" for the crop tables.
+- **Detector at scale (Cole: what would a near-perfect detector take?).** Measured: real labelled data is 18,157
+  frames / 329,312 boxes / 219 classes (+48,004 synthetic); median 173 boxes per class, 64 classes <= 100, 6 with none.
+  V7 / V8 (more mined + live data on top of V5) gained nothing, so data volume isn't the current limit: label quality
+  (spot-checks 59-72% of boxes right), the 4 fps detection rate (Zap 0/27, Arrows 0/16: ~0.3 s effects fall between
+  frames) and the rare-card tail are. Tail arithmetic from the 526 replays (a card appears in a median 7.4% of games,
+  ~3.7 plays when present; rarest 0.76%): ~1,000 distinct plays per card needs ~3,600 games (median card), ~7,100
+  (90% of cards), ~36,000 (every card seen); at ~250 recorded replays a day, 2 weeks / 4 weeks / 5 months. 7,100
+  games at one deduplicated frame a second is ~1.5M frames, ~200-350 GB (130-250 KB a frame). LanceDB fits the
+  curation (dedupe by embedding, class gaps, hard-example mining, versioned label sets); Ultralytics trains from image
+  folders, so curated versions would be exported. Not now: better labels, faster detection around spells and
+  targeted recordings of thin classes come first, and only if the rebuilt board proves to be what costs games.
+- Real test, RL 8k snapshot: game 1 W (39 plays), 2 L, 3 L (1.3 s decisions).
