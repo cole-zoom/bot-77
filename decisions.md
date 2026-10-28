@@ -2946,3 +2946,17 @@ Full write-up: docs/simulator-validation.md. Held-back only (48 games, 346 windo
   Knight 2 / 2, Mini P.E.K.K.A 3 / 3, Prince 1 / 1, supported Giant 3 / 3, Golem 1 / 1; mean margin +0.39. Kept in
   data/live/cole_reference.jsonl (local). For the next RL round: their starts become fixed training situations and
   his plays the exam's second yardstick. The melee and supported ones were played before the pull / kite fixes.
+- **Client audit, step 1 applied** (fork 5f4ddff; Cole: "apply and keep going"): 51 values from the client at level
+  11, each commented with its source in CardRegistry.h. Reach: Bats 1.2, Phoenix 1.6, Royal Recruits 1.6, Miner /
+  Fisherman 1.2, Rascals 0.8, Royal Hogs 0.75, Elixir Golem 0.8, Ram Rider 0.8, Wall Breakers 0.5, Battle Healer 1.6,
+  Electro Giant 1.2. Hp / damage: Giant Skeleton hp 3126 -> 3361 (the May "x0.93" isn't in the installed client),
+  Bomber 225 -> 212, Wizard 281 -> 305, Battle Healer 1717/148/1.5 s -> 1920/269/2.0 s, Goblin Machine 2150/212 ->
+  2266/233, Goblinstein hp 2385 -> 2240, Boss Bandit 245 -> 246, Ram Rider 250 -> 271, Lava Hound 53 / 1.3 s -> 72 /
+  1.5 s, Wall Breakers 350 -> 302, Skeleton King 180 -> 205, Electro Giant 163 -> 184, X-Bow 43 / 0.3 s -> 61 / 0.4 s,
+  Ronin 1.4 -> 1.3 s. Speed: Goblin Machine, Goblin Demolisher, Little Prince, Goblinstein -> Medium; Ronin, Boss
+  Bandit -> Fast. Sight: Golem 7.5, Bowler 5.5, Electro Giant 7.5, Goblinstein 7.5, Boss Bandit 6.0. Splash: Dark
+  Prince 1.1 on every hit, Mega Knight 1.5 -> 1.3, Witch 1.0 -> 1.5, Electro Giant's hit splash removed (the client has
+  none; its zap is the periodic stun). Deploy: Golem 3.0 s, Mortar 3.5 s (deploy delay, as the X-Bow). Monk 4 -> 5.
+  Five C++ pins re-pinned to the client value with the source; suite 743 cases, 742 pass + the 1 expected. Audit:
+  46 -> 19 cards with a difference; the 19 left are steps 2-4 (spawner buildings' "sight 0", kamikaze units, Inferno
+  ramp, Princess / Firecracker / Hunter projectiles, Goblin Drill, X-Bow / Mortar deploy read only as deploy_ticks).
