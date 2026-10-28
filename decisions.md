@@ -2909,3 +2909,8 @@ Full write-up: docs/simulator-validation.md. Held-back only (48 games, 346 windo
   per-card fits are thin, and unlike the building fit (relative distances) this one depends on the absolute scale of
   our screen-to-engine conversion. Proposed (not applied): troop-on-troop acquisition at sight + 1.75 (5.5 -> 7.25) in
   CombatEntity::effectiveSightWith for troop targets, leaving building and tower targeting as fitted.
+- **Play-weight calibration.** Weighting plays x50 in the imitation loss inflates the network's play rate by the same
+  odds: the 0.1 s agent played on 41% of 0.1 s steps (~746 a game) against the pros' 1.55% (~28). Exact prior
+  correction: card_head.bias[wait] += log(50) -> 2.0% (~36 a game), play/wait AUC unchanged (0.738). Saved as
+  data/models/bc_t01/frozen_calibrated.pth, the RL start. The 1 s agent carried the milder x5 version of this (it
+  and RL rounds 1-2 started inflated; possibly part of the early "bum rush").
