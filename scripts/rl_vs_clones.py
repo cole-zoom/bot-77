@@ -38,6 +38,11 @@ def main():
     ap.add_argument("--situation-share", type=float, default=0.0,
                     help="share of episodes that start in a defence situation (bot77.rl.situations; replaces the "
                          "fork's scenarios)")
+    ap.add_argument("--decision-ticks", type=int, default=10,
+                    help="engine ticks between our decisions: 10 = once a second (the fork's rate), 1 = every 0.1 s")
+    ap.add_argument("--card-entropy", type=float, default=None,
+                    help="target card-head entropy fraction (the fork's 0.35 is for 1 s decisions; at 0.1 s ~97%% of "
+                         "decisions are waits and 0.35 would force random plays)")
     ap.add_argument("--init", default=None, help="start the trainee from these weights instead of the clone")
     ap.add_argument("--critic-warmup", type=int, default=500, help="episodes during which only the value head learns")
     a = ap.parse_args()
@@ -58,6 +63,7 @@ def main():
         "RL_PRO_DECKS": str((ROOT / "data/cache/rl/pro_decks.json").resolve()),
         "RL_LEAGUE_SHARE": str(a.league_share),
         "RL_SITUATION_SHARE": str(a.situation_share),
+        "RL_DECISION_TICKS": str(a.decision_ticks),
         "RL_SNAPSHOT_DIRS": os.pathsep.join([str(run / "historical_checkpoints")]
                                             + [str((ROOT / d).resolve()) for d in a.snapshots]),
     })
@@ -94,6 +100,22 @@ def main():
     def situation_mask(trainer):
         v = trainer.envs.infos.get("rl_situation") if trainer.envs is not None else None
         return np.zeros(trainer.cfg.num_envs, np.float32) if v is None else np.asarray(v, np.float32)
+
+    # At k decisions a second (k = 10 / decision_ticks) the one per-step shaping term, the elixir-overflow penalty,
+    # would be charged k times as often: scale it back (deltas and potentials sum the same over a second).
+    from python_ai.rewards import weights as rw
+    per_second = 10 // a.decision_ticks
+    if per_second > 1:
+        _raw_shaping = bt.compute_shaping
+
+        def scaled_shaping(stats, prev, *x, **k):
+            out = _raw_shaping(stats, prev, *x, **k)
+            if prev is None:
+                return out
+            over = np.maximum(0.0, stats["team0_elixir_current"] - rw.ELIXIR_OVERFLOW_THRESHOLD) / (
+                10.0 - rw.ELIXIR_OVERFLOW_THRESHOLD)
+            return out + rw.W_ELIXIR_OVERFLOW * over * (1.0 - 1.0 / per_second)
+        bt.compute_shaping = scaled_shaping
 
     # On a situation's steps the reward is the situation's score alone: the game's shaping (tower potentials, troop
     # trades, the flawless-defence bonus) is zeroed there, or rushing the enemy tower would still pay. Patched in the
@@ -162,8 +184,17 @@ def main():
         def should_stop(self):
             return self.episodes_completed >= a.episodes
 
-    print(f"run {run}\nclone {clone}\ndeck {os.environ['CLASH_DECK']}", flush=True)
-    CloneTrainer(PPOConfig(lr=a.lr)).run()
+    # the step-length-dependent settings, scaled to keep the same horizons in seconds at 0.1 s: discount (0.999 a
+    # second -> 0.9999 a tick), GAE lambda (~10 s of lookahead), the BPTT window (5 s -> 10 s) and the rollout
+    cfg = dict(lr=a.lr)
+    if per_second > 1:
+        cfg.update(gamma=0.999 ** (1.0 / per_second), gae_lambda=0.99, bptt_chunk=100, update_timestep=1000)
+    if a.card_entropy is not None:
+        import dataclasses
+        ts.PHASE2_ENTROPY = dataclasses.replace(ts.PHASE2_ENTROPY, target_card=a.card_entropy)
+    print(f"run {run}\nclone {clone}\ndeck {os.environ['CLASH_DECK']}\ndecisions every {a.decision_ticks / 10:.1f} s"
+          f"\nppo {cfg}", flush=True)
+    CloneTrainer(PPOConfig(**cfg)).run()
 
 
 if __name__ == "__main__":
