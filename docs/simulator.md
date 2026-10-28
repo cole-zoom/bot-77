@@ -70,7 +70,7 @@ their LICENSE, credit them in `README.md` and `decisions.md`, cite like KataCR.
   paths (`/Users/...`) and binaries. Game frames, videos, `data/` tables and review pages stay local and gitignored.
   The engine fork goes in as a git submodule at `third_party/clash-royale-env` (or a vendored copy with its LICENSE);
   build output (`build/`, `.so`) is gitignored.
-- **Nothing touches the game client.** No game memory, network, client files or replay-file decoding. Card stats come
+- **Nothing touches the game client.** No game memory, network, client files or replay-file decoding. Card stats come **Exception (Cole, 2026-10-28): the stat audit reads the installed client's logic tables (assets/csv_logic, pulled over ADB into data/external/cr_client, gitignored, never committed): scripts/audit_client_stats.py.**
   from the fork (sourced from Supercell's balance notes and RoyaleAPI) or other public stat sites, never from game
   files.
 - Never open or touch `client_secret_*.json`.

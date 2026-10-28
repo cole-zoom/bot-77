@@ -2924,3 +2924,20 @@ Full write-up: docs/simulator-validation.md. Held-back only (48 games, 346 windo
   now kills 6 of 18 clumped Skeletons. Suspicious Bush (2025) isn't in cr-api-data (2023): waiting on what Cole saw.
 - Cole asked to audit against the card files in BlueStacks: not done, by the ground rules (nothing touches the
   game client, no client files; stats come from public sources only).
+- **Ground rule changed (Cole: "I don't care about getting banned. do the audit"):** the stat audit reads the
+  installed client's logic tables (BlueStacks -> adb pull of split_install_time_asset_pack.apk -> assets/csv_logic,
+  LZMA with a 4-byte size header; 397 files, now TOML per unit) into data/external/cr_client (gitignored; game files
+  never go in the repo). Level 11 = the unit's level-1 stats x rarities.csv PowerLevelMultiplier from the first level
+  of the rarity the unit's own section names (most units say Common: Mini P.E.K.K.A 543 x 2.56 = 1390 = the engine).
+- **Audit** (scripts/audit_client_stats.py): 75 engine cards matched, 26 not yet (naming: Archer, BlowdartGoblin, ...),
+  46 with a difference > 6%. Real ones by kind: speed (Bush, Goblin Machine, Goblin Demolisher, Little Prince,
+  Goblinstein Medium in the client, Slow in the engine; Ronin, Boss Bandit Fast); sight (Golem 7.5 vs 7.0, Electro
+  Giant 7.5 vs 5.5, Bowler 5.5 vs 4.0); damage / hp drifted (Wizard 305 vs 281, Ram Rider 271 vs 250, Electro Giant
+  184 vs 163, Lava Hound 72 vs 53, Wall Breakers 302 vs 350, Giant Skeleton hp 3361 vs 3126); splash (Dark Prince 1.1
+  vs none, Mega Knight 1.3 vs 1.5, Witch 1.5 in the client vs the 1.0 set from cr-api-data an hour earlier); deploy
+  (Golem 3.0 s, X-Bow / Mortar 3.5 s vs 1.0); melee reach (several 0.2-0.6 off); Monk cost 5 vs 4. Others are
+  modelling differences, not errors (Inferno ramp, Princess's projectile damage, spawner "sight 0").
+- **Suspicious Bush fixed from the client** (fork): pops on reaching a building for 0 damage (it attacked the tower),
+  sight 7.5, Medium, Bush Goblins 338 hp; and area effects now land on invisible units (the engine's own note said the
+  real game allows it; Arrows never touched the Bush). Checked: it pops at the tower with the tower untouched, and
+  Arrows kill it while invisible. Suite green (+ the expected 1).
