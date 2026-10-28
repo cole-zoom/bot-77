@@ -77,6 +77,27 @@ def crowns(im: np.ndarray) -> tuple[int, int]:
                  for y0, y1 in ((130, 215), (415, 500)))
 
 
+def _white(im: np.ndarray) -> np.ndarray:
+    return cv2.inRange(cv2.cvtColor(im, cv2.COLOR_BGR2HSV), (0, 0, 215), (180, 60, 255))
+
+
+_OK = cv2.imread(str(LIVE_UI / "ok_letters.png")) if (LIVE_UI / "ok_letters.png").exists() else None
+OK_TPL = _white(_OK) if _OK is not None else None
+
+
+def ok_button(im: np.ndarray, min_score: float = 0.7) -> tuple[float, float] | None:
+    """Centre of an "OK" button in the lower half of the screen, found by its white lettering (any button colour:
+    yellow on Choose Decoration, blue on the trophy road and the end screen; OCR reads none of them). On 289 saved
+    screens real OKs score 0.75-1.0 and the best other match 0.61 (2026-10-27)."""
+    if OK_TPL is None:
+        return None
+    im = cv2.resize(im, (1080, round(im.shape[0] * 1080 / im.shape[1])))
+    y0 = im.shape[0] // 2
+    _, score, _, (x, y) = cv2.minMaxLoc(cv2.matchTemplate(_white(im[y0:]), OK_TPL, cv2.TM_CCOEFF_NORMED))
+    h, w = OK_TPL.shape[:2]
+    return (x + w / 2, y + y0 + h / 2) if score >= min_score else None
+
+
 def end_ok_tap(im: np.ndarray) -> tuple[float, float]:
     """Where OK is on the battle end screen: read from the screen if possible, else the Play Again layout's spot."""
     try:
@@ -240,6 +261,9 @@ def between_games_tap(im: np.ndarray) -> tuple[float, float, str] | None:
     for t, x, y in texts:
         if (t in SAFE_BUTTONS or t.startswith("tap to")) and not any(n in t for n in NEVER):
             return x, y, f"button '{t}'"
+    ok = ok_button(im)  # an OK whose text doesn't OCR (2026-10-27: a nudge opened Choose Decoration, 30 min stuck)
+    if ok:
+        return ok[0], ok[1], "OK (lettering)"
     if any("choose your reward" in t or "choose a reward" in t for t, _, _ in texts):
         return 330, 540, "reward: left card"
     tab = battle_tab(im)
