@@ -2880,3 +2880,13 @@ Full write-up: docs/simulator-validation.md. Held-back only (48 games, 346 windo
   It also changes troop target ranking (CombatEntity::findTarget uses the same footprint), so kiting near a tower too;
   tests/core/test_sight_range.cpp's Hog-and-Cannon cases (~lines 410-500) pin the old fit and need re-deriving.
   GAMEPLAY-AFFECTING: every defence in the sim changes; the RL rounds so far were trained on the old ranking.
+- **Engine fixed (Cole: "yes"): tower targeting radius = the body** (fork 602a950: 1.5 Princess, 2.0 King; was 3.3 /
+  4.4). C++ suite 743 cases, 742 pass + the one expected failure. A Goblin Hut now pulls a Giant at (2.6, 12.8) from
+  ~6 tiles (was ~4.5), Cole's centre Hut (8.5, 12) included. The Prince kite at Cole's tile (8, 12.5) still fails:
+  that is the Prince's 5.5 sight (the Mini P.E.K.K.A / Ram is ~6.6 tiles away when it crosses), a troop-on-troop rule
+  the building measurement didn't cover; next to measure the same way. Cole: training on the old pulls is negative
+  signal; it may be why the RL agent nearly stopped playing the Goblin Hut. The next RL round starts from the 0.1 s
+  imitation agent (pro data, untouched by the sim), so nothing learned on the old pulls carries over.
+  Exam on the fixed engine (20 seeds; nothing / rush / scripted / round-2 model): Hog -1.26 / -1.44 / -0.22 / -0.66;
+  Ram -1.48 / -1.59 / -0.34 (0 HP median) / -0.81; melee -1.23 / -1.49 / -0.55 / -0.66; supported -2.85 / -3.10 /
+  -1.28 (1,564 HP median, was 1,962) / -1.93.
