@@ -2829,3 +2829,18 @@ Full write-up: docs/simulator-validation.md. Held-back only (48 games, 346 windo
   deploy, as it plays out in a real game (training too). The supported push still starts mid-push. Exam with drops
   (20 seeds): Hog nothing -1.16 / rush -1.45 / scripted -0.17 (0 HP median, 3.9 elixir) / model -0.67 (8.2);
   Ram -1.39 / -1.54 / -0.44 / -0.76; melee -1.30 / -1.58 / -0.67 / -0.67; supported -2.78 / -3.16 / -1.28 / -1.72.
+## 2026-10-28 · Decisions every 0.1 s (Cole: "I do not care. 0.1 decisions.")
+- Why it was 1 s: the fork's choice (skip_frames = 10) to keep training affordable; the imitation data was built per
+  second; the live bot waited a second between decisions to match. Cole's kiting / pull plays showed the cost.
+- Measured before building: the simulator does ~720 decisions a second on one core at either rate (a 3-minute game
+  takes ~2.5 s at 0.1 s), so the cost is the PPO update (10x the transitions per game). The live read-and-decide is
+  ~0.22 s on real frames (hand 83 ms, detector 65 ms of which box filtering 45 ms, clock OCR 44 ms, mirror + net 9
+  ms): the 1.3 s live cadence was the deliberate 1 s wait, not the pipeline.
+- Built: CloneEnv `decision_ticks` (our side acts every tick; the opponent keeps deciding once a second, as the clone
+  and the snapshots were trained); situations timed in seconds (identical at 1 s; a 0.1 s run takes 10x the steps,
+  same game time, the opponent plays as often); imitation data at --step 0.1 (compressed shards: the observation is
+  99.3% zeros, ~180x; units from replays update 4x a second, hand / elixir / clock 10x) with a sparse in-memory
+  loader; the play page in real time (4 ms a tick on the server).
+- To scale with the 10x shorter step: discount 0.999 -> 0.9999, GAE lambda 0.9 -> 0.99, a longer BPTT window, the
+  per-step elixir-overflow penalty divided by 10 (everything else in the shaping is a delta or a potential), and a
+  much lower card-entropy target (~97% of 0.1 s decisions are waits; the 0.35 target would force random plays).
