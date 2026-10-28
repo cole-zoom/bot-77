@@ -3199,3 +3199,8 @@ Full write-up: docs/simulator-validation.md. Held-back only (48 games, 346 windo
   template's mean moves ~0.1-0.35 between runs at 20 seeds. v4's 0.09 lead over v3 on the mean is inside that.
   Reading: **v4 is about v3 in the sim; score v2 and the answer keys did not teach it to defend cheaply.** Fix for the
   rebuild: seed the policy's sampling in the exam (or take the argmax) and use more seeds.
+- **Direction (Cole, 2026-10-28 ~16:30):** the rebuild (detector and the rest of the infra, a "massive overhaul") comes
+  later; first max out the RL model by finding the best training method. He asked for an evaluation of the three fixes
+  proposed after v4's exam: (1) a defence school (imitation of the scripted defence and his 142 games on the
+  scenarios), (2) RL with a leash to that model, (3) smaller changes (a scenario flag in the observation, a higher
+  elixir cost, a repeatable exam).
