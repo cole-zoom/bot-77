@@ -2894,3 +2894,18 @@ Full write-up: docs/simulator-validation.md. Held-back only (48 games, 346 windo
   held-back before training card at plays 37.8%, play/wait AUC 0.729, cell 4.2 tiles (bc_v2 transfers to 0.1 s
   as-is); after 10 epochs (~4 min each) 37.8-39.3%, 0.734-0.738, 4.0-4.2: flat, training loss ~1.09 throughout.
   Stopped at 10 of 40; the best checkpoint is data/models/bc_t01/frozen.pth, the start for RL at 0.1 s.
+- **Troop kites measured** (scripts/measure_kites.py; Cole's Prince kite from (8, 12.5)). 486 replays (train / dev /
+  held-back): 363 clean off-lane events to fit (247 pulls), 43 held-back, 56 in the attacker's own path left out;
+  attackers Barbarians 61, Mega Knight 55, Elite Barbarians 51, Knight 48, Dark Prince 27, Valkyrie 26, Prince 26,
+  Lumberjack 19, Mini P.E.K.K.A 18, P.E.K.K.A 17, Bandit 8, Bowler 7. Judged at the informative moment (a pull: the
+  distance when the attacker's turn began; a non-pull: the closest the two came), in the engine's convention (centre
+  distance; troops have no targeting radius). Distance when a pull began: median 5.2, 75% 6.3, 90% 7.6 tiles; closest
+  without a pull: median 9.5, 10% 4.2. Accuracy: engine sight (5.5 for most) 60.6% (held-back 76.7%); the existing
+  edge-to-edge switch (+0.8, i.e. 6.3) 69.1%; best pooled acquisition distance 7.25: 72.5% (held-back 83.7%; 7.0
+  70.8%, 7.5 71.9%). Prince (n 26, thin): pulls began at 7.3, 7.5, 7.6 and 9.0 tiles (e.g. tv_2026-10-14_r13_m01
+  41.0 s vs Goblins, tv_2026-10-12_r57_m01 45.5 s vs Archers, tv_2026-10-13_r13_m01 122.5 s vs Goblins), so a Prince
+  is taken from ~7 tiles in pro play and Cole's 6.6 is inside it. In the engine (after 602a950) the kite fails even
+  edge-to-edge (6.3 < 6.6). Caveats: ~27% of events fit no single distance (other units, locks, track noise at 4 fps),
+  per-card fits are thin, and unlike the building fit (relative distances) this one depends on the absolute scale of
+  our screen-to-engine conversion. Proposed (not applied): troop-on-troop acquisition at sight + 1.75 (5.5 -> 7.25) in
+  CombatEntity::effectiveSightWith for troop targets, leaving building and tower targeting as fitted.
