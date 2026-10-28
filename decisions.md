@@ -2742,3 +2742,7 @@ Full write-up: docs/simulator-validation.md. Held-back only (48 games, 346 windo
   Mega Minion 20%, Bomber 15%. The three rarely-played cards hold three of the four slots, so the agent mostly plays
   whatever reaches the one free slot: a one-slot cycle that wins in the simulator. Options put to Cole: test it for
   real first (recommended), shape training against holding cards, or change the deck.
+- Not new: the same measure (10 sim games each, Bomber deck): in hand Fireball / Giant / Goblin Hut = imitation 66 /
+  62 / 54%, round 1 at 8k 87 / 87 / 72%, round 2 at ~14k 93 / 91 / 80% (an even split is ~50%). The 8k snapshot that
+  went 13-5 in real games already clogged its hand; round 2 goes slightly further. Training was never restarted:
+  bc_v2 -> round 1 (10.1k, Archers) -> round 2 (from round 1's weights, Bomber).
