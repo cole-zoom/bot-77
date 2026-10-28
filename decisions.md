@@ -3097,3 +3097,15 @@ Full write-up: docs/simulator-validation.md. Held-back only (48 games, 346 windo
   ~15,000), and the situation score's 0.04/elixir cost doesn't stop the spend. Not tuned further overnight.
 - Fix: live ui.clock() crashed on the fast reader's float clock ("Unknown format code 'd'"); it only broke the
   terminal line after each play (the play and its row were already done), now cast to int.
+- **20-game BlueStacks test** (rl_clones_v3/final.pth, Bomber deck, --stream --decision-s 0.1, 05:30-06:36):
+  **8 wins, 12 losses (40%)**, against v2's 9-9 on the same deck the day before (and v1's 13-5). No Wi-Fi drops and
+  nothing excluded. Four losses ended in about 2 minutes (1.7, 1.8, 1.8, 2.1: fast three-crowns); losses otherwise ran
+  2.5-3.4 min, wins 3.1-4.0. It plays ~46 cards a game vs v2's ~26, with Mega Minion ~9 and Battle Ram ~9 a game (v2
+  ~5 each) and elixir at play 3.8 (v2 3.9): it cycles cheap cards and spends as soon as it can, the same habit the exam
+  shows (2-3x the scripted elixir). The run stopped after game 16 on an unrecognised screen (the banner-decoration
+  picker, opened by a between-games tap); I backed out with the Android back key and ran the last 4 as a second
+  session (data/live/rl_v3_bomber.log, rl_v3_bomber_rest.log, local).
+- **Verdict:** v3 isn't better than v2 in either the exam or real games (8-12 is within noise of 9-9 at n=20, but not an
+  improvement). Training win rate (0.59 vs the clone league) didn't carry over. Next candidates, not started: a larger
+  situation weight or an elixir-waste term in the full game, and adding Cole's reviewed scripted opponents (1 / 8 / 9)
+  once he's checked them.
