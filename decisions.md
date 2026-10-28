@@ -2746,3 +2746,8 @@ Full write-up: docs/simulator-validation.md. Held-back only (48 games, 346 windo
   62 / 54%, round 1 at 8k 87 / 87 / 72%, round 2 at ~14k 93 / 91 / 80% (an even split is ~50%). The 8k snapshot that
   went 13-5 in real games already clogged its hand; round 2 goes slightly further. Training was never restarted:
   bc_v2 -> round 1 (10.1k, Archers) -> round 2 (from round 1's weights, Bomber).
+- **Real games disagree in degree** (Cole: "in game testing it always played giant"). The 8k snapshot's 18 clean
+  real games (Archers): 33 plays a game; Giant 1.3, Goblin Hut 2.4, Fireball 0.9 per game; in hand Fireball 85%,
+  Giant 77%, Goblin Hut 64%. Same snapshot in the simulator (Bomber deck): 23 plays, Giant 0.7, in hand 87%. So it
+  does play the Giant about once a game, but holds it most of the time; the lean is milder in real games (longer,
+  more plays). Card use is measured on real games from here on.
