@@ -3204,3 +3204,12 @@ Full write-up: docs/simulator-validation.md. Held-back only (48 games, 346 windo
   proposed after v4's exam: (1) a defence school (imitation of the scripted defence and his 142 games on the
   scenarios), (2) RL with a leash to that model, (3) smaller changes (a scenario flag in the observation, a higher
   elixir cost, a repeatable exam).
+- **20-game test of v4, stopped at 16 (2026-10-28 16:00-16:09 local; data/live/rl_v4_bomber.log, LanceDB bot_games):
+  7 W / 7 L in 14 clean games (50%)**; v3 8-12 (40%), v2 9-9: all within noise of each other at these sizes, as the
+  exam said. Losses were fast (82-153 s, three-crowns); wins 3-5 min. Excluded: bot_2026-10-28_160612 (Cole: "it
+  bugged out", a three-crown loss with the game frozen at 2:55-2:56 and 7.5 elixir while the bot re-tapped Battle Ram)
+  and bot_2026-10-28_160713 (logged a "win" after 36 s, the bot's last read at 2:26: it left a game still running).
+  Cole: "it's the wifi"; the game after also bugged. Stopped (data/live/STOP). The bot still acts on a frozen picture
+  and can call a game over mid-game when the feed stalls; the guard (no actions on a stale frame, no end-of-game read
+  during a stall) is for the infra rebuild. n_actions counts tap attempts, not landed plays (one game: 105 taps worth
+  331 elixir in 309 s), so plays a game can't be compared with earlier rounds' until landed plays are separated.
