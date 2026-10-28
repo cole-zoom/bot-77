@@ -2981,3 +2981,33 @@ Full write-up: docs/simulator-validation.md. Held-back only (48 games, 346 windo
   centre-to-centre** in the engine while spells / death blasts now use overlap: a Bomber's bomb at a tower's edge
   splashes less than in the game. On-hit effects don't travel with splash (Ice Wizard's slow, Ice Spirit's freeze
   land on the primary target only).
+
+## 2026-10-28 (night): situations 5 / 6 / 10, Cole's reference starts, scripted opponents for 1 / 8 / 9
+
+- **Situations 5 (Arrows value), 6 (Fireball value), 10 (emergency)** added to training (`bot77.rl.situations`).
+  5 and 6 score the trade: −tower HP lost ÷ a princess + 0.1 × (enemy elixir value removed − elixir spent), where a
+  body's value is credited by the share of its max HP taken (capped at what it had) plus 0.25 of its value if it dies,
+  so finishing beats spreading; −0.3 if a threat is still alive at the limit. 6 includes damaged supports (40–70% HP)
+  and a tank in front 30% of the time. Exam, 10 held-out seeds (nothing / bridge rush / scripted spell on the densest
+  group): Arrows −1.32 / −2.04 / **+0.16**; Fireball −0.81 / −1.61 / **+0.10**. The yardstick separates cleanly.
+- **Emergency is hard, and the yardstick barely beats doing nothing**: −2.88 / −3.26 / **−2.75** (median tower HP lost
+  6,542 / 6,542 / 5,054, i.e. usually the princess and part of the King). A trace shows why: the clone opponent keeps
+  playing behind its push for 40 s (Royal Recruits, then Goblin Gang + Spear Goblins in the other lane), and its Mini
+  P.E.K.K.A kills the pulling Hut. Kept in training as the hard case; the scripted defence for it now keeps answering
+  (a card every 1.5 s on whatever is on our side) instead of playing three cards and stopping.
+- **Cole's 24 winning play-page starts** (data/live/cole_reference.jsonl) replay exactly: the generator is seeded
+  before reset, as the play page did, so the opponent's deck, the situation and the hand all follow. Check: the
+  scripted defence on those starts scores −0.62 now against −0.68 when Cole played them (older physics). In training
+  with `--reference-share` (that share of situation episodes); in the exam with `--reference`, where every player is
+  scored on all 24 against Cole's own −0.28: nothing −1.53, rush −1.64, scripted −0.62 (beats Cole on 6 of 24).
+- **Situations 1 / 8 / 9 with a scripted opponent, for Cole's review, not in training.** Their deck is fixed (Giant,
+  Golem, Hog, Ram, Musketeer, Wizard, Cannon, Mini P.E.K.K.A); it defends each unit of ours that crosses (Cannon in
+  the middle vs a building-targeter, Mini P.E.K.K.A in front of anything else). 1: four opening plans (tank in back +
+  support at the bridge, bridge rush, support in back, wait and defend). 8: a supported push, then defend with 2–4
+  elixir; the attack credit unlocks only if the push is beaten for ≤ 800 tower HP. 9: we're on 3, they're on 10; spend
+  4+ or send 3+ elixir across and they punish in the open lane with a win condition + support, otherwise a tank +
+  support push arrives at 6–12 s. Two of each variant, scripted defence vs a bridge rush: deficit −0.05 to −0.09 vs
+  −0.83 to −2.92; wait-and-defend opening +0.20 vs −0.83; but against a bridge-rush opening, our own bridge rush scores
+  higher (+0.13/+0.23 vs −0.23/+0.07): it meets the Hog on the way. Replays: artifact 2HuRcLZH9g7zxvp3zjJDQ8.
+- **Card-entropy target for the 0.1 s round**: the calibrated imitation agent sits at 0.02–0.06 of the card head's
+  maximum entropy at 0.1 s (97%+ of steps are waits). Target 0.04, not the fork's 0.35 (set for 1 s decisions).
