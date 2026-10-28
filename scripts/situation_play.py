@@ -4,7 +4,8 @@
   then open http://localhost:8777
 
 A local page (the simulator runs on this Mac, so it can't be a published page): the same top-down board as the replays,
-your hand along the bottom, the clock running a decision a second like the bot's. Click a card, then a tile, to play
+your hand along the bottom, the game in real time (you act on any 0.1 s tick; the opponent clone decides once a second
+as trained; the bot it is compared with still decides once a second). Click a card, then a tile, to play
 it; otherwise you wait. Each situation is drawn exactly as in training (bot77.rl.situations, the opponent clone
 playing on), scored the same way, and then replayed from the identical start by the scripted defence and the model,
 so the three scores sit side by side. Every game is appended to data/live/situation_play.jsonl (gitignored) as a
@@ -71,7 +72,7 @@ def main():
                 "t": game.get("t", 0), "done": done}
 
     def run_other(tpl, seed, who):
-        env = CloneEnv({"scenario_seed": 0})
+        env = CloneEnv({"scenario_seed": 0, "decision_ticks": 10})  # the bot (and the yardstick) at its trained 1 s
         obs = start(env, tpl, seed)
         h = (torch.zeros(1, LSTM_HIDDEN), torch.zeros(1, LSTM_HIDDEN))
         while True:
@@ -114,7 +115,7 @@ def main():
             if self.path == "/new":
                 name = body.get("template", "hog_rider")
                 seed = int(body.get("seed") or int(time.time()) % 100_000)
-                env = CloneEnv({"scenario_seed": 0})
+                env = CloneEnv({"scenario_seed": 0, "decision_ticks": 1})  # you act every tick (0.1 s): real time
                 obs = start(env, templates[name], seed)
                 spec = env.situation.spec
                 game.clear()
@@ -134,7 +135,7 @@ def main():
                 obs, r, term, trunc, info = env.step({"card_index": k, "target_x": np.array([x], np.float32),
                                                       "target_y": np.array([y], np.float32),
                                                       "activate_ability_slot1": 0, "activate_ability_slot2": 0})
-                game["t"] += 1
+                game["t"] = round(game["t"] + 0.1, 1)
                 if k < 4:
                     landed = env.game.get_elixir() < el0 - 0.5
                     game["plays"].append({"t": game["t"], "card": names.get(hand[k], str(hand[k])), "x": x, "y": y,
@@ -191,17 +192,16 @@ table { border-collapse: collapse; font-size:.9rem; } td, th { padding: 4px 8px;
 <div class="wrap">
   <div>
     <div class="boardwrap"><canvas id="board" width="540" height="1020"></canvas><div class="count" id="count" hidden></div></div>
-    <div class="stepbar"><div id="stepfill"></div></div>
-    <div class="steplab" id="steplab">next step —</div>
+    <div class="steplab" id="steplab">—</div>
     <div class="elx"><div id="elx"></div></div>
     <div class="muted" id="elxt" style="font-family:ui-monospace,monospace;font-size:.85rem;margin-top:4px">elixir —</div>
     <div class="hand" id="hand"></div>
   </div>
   <div class="panel">
-    <div><h1>Defend it yourself</h1><div class="muted">Pick a situation and press New (Restart replays the same start). After a 3-2-1 the clock runs one step at a time; the gold bar under the board fills to the next step, which is when a card you've queued lands. Click a card (or press 1-4), then a tile on our half (spells anywhere); Esc cancels, Space pauses. Do nothing and you wait.</div></div>
+    <div><h1>Defend it yourself</h1><div class="muted">Pick a situation and press New (Restart replays the same start). After a 3-2-1 the game runs in real time (a tick every 0.1 s, the engine's own); a card lands on the next tick after you place it. Half and quarter speed slow the clock, not the game. Click a card (or press 1-4), then a tile on our half (spells anywhere); Esc cancels, Space pauses. Do nothing and you wait.</div></div>
     <div class="row">
       <select id="tpl"><option value="hog_rider">Hog Rider</option><option value="battle_ram">Battle Ram</option><option value="melee">Melee (Mini P.E.K.K.A / Knight / Prince)</option><option value="supported_push">Supported push (Giant / Golem)</option></select>
-      <select id="speed"><option value="1000">1 step / s</option><option value="1500">1 step / 1.5 s</option><option value="2500">1 step / 2.5 s</option></select>
+      <select id="speed"><option value="100">real time</option><option value="200">half speed</option><option value="400">quarter speed</option></select>
       <button class="act go" id="start">New</button><button class="act" id="restart">Restart</button><button class="act" id="pause">Pause</button>
     </div>
     <div id="setup" class="muted"></div>
@@ -243,7 +243,7 @@ function renderHand() {
   S.hand.forEach((c,i) => { const b=document.createElement("button"); b.className="card"+(sel===i?" sel":""); b.disabled = c.cost > S.elixir || S.done;
     b.innerHTML = `<span style="color:var(--muted);font-size:.75rem">${i+1}</span> ${c.name}<span class="c">${c.cost}</span>`; b.onclick = () => { sel = sel===i?null:i; renderHand(); draw(); }; h.appendChild(b); });
   document.getElementById("elx").style.width = (S.elixir*10)+"%";
-  document.getElementById("elxt").textContent = `elixir ${S.elixir.toFixed(1)}  ·  theirs ${S.opp_elixir.toFixed(1)}  ·  ${S.t} s`;
+  document.getElementById("elxt").textContent = `elixir ${S.elixir.toFixed(1)}  ·  theirs ${S.opp_elixir.toFixed(1)}  ·  ${(+S.t).toFixed(1)} s`;
 }
 cv.addEventListener("click", ev => {
   if (!S || sel===null || S.done) return;
@@ -258,7 +258,7 @@ async function step() {
   const out = await post("/step", act || {});
   if (act) lastPlay = act;
   S = out.state; busy = false; renderHand(); draw();
-  document.getElementById("plays").innerHTML = (out.plays||[]).map(p => `<li>${p.t}s ${p.card} → (${p.x}, ${p.y})${p.landed?"":" — refused (illegal spot?)"}</li>`).join("");
+  document.getElementById("plays").innerHTML = (out.plays||[]).map(p => `<li>${(+p.t).toFixed(1)}s ${p.card} → (${p.x}, ${p.y})${p.landed?"":" — refused (illegal spot?)"}</li>`).join("");
   if (out.result) { clearInterval(timer); showResult(out.result); }
 }
 function fmt(r){ return `<td class="big">${(r.score>=0?"+":"")+r.score.toFixed(2)}</td><td>${Math.round(r.tower_hp_lost)}</td><td>${r.elixir_spent}</td><td>${r.unresolved?"alive":"handled"}</td><td>${r.seconds}s</td>`; }
@@ -288,12 +288,8 @@ document.addEventListener("keydown", ev => {   // 1-4 pick a card (left to right
 });
 document.getElementById("start").onclick = () => begin(null);
 document.getElementById("restart").onclick = () => { if (lastSeed !== null) begin(lastSeed); };
-(function frame() {   // the step bar and the queued card's countdown ring
-  const left = timer && S && !S.done && !paused ? Math.max(0, (nextAt - performance.now()) / period) : 0;
-  document.getElementById("stepfill").style.width = timer && S && !S.done ? ((1 - left) * 100) + "%" : "0%";
-  document.getElementById("steplab").textContent = !S ? "next step —" : S.done ? "finished" : paused ? "paused" :
-    pending ? `your ${S.hand[pending.slot].name} lands in ${(left * period / 1000).toFixed(1)} s` : `next step in ${(left * period / 1000).toFixed(1)} s`;
-  if (pending) draw();
+(function frame() {
+  document.getElementById("steplab").textContent = !S ? "—" : S.done ? "finished" : paused ? "paused" : `${S.t.toFixed(1)} s`;
   requestAnimationFrame(frame);
 })();
 document.getElementById("pause").onclick = () => { paused = !paused; if (!paused) nextAt = performance.now() + period; document.getElementById("pause").textContent = paused ? "Resume" : "Pause"; };
