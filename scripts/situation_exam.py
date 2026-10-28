@@ -75,30 +75,7 @@ def main():
         return max(ok)[1], x, float(env.MAX_Y)  # the bridge end of our half, in the other lane
 
     def defend(env, obs, first):
-        """A plain sensible defence (the yardstick, not a tuned one): the dealt answer once, in front of the threatened
-        tower (Goblin Hut in the middle, to pull); on a supported push, then the support answer on the support (Fireball
-        where it stands, a troop behind the tower), each card only when affordable and only once."""
-        if first:
-            env.defend_played = set()
-        spec, hand, el = env.situation.spec if env.situation else None, list(env.game.get_hand()), env.game.get_elixir()
-        if spec is None:
-            return 4, 0.0, 0.0
-        lane_x = spec["units"][0][1]
-        for group in ("answers", "answers2"):
-            if group in env.defend_played or not spec.get(group):
-                continue
-            for i, c in enumerate(hand):
-                if c in spec[group] and sit.COST[c] <= el:
-                    env.defend_played.add(group)
-                    if c == sit.GOBLIN_HUT:
-                        return i, 8.5, 9.0
-                    if c in (sit.FIREBALL, sit.ARROWS):
-                        sup = [u for u in env.game.get_units() if u.team == 1 and u.card_id == spec["units"][-1][0]]
-                        if not sup:
-                            continue
-                        return i, float(sup[0].x), float(sup[0].y)
-                    return i, lane_x, 9.0
-        return 4, 0.0, 0.0
+        return sit.scripted_defence(env)
 
     players = [("nothing", nothing), ("rush", rush), ("defend", defend)] + [(Path(c).parent.name + "/" + Path(c).stem, net_player(c)) for c in ckpts]
     tpls = [sit.hog_rider, sit.battle_ram, sit.melee, sit.supported_push]

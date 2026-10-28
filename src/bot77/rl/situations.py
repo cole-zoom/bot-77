@@ -48,7 +48,7 @@ def hog_rider(rng) -> dict:
     x = _lane(rng)
     return {"name": "hog_rider", "timeout": 20, "own_elixir": rng.uniform(4, 6),
             "opp_elixir": rng.uniform(0, 3), "units": [(HOG, x + rng.uniform(-0.4, 0.4), RIVER_Y + rng.uniform(-0.5, 0.5))],
-            "answers": [MINI_PEKKA, GOBLIN_HUT, MEGA_MINION]}
+            "answers": [MINI_PEKKA, GOBLIN_HUT, MEGA_MINION]}  # Hut first failed to pull (x 8.5, y 9): Cole to place it
 
 
 def battle_ram(rng) -> dict:
@@ -57,7 +57,7 @@ def battle_ram(rng) -> dict:
     x = _lane(rng)
     return {"name": "battle_ram", "timeout": 26, "own_elixir": rng.uniform(4, 6),
             "opp_elixir": rng.uniform(0, 3), "units": [(BATTLE_RAM, x, rng.uniform(16.0, 19.5))],
-            "answers": [MINI_PEKKA, GOBLIN_HUT, MEGA_MINION, BOMBER]}
+            "answers": [MINI_PEKKA, GOBLIN_HUT, MEGA_MINION], "answers2": [BOMBER, MEGA_MINION]}
 
 
 def melee(rng) -> dict:
@@ -68,7 +68,7 @@ def melee(rng) -> dict:
     name = {MINI_PEKKA: "melee_mini_pekka", KNIGHT: "melee_knight", PRINCE: "melee_prince"}[card]
     return {"name": name, "timeout": 20, "own_elixir": rng.uniform(3, 5),
             "opp_elixir": rng.uniform(0, 3), "units": [(card, x + rng.uniform(-0.4, 0.4), rng.uniform(15.5, 18.5))],
-            "answers": [BOMBER, MEGA_MINION, GOBLIN_HUT]}
+            "answers": [BOMBER, MEGA_MINION, GOBLIN_HUT] if card == KNIGHT else [MEGA_MINION, GOBLIN_HUT, BOMBER]}
 
 
 def supported_push(rng) -> dict:
@@ -88,6 +88,52 @@ def supported_push(rng) -> dict:
 
 
 TEMPLATES = [hog_rider, battle_ram, melee, supported_push]
+
+
+def scripted_defence(env) -> tuple[int, float, float]:
+    """The exam's yardstick (2026-10-28): a plain sensible defence, not a tuned one. The best answer in hand by the
+    template's priority order (answers lists are ordered: e.g. Goblin Hut first against a Hog, Mini P.E.K.K.A first
+    against a Battle Ram), once: Goblin Hut in the middle (x 8.5, y 9) to pull, a troop in front of the threatened tower
+    (lane, y 9). Then the second answer once, when there is one: a spell on the support unit where it stands, a troop on
+    the nearest enemy on our side (the Ram's Barbarians, a support unit) or in front of the tower. Only affordable cards;
+    otherwise wait. (First version picked by hand order and answered a Ram with a lone Mega Minion: Cole, "our scripted
+    defense is ass?")"""
+    spec = env.situation.spec if env.situation else None
+    if spec is None:
+        return 4, 0.0, 0.0
+    if not hasattr(env, "defend_played") or env.defend_played[0] is not env.situation:
+        env.defend_played = (env.situation, set())
+    played = env.defend_played[1]
+    hand, el = list(env.game.get_hand()), env.game.get_elixir()
+    lane_x = spec["units"][0][1]
+    for group in ("answers", "answers2"):
+        if group in played or not spec.get(group):
+            continue
+        if group == "answers2" and "answers" not in played:
+            break
+        for c in spec[group]:
+            if c not in hand or COST[c] > el:
+                continue
+            i = hand.index(c)
+            enemies = [u for u in env.game.get_units() if u.team == 1 and not u.tower and u.y < 17.5]
+            if c == GOBLIN_HUT:
+                played.add(group)
+                return i, 8.5, 9.0
+            if c in (FIREBALL, ARROWS):
+                sup = [u for u in env.game.get_units() if u.team == 1 and u.card_id == spec["units"][-1][0]]
+                if not sup:
+                    continue
+                played.add(group)
+                return i, float(sup[0].x), float(sup[0].y)
+            if group == "answers2":
+                if not enemies:
+                    break  # nothing to clean up yet (the Ram's Barbarians appear when it breaks)
+                tgt = min(enemies, key=lambda u: u.y)
+                played.add(group)
+                return i, float(np.clip(tgt.x, 0, 17)), float(np.clip(tgt.y + 1.0, 0, 14))
+            played.add(group)
+            return i, lane_x, 9.0
+    return 4, 0.0, 0.0
 
 
 def deal_hand(rng, deck: list[int], spec: dict) -> list[int]:
@@ -124,6 +170,7 @@ class Situation:
         self.princess_max = float(game.get_tower_max_hp(0, 1))
         self.spent0 = float(game.get_elixir_spent(0))
         self.steps = 0
+        self.neutral_streak = 0
 
     def resolved(self) -> bool:
         """The injected threat is dead (anything it spawned, e.g. the Battle Ram's Barbarians, is on team 1 too and
@@ -138,7 +185,11 @@ class Situation:
         """After each env step: (finished, score, details). Finishes when the board is neutral (after MIN_SECONDS), at
         the timeout, or when the game ends."""
         self.steps += 1
-        done = game_over or self.steps >= self.spec["timeout"] or (self.steps >= MIN_SECONDS and self.resolved())
+        neutral = self.resolved()
+        self.neutral_streak = self.neutral_streak + 1 if neutral else 0
+        # neutral for 2 s in a row: a Battle Ram's Barbarians appear ~1 s after it breaks, and the board looked empty
+        # for that second (2026-10-28)
+        done = game_over or self.steps >= self.spec["timeout"] or (self.steps >= MIN_SECONDS and self.neutral_streak >= 2)
         if not done:
             return False, 0.0, {}
         lost = sum(max(0.0, a - max(0, self.game.get_tower_hp(0, s))) for s, a in enumerate(self.tower0))

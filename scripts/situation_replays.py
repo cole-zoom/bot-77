@@ -57,29 +57,7 @@ def main():
         return int(k.item()), float(x.item()), float(y.item())
 
     def defend(env, obs, first):
-        if first:
-            env.defend_played = set()
-        spec, hand, el = env.situation.spec if env.situation else None, list(env.game.get_hand()), env.game.get_elixir()
-        if spec is None:
-            return 4, 0.0, 0.0
-        lane_x = spec["units"][0][1]
-        for group in ("answers", "answers2"):
-            if group in env.defend_played or not spec.get(group):
-                continue
-            for i, c in enumerate(hand):
-                if c in spec[group] and sit.COST[c] <= el:
-                    if c == sit.GOBLIN_HUT:
-                        env.defend_played.add(group)
-                        return i, 8.5, 9.0
-                    if c in (sit.FIREBALL, sit.ARROWS):
-                        sup = [u for u in env.game.get_units() if u.team == 1 and u.card_id == spec["units"][-1][0]]
-                        if not sup:
-                            continue
-                        env.defend_played.add(group)
-                        return i, float(sup[0].x), float(sup[0].y)
-                    env.defend_played.add(group)
-                    return i, lane_x, 9.0
-        return 4, 0.0, 0.0
+        return sit.scripted_defence(env)
 
     names = {}
 
