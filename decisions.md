@@ -3109,3 +3109,10 @@ Full write-up: docs/simulator-validation.md. Held-back only (48 games, 346 windo
   improvement). Training win rate (0.59 vs the clone league) didn't carry over. Next candidates, not started: a larger
   situation weight or an elixir-waste term in the full game, and adding Cole's reviewed scripted opponents (1 / 8 / 9)
   once he's checked them.
+- **Cole's review of 1 / 8 / 9, first note (1-2, the Hog bridge rush):** "the mini pekka should be played earlier and
+  lower, like 11". The scripted defence's reactive answer now fires once a troop is at the bridge (y < 19, was < 18)
+  and puts the Mini P.E.K.K.A at y 11 (or 1.5 in front of the troop if it's already lower; was 1.5 in front, y 13.8 at
+  3 s). On five bridge-rush openings it now lands at 1 s at y 11, tower untouched, score +0.19-0.20 (the replay Cole
+  saw: -0.23). Also: an exact start of a 1 / 8 / 9 situation (forced_seed) now gives the opponent its script deck.
+- **Play page has all ten situations** (scripts/situation_play.py): the seven training ones plus 1 / 8 / 9 with the
+  scripted opponent (their plan shown), and v3 at its 0.1 s interval as the bot it compares with.

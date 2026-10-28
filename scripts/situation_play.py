@@ -29,7 +29,8 @@ SAVED = ROOT / "data/live/saved_situations.json"  # bookmarked starts (Save butt
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("--ckpt", default="data/models/rl_clones_v2/final.pth")
+    ap.add_argument("--ckpt", default="data/models/rl_clones_v3/final.pth")
+    ap.add_argument("--model-ticks", type=int, default=1, help="the model's decision interval in 0.1 s ticks (v3: 1)")
     ap.add_argument("--port", type=int, default=8777)
     a = ap.parse_args()
     os.environ.update({"CLASH_DECK": "2,81,5,43,9,95,7,3", "RL_CLONE_CKPT": str(ROOT / "data/models/bc_v2/frozen.pth"),
@@ -51,8 +52,7 @@ def main():
     net = MicroRoyaleNet()
     net.load_state_dict(torch.load(ckpt, map_location="cpu", weights_only=False)["model"], strict=False)
     net.eval()
-    templates = {"hog_rider": sit.hog_rider, "battle_ram": sit.battle_ram, "melee": sit.melee,
-                 "supported_push": sit.supported_push}
+    templates = {t.__name__: t for t in sit.TEMPLATES + sit.REVIEW_TEMPLATES}  # all ten, Cole's 1 / 8 / 9 included
     game = {}
 
     def start(env, tpl, seed):
@@ -74,7 +74,8 @@ def main():
                 "t": game.get("t", 0), "done": done}
 
     def run_other(tpl, seed, who):
-        env = CloneEnv({"scenario_seed": 0, "decision_ticks": 10})  # the bot (and the yardstick) at its trained 1 s
+        # the yardstick once a second as in the exam's replays; the bot at its trained interval
+        env = CloneEnv({"scenario_seed": 0, "decision_ticks": 10 if who == "scripted" else a.model_ticks})
         obs = start(env, tpl, seed)
         h = (torch.zeros(1, LSTM_HIDDEN), torch.zeros(1, LSTM_HIDDEN))
         while True:
@@ -125,9 +126,9 @@ def main():
                 game.clear()
                 game.update({"env": env, "tpl": name, "seed": seed, "t": 0, "plays": [], "spec_name": spec["name"],
                              "own_elixir": spec["own_elixir"], "opp_elixir": spec["opp_elixir"],
-                             "threat": [names.get(c, str(c)) for c, _, _ in spec["units"]]})
+                             "threat": [names.get(u[0], str(u[0])) for u in spec["units"]]})
                 return self.send(200, json.dumps({"state": state(env), "situation": spec["name"], "seed": seed,
-                                                  "threat": game["threat"], "start_elixir": [round(spec["own_elixir"], 1), round(spec["opp_elixir"], 1)]}))
+                                                  "threat": game["threat"], "plan": spec.get("opp"), "start_elixir": [round(spec["own_elixir"], 1), round(spec["opp_elixir"], 1)]}))
             if self.path == "/save":
                 saved = json.loads(SAVED.read_text()) if SAVED.exists() else []
                 saved.append({"template": body["template"], "seed": int(body["seed"]), "note": body.get("note", ""),
@@ -212,7 +213,7 @@ table { border-collapse: collapse; font-size:.9rem; } td, th { padding: 4px 8px;
   <div class="panel">
     <div><h1>Defend it yourself</h1><div class="muted">Pick a situation and press New (Restart replays the same start). A 3-2-1 holds the game so you can get to the board, and you can already queue a card; then it runs in real time (a tick every 0.1 s) and a card lands on the next tick after you place it. Half and quarter speed slow everything down, and take effect immediately. Click a card (or press 1-4), then a tile on our half (spells anywhere); Esc cancels, Space pauses. Do nothing and you wait.</div></div>
     <div class="row">
-      <select id="tpl"><option value="hog_rider">Hog Rider</option><option value="battle_ram">Battle Ram</option><option value="melee">Melee (Mini P.E.K.K.A / Knight / Prince)</option><option value="supported_push">Supported push (Giant / Golem)</option></select>
+      <select id="tpl"><option value="hog_rider">Hog Rider</option><option value="battle_ram">Battle Ram</option><option value="melee">Melee (Mini P.E.K.K.A / Knight / Prince)</option><option value="supported_push">Supported push (Giant / Golem)</option><option value="arrows_value">5 · Arrows value</option><option value="fireball_value">6 · Fireball value</option><option value="emergency">10 · Emergency</option><option value="safe_opening">1 · Safe opening (they react)</option><option value="defend_counter">8 · Defend, then counter (they react)</option><option value="dont_overcommit">9 · Don't overcommit (they react)</option></select>
       <select id="speed"><option value="100">real time</option><option value="200">half speed</option><option value="400">quarter speed</option></select>
       <button class="act go" id="start">New</button><button class="act" id="restart">Restart</button><button class="act" id="pause">Pause</button>
     </div>
@@ -324,9 +325,9 @@ async function begin(seed) {
   $("pause").textContent = "Pause"; $("result").innerHTML = ""; $("plays").innerHTML = "";
   const out = await post("/new", {template: $("tpl").value, seed});
   if (g !== gen) return;
-  lastSeed = out.seed; lastTpl = $("tpl").value; lastThreat = out.threat.join(" + ");
+  lastSeed = out.seed; lastTpl = $("tpl").value; lastThreat = out.threat.join(" + ") || "nothing yet";
   S = out.state; updateHand(); draw();
-  $("setup").innerHTML = `Threat <b>${lastThreat}</b> · your elixir <b>${out.start_elixir[0]}</b> · theirs <b>${out.start_elixir[1]}</b> · seed ${out.seed}`;
+  $("setup").innerHTML = `Threat <b>${lastThreat}</b>${out.plan ? ` · their plan <b>${PLAN[out.plan] || out.plan}</b>` : ""} · your elixir <b>${out.start_elixir[0]}</b> · theirs <b>${out.start_elixir[1]}</b> · seed ${out.seed}`;
   const cnt = $("count");
   for (const n of [3, 2, 1]) {                     // the game waits; you can already queue a card
     if (g !== gen) return;
@@ -341,10 +342,12 @@ async function begin(seed) {
 function fmt(r) { return `<td class="big">${(r.score >= 0 ? "+" : "") + r.score.toFixed(2)}</td><td>${Math.round(r.tower_hp_lost)}</td><td>${r.elixir_spent}</td><td>${r.unresolved ? "alive" : "handled"}</td><td>${r.seconds}s</td>`; }
 function showResult(R) {
   $("result").innerHTML = `<b>Result</b> (higher is better)<table><tr><th></th><th>score</th><th>tower HP lost</th><th>elixir</th><th>threat</th><th>time</th></tr>
-  <tr><td>You</td>${fmt(R.you)}</tr><tr><td>Scripted defence</td>${fmt(R.scripted)}</tr><tr><td>Bot (round 2)</td>${fmt(R.model)}</tr></table>
+  <tr><td>You</td>${fmt(R.you)}</tr><tr><td>Scripted defence</td>${fmt(R.scripted)}</tr><tr><td>Bot (v3)</td>${fmt(R.model)}</tr></table>
   <div class="muted" style="margin-top:6px">Same start for all three; the opponent clone plays on, so its plays can differ.</div>`;
 }
 
+const PLAN = {tank_back: "tank in the back", bridge_rush: "bridge rush", support_back: "support in the back",
+  wait_defend: "wait and defend", defend: "defend what crosses", punish: "punish an overcommit"};
 $("start").onclick = () => begin(null);
 $("restart").onclick = () => { if (lastSeed !== null) { $("tpl").value = lastTpl; begin(lastSeed); } };
 $("pause").onclick = () => { paused = !paused; $("pause").textContent = paused ? "Resume" : "Pause"; };

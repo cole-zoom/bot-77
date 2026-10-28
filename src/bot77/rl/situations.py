@@ -343,7 +343,9 @@ def _reactive_defence(env, played) -> tuple[int, float, float]:
     if env.situation.seconds - played_last(played) < 1.5:
         return 4, 0.0, 0.0
     hand, el = list(env.game.get_hand()), env.game.get_elixir()
-    foes = [u for u in env.game.get_units() if u.team == 1 and not u.tower and not u.building and u.y < 18.0]
+    # from the moment a troop is at the bridge (Cole 2026-10-28, 1-2: the Mini P.E.K.K.A went in at 3 s at y 13.8 in front
+    # of the Hog; "should be played earlier and lower, like 11")
+    foes = [u for u in env.game.get_units() if u.team == 1 and not u.tower and not u.building and u.y < 19.0]
     if not foes:
         return 4, 0.0, 0.0
     near = min(foes, key=lambda u: u.y)
@@ -353,7 +355,7 @@ def _reactive_defence(env, played) -> tuple[int, float, float]:
             continue
         if c == MINI_PEKKA and ground:
             t = min(ground, key=lambda u: u.y)
-            pos = (float(np.clip(t.x, 0, 17)), float(np.clip(t.y - 1.5, 1, 14)))
+            pos = (float(np.clip(t.x, 0, 17)), float(np.clip(min(t.y - 1.5, 11.0), 1, 11)))
         elif c == MEGA_MINION:
             pos = (float(np.clip(near.x, 0, 17)), float(np.clip(near.y - 1.5, 1, 14)))
         elif c == GOBLIN_HUT:
