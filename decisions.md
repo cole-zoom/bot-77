@@ -2751,3 +2751,7 @@ Full write-up: docs/simulator-validation.md. Held-back only (48 games, 346 windo
   Giant 77%, Goblin Hut 64%. Same snapshot in the simulator (Bomber deck): 23 plays, Giant 0.7, in hand 87%. So it
   does play the Giant about once a game, but holds it most of the time; the lean is milder in real games (longer,
   more plays). Card use is measured on real games from here on.
+- **Round 2 finished** (20,000 episodes, ~7.5 h of training; last checkpoint at 19,575, copied to
+  rl_clones_v2/final.pth): clone 0.74 (6,859 games), round-1 snapshots 0.93 / 0.85 / 0.78 / 0.75 / 0.72 (2k-10k),
+  round-2 snapshots 0.74 / 0.69 / 0.56 / 0.57 / 0.61 / 0.58 / 0.57 / 0.54 / 0.55 (2k-18k). Distinct cards per game
+  ~6.0 throughout. Next: the real test with Bomber (check the hand reader reads Bomber first).
