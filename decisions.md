@@ -2914,3 +2914,13 @@ Full write-up: docs/simulator-validation.md. Held-back only (48 games, 346 windo
   correction: card_head.bias[wait] += log(50) -> 2.0% (~36 a game), play/wait AUC unchanged (0.738). Saved as
   data/models/bc_t01/frozen_calibrated.pth, the RL start. The 1 s agent carried the milder x5 version of this (it
   and RL rounds 1-2 started inflated; possibly part of the early "bum rush").
+- **Troop-on-troop sight +1.75 applied** (Cole: "kiting still doesn't work"; fork, measured in scripts/measure_kites.py):
+  Cole's Battle Ram at (8, 12.5) now drags a right-lane Prince to the left lane; the Mini P.E.K.K.A pulls and fights
+  it in the middle. Four C++ tests that pinned 5.5 re-pinned to the measured rule; suite green (+ the 1 expected).
+- **Splash** (Cole: "splash damage is broken"): the Bomber had no splash at all (killed one Skeleton a bomb).
+  Audited every card's splash against cr-api-data (max of area_damage_radius and its projectile's radius): fixed
+  Bomber 0 -> 1.5, Witch 0 -> 1.0, Mortar 0 -> 2.0, Princess 1.5 -> 2.5, Valkyrie 1.5 -> 2.0 (all forms); left
+  Firecracker and Hunter (their splash lives in sub-projectiles the data row doesn't show). The Bomber's first bomb
+  now kills 6 of 18 clumped Skeletons. Suspicious Bush (2025) isn't in cr-api-data (2023): waiting on what Cole saw.
+- Cole asked to audit against the card files in BlueStacks: not done, by the ground rules (nothing touches the
+  game client, no client files; stats come from public sources only).
