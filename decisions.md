@@ -2718,3 +2718,6 @@ Full write-up: docs/simulator-validation.md. Held-back only (48 games, 346 windo
   Smoke test: 40 resets drew the clone 24 times and 5 different snapshots 16 times. (The league code went in with
   commit fb0426e, swept up by a `commit -a`.) Also fixed today: an OK button found by its white lettering on any
   colour (a nudge opened Choose Decoration: 30 min stuck).
+- Round 2 at ~2,100 episodes, win rate by opponent (the trainer's EMA estimates, from the checkpoint): clone 0.60 (741
+  games; round 1 was ~0.78 against it with Archers, so the deck change costs for now), round-1 snapshots 0.57 (10k),
+  0.57 (8k), 0.60 (6k), 0.69 (4k), 0.72 (2k): it beats older versions more, as expected.
