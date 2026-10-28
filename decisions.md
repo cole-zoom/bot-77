@@ -2775,3 +2775,20 @@ Full write-up: docs/simulator-validation.md. Held-back only (48 games, 346 windo
   the 8k snapshot's 13-5 (Archers) it looks worse, but the deck changed and the 13-5 run raised the trophy count (so
   stronger opponents); both samples are small. Simulator win rates against the clone (74% vs ~75%) didn't predict the
   difference. Next: the defence / counter-attack scenarios with Cole.
+## 2026-10-28 · Defence situations, phase one (Cole's scenarios 2, 3, 4, 7)
+- bot77.rl.situations: hog_rider (Hog at the bridge, 4-6 elixir, 15-20 s), battle_ram (16-19.5 out, 4-6, 20-26 s),
+  melee (Mini P.E.K.K.A / Knight / Prince, 3-5, 15-20 s), supported_push (Giant + Musketeer / Wizard / Executioner /
+  Minions near the bridge, or a Golem + Wizard / Musketeer from the back; 6-8, 25-40 s). Lane, positions, elixir and
+  hand order randomised; the hand always holds an affordable answer (and a support answer on the supported push); the
+  enemy is already moving (deploy 0); runs until the threat is dead (window minimum, timeout maximum). Score =
+  -(tower HP lost / princess max) - 0.04 x elixir spent [+ 0.02 x surviving defenders' elixir, supported push]
+  - 0.3 if unresolved; no credit for enemy tower damage. On a situation's steps the game's shaping is zeroed and its
+  end is final (no bootstrap, no draw penalty); the fork's own scenarios are off when ours are on.
+- **Exam** (scripts/situation_exam.py, 20 held-out seeds per template; engine towers 2,534; the clone keeps playing
+  during the window, so states aren't identical across players). Scores (higher is better):
+  hog nothing -1.23 / rush -1.38 / scripted defence -0.61 (3.6 elixir) / round-2 model -0.86 (8.7 elixir);
+  battle ram -1.26 / -1.43 / -0.93 (3.6) / -1.40 (10.8); melee -1.23 / -1.42 / -0.70 (2.5) / -0.79 (8.2);
+  supported push -2.81 / -3.06 / -1.89 (6.3) / -1.94 (14.7). Cole's check holds (a sensible defence beats rush and
+  doing nothing on all four); the model often saves more tower HP but spends 2-4x the elixir.
+- Smoke (situations only, 4 workers, ~340 episodes): runs; critic loss 0.68 -> 0.10 as the value head learns the
+  new scores. Waiting on Cole's review of the scripted behaviour before the round.
