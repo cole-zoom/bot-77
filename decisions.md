@@ -3184,3 +3184,18 @@ Full write-up: docs/simulator-validation.md. Held-back only (48 games, 346 windo
   trails the scripted defence everywhere, spending about twice its elixir (e.g. hog 8.2 vs 3.9). On don't-overcommit
   it scores below doing nothing (-1.13 vs -0.27): it still commits. Cole's 142 starts: v4 -1.11 (beats his score on
   10), v3 -1.10 (15), scripted -0.58 (60), Cole -0.31. Reading: better than v3 in the scenarios, not yet a defender.
+- **v4 finished: 8,003 episodes (15:03), exit 0.** Last 3,000 episodes per 1,000: win 0.62 / 0.59 / 0.58, ScenDef
+  0.28 / 0.29 / 0.24, cards a game 5.61 / 5.53 / 5.70, plays a game ~18. ScenDef peaked ~0.30 around 5k and slipped.
+  Saved data/models/rl_clones_v4/final.pth (trainer state, no optimizer) and final_weights.pth (model + deck).
+- **Final exam** (data/models/rl_clones_v4/exam.txt; 20 held-out seeds; v4 final / v4 at 4k / v3 / scripted defence):
+  hog -0.54 / -0.53 / -0.66 / -0.14; battle ram -0.75 / -0.92 / -0.97 / -0.41; melee -0.76 / -0.91 / -0.88 / -0.65;
+  supported push -2.04 / -1.97 / -2.15 / -1.40; arrows value -0.63 / -0.60 / -0.86 / +0.22; fireball value -0.88 /
+  -0.76 / -0.77 / +0.11; emergency -3.29 / -3.38 / -3.23 / -3.25; safe opening -0.23 / -0.39 / -0.28 / +0.09;
+  defend+counter -1.22 / -0.91 / -1.28 / -0.65; don't overcommit -0.90 / -1.00 / -1.04 / +0.08. Mean over the ten:
+  v4 -1.12, v3 -1.21, scripted -0.60. Elixir spent unchanged (v4 7.5 on the hog vs scripted 3.9). Cole's 142 starts:
+  v4 -1.16 (beats him on 15), v4@4k -1.15 (11), v3 -1.08 (23), scripted -0.55 (57), Cole -0.31.
+- **The exam itself is noisy:** the same 4k snapshot scored differently on the two runs (hog -0.70 vs -0.53, supported
+  push -1.67 vs -1.97, defend+counter -1.27 vs -0.91): the engine is seeded but the network's sampling isn't, so a
+  template's mean moves ~0.1-0.35 between runs at 20 seeds. v4's 0.09 lead over v3 on the mean is inside that.
+  Reading: **v4 is about v3 in the sim; score v2 and the answer keys did not teach it to defend cheaply.** Fix for the
+  rebuild: seed the policy's sampling in the exam (or take the argmax) and use more seeds.
