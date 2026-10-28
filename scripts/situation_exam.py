@@ -7,7 +7,9 @@ Players: "nothing" (never plays), "rush" (plays its most expensive affordable ca
 exploit the scoring must not reward), "defend" (a plain scripted defence: the yardstick), and each --ckpt (sampled
 like training). A template is fit to train on only if
 a sensible defence beats both references (Cole's check); the trend of a checkpoint's scores across rounds is the exam.
-Seeds 10_000+ (training draws from the run's own seeds, so these states are held out by construction).
+Seeds 10_000+ (training draws from the run's own seeds, so these states are held out by construction). Torch is seeded
+with the same seed before each start (2026-10-28): the networks sample (ours and the clone opponent), and unseeded the
+same checkpoint's template means moved by up to 0.36 between runs at 20 seeds.
 """
 import argparse
 import json
@@ -96,6 +98,7 @@ def main():
             for i in range(a.n):
                 env.rng = np.random.default_rng(10_000 + i)  # the same states for every player
                 env.scenario_rng = env.rng
+                torch.manual_seed(10_000 + i)
                 obs, _ = env.reset()
                 env.rush_lane = lane_of(env.situation.spec)
                 first = True
@@ -120,6 +123,7 @@ def main():
             for pname, act in players:
                 env = CloneEnv({"scenario_seed": 0})
                 env.forced_seed = (sit.BY_NAME[r["situation"]], int(r["seed"]))
+                torch.manual_seed(int(r["seed"]))
                 obs, _ = env.reset()
                 env.rush_lane = lane_of(env.situation.spec)
                 first = True
