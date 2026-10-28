@@ -3213,3 +3213,23 @@ Full write-up: docs/simulator-validation.md. Held-back only (48 games, 346 windo
   and can call a game over mid-game when the feed stalls; the guard (no actions on a stale frame, no end-of-game read
   during a stall) is for the infra rebuild. n_actions counts tap attempts, not landed plays (one game: 105 taps worth
   331 elixir in 309 s), so plays a game can't be compared with earlier rounds' until landed plays are separated.
+- **Openings in the live test (Cole: "it wasn't really following the scenarios I gave it. it was still bum
+  rushing"):** confirmed from bot_actions: in 13 of the 14 clean games v4's first play came 1-5 s in, a Giant, Mini
+  P.E.K.K.A or Battle Ram at the left bridge (x 2.5, y 16 screen tiles) at ~8 elixir; one opened with Mega Minion in
+  back. Round 2's opener, unchanged. The scenarios didn't carry over to real openings: full games (half of training,
+  where only winning counts and an early rush often beats the clones) outweigh them, the network can't tell a scenario
+  from a game, and it rarely found the answer-key play to be rewarded for it.
+- **The exam repeats exactly now** (scripts/situation_exam.py seeds torch per start; two runs of v4 on two templates
+  identical to the digit). **Seeded 50-seed baseline** (data/models/rl_clones_v4/exam_n50_seeded.txt; v4 / v3 /
+  scripted): hog -0.67 / -0.63 / -0.10; battle ram -0.87 / -0.93 / -0.37; melee -0.85 / -0.82 / -0.61; supported push
+  -2.17 / -2.01 / -1.39; arrows value -0.64 / -0.71 / +0.11; fireball value -0.98 / -0.94 / -0.09; emergency -3.33 /
+  -3.12 / -3.18; safe opening -0.18 / -0.28 / +0.05; defend+counter -1.20 / -1.21 / -0.57; don't overcommit -1.00 /
+  -1.09 / +0.02. Means v4 -1.19, v3 -1.17, scripted -0.61. Cole's 142 starts: v4 -1.24, v3 -1.04, scripted -0.60,
+  Cole -0.31. **v4 = v3.** This is the yardstick for the defence school.
+- **Plan (Cole agreed to build the defence school; "max out the RL model" first):** (1) defence school: imitation of
+  the scripted defence (labelling the bot's own states too, DAgger-style) and Cole's takes, mixed with the pro data,
+  covering real openings (wait / defend first) as well as the scenarios; gate: exam mean clearly above -1.19 with
+  elixir toward the script's, full-game strength vs the clone kept. (2) RL from it with a leash (a penalty for
+  straying from it); gate: beats the defence school on the exam without spending more, then 20 real games. (3) the
+  scenario flag and a higher elixir cost only if a failure calls for them. Add an opening check to the exam (the first
+  10 s of a full game).
