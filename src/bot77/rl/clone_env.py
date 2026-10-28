@@ -97,6 +97,8 @@ class CloneEnv(MicroRoyaleSelfPlayEnv):
             info["is_scenario"] = 1.0  # out of the headline W/L, as the fork does for its scenarios
             info["scenario_defensive"] = 1.0
             done, score, details = self.situation.step(terminated or truncated)
+            if self.situation.just_dropped:  # the threat appeared after this step's observation was taken
+                obs = np.array(self.game.get_observation_for_team(0), dtype=np.float32)
             if done:
                 # the score is the whole reward; ended as a truncation so the trainer's draw penalty (terminated with
                 # |reward| < 0.5) can't fire, and the trainer zeroes the bootstrap on rl_situation_end

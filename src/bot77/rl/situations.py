@@ -31,6 +31,7 @@ COST = {HOG: 4, BATTLE_RAM: 4, MINI_PEKKA: 4, KNIGHT: 3, PRINCE: 5, GIANT: 5, GO
         EXECUTIONER: 5, MINIONS: 3, MEGA_MINION: 3, BOMBER: 2, GOBLIN_HUT: 4, FIREBALL: 4, ARROWS: 3}
 
 LANE_X = (3.0, 14.0)  # the princess-tower lanes (engine x; bridges at 2.5 / 14.5)
+DROP_Y = 18.0  # their side of the bridge: where a player drops a Hog / Ram / melee card (Cole, 2026-10-28)
 RIVER_Y = 17.0  # inside the river band: a unit spawned here walks out of the bridge (the fork's scenarios do the same)
 
 # Goblin Hut in the middle (Cole: "building in the middle asap"), 3.5 tiles from the river: a Giant notices buildings
@@ -50,7 +51,7 @@ def hog_rider(rng) -> dict:
     """Cole's 2: a solo Hog Rider at the bridge; 4-6 elixir; a building pull or a troop answer in hand."""
     x = _lane(rng)
     return {"name": "hog_rider", "timeout": 20, "own_elixir": rng.uniform(4, 6),
-            "opp_elixir": rng.uniform(0, 3), "units": [(HOG, x + rng.uniform(-0.4, 0.4), RIVER_Y + rng.uniform(-0.5, 0.5))],
+            "opp_elixir": rng.uniform(0, 3), "units": [(HOG, x + rng.uniform(-0.4, 0.4), DROP_Y + rng.uniform(0, 0.8))], "drop": True,
             "answers": [MINI_PEKKA, GOBLIN_HUT, MEGA_MINION]}  # Hut first failed to pull (x 8.5, y 9): Cole to place it
 
 
@@ -59,7 +60,7 @@ def battle_ram(rng) -> dict:
     (the Barbarians it drops included)."""
     x = _lane(rng)
     return {"name": "battle_ram", "timeout": 26, "own_elixir": rng.uniform(4, 6),
-            "opp_elixir": rng.uniform(0, 3), "units": [(BATTLE_RAM, x, rng.uniform(16.0, 19.5))],
+            "opp_elixir": rng.uniform(0, 3), "units": [(BATTLE_RAM, x, DROP_Y + rng.uniform(0, 1.5))], "drop": True,
             "answers": [MINI_PEKKA, GOBLIN_HUT, MEGA_MINION], "answers2": [BOMBER, MEGA_MINION]}
 
 
@@ -70,7 +71,7 @@ def melee(rng) -> dict:
     x = _lane(rng)
     name = {MINI_PEKKA: "melee_mini_pekka", KNIGHT: "melee_knight", PRINCE: "melee_prince"}[card]
     return {"name": name, "timeout": 20, "own_elixir": rng.uniform(3, 5),
-            "opp_elixir": rng.uniform(0, 3), "units": [(card, x + rng.uniform(-0.4, 0.4), rng.uniform(15.5, 18.5))],
+            "opp_elixir": rng.uniform(0, 3), "units": [(card, x + rng.uniform(-0.4, 0.4), DROP_Y + rng.uniform(0, 1.0))], "drop": True,
             "answers": [MEGA_MINION, GOBLIN_HUT, BOMBER]}  # a lone Bomber lost to the Knight too
 
 
@@ -202,17 +203,22 @@ class Situation:
         game.set_elixir_for_team(1, float(spec["opp_elixir"]))
         self.hand = deal_hand(rng, deck, spec)
         self.hand_ok = bool(game.set_hand_for_team(0, self.hand))
-        before = {u.id for u in game.get_units()}
-        for card, x, y in spec["units"]:
-            game.inject(int(card), float(x), float(y), 1, -1.0, 0)  # deploy_ticks 0: already on the move
-        noop = 4
-        game.step_self_play(noop, 0.0, 0.0, noop, 0.0, 0.0, 1)  # commit the injected units
-        self.threat = {u.id for u in game.get_units() if u.id not in before and u.team == 1}
+        self.threat: set[int] = set()
+        self.just_dropped = False
+        if not spec.get("drop"):
+            self._inject(deploy_ticks=0)  # already on the move (the supported push starts mid-push)
         self.tower0 = [max(0, game.get_tower_hp(0, s)) for s in range(3)]
         self.princess_max = float(game.get_tower_max_hp(0, 1))
         self.spent0 = float(game.get_elixir_spent(0))
         self.steps = 0
         self.neutral_streak = 0
+
+    def _inject(self, deploy_ticks: int) -> None:
+        before = {u.id for u in self.game.get_units()}
+        for card, x, y in self.spec["units"]:
+            self.game.inject(int(card), float(x), float(y), 1, -1.0, deploy_ticks)
+        self.game.step_self_play(4, 0.0, 0.0, 4, 0.0, 0.0, 1)  # commit the injected units
+        self.threat = {u.id for u in self.game.get_units() if u.id not in before and u.team == 1}
 
     def resolved(self) -> bool:
         """The injected threat is dead (anything it spawned, e.g. the Battle Ram's Barbarians, is on team 1 too and
@@ -227,6 +233,12 @@ class Situation:
         """After each env step: (finished, score, details). Finishes when the board is neutral (after MIN_SECONDS), at
         the timeout, or when the game ends."""
         self.steps += 1
+        self.just_dropped = False
+        if self.spec.get("drop") and self.steps == 1 and not game_over:
+            # the board starts empty; the opponent drops the card now, with the normal 1 s deploy, as in a real game
+            self._inject(deploy_ticks=-1)
+            self.just_dropped = True
+            return False, 0.0, {}
         neutral = self.resolved()
         self.neutral_streak = self.neutral_streak + 1 if neutral else 0
         # neutral for 2 s in a row: a Battle Ram's Barbarians appear ~1 s after it breaks, and the board looked empty

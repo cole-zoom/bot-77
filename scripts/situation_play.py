@@ -198,7 +198,7 @@ table { border-collapse: collapse; font-size:.9rem; } td, th { padding: 4px 8px;
     <div class="hand" id="hand"></div>
   </div>
   <div class="panel">
-    <div><h1>Defend it yourself</h1><div class="muted">Pick a situation and press New (Restart replays the same start). After a 3-2-1 the clock runs one step at a time; the gold bar under the board fills to the next step, which is when a card you've queued lands. Click a card, then a tile on our half (spells anywhere). Do nothing and you wait.</div></div>
+    <div><h1>Defend it yourself</h1><div class="muted">Pick a situation and press New (Restart replays the same start). After a 3-2-1 the clock runs one step at a time; the gold bar under the board fills to the next step, which is when a card you've queued lands. Click a card (or press 1-4), then a tile on our half (spells anywhere); Esc cancels, Space pauses. Do nothing and you wait.</div></div>
     <div class="row">
       <select id="tpl"><option value="hog_rider">Hog Rider</option><option value="battle_ram">Battle Ram</option><option value="melee">Melee (Mini P.E.K.K.A / Knight / Prince)</option><option value="supported_push">Supported push (Giant / Golem)</option></select>
       <select id="speed"><option value="1000">1 step / s</option><option value="1500">1 step / 1.5 s</option><option value="2500">1 step / 2.5 s</option></select>
@@ -241,7 +241,7 @@ function renderHand() {
   const h = document.getElementById("hand"); h.innerHTML = "";
   if (!S) return;
   S.hand.forEach((c,i) => { const b=document.createElement("button"); b.className="card"+(sel===i?" sel":""); b.disabled = c.cost > S.elixir || S.done;
-    b.innerHTML = `${c.name}<span class="c">${c.cost}</span>`; b.onclick = () => { sel = sel===i?null:i; renderHand(); draw(); }; h.appendChild(b); });
+    b.innerHTML = `<span style="color:var(--muted);font-size:.75rem">${i+1}</span> ${c.name}<span class="c">${c.cost}</span>`; b.onclick = () => { sel = sel===i?null:i; renderHand(); draw(); }; h.appendChild(b); });
   document.getElementById("elx").style.width = (S.elixir*10)+"%";
   document.getElementById("elxt").textContent = `elixir ${S.elixir.toFixed(1)}  ·  theirs ${S.opp_elixir.toFixed(1)}  ·  ${S.t} s`;
 }
@@ -280,6 +280,12 @@ async function begin(seed) {
   period = +document.getElementById("speed").value; nextAt = performance.now() + period;
   timer = setInterval(step, period);
 }
+document.addEventListener("keydown", ev => {   // 1-4 pick a card (left to right), Esc cancels, Space pauses
+  if (ev.target.tagName === "SELECT") return;
+  if (["1","2","3","4"].includes(ev.key) && S && !S.done) { const i = +ev.key - 1; if (S.hand[i] && S.hand[i].cost <= S.elixir) { sel = sel === i ? null : i; renderHand(); draw(); } ev.preventDefault(); }
+  else if (ev.key === "Escape") { sel = null; pending = null; renderHand(); draw(); }
+  else if (ev.key === " ") { document.getElementById("pause").click(); ev.preventDefault(); }
+});
 document.getElementById("start").onclick = () => begin(null);
 document.getElementById("restart").onclick = () => { if (lastSeed !== null) begin(lastSeed); };
 (function frame() {   // the step bar and the queued card's countdown ring
