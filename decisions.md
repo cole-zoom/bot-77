@@ -3172,3 +3172,15 @@ Full write-up: docs/simulator-validation.md. Held-back only (48 games, 346 windo
   bookmarks saved_situations.json), his answer keys data/live/cole_reference.jsonl, their replays under score v2
   data/live/cole_rescored.{jsonl,txt}, live tests data/live/rl_v*_bomber*.log and LanceDB bot_games / bot_actions,
   training data/models/rl_clones_v*/train.log (+ tensorboard runs/), exams data/models/rl_clones_v*/exam.txt.
+- **v4 at 5,420 episodes (13:23)**, per 1,000 episodes: win 0.62 / 0.57 / 0.64 / 0.55 / 0.64 / 0.65 (flat: the league
+  moves with it), ScenDef 0.26 / 0.26 / 0.25 / 0.29 / 0.29 / 0.30, cards a game 5.96 -> 5.67 (narrowing again), ~17
+  plays a game at ~3.4 elixir.
+- **Exam on v4's 4,012-episode snapshot** (data/models/rl_clones_v4/exam_ep4012.txt; 20 held-out seeds, same seeded
+  engine and score v2 for every player, so v3 and v4 are comparable here). Mean score, v4@4k vs v3 vs scripted defence:
+  hog -0.70 / -0.63 / -0.13; battle ram -0.79 / -1.02 / -0.31; melee -0.80 / -0.81 / -0.53; supported push -1.67 /
+  -2.11 / -1.39; arrows value -0.35 / -0.47 / +0.21; fireball value -0.66 / -0.89 / +0.10; emergency -3.44 / -3.27 /
+  -3.02; safe opening -0.27 / -0.36 / +0.09; defend+counter -1.27 / -1.35 / -0.65; don't overcommit -1.13 / -1.16 /
+  +0.08. v4 beats v3 on 8 of 10 (not hog, emergency) and beats doing nothing and the bridge rush on 8 of 10, but
+  trails the scripted defence everywhere, spending about twice its elixir (e.g. hog 8.2 vs 3.9). On don't-overcommit
+  it scores below doing nothing (-1.13 vs -0.27): it still commits. Cole's 142 starts: v4 -1.11 (beats his score on
+  10), v3 -1.10 (15), scripted -0.58 (60), Cole -0.31. Reading: better than v3 in the scenarios, not yet a defender.
