@@ -33,6 +33,9 @@ COST = {HOG: 4, BATTLE_RAM: 4, MINI_PEKKA: 4, KNIGHT: 3, PRINCE: 5, GIANT: 5, GO
 LANE_X = (3.0, 14.0)  # the princess-tower lanes (engine x; bridges at 2.5 / 14.5)
 RIVER_Y = 17.0  # inside the river band: a unit spawned here walks out of the bridge (the fork's scenarios do the same)
 
+# Goblin Hut in the middle (Cole: "building in the middle asap"), 3.5 tiles from the river: a Giant notices buildings
+# within 7.5 tiles in this engine, and at y 11 the Hut was ~7.8 from where it leaves the bridge, so it walked past
+HUT_PULL = (8.5, 12.0)
 ELIXIR_COST = 0.04
 SURVIVOR_BONUS = 0.02
 TIMEOUT_PENALTY = 0.3
@@ -68,7 +71,7 @@ def melee(rng) -> dict:
     name = {MINI_PEKKA: "melee_mini_pekka", KNIGHT: "melee_knight", PRINCE: "melee_prince"}[card]
     return {"name": name, "timeout": 20, "own_elixir": rng.uniform(3, 5),
             "opp_elixir": rng.uniform(0, 3), "units": [(card, x + rng.uniform(-0.4, 0.4), rng.uniform(15.5, 18.5))],
-            "answers": [BOMBER, MEGA_MINION, GOBLIN_HUT] if card == KNIGHT else [MEGA_MINION, GOBLIN_HUT, BOMBER]}
+            "answers": [MEGA_MINION, GOBLIN_HUT, BOMBER]}  # a lone Bomber lost to the Knight too
 
 
 def supported_push(rng) -> dict:
@@ -81,13 +84,50 @@ def supported_push(rng) -> dict:
     else:
         tank, ty, sup = GIANT, rng.uniform(18.0, 20.5), int(rng.choice([MUSKETEER, WIZARD, EXECUTIONER, MINIONS]))
         name, timeout = "supported_giant", 32
-    sup_answers = [ARROWS, MEGA_MINION] if sup == MINIONS else [FIREBALL, MEGA_MINION, BOMBER]
+    sup_answers = [ARROWS, MEGA_MINION] if sup == MINIONS else [FIREBALL, MINI_PEKKA, MEGA_MINION]
     return {"name": name, "timeout": timeout, "own_elixir": rng.uniform(6, 8),
             "opp_elixir": rng.uniform(0, 2), "units": [(tank, x, ty), (sup, x + rng.uniform(-0.5, 0.5), ty + rng.uniform(2.0, 3.5))],
-            "answers": [MINI_PEKKA, GOBLIN_HUT], "answers2": sup_answers}
+            "answers": [GOBLIN_HUT, MINI_PEKKA], "answers2": sup_answers}
 
 
 TEMPLATES = [hog_rider, battle_ram, melee, supported_push]
+
+
+def _supported_defence(env, spec, played) -> tuple[int, float, float]:
+    """Cole's defence for a supported push (2026-10-28): the building in the middle as soon as possible to pull the
+    tank; without it in hand, cycle cheap cards (Bomber, our ranged card, in the back); once the push packs up at the
+    bridge, Fireball the support (Arrows on Minions); then Mini P.E.K.K.A / Mega Minion on the support to finish it."""
+    hand, el = list(env.game.get_hand()), env.game.get_elixir()
+    lane_x, tank_id, sup_id = spec["units"][0][1], spec["units"][0][0], spec["units"][-1][0]
+    units = env.game.get_units()
+    tank = next((u for u in units if u.team == 1 and u.card_id == tank_id), None)
+    sups = [u for u in units if u.team == 1 and u.card_id == sup_id]
+    spell = ARROWS if sup_id == MINIONS else FIREBALL
+    if "hut" not in played:
+        if GOBLIN_HUT in hand and el >= COST[GOBLIN_HUT]:
+            played.add("hut")
+            return hand.index(GOBLIN_HUT), *HUT_PULL
+        if GOBLIN_HUT not in hand and BOMBER in hand and el >= COST[BOMBER] + 2 and "cycle" not in played:
+            played.add("cycle")
+            return hand.index(BOMBER), lane_x, 3.0  # cycle toward the Hut, ranged card in the back
+    packed = tank is not None and sups and tank.y <= 18.5 and min(abs(s.y - tank.y) for s in sups) <= 3.5
+    if "spell" not in played and packed and spell in hand and el >= COST[spell]:
+        played.add("spell")
+        s0 = min(sups, key=lambda u: u.y)
+        return hand.index(spell), float(s0.x), float(s0.y)
+    if "finish" not in played and sups and ("spell" in played or spell not in hand):
+        for c in ((MEGA_MINION,) if sup_id == MINIONS else (MINI_PEKKA, MEGA_MINION)):  # Mini P.E.K.K.A can't hit air
+            if c in hand and el >= COST[c]:
+                s0 = min(sups, key=lambda u: u.y)
+                if s0.y > 16.0:  # still across the river: wait for it to come to us
+                    break
+                played.add("finish")
+                return hand.index(c), float(np.clip(s0.x, 0, 17)), float(np.clip(s0.y - 1.0, 0, 14))
+    if "hut" not in played and "tank" not in played and tank is not None and tank.y < 14.0 and MINI_PEKKA in hand \
+            and el >= COST[MINI_PEKKA] and GOBLIN_HUT not in hand:
+        played.add("tank")  # no Hut came: the Mini P.E.K.K.A on the tank before it reaches the tower
+        return hand.index(MINI_PEKKA), float(tank.x), float(max(tank.y - 2.0, 4.0))
+    return 4, 0.0, 0.0
 
 
 def scripted_defence(env) -> tuple[int, float, float]:
@@ -104,6 +144,8 @@ def scripted_defence(env) -> tuple[int, float, float]:
     if not hasattr(env, "defend_played") or env.defend_played[0] is not env.situation:
         env.defend_played = (env.situation, set())
     played = env.defend_played[1]
+    if spec["name"].startswith("supported"):
+        return _supported_defence(env, spec, played)
     hand, el = list(env.game.get_hand()), env.game.get_elixir()
     lane_x = spec["units"][0][1]
     for group in ("answers", "answers2"):
@@ -118,7 +160,7 @@ def scripted_defence(env) -> tuple[int, float, float]:
             enemies = [u for u in env.game.get_units() if u.team == 1 and not u.tower and u.y < 17.5]
             if c == GOBLIN_HUT:
                 played.add(group)
-                return i, 8.5, 9.0
+                return i, *HUT_PULL
             if c in (FIREBALL, ARROWS):
                 sup = [u for u in env.game.get_units() if u.team == 1 and u.card_id == spec["units"][-1][0]]
                 if not sup:
