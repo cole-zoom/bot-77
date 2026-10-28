@@ -66,6 +66,9 @@ def main():
             return int(k.item()), float(x.item()), float(y.item())
         return act
 
+    def lane_of(spec):  # the threat's lane (1 / 9 start empty: their planned lane)
+        return spec["units"][0][1] if spec["units"] else spec.get("lane", sit.LANE_X[0])
+
     def nothing(env, obs, first):
         return 4, 0.0, 0.0
 
@@ -94,7 +97,7 @@ def main():
                 env.rng = np.random.default_rng(10_000 + i)  # the same states for every player
                 env.scenario_rng = env.rng
                 obs, _ = env.reset()
-                env.rush_lane = env.situation.spec["units"][0][1]
+                env.rush_lane = lane_of(env.situation.spec)
                 first = True
                 while True:
                     k, x, y = act(env, obs, first)
@@ -118,7 +121,7 @@ def main():
                 env = CloneEnv({"scenario_seed": 0})
                 env.forced_seed = (sit.BY_NAME[r["situation"]], int(r["seed"]))
                 obs, _ = env.reset()
-                env.rush_lane = env.situation.spec["units"][0][1]
+                env.rush_lane = lane_of(env.situation.spec)
                 first = True
                 while True:
                     k, x, y = act(env, obs, first)
@@ -132,7 +135,7 @@ def main():
         cole = [r["result"]["you"]["score"] for r in refs]
         print(f"\nCole's {len(refs)} reference starts (his score then {np.mean(cole):+.2f}): " +
               ", ".join(f"{p} {np.mean(v):+.2f} (beats Cole on {sum(x > c for x, c in zip(v, cole))})" for p, v in tot.items()))
-    print("score = -(tower HP lost / princess max) - 0.04 * elixir spent [+ survivors] - 0.3 if unresolved; hp = median tower HP"
+    print("score (v2) = -(tower HP lost / princess max) - 0.04 * elixir spent + 0.04 * our board left - 0.08 * theirs on our side + 0.15 * tower dealt / princess max; hp = median tower HP"
           " lost, el = mean elixir spent, ur = share unresolved at the timeout")
 
 

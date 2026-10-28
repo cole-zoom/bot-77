@@ -3116,3 +3116,26 @@ Full write-up: docs/simulator-validation.md. Held-back only (48 games, 346 windo
   saw: -0.23). Also: an exact start of a 1 / 8 / 9 situation (forced_seed) now gives the opponent its script deck.
 - **Play page has all ten situations** (scripts/situation_play.py): the seven training ones plus 1 / 8 / 9 with the
   scripted opponent (their plan shown), and v3 at its 0.1 s interval as the bot it compares with.
+- **Cole's second sim session recorded:** 82 more play-page games (142 in all), every situation type including 1 / 8 /
+  9 (opening 6, counter 8, deficit 3). He flagged six that scored badly "due to numbers, but the situation on the
+  board is good for us" (supported Giant 1894 / 1974 / 2132, Golem 2271, emergency 3511 / 3655: counter-pushes alive,
+  enemy tower damaged).
+- **Situation score v2** (src/bot77/rl/situations.py, all ten kinds): what we have left on the board refunds its
+  elixir (0.04 x cost a body x HP share; a surviving counter-push isn't elixir lost; half a refund barely moved his
+  six); what of theirs is left on our side costs 0.08 an elixir of it (cap 0.6) instead of a flat 0.3 whenever
+  anything is; tower damage we deal +0.15 a princess's worth (Cole: "slightly ... not so much that they just bum
+  rush"; losing one is -1). Each result also keeps the v1 score.
+- **Engine hands were unseeded** (found replaying his games: the same start, doing nothing, lost 6542 / 5479 / 4500
+  tower HP on three runs): ClashEnv's generator came from std::random_device, so the cycle and the opponent's hand
+  differed run to run; only the opening hand (ours, from the situation's generator) was fixed. CloneEnv now seeds the
+  engine from its own generator without drawing from it (the situation draws are unchanged); three runs of a start now
+  match exactly. Consequence: only 57 of his 142 games replay to his recorded outcome (scripts/rescore_cole.py puts his
+  later cards in hand when the cycle hasn't), so v2 can't be checked on replays of the old games. From now on play-page
+  games replay exactly.
+- **All his takes as answer keys** (Cole: "take all of my takes and use them as answer keys or positive signal"):
+  data/live/cole_reference.jsonl now holds all 142 (the 24-game v1 kept as cole_reference_v1_24.jsonl). On a
+  reference start the training reward adds 0.3 x the share of his take matched (same card, within 1.5 s and 2.5
+  tiles; the best of his takes on that start); the score itself (and the exam) stays without it. Replaying his take
+  on six starts: match 1.0 on five (+0.30), 0.75 on one (a card the cycle didn't bring).
+- **1 / 8 / 9 in training** (TEMPLATES, ten now); the situation is drawn before the engine is built so the scripted
+  opponent gets its deck. Exam handles the empty-board starts.

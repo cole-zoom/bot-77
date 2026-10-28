@@ -27,6 +27,7 @@ frozen clone), RL_PRO_DECKS (the deck pool).
 """
 from __future__ import annotations
 
+import copy
 import glob
 import json
 import os
@@ -56,6 +57,13 @@ class CloneEnv(MicroRoyaleSelfPlayEnv):
         self.reference_share = float(os.environ.get("RL_REFERENCE_SHARE", "0"))
         ref = os.environ.get("RL_REFERENCE_FILE", "")
         self.references = [json.loads(l) for l in open(ref)] if ref and os.path.exists(ref) else []
+        # every take of his on the same start is an answer key there (situation, seed) -> [[(t, card, x, y), ...], ...]
+        self.keys: dict[tuple, list] = {}
+        for r in self.references:
+            take = [(p["t"], p["card_id"], p["x"], p["y"]) for p in r.get("plays", []) if p.get("card_id") is not None]
+            if take:
+                self.keys.setdefault((r["situation"], int(r["seed"])), []).append(take)
+        self._start_tpl = None
         self.forced_seed = None  # (template, seed) to reproduce exactly; the exam's second yardstick sets it
         self.max_ticks = env_config.get("max_ticks", 3600)
         self.clone = os.environ["RL_CLONE_CKPT"]
@@ -85,7 +93,7 @@ class CloneEnv(MicroRoyaleSelfPlayEnv):
         else:
             path = self.clone
             self.opp_deck = self.pro_decks[int(self.rng.choice(len(self.pro_decks), p=self.deck_p))]
-        if self.forced_template in sit.REVIEW_TEMPLATES or (self.forced_seed and self.forced_seed[0] in sit.REVIEW_TEMPLATES):
+        if (self._start_tpl or self.forced_template) in sit.REVIEW_TEMPLATES:
             self.opp_deck = list(sit.SCRIPT_DECK)  # Cole's 1 / 8 / 9: the scripted opponent's cards
         if path != self.loaded:
             self.set_historical_opponent(path)
@@ -93,6 +101,9 @@ class CloneEnv(MicroRoyaleSelfPlayEnv):
         self.opponent_checkpoint_path = path  # the key the fork's win-rate estimate (pfsp_stats) is kept under
         none = clash_royale_env.TowerTroopType.NONE
         self.game = clash_royale_env.ClashRoyaleEnv(self.deck, self.opp_deck, self.max_ticks, none, none)
+        # the engine's own generator (hand cycle, deals) seeded from ours without drawing from it, so a start is exact
+        # again and the situation draws are unchanged (it was OS entropy: Cole's replays diverged, 2026-10-28)
+        self.game.seed(int(copy.deepcopy(self.rng).integers(2 ** 31)))
 
     def _opponent_action(self):
         """The opponent decides once a second (every opp_every of our steps); in between it waits."""
@@ -110,7 +121,16 @@ class CloneEnv(MicroRoyaleSelfPlayEnv):
                 and self.rng.random() < self.reference_share:
             r = self.references[int(self.rng.integers(len(self.references)))]
             fixed = (sit.BY_NAME[r["situation"]], int(r["seed"]))
+            key = self.keys.get((r["situation"], int(r["seed"])), [])
+        else:
+            key = []
         main_rng = None
+        drawn = None
+        if fixed is None and self.forced_template is None and self.situation_share > 0 \
+                and self.rng.random() < self.situation_share:
+            # drawn before the engine is built: Cole's 1 / 8 / 9 need the scripted opponent's deck (2026-10-28)
+            drawn = sit.TEMPLATES[int(self.rng.integers(len(sit.TEMPLATES)))]
+        self._start_tpl = fixed[0] if fixed is not None else drawn
         if fixed is not None:
             # the play page's start: the generator seeded before reset (opponent deck, situation and hand all follow)
             main_rng, main_srng = self.rng, getattr(self, "scenario_rng", None)
@@ -119,19 +139,24 @@ class CloneEnv(MicroRoyaleSelfPlayEnv):
         obs, info = super().reset(seed=seed, options=options)
         self.opp_calls = 0
         self.situation = None
-        if fixed is not None or self.forced_template is not None or \
-                (self.situation_share > 0 and self.rng.random() < self.situation_share):
-            tpl = fixed[0] if fixed is not None else \
-                (self.forced_template or sit.TEMPLATES[int(self.rng.integers(len(sit.TEMPLATES)))])
+        if fixed is not None or self.forced_template is not None or drawn is not None:
+            tpl = fixed[0] if fixed is not None else (self.forced_template or drawn)
             self.situation = sit.Situation(self.game, tpl(self.rng), list(self.deck), self.rng,
                                            dt=self.decision_ticks / 10.0)
+            self.situation.key = key
             obs = np.array(self.game.get_observation_for_team(0), dtype=np.float32)
         if main_rng is not None and self.forced_seed is None:
             self.rng, self.scenario_rng = main_rng, main_srng  # back to the env's own stream
         return obs, info
 
     def step(self, action, skip_frames=None):
+        before = (list(self.game.get_hand()), float(self.game.get_elixir_spent(0))) if self.situation is not None else None
         obs, reward, terminated, truncated, info = super().step(action, skip_frames or self.decision_ticks)
+        k = int(action["card_index"])
+        if before is not None and k < 4 and float(self.game.get_elixir_spent(0)) > before[1] + 1e-6:
+            # our play, timed as the play page logs Cole's (the time after this step)
+            self.situation.my_plays.append((round(self.situation.seconds + self.situation.dt, 1), before[0][k],
+                                            float(action["target_x"][0]), float(action["target_y"][0])))
         info["rl_situation"] = 0.0
         info["rl_situation_end"] = 0.0
         info["rl_situation_score"] = 0.0
@@ -146,6 +171,8 @@ class CloneEnv(MicroRoyaleSelfPlayEnv):
                 # the score is the whole reward; ended as a truncation so the trainer's draw penalty (terminated with
                 # |reward| < 0.5) can't fire, and the trainer zeroes the bootstrap on rl_situation_end
                 reward, terminated, truncated = score, False, True
+                if details.get("key_match") is not None:
+                    reward += sit.KEY_BONUS * details["key_match"]  # Cole's take as a positive signal
                 info["rl_situation_end"] = 1.0
                 info["rl_situation_score"] = score
                 self.last_situation = {"name": self.situation.spec["name"], "score": score, **details}

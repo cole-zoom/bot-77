@@ -48,6 +48,21 @@ TRADE_COEF = 0.1  # spell situations: 0.1 a net elixir of value
 ELIM_BONUS = 0.25  # of a body's value when it dies, so finishing beats spreading
 COUNTER_TOLERANCE = 800  # defend_counter: tower HP the push may take and still unlock the attack credit
 MIN_SECONDS = 3  # don't call the board neutral before the threat has had a chance to arrive
+# The board at the end (Cole 2026-10-28, six play-page games that scored badly "due to numbers, but the situation on
+# the board is good for us"): what we still have on the board refunds its elixir (cost a body x HP share: a troop that
+# survives, e.g. a counter-push, wasn't elixir lost; half a refund barely moved his six), and what of theirs is still
+# on our side costs us by its value instead of a flat 0.3 whenever anything is left
+BOARD_REFUND = ELIXIR_COST
+THREAT_LEFT_COEF = 0.08
+THREAT_LEFT_CAP = 0.6
+DEALT_COEF = 0.15  # tower damage we deal, a princess's worth = +0.15 (Cole: "slightly ... not so much that they just
+#                    bum rush"; losing one is -1)
+# Cole's takes as answer keys (Cole: "take all of my takes and use them as answer keys or positive signal"): on one of
+# his starts, a play of the card he played within KEY_DT seconds and KEY_DIST tiles of his counts as matching; the
+# training reward adds KEY_BONUS x the share of his take matched (the best of his takes there), not the score
+KEY_BONUS = 0.3
+KEY_DT = 1.5
+KEY_DIST = 2.5
 
 
 def _lane(rng) -> float:
@@ -148,7 +163,7 @@ def emergency(rng) -> dict:
             "units": units, "answers": [GOBLIN_HUT, MINI_PEKKA], "answers2": sup_answers}
 
 
-# --- Cole's 1 / 8 / 9: a scripted opponent that reacts to us (2026-10-28). For his review first, not in TEMPLATES ---
+# --- Cole's 1 / 8 / 9: a scripted opponent that reacts to us (2026-10-28; reviewed, in TEMPLATES since that day) ---
 # The opponent plays through step_self_play in its own frame: x as on the board, y mirrored (33 - y), so its bridge
 # drop at board y 18 is its y 15 and its back row at board y 30 is its y 3.
 
@@ -284,11 +299,16 @@ def opponent_script(sit_, env):
     return None
 
 
-TEMPLATES = [hog_rider, battle_ram, melee, supported_push, arrows_value, fireball_value, emergency]
+TEMPLATES = [hog_rider, battle_ram, melee, supported_push, arrows_value, fireball_value, emergency,
+             *REVIEW_TEMPLATES]  # Cole's 1 / 8 / 9 in training from 2026-10-28 (reviewed on the play page)
 BY_NAME = {"hog_rider": hog_rider, "battle_ram": battle_ram, "melee_mini_pekka": melee, "melee_knight": melee,
            "melee_prince": melee, "supported_giant": supported_push, "supported_golem": supported_push,
            "arrows_value": arrows_value, "fireball_value": fireball_value, "emergency": emergency,
-           "safe_opening": safe_opening, "defend_counter": defend_counter, "dont_overcommit": dont_overcommit}
+           "safe_opening": safe_opening, "defend_counter": defend_counter, "dont_overcommit": dont_overcommit,
+           # the names a situation logs itself under (the play page's log), for 1 / 8 / 9
+           "opening_tank_back": safe_opening, "opening_bridge_rush": safe_opening, "opening_support_back": safe_opening,
+           "opening_wait_defend": safe_opening, "counter_giant": defend_counter, "counter_golem": defend_counter,
+           "deficit": dont_overcommit}
 
 
 def _supported_defence(env, spec, played) -> tuple[int, float, float]:
@@ -504,6 +524,38 @@ class Situation:
         self.dt = dt  # seconds per env step (1.0, or 0.1 at a decision a tick)
         self.seconds = 0.0
         self.neutral_since: float | None = None
+        self.key: list[list[tuple]] = []  # Cole's takes on this start: [(t, card, x, y), ...] each
+        self.my_plays: list[tuple] = []  # ours, the same way
+
+    def _board(self) -> tuple[float, float]:
+        """Elixir on the board at HP share: ours anywhere (buildings too), theirs on our side (towers aside)."""
+        import clash_royale_env as cre
+        ours = theirs = 0.0
+        for u in self.game.get_units():
+            if u.tower or u.hp <= 0 or u.card_id < 0 or (u.team == 1 and u.y >= 17.5):
+                continue
+            st = dict(cre.get_card_stats(int(u.card_id)))
+            worth = COST.get(u.card_id, st.get("cost", 0) or 0) / max(1, int(st.get("bodies", 1) or 1))
+            v = worth * min(1.0, u.hp / max(float(st.get("hp", u.hp) or u.hp), 1.0))
+            if u.team == 0:
+                ours += v
+            else:
+                theirs += v
+        return ours, theirs
+
+    def key_match(self) -> float:
+        """The best share of one of Cole's takes on this start that our plays matched (each of ours used once)."""
+        best = 0.0
+        for take in self.key:
+            used, hit = set(), 0
+            for t, card, x, y in take:
+                for i, (t2, c2, x2, y2) in enumerate(self.my_plays):
+                    if i not in used and c2 == card and abs(t2 - t) <= KEY_DT and (x2 - x) ** 2 + (y2 - y) ** 2 <= KEY_DIST ** 2:
+                        used.add(i)
+                        hit += 1
+                        break
+            best = max(best, hit / max(1, len(take)))
+        return best
 
     def _inject(self, deploy_ticks: int) -> None:
         import clash_royale_env as cre
@@ -576,17 +628,24 @@ class Situation:
         kind = self.spec.get("score")
         el_end = float(self.game.get_elixir())
         dealt = sum(max(0.0, a - max(0, self.game.get_tower_hp(1, s))) for s, a in enumerate(self.etower0))
+        ours, theirs = self._board()
+        pm = self.princess_max
+        # the board term every kind shares now (v2, 2026-10-28): half a refund for what we have left, their value left
+        # on our side, a little for tower damage
+        board = BOARD_REFUND * min(ours, 10.0) - min(THREAT_LEFT_CAP, THREAT_LEFT_COEF * theirs) + DEALT_COEF * dealt / pm
         if kind in ("opening", "deficit", "counter"):
-            # towers first; then the elixir we end on and what we still have on the board; enemy troops still on our
-            # side count as unresolved. Damage we deal counts only in defend-then-counter, and only once the push was
-            # beaten inside the tolerance (Cole's 8)
+            # towers first; then the elixir we end on and the board. In defend-then-counter the damage we deal counts
+            # extra once the push was beaten inside the tolerance (Cole's 8)
             threat_left = any(u.team == 1 and not u.tower and not u.building and u.y < 17.5 for u in self.game.get_units())
-            score = (-lost / self.princess_max + 0.02 * min(el_end, 10.0) + SURVIVOR_BONUS * min(survivors, 10)
-                     - (TIMEOUT_PENALTY if threat_left else 0.0))
+            v1 = (-lost / pm + 0.02 * min(el_end, 10.0) + SURVIVOR_BONUS * min(survivors, 10)
+                  - (TIMEOUT_PENALTY if threat_left else 0.0))
+            score = -lost / pm + 0.02 * min(el_end, 10.0) + board
             if kind == "counter":
                 ok = self.push_beaten_at is not None and self.lost_at_beaten <= COUNTER_TOLERANCE
-                score += (0.5 * dealt / self.princess_max) if ok else 0.0
-                score -= 0.0 if self.push_beaten_at is not None else TIMEOUT_PENALTY
+                extra = (0.5 * dealt / pm) if ok else 0.0
+                never = 0.0 if self.push_beaten_at is not None else TIMEOUT_PENALTY
+                v1 += extra - never
+                score += extra - never
             unresolved = threat_left
         elif kind == "trade":
             # Cole's spell scoring: enemy elixir value removed (share of each body's max HP taken, capped at what it
@@ -596,10 +655,14 @@ class Situation:
             for uid, (worth, max_hp, hp0) in getattr(self, "threat_info", {}).items():
                 hp1 = alive[uid].hp if uid in alive else 0.0
                 value += worth * min(1.0, max(0.0, hp0 - hp1) / max(max_hp, 1.0)) + (ELIM_BONUS * worth if uid not in alive else 0.0)
-            score = -lost / self.princess_max + TRADE_COEF * (value - spent) - (TIMEOUT_PENALTY if unresolved else 0.0)
+            v1 = -lost / pm + TRADE_COEF * (value - spent) - (TIMEOUT_PENALTY if unresolved else 0.0)
+            score = -lost / pm + TRADE_COEF * (value - spent) + board
         else:
-            score = (-lost / self.princess_max - ELIXIR_COST * spent + SURVIVOR_BONUS * min(survivors, 10)
-                     - (TIMEOUT_PENALTY if unresolved else 0.0))
+            v1 = (-lost / pm - ELIXIR_COST * spent + SURVIVOR_BONUS * min(survivors, 10)
+                  - (TIMEOUT_PENALTY if unresolved else 0.0))
+            score = -lost / pm - ELIXIR_COST * spent + board
         return True, float(score), {"tower_hp_lost": lost, "elixir_spent": spent, "unresolved": unresolved,
                                     "seconds": round(self.seconds, 1), "tower_hp_dealt": dealt, "elixir_end": el_end,
-                                    "opp_plays": self.opp_state.get("plays", [])}
+                                    "opp_plays": self.opp_state.get("plays", []), "score_v1": float(v1),
+                                    "board_ours": round(ours, 2), "board_theirs": round(theirs, 2),
+                                    "key_match": self.key_match() if self.key else None}
