@@ -3249,3 +3249,9 @@ Full write-up: docs/simulator-validation.md. Held-back only (48 games, 346 windo
   (none on windows from an episode's start) / play weight 50, 10 epochs of 200 steps, every epoch saved for the exam.
   Held-back pro scores before training: card at plays 37.5%, play/wait AUC 0.745, cell 4.1 tiles. Gate: exam mean
   clearly above v4's, elixir toward the script's, pro held-back scores kept.
+- **0.1 s baseline** (data/models/rl_clones_v4/exam_n50_t01.txt, 50 seeds, seeded; nothing / rush / scripted / v4 /
+  v3): means -1.63 / -1.90 / -0.63 / -1.19 / -1.24; Cole's 142 starts: scripted -0.63, v4 -1.23, v3 -1.03 (Cole
+  -0.31). Per template v4 / v3: hog -0.57 / -0.69, ram -0.98 / -1.03, melee -0.69 / -0.83, supported -2.17 / -1.95,
+  arrows -0.53 / -0.65, fireball -0.90 / -0.99, emergency -3.42 / -3.25, opening -0.35 / -0.37, defend+counter -1.20 /
+  -1.20, overcommit -1.05 / -1.42. Same picture as at 1 s (v4 -1.19 there too): the wrong pace didn't hide anything,
+  and v4 ~ v3, both about 0.6 behind the script, still spending ~2x its elixir. The defence school's yardstick.
