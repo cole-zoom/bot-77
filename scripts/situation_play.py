@@ -194,6 +194,7 @@ button.go { background: var(--accent); border-color: var(--accent); color:#1d160
 ol { margin:0; padding-left: 1.2em; font-family: ui-monospace, monospace; font-size:.85rem; }
 table { border-collapse: collapse; font-size:.9rem; } td, th { padding: 4px 8px; text-align:right; border-bottom: 1px solid var(--line); } td:first-child, th:first-child { text-align:left; }
 .big { font-size: 1.1rem; font-weight: 700; }
+[hidden] { display: none !important; }
 .boardwrap { position: relative; width: 342px; max-width: 100%; }
 .count { position: absolute; inset: 0; display: grid; place-items: center; font: 800 6rem system-ui, sans-serif; color: #fff; text-shadow: 0 4px 18px #000a; pointer-events: none; }
 .stepbar { height: 8px; background: var(--line); border-radius: 4px; overflow: hidden; max-width: 342px; margin-top: 8px; }
@@ -209,7 +210,7 @@ table { border-collapse: collapse; font-size:.9rem; } td, th { padding: 4px 8px;
     <div class="hand" id="hand"></div>
   </div>
   <div class="panel">
-    <div><h1>Defend it yourself</h1><div class="muted">Pick a situation and press New (Restart replays the same start). After a 3-2-1 the game runs in real time (a tick every 0.1 s, the engine's own); a card lands on the next tick after you place it. Half and quarter speed slow the clock, not the game. Click a card (or press 1-4), then a tile on our half (spells anywhere); Esc cancels, Space pauses. Do nothing and you wait.</div></div>
+    <div><h1>Defend it yourself</h1><div class="muted">Pick a situation and press New (Restart replays the same start). A 3-2-1 holds the game so you can get to the board, and you can already queue a card; then it runs in real time (a tick every 0.1 s) and a card lands on the next tick after you place it. Half and quarter speed slow everything down, and take effect immediately. Click a card (or press 1-4), then a tile on our half (spells anywhere); Esc cancels, Space pauses. Do nothing and you wait.</div></div>
     <div class="row">
       <select id="tpl"><option value="hog_rider">Hog Rider</option><option value="battle_ram">Battle Ram</option><option value="melee">Melee (Mini P.E.K.K.A / Knight / Prince)</option><option value="supported_push">Supported push (Giant / Golem)</option></select>
       <select id="speed"><option value="100">real time</option><option value="200">half speed</option><option value="400">quarter speed</option></select>
@@ -226,109 +227,152 @@ table { border-collapse: collapse; font-size:.9rem; } td, th { padding: 4px 8px;
   </div>
 </div>
 <script>
-let S = null, sel = null, pending = null, timer = null, paused = false, busy = false, lastPlay = null, lastSeed = null, nextAt = 0, period = 1000;
+// One game loop per game (a generation number cancels the old one: New / Restart mid-game used to let a late
+// response from the previous game overwrite the new one). The hand's buttons are built once and only updated
+// (rebuilding them ten times a second ate clicks). The speed applies as soon as it changes. The 3-2-1 holds the game;
+// a card queued during it lands on the first tick.
+let S = null, sel = null, pending = null, paused = false, lastPlay = null, lastSeed = null, lastTpl = null, lastThreat = "";
+let gen = 0, running = false;
+const $ = id => document.getElementById(id);
 const css = n => getComputedStyle(document.documentElement).getPropertyValue(n).trim();
-const cv = document.getElementById("board"), ctx = cv.getContext("2d"), W = cv.width, H = cv.height, sx = W / 18, sy = H / 34;
+const cv = $("board"), ctx = cv.getContext("2d"), W = cv.width, H = cv.height, sx = W / 18, sy = H / 34;
 const ABBR = {"Mini PEKKA":"MP","Mega Minion":"MM","Goblin Hut":"Hut","Battle Ram":"Ram","Hog Rider":"Hog","Spear Goblins":"gob","Barbarians":"barb","Musketeer":"Musk","Executioner":"Exec","Golemite":"gmt","Minions":"min"};
 const maxHp = new Map();
+const period = () => +$("speed").value;
+const sleep = ms => new Promise(r => setTimeout(r, ms));
+async function post(path, body) { const r = await fetch(path, {method: "POST", headers: {"Content-Type": "application/json"}, body: JSON.stringify(body)}); return r.json(); }
+
 function draw() {
-  ctx.clearRect(0,0,W,H);
-  for (let r=0;r<34;r++){ ctx.fillStyle = r%2?css("--grass"):css("--grass2"); ctx.fillRect(0,H-(r+1)*sy,W,sy); }
-  ctx.fillStyle = css("--river"); ctx.fillRect(0,H-17.5*sy,W,2*sy);
-  ctx.fillStyle = css("--bridge"); for (const bx of [2,14]) ctx.fillRect(bx*sx-sx/2,H-17.5*sy,2*sx,2*sy);
-  if (sel !== null && S && !S.hand[sel].spell) { ctx.fillStyle = css("--legal"); ctx.fillRect(0,H-15*sy,W,15*sy); }
+  ctx.clearRect(0, 0, W, H);
+  for (let r = 0; r < 34; r++) { ctx.fillStyle = r % 2 ? css("--grass") : css("--grass2"); ctx.fillRect(0, H - (r + 1) * sy, W, sy); }
+  ctx.fillStyle = css("--river"); ctx.fillRect(0, H - 17.5 * sy, W, 2 * sy);
+  ctx.fillStyle = css("--bridge"); for (const bx of [2, 14]) ctx.fillRect(bx * sx - sx / 2, H - 17.5 * sy, 2 * sx, 2 * sy);
+  if (sel !== null && S && S.hand[sel] && !S.hand[sel].spell) { ctx.fillStyle = css("--legal"); ctx.fillRect(0, H - 15 * sy, W, 15 * sy); }
   if (!S) return;
   for (const u of S.units) {
-    const key=u.id; if (!maxHp.has(key)||u.hp>maxHp.get(key)) maxHp.set(key,u.hp);
-    const px=(u.x+0.5)*sx, py=H-(u.y+0.5)*sy, r = u.tower?1.5*sx:u.building?0.9*sx:(u.flying?0.45:0.55)*sx;
-    ctx.fillStyle = u.team===0?css("--ours"):css("--theirs");
-    if (u.tower||u.building) ctx.fillRect(px-r,py-r,2*r,2*r); else { ctx.beginPath(); ctx.arc(px,py,r,0,7); ctx.fill(); if (u.flying){ctx.strokeStyle="#fff";ctx.lineWidth=2;ctx.stroke();} }
-    const f=Math.max(0,Math.min(1,u.hp/(maxHp.get(key)||1)));
-    ctx.fillStyle="#000a"; ctx.fillRect(px-r,py-r-10,2*r,6); ctx.fillStyle=f>.5?"#3fbf5a":f>.25?"#e3b740":"#e5533f"; ctx.fillRect(px-r,py-r-10,2*r*f,6);
-    const lab = u.tower ? (u.hp>0?Math.round(u.hp):"") : (ABBR[u.name] ?? (u.name||"").slice(0,5));
-    if (lab!==""){ ctx.font=`600 ${u.tower?20:16}px ui-monospace,monospace`; ctx.fillStyle="#fff"; ctx.textAlign="center"; ctx.textBaseline="middle"; ctx.fillText(lab,px,py); }
+    if (!maxHp.has(u.id) || u.hp > maxHp.get(u.id)) maxHp.set(u.id, u.hp);
+    const px = (u.x + 0.5) * sx, py = H - (u.y + 0.5) * sy, r = u.tower ? 1.5 * sx : u.building ? 0.9 * sx : (u.flying ? 0.45 : 0.55) * sx;
+    ctx.fillStyle = u.team === 0 ? css("--ours") : css("--theirs");
+    if (u.tower || u.building) ctx.fillRect(px - r, py - r, 2 * r, 2 * r);
+    else { ctx.beginPath(); ctx.arc(px, py, r, 0, 7); ctx.fill(); if (u.flying) { ctx.strokeStyle = "#fff"; ctx.lineWidth = 2; ctx.stroke(); } }
+    const f = Math.max(0, Math.min(1, u.hp / (maxHp.get(u.id) || 1)));
+    ctx.fillStyle = "#000a"; ctx.fillRect(px - r, py - r - 10, 2 * r, 6);
+    ctx.fillStyle = f > .5 ? "#3fbf5a" : f > .25 ? "#e3b740" : "#e5533f"; ctx.fillRect(px - r, py - r - 10, 2 * r * f, 6);
+    const lab = u.tower ? (u.hp > 0 ? Math.round(u.hp) : "") : (ABBR[u.name] ?? (u.name || "").slice(0, 5));
+    if (lab !== "") { ctx.font = `600 ${u.tower ? 20 : 16}px ui-monospace,monospace`; ctx.fillStyle = "#fff"; ctx.textAlign = "center"; ctx.textBaseline = "middle"; ctx.fillText(lab, px, py); }
   }
-  if (pending) { const px=(pending.x+0.5)*sx, py=H-(pending.y+0.5)*sy, left=Math.max(0,(nextAt-performance.now())/period);
-    ctx.strokeStyle=css("--accent"); ctx.lineWidth=5; ctx.beginPath(); ctx.arc(px,py,1.2*sx,-Math.PI/2,-Math.PI/2+2*Math.PI*(1-left)); ctx.stroke();
-    ctx.font="700 18px ui-monospace,monospace"; ctx.fillStyle="#fff"; ctx.textAlign="center"; ctx.textBaseline="middle"; ctx.fillText((left*period/1000).toFixed(1), px, py-1.8*sx); }
-  if (lastPlay) { ctx.strokeStyle="#fff"; ctx.lineWidth=2; ctx.setLineDash([6,5]); ctx.beginPath(); ctx.arc((lastPlay.x+0.5)*sx,H-(lastPlay.y+0.5)*sy,1.2*sx,0,7); ctx.stroke(); ctx.setLineDash([]); }
+  if (pending) { ctx.strokeStyle = css("--accent"); ctx.lineWidth = 5; ctx.beginPath(); ctx.arc((pending.x + 0.5) * sx, H - (pending.y + 0.5) * sy, 1.2 * sx, 0, 7); ctx.stroke(); }
+  if (lastPlay) { ctx.strokeStyle = "#fff"; ctx.lineWidth = 2; ctx.setLineDash([6, 5]); ctx.beginPath(); ctx.arc((lastPlay.x + 0.5) * sx, H - (lastPlay.y + 0.5) * sy, 1.2 * sx, 0, 7); ctx.stroke(); ctx.setLineDash([]); }
 }
-function renderHand() {
-  const h = document.getElementById("hand"); h.innerHTML = "";
-  if (!S) return;
-  S.hand.forEach((c,i) => { const b=document.createElement("button"); b.className="card"+(sel===i?" sel":""); b.disabled = c.cost > S.elixir || S.done;
-    b.innerHTML = `<span style="color:var(--muted);font-size:.75rem">${i+1}</span> ${c.name}<span class="c">${c.cost}</span>`; b.onclick = () => { sel = sel===i?null:i; renderHand(); draw(); }; h.appendChild(b); });
-  document.getElementById("elx").style.width = (S.elixir*10)+"%";
-  document.getElementById("elxt").textContent = `elixir ${S.elixir.toFixed(1)}  ·  theirs ${S.opp_elixir.toFixed(1)}  ·  ${(+S.t).toFixed(1)} s`;
-}
-cv.addEventListener("click", ev => {
-  if (!S || sel===null || S.done) return;
-  const rect = cv.getBoundingClientRect(), x = Math.floor((ev.clientX-rect.left)/rect.width*18), y = Math.floor((rect.bottom-ev.clientY)/rect.height*34);
-  if (!S.hand[sel].spell && y > 14) return;
-  pending = {slot: sel, x, y}; sel = null; renderHand(); draw();
+
+// the four card buttons, made once
+const cardBtns = [0, 1, 2, 3].map(i => {
+  const b = document.createElement("button"); b.className = "card"; b.type = "button";
+  b.addEventListener("pointerdown", ev => { ev.preventDefault(); pick(i); });   // on press: a click straddling an update can't be lost
+  $("hand").appendChild(b); return b;
 });
-async function post(path, body) { const r = await fetch(path, {method:"POST", headers:{"Content-Type":"application/json"}, body: JSON.stringify(body)}); return r.json(); }
-async function step() {
-  if (busy || paused || !S || S.done) return; busy = true; nextAt = performance.now() + period;
-  const act = pending; pending = null;
-  const out = await post("/step", act || {});
-  if (act) lastPlay = act;
-  S = out.state; busy = false; renderHand(); draw();
-  document.getElementById("plays").innerHTML = (out.plays||[]).map(p => `<li>${(+p.t).toFixed(1)}s ${p.card} → (${p.x}, ${p.y})${p.landed?"":" — refused (illegal spot?)"}</li>`).join("");
-  if (out.result) { clearInterval(timer); showResult(out.result); }
+function pick(i) {
+  if (!S || S.done || !S.hand[i] || S.hand[i].cost > S.elixir + 1e-6) return;
+  sel = sel === i ? null : i; updateHand(); draw();
 }
-function fmt(r){ return `<td class="big">${(r.score>=0?"+":"")+r.score.toFixed(2)}</td><td>${Math.round(r.tower_hp_lost)}</td><td>${r.elixir_spent}</td><td>${r.unresolved?"alive":"handled"}</td><td>${r.seconds}s</td>`; }
+function updateHand() {
+  cardBtns.forEach((b, i) => {
+    const c = S && S.hand[i];
+    const label = c ? `<span style="color:var(--muted);font-size:.75rem">${i + 1}</span> ${c.name}<span class="c">${c.cost}</span>` : "";
+    if (b.dataset.label !== label) { b.innerHTML = label; b.dataset.label = label; }
+    b.disabled = !c || S.done || c.cost > S.elixir + 1e-6;
+    b.classList.toggle("sel", sel === i);
+  });
+  if (S) {
+    $("elx").style.width = (S.elixir * 10) + "%";
+    $("elxt").textContent = `elixir ${S.elixir.toFixed(1)}  ·  theirs ${S.opp_elixir.toFixed(1)}  ·  ${(+S.t).toFixed(1)} s`;
+  }
+}
+
+cv.addEventListener("pointerdown", ev => {
+  if (!S || sel === null || S.done) return;
+  const rect = cv.getBoundingClientRect();
+  const x = Math.min(17, Math.max(0, Math.floor((ev.clientX - rect.left) / rect.width * 18)));
+  const y = Math.min(33, Math.max(0, Math.floor((rect.bottom - ev.clientY) / rect.height * 34)));
+  if (!S.hand[sel].spell && y > 14) { flash("troops and buildings go on our half"); return; }
+  pending = {slot: sel, x, y}; sel = null; updateHand(); draw();
+});
+function flash(msg) { $("steplab").textContent = msg; }
+
+async function loop(g) {
+  running = true;
+  while (g === gen && S && !S.done) {
+    const t0 = performance.now();
+    if (!paused) {
+      const act = pending; pending = null;
+      const out = await post("/step", act || {});
+      if (g !== gen) return;                     // a New / Restart happened while this step was in flight
+      if (act) lastPlay = act;
+      S = out.state; updateHand(); draw();
+      $("plays").innerHTML = (out.plays || []).map(p => `<li>${(+p.t).toFixed(1)}s ${p.card} → (${p.x}, ${p.y})${p.landed ? "" : " — refused (illegal spot?)"}</li>`).join("");
+      $("steplab").textContent = S.done ? "finished" : `${(+S.t).toFixed(1)} s`;
+      if (out.result) { showResult(out.result); break; }
+    } else { $("steplab").textContent = "paused"; }
+    await sleep(Math.max(0, period() - (performance.now() - t0)));
+  }
+  if (g === gen) running = false;
+}
+
+async function begin(seed) {
+  const g = ++gen;                                 // cancels any running loop
+  sel = null; pending = null; lastPlay = null; paused = false; maxHp.clear();
+  $("pause").textContent = "Pause"; $("result").innerHTML = ""; $("plays").innerHTML = "";
+  const out = await post("/new", {template: $("tpl").value, seed});
+  if (g !== gen) return;
+  lastSeed = out.seed; lastTpl = $("tpl").value; lastThreat = out.threat.join(" + ");
+  S = out.state; updateHand(); draw();
+  $("setup").innerHTML = `Threat <b>${lastThreat}</b> · your elixir <b>${out.start_elixir[0]}</b> · theirs <b>${out.start_elixir[1]}</b> · seed ${out.seed}`;
+  const cnt = $("count");
+  for (const n of [3, 2, 1]) {                     // the game waits; you can already queue a card
+    if (g !== gen) return;
+    cnt.textContent = n; cnt.hidden = false; $("steplab").textContent = `starting in ${n}`;
+    await sleep(1000);
+  }
+  if (g !== gen) return;
+  cnt.hidden = true;
+  loop(g);
+}
+
+function fmt(r) { return `<td class="big">${(r.score >= 0 ? "+" : "") + r.score.toFixed(2)}</td><td>${Math.round(r.tower_hp_lost)}</td><td>${r.elixir_spent}</td><td>${r.unresolved ? "alive" : "handled"}</td><td>${r.seconds}s</td>`; }
 function showResult(R) {
-  document.getElementById("result").innerHTML = `<b>Result</b> (higher is better)<table><tr><th></th><th>score</th><th>tower HP lost</th><th>elixir</th><th>threat</th><th>time</th></tr>
+  $("result").innerHTML = `<b>Result</b> (higher is better)<table><tr><th></th><th>score</th><th>tower HP lost</th><th>elixir</th><th>threat</th><th>time</th></tr>
   <tr><td>You</td>${fmt(R.you)}</tr><tr><td>Scripted defence</td>${fmt(R.scripted)}</tr><tr><td>Bot (round 2)</td>${fmt(R.model)}</tr></table>
   <div class="muted" style="margin-top:6px">Same start for all three; the opponent clone plays on, so its plays can differ.</div>`;
 }
-const sleep = ms => new Promise(r => setTimeout(r, ms));
-async function begin(seed) {
-  clearInterval(timer); timer = null; sel = null; pending = null; lastPlay = null; paused = false; maxHp.clear();
-  document.getElementById("pause").textContent = "Pause"; document.getElementById("result").innerHTML = ""; document.getElementById("plays").innerHTML = "";
-  const out = await post("/new", {template: document.getElementById("tpl").value, seed});
-  lastSeed = out.seed; lastTpl = document.getElementById("tpl").value; lastThreat = out.threat.join(" + "); S = out.state; renderHand(); draw();
-  document.getElementById("setup").innerHTML = `Threat <b>${out.threat.join(" + ")}</b> · your elixir <b>${out.start_elixir[0]}</b> · theirs <b>${out.start_elixir[1]}</b> · seed ${out.seed}`;
-  const cnt = document.getElementById("count"); cnt.hidden = false;
-  for (const n of [3, 2, 1]) { cnt.textContent = n; await sleep(800); }   // you can already queue a card during the count
-  cnt.hidden = true;
-  period = +document.getElementById("speed").value; nextAt = performance.now() + period;
-  timer = setInterval(step, period);
-}
-document.addEventListener("keydown", ev => {   // 1-4 pick a card (left to right), Esc cancels, Space pauses
+
+$("start").onclick = () => begin(null);
+$("restart").onclick = () => { if (lastSeed !== null) { $("tpl").value = lastTpl; begin(lastSeed); } };
+$("pause").onclick = () => { paused = !paused; $("pause").textContent = paused ? "Resume" : "Pause"; };
+document.addEventListener("keydown", ev => {   // 1-4 pick a card, Esc cancels, Space pauses
   if (ev.target.tagName === "SELECT" || ev.target.tagName === "INPUT") return;
-  if (["1","2","3","4"].includes(ev.key) && S && !S.done) { const i = +ev.key - 1; if (S.hand[i] && S.hand[i].cost <= S.elixir) { sel = sel === i ? null : i; renderHand(); draw(); } ev.preventDefault(); }
-  else if (ev.key === "Escape") { sel = null; pending = null; renderHand(); draw(); }
-  else if (ev.key === " ") { document.getElementById("pause").click(); ev.preventDefault(); }
+  if (["1", "2", "3", "4"].includes(ev.key)) { pick(+ev.key - 1); ev.preventDefault(); }
+  else if (ev.key === "Escape") { sel = null; pending = null; updateHand(); draw(); }
+  else if (ev.key === " ") { $("pause").click(); ev.preventDefault(); }
 });
-let lastTpl = null, lastThreat = "";
+
 async function loadSaved() {
-  const list = await (await fetch("/saved")).json(), sel = document.getElementById("savedlist");
-  sel.innerHTML = `<option value="">Saved starts (${list.length})…</option>` + list.map((x, i) =>
+  const list = await (await fetch("/saved")).json(), s = $("savedlist");
+  s.innerHTML = `<option value="">Saved starts (${list.length})…</option>` + list.map((x, i) =>
     `<option value="${i}">${x.template.replace("_", " ")} · ${x.threat} · seed ${x.seed}${x.note ? " · " + x.note : ""}</option>`).join("");
-  sel.dataset.list = JSON.stringify(list);
+  s.dataset.list = JSON.stringify(list);
 }
-document.getElementById("save").onclick = async () => {
+$("save").onclick = async () => {
   if (lastSeed === null) return;
-  await post("/save", {template: lastTpl, seed: lastSeed, note: document.getElementById("note").value, threat: lastThreat});
-  document.getElementById("note").value = ""; document.getElementById("save").textContent = "Saved"; setTimeout(() => document.getElementById("save").textContent = "Save this start", 1200);
+  await post("/save", {template: lastTpl, seed: lastSeed, note: $("note").value, threat: lastThreat});
+  $("note").value = ""; $("save").textContent = "Saved"; setTimeout(() => $("save").textContent = "Save this start", 1200);
   loadSaved();
 };
-document.getElementById("savedlist").onchange = ev => {
+$("savedlist").onchange = ev => {
   const list = JSON.parse(ev.target.dataset.list || "[]"), x = list[+ev.target.value];
   if (!x) return;
-  document.getElementById("tpl").value = x.template; ev.target.value = ""; begin(x.seed);
+  $("tpl").value = x.template; ev.target.value = ""; begin(x.seed);
 };
-loadSaved();
-document.getElementById("start").onclick = () => begin(null);
-document.getElementById("restart").onclick = () => { if (lastSeed !== null) begin(lastSeed); };
-(function frame() {
-  document.getElementById("steplab").textContent = !S ? "—" : S.done ? "finished" : paused ? "paused" : `${S.t.toFixed(1)} s`;
-  requestAnimationFrame(frame);
-})();
-document.getElementById("pause").onclick = () => { paused = !paused; if (!paused) nextAt = performance.now() + period; document.getElementById("pause").textContent = paused ? "Resume" : "Pause"; };
-draw();
+loadSaved(); updateHand(); draw();
 </script></body></html>"""
 
 
