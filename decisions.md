@@ -2890,3 +2890,7 @@ Full write-up: docs/simulator-validation.md. Held-back only (48 games, 346 windo
   Exam on the fixed engine (20 seeds; nothing / rush / scripted / round-2 model): Hog -1.26 / -1.44 / -0.22 / -0.66;
   Ram -1.48 / -1.59 / -0.34 (0 HP median) / -0.81; melee -1.23 / -1.49 / -0.55 / -0.66; supported -2.85 / -3.10 /
   -1.28 (1,564 HP median, was 1,962) / -1.93.
+- **Imitation at 0.1 s** (scripts/train_bc.py on shards_t01, from bc_v2, window 256 / burn-in 64 / play weight 50):
+  held-back before training card at plays 37.8%, play/wait AUC 0.729, cell 4.2 tiles (bc_v2 transfers to 0.1 s
+  as-is); after 10 epochs (~4 min each) 37.8-39.3%, 0.734-0.738, 4.0-4.2: flat, training loss ~1.09 throughout.
+  Stopped at 10 of 40; the best checkpoint is data/models/bc_t01/frozen.pth, the start for RL at 0.1 s.
