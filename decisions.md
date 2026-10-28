@@ -2797,3 +2797,8 @@ Full write-up: docs/simulator-validation.md. Held-back only (48 games, 346 windo
   own Ram plus three cards) and still loses most of a tower; the scripted defence is too simple for the supported push
   (one tank answer + one support answer, then nothing: 4,800-5,800 tower HP lost) — that template needs Cole's
   reference defence; a Hog that did 243 damage but outlived the timeout was marked unresolved (the rule may be harsh).
+- **Situations end at neutral** (Cole: "the opponent isn't gonna just let the mini pekka take tower"): a situation now
+  ends as soon as the threat is dead and no enemy unit is on our side (3 s minimum, the template's timeout maximum);
+  the old minimum windows let surviving defenders walk over and hit an undefended tower. Surviving defenders count
+  (+0.02 / elixir of value, cap 10) in every template. Counter-attacking stays its own later scenario (Cole's 8).
+  Re-recorded replays: situations now end 5-14 s in (supported Golem still runs to its 40 s limit).
