@@ -30,7 +30,7 @@ DECISION_S = 1.0
 
 
 class SelfPlayPolicy:
-    def __init__(self, cards: list[dict], ckpt: str, sample: bool = True):
+    def __init__(self, cards: list[dict], ckpt: str, sample: bool = True, decision_s: float = DECISION_S):
         if str(FORK) not in sys.path:
             sys.path.insert(0, str(FORK))
         import torch
@@ -39,6 +39,7 @@ class SelfPlayPolicy:
         self.net = load_net(ckpt, "cpu", verbose=False)
         self.hidden = LSTM_HIDDEN
         self.sample = sample
+        self.decision_s = decision_s  # 1.0 for the 1 s models, 0.1 for the 0.1 s ones (2026-10-28)
         self.cards = {c["id"]: c for c in cards}
         self.reset()
 
@@ -86,7 +87,7 @@ class SelfPlayPolicy:
                       None, opp_played)
 
     def decide(self, st: LiveState, opp_plays: list[dict]) -> Action | None:
-        if st.t - self.last_t < DECISION_S:
+        if st.t - self.last_t < self.decision_s - 1e-3:
             return None
         self.last_t = st.t
         sim = self._mirror(st, opp_plays)

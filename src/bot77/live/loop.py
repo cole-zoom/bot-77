@@ -29,13 +29,14 @@ SHOT_W = 540  # saved frames are halved (review pages, not training)  # screens 
 class Runner:
     def __init__(self, dev, layout, cards: list[dict], detector=None, db_dir: Path = Path("data/lancedb"),
                  max_games: int = 1, max_hours: float = 1.0, unknown_limit_s: float = 240.0, step_s: float = 0.1,
-                 dry_run: bool = False, record: bool = True, log=print, policy_factory=None):
+                 dry_run: bool = False, record: bool = True, log=print, policy_factory=None, fast_reader: bool = False):
         self.dev, self.layout, self.cards, self.detector = dev, layout, cards, detector
         # a new policy per game: Policy (rules + A) by default; the self-play agent with --policy selfplay
         self.policy_factory = policy_factory or (lambda: Policy(self.cards))
         self.db = lancedb.connect(db_dir) if not dry_run else None
         self.max_games, self.max_hours, self.unknown_limit_s, self.step_s = max_games, max_hours, unknown_limit_s, step_s
         self.dry_run, self.log, self.record = dry_run, log, record
+        self.fast_reader = fast_reader
         self.games, self.actions = [], []
         self.last_nudge = self.last_shot = 0.0
         self.home_since = None  # when the home screen was first seen in a row (tap Battle once it has settled)
@@ -178,7 +179,8 @@ class Runner:
             if st is None or not st.in_battle:
                 if time.time() - last_known > self.unknown_limit_s:
                     self.log(f"unrecognised screen for {self.unknown_limit_s:.0f} s: stopping"); break
-            time.sleep(self.step_s)
+            # at 0.1 s decisions the stream's wait for a new frame paces the battle loop; no extra sleep there
+            time.sleep(0.0 if (self.fast_reader and st is not None and st.in_battle) else self.step_s)
 
     def _new_game(self, t: float) -> dict:
         gid = time.strftime("bot_%Y-%m-%d_%H%M%S")
@@ -198,6 +200,7 @@ class Runner:
                                    # recorder never stops (2026-10-24)
                                    preexec_fn=lambda: signal.signal(signal.SIGINT, signal.SIG_DFL))
         reader = LiveReader(self.layout, self.cards, self.detector)
+        reader.fast = self.fast_reader  # decisions every 0.1 s: clock / hand / units cached (bot77.live.state)
         if len(self.known_deck) == 8:  # our deck from earlier games: read only those 8 cards from the first frame
             reader.deck, reader.reader = list(self.known_deck), reader.full.restrict(set(self.known_deck))  # (~1 s -> ~0.1 s)
         return {"id": gid, "t0": t, "reader": reader,

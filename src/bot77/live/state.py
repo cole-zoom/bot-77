@@ -5,11 +5,12 @@ from __future__ import annotations
 from collections import Counter
 from dataclasses import dataclass, field
 
+import cv2
 import numpy as np
 
 from bot77.detect.names import class_to_card
 from bot77.layout import Layout
-from bot77.readers.clock import read_clock
+from bot77.readers.clock import ClockRead, read_clock
 from bot77.readers.elixir import read_elixir
 from bot77.readers.hand import HandReader, infer_deck
 
@@ -56,6 +57,13 @@ class LiveReader:
         self.reader, self.reads, self.deck = self.full, [], []
         self.last_hand: list[int | None] = [None] * 4
         self.unknown_streak = 0
+        # Fast mode (2026-10-28, decisions every 0.1 s): the clock is read at most every CLOCK_EVERY s and counted
+        # forward in between (it is real time); the hand only when its pixels change; units every DETECT_EVERY s
+        # (the replays the agent learned from had units 4 times a second). Off by default (fast = False).
+        self.fast = False
+        self._clock: tuple[float, ClockRead] | None = None
+        self._hand: tuple[np.ndarray, dict] | None = None
+        self._units: tuple[float, list] | None = None
 
     def tile_px(self, frame_w: int) -> tuple[float, float, float]:
         """(tile size, arena x0, arena y0) in frame pixels."""
@@ -63,9 +71,34 @@ class LiveReader:
         ax0, ay0, ax1, _ = self.layout.katacr_arena
         return (ax1 - ax0) / TILES_W * s, ax0 * s, ay0 * s
 
-    def read(self, frame: np.ndarray, t: float) -> LiveState:
-        clock = read_clock(frame, self.layout)
+    CLOCK_EVERY = 0.5
+    DETECT_EVERY = 0.2
+
+    def _read_clock(self, frame: np.ndarray, t: float) -> ClockRead:
+        if self.fast and self._clock and t - self._clock[0] < self.CLOCK_EVERY and self._clock[1].elapsed_s is not None:
+            t0, c = self._clock
+            dt = t - t0
+            return ClockRead(c.phase, None if c.time_left_s is None else c.time_left_s - dt, c.multiplier,
+                             c.elapsed_s + dt)
+        c = read_clock(frame, self.layout)
+        self._clock = (t, c)
+        return c
+
+    def _read_hand(self, frame: np.ndarray) -> dict:
+        if not self.fast:
+            return self.reader.read(frame)
+        # the four slots and Next only (the elixir bar below them changes every frame)
+        crop = np.hstack([cv2.resize(cv2.cvtColor(self.layout.crop(frame, r), cv2.COLOR_BGR2GRAY), (24, 32))
+                          for r in ("slot1", "slot2", "slot3", "slot4", "next")])
+        if self._hand is not None and float(np.abs(crop.astype(np.int16) - self._hand[0]).mean()) < 3.0:
+            return self._hand[1]  # nothing in the hand moved: the last read stands
         hand = self.reader.read(frame)
+        self._hand = (crop.astype(np.int16), hand)
+        return hand
+
+    def read(self, frame: np.ndarray, t: float) -> LiveState:
+        clock = self._read_clock(frame, t)
+        hand = self._read_hand(frame)
         n_unknown = sum(v is None or v.state == "unknown" for k, v in hand.items() if k.startswith("slot"))
         # with a 7-card deck (one card the reader has no art for, 2026-10-25) one unreadable slot is expected
         # only in battle (the clock reads): the hand leaves the screen at the end, and that wiped the learned deck
@@ -96,11 +129,15 @@ class LiveReader:
                        nxt.card_id if nxt and nxt.state == "card" else None, el.elixir, clock.time_left_s, clock.elapsed_s,
                        clock.multiplier or 1, clock.phase)
         if self.detector is not None and st.in_battle:
+            if self.fast and self._units and t - self._units[0] < self.DETECT_EVERY:
+                st.units = list(self._units[1])
+                return st
             tile, ox, oy = self.tile_px(frame.shape[1])
             for d in self.detector.detect(frame, self.layout):
                 card = class_to_card(d.name, self.names)[0]
                 cx, cy = (d.box[0] + d.box[2]) / 2, (d.box[1] + d.box[3]) / 2
                 st.units.append(Unit(card, d.name, d.team, (cx - ox) / tile, (cy - oy) / tile, d.conf))
+            self._units = (t, list(st.units))
         return st
 
 

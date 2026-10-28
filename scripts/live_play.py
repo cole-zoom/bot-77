@@ -24,6 +24,7 @@ ap.add_argument("--weights", default=adopted_path("detector_live", "data/models/
 ap.add_argument("--policy", default="rules", choices=["rules", "selfplay"],
                 help="rules: Policy (playbook rules + A); selfplay: a network checkpoint (bot77.live.selfplay)")
 ap.add_argument("--ckpt", default=None, help="--policy selfplay: the checkpoint")
+ap.add_argument("--decision-s", type=float, default=1.0, help="--policy selfplay: seconds between decisions (0.1 for the 0.1 s models; turns on the reader's fast mode)")
 a = ap.parse_args()
 STOP_FILE.parent.mkdir(parents=True, exist_ok=True)
 STOP_FILE.unlink(missing_ok=True)
@@ -32,6 +33,6 @@ cards = lancedb.connect("data/lancedb").open_table("cards").search().where("kind
 factory = None
 if a.policy == "selfplay":
     from bot77.live.selfplay import SelfPlayPolicy
-    factory = lambda: SelfPlayPolicy(cards, a.ckpt)  # noqa: E731
+    factory = lambda: SelfPlayPolicy(cards, a.ckpt, decision_s=a.decision_s)  # noqa: E731
 Runner(Device(a.device, stream=a.stream), Layout.load(a.layout), cards, Bot77Detector(Path(a.weights)), max_games=a.games,
-       max_hours=a.hours, policy_factory=factory).run()
+       max_hours=a.hours, policy_factory=factory, fast_reader=a.decision_s < 1.0).run()
