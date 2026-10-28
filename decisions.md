@@ -2707,3 +2707,14 @@ Full write-up: docs/simulator-validation.md. Held-back only (48 games, 346 windo
   bot_2026-10-26_004442 (slow-pace imitation test: **7-13 -> 6-14, 30%**), bot_2026-10-27_121850 (already excluded),
   bot_2026-10-27_154333 (excluded). The full-speed imitation tally (8-9) is unchanged. The RL test in progress
   started before the fix, so its results are re-checked with the crowns at the end.
+- **RL 8k real test, final: 13 W / 5 L in 18 clean games (72%)** (2 Wi-Fi games excluded; the 2 replacements were
+  dropped when the deck changed). Imitation agent: 8 W / 9 L (47%). The gap (25 points) has a 95% interval of about
+  +-32 at these sample sizes, so likely better, not proven; the two tests ran on different days and trophy counts.
+- **Deck change (Cole, 2026-10-27): Bomber for Archers** ("we were facing a lot of splash"; "the bot should learn to use
+  different decks"). Every result above is with Archers; from here on, Bomber. Compare across the change with care.
+- **Round 2 (rl_clones_v2):** from rl_clones_v1's checkpoint (~10,100 episodes), deck Giant, Battle Ram, Mini
+  P.E.K.K.A, Mega Minion, Bomber, Goblin Hut, Fireball, Arrows; half the episodes against the clone (pro decks), half
+  against past snapshots (v1's and its own, PFSP-weighted, playing our deck); critic warm-up 300; 20,000 episodes.
+  Smoke test: 40 resets drew the clone 24 times and 5 different snapshots 16 times. (The league code went in with
+  commit fb0426e, swept up by a `commit -a`.) Also fixed today: an OK button found by its white lettering on any
+  colour (a nudge opened Choose Decoration: 30 min stuck).
