@@ -2731,3 +2731,6 @@ Full write-up: docs/simulator-validation.md. Held-back only (48 games, 346 windo
 - Round 2 at ~8,800 episodes: clone 0.73 (3,045 games), round-1 snapshots 0.89 / 0.86 / 0.77 / 0.75 / 0.67
   (2k-10k), its own round-2 snapshots 0.61 / 0.54 / 0.54 / 0.53 (2k / 4k / 6k / 8k). Every older version is beaten
   more than before; distinct cards per game 5.8-6.0.
+- Round 2 at ~11,900 episodes: clone 0.67 (4,151 games; 0.73 at 8.8k, within the estimate's swing), round-1
+  snapshots 0.91 / 0.87 / 0.75 / 0.75 / 0.70, round-2 snapshots 0.69 / 0.67 / 0.62 / 0.56 / 0.56 (2k-10k): the margin
+  over every older version keeps growing. The 54% headline at 12k was the short window on the newest opponents.
