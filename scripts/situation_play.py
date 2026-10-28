@@ -9,7 +9,8 @@ as trained; the bot it is compared with still decides once a second). Click a ca
 it; otherwise you wait. Each situation is drawn exactly as in training (bot77.rl.situations, the opponent clone
 playing on), scored the same way, and then replayed from the identical start by the scripted defence and the model,
 so the three scores sit side by side. Every game is appended to data/live/situation_play.jsonl (gitignored) as a
-reference for later.
+reference for later; Save bookmarks a start (situation type + seed + a note) in data/live/saved_situations.json, and
+the Saved list reloads one exactly.
 """
 import argparse
 import json
@@ -23,6 +24,7 @@ import numpy as np
 
 ROOT = Path(__file__).resolve().parents[1]
 LOG = ROOT / "data/live/situation_play.jsonl"
+SAVED = ROOT / "data/live/saved_situations.json"  # bookmarked starts (Save button): situation type + seed + note
 
 
 def main():
@@ -108,6 +110,8 @@ def main():
         def do_GET(self):
             if self.path in ("/", "/index.html"):
                 return self.send(200, PAGE, "text/html; charset=utf-8")
+            if self.path == "/saved":
+                return self.send(200, SAVED.read_text() if SAVED.exists() else "[]")
             self.send(404, "{}")
 
         def do_POST(self):
@@ -124,6 +128,13 @@ def main():
                              "threat": [names.get(c, str(c)) for c, _, _ in spec["units"]]})
                 return self.send(200, json.dumps({"state": state(env), "situation": spec["name"], "seed": seed,
                                                   "threat": game["threat"], "start_elixir": [round(spec["own_elixir"], 1), round(spec["opp_elixir"], 1)]}))
+            if self.path == "/save":
+                saved = json.loads(SAVED.read_text()) if SAVED.exists() else []
+                saved.append({"template": body["template"], "seed": int(body["seed"]), "note": body.get("note", ""),
+                              "threat": body.get("threat", ""), "saved": time.strftime("%Y-%m-%d %H:%M")})
+                SAVED.parent.mkdir(parents=True, exist_ok=True)
+                SAVED.write_text(json.dumps(saved, indent=1))
+                return self.send(200, json.dumps(saved))
             if self.path == "/step":
                 env = game.get("env")
                 if env is None:
@@ -204,6 +215,11 @@ table { border-collapse: collapse; font-size:.9rem; } td, th { padding: 4px 8px;
       <select id="speed"><option value="100">real time</option><option value="200">half speed</option><option value="400">quarter speed</option></select>
       <button class="act go" id="start">New</button><button class="act" id="restart">Restart</button><button class="act" id="pause">Pause</button>
     </div>
+    <div class="row">
+      <input id="note" placeholder="note for this start (optional)" style="flex:1 1 180px;min-width:0;font:inherit;padding:6px 8px;border-radius:6px;border:1px solid var(--line);background:var(--panel);color:var(--ink)">
+      <button class="act" id="save">Save this start</button>
+      <select id="savedlist"><option value="">Saved starts…</option></select>
+    </div>
     <div id="setup" class="muted"></div>
     <div><b>Your plays</b><ol id="plays"></ol></div>
     <div id="result"></div>
@@ -272,7 +288,7 @@ async function begin(seed) {
   clearInterval(timer); timer = null; sel = null; pending = null; lastPlay = null; paused = false; maxHp.clear();
   document.getElementById("pause").textContent = "Pause"; document.getElementById("result").innerHTML = ""; document.getElementById("plays").innerHTML = "";
   const out = await post("/new", {template: document.getElementById("tpl").value, seed});
-  lastSeed = out.seed; S = out.state; renderHand(); draw();
+  lastSeed = out.seed; lastTpl = document.getElementById("tpl").value; lastThreat = out.threat.join(" + "); S = out.state; renderHand(); draw();
   document.getElementById("setup").innerHTML = `Threat <b>${out.threat.join(" + ")}</b> · your elixir <b>${out.start_elixir[0]}</b> · theirs <b>${out.start_elixir[1]}</b> · seed ${out.seed}`;
   const cnt = document.getElementById("count"); cnt.hidden = false;
   for (const n of [3, 2, 1]) { cnt.textContent = n; await sleep(800); }   // you can already queue a card during the count
@@ -281,11 +297,30 @@ async function begin(seed) {
   timer = setInterval(step, period);
 }
 document.addEventListener("keydown", ev => {   // 1-4 pick a card (left to right), Esc cancels, Space pauses
-  if (ev.target.tagName === "SELECT") return;
+  if (ev.target.tagName === "SELECT" || ev.target.tagName === "INPUT") return;
   if (["1","2","3","4"].includes(ev.key) && S && !S.done) { const i = +ev.key - 1; if (S.hand[i] && S.hand[i].cost <= S.elixir) { sel = sel === i ? null : i; renderHand(); draw(); } ev.preventDefault(); }
   else if (ev.key === "Escape") { sel = null; pending = null; renderHand(); draw(); }
   else if (ev.key === " ") { document.getElementById("pause").click(); ev.preventDefault(); }
 });
+let lastTpl = null, lastThreat = "";
+async function loadSaved() {
+  const list = await (await fetch("/saved")).json(), sel = document.getElementById("savedlist");
+  sel.innerHTML = `<option value="">Saved starts (${list.length})…</option>` + list.map((x, i) =>
+    `<option value="${i}">${x.template.replace("_", " ")} · ${x.threat} · seed ${x.seed}${x.note ? " · " + x.note : ""}</option>`).join("");
+  sel.dataset.list = JSON.stringify(list);
+}
+document.getElementById("save").onclick = async () => {
+  if (lastSeed === null) return;
+  await post("/save", {template: lastTpl, seed: lastSeed, note: document.getElementById("note").value, threat: lastThreat});
+  document.getElementById("note").value = ""; document.getElementById("save").textContent = "Saved"; setTimeout(() => document.getElementById("save").textContent = "Save this start", 1200);
+  loadSaved();
+};
+document.getElementById("savedlist").onchange = ev => {
+  const list = JSON.parse(ev.target.dataset.list || "[]"), x = list[+ev.target.value];
+  if (!x) return;
+  document.getElementById("tpl").value = x.template; ev.target.value = ""; begin(x.seed);
+};
+loadSaved();
 document.getElementById("start").onclick = () => begin(null);
 document.getElementById("restart").onclick = () => { if (lastSeed !== null) begin(lastSeed); };
 (function frame() {
