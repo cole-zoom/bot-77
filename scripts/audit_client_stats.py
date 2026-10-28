@@ -40,6 +40,8 @@ CLIENT_NAME = {
 }
 # client cards with an empty SummonCharacter -> the CHARACTER section that is the card's unit
 UNIT_OF = {"IceWizard": "IceWizard", "ElectroWizard": "ElectroWizard", "ThreeMusketeers": "ThreeMusketeer_Rework"}
+# engine card -> the client unit that is the card on the board, where SummonCharacter names something else
+UNIT_OVERRIDE = {"Goblin Drill": "GoblinDrill"}  # SummonCharacter is the burrowing GoblinDrillDig
 
 
 def norm(s: str) -> str:
@@ -201,7 +203,7 @@ def main():
         if card is None:
             missing.append(name)
             continue
-        unit = chars.get(card["SummonCharacter"])
+        unit = chars.get(UNIT_OVERRIDE.get(name, card["SummonCharacter"]))
         if unit is None:
             missing.append(f"{name} (unit {card['SummonCharacter']})")
             continue
@@ -209,9 +211,20 @@ def main():
         # table even for Rare / Epic cards (Mini P.E.K.K.A: 543 x 2.56 = 1390 at level 11)
         m = level11(unit.get("Rarity", card["Rarity"]), tab)
         proj = projs.get(unit.get("Projectile", ""), {})
+        if not proj.get("Damage"):  # Princess: the damage is on her first-shot projectile, the rest decoration
+            proj = projs.get(unit.get("CustomFirstProjectile", ""), proj)
+        if not proj.get("Damage") and proj.get("SpawnProjectile"):  # Firecracker: the shell bursts into sparks
+            proj = projs.get(proj["SpawnProjectile"], proj)
+        seq = unit.get("AttackSequenceList")
+        # the hit damage: a ramp's last stage (Inferno, Mighty Miner; engine `damage` is the ramped max), the
+        # unit's own Damage, an attack sequence's first hit (Berserker), or its projectile's
+        ramp = unit.get("VariableDamage3") if unit.get("VariableDamageTime1") else None  # Monk's are a combo, not a ramp
+        hit = (ramp or unit.get("Damage")
+               or (seq[0].get("Damage") if isinstance(seq, list) and seq and isinstance(seq[0], dict) else 0)
+               or proj.get("Damage") or 0)
         game = {
             "hp": round(unit.get("Hitpoints", 0) * m),
-            "damage": round((unit.get("Damage") or proj.get("Damage") or 0) * m),
+            "damage": round(hit * m),
             "hit_speed_s": unit.get("HitSpeed", 0) / 1000,
             "range": unit.get("Range", 0) / 1000,
             "sight": unit.get("SightRange", 0) / 1000,
@@ -220,6 +233,7 @@ def main():
             "splash": max(unit.get("AreaDamageRadius", 0), proj.get("Radius", 0) if proj.get("AoeToGround") or proj.get("AoeToAir") else 0) / 1000,
             "cost": int(card["ManaCost"] or 0),
             "kamikaze": bool(unit.get("Kamikaze")),
+            "lifetime_s": unit.get("LifeTime", 0) / 1000,
         }
         e = dict(cre.get_card_stats(eid))
         eng = {
@@ -230,9 +244,17 @@ def main():
             # a deploy delay (X-Bow, Mortar) runs alongside the deploy: the unit acts at the later of the two
             "deploy_s": max(e.get("deploy_ticks", 10), e.get("deploy_delay_ticks", 0)) / 10, "splash": round(e.get("splash_radius", 0), 2),
             "cost": int(e.get("cost", 0)),
+            "lifetime_s": e.get("lifetime_ticks", 0) / 10 if game["lifetime_s"] else 0,
         }
+        skip = set()
+        if game["kamikaze"]:  # one hit and gone: the hit speed never comes round
+            skip.add("hit_speed_s")
+        if not game["damage"] and not eng["damage"]:  # a building that never attacks: sight / range / hit speed unused
+            skip |= {"hit_speed_s", "range", "sight"}
         diffs = []
-        for k in ("hp", "damage", "hit_speed_s", "range", "sight", "speed", "deploy_s", "splash", "cost"):
+        for k in ("hp", "damage", "hit_speed_s", "range", "sight", "speed", "deploy_s", "splash", "cost", "lifetime_s"):
+            if k in skip:
+                continue
             g, v = game[k], eng[k]
             if g == 0 and v == 0:
                 continue

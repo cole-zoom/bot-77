@@ -3031,3 +3031,28 @@ Full write-up: docs/simulator-validation.md. Held-back only (48 games, 346 windo
   112 -> 287 a second to buildings, "BuildingDamagePercent 350"); whether a Crown Tower takes the building part isn't
   clear from the files, so the engine keeps 82 a second to everything. Vines, Void, Graveyard, Goblin Barrel, Clone,
   Mirror: built from actions the audit doesn't read; not compared.
+- **Client audit, step 4: mechanics** (fork d282a89). Clear from the files, fixed: **building lifetimes** were all 30
+  s (Building's constructor takes one; nothing passed it): Tesla 25, Goblin Cage 20, Goblin Drill 10, Elixir
+  Collector 110. **Elixir Collector** 1 every 15 s plus 1 on death: 8 over a full life, measured (was every 8 s for 30
+  s: 3). Barbarian Hut every 14 s (15). Ramps from the client's 2-s stages: Inferno Tower 44 / 159 / 847, Inferno
+  Dragon 36 / 120 / 422 every 2 s (was 1.5 s) at range 3.5 (5.0), Mighty Miner 44 / 205 / 410. Princess deploys in
+  1.2 s. Checked and already right: Goblin Drill (the audit had matched its burrowing unit; the building is 1313 hp, a
+  Goblin every 3 s, 84 in 2.0 on emergence, 2 on death), Goblin Hut (2.2 s, gated at 6), Battle Healer's heal on hit
+  (102 in 3.0), Berserker (102, from an attack sequence), every Kamikaze card (Electro / Ice / Fire / Heal Spirit,
+  Battle Ram, Wall Breakers, Bush, Skeleton Barrel), every building's deploy. The audit now reads ramps, first-shot
+  and spawned projectiles, attack sequences, lifetimes, and skips hit speed for Kamikaze units and sight / range for
+  buildings that never attack. Four C++ pins re-pinned with sources; suite 742 + the 1 expected.
+- **Audit end state: 116 of 116 cards matched; 46 -> 6 with a difference over 6%** (Executioner's 2.4 s hit speed is
+  the 0.9 s throw plus the 1.5 s return, modelling; Tornado's one-hit packing; and the four below). At 2% one more:
+  Poison's tower 21 (official notes) vs 20 (client rounding).
+- Left for Cole, each needing either a mechanism or a call the files don't settle:
+  - **Hunter**: 10 pellets of 84 (840 point-blank in the game); the engine fires one 84 with a 1.5 splash and an
+    invented falloff. The fan's spread isn't in a readable form (Scatter "Line", no angle).
+  - **Firecracker**: the shell bursts into 5 sparks of 64 flying 5 tiles on (radius 0.4 each); the engine has one 64
+    in 1.5. Same missing geometry.
+  - **Monk**: a 3-hit combo, 141 / 141 / 422; the engine hits a flat 140 (DPS 40% low). Either a hit-count combo
+    mechanism or a flat 235 average.
+  - **Three Musketeers**: the client has a reworked card (one unit, 906 hp, 1.3 s, a melee-range variable).
+  - **Earthquake**'s building / Crown Tower damage (step 3), **hit splash centre-to-centre** and **on-hit effects not
+    carried by splash** (step 2), **Battle Healer**'s deploy heal (202 in 3.0) and idle self-heal, **Elixir
+    Collector** faster in double elixir (unverified), **Giant Skeleton / Barbarian Barrel** vs newer notes (step 3).
