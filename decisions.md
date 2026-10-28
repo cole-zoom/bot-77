@@ -2755,3 +2755,11 @@ Full write-up: docs/simulator-validation.md. Held-back only (48 games, 346 windo
   rl_clones_v2/final.pth): clone 0.74 (6,859 games), round-1 snapshots 0.93 / 0.85 / 0.78 / 0.75 / 0.72 (2k-10k),
   round-2 snapshots 0.74 / 0.69 / 0.56 / 0.57 / 0.61 / 0.58 / 0.57 / 0.54 / 0.55 (2k-18k). Distinct cards per game
   ~6.0 throughout. Next: the real test with Bomber (check the hand reader reads Bomber first).
+- **The training scenarios, measured** (Cole asked how it wins them). The fork injects 30% of episodes into one of
+  four (python_ai/envs/scenarios.py): bridge_push (a win condition on a bridge, 15 s), bridge_push_supported (+ a
+  ranged support, 25 s), fireball_swarm (3-5 cheap bodies in our half, 12 s), fireball_tower_value (2-4 enemies on
+  their tower, 15 s; they walk over). Final round-2 model, 25 runs each, engine towers 2,534 / princess: our tower HP
+  lost (median) 1,480 / 3,680 / 2,534 / 1,149; first card, bridge push: Battle Ram 9 of 25 (a counter-push, not a
+  defence); Fireball first in 2-3 of 25 even in the two Fireball scenarios. It answers at once but often with the
+  wrong card. The log's ScenDef ~0.98-1.00 only checks the episode reward stayed above -0.5, which a big hit in a
+  short window rarely trips: it hid this. Lever for round 3: weight the scenarios up and judge them on tower HP lost.
