@@ -85,6 +85,8 @@ class CloneEnv(MicroRoyaleSelfPlayEnv):
         else:
             path = self.clone
             self.opp_deck = self.pro_decks[int(self.rng.choice(len(self.pro_decks), p=self.deck_p))]
+        if self.forced_template in sit.REVIEW_TEMPLATES:
+            self.opp_deck = list(sit.SCRIPT_DECK)  # Cole's 1 / 8 / 9: the scripted opponent's cards
         if path != self.loaded:
             self.set_historical_opponent(path)
             self.loaded = path
@@ -97,6 +99,9 @@ class CloneEnv(MicroRoyaleSelfPlayEnv):
         self.opp_calls += 1
         if (self.opp_calls - 1) % self.opp_every:
             return 4, 0.0, 0.0, False, False
+        if self.situation is not None and self.situation.spec.get("opp"):
+            move = sit.opponent_script(self.situation, self)  # the review situations' scripted opponent
+            return (*(move or (4, 0.0, 0.0)), False, False)
         return super()._opponent_action()
 
     def reset(self, seed=None, options=None):

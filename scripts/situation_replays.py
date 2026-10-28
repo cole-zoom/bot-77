@@ -22,6 +22,8 @@ def main():
     ap.add_argument("--ckpt", required=True)
     ap.add_argument("--out", required=True)
     ap.add_argument("--seeds", type=int, default=2)
+    ap.add_argument("--review", action="store_true",
+                    help="Cole's 1 / 8 / 9 with the scripted opponent (scripted defence and a bridge rush on our side)")
     a = ap.parse_args()
     out = Path(a.out).resolve()
     os.environ.update({"CLASH_DECK": "2,81,5,43,9,95,7,3", "RL_CLONE_CKPT": str(ROOT / "data/models/bc_v2/frozen.pth"),
@@ -59,6 +61,15 @@ def main():
     def defend(env, obs, first):
         return sit.scripted_defence(env)
 
+    def rush(env, obs, first):
+        # the failure Cole's 1 and 9 catch: everything affordable at the bridge
+        hand, el = list(env.game.get_hand()), env.game.get_elixir()
+        ok = [(sit.COST.get(c, 9), i) for i, c in enumerate(hand) if sit.COST.get(c, 9) <= el and c not in (sit.FIREBALL, sit.ARROWS)]
+        if not ok:
+            return 4, 0.0, 0.0
+        lane = env.situation.spec.get("lane", sit.LANE_X[0]) if env.situation else sit.LANE_X[0]
+        return max(ok)[1], float(lane), float(env.MAX_Y)
+
     names = {}
 
     def frame(env, play=None):
@@ -67,16 +78,37 @@ def main():
             names[u.card_id] = u.name
             units.append({"id": u.id, "name": u.name, "team": u.team, "x": round(u.x, 2), "y": round(u.y, 2),
                           "hp": round(u.hp), "flying": bool(u.flying), "building": bool(u.building), "tower": bool(u.tower)})
-        return {"units": units, "elixir": [round(env.game.get_elixir_for_team(0), 1), round(env.game.get_elixir_for_team(1), 1)],
+        opp = env.situation.opp_state.get("plays", []) if env.situation else []
+        new = opp[frame.seen:] if opp else []
+        frame.seen = len(opp)
+        return {"opp_play": [{"card": names.get(c, card_name.get(c, str(c))), "x": x, "y": y} for _, c, x, y in new],
+                "units": units, "elixir": [round(env.game.get_elixir_for_team(0), 1), round(env.game.get_elixir_for_team(1), 1)],
                 "towers": [[max(0, env.game.get_tower_hp(t, s)) for s in range(3)] for t in (0, 1)], "play": play}
 
     card_name = {sit.MINI_PEKKA: "Mini P.E.K.K.A", sit.GOBLIN_HUT: "Goblin Hut", sit.MEGA_MINION: "Mega Minion",
                  sit.BOMBER: "Bomber", sit.FIREBALL: "Fireball", sit.ARROWS: "Arrows", sit.GIANT: "Giant",
                  sit.BATTLE_RAM: "Battle Ram"}
+    frame.seen = 0
+    from bot77.sim import cards as sc
+    names.update({i: c["name"] for i, c in sc.engine_cards().items()})
     episodes = []
-    for tpl in [sit.hog_rider, sit.battle_ram, sit.melee, sit.supported_push]:
-        for s in range(a.seeds):
-            for pname, act in [("Scripted defence", defend), ("Round-2 model", model)]:
+    tpls = sit.REVIEW_TEMPLATES if a.review else [sit.hog_rider, sit.battle_ram, sit.melee, sit.supported_push]
+    players = [("Scripted defence", defend), ("Bridge rush", rush)] if a.review else [("Scripted defence", defend), ("Round-2 model", model)]
+    shown: dict[str, int] = {}
+    for tpl in tpls:
+        for s in range(a.seeds * (30 if a.review else 1)):
+            if a.review:  # each variant (the opening's four plans, the two pushes) a.seeds times
+                probe = CloneEnv({"scenario_seed": 0})
+                probe.forced_template = tpl
+                probe.rng = np.random.default_rng(20_000 + s)
+                probe.scenario_rng = probe.rng
+                probe.reset()
+                vname = probe.situation.spec["name"]
+                if shown.get(vname, 0) >= a.seeds:
+                    continue
+                shown[vname] = shown.get(vname, 0) + 1
+            for pname, act in players:
+                frame.seen = 0
                 env = CloneEnv({"scenario_seed": 0})
                 env.forced_template = tpl
                 env.rng = np.random.default_rng(20_000 + s)

@@ -27,10 +27,12 @@ HOG, BATTLE_RAM, MINI_PEKKA, KNIGHT, PRINCE, GIANT, GOLEM = 15, 81, 5, 0, 14, 2,
 MUSKETEER, WIZARD, EXECUTIONER, MINIONS = 6, 11, 36, 41
 MEGA_MINION, BOMBER, GOBLIN_HUT, FIREBALL, ARROWS = 43, 9, 95, 7, 3
 MINION_HORDE, SKELETON_ARMY, GOBLIN_GANG, BATS, ARCHERS, WITCH, FLYING_MACHINE = 42, 12, 112, 78, 1, 71, 67
+VALKYRIE, CANNON = 10, 25
 
 COST = {HOG: 4, BATTLE_RAM: 4, MINI_PEKKA: 4, KNIGHT: 3, PRINCE: 5, GIANT: 5, GOLEM: 8, MUSKETEER: 4, WIZARD: 5,
         EXECUTIONER: 5, MINIONS: 3, MEGA_MINION: 3, BOMBER: 2, GOBLIN_HUT: 4, FIREBALL: 4, ARROWS: 3,
-        MINION_HORDE: 5, SKELETON_ARMY: 3, GOBLIN_GANG: 3, BATS: 2, ARCHERS: 3, WITCH: 5, FLYING_MACHINE: 4}
+        MINION_HORDE: 5, SKELETON_ARMY: 3, GOBLIN_GANG: 3, BATS: 2, ARCHERS: 3, WITCH: 5, FLYING_MACHINE: 4,
+        VALKYRIE: 4, CANNON: 3}
 
 LANE_X = (3.0, 14.0)  # the princess-tower lanes (engine x; bridges at 2.5 / 14.5)
 DROP_Y = 18.0  # their side of the bridge: where a player drops a Hog / Ram / melee card (Cole, 2026-10-28)
@@ -44,6 +46,7 @@ SURVIVOR_BONUS = 0.02
 TIMEOUT_PENALTY = 0.3
 TRADE_COEF = 0.1  # spell situations: 0.1 a net elixir of value
 ELIM_BONUS = 0.25  # of a body's value when it dies, so finishing beats spreading
+COUNTER_TOLERANCE = 800  # defend_counter: tower HP the push may take and still unlock the attack credit
 MIN_SECONDS = 3  # don't call the board neutral before the threat has had a chance to arrive
 
 
@@ -145,10 +148,147 @@ def emergency(rng) -> dict:
             "units": units, "answers": [GOBLIN_HUT, MINI_PEKKA], "answers2": sup_answers}
 
 
+# --- Cole's 1 / 8 / 9: a scripted opponent that reacts to us (2026-10-28). For his review first, not in TEMPLATES ---
+# The opponent plays through step_self_play in its own frame: x as on the board, y mirrored (33 - y), so its bridge
+# drop at board y 18 is its y 15 and its back row at board y 30 is its y 3.
+
+def safe_opening(rng) -> dict:
+    """Cole's 1: an empty board, both on 5 elixir, and one of four opening plans for them; 30 s, towers first, no
+    credit for damage we deal (the test is whether we answer, not whether we race)."""
+    plan = ["tank_back", "bridge_rush", "support_back", "wait_defend"][int(rng.integers(4))]
+    return {"name": f"opening_{plan}", "timeout": 30, "own_elixir": 5.0, "opp_elixir": 5.0, "units": [],
+            "answers": [GOBLIN_HUT, MINI_PEKKA], "window": True, "score": "opening", "opp": plan,
+            "opp_wait": rng.uniform(2, 5), "lane": _lane(rng),
+            "tank": int(rng.choice([GIANT, GOLEM])), "rush": int(rng.choice([HOG, BATTLE_RAM])),
+            "support": int(rng.choice([MUSKETEER, WIZARD]))}
+
+
+def defend_counter(rng) -> dict:
+    """Cole's 8: one of the supported pushes, 6-8 elixir, Giant in our deck; they keep 2-4 elixir back and defend
+    what crosses. 45 s: our towers first, then damage to theirs and the elixir we end on, the attack bonus only once
+    the push is beaten inside the tolerance."""
+    spec = supported_push(rng)
+    spec.update({"name": "counter_" + spec["name"].split("_", 1)[1], "timeout": 45, "own_elixir": rng.uniform(6, 8),
+                 "opp_elixir": rng.uniform(2, 4), "window": True, "score": "counter", "opp": "defend"})
+    return spec
+
+
+def dont_overcommit(rng) -> dict:
+    """Cole's 9: we're on 3, they're on 10, nothing on the board. Spend on attack and they punish in the other lane;
+    otherwise they build a slower push that arrives anyway (so doing nothing can't solve it). 30 s."""
+    return {"name": "deficit", "timeout": 30, "own_elixir": 3.0, "opp_elixir": 10.0, "units": [],
+            "answers": [GOBLIN_HUT, MINI_PEKKA, BOMBER], "window": True, "score": "deficit", "opp": "punish",
+            "lane": _lane(rng), "slow_at": rng.uniform(6, 12), "tank": int(rng.choice([GIANT, GOLEM])),
+            "support": int(rng.choice([MUSKETEER, WIZARD])), "rush": int(rng.choice([HOG, BATTLE_RAM])),
+            "punish_at": rng.uniform(3.5, 5.0)}
+
+
+REVIEW_TEMPLATES = [safe_opening, defend_counter, dont_overcommit]
+# the scripted opponent's deck in those (the engine only deals a team cards from its own deck)
+SCRIPT_DECK = [GIANT, GOLEM, HOG, BATTLE_RAM, MUSKETEER, WIZARD, CANNON, MINI_PEKKA]
+
+
+def _ours_across(game) -> list:
+    return [u for u in game.get_units() if u.team == 0 and not u.tower and not u.building and u.y > 17.5]
+
+
+def opponent_script(sit_, env):
+    """The scripted opponent's move this second for the review situations: (card, x, y) in its own frame, or None."""
+    spec, st, g = sit_.spec, sit_.opp_state, env.game
+    t, el = sit_.seconds, g.get_elixir_for_team(1)
+
+    def play(card, x, board_y):
+        if el < COST.get(card, 10):
+            return None
+        hand = list(g.get_hand_for_team(1))
+        if card not in hand:
+            g.set_hand_for_team(1, [card] + [c for c in hand if c != card][:3])  # the script's card is in hand
+            hand = list(g.get_hand_for_team(1))
+        st.setdefault("plays", []).append((round(t, 1), card, round(x, 1), board_y))
+        return hand.index(card), float(x), float(33.0 - board_y)
+
+    def defend():
+        # a defender in front of whatever of ours has crossed, once per crossing unit
+        for u in _ours_across(g):
+            if u.id in st.setdefault("answered", set()):
+                continue
+            st["answered"].add(u.id)
+            card = CANNON if u.card_id in (GIANT, HOG, BATTLE_RAM, GOLEM) else MINI_PEKKA
+            x = 8.5 if card == CANNON else u.x
+            return play(card, x, 25.0 if card == CANNON else min(u.y + 2.5, 30.0))
+        return None
+
+    plan = spec["opp"]
+    lane = spec.get("lane", 3.0)
+    if plan == "defend":
+        return defend()
+    if plan == "wait_defend":
+        return defend()
+    if plan in ("tank_back", "support_back", "bridge_rush"):
+        if "opened" not in st:
+            if plan == "bridge_rush":
+                st["opened"] = True
+                return play(spec["rush"], lane, 18.0)
+            if t >= spec["opp_wait"]:
+                card = spec["tank"] if plan == "tank_back" else spec["support"]
+                r = play(card, lane, 30.0)
+                if r:
+                    st["opened"] = True
+                return r
+            return defend()
+        # follow up: support behind the tank when it reaches the bridge; otherwise defend
+        tank = next((u for u in g.get_units() if u.team == 1 and u.card_id == spec.get("tank")), None)
+        if plan == "tank_back" and tank is not None and tank.y < 22.0 and "followed" not in st:
+            r = play(spec["support"], tank.x, min(tank.y + 3.0, 30.0))
+            if r:
+                st["followed"] = True
+            return r
+        return defend()
+    if plan == "punish":
+        spent = float(g.get_elixir_spent(0)) - sit_.spent0
+        across = sum(COST.get(u.card_id, 0) for u in _ours_across(g))
+        if "attacked" not in st and (across >= 3 or spent >= 4) and t >= 1.0:
+            st["attacked"] = "punish"
+            st["punish_from"] = t
+            far = LANE_X[1] if (sum(u.x for u in _ours_across(g)) / max(1, len(_ours_across(g)))) < 8.5 else LANE_X[0]
+            st["punish_lane"] = far if _ours_across(g) else lane
+        if st.get("attacked") == "punish":
+            # the punish: a win condition at the bridge, then support behind it, in the lane we left open
+            pl = st["punish_lane"]
+            if "p1" not in st:
+                r = play(spec["rush"], pl, 18.0)
+                if r:
+                    st["p1"] = True
+                return r
+            if "p2" not in st and t - st["punish_from"] >= 1.0:
+                r = play(spec["support"], pl, 20.5)
+                if r:
+                    st["p2"] = True
+                return r
+            return defend()
+        if t >= spec["slow_at"] and "attacked" not in st:
+            st["attacked"] = "slow"
+        if st.get("attacked") == "slow":
+            if "s1" not in st:
+                r = play(spec["tank"], lane, 30.0)
+                if r:
+                    st["s1"] = True
+                return r
+            tank = next((u for u in g.get_units() if u.team == 1 and u.card_id == spec["tank"]), None)
+            if "s2" not in st and tank is not None and tank.y < 24.0:
+                r = play(spec["support"], tank.x, min(tank.y + 2.5, 30.0))
+                if r:
+                    st["s2"] = True
+                return r
+        return defend()
+    return None
+
+
 TEMPLATES = [hog_rider, battle_ram, melee, supported_push, arrows_value, fireball_value, emergency]
 BY_NAME = {"hog_rider": hog_rider, "battle_ram": battle_ram, "melee_mini_pekka": melee, "melee_knight": melee,
            "melee_prince": melee, "supported_giant": supported_push, "supported_golem": supported_push,
-           "arrows_value": arrows_value, "fireball_value": fireball_value, "emergency": emergency}
+           "arrows_value": arrows_value, "fireball_value": fireball_value, "emergency": emergency,
+           "safe_opening": safe_opening, "defend_counter": defend_counter, "dont_overcommit": dont_overcommit}
 
 
 def _supported_defence(env, spec, played) -> tuple[int, float, float]:
@@ -195,6 +335,11 @@ def _emergency_defence(env, spec, played) -> tuple[int, float, float]:
     k = _supported_defence(env, spec, played)
     if k[0] != 4:
         return k
+    return _reactive_defence(env, played)
+
+
+def _reactive_defence(env, played) -> tuple[int, float, float]:
+    """Answer whatever enemy troop is on our side, one card every 1.5 s at most (the emergency and review yardstick)."""
     if env.situation.seconds - played_last(played) < 1.5:
         return 4, 0.0, 0.0
     hand, el = list(env.game.get_hand()), env.game.get_elixir()
@@ -220,6 +365,23 @@ def _emergency_defence(env, spec, played) -> tuple[int, float, float]:
         played.add(f"@{env.situation.seconds:.1f}")
         return hand.index(c), *pos
     return 4, 0.0, 0.0
+
+
+def _review_defence(env, spec, played) -> tuple[int, float, float]:
+    """The yardstick in Cole's 1 / 8 / 9: no opening play; answer what crosses. In defend-then-counter, Cole's
+    supported-push defence first, then once the push is dead a Giant in front of what survived if we can afford it."""
+    if spec["score"] == "counter":
+        k = _supported_defence(env, spec, played)
+        if k[0] != 4:
+            return k
+        sit_ = env.situation
+        hand, el = list(env.game.get_hand()), env.game.get_elixir()
+        mine = [u for u in env.game.get_units() if u.team == 0 and not u.tower and not u.building]
+        if sit_.push_beaten_at is not None and "counter" not in played and mine and GIANT in hand and el >= COST[GIANT]:
+            played.add("counter")
+            lead = max(mine, key=lambda u: u.y)
+            return hand.index(GIANT), float(LANE_X[0] if lead.x < 8.5 else LANE_X[1]), 14.0
+    return _reactive_defence(env, played)
 
 
 def played_last(played) -> float:
@@ -262,6 +424,8 @@ def scripted_defence(env) -> tuple[int, float, float]:
     if not hasattr(env, "defend_played") or env.defend_played[0] is not env.situation:
         env.defend_played = (env.situation, set())
     played = env.defend_played[1]
+    if spec.get("opp"):
+        return _review_defence(env, spec, played)
     if spec["name"] == "emergency":
         return _emergency_defence(env, spec, played)
     if spec["name"].startswith("supported"):
@@ -330,6 +494,10 @@ class Situation:
             self._inject(deploy_ticks=0)  # already on the move (the supported push starts mid-push)
         self.tower0 = [max(0, game.get_tower_hp(0, s)) for s in range(3)]
         self.princess_max = float(game.get_tower_max_hp(0, 1))
+        self.etower0 = [max(0, game.get_tower_hp(1, s)) for s in range(3)]
+        self.opp_state: dict = {}
+        self.push_beaten_at: float | None = None  # defend_counter: when the starting push was dead
+        self.lost_at_beaten = 0.0
         self.spent0 = float(game.get_elixir_spent(0))
         self.dt = dt  # seconds per env step (1.0, or 0.1 at a decision a tick)
         self.seconds = 0.0
@@ -375,6 +543,14 @@ class Situation:
         if self.spec.get("drop") and not self.threat:
             return (True, 0.0, {}) if game_over else (False, 0.0, {})  # before the drop (the first second)
         neutral = self.resolved()
+        if self.spec.get("window"):
+            # the review situations run the whole window (the opponent keeps playing); remember when the starting push
+            # (if any) was beaten and what it had cost us by then
+            if self.threat and self.push_beaten_at is None and not (self.threat & {u.id for u in self.game.get_units()}):
+                self.push_beaten_at = self.seconds
+                self.lost_at_beaten = self._lost()
+            done = game_over or self.seconds >= self.spec["timeout"] - 1e-6
+            return (self._finish() if done else (False, 0.0, {}))
         if not neutral:
             self.neutral_since = None
         elif self.neutral_since is None:
@@ -385,11 +561,32 @@ class Situation:
         done = game_over or self.seconds >= self.spec["timeout"] - 1e-6 or (self.seconds >= MIN_SECONDS - 1e-6 and steady)
         if not done:
             return False, 0.0, {}
+        return self._finish()
+
+    def _lost(self) -> float:
+        return sum(max(0.0, a - max(0, self.game.get_tower_hp(0, s))) for s, a in enumerate(self.tower0))
+
+    def _finish(self) -> tuple[bool, float, dict]:
         lost = sum(max(0.0, a - max(0, self.game.get_tower_hp(0, s))) for s, a in enumerate(self.tower0))
         spent = float(self.game.get_elixir_spent(0)) - self.spent0
         unresolved = not self.resolved()
         survivors = sum(COST.get(u.card_id, 0) for u in self.game.get_units() if u.team == 0 and not u.tower and u.hp > 0)
-        if self.spec.get("score") == "trade":
+        kind = self.spec.get("score")
+        el_end = float(self.game.get_elixir())
+        dealt = sum(max(0.0, a - max(0, self.game.get_tower_hp(1, s))) for s, a in enumerate(self.etower0))
+        if kind in ("opening", "deficit", "counter"):
+            # towers first; then the elixir we end on and what we still have on the board; enemy troops still on our
+            # side count as unresolved. Damage we deal counts only in defend-then-counter, and only once the push was
+            # beaten inside the tolerance (Cole's 8)
+            threat_left = any(u.team == 1 and not u.tower and not u.building and u.y < 17.5 for u in self.game.get_units())
+            score = (-lost / self.princess_max + 0.02 * min(el_end, 10.0) + SURVIVOR_BONUS * min(survivors, 10)
+                     - (TIMEOUT_PENALTY if threat_left else 0.0))
+            if kind == "counter":
+                ok = self.push_beaten_at is not None and self.lost_at_beaten <= COUNTER_TOLERANCE
+                score += (0.5 * dealt / self.princess_max) if ok else 0.0
+                score -= 0.0 if self.push_beaten_at is not None else TIMEOUT_PENALTY
+            unresolved = threat_left
+        elif kind == "trade":
             # Cole's spell scoring: enemy elixir value removed (share of each body's max HP taken, capped at what it
             # had, plus ELIM_BONUS of its value if killed) against what we spent; towers still first
             alive = {u.id: u for u in self.game.get_units()}
@@ -402,4 +599,5 @@ class Situation:
             score = (-lost / self.princess_max - ELIXIR_COST * spent + SURVIVOR_BONUS * min(survivors, 10)
                      - (TIMEOUT_PENALTY if unresolved else 0.0))
         return True, float(score), {"tower_hp_lost": lost, "elixir_spent": spent, "unresolved": unresolved,
-                                    "seconds": round(self.seconds, 1)}
+                                    "seconds": round(self.seconds, 1), "tower_hp_dealt": dealt, "elixir_end": el_end,
+                                    "opp_plays": self.opp_state.get("plays", [])}
