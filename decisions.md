@@ -2941,3 +2941,8 @@ Full write-up: docs/simulator-validation.md. Held-back only (48 games, 346 windo
   sight 7.5, Medium, Bush Goblins 338 hp; and area effects now land on invisible units (the engine's own note said the
   real game allows it; Arrows never touched the Bush). Checked: it pops at the tower with the tower untouched, and
   Arrows kill it while invisible. Suite green (+ the expected 1).
+- **Cole's reference games** (Cole: "only take the ones where I beat the script"): of his 60 play-page games, the 24
+  where his score beat the scripted defence's from the same start (9 ties left out): Battle Ram 9 / 22, Hog 5 / 28,
+  Knight 2 / 2, Mini P.E.K.K.A 3 / 3, Prince 1 / 1, supported Giant 3 / 3, Golem 1 / 1; mean margin +0.39. Kept in
+  data/live/cole_reference.jsonl (local). For the next RL round: their starts become fixed training situations and
+  his plays the exam's second yardstick. The melee and supported ones were played before the pull / kite fixes.
