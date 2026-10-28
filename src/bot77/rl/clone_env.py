@@ -17,6 +17,11 @@ starts mid-fight and ends when the threat resolves, scored on the outcome (info[
 "rl_situation_end" the scored one; the trainer turns the game's shaping off on those steps and treats the end as
 terminal). When on, the fork's own scenarios are off.
 
+Decision rate (2026-10-28, Cole: "0.1 decisions"): our side acts every `decision_ticks` engine ticks (env_config, or
+RL_DECISION_TICKS; 10 = once a second, the fork's rate; 1 = every 0.1 s). The opponent keeps deciding once a second
+whatever ours is: the clone and the snapshots so far were trained at that rate, and asked every tick they would play
+ten times as often.
+
 Paths come from the environment (set by scripts/rl_vs_clones.py before the fork is imported): RL_CLONE_CKPT (the
 frozen clone), RL_PRO_DECKS (the deck pool).
 """
@@ -41,6 +46,9 @@ class CloneEnv(MicroRoyaleSelfPlayEnv):
         if self.situation_share > 0:
             env_config["scenarios_enabled"] = False  # ours replace the fork's
         super().__init__(env_config)
+        self.decision_ticks = int(env_config.get("decision_ticks", os.environ.get("RL_DECISION_TICKS", "10")))
+        self.opp_every = max(1, 10 // self.decision_ticks)  # our steps between two opponent decisions (1 s)
+        self.opp_calls = 0
         self.situation: sit.Situation | None = None
         self.forced_template = None  # the exam sets one
         self.max_ticks = env_config.get("max_ticks", 3600)
@@ -78,17 +86,26 @@ class CloneEnv(MicroRoyaleSelfPlayEnv):
         none = clash_royale_env.TowerTroopType.NONE
         self.game = clash_royale_env.ClashRoyaleEnv(self.deck, self.opp_deck, self.max_ticks, none, none)
 
+    def _opponent_action(self):
+        """The opponent decides once a second (every opp_every of our steps); in between it waits."""
+        self.opp_calls += 1
+        if (self.opp_calls - 1) % self.opp_every:
+            return 4, 0.0, 0.0, False, False
+        return super()._opponent_action()
+
     def reset(self, seed=None, options=None):
         obs, info = super().reset(seed=seed, options=options)
+        self.opp_calls = 0
         self.situation = None
         if self.forced_template is not None or (self.situation_share > 0 and self.rng.random() < self.situation_share):
             tpl = self.forced_template or sit.TEMPLATES[int(self.rng.integers(len(sit.TEMPLATES)))]
-            self.situation = sit.Situation(self.game, tpl(self.rng), list(self.deck), self.rng)
+            self.situation = sit.Situation(self.game, tpl(self.rng), list(self.deck), self.rng,
+                                           dt=self.decision_ticks / 10.0)
             obs = np.array(self.game.get_observation_for_team(0), dtype=np.float32)
         return obs, info
 
-    def step(self, action, skip_frames=10):
-        obs, reward, terminated, truncated, info = super().step(action, skip_frames)
+    def step(self, action, skip_frames=None):
+        obs, reward, terminated, truncated, info = super().step(action, skip_frames or self.decision_ticks)
         info["rl_situation"] = 0.0
         info["rl_situation_end"] = 0.0
         info["rl_situation_score"] = 0.0

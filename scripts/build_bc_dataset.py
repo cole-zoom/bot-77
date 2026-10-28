@@ -1,7 +1,11 @@
 """Imitation data for the self-play network (option 3, 2026-10-24): every human replay, each player, once a second.
 
-  uv run --no-sync python scripts/build_bc_dataset.py [--games N] [--workers 6]
+  uv run --no-sync python scripts/build_bc_dataset.py [--games N] [--workers 6] [--step 0.1 --out data/cache/bc/shards_t01]
   -> data/cache/bc/shards/<match>_<side>.npz   (gitignored)
+
+--step 0.1 (2026-10-28, Cole: decisions every 0.1 s): one decision a tenth of a second, the HUD's own rate (units
+are detected 4 times a second, so the board updates every 0.25 s). Shards are written compressed: the observation is
+~99% zeros and compresses ~180x, so the 10x rows stay small and every trajectory stays in sequence for the LSTM.
 
 Per decision (1 s, the network's cadence): the acting player's view mirrored into an engine (bot77.sim.mirror: their hand
 and elixir from the HUD, the opponent's elixir from theirs, units from the detector (v5l_e15), tower HP (tower_hp), the
@@ -26,7 +30,7 @@ from bot77.sim.mirror import mirror, observation
 from bot77.sim.validate import TOWER_KEYS, _frame, load_game, tower_frac
 
 OUT = Path("data/cache/bc/shards")
-STEP_S = 1.0
+STEP_S = 1.0  # --step
 WIN_WEIGHT = 2.0
 SWAP = {"own_king": "opp_king", "own_l": "opp_r", "own_r": "opp_l", "opp_king": "own_king", "opp_l": "own_r",
         "opp_r": "own_l"}  # bottom-frame tower names -> the top player's own frame
@@ -59,6 +63,8 @@ def at(ts, rows, t):
 
 
 def build(args) -> tuple[str, int]:
+    global STEP_S, OUT
+    STEP_S, OUT = args[4], Path(args[5])
     try:
         return _build(args)
     except Exception as e:  # noqa: BLE001 -- one bad game must not stop the run
@@ -66,7 +72,7 @@ def build(args) -> tuple[str, int]:
 
 
 def _build(args) -> tuple[str, int]:
-    m, top_id, split, results = args
+    m, top_id, split, results = args[:4]
     try:
         g = load_game(m["match_id"], split, m["source"])
     except Exception as e:  # noqa: BLE001
@@ -138,7 +144,7 @@ def _build(args) -> tuple[str, int]:
             continue
         res = results.get(side)
         w = WIN_WEIGHT if res == "win" else 1.0
-        np.savez(out, obs=np.stack(obs), card=np.array(card, np.int64), cell=np.array(cell, np.int64),
+        np.savez_compressed(out, obs=np.stack(obs), card=np.array(card, np.int64), cell=np.array(cell, np.int64),
                  t=np.array(tt, np.float32), weight=np.full(len(obs), w, np.float32),
                  split=np.array(split), side=np.array(side), result=np.array(res or ""))
         n_rows += len(obs)
@@ -149,8 +155,10 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--games", type=int, default=0)
     ap.add_argument("--workers", type=int, default=6)
+    ap.add_argument("--step", type=float, default=STEP_S, help="seconds per decision")
+    ap.add_argument("--out", default=str(OUT))
     a = ap.parse_args()
-    OUT.mkdir(parents=True, exist_ok=True)
+    Path(a.out).mkdir(parents=True, exist_ok=True)
     ms = store.read("matches", "source IN ('replay_tv', 'replay_bl')")
     by = {m["match_id"]: m for m in ms}
     jobs = []
@@ -161,7 +169,7 @@ def main():
         if not top:
             continue
         split = "heldback" if m["split"] == "heldback" else "train"
-        jobs.append((m, top["match_id"], split, {"bottom": m["result"], "top": top["result"]}))
+        jobs.append((m, top["match_id"], split, {"bottom": m["result"], "top": top["result"]}, a.step, a.out))
     if a.games:
         jobs = jobs[: a.games]
     t0, total = time.time(), 0

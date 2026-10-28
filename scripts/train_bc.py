@@ -9,6 +9,11 @@ with: rows whose card or cell is unknown left out of that loss, the winner's row
 winners up; results from matches.result), play rows weighted PLAY_WEIGHT in the card loss, and batched truncated BPTT through `forward_sequence` (random windows of
 WINDOW steps, the first BURN_IN only warming the LSTM). Held-back games are only scored.
 
+--shards data/cache/bc/shards_t01 (2026-10-28): the 0.1 s data (scripts/build_bc_dataset.py --step 0.1). Its shards
+are compressed (the observation is ~99% zeros), so each is unpacked once into a sparse matrix held in memory (~100
+values a row) and windows are densified on the fly; use longer windows (--window 256 = 25.6 s) and a heavier play
+weight (--play-weight; plays are ~1% of the rows, against ~10% at 1 s).
+
 Scores (held-back): card at plays (which of the 4 hand cards, given a play happened; A v3 got ~51%), play-vs-wait AUC,
 placement (the cell the pro used, and the distance in tiles to it).
 """
@@ -19,6 +24,7 @@ import time
 from pathlib import Path
 
 import numpy as np
+import scipy.sparse as sp
 import torch
 import torch.nn.functional as F
 from sklearn.metrics import roc_auc_score
@@ -36,6 +42,17 @@ WINDOW, BURN_IN, BATCH = 64, 16, 16
 BOARD_W = 18
 
 
+_CACHE: dict = {}
+
+
+def obs_rows(f) -> "sp.csr_matrix":
+    """A shard's observations as a sparse matrix, unpacked once and kept (dense float16 would be ~50 GB at 0.1 s)."""
+    if f not in _CACHE:
+        d = np.load(f)
+        _CACHE[f] = (sp.csr_matrix(d["obs"].astype(np.float32)), d["card"], d["cell"])
+    return _CACHE[f]
+
+
 def load_meta():
     results = {m["match_id"]: m["result"] for m in store.read("matches", "source IN ('replay_tv', 'replay_bl')")}
     pairs = {m["match_id"]: m["pair_match_id"] for m in store.read("matches", "pov_side = 'bottom'")}
@@ -44,17 +61,18 @@ def load_meta():
         d = np.load(f)
         mid, side = f.stem.rsplit("_", 1)
         res = results.get(mid) if side == "bottom" else results.get(pairs.get(mid))
-        eps.append({"file": f, "n": len(d["card"]), "split": str(d["split"]),
+        eps.append({"file": str(f), "n": len(d["card"]), "split": str(d["split"]),
                     "w": WIN_WEIGHT if res == "win" else 1.0, "result": res})
     return eps
 
 
-def window(ep, rng, length=WINDOW):
-    d = np.load(ep["file"])
-    n = len(d["card"])
+def window(ep, rng, length=None):
+    length = length or WINDOW
+    obs, card, cell = obs_rows(ep["file"])
+    n = len(card)
     s = 0 if n <= length else int(rng.integers(0, n - length + 1))
     sl = slice(s, s + length)
-    return d["obs"][sl].astype(np.float32), d["card"][sl], d["cell"][sl]
+    return obs[sl].toarray(), card[sl], cell[sl]
 
 
 def batch_loss(net, eps, rng, device):
@@ -111,10 +129,10 @@ def evaluate(net, eps, device, max_eps=0):
     play_hit = play_n = cell_hit = cell_n = 0
     dist, p_wait, is_wait = [], [], []
     for ep in eps[: max_eps or None]:
-        d = np.load(ep["file"])
-        obs = torch.tensor(d["obs"].astype(np.float32), device=device).unsqueeze(1)
-        card = torch.tensor(d["card"], device=device).unsqueeze(1)
-        cell = torch.tensor(d["cell"], device=device).unsqueeze(1)
+        o, c, ce = obs_rows(ep["file"])
+        obs = torch.tensor(o.toarray(), device=device).unsqueeze(1)
+        card = torch.tensor(c, device=device).unsqueeze(1)
+        cell = torch.tensor(ce, device=device).unsqueeze(1)
         valid = torch.ones_like(card, dtype=torch.bool)
         w = torch.ones_like(card, dtype=torch.float32)
         _, _, (cl, pl, rows, prow) = sequence_loss(net, obs, card, cell, valid, w)
@@ -140,6 +158,7 @@ def evaluate(net, eps, device, max_eps=0):
 
 
 def main():
+    global SHARDS, WINDOW, BURN_IN, PLAY_WEIGHT
     ap = argparse.ArgumentParser()
     ap.add_argument("--epochs", type=int, default=6)
     ap.add_argument("--steps-per-epoch", type=int, default=0, help="0 = one window per training episode")
@@ -147,7 +166,12 @@ def main():
     ap.add_argument("--out", default="data/models/bc_v1")
     ap.add_argument("--eval-eps", type=int, default=0)
     ap.add_argument("--init", default=None, help="continue from this checkpoint (model_weights.pth)")
+    ap.add_argument("--shards", default=str(SHARDS))
+    ap.add_argument("--window", type=int, default=WINDOW)
+    ap.add_argument("--burn-in", type=int, default=BURN_IN)
+    ap.add_argument("--play-weight", type=float, default=PLAY_WEIGHT)
     a = ap.parse_args()
+    SHARDS, WINDOW, BURN_IN, PLAY_WEIGHT = Path(a.shards), a.window, a.burn_in, a.play_weight
     torch.manual_seed(77)
     rng = np.random.default_rng(77)
     device = torch.device("cpu")

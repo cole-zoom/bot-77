@@ -197,7 +197,7 @@ def deal_hand(rng, deck: list[int], spec: dict) -> list[int]:
 class Situation:
     """One running situation: set up on a game at reset, then stepped until it scores."""
 
-    def __init__(self, game, spec: dict, deck: list[int], rng):
+    def __init__(self, game, spec: dict, deck: list[int], rng, dt: float = 1.0):
         self.game, self.spec = game, spec
         game.set_elixir_for_team(0, float(spec["own_elixir"]))
         game.set_elixir_for_team(1, float(spec["opp_elixir"]))
@@ -210,8 +210,9 @@ class Situation:
         self.tower0 = [max(0, game.get_tower_hp(0, s)) for s in range(3)]
         self.princess_max = float(game.get_tower_max_hp(0, 1))
         self.spent0 = float(game.get_elixir_spent(0))
-        self.steps = 0
-        self.neutral_streak = 0
+        self.dt = dt  # seconds per env step (1.0, or 0.1 at a decision a tick)
+        self.seconds = 0.0
+        self.neutral_since: float | None = None
 
     def _inject(self, deploy_ticks: int) -> None:
         before = {u.id for u in self.game.get_units()}
@@ -232,18 +233,24 @@ class Situation:
     def step(self, game_over: bool) -> tuple[bool, float, dict]:
         """After each env step: (finished, score, details). Finishes when the board is neutral (after MIN_SECONDS), at
         the timeout, or when the game ends."""
-        self.steps += 1
+        self.seconds += self.dt
         self.just_dropped = False
-        if self.spec.get("drop") and self.steps == 1 and not game_over:
+        if self.spec.get("drop") and not self.threat and self.seconds >= 1.0 - 1e-6 and not game_over:
             # the board starts empty; the opponent drops the card now, with the normal 1 s deploy, as in a real game
             self._inject(deploy_ticks=-1)
             self.just_dropped = True
             return False, 0.0, {}
+        if self.spec.get("drop") and not self.threat:
+            return (True, 0.0, {}) if game_over else (False, 0.0, {})  # before the drop (the first second)
         neutral = self.resolved()
-        self.neutral_streak = self.neutral_streak + 1 if neutral else 0
+        if not neutral:
+            self.neutral_since = None
+        elif self.neutral_since is None:
+            self.neutral_since = self.seconds
         # neutral for 2 s in a row: a Battle Ram's Barbarians appear ~1 s after it breaks, and the board looked empty
         # for that second (2026-10-28)
-        done = game_over or self.steps >= self.spec["timeout"] or (self.steps >= MIN_SECONDS and self.neutral_streak >= 2)
+        steady = self.neutral_since is not None and self.seconds - self.neutral_since >= 2.0 - self.dt - 1e-6
+        done = game_over or self.seconds >= self.spec["timeout"] - 1e-6 or (self.seconds >= MIN_SECONDS - 1e-6 and steady)
         if not done:
             return False, 0.0, {}
         lost = sum(max(0.0, a - max(0, self.game.get_tower_hp(0, s))) for s, a in enumerate(self.tower0))
@@ -253,4 +260,4 @@ class Situation:
         score = (-lost / self.princess_max - ELIXIR_COST * spent + SURVIVOR_BONUS * min(survivors, 10)
                  - (TIMEOUT_PENALTY if unresolved else 0.0))
         return True, float(score), {"tower_hp_lost": lost, "elixir_spent": spent, "unresolved": unresolved,
-                                    "seconds": self.steps}
+                                    "seconds": round(self.seconds, 1)}
