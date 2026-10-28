@@ -12,7 +12,10 @@ rarity its own section names (most say Common, whatever the card's rarity): leve
 (rarities.csv) for the upgrades from that first level (Common 1, Rare 3, Epic 6, Legendary 9, Champion 11), as the
 engine's cards are at level 11.
 
-Compared: hitpoints, damage (the unit's or its projectile's), hit speed, range, sight, speed, deploy time, load time,
+Spells (SPELLS below): damage and Crown Tower damage per hit, radius, hit count, cost, from the spell's projectile,
+area object (AEO) or damage-over-time buff.
+
+Compared for units: hitpoints, damage (the unit's or its projectile's), hit speed, range, sight, speed, deploy time, load time,
 splash radius (AreaDamageRadius or the projectile's Radius), cost. Engine values via clash_royale_env.get_card_stats.
 """
 import argparse
@@ -59,6 +62,85 @@ def multipliers() -> dict[str, list[int]]:
 def level11(rarity: str, tab) -> float:
     ups = 11 - FIRST_LEVEL.get(rarity, 1)
     return 1.0 if ups <= 0 else tab[rarity][ups - 1] / 100.0
+
+
+def sections() -> dict[str, dict]:
+    """{kind: {name: body}} for every section of every logic TOML (AEO, BUFF, PROJECTILE, DAMAGE_TYPE, ...)."""
+    out: dict[str, dict] = {}
+    for f in list((LOGIC / "characters").glob("*.toml")) + [LOGIC / "projectiles.toml"]:
+        try:
+            d = tomllib.loads(f.read_text(errors="replace"))
+        except Exception:  # noqa: BLE001 -- the same unparseable few units() reports
+            continue
+        for kind, sec in d.items():
+            if isinstance(sec, dict):
+                for name, body in sec.items():
+                    if isinstance(body, dict):
+                        out.setdefault(kind, {})[name] = body
+    return out
+
+
+# engine spell -> where the client keeps it: a projectile (Damage, Radius, CrownTowerDamagePercent), an area
+# object with its own Damage {BaseDamage, TowerDamage}, or an area object applying a damage-over-time buff
+# (DamagePerSecond every HitFrequency for the area's LifeDuration). `card` is the spells_other.csv row (cast
+# radius, waves). Rollers: the engine's spell_radius is not their corridor, so radius isn't compared.
+SPELLS = {
+    "Arrows": {"card": "Arrows", "proj": "ArrowsSpell"},
+    "Fireball": {"card": "Fireball", "proj": "FireballSpell"},
+    "Rocket": {"card": "Rocket", "proj": "RocketSpell"},
+    "Giant Snowball": {"card": "Snowball", "proj": "SnowballSpell"},
+    "The Log": {"card": "Log", "proj": "LogProjectileRolling", "roller": True},
+    "Barbarian Barrel": {"card": "BarbLog", "proj": "BarbLogProjectileRolling", "roller": True},
+    "Lightning": {"card": "Lightning", "proj": "LighningSpell", "aeo": "Lightning"},
+    "Zap": {"card": "Zap", "aeo": "Zap"},
+    "Freeze": {"card": "Freeze", "aeo": "Freeze"},
+    "Rage": {"card": "Rage", "aeo": "RageDamage"},
+    "Poison": {"card": "Poison", "aeo": "Poison", "buff": "Poison"},
+    "Tornado": {"card": "Tornado", "aeo": "Tornado", "buff": "Tornado"},
+    "Earthquake": {"card": "Earthquake", "aeo": "Earthquake", "buff": "Earthquake"},
+    "Goblin Curse": {"card": "GoblinCurse", "aeo": "GoblinCurseBase", "buff": "GoblinCurseDamage"},
+    "Royal Delivery": {"card": "RoyalDelivery", "proj": "RoyalDeliveryProjectile"},
+}
+
+
+def spell_game(spec, secs, tab, card) -> dict:
+    """The client's level-11 figures for one spell: damage and Crown Tower damage per hit, radius, hits, cost."""
+    def mult(sec):
+        return level11(sec.get("Rarity", "Common"), tab)
+
+    def tower(dmg, sec, m):
+        if "CrownTowerDamagePerHit" in sec:
+            return round(sec["CrownTowerDamagePerHit"] * m)
+        return round(dmg * (1 + sec.get("CrownTowerDamagePercent", 0) / 100))
+
+    proj = secs.get("PROJECTILE", {}).get(spec.get("proj", ""), {})
+    aeo = secs.get("AEO", {}).get(spec.get("aeo", ""), {})
+    buff = secs.get("BUFF", {}).get(spec.get("buff", ""), {})
+    radius = int(card.get("Radius") or 0) / 1000
+    if buff:
+        m = mult(buff)
+        freq = buff.get("HitFrequency", 1000)
+        dmg = round(buff.get("DamagePerSecond", 0) * freq / 1000 * m)
+        hits = max(1, round(aeo.get("LifeDuration", freq) / freq))
+        ct = tower(dmg, buff, m)
+        radius = radius or aeo.get("Radius", 0) / 1000
+    elif proj:
+        m = mult(proj)
+        dmg = round(proj.get("Damage", 0) * m)
+        ct = tower(dmg, proj, m)
+        hits = int(card.get("ProjectileWaves") or 1)
+        radius = radius or proj.get("Radius", 0) / 1000
+    else:
+        d = aeo.get("Damage")
+        if isinstance(d, str):  # a named DAMAGE_TYPE (Rage)
+            d = secs.get("DAMAGE_TYPE", {}).get(d, {})
+        d = d or {}
+        m = mult(aeo)
+        dmg = round(d.get("BaseDamage", 0) * m)
+        ct = round(d.get("TowerDamage", d.get("BaseDamage", 0)) * m)
+        hits = 1
+        radius = radius or aeo.get("Radius", 0) / 1000
+    return {"damage": dmg, "tower": ct, "hits": hits, "radius": radius, "cost": int(card.get("ManaCost") or 0)}
 
 
 def units() -> tuple[dict, dict]:
@@ -159,8 +241,29 @@ def main():
         if game["kamikaze"] != bool(e.get("die_after_first_hit")):
             diffs.append(f"kamikaze game {game['kamikaze']} engine {bool(e.get('die_after_first_hit'))}")
         report.append((name, card["Rarity"], m, diffs))
+    if not a.card or any(norm(a.card) == norm(k) for k in SPELLS):
+        secs = sections()
+        spell_rows = {r["Name"]: r for r in csv.DictReader(open(LOGIC / "spells_other.csv")) if r["Name"]}
+        by_name = {info["name"]: eid for eid, info in sc.engine_cards().items()
+                   if info["is_spell"] and not info["evolution"]}
+        for name, spec in SPELLS.items():
+            if (a.card and norm(a.card) != norm(name)) or name not in by_name:
+                continue
+            game = spell_game(spec, secs, tab, spell_rows[spec["card"]])
+            e = dict(cre.get_card_stats(by_name[name]))
+            ct = e.get("spell_crown_tower_damage", -1)
+            eng = {"damage": e.get("damage"), "tower": e.get("damage") if ct < 0 else ct, "hits": e.get("spell_hits"),
+                   "radius": round(e.get("spell_radius", 0), 2), "cost": int(e.get("cost", 0))}
+            diffs = []
+            for k in ("damage", "tower", "hits", "radius", "cost"):
+                if k == "radius" and spec.get("roller"):
+                    continue
+                g, v = game[k], eng[k]
+                if abs(g - v) > max(a.tol * max(abs(g), abs(v)), 0.05 if k == "radius" else 0):
+                    diffs.append(f"{k} game {g} engine {v}")
+            report.append((name, "spell", 1.0, diffs))
     bad = [r for r in report if r[3]]
-    print(f"{len(report)} engine cards matched to the game files; {len(bad)} with differences "
+    print(f"{len(report)} engine cards (troops, buildings, spells) matched to the game files; {len(bad)} with differences "
           f"(> {a.tol:.0%} or noted); not matched: {missing}")
     for name, rar, m, diffs in bad:
         print(f"- {name} ({rar}, x{m:.2f}): " + "; ".join(diffs))

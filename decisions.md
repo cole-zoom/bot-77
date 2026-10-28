@@ -3011,3 +3011,23 @@ Full write-up: docs/simulator-validation.md. Held-back only (48 games, 346 windo
   higher (+0.13/+0.23 vs −0.23/+0.07): it meets the Hog on the way. Replays: artifact 2HuRcLZH9g7zxvp3zjJDQ8.
 - **Card-entropy target for the 0.1 s round**: the calibrated imitation agent sits at 0.02–0.06 of the card head's
   maximum entropy at 0.1 s (97%+ of steps are waits). Target 0.04, not the fork's 0.35 (set for 1 s decisions).
+- **Client audit, step 3: spells** (fork 60fa252). The audit now reads 15 spells from their projectile, area object
+  or damage buff (scripts/audit_client_stats.py SPELLS). Method check: it reproduces every known level-11 spell figure
+  (Arrows 123, Zap 192, Fireball 689, Rocket 1485, Log 269, Lightning 1057, Snowball 179, Poison 92). Fixed: Crown
+  Tower fractions from the client, not cr-api-data 2023 (Fireball 30 -> 23%, Log 20 -> 13%, Arrows 30 -> 20%, Rocket
+  25 -> 23%, Lightning 30 -> 25%, Miner 25 -> 20%, ...; scripts/sim_spell_tower.py, which wrote the old table, now
+  refuses without --force). **Lightning** hit everything in its radius; the client's hits the 3 biggest once each with
+  a 0.5 s stun (checked: Giant, Knight, Musketeer hit; two Archers untouched). Freeze 0 -> 148 damage, 4 -> 3.5 s.
+  Rage 0 -> 179 on landing. Royal Delivery 438 / 2.0 -> 384 / 3.0. Barbarian Barrel 232 -> 215. Goblin Curse 43 -> 36
+  a second plus its -15% slow. Tornado 154 -> 168. Knockback Rocket / Snowball 1.0 -> 1.8, Log 0.8 -> 0.7. Ice Wizard
+  slow 3.0 s at -35% -> 2.5 s at -30%, Snowball 1.5 s at -50% -> 3.0 s at -30%. Seven C++ pins re-pinned with the
+  source; suite 742 + the 1 expected. Audit: 116 cards (101 units + 15 spells), 22 rows left: Tornado's one-hit
+  packing (on purpose), Earthquake (below), and the step-4 mechanics.
+- **The client vs newer official notes, twice:** Giant Skeleton hp (client 3361; the May 2026 post says -7% = 3126) and
+  Barbarian Barrel (client 215; DeckShop 232). The client does carry the 16 Sep 2026 Fire Spirit change (215), so it
+  isn't simply old; but Supercell can push balance as downloaded content that lives in the app's private data, which
+  adb can't read without root here. Applied the client; Cole to confirm both in game.
+- Not changed, for Cole: **Earthquake** has three client parts (82 a second to troops; -40% to Crown Towers; a hidden
+  112 -> 287 a second to buildings, "BuildingDamagePercent 350"); whether a Crown Tower takes the building part isn't
+  clear from the files, so the engine keeps 82 a second to everything. Vines, Void, Graveyard, Goblin Barrel, Clone,
+  Mirror: built from actions the audit doesn't read; not compared.

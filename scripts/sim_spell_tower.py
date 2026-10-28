@@ -1,4 +1,7 @@
-"""Spells' (and the Miner's) crown-tower damage for the simulator engine -> the fork's include/core/SpellTowerDamage.h
+"""SUPERSEDED 2026-10-28: SpellTowerDamage.h now holds the installed client's values (scripts/audit_client_stats.py
+checks them). Running this writes the stale 2023 extract back, so it refuses unless given --force.
+
+Spells' (and the Miner's) crown-tower damage for the simulator engine -> the fork's include/core/SpellTowerDamage.h
 (docs/simulator-card-audit.md, 2026-10-24).
 
   uv run python scripts/sim_spell_tower.py
@@ -10,9 +13,13 @@ Spells without a published reduction (none, or 0 in this 2023 extract) are left 
 """
 import json
 import re
+import sys
 from pathlib import Path
 
 from bot77.sim import cards as sc
+
+if __name__ == "__main__" and "--force" not in sys.argv:
+    sys.exit("superseded by the client audit (see the docstring); pass --force to overwrite SpellTowerDamage.h anyway")
 
 D = Path("data/external/cr-api-data")
 OUT = Path("third_party/clash-royale-env/include/core/SpellTowerDamage.h")
