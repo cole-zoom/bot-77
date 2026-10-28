@@ -3056,3 +3056,12 @@ Full write-up: docs/simulator-validation.md. Held-back only (48 games, 346 windo
   - **Earthquake**'s building / Crown Tower damage (step 3), **hit splash centre-to-centre** and **on-hit effects not
     carried by splash** (step 2), **Battle Healer**'s deploy heal (202 in 3.0) and idle self-heal, **Elixir
     Collector** faster in double elixir (unverified), **Giant Skeleton / Barbarian Barrel** vs newer notes (step 3).
+- **Exam on the audited engine** (situation_exam.py, rl_clones_v2/final.pth, 20 seeds a template; score, higher is
+  better; nothing / rush / scripted defence / model): hog -1.20 / -1.42 / -0.16 / -0.72; battle ram -1.27 / -1.42 /
+  -0.39 / -0.69; melee -1.30 / -1.45 / -0.54 / -0.76; supported push -2.80 / -3.22 / -1.37 / -1.84; arrows value
+  -1.48 / -2.19 / +0.20 / -0.77; fireball value -0.89 / -1.56 / +0.10 / -0.90; emergency -2.97 / -3.29 / -3.00 /
+  -3.22. The scripted defence still beats doing nothing and rushing everywhere but the emergency; the model (trained
+  on the pre-audit engine) sits between them on all seven, spending 2-3x the scripted elixir. No pre-audit run of these
+  seven exists; the last four-template run (above) had the model at -0.86 / -1.40 / -0.79 / -1.94 and the scripted
+  defence at -0.61 / -0.93 / -0.70 / -1.89, but the pull, sight and splash fixes landed in between, so the change isn't
+  the audit's alone. Play page restarted on the new engine (http://localhost:8777).
