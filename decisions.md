@@ -3085,7 +3085,7 @@ Full write-up: docs/simulator-validation.md. Held-back only (48 games, 346 windo
   | 5-5.5k | 0.59 | 0.22 | 6.04 | 3.38 |
 
   Full games improved; situations barely moved after 2k, and the deck narrowed (7.3 to 6.0 cards a game, card-head
-  entropy at its 0.01 floor most of the night).
+  entropy coefficient at its 0.01 floor by episode 1,000).
 - **Exam** (situation_exam.py, 20 held-out seeds a template; nothing / rush / scripted / v2 / v3; higher is better):
   hog -1.28 / -1.34 / -0.12 / -0.74 / -0.87; battle ram -1.29 / -1.49 / -0.43 / -0.82 / -0.96; melee -1.27 / -1.59 /
   -0.67 / -0.79 / -0.89; supported push -2.92 / -3.07 / -1.30 / -1.67 / -2.02; arrows value -1.47 / -2.24 / +0.20 /
