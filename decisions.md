@@ -2770,3 +2770,8 @@ Full write-up: docs/simulator-validation.md. Held-back only (48 games, 346 windo
   per scenario the setup (units, positions, elixir, hand), what good play looks like (Cole), and scoring on tower HP
   lost / elixir trade / damage after the defence (not the fork's reward > -0.5). Built in bot77.rl.clone_env, the
   fork untouched.
+- **Real test, round 2 final (Bomber deck): 9 W / 9 L (50%) in 18 games**, stopped early by Cole ("we've seen
+  enough"); every result confirmed by the crowns; the reader read Bomber from the first game; 1.3 s decisions. Against
+  the 8k snapshot's 13-5 (Archers) it looks worse, but the deck changed and the 13-5 run raised the trophy count (so
+  stronger opponents); both samples are small. Simulator win rates against the clone (74% vs ~75%) didn't predict the
+  difference. Next: the defence / counter-attack scenarios with Cole.
