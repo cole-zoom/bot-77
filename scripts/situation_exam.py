@@ -9,7 +9,8 @@ like training). A template is fit to train on only if
 a sensible defence beats both references (Cole's check); the trend of a checkpoint's scores across rounds is the exam.
 Seeds 10_000+ (training draws from the run's own seeds, so these states are held out by construction). Torch is seeded
 with the same seed before each start (2026-10-28): the networks sample (ours and the clone opponent), and unseeded the
-same checkpoint's template means moved by up to 0.36 between runs at 20 seeds.
+same checkpoint's template means moved by up to 0.36 between runs at 20 seeds. --ticks (2026-10-28): before it the
+exam ran every player once a second (CloneEnv's default), so v3 / v4, trained at 0.1 s, were examined off their pace.
 """
 import argparse
 import json
@@ -29,6 +30,8 @@ def main():
     ap.add_argument("--ckpt", nargs="*", default=[])
     ap.add_argument("--n", type=int, default=30)
     ap.add_argument("--only", nargs="*", default=None, help="template names (default: all)")
+    ap.add_argument("--ticks", type=int, default=1,
+                    help="engine ticks between our decisions (1 = every 0.1 s, as v3 / v4 train; 10 = once a second)")
     ap.add_argument("--reference", action="store_true",
                     help="also score every player on Cole's reference starts (data/live/cole_reference.jsonl)")
     a = ap.parse_args()
@@ -92,7 +95,7 @@ def main():
     for tpl in tpls:
         row = {}
         for pname, act in players:
-            env = CloneEnv({"scenario_seed": 0})
+            env = CloneEnv({"scenario_seed": 0, "decision_ticks": a.ticks})
             env.forced_template = tpl
             res = []
             for i in range(a.n):
@@ -121,7 +124,7 @@ def main():
         tot = {p: [] for p, _ in players}
         for r in refs:
             for pname, act in players:
-                env = CloneEnv({"scenario_seed": 0})
+                env = CloneEnv({"scenario_seed": 0, "decision_ticks": a.ticks})
                 env.forced_seed = (sit.BY_NAME[r["situation"]], int(r["seed"]))
                 torch.manual_seed(int(r["seed"]))
                 obs, _ = env.reset()
