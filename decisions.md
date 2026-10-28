@@ -2792,3 +2792,8 @@ Full write-up: docs/simulator-validation.md. Held-back only (48 games, 346 windo
   doing nothing on all four); the model often saves more tower HP but spends 2-4x the elixir.
 - Smoke (situations only, 4 workers, ~340 episodes): runs; critic loss 0.68 -> 0.10 as the value head learns the
   new scores. Waiting on Cole's review of the scripted behaviour before the round.
+- Situation replays (scripts/situation_replays.py) published for Cole as a private page (top-down, scripted defence vs
+  the round-2 model from identical starts). Seen in them: the model answers a Battle Ram with 9-13 elixir (once with its
+  own Ram plus three cards) and still loses most of a tower; the scripted defence is too simple for the supported push
+  (one tank answer + one support answer, then nothing: 4,800-5,800 tower HP lost) — that template needs Cole's
+  reference defence; a Hog that did 243 damage but outlived the timeout was marked unresolved (the rule may be harsh).
