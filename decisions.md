@@ -3109,6 +3109,7 @@ Full write-up: docs/simulator-validation.md. Held-back only (48 games, 346 windo
   improvement). Training win rate (0.59 vs the clone league) didn't carry over. Next candidates, not started: a larger
   situation weight or an elixir-waste term in the full game, and adding Cole's reviewed scripted opponents (1 / 8 / 9)
   once he's checked them.
+
 ## 2026-10-28 (day): Cole's review and second sim session, score v2, a seeded engine, engine batch 5, RL round v4
 
 - **Cole's review of 1 / 8 / 9, first note (1-2, the Hog bridge rush):** "the mini pekka should be played earlier and
