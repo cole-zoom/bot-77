@@ -2844,3 +2844,16 @@ Full write-up: docs/simulator-validation.md. Held-back only (48 games, 346 windo
 - To scale with the 10x shorter step: discount 0.999 -> 0.9999, GAE lambda 0.9 -> 0.99, a longer BPTT window, the
   per-step elixir-overflow penalty divided by 10 (everything else in the shaping is a delta or a potential), and a
   much lower card-entropy target (~97% of 0.1 s decisions are waits; the 0.35 target would force random plays).
+- **The Hut doesn't pull the Giant (Cole, with a screenshot): an engine targeting rule.** Targets rank by distance
+  to the footprint edge, and a princess tower's targeting radius is 3.3 tiles (King 4.4) against a 1.5 body
+  (Tower::getTargetingRadius), fitted to one real example (a Hog passing a Cannon 7-8 tiles off-lane, diverting at
+  6). So the tower looks ~2 tiles closer than it is: with the Giant at (2.6, 12.8) a Goblin Hut pulls only within ~4.5
+  tiles centre-to-centre (mapped on a grid), though the Giant's sight is 7.5 and the Hut is targetable throughout. The
+  same ranking covers troops, so it likely also feeds the failed Prince kite (with the Prince's 5.5 sight). Next: fit
+  the radius (and check sights) on pull events measured in the pro replays, then show Cole the exact engine change
+  before applying it (the fork's rule; it changes every defence in the sim).
+- Play page fixed and tested in Chrome (Cole: "ur page is just broken"): the countdown layer's CSS overrode `hidden`,
+  the hand's buttons were rebuilt 10x a second (clicks lost), speed was read only at New, and a late response from a
+  restarted game could overwrite the new one. Now: a real 3-2-1 that holds the game, buttons built once and picked on
+  press (20/20 picks in a stress test), speed live (1.00 / 0.50 / 0.25 game-seconds per second), clean restarts.
+  Cole's 38 Hog / Battle Ram games kept; the 2 others set aside to redo.
