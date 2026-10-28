@@ -20,7 +20,8 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 FORK = ROOT / "third_party" / "clash-royale-env"
-DECK = "2,81,5,43,1,95,7,3"  # Giant, Battle Ram, Mini P.E.K.K.A, Mega Minion, Archers, Goblin Hut, Fireball, Arrows
+DECK = "2,81,5,43,9,95,7,3"  # Giant, Battle Ram, Mini P.E.K.K.A, Mega Minion, Bomber, Goblin Hut, Fireball, Arrows (2026-10-27:
+# Bomber for Archers, Cole: "we were facing a lot of splash"; rl_clones_v1 trained with Archers)
 
 
 def main():
