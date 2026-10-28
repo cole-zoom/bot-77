@@ -3139,3 +3139,16 @@ Full write-up: docs/simulator-validation.md. Held-back only (48 games, 346 windo
   on six starts: match 1.0 on five (+0.30), 0.75 on one (a card the cycle didn't bring).
 - **1 / 8 / 9 in training** (TEMPLATES, ten now); the situation is drawn before the engine is built so the scripted
   opponent gets its deck. Exam handles the empty-board starts.
+- **Engine batch 5** (fork 5e7711b, Cole's go-ahead on all six): Hunter 10 pellets x 84, each stopping on its first
+  hit (point-blank on a Golem 67 -> 840); Firecracker 5 piercing sparks x 64 flying 5 tiles on (unit 2 behind the
+  target 0 -> 320); Monk 140 / 140 / 422 combo with 1.8 knockback, counter never reset; Earthquake 81 troops / 49
+  Crown Towers / 286 buildings (tower 246 -> 147); Three Musketeers as the client's rework (906 hp, 204 shot or 314
+  bayonet in 1.6 vs ground, 1.3 s); Battle Healer 102 a hit / 202 on deploy (the client's 40/s and 79/s for 1 s, not
+  100 / 200), not healing other Healers or buildings (there was no idle self-heal to remove). Load times to the client
+  (3M 0.7 s, Hunter 1.5, Healer 1.6). Fans evenly spaced (Hunter 20 deg, Firecracker 30); heals instant (the client
+  spreads them over 1 s). Suite 754 + the 1 expected (12 new cases). Gameplay-affecting: win rates before it aren't
+  comparable. Open: the Hunter Evolution got the same pellets.
+- **RL round v4 launched** (data/models/rl_clones_v4): from v3's weights (trainer state dropped, so the 500-episode
+  critic warm-up runs: the situation scores changed), situation share 0.5 over all ten, Cole's 142 starts as 0.3 of
+  those with the answer-key bonus, score v2, league 0.5 (its own and v3's snapshots), card-entropy 0.04, 8,000
+  episodes, 7 envs. First 60 episodes: win 0.6-0.7, ScenDef 0.17-0.25.
