@@ -2737,3 +2737,8 @@ Full write-up: docs/simulator-validation.md. Held-back only (48 games, 346 windo
 - Card use at ~13k (20 sim games vs the clone, 17 wins): Giant 0.3, Fireball 0.5, Goblin Hut 0.8 plays per game;
   Arrows 3.5, Battle Ram 3.9, Mini P.E.K.K.A 4.2, Mega Minion 4.2, Bomber 4.5. A five-card cycle; the three
   4-5 elixir cards are mostly cycled out.
+- **Hand clog (Cole: "does it just not use Giant?").** Share of decisions with the card in hand (10 sim games vs the
+  clone, 9 wins, ~14k): Fireball 93%, Giant 91%, Goblin Hut 80%; Arrows 41%, Battle Ram 34%, Mini P.E.K.K.A 26%,
+  Mega Minion 20%, Bomber 15%. The three rarely-played cards hold three of the four slots, so the agent mostly plays
+  whatever reaches the one free slot: a one-slot cycle that wins in the simulator. Options put to Cole: test it for
+  real first (recommended), shape training against holding cards, or change the deck.
