@@ -2960,3 +2960,24 @@ Full write-up: docs/simulator-validation.md. Held-back only (48 games, 346 windo
   Five C++ pins re-pinned to the client value with the source; suite 743 cases, 742 pass + the 1 expected. Audit:
   46 -> 19 cards with a difference; the 19 left are steps 2-4 (spawner buildings' "sight 0", kamikaze units, Inferno
   ramp, Princess / Firecracker / Hunter projectiles, Goblin Drill, X-Bow / Mortar deploy read only as deploy_ticks).
+- **Client audit, step 2** (fork eb840a8): the 26 unmatched cards are linked by the client's internal names
+  (Executioner = AxeMan, Night Witch = DarkWitch, Sparky = ZapMachine, Bandit = Assassin, Rune Giant = GiantBuffer,
+  ...; Ice / Electro Wizard and Three Musketeers through their unit sections, Heal Spirit through spells_hero_form):
+  **101 of 101 matched**. Fixed: range Bandit 0.75, Night Witch 1.6, Guards 1.6; sight Elite Barbarians 6.0, Dart
+  Goblin 7.0, Furnace 6.0, Firecracker 8.0, Rune Giant 7.5; splash Ice Wizard 1.5, Executioner 1.0, Royal Ghost 1.0,
+  Ice Spirit 1.5, Heal Spirit 1.5, Sparky 1.8 (all were single-target but Sparky); hp / damage gaps under the 6%
+  tolerance, found at 2%: Goblins 120 -> 125, Dart Goblin 151 -> 143, Ice Golem 1315 -> 1229, Royal Ghost 1210 ->
+  1152, Magic Archer 143 -> 136, Flying Machine 171 -> 179, Cannon Cart 212 -> 202, Rune Giant 2662 -> 2816, Golden
+  Knight 161 -> 169, Archer Queen 225 -> 233, Spirit Empress 926 / 249 -> 1121 / 320 (was level 9); speed Heal Spirit
+  Very Fast, Rune Giant Medium, Spirit Empress Fast / Medium (were unsourced off-tier); Zappies 2.1 -> 2.3 s, Mortar
+  5.0 -> 4.7 s. **Skeleton Barrel** was wrong in kind: it hit the building for 81 a second and dropped 2 Skeletons;
+  the client's barrel is Kamikaze, pops on arrival, explodes for 164 in 2.0 and drops 7. Its blast missed the tower
+  until AreaDamageOnDeath took the spells' rule (hits what it overlaps); now 164 to the tower, then the Skeletons.
+  Checked on clumped Skeletons: Executioner's first axe kills 7 of 9, Ice Wizard 9 of 9, Ice Spirit 6 of 9. The
+  audit now reads deploy delay (X-Bow / Mortar clear) and Kamikaze (all 7 Kamikaze cards modelled). Suite 742 + the
+  1 expected. Audit 19 -> 20 rows, all mechanics or modelling (step 4); at 2% tolerance the same 20.
+- Left for Cole: **Three Musketeers** in the installed client is a rework (one unit "ThreeMusketeer_Rework", 906 hp,
+  1.3 s, a melee-range variable): not applied, it's a different card, not a stat drift. **Hit splash is
+  centre-to-centre** in the engine while spells / death blasts now use overlap: a Bomber's bomb at a tower's edge
+  splashes less than in the game. On-hit effects don't travel with splash (Ice Wizard's slow, Ice Spirit's freeze
+  land on the primary target only).

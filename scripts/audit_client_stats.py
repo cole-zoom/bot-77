@@ -25,6 +25,18 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 LOGIC = ROOT / "data/external/cr_client/logic"
 FIRST_LEVEL = {"Common": 1, "Rare": 3, "Epic": 6, "Legendary": 9, "Champion": 11}
+# engine card name -> the client's internal card name (spells_*.csv Name), where they differ
+CLIENT_NAME = {
+    "Archers": "Archer", "Elite Barbarians": "AngryBarbarians", "Dart Goblin": "BlowdartGoblin",
+    "Lumberjack": "RageBarbarian", "Executioner": "AxeMan", "Ice Golem": "IceGolemite", "Royal Ghost": "Ghost",
+    "Bandit": "Assassin", "Night Witch": "DarkWitch", "Sparky": "ZapMachine", "Magic Archer": "EliteArcher",
+    "Flying Machine": "DartBarrell", "Mother Witch": "WitchMother", "Cannon Cart": "MovingCannon",
+    "Furnace": "FirespiritHut", "Ice Spirit": "IceSpirits", "Fire Spirit": "FireSpirits", "Heal Spirit": "Heal_hero",
+    "Guards": "SkeletonWarriors", "Zappies": "MiniSparkys", "Rune Giant": "GiantBuffer",
+    "Skeleton Barrel": "SkeletonBalloon", "Spirit Empress": "MergeMaiden_Normal",
+}
+# client cards with an empty SummonCharacter -> the CHARACTER section that is the card's unit
+UNIT_OF = {"IceWizard": "IceWizard", "ElectroWizard": "ElectroWizard", "ThreeMusketeers": "ThreeMusketeer_Rework"}
 
 
 def norm(s: str) -> str:
@@ -88,11 +100,14 @@ def main():
     for r in csv.DictReader(open(LOGIC / "spells_characters.csv")):
         if r["Name"] and r["SummonCharacter"] and r["Rarity"] in FIRST_LEVEL:
             cards[norm(r["Name"])] = r
-    for f in ("spells_buildings.csv",):
+    for f in ("spells_buildings.csv", "spells_hero_form.csv"):
         for r in csv.DictReader(open(LOGIC / f)):
             if r.get("Name") and r.get("SummonCharacter") and r.get("Rarity") in FIRST_LEVEL:
-                cards[norm(r["Name"])] = r
-    aliases = {"minipekka": "minipekka", "pekka": "pekka", "theLog": "log"}
+                cards.setdefault(norm(r["Name"]), r)  # hero rows only fill cards missing above (Heal Spirit)
+    # cards whose client row has no SummonCharacter: the unit section named after the card
+    for r in csv.DictReader(open(LOGIC / "spells_characters.csv")):
+        if r["Name"] and not r["SummonCharacter"] and r["Rarity"] in FIRST_LEVEL and r["Name"] in UNIT_OF:
+            cards[norm(r["Name"])] = {**r, "SummonCharacter": UNIT_OF[r["Name"]]}
     report, missing = [], []
     for eid, info in sorted(sc.engine_cards().items()):
         if info["evolution"] or info["is_hero"] or info["is_spell"]:
@@ -100,7 +115,7 @@ def main():
         name = info["name"]
         if a.card and norm(a.card) != norm(name):
             continue
-        card = cards.get(norm(name)) or cards.get(aliases.get(norm(name), ""))
+        card = cards.get(norm(name)) or cards.get(norm(CLIENT_NAME.get(name, "")))
         if card is None:
             missing.append(name)
             continue
@@ -130,7 +145,8 @@ def main():
             "range": round(e.get("attack_range", 0), 2), "sight": round(e.get("sight_range", 0), 2),
             # engine tiles a tick -> the game's speed units (60 = Medium = 1.325 tiles a second, the engine's tier)
             "speed": round(e.get("speed", 0) * 10 / (1.325 / 60), 0),
-            "deploy_s": e.get("deploy_ticks", 10) / 10, "splash": round(e.get("splash_radius", 0), 2),
+            # a deploy delay (X-Bow, Mortar) runs alongside the deploy: the unit acts at the later of the two
+            "deploy_s": max(e.get("deploy_ticks", 10), e.get("deploy_delay_ticks", 0)) / 10, "splash": round(e.get("splash_radius", 0), 2),
             "cost": int(e.get("cost", 0)),
         }
         diffs = []
@@ -140,8 +156,8 @@ def main():
                 continue
             if abs(g - v) > max(a.tol * max(abs(g), abs(v)), 0.05 if k not in ("hp", "damage", "speed") else 0):
                 diffs.append(f"{k} game {g} engine {v}")
-        if game["kamikaze"]:
-            diffs.append("game: kamikaze (dies on reaching its target)")
+        if game["kamikaze"] != bool(e.get("die_after_first_hit")):
+            diffs.append(f"kamikaze game {game['kamikaze']} engine {bool(e.get('die_after_first_hit'))}")
         report.append((name, card["Rarity"], m, diffs))
     bad = [r for r in report if r[3]]
     print(f"{len(report)} engine cards matched to the game files; {len(bad)} with differences "
