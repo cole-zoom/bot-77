@@ -3065,3 +3065,35 @@ Full write-up: docs/simulator-validation.md. Held-back only (48 games, 346 windo
   seven exists; the last four-template run (above) had the model at -0.86 / -1.40 / -0.79 / -1.94 and the scripted
   defence at -0.61 / -0.93 / -0.70 / -1.89, but the pull, sight and splash fixes landed in between, so the change isn't
   the audit's alone. Play page restarted on the new engine (http://localhost:8777).
+
+## 2026-10-28 (morning): RL round v3 on the audited engine, its exam, and the 20-game test
+
+- **Run** (data/models/rl_clones_v3, local): from bc_t01/frozen_calibrated.pth, decisions every 0.1 s (decision_ticks
+  1), situation share 0.25 (of which 0.3 are Cole's 24 reference starts), league share 0.5 (its own snapshots only),
+  card-entropy target 0.04, 7 envs. Stopped by hand at 05:30 after 5,477 episodes (~5 h, ~1,000 an hour);
+  final.pth is the model from that stop (optimizer dropped).
+- **Training trend** (means over each 1,000 episodes; win rate vs the clone + league mix, ScenDef = share of
+  situations defended, cards = distinct cards a game, elixir at play):
+
+  | episodes | win | ScenDef | cards/8 | elixir@play |
+  |---|---|---|---|---|
+  | 0-1k | 0.31 | 0.15 | 7.29 | 4.92 |
+  | 1-2k | 0.35 | 0.18 | 6.57 | 3.39 |
+  | 2-3k | 0.51 | 0.21 | 6.38 | 3.33 |
+  | 3-4k | 0.58 | 0.21 | 6.15 | 3.34 |
+  | 4-5k | 0.53 | 0.20 | 5.97 | 3.34 |
+  | 5-5.5k | 0.59 | 0.22 | 6.04 | 3.38 |
+
+  Full games improved; situations barely moved after 2k, and the deck narrowed (7.3 to 6.0 cards a game, card-head
+  entropy at its 0.01 floor most of the night).
+- **Exam** (situation_exam.py, 20 held-out seeds a template; nothing / rush / scripted / v2 / v3; higher is better):
+  hog -1.28 / -1.34 / -0.12 / -0.74 / -0.87; battle ram -1.29 / -1.49 / -0.43 / -0.82 / -0.96; melee -1.27 / -1.59 /
+  -0.67 / -0.79 / -0.89; supported push -2.92 / -3.07 / -1.30 / -1.67 / -2.02; arrows value -1.47 / -2.24 / +0.20 /
+  -0.71 / -0.75; fireball value -0.85 / -1.64 / +0.14 / -0.69 / -0.89; emergency -2.92 / -3.30 / -2.93 / -3.12 /
+  -2.99. **v3 is worse than v2 on six of seven** (better only on the emergency), despite training on these
+  situations. Both spend 2-3x the scripted defence's elixir. Cole's 24 reference starts (his score -0.28): scripted
+  -0.48 (beats him on 4), v2 -1.00 (2), v3 -0.98 (3), nothing -1.39, rush -1.80.
+- Read: the full-game reward dominates the 0.25 situation share at 0.1 s (a situation is a few hundred decisions, a game
+  ~15,000), and the situation score's 0.04/elixir cost doesn't stop the spend. Not tuned further overnight.
+- Fix: live ui.clock() crashed on the fast reader's float clock ("Unknown format code 'd'"); it only broke the
+  terminal line after each play (the play and its row were already done), now cast to int.

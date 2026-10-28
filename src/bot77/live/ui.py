@@ -48,8 +48,8 @@ def elixir_bar(e: float | None) -> str:
     return c("▮" * n, "magenta") + c("▯" * (10 - n), "grey") + f" {e:4.1f}"
 
 
-def clock(time_left_s: int | None) -> str:
-    return "--:--" if time_left_s is None else f"{time_left_s // 60}:{time_left_s % 60:02d}"
+def clock(time_left_s: float | None) -> str:  # the fast reader gives a float
+    return "--:--" if time_left_s is None else f"{int(time_left_s) // 60}:{int(time_left_s) % 60:02d}"
 
 
 def play_line(st, act) -> str:
