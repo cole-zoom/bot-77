@@ -51,6 +51,12 @@ class CloneEnv(MicroRoyaleSelfPlayEnv):
         self.opp_calls = 0
         self.situation: sit.Situation | None = None
         self.forced_template = None  # the exam sets one
+        # Cole's reference starts (the play-page games where he beat the scripted defence): this share of situation
+        # episodes replays one of those exact starts (template + seed), so the bot trains on the boards he won
+        self.reference_share = float(os.environ.get("RL_REFERENCE_SHARE", "0"))
+        ref = os.environ.get("RL_REFERENCE_FILE", "")
+        self.references = [json.loads(l) for l in open(ref)] if ref and os.path.exists(ref) else []
+        self.forced_seed = None  # (template, seed) to reproduce exactly; the exam's second yardstick sets it
         self.max_ticks = env_config.get("max_ticks", 3600)
         self.clone = os.environ["RL_CLONE_CKPT"]
         decks = json.loads(open(os.environ["RL_PRO_DECKS"]).read())
@@ -94,14 +100,29 @@ class CloneEnv(MicroRoyaleSelfPlayEnv):
         return super()._opponent_action()
 
     def reset(self, seed=None, options=None):
+        fixed = self.forced_seed
+        if fixed is None and self.references and self.situation_share > 0 and self.rng.random() < self.situation_share \
+                and self.rng.random() < self.reference_share:
+            r = self.references[int(self.rng.integers(len(self.references)))]
+            fixed = (sit.BY_NAME[r["situation"]], int(r["seed"]))
+        main_rng = None
+        if fixed is not None:
+            # the play page's start: the generator seeded before reset (opponent deck, situation and hand all follow)
+            main_rng, main_srng = self.rng, getattr(self, "scenario_rng", None)
+            self.rng = np.random.default_rng(fixed[1])
+            self.scenario_rng = self.rng
         obs, info = super().reset(seed=seed, options=options)
         self.opp_calls = 0
         self.situation = None
-        if self.forced_template is not None or (self.situation_share > 0 and self.rng.random() < self.situation_share):
-            tpl = self.forced_template or sit.TEMPLATES[int(self.rng.integers(len(sit.TEMPLATES)))]
+        if fixed is not None or self.forced_template is not None or \
+                (self.situation_share > 0 and self.rng.random() < self.situation_share):
+            tpl = fixed[0] if fixed is not None else \
+                (self.forced_template or sit.TEMPLATES[int(self.rng.integers(len(sit.TEMPLATES)))])
             self.situation = sit.Situation(self.game, tpl(self.rng), list(self.deck), self.rng,
                                            dt=self.decision_ticks / 10.0)
             obs = np.array(self.game.get_observation_for_team(0), dtype=np.float32)
+        if main_rng is not None and self.forced_seed is None:
+            self.rng, self.scenario_rng = main_rng, main_srng  # back to the env's own stream
         return obs, info
 
     def step(self, action, skip_frames=None):

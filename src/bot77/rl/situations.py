@@ -26,9 +26,11 @@ import numpy as np
 HOG, BATTLE_RAM, MINI_PEKKA, KNIGHT, PRINCE, GIANT, GOLEM = 15, 81, 5, 0, 14, 2, 19
 MUSKETEER, WIZARD, EXECUTIONER, MINIONS = 6, 11, 36, 41
 MEGA_MINION, BOMBER, GOBLIN_HUT, FIREBALL, ARROWS = 43, 9, 95, 7, 3
+MINION_HORDE, SKELETON_ARMY, GOBLIN_GANG, BATS, ARCHERS, WITCH, FLYING_MACHINE = 42, 12, 112, 78, 1, 71, 67
 
 COST = {HOG: 4, BATTLE_RAM: 4, MINI_PEKKA: 4, KNIGHT: 3, PRINCE: 5, GIANT: 5, GOLEM: 8, MUSKETEER: 4, WIZARD: 5,
-        EXECUTIONER: 5, MINIONS: 3, MEGA_MINION: 3, BOMBER: 2, GOBLIN_HUT: 4, FIREBALL: 4, ARROWS: 3}
+        EXECUTIONER: 5, MINIONS: 3, MEGA_MINION: 3, BOMBER: 2, GOBLIN_HUT: 4, FIREBALL: 4, ARROWS: 3,
+        MINION_HORDE: 5, SKELETON_ARMY: 3, GOBLIN_GANG: 3, BATS: 2, ARCHERS: 3, WITCH: 5, FLYING_MACHINE: 4}
 
 LANE_X = (3.0, 14.0)  # the princess-tower lanes (engine x; bridges at 2.5 / 14.5)
 DROP_Y = 18.0  # their side of the bridge: where a player drops a Hog / Ram / melee card (Cole, 2026-10-28)
@@ -40,6 +42,8 @@ HUT_PULL = (8.5, 12.0)
 ELIXIR_COST = 0.04
 SURVIVOR_BONUS = 0.02
 TIMEOUT_PENALTY = 0.3
+TRADE_COEF = 0.1  # spell situations: 0.1 a net elixir of value
+ELIM_BONUS = 0.25  # of a body's value when it dies, so finishing beats spreading
 MIN_SECONDS = 3  # don't call the board neutral before the threat has had a chance to arrive
 
 
@@ -91,7 +95,60 @@ def supported_push(rng) -> dict:
             "answers": [GOBLIN_HUT, MINI_PEKKA], "answers2": sup_answers}
 
 
-TEMPLATES = [hog_rider, battle_ram, melee, supported_push]
+def _cluster(rng, card, cx, cy, spread):
+    return [(card, cx + rng.uniform(-spread, spread), cy + rng.uniform(-spread, spread))]
+
+
+def arrows_value(rng) -> dict:
+    """Cole's 5: swarms approaching or supporting a tank, Arrows in hand, 3-5 elixir; some spread so one cast can't
+    hit everything. Scored on the trade (enemy elixir value removed against what we spent), towers first."""
+    x = _lane(rng)
+    combo = int(rng.integers(5))
+    spread = 0.6 if rng.random() < 0.7 else 2.2  # a third spread out: one cast can't take everything
+    y = rng.uniform(14.5, 17.5)
+    units = {0: [(MINION_HORDE, x, y)],
+             1: [(SKELETON_ARMY, x, y), (GOBLIN_GANG, x + rng.uniform(-1.5, 1.5), y + 1.0)],
+             2: [(MINIONS, x, y), (BATS, x + rng.uniform(-1.5, 1.5), y + 0.8)],
+             3: [(ARCHERS, x, y + 1.5), (GOBLIN_GANG, x + rng.uniform(-1.5, 1.5), y)],
+             4: [(int(rng.choice([GIANT, KNIGHT])), x, y - 1.0), (int(rng.choice([MINIONS, GOBLIN_GANG, SKELETON_ARMY])), x, y + 1.2)]}[combo]
+    units = [u for c, ux, uy in units for u in _cluster(rng, c, ux, uy, spread)]
+    return {"name": "arrows_value", "timeout": 20, "own_elixir": rng.uniform(3, 5), "opp_elixir": rng.uniform(0, 2),
+            "units": units, "answers": [ARROWS], "score": "trade"}
+
+
+def fireball_value(rng) -> dict:
+    """Cole's 6: two or three medium-HP supports approaching together (some behind a tank, some already damaged),
+    Fireball in hand, 4-6 elixir. Damage credited by the share of each unit's max HP removed, plus an elimination
+    bonus, so finishing a unit beats spreading chip damage."""
+    x = _lane(rng)
+    pair = [(MUSKETEER, WIZARD), (MUSKETEER, WITCH), (WIZARD, MEGA_MINION), (MUSKETEER, FLYING_MACHINE)][int(rng.integers(4))]
+    y = rng.uniform(18.5, 21.0)
+    hurt = rng.random() < 0.3
+    units = [(c, x + rng.uniform(-0.9, 0.9), y + rng.uniform(-0.6, 0.6), rng.uniform(0.4, 0.7) if hurt else 1.0)
+             for c in pair]
+    if rng.random() < 0.3:
+        units.insert(0, (GIANT, x, y - 1.6, 1.0))  # a tank in front: the spell still belongs on the support
+    return {"name": "fireball_value", "timeout": 20, "own_elixir": rng.uniform(4, 6), "opp_elixir": rng.uniform(0, 2),
+            "units": units, "answers": [FIREBALL], "score": "trade"}
+
+
+def emergency(rng) -> dict:
+    """Cole's 10: a big push already on the board while we're down (4-5 elixir, they have 0-2 after building it),
+    far enough back to regenerate before contact. Limiting the damage is the win."""
+    x = _lane(rng)
+    push = [(GOLEM, WIZARD, MEGA_MINION), (GIANT, MUSKETEER, MINI_PEKKA), (GIANT, WITCH, MINIONS)][int(rng.integers(3))]
+    ty = rng.uniform(24.0, 27.0) if push[0] == GOLEM else rng.uniform(21.0, 23.0)
+    units = [(push[0], x, ty), (push[1], x + rng.uniform(-0.6, 0.6), ty + rng.uniform(1.5, 2.5)),
+             (push[2], x + rng.uniform(-0.8, 0.8), ty + rng.uniform(0.5, 1.5))]
+    sup_answers = [ARROWS, MEGA_MINION] if MINIONS in push else [FIREBALL, MINI_PEKKA, MEGA_MINION]
+    return {"name": "emergency", "timeout": 40, "own_elixir": rng.uniform(4, 5), "opp_elixir": rng.uniform(0, 2),
+            "units": units, "answers": [GOBLIN_HUT, MINI_PEKKA], "answers2": sup_answers}
+
+
+TEMPLATES = [hog_rider, battle_ram, melee, supported_push, arrows_value, fireball_value, emergency]
+BY_NAME = {"hog_rider": hog_rider, "battle_ram": battle_ram, "melee_mini_pekka": melee, "melee_knight": melee,
+           "melee_prince": melee, "supported_giant": supported_push, "supported_golem": supported_push,
+           "arrows_value": arrows_value, "fireball_value": fireball_value, "emergency": emergency}
 
 
 def _supported_defence(env, spec, played) -> tuple[int, float, float]:
@@ -131,6 +188,66 @@ def _supported_defence(env, spec, played) -> tuple[int, float, float]:
     return 4, 0.0, 0.0
 
 
+def _emergency_defence(env, spec, played) -> tuple[int, float, float]:
+    """The yardstick for a big push already on the board: Cole's supported-push plan first (Hut pull, spell the
+    support once it packs, finish), then keep answering every second while anything is on our side: Mini P.E.K.K.A on
+    the nearest ground body, Mega Minion on the nearest, Bomber behind the tower, the Hut again in the middle."""
+    k = _supported_defence(env, spec, played)
+    if k[0] != 4:
+        return k
+    if env.situation.seconds - played_last(played) < 1.5:
+        return 4, 0.0, 0.0
+    hand, el = list(env.game.get_hand()), env.game.get_elixir()
+    foes = [u for u in env.game.get_units() if u.team == 1 and not u.tower and not u.building and u.y < 18.0]
+    if not foes:
+        return 4, 0.0, 0.0
+    near = min(foes, key=lambda u: u.y)
+    ground = [u for u in foes if not u.flying]
+    for c in (MINI_PEKKA, MEGA_MINION, GOBLIN_HUT, BOMBER):
+        if c not in hand or el < COST[c]:
+            continue
+        if c == MINI_PEKKA and ground:
+            t = min(ground, key=lambda u: u.y)
+            pos = (float(np.clip(t.x, 0, 17)), float(np.clip(t.y - 1.5, 1, 14)))
+        elif c == MEGA_MINION:
+            pos = (float(np.clip(near.x, 0, 17)), float(np.clip(near.y - 1.5, 1, 14)))
+        elif c == GOBLIN_HUT:
+            pos = HUT_PULL
+        elif c == BOMBER:
+            pos = (float(np.clip(near.x, 1, 16)), 3.0)
+        else:
+            continue
+        played.add(f"@{env.situation.seconds:.1f}")
+        return hand.index(c), *pos
+    return 4, 0.0, 0.0
+
+
+def played_last(played) -> float:
+    ts = [float(p[1:]) for p in played if p.startswith("@")]
+    return max(ts) if ts else -9.0
+
+
+def _spell_value_defence(env, spec, played) -> tuple[int, float, float]:
+    """The yardstick for the spell situations: the spell once, on the densest group of threats, when at least two
+    are within its radius of one point (or the threat is nearly at our tower)."""
+    if "spell" in played:
+        return 4, 0.0, 0.0
+    spell = spec["answers"][0]
+    hand, el = list(env.game.get_hand()), env.game.get_elixir()
+    if spell not in hand or el < COST[spell]:
+        return 4, 0.0, 0.0
+    radius = 2.5 if spell == FIREBALL else 4.0
+    pts = [(u.x, u.y) for u in env.game.get_units() if u.id in env.situation.threat]
+    if not pts:
+        return 4, 0.0, 0.0
+    best = max(pts, key=lambda p: sum((p[0] - q[0]) ** 2 + (p[1] - q[1]) ** 2 <= radius ** 2 for q in pts))
+    n = sum((best[0] - q[0]) ** 2 + (best[1] - q[1]) ** 2 <= radius ** 2 for q in pts)
+    if n >= min(2, len(pts)) or min(q[1] for q in pts) < 10.0:
+        played.add("spell")
+        return hand.index(spell), float(best[0]), float(best[1])
+    return 4, 0.0, 0.0
+
+
 def scripted_defence(env) -> tuple[int, float, float]:
     """The exam's yardstick (2026-10-28): a plain sensible defence, not a tuned one. The best answer in hand by the
     template's priority order (answers lists are ordered: e.g. Goblin Hut first against a Hog, Mini P.E.K.K.A first
@@ -145,8 +262,12 @@ def scripted_defence(env) -> tuple[int, float, float]:
     if not hasattr(env, "defend_played") or env.defend_played[0] is not env.situation:
         env.defend_played = (env.situation, set())
     played = env.defend_played[1]
+    if spec["name"] == "emergency":
+        return _emergency_defence(env, spec, played)
     if spec["name"].startswith("supported"):
         return _supported_defence(env, spec, played)
+    if spec.get("score") == "trade":
+        return _spell_value_defence(env, spec, played)
     hand, el = list(env.game.get_hand()), env.game.get_elixir()
     lane_x = spec["units"][0][1]
     for group in ("answers", "answers2"):
@@ -215,11 +336,22 @@ class Situation:
         self.neutral_since: float | None = None
 
     def _inject(self, deploy_ticks: int) -> None:
+        import clash_royale_env as cre
         before = {u.id for u in self.game.get_units()}
-        for card, x, y in self.spec["units"]:
-            self.game.inject(int(card), float(x), float(y), 1, -1.0, deploy_ticks)
+        for unit in self.spec["units"]:
+            card, x, y = unit[:3]
+            frac = unit[3] if len(unit) > 3 else 1.0
+            hp = -1.0 if frac >= 1.0 else float(dict(cre.get_card_stats(int(card)))["hp"]) * frac
+            self.game.inject(int(card), float(x), float(y), 1, hp, deploy_ticks)
         self.game.step_self_play(4, 0.0, 0.0, 4, 0.0, 0.0, 1)  # commit the injected units
-        self.threat = {u.id for u in self.game.get_units() if u.id not in before and u.team == 1}
+        new = [u for u in self.game.get_units() if u.id not in before and u.team == 1]
+        self.threat = {u.id for u in new}
+        # value bookkeeping for trade scoring: elixir per body and the body's full HP
+        self.threat_info = {}
+        for u in new:
+            st = dict(cre.get_card_stats(int(u.card_id))) if u.card_id >= 0 else {}
+            bodies = max(1, int(st.get("bodies", 1) or 1))
+            self.threat_info[u.id] = (COST.get(u.card_id, st.get("cost", 0)) / bodies, float(st.get("hp", u.hp) or u.hp), u.hp)
 
     def resolved(self) -> bool:
         """The injected threat is dead (anything it spawned, e.g. the Battle Ram's Barbarians, is on team 1 too and
@@ -257,7 +389,17 @@ class Situation:
         spent = float(self.game.get_elixir_spent(0)) - self.spent0
         unresolved = not self.resolved()
         survivors = sum(COST.get(u.card_id, 0) for u in self.game.get_units() if u.team == 0 and not u.tower and u.hp > 0)
-        score = (-lost / self.princess_max - ELIXIR_COST * spent + SURVIVOR_BONUS * min(survivors, 10)
-                 - (TIMEOUT_PENALTY if unresolved else 0.0))
+        if self.spec.get("score") == "trade":
+            # Cole's spell scoring: enemy elixir value removed (share of each body's max HP taken, capped at what it
+            # had, plus ELIM_BONUS of its value if killed) against what we spent; towers still first
+            alive = {u.id: u for u in self.game.get_units()}
+            value = 0.0
+            for uid, (worth, max_hp, hp0) in getattr(self, "threat_info", {}).items():
+                hp1 = alive[uid].hp if uid in alive else 0.0
+                value += worth * min(1.0, max(0.0, hp0 - hp1) / max(max_hp, 1.0)) + (ELIM_BONUS * worth if uid not in alive else 0.0)
+            score = -lost / self.princess_max + TRADE_COEF * (value - spent) - (TIMEOUT_PENALTY if unresolved else 0.0)
+        else:
+            score = (-lost / self.princess_max - ELIXIR_COST * spent + SURVIVOR_BONUS * min(survivors, 10)
+                     - (TIMEOUT_PENALTY if unresolved else 0.0))
         return True, float(score), {"tower_hp_lost": lost, "elixir_spent": spent, "unresolved": unresolved,
                                     "seconds": round(self.seconds, 1)}

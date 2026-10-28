@@ -10,6 +10,7 @@ a sensible defence beats both references (Cole's check); the trend of a checkpoi
 Seeds 10_000+ (training draws from the run's own seeds, so these states are held out by construction).
 """
 import argparse
+import json
 import os
 import sys
 from pathlib import Path
@@ -25,6 +26,9 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--ckpt", nargs="*", default=[])
     ap.add_argument("--n", type=int, default=30)
+    ap.add_argument("--only", nargs="*", default=None, help="template names (default: all)")
+    ap.add_argument("--reference", action="store_true",
+                    help="also score every player on Cole's reference starts (data/live/cole_reference.jsonl)")
     a = ap.parse_args()
     os.environ.update({"CLASH_DECK": os.environ.get("CLASH_DECK", DECK),
                        "RL_CLONE_CKPT": str(ROOT / "data/models/bc_v2/frozen.pth"),
@@ -78,7 +82,7 @@ def main():
         return sit.scripted_defence(env)
 
     players = [("nothing", nothing), ("rush", rush), ("defend", defend)] + [(Path(c).parent.name + "/" + Path(c).stem, net_player(c)) for c in ckpts]
-    tpls = [sit.hog_rider, sit.battle_ram, sit.melee, sit.supported_push]
+    tpls = [t for t in sit.TEMPLATES if not a.only or t.__name__ in a.only]
     print(f"{'template':16s} " + " ".join(f"{p[0][:24]:>34s}" for p in players))
     for tpl in tpls:
         row = {}
@@ -105,6 +109,29 @@ def main():
             row[pname] = (sc.mean(), np.median([r["tower_hp_lost"] for r in res]), np.mean([r["elixir_spent"] for r in res]),
                           np.mean([r["unresolved"] for r in res]))
         print(f"{tpl.__name__:16s} " + " ".join(f"{v[0]:+.2f} (hp {v[1]:5.0f}, el {v[2]:3.1f}, ur {v[3]:.0%})" for v in row.values()))
+    if a.reference:
+        # the second yardstick: the exact starts Cole beat the scripted defence on, against his own score there
+        refs = [json.loads(l) for l in open(ROOT / "data/live/cole_reference.jsonl")]
+        tot = {p: [] for p, _ in players}
+        for r in refs:
+            for pname, act in players:
+                env = CloneEnv({"scenario_seed": 0})
+                env.forced_seed = (sit.BY_NAME[r["situation"]], int(r["seed"]))
+                obs, _ = env.reset()
+                env.rush_lane = env.situation.spec["units"][0][1]
+                first = True
+                while True:
+                    k, x, y = act(env, obs, first)
+                    first = False
+                    obs, _, term, trunc, info = env.step({"card_index": k, "target_x": np.array([x], np.float32),
+                                                          "target_y": np.array([y], np.float32),
+                                                          "activate_ability_slot1": 0, "activate_ability_slot2": 0})
+                    if info.get("rl_situation_end") or term or trunc:
+                        tot[pname].append(env.last_situation["score"])
+                        break
+        cole = [r["result"]["you"]["score"] for r in refs]
+        print(f"\nCole's {len(refs)} reference starts (his score then {np.mean(cole):+.2f}): " +
+              ", ".join(f"{p} {np.mean(v):+.2f} (beats Cole on {sum(x > c for x, c in zip(v, cole))})" for p, v in tot.items()))
     print("score = -(tower HP lost / princess max) - 0.04 * elixir spent [+ survivors] - 0.3 if unresolved; hp = median tower HP"
           " lost, el = mean elixir spent, ur = share unresolved at the timeout")
 
