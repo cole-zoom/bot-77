@@ -2725,3 +2725,6 @@ Full write-up: docs/simulator-validation.md. Held-back only (48 games, 346 windo
   Giant 0.2, Goblin Hut 0.5, Fireball 0.3, Bomber 5.0, Battle Ram 4.3, Mini P.E.K.K.A 4.2, Mega Minion 4.5, Arrows 3.9
   (11/12 wins). Effectively a 5-card deck; the rare cards still get cycled out now and then. The 8k snapshot that went
   13-5 in real games already leaned this way (Giant 0.6, Hut 1.5, Fireball 0.6). Left alone until the real test.
+- Round 2 at ~4,650 episodes (Bomber): clone 0.70 (1,621 games; 0.60 at 2k), round-1 snapshots 0.79 / 0.81 / 0.70 /
+  0.68 / 0.57 (2k / 4k / 6k / 8k / 10k), its own round-2 snapshots 0.55 / 0.52 (near-copies: ~0.5 is the null).
+  Distinct cards per game 5.8-5.9.
