@@ -14,6 +14,13 @@ are compressed (the observation is ~99% zeros), so each is unpacked once into a 
 values a row) and windows are densified on the fly; use longer windows (--window 256 = 25.6 s) and a heavier play
 weight (--play-weight; plays are ~1% of the rows, against ~10% at 1 s).
 
+--demos data/cache/bc/defence_t01 (2026-10-28, the defence school; scripts/build_defence_demos.py): the scripted
+defence's and Cole's situation episodes, --demo-share of every batch. A scripted episode is kept only if it scored at
+least its template's median (the better half: the script loses some of every template, the emergency most of all);
+Cole's are all kept, weighted as built (3). Every window that starts at an episode's first step (all the demos, the
+start of a pro game) is trained from that step: the LSTM is fresh there, so no burn-in is needed, and the demos'
+first decision is often the answer itself.
+
 Scores (held-back): card at plays (which of the 4 hand cards, given a play happened; A v3 got ~51%), play-vs-wait AUC,
 placement (the cell the pro used, and the distance in tiles to it).
 """
@@ -72,7 +79,7 @@ def window(ep, rng, length=None):
     n = len(card)
     s = 0 if n <= length else int(rng.integers(0, n - length + 1))
     sl = slice(s, s + length)
-    return obs[sl].toarray(), card[sl], cell[sl]
+    return obs[sl].toarray(), card[sl], cell[sl], s
 
 
 def batch_loss(net, eps, rng, device):
@@ -82,13 +89,15 @@ def batch_loss(net, eps, rng, device):
     cell = np.full((WINDOW, len(eps)), -1, np.int64)
     valid = np.zeros((WINDOW, len(eps)), bool)
     w = np.zeros((WINDOW, len(eps)), np.float32)
+    burn = np.zeros(len(eps), np.int64)
     for b, ep in enumerate(eps):
-        o, c, ce = window(ep, rng)
+        o, c, ce, start = window(ep, rng)
         L = len(c)
         obs[:L, b], card[:L, b], cell[:L, b], valid[:L, b], w[:L, b] = o, c, ce, True, ep["w"]
+        burn[b] = 0 if start == 0 else BURN_IN  # a window from the episode's first step has a true fresh LSTM
     return sequence_loss(net, torch.tensor(obs, device=device), torch.tensor(card, device=device),
                          torch.tensor(cell, device=device), torch.tensor(valid, device=device),
-                         torch.tensor(w, device=device), burn_in=BURN_IN)
+                         torch.tensor(w, device=device), burn_in=torch.tensor(burn, device=device))
 
 
 def sequence_loss(net, obs, card, cell, valid, w, burn_in=0):
@@ -104,8 +113,11 @@ def sequence_loss(net, obs, card, cell, valid, w, burn_in=0):
                                spatial.view(L, B, *spatial.shape[1:]), flat.view(L, B, -1), mask, card_in, keep,
                                (hx, cx), hires_seq=hires.view(L, B, *hires.shape[1:]))
     cl, pl = out[0], out[1]
-    t_ok = torch.zeros(L, B, dtype=torch.bool, device=obs.device)
-    t_ok[burn_in:] = True
+    if isinstance(burn_in, torch.Tensor):  # one burn-in per column
+        t_ok = torch.arange(L, device=obs.device).unsqueeze(1) >= burn_in.unsqueeze(0)
+    else:
+        t_ok = torch.zeros(L, B, dtype=torch.bool, device=obs.device)
+        t_ok[burn_in:] = True
     rows = valid & t_ok & (card >= 0)
     rows = rows & torch.isfinite(cl.gather(2, card_in.unsqueeze(2)).squeeze(2))  # a mask-illegal target: dropped
     ce_card = F.cross_entropy(cl[rows], card[rows], reduction="none")
@@ -157,6 +169,23 @@ def evaluate(net, eps, device, max_eps=0):
             "cells": cell_n}
 
 
+def load_demos(path: Path) -> list[dict]:
+    """The defence-school episodes: Cole's all, the script's at or above its template's median score."""
+    eps = []
+    for f in sorted(path.glob("*.npz")):
+        d = np.load(f)
+        src, rest = f.stem.split("_", 1)
+        eps.append({"file": str(f), "n": len(d["card"]), "split": "train", "w": float(d["weight"][0]),
+                    "result": None, "src": "cole" if src.startswith("cole") else src,
+                    "tpl": rest.rsplit("_", 1)[0], "score": float(d["result"])})
+    med = {}
+    for e in eps:
+        if e["src"] == "script":
+            med.setdefault(e["tpl"], []).append(e["score"])
+    med = {k: float(np.median(v)) for k, v in med.items()}
+    return [e for e in eps if e["src"] != "script" or e["score"] >= med[e["tpl"]]]
+
+
 def main():
     global SHARDS, WINDOW, BURN_IN, PLAY_WEIGHT
     ap = argparse.ArgumentParser()
@@ -170,6 +199,8 @@ def main():
     ap.add_argument("--window", type=int, default=WINDOW)
     ap.add_argument("--burn-in", type=int, default=BURN_IN)
     ap.add_argument("--play-weight", type=float, default=PLAY_WEIGHT)
+    ap.add_argument("--demos", default=None, help="defence-school episodes (scripts/build_defence_demos.py)")
+    ap.add_argument("--demo-share", type=float, default=0.3, help="share of every batch drawn from --demos")
     a = ap.parse_args()
     SHARDS, WINDOW, BURN_IN, PLAY_WEIGHT = Path(a.shards), a.window, a.burn_in, a.play_weight
     torch.manual_seed(77)
@@ -181,6 +212,11 @@ def main():
     print(f"episodes: {len(train)} train ({sum(e['n'] for e in train)} decisions), {len(held)} held-back "
           f"({sum(e['n'] for e in held)}); winners weighted {WIN_WEIGHT} "
           f"({sum(e['result'] == 'win' for e in train)} of {len(train)} train episodes are winners)", flush=True)
+    demos = load_demos(Path(a.demos)) if a.demos else []
+    n_demo = int(round(BATCH * a.demo_share)) if demos else 0
+    if demos:
+        print(f"demos: {len(demos)} episodes ({sum(e['n'] for e in demos)} decisions; "
+              f"{sum(e['src'] == 'cole' for e in demos)} of Cole's), {n_demo} of every {BATCH} windows", flush=True)
     net = MicroRoyaleNet().to(device)
     if a.init:
         net.load_state_dict(torch.load(a.init, map_location=device, weights_only=False)["model"])
@@ -195,7 +231,8 @@ def main():
         steps = a.steps_per_epoch or max(1, len(train) // BATCH)
         lc = lp = 0.0
         for s in range(steps):
-            batch = [train[i] for i in rng.choice(len(train), BATCH, replace=False)]
+            batch = [train[i] for i in rng.choice(len(train), BATCH - n_demo, replace=False)]
+            batch += [demos[i] for i in rng.choice(len(demos), n_demo, replace=False)] if n_demo else []
             l_card, l_cell, _ = batch_loss(net, batch, rng, device)
             loss = l_card + l_cell
             opt.zero_grad()
@@ -209,6 +246,8 @@ def main():
         print(f"epoch {epoch}: card loss {lc / steps:.3f}, cell loss {lp / steps:.3f}, held-back {ev} "
               f"({time.time() - t0:.0f} s)", flush=True)
         torch.save({"model": net.state_dict(), "bc_epoch": epoch, "bc_history": history}, out / "last.pth")
+        if demos:  # the defence school is judged by the situation exam, so every epoch is kept for it
+            torch.save({"model": net.state_dict(), "bc_epoch": epoch}, out / f"epoch{epoch:02d}.pth")
         # the best held-back checkpoint (card at plays + play/wait AUC - cell distance / 20): placement over-fits
         # after ~70 epochs (v3: train cell loss falling, held-back distance rising)
         score = ev["card_at_plays"] + (ev["play_vs_wait_auc"] or 0) - (ev["cell_dist_median_tiles"] or 20) / 20
