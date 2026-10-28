@@ -3255,3 +3255,11 @@ Full write-up: docs/simulator-validation.md. Held-back only (48 games, 346 windo
   arrows -0.53 / -0.65, fireball -0.90 / -0.99, emergency -3.42 / -3.25, opening -0.35 / -0.37, defend+counter -1.20 /
   -1.20, overcommit -1.05 / -1.42. Same picture as at 1 s (v4 -1.19 there too): the wrong pace didn't hide anything,
   and v4 ~ v3, both about 0.6 behind the script, still spending ~2x its elixir. The defence school's yardstick.
+- **Defence school, epoch 0** (200 steps, 18 min; exam data/models/bc_defence_v1/exam_epoch00.txt, 50 seeds, 0.1 s,
+  wait-calibrated like the RL start). Means: school ep0 **-1.07**, the plain pro imitation it started from
+  (bc_t01/frozen_calibrated, the RL start) -1.17, v4 -1.19, v3 -1.24, scripted -0.63. Elixir a situation (mean of the
+  ten): school 10.0, pro imitation 10.6, scripted 7.7. Cole's starts: school -1.12, pro imitation -1.23. Pro held-back
+  kept (card at plays 38.0%, AUC 0.743, cell 4.5 tiles vs 4.1).
+- **The finding of the day: RL rounds v3 / v4 added nothing on the exam over their start.** The pro imitation scores
+  -1.17 against v4's -1.19, and RL made the overcommit situation worse (-0.22 -> -1.05: it learned to commit). What RL
+  bought was full-game win rate against the clones (and the bridge-rush opener).
