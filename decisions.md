@@ -2819,3 +2819,13 @@ Full write-up: docs/simulator-validation.md. Held-back only (48 games, 346 windo
   Ram -1.36 / -1.53 / **-0.28** (6.0) / -1.03 (8.8); melee -1.30 / -1.41 / **-0.58** (2.8) / -0.62 (6.1); supported
   push -2.78 / -3.09 / **-1.36** (9.7) / -1.90 (14.9). The Golem push still beats the yardstick (6-8 elixir against
   a Golem + support), the Giant push is now held (one replay -0.47, 634 tower HP).
+- **Play it yourself** (scripts/situation_play.py, http://localhost:8777; Cole: "can u let me play live? to defend"):
+  the situations in a local page with the same setups and scoring, the scripted defence and the model replayed from
+  the same start alongside; 3-2-1 start, a step bar / countdown ring for the queued card, Restart (same start), keys
+  1-4 / Esc / Space; games logged to data/live/situation_play.jsonl. A single game is noisy (the same Mini P.E.K.K.A
+  play scored -1.26 and -0.18 against different clone follow-ups).
+- **Drops** (Cole: "can the board start empty, then the opponent places the hog?"): Hog, Battle Ram and melee now
+  start on an empty board; the opponent drops the card at their side of the bridge on the first step with the normal
+  deploy, as it plays out in a real game (training too). The supported push still starts mid-push. Exam with drops
+  (20 seeds): Hog nothing -1.16 / rush -1.45 / scripted -0.17 (0 HP median, 3.9 elixir) / model -0.67 (8.2);
+  Ram -1.39 / -1.54 / -0.44 / -0.76; melee -1.30 / -1.58 / -0.67 / -0.67; supported -2.78 / -3.16 / -1.28 / -1.72.
