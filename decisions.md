@@ -2721,3 +2721,7 @@ Full write-up: docs/simulator-validation.md. Held-back only (48 games, 346 windo
 - Round 2 at ~2,100 episodes, win rate by opponent (the trainer's EMA estimates, from the checkpoint): clone 0.60 (741
   games; round 1 was ~0.78 against it with Archers, so the deck change costs for now), round-1 snapshots 0.57 (10k),
   0.57 (8k), 0.60 (6k), 0.69 (4k), 0.72 (2k): it beats older versions more, as expected.
+- Round 2 at ~3,000 episodes: distinct cards per game 5.98; plays per game (12 sim games vs the clone, Bomber deck):
+  Giant 0.2, Goblin Hut 0.5, Fireball 0.3, Bomber 5.0, Battle Ram 4.3, Mini P.E.K.K.A 4.2, Mega Minion 4.5, Arrows 3.9
+  (11/12 wins). Effectively a 5-card deck; the rare cards still get cycled out now and then. The 8k snapshot that went
+  13-5 in real games already leaned this way (Giant 0.6, Hut 1.5, Fireball 0.6). Left alone until the real test.
