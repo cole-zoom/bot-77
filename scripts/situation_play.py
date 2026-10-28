@@ -182,20 +182,27 @@ button.go { background: var(--accent); border-color: var(--accent); color:#1d160
 ol { margin:0; padding-left: 1.2em; font-family: ui-monospace, monospace; font-size:.85rem; }
 table { border-collapse: collapse; font-size:.9rem; } td, th { padding: 4px 8px; text-align:right; border-bottom: 1px solid var(--line); } td:first-child, th:first-child { text-align:left; }
 .big { font-size: 1.1rem; font-weight: 700; }
+.boardwrap { position: relative; width: 342px; max-width: 100%; }
+.count { position: absolute; inset: 0; display: grid; place-items: center; font: 800 6rem system-ui, sans-serif; color: #fff; text-shadow: 0 4px 18px #000a; pointer-events: none; }
+.stepbar { height: 8px; background: var(--line); border-radius: 4px; overflow: hidden; max-width: 342px; margin-top: 8px; }
+.stepbar > div { height: 100%; width: 0; background: var(--accent); }
+.steplab { font: .8rem ui-monospace, monospace; color: var(--muted); margin-top: 2px; }
 </style></head><body>
 <div class="wrap">
   <div>
-    <canvas id="board" width="540" height="1020"></canvas>
+    <div class="boardwrap"><canvas id="board" width="540" height="1020"></canvas><div class="count" id="count" hidden></div></div>
+    <div class="stepbar"><div id="stepfill"></div></div>
+    <div class="steplab" id="steplab">next step —</div>
     <div class="elx"><div id="elx"></div></div>
     <div class="muted" id="elxt" style="font-family:ui-monospace,monospace;font-size:.85rem;margin-top:4px">elixir —</div>
     <div class="hand" id="hand"></div>
   </div>
   <div class="panel">
-    <div><h1>Defend it yourself</h1><div class="muted">Pick a situation and press Start. The clock runs one step a second (like the bot). Click a card, then a tile on our half (spells anywhere). Do nothing and you wait.</div></div>
+    <div><h1>Defend it yourself</h1><div class="muted">Pick a situation and press New (Restart replays the same start). After a 3-2-1 the clock runs one step at a time; the gold bar under the board fills to the next step, which is when a card you've queued lands. Click a card, then a tile on our half (spells anywhere). Do nothing and you wait.</div></div>
     <div class="row">
       <select id="tpl"><option value="hog_rider">Hog Rider</option><option value="battle_ram">Battle Ram</option><option value="melee">Melee (Mini P.E.K.K.A / Knight / Prince)</option><option value="supported_push">Supported push (Giant / Golem)</option></select>
       <select id="speed"><option value="1000">1 step / s</option><option value="1500">1 step / 1.5 s</option><option value="2500">1 step / 2.5 s</option></select>
-      <button class="act go" id="start">Start</button><button class="act" id="pause">Pause</button>
+      <button class="act go" id="start">New</button><button class="act" id="restart">Restart</button><button class="act" id="pause">Pause</button>
     </div>
     <div id="setup" class="muted"></div>
     <div><b>Your plays</b><ol id="plays"></ol></div>
@@ -203,7 +210,7 @@ table { border-collapse: collapse; font-size:.9rem; } td, th { padding: 4px 8px;
   </div>
 </div>
 <script>
-let S = null, sel = null, pending = null, timer = null, paused = false, busy = false, lastPlay = null;
+let S = null, sel = null, pending = null, timer = null, paused = false, busy = false, lastPlay = null, lastSeed = null, nextAt = 0, period = 1000;
 const css = n => getComputedStyle(document.documentElement).getPropertyValue(n).trim();
 const cv = document.getElementById("board"), ctx = cv.getContext("2d"), W = cv.width, H = cv.height, sx = W / 18, sy = H / 34;
 const ABBR = {"Mini PEKKA":"MP","Mega Minion":"MM","Goblin Hut":"Hut","Battle Ram":"Ram","Hog Rider":"Hog","Spear Goblins":"gob","Barbarians":"barb","Musketeer":"Musk","Executioner":"Exec","Golemite":"gmt","Minions":"min"};
@@ -225,7 +232,9 @@ function draw() {
     const lab = u.tower ? (u.hp>0?Math.round(u.hp):"") : (ABBR[u.name] ?? (u.name||"").slice(0,5));
     if (lab!==""){ ctx.font=`600 ${u.tower?20:16}px ui-monospace,monospace`; ctx.fillStyle="#fff"; ctx.textAlign="center"; ctx.textBaseline="middle"; ctx.fillText(lab,px,py); }
   }
-  if (pending) { ctx.strokeStyle=css("--accent"); ctx.lineWidth=4; ctx.beginPath(); ctx.arc((pending.x+0.5)*sx,H-(pending.y+0.5)*sy,1.2*sx,0,7); ctx.stroke(); }
+  if (pending) { const px=(pending.x+0.5)*sx, py=H-(pending.y+0.5)*sy, left=Math.max(0,(nextAt-performance.now())/period);
+    ctx.strokeStyle=css("--accent"); ctx.lineWidth=5; ctx.beginPath(); ctx.arc(px,py,1.2*sx,-Math.PI/2,-Math.PI/2+2*Math.PI*(1-left)); ctx.stroke();
+    ctx.font="700 18px ui-monospace,monospace"; ctx.fillStyle="#fff"; ctx.textAlign="center"; ctx.textBaseline="middle"; ctx.fillText((left*period/1000).toFixed(1), px, py-1.8*sx); }
   if (lastPlay) { ctx.strokeStyle="#fff"; ctx.lineWidth=2; ctx.setLineDash([6,5]); ctx.beginPath(); ctx.arc((lastPlay.x+0.5)*sx,H-(lastPlay.y+0.5)*sy,1.2*sx,0,7); ctx.stroke(); ctx.setLineDash([]); }
 }
 function renderHand() {
@@ -244,7 +253,7 @@ cv.addEventListener("click", ev => {
 });
 async function post(path, body) { const r = await fetch(path, {method:"POST", headers:{"Content-Type":"application/json"}, body: JSON.stringify(body)}); return r.json(); }
 async function step() {
-  if (busy || paused || !S || S.done) return; busy = true;
+  if (busy || paused || !S || S.done) return; busy = true; nextAt = performance.now() + period;
   const act = pending; pending = null;
   const out = await post("/step", act || {});
   if (act) lastPlay = act;
@@ -258,15 +267,30 @@ function showResult(R) {
   <tr><td>You</td>${fmt(R.you)}</tr><tr><td>Scripted defence</td>${fmt(R.scripted)}</tr><tr><td>Bot (round 2)</td>${fmt(R.model)}</tr></table>
   <div class="muted" style="margin-top:6px">Same start for all three; the opponent clone plays on, so its plays can differ.</div>`;
 }
-document.getElementById("start").onclick = async () => {
-  clearInterval(timer); sel = null; pending = null; lastPlay = null; paused = false; maxHp.clear();
+const sleep = ms => new Promise(r => setTimeout(r, ms));
+async function begin(seed) {
+  clearInterval(timer); timer = null; sel = null; pending = null; lastPlay = null; paused = false; maxHp.clear();
   document.getElementById("pause").textContent = "Pause"; document.getElementById("result").innerHTML = ""; document.getElementById("plays").innerHTML = "";
-  const out = await post("/new", {template: document.getElementById("tpl").value});
-  S = out.state; renderHand(); draw();
+  const out = await post("/new", {template: document.getElementById("tpl").value, seed});
+  lastSeed = out.seed; S = out.state; renderHand(); draw();
   document.getElementById("setup").innerHTML = `Threat <b>${out.threat.join(" + ")}</b> · your elixir <b>${out.start_elixir[0]}</b> · theirs <b>${out.start_elixir[1]}</b> · seed ${out.seed}`;
-  timer = setInterval(step, +document.getElementById("speed").value);
-};
-document.getElementById("pause").onclick = () => { paused = !paused; document.getElementById("pause").textContent = paused ? "Resume" : "Pause"; };
+  const cnt = document.getElementById("count"); cnt.hidden = false;
+  for (const n of [3, 2, 1]) { cnt.textContent = n; await sleep(800); }   // you can already queue a card during the count
+  cnt.hidden = true;
+  period = +document.getElementById("speed").value; nextAt = performance.now() + period;
+  timer = setInterval(step, period);
+}
+document.getElementById("start").onclick = () => begin(null);
+document.getElementById("restart").onclick = () => { if (lastSeed !== null) begin(lastSeed); };
+(function frame() {   // the step bar and the queued card's countdown ring
+  const left = timer && S && !S.done && !paused ? Math.max(0, (nextAt - performance.now()) / period) : 0;
+  document.getElementById("stepfill").style.width = timer && S && !S.done ? ((1 - left) * 100) + "%" : "0%";
+  document.getElementById("steplab").textContent = !S ? "next step —" : S.done ? "finished" : paused ? "paused" :
+    pending ? `your ${S.hand[pending.slot].name} lands in ${(left * period / 1000).toFixed(1)} s` : `next step in ${(left * period / 1000).toFixed(1)} s`;
+  if (pending) draw();
+  requestAnimationFrame(frame);
+})();
+document.getElementById("pause").onclick = () => { paused = !paused; if (!paused) nextAt = performance.now() + period; document.getElementById("pause").textContent = paused ? "Resume" : "Pause"; };
 draw();
 </script></body></html>"""
 
