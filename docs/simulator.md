@@ -270,6 +270,42 @@ directly.
 - **The only number that counts is the real ladder**: win rate in bot sessions, as in `ROADMAP.md`. Never report a
   simulator win rate as progress.
 
+## How the bot trains now (2026-10-28)
+
+The loop, end to end. Every finding is logged in decisions.md; the raw data stays local (gitignored).
+
+1. **Start**: a network that imitates pro replays (bc_t01, calibrated to the pros' play rate, a decision every 0.1 s),
+   then each RL round starts from the last one's weights (v3 -> v4).
+2. **Opponents**: the clone (the imitation net with pro decks) and the trainee's own past snapshots (the league,
+   PFSP-weighted toward the ones it beats least). In Cole's 1 / 8 / 9 a scripted opponent that reacts to us instead.
+3. **Episodes** (scripts/rl_vs_clones.py, 7 games in parallel): a share of them are full games (reward: the fork's win
+   / tower damage / trade shaping), the rest defence situations (bot77.rl.situations: Cole's ten, dropped mid-game, ended
+   when the threat is dealt with or at the timeout, scored on the board: towers lost, elixir spent, our board left,
+   their board left on our side, a little tower damage). A share of the situations are Cole's exact play-page starts,
+   where matching his play (same card, 1.5 s, 2.5 tiles) adds a bonus to the reward.
+4. **Update**: PPO; the network moves toward the moves that did better than it expected. The first 500 episodes of a
+   round from new weights train the value estimate only.
+5. **Check**: scripts/situation_exam.py (held-out starts: nothing / rush / scripted defence / the checkpoints, plus
+   Cole's starts against his own scores), then 20 real games in BlueStacks (scripts/live_play.py --stream --policy
+   selfplay --decision-s 0.1).
+6. **Cole's input**: the play page (scripts/situation_play.py, http://localhost:8777) records each game he plays
+   (data/live/situation_play.jsonl); the next round takes them as starts and answer keys
+   (data/live/cole_reference.jsonl). Review pages of the scripted opponents / bot plays carry his corrections, which
+   go into the scripted defence, the scoring or the engine (C++ only with his go-ahead).
+
+```
+# a round (v4's settings)
+uv run --no-sync --with gymnasium==1.3.0 --with tensorboard python scripts/rl_vs_clones.py --run data/models/rl_clones_v4 \
+  --init data/models/rl_clones_v3/final_weights.pth --decision-ticks 1 --situation-share 0.5 --reference-share 0.3 \
+  --league-share 0.5 --snapshots data/models/rl_clones_v3/historical_checkpoints --card-entropy 0.04 --episodes 8000 --envs 7
+# exam / Cole's games under the current score / the play page
+uv run --no-sync --with gymnasium==1.3.0 python scripts/situation_exam.py --ckpt <ckpt> --n 20 --reference
+uv run --no-sync --with gymnasium==1.3.0 python scripts/rescore_cole.py --out data/live/cole_rescored.jsonl
+uv run --no-sync --with gymnasium==1.3.0 python scripts/situation_play.py
+```
+
+Stopping a round: SIGINT to the python process saves bootstrap_selfplay.pth; drop the optimizer into final.pth.
+
 ## Decks change: nothing assumes ours
 
 Cole changes the deck between sessions until we get Hog 2.8 ("it's always good to learn new cards"). The rules in

@@ -3109,6 +3109,8 @@ Full write-up: docs/simulator-validation.md. Held-back only (48 games, 346 windo
   improvement). Training win rate (0.59 vs the clone league) didn't carry over. Next candidates, not started: a larger
   situation weight or an elixir-waste term in the full game, and adding Cole's reviewed scripted opponents (1 / 8 / 9)
   once he's checked them.
+## 2026-10-28 (day): Cole's review and second sim session, score v2, a seeded engine, engine batch 5, RL round v4
+
 - **Cole's review of 1 / 8 / 9, first note (1-2, the Hog bridge rush):** "the mini pekka should be played earlier and
   lower, like 11". The scripted defence's reactive answer now fires once a troop is at the bridge (y < 19, was < 18)
   and puts the Mini P.E.K.K.A at y 11 (or 1.5 in front of the troop if it's already lower; was 1.5 in front, y 13.8 at
@@ -3152,3 +3154,20 @@ Full write-up: docs/simulator-validation.md. Held-back only (48 games, 346 windo
   critic warm-up runs: the situation scores changed), situation share 0.5 over all ten, Cole's 142 starts as 0.3 of
   those with the answer-key bonus, score v2, league 0.5 (its own and v3's snapshots), card-entropy 0.04, 8,000
   episodes, 7 envs. First 60 episodes: win 0.6-0.7, ScenDef 0.17-0.25.
+- **Sources for batch 5:** Cole's answers to the audit's open items (pasted 2026-10-28: Hunter 10 x 84, 0.3
+  collision; Firecracker 5 x 64 piercing, 0.4; Monk 140 / 140 / 422, 1.8 knockback, don't assume a combo reset; Elite
+  Musketeers 906 / 204 / 314 in 1.6, 1.3 s; Earthquake 81 / 286 / 49 a second; Battle Healer 100 a hit, 200 on spawn,
+  3 tiles, no self-heal, not on other Healers; Giant Skeleton 3,361 and Barbarian Barrel 215 confirmed), with the client
+  tables winning where they differ (Healer 102 / 202). Still unconfirmed, his in-game checks: the fans' spread angles,
+  whether splash is centre-based or hitbox overlap (the engine stays centre-to-centre), on-hit effects on splash
+  victims (primary only for now), Monk's combo across targets, heal timing.
+- **What the unseeded engine means for earlier numbers:** every sim number before 2026-10-28 ~09:30 (exams, situation
+  scores, the scripted-vs-model comparisons, training) ran with a random hand cycle and opponent hand per run. Means
+  over 20-30 seeds hold up; any single start's score (a play-page comparison, one reference start) was one draw of
+  several possible games. The v3 exam above and the v4 exam to come are therefore not the same test either (also batch
+  5 and score v2 in between).
+- **Where things are logged:** decisions.md (every finding, this file); docs/simulator.md "How the bot trains now" (the
+  loop, the commands, the files); local and gitignored: Cole's play-page games data/live/situation_play.jsonl (+ the
+  bookmarks saved_situations.json), his answer keys data/live/cole_reference.jsonl, their replays under score v2
+  data/live/cole_rescored.{jsonl,txt}, live tests data/live/rl_v*_bomber*.log and LanceDB bot_games / bot_actions,
+  training data/models/rl_clones_v*/train.log (+ tensorboard runs/), exams data/models/rl_clones_v*/exam.txt.
