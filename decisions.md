@@ -2802,3 +2802,11 @@ Full write-up: docs/simulator-validation.md. Held-back only (48 games, 346 windo
   the old minimum windows let surviving defenders walk over and hit an undefended tower. Surviving defenders count
   (+0.02 / elixir of value, cap 10) in every template. Counter-attacking stays its own later scenario (Cole's 8).
   Re-recorded replays: situations now end 5-14 s in (supported Golem still runs to its 40 s limit).
+- **Scripted defence fixed** (Cole: "our scripted defense is ass?" on Battle Ram 2). It picked the first answer in hand
+  order and met a Ram with a lone Mega Minion. Now one shared `situations.scripted_defence` by priority: Mini
+  P.E.K.K.A first against Hog and Ram (Goblin Hut first at x 8.5, y 9 failed to pull the Hog: placement for Cole),
+  Bomber on the Ram's Barbarians, Mega Minion first against Prince / Mini P.E.K.K.A, Bomber first against Knight.
+  Also a bug in the neutral rule: the Ram's Barbarians appear ~1 s after it breaks and the board looked empty for that
+  second (one model run ended at 5 s, its damage missed): neutral must now hold 2 s. Replays now: Hog -0.12 / -0.08,
+  Ram -0.35 / -0.12, Prince -0.68, Knight -0.44; the supported push still fails (-2.1 / -3.2, unresolved): Cole's
+  reference defence needed. A Mega Minion stood idle in one replay; in a re-run it attacked (watching for it).
