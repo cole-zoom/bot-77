@@ -12,6 +12,11 @@ to ~78% and flattened): with probability RL_LEAGUE_SHARE team 1 is instead one o
 (the .pth files in RL_SNAPSHOT_DIRS, os.pathsep-separated), drawn by the fork's PFSP weighting (the ones it beats
 least most often), playing our deck, the one it was trained with.
 
+Optionally defence situations (bot77.rl.situations, Cole's scenarios): with probability RL_SITUATION_SHARE an episode
+starts mid-fight and ends when the threat resolves, scored on the outcome (info["rl_situation"] marks its steps,
+"rl_situation_end" the scored one; the trainer turns the game's shaping off on those steps and treats the end as
+terminal). When on, the fork's own scenarios are off.
+
 Paths come from the environment (set by scripts/rl_vs_clones.py before the fork is imported): RL_CLONE_CKPT (the
 frozen clone), RL_PRO_DECKS (the deck pool).
 """
@@ -26,11 +31,18 @@ import numpy as np
 import clash_royale_env
 from python_ai.envs.selfplay_env import PFSP_EXPONENT, PFSP_MIN_WEIGHT, MicroRoyaleSelfPlayEnv
 
+from bot77.rl import situations as sit
+
 
 class CloneEnv(MicroRoyaleSelfPlayEnv):
     def __init__(self, env_config=None):
         env_config = dict(env_config or {})
+        self.situation_share = float(os.environ.get("RL_SITUATION_SHARE", "0"))
+        if self.situation_share > 0:
+            env_config["scenarios_enabled"] = False  # ours replace the fork's
         super().__init__(env_config)
+        self.situation: sit.Situation | None = None
+        self.forced_template = None  # the exam sets one
         self.max_ticks = env_config.get("max_ticks", 3600)
         self.clone = os.environ["RL_CLONE_CKPT"]
         decks = json.loads(open(os.environ["RL_PRO_DECKS"]).read())
@@ -65,6 +77,38 @@ class CloneEnv(MicroRoyaleSelfPlayEnv):
         self.opponent_checkpoint_path = path  # the key the fork's win-rate estimate (pfsp_stats) is kept under
         none = clash_royale_env.TowerTroopType.NONE
         self.game = clash_royale_env.ClashRoyaleEnv(self.deck, self.opp_deck, self.max_ticks, none, none)
+
+    def reset(self, seed=None, options=None):
+        obs, info = super().reset(seed=seed, options=options)
+        self.situation = None
+        if self.forced_template is not None or (self.situation_share > 0 and self.rng.random() < self.situation_share):
+            tpl = self.forced_template or sit.TEMPLATES[int(self.rng.integers(len(sit.TEMPLATES)))]
+            self.situation = sit.Situation(self.game, tpl(self.rng), list(self.deck), self.rng)
+            obs = np.array(self.game.get_observation_for_team(0), dtype=np.float32)
+        return obs, info
+
+    def step(self, action, skip_frames=10):
+        obs, reward, terminated, truncated, info = super().step(action, skip_frames)
+        info["rl_situation"] = 0.0
+        info["rl_situation_end"] = 0.0
+        info["rl_situation_score"] = 0.0
+        if self.situation is not None:
+            info["rl_situation"] = 1.0
+            info["is_scenario"] = 1.0  # out of the headline W/L, as the fork does for its scenarios
+            info["scenario_defensive"] = 1.0
+            done, score, details = self.situation.step(terminated or truncated)
+            if done:
+                # the score is the whole reward; ended as a truncation so the trainer's draw penalty (terminated with
+                # |reward| < 0.5) can't fire, and the trainer zeroes the bootstrap on rl_situation_end
+                reward, terminated, truncated = score, False, True
+                info["rl_situation_end"] = 1.0
+                info["rl_situation_score"] = score
+                self.last_situation = {"name": self.situation.spec["name"], "score": score, **details}
+                self.situation = None
+            else:
+                reward, truncated = 0.0, False
+                terminated = False
+        return obs, reward, terminated, truncated, info
 
 
 def make_clone_env(seed=None, **env_config):

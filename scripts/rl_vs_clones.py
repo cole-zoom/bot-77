@@ -35,6 +35,9 @@ def main():
                     help="share of episodes against the trainee's own past snapshots (bot77.rl.clone_env)")
     ap.add_argument("--snapshots", nargs="*", default=[],
                     help="more snapshot directories for the league (e.g. an earlier run's historical_checkpoints)")
+    ap.add_argument("--situation-share", type=float, default=0.0,
+                    help="share of episodes that start in a defence situation (bot77.rl.situations; replaces the "
+                         "fork's scenarios)")
     ap.add_argument("--init", default=None, help="start the trainee from these weights instead of the clone")
     ap.add_argument("--critic-warmup", type=int, default=500, help="episodes during which only the value head learns")
     a = ap.parse_args()
@@ -54,6 +57,7 @@ def main():
         "RL_CLONE_CKPT": str(clone),
         "RL_PRO_DECKS": str((ROOT / "data/cache/rl/pro_decks.json").resolve()),
         "RL_LEAGUE_SHARE": str(a.league_share),
+        "RL_SITUATION_SHARE": str(a.situation_share),
         "RL_SNAPSHOT_DIRS": os.pathsep.join([str(run / "historical_checkpoints")]
                                             + [str((ROOT / d).resolve()) for d in a.snapshots]),
     })
@@ -62,6 +66,7 @@ def main():
     os.chdir(FORK)
     import gymnasium as gym
     import python_ai  # noqa: F401  (before torch / numpy: the fork's import-order note)
+    import torch
     from python_ai.rl.seeding import worker_seeds
     from python_ai.trainers import train_selfplay as ts
 
@@ -69,8 +74,65 @@ def main():
 
     from bot77.rl.clone_env import make_clone_env
 
+    import numpy as np
+    from python_ai.rl import base_trainer as bt
+
+    class EnvsWithInfos:
+        """The vector env, keeping the last step's infos (situation steps switch the game's shaping off, below)."""
+
+        def __init__(self, envs):
+            self.envs, self.infos = envs, {}
+
+        def step(self, action):
+            out = self.envs.step(action)
+            self.infos = out[4]
+            return out
+
+        def __getattr__(self, name):
+            return getattr(self.envs, name)
+
+    def situation_mask(trainer):
+        v = trainer.envs.infos.get("rl_situation") if trainer.envs is not None else None
+        return np.zeros(trainer.cfg.num_envs, np.float32) if v is None else np.asarray(v, np.float32)
+
+    # On a situation's steps the reward is the situation's score alone: the game's shaping (tower potentials, troop
+    # trades, the flawless-defence bonus) is zeroed there, or rushing the enemy tower would still pay. Patched in the
+    # trainer's module namespace (the fork's python_ai/ is not edited).
+    _shaping, _flawless = bt.compute_shaping, bt.flawless_defense_bonus
+    current = {}
+    bt.compute_shaping = lambda *x, **k: _shaping(*x, **k) * (1.0 - situation_mask(current["t"]))
+    bt.flawless_defense_bonus = lambda *x, **k: _flawless(*x, **k) * (1.0 - situation_mask(current["t"]))
+
     class CloneTrainer(ts.Phase2Trainer):
         pipeline_name = "rl_clones"
+
+        def __init__(self, *x, **k):
+            super().__init__(*x, **k)
+            current["t"] = self
+            self.situation_scores: dict[str, list[float]] = {}
+
+        def _truncation_bootstrap(self, dones, raw_rewards, next_obs, truncateds):
+            # a situation's end is final: its score is the whole return (no bootstrap from the game that would
+            # have gone on)
+            boot = super()._truncation_bootstrap(dones, raw_rewards, next_obs, truncateds)
+            end = self.envs.infos.get("rl_situation_end")
+            if end is not None and np.any(end):
+                e = torch.as_tensor(np.asarray(end, np.float32), device=self.device)
+                boot["nonterminal"] = boot["nonterminal"] * (1 - e)
+                boot["flag"] = boot["flag"] * (1 - e)
+                boot["value"] = boot["value"] * (1 - e)
+            return boot
+
+        def on_episode_end(self, i, ctx):
+            end = ctx.infos.get("rl_situation_end")
+            if end is not None and end[i]:
+                self.situation_scores.setdefault("all", []).append(float(ctx.infos["rl_situation_score"][i]))
+                if len(self.situation_scores["all"]) % 100 == 0:
+                    last = self.situation_scores["all"][-100:]
+                    print(f">>> situations: last 100 scores mean {np.mean(last):+.3f} "
+                          f"(n={len(self.situation_scores['all'])})", flush=True)
+                    self.writer.add_scalar("Situations/Score100", float(np.mean(last)), self.episodes_completed)
+            super().on_episode_end(i, ctx)
 
         def run_update(self):
             # Critic warm-up: imitation never trained the value head, so its early advantages are noise (the smoke
@@ -89,7 +151,7 @@ def main():
 
         def build_envs(self):
             seeds = worker_seeds(self.cfg.seed, self.cfg.num_envs)
-            return gym.vector.AsyncVectorEnv([make_clone_env(seed=s) for s in seeds])
+            return EnvsWithInfos(gym.vector.AsyncVectorEnv([make_clone_env(seed=s) for s in seeds]))
 
         def build_replay_env(self):
             return None
