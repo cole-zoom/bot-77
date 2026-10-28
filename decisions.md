@@ -2763,3 +2763,10 @@ Full write-up: docs/simulator-validation.md. Held-back only (48 games, 346 windo
   defence); Fireball first in 2-3 of 25 even in the two Fireball scenarios. It answers at once but often with the
   wrong card. The log's ScenDef ~0.98-1.00 only checks the episode reward stayed above -0.5, which a big hit in a
   short window rarely trips: it hid this. Lever for round 3: weight the scenarios up and judge them on tower HP lost.
+- **Openings (Cole: "every first play I've seen is just a bum rush").** Real games: round 2 (Bomber, 15 games) opens
+  ~5 s in at ~8 elixir with Mini P.E.K.K.A 6 / Battle Ram 5 / Mega Minion 2 / Bomber 1 / Arrows 1, mostly at the
+  bridge; the 8k snapshot (Archers) opened with Mega Minion 5 / Goblin Hut 4 / Mini P.E.K.K.A 3 / ... Round 2 got
+  more aggressive. **Next (Cole):** design scenarios together to punish the rush and teach defence and counter-attack:
+  per scenario the setup (units, positions, elixir, hand), what good play looks like (Cole), and scoring on tower HP
+  lost / elixir trade / damage after the defence (not the fork's reward > -0.5). Built in bot77.rl.clone_env, the
+  fork untouched.
