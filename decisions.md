@@ -2810,3 +2810,12 @@ Full write-up: docs/simulator-validation.md. Held-back only (48 games, 346 windo
   second (one model run ended at 5 s, its damage missed): neutral must now hold 2 s. Replays now: Hog -0.12 / -0.08,
   Ram -0.35 / -0.12, Prince -0.68, Knight -0.44; the supported push still fails (-2.1 / -3.2, unresolved): Cole's
   reference defence needed. A Mega Minion stood idle in one replay; in a re-run it attacked (watching for it).
+- **Cole's supported-push defence**, scripted: Goblin Hut in the middle as soon as affordable to pull the tank; without
+  it, cycle Bomber in the back; once tank and support pack at the bridge, Fireball the support (Arrows on Minions);
+  then Mini P.E.K.K.A / Mega Minion on the support (Mega Minion only against air). The Hut had to move one tile toward
+  the river, to (8.5, 12): a Giant notices buildings within 7.5 tiles here, and at y 11 it walked past (~7.8 tiles).
+  Mega Minion is now first against every melee threat (a lone Bomber lost to the Knight). Exam now (20 seeds each),
+  nothing / rush / scripted defence / round-2 model: Hog -1.15 / -1.33 / **-0.25** (3.9 elixir) / -0.75 (7.4);
+  Ram -1.36 / -1.53 / **-0.28** (6.0) / -1.03 (8.8); melee -1.30 / -1.41 / **-0.58** (2.8) / -0.62 (6.1); supported
+  push -2.78 / -3.09 / **-1.36** (9.7) / -1.90 (14.9). The Golem push still beats the yardstick (6-8 elixir against
+  a Golem + support), the Giant push is now held (one replay -0.47, 634 tower HP).
