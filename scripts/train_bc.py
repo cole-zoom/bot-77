@@ -16,7 +16,7 @@ weight (--play-weight; plays are ~1% of the rows, against ~10% at 1 s).
 
 --demos data/cache/bc/defence_t01 (2026-10-28, the defence school; scripts/build_defence_demos.py): the scripted
 defence's and Cole's situation episodes, --demo-share of every batch. A scripted episode is kept only if it scored at
-least its template's median (the better half: the script loses some of every template, the emergency most of all);
+least its template's median and above -2 (the better half; none of the emergency, which the script loses);
 Cole's are all kept, weighted as built (3). Every window that starts at an episode's first step (all the demos, the
 start of a pro game) is trained from that step: the LSTM is fresh there, so no burn-in is needed, and the demos'
 first decision is often the answer itself.
@@ -183,7 +183,8 @@ def load_demos(path: Path) -> list[dict]:
         if e["src"] == "script":
             med.setdefault(e["tpl"], []).append(e["score"])
     med = {k: float(np.median(v)) for k, v in med.items()}
-    return [e for e in eps if e["src"] != "script" or e["score"] >= med[e["tpl"]]]
+    # and never below -2 (the script's better half of the emergency still loses about a tower: not worth copying)
+    return [e for e in eps if e["src"] != "script" or (e["score"] >= med[e["tpl"]] and e["score"] > -2.0)]
 
 
 def main():

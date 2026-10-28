@@ -3233,3 +3233,19 @@ Full write-up: docs/simulator-validation.md. Held-back only (48 games, 346 windo
   straying from it); gate: beats the defence school on the exam without spending more, then 20 real games. (3) the
   scenario flag and a higher elixir cost only if a failure calls for them. Add an opening check to the exam (the first
   10 s of a full game).
+- **The exam ran every player once a second until now:** CloneEnv's decision_ticks defaults to 10 and
+  situation_exam.py never set it, so v3 / v4 (trained at 0.1 s) were examined off their pace, and every exam number
+  above is at 1 s. Fixed: `--ticks`, default 1 (0.1 s). The 50-seed baseline is re-run at 0.1 s
+  (data/models/rl_clones_v4/exam_n50_t01.txt). At 0.1 s the "rush" reference plays far more (10.3 elixir on the hog
+  at 3 seeds against 8.4 at 1 s).
+- **Defence-school demos built** (scripts/build_defence_demos.py, 407 s on 4 workers; data/cache/bc/defence_t01,
+  local, 162 MB): the scripted defence on all ten templates, seeds 0-499 each (the exam uses 10,000+), plus Cole's 142
+  play-page games replayed from their starts (weight 3); 5,142 episodes, 1.21M decisions at 0.1 s. Script mean scores
+  on those seeds: arrows +0.02, ram -0.39, defend+counter -0.50, overcommit +0.01, emergency -3.22, fireball -0.05,
+  hog -0.16, melee -0.58, safe opening +0.08, supported push -1.56. Kept for training: the script's better half of each
+  template (at or above its median, and above -2, so no emergency) and all of Cole's: 2,564 episodes, 506k decisions.
+- **Defence-school training started** (data/models/bc_defence_v1, scripts/train_bc.py): from bc_t01/frozen.pth (the 0.1 s
+  pro imitation, before calibration), pro shards_t01 plus the demos at 5 of every 16 windows, window 256 / burn-in 64
+  (none on windows from an episode's start) / play weight 50, 10 epochs of 200 steps, every epoch saved for the exam.
+  Held-back pro scores before training: card at plays 37.5%, play/wait AUC 0.745, cell 4.1 tiles. Gate: exam mean
+  clearly above v4's, elixir toward the script's, pro held-back scores kept.
