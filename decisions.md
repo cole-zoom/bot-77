@@ -2857,3 +2857,26 @@ Full write-up: docs/simulator-validation.md. Held-back only (48 games, 346 windo
   restarted game could overwrite the new one. Now: a real 3-2-1 that holds the game, buttons built once and picked on
   press (20/20 picks in a stress test), speed live (1.00 / 0.50 / 0.25 game-seconds per second), clean restarts.
   Cole's 38 Hog / Battle Ram games kept; the 2 others set aside to redo.
+## 2026-10-28 · Building pulls, measured on the pro replays (the tower targeting radius)
+- Cole: a Goblin Hut in the middle should pull a lane Giant; the engine's doesn't. Cause: building-targeters rank
+  candidates by distance to the footprint edge, and Tower::getTargetingRadius is 3.3 for a princess tower (4.4 King),
+  fitted to one example (a Hog passing a Cannon 7-8 tiles off-lane); the tower's body is 1.5. A Hut pulled a Giant at
+  (2.6, 12.8) only from within ~4.5 tiles.
+- scripts/measure_pulls.py: v5l_e15 detections of 486 replays (train / dev / held-back; never test / held-out), tracks
+  of building-targeters on the defender's side while a defender building stands, decided at the first such moment
+  with the troop >= 4 tiles from its lane tower's centre; PULLED if it reaches the building (2.6) before the tower
+  (3.3). 667 ground events (536 pulled), 58 held-back, 47 flyer events apart.
+- **Accuracy of "pulled iff d_building - 1 < d_tower - R" (sight-gated): R 3.3 (engine) 67.6%, best R 1.2-1.5 89.8%
+  (= the collision radius 1.5); held-back 67.2% vs 89.7%.** R 2.0 88.0%, 2.5 83.5%, 3.0 75.0%. Per troop, 3.3 vs 1.5:
+  Hog Rider 63 / 91% (215), Royal Hogs 73 / 91% (197), Elixir Golem 80 / 84% (61), Giant 47 / 85% (47), Wall
+  Breakers 61 / 91% (33), Golem 79 / 93% (29), Battle Ram 72 / 88% (25), Electro Giant 70 / 91% (23), Ram Rider
+  61 / 91% (23). Pull rate by d_tower - d_building: 0 tiles 5/31, +1 60/79, +2 154/169: the boundary sits ~0.5 tile
+  past "the building is closer", i.e. R - r ~ 0.5. Sight is not the binding limit (3 of 536 pulls from beyond it).
+  Flyers (Balloon, Lava): 23 / 47 pulled, 3.3 fits them slightly better (83 vs 79%; n small).
+- Noise: ~10% of events disagree with any R (Teslas hidden underground, a Tombstone / Cage killed early, decisions
+  already made on the bridge). Examples to check in the script's output (e.g. tv_2026-10-13_r101_m01 t=233.8).
+- **Proposed engine change, NOT applied (the fork's rules: Cole sees it first):** include/entities/Tower.h
+  `getTargetingRadius()`: `return (symbol == 'R') ? 4.4f : 3.3f;` -> `return getCollisionRadius();` (1.5 / 2.0).
+  It also changes troop target ranking (CombatEntity::findTarget uses the same footprint), so kiting near a tower too;
+  tests/core/test_sight_range.cpp's Hog-and-Cannon cases (~lines 410-500) pin the old fit and need re-deriving.
+  GAMEPLAY-AFFECTING: every defence in the sim changes; the RL rounds so far were trained on the old ranking.
