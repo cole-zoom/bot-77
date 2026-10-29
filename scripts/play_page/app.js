@@ -45,7 +45,7 @@ const cv = $("board"), ctx = cv.getContext("2d");
 let W = 0, H = 0, sx = 1, sy = 1, dpr = 1, C = {}, terrain = null;
 const X = x => (x + 0.5) * sx, Y = y => H - (y + 0.5) * sy;
 function readColors() {
-  for (const n of ["grass", "grass2", "river", "bridge", "dead", "grid", "gridlab", "ours", "theirs", "accent", "legal", "illegal", "hover", "elx"]) C[n] = css("--" + n);
+  for (const n of ["grass", "grass2", "path", "river", "bridge", "dead", "grid", "gridlab", "ours", "theirs", "accent", "legal", "illegal", "hover", "elx"]) C[n] = css("--" + n);
   C.team = [C.ours, C.theirs];
 }
 function resize() {
@@ -67,6 +67,9 @@ function buildTerrain() {   // tiles, river, bridges, grid and coordinates: redr
   for (let y = 0; y < NY(); y++) for (let x = 0; x < NX(); x++) {
     g.fillStyle = deadAt(x, y) ? C.dead : (x + y) % 2 ? C.grass : C.grass2; g.fillRect(...cellRect(x, y));
   }
+  // The lane paths (the arena's lighter dirt track, bridge to tower to tower): one tile wide on each bridge's centre.
+  g.fillStyle = C.path;
+  for (const bx of B.bridge_x || []) g.fillRect((bx - 0.1) * sx, sy, 1.2 * sx, H - 2 * sy);  // engine x -> px is (x + 0.5) * sx
   const [r0, r1] = B.river;
   g.fillStyle = C.river; g.fillRect(0, H - (r1 + 0.5) * sy, W, (r1 - r0) * sy);
   g.fillStyle = C.bridge;
