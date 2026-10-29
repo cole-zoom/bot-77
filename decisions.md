@@ -3521,3 +3521,26 @@ Full write-up: docs/simulator-validation.md. Held-back only (48 games, 346 windo
   Restarted for the remaining 53 games (run75b, chunks of 20):
 
   uv run --no-sync python scripts/live_with_replays.py --ckpt data/models/bc_defence_v2/epoch03_cal20.pth --games 53 --chunk 20 --tag run75b
+- **P5 started (2026-10-29 ~04:15): the opponent's estimated elixir as an input** (Cole's OK on fork C++; the main
+  session reviews the exact diff). Built and run apart from the 53-game live run, which keeps importing the old
+  13977 build and src/bot77 from main: the fork change lives in a fork worktree (uncommitted; diff in
+  data/work/p5/fork.diff for review), its module in data/work/p5/lib, and the bot77 side on branch `p5-opp-elixir`
+  (a worktree under data/work/p5, gitignored), run with PYTHONPATH pointing there.
+  - **The edit:** a spend setter (`set_elixir_spent(team, value)`, ElixirStatsCollector::setTotal, not clamped so a
+    template's full bar at tick 0 can be stated with a negative spend), a closed-form regen
+    (`GameManager::regenThroughTick`, bound as `elixir_regen_through_tick`, one rate constant shared with step()),
+    `get_elixir_estimate(team)` = clip(5 + regen(now) - spent, 0, 10), and observation scalar 10 = the opponent's
+    estimate / 10. NUM_EXTRA_SCALARS 10 -> 11, CYCLE_START 13607 -> 13608, observation 13977 -> 13978.
+  - **Tests:** fork Catch2 758 cases, 757 pass + the 1 marked should-fail (3 new cases for the estimate pass); fork
+    Python 1002 pass / 7 fail, the same 7 failing on the old build (stat-audit drift, not P5); ours 122 pass +
+    test_cards::test_curated_coverage (fails on main too); the branch on the old build: the 5 new tests skip, the rest
+    as main. The fork's verify_pyd.py tripwire moved to 13978 (its tick-1800 triple-elixir check is stale on both
+    builds).
+  - **Wiring (branch):** `bot77.sim.engine.sync_spent_to_bars` sets each side's spend so the estimate reads that side's
+    bar; called by the mirror (live: the bar is selfplay's existing 5 + regen - seen spend; replays: the HUD's) and by
+    every situation template (Situation.__init__, before spent0). A no-op on the old build.
+  - **Zero-pad migration reproduces to the digit.** v2 epoch 3 (and its cal50 / cal20 copies) widened with the fork's
+    migrate_checkpoint_elixir_phase.py (12 zero weights; encoder output unchanged for scalar 10 in 0..1) into
+    data/models/p5/migrated. Exam n 50, all 15 templates + Cole's 142 starts, spend sync off: every number identical
+    to the old build's, cal50 and cal20 (the old-build rerun is itself identical to P2's exam_v2ep3.txt and P3's
+    tempo exam). Cal20 (the live model): defence mean -0.890, Cole's starts -0.79 (beats him on 38).
