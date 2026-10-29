@@ -52,7 +52,9 @@ def main():
         time.sleep(2)
     header, rows, tail = None, [], []
     for name, _ in jobs:
-        lines = [l for l in (parts / f"{name}.txt").read_text().splitlines() if "warn" not in l.lower()]
+        # (the loader's notes on a checkpoint migrated by zero-padding, e.g. the clone under the P5 build, go too)
+        lines = [l for l in (parts / f"{name}.txt").read_text().splitlines()
+                 if "warn" not in l.lower() and not l.startswith("[historical opponent")]
         if name == "_reference":
             tail = [l for l in lines if l.startswith("Cole") or l.startswith("score")]
             continue
