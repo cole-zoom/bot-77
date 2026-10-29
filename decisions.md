@@ -3273,3 +3273,13 @@ Full write-up: docs/simulator-validation.md. Held-back only (48 games, 346 windo
 - **Defence school v2 started** (data/models/bc_defence_v2): from v1's epoch 3, demos 70% of every batch, `--lead 3`
   (a demo play also labels the 0.3 s before it), 8 epochs of 200 steps; after each epoch the timing measure above on the
   same 80 demos (train_bc.py `timing`). Want: expected plays near the script's toward ~1, elsewhere toward 0.
+- **Defence school v2, epoch 0** (20 min; data/models/bc_defence_v2/exam_epoch00.txt, 50 seeds, 0.1 s). Timing on the
+  80 demos: plays near the script's 0.13 -> 0.56, elsewhere 1.30 -> 2.51 (the lead labels made "play" ~4x as common, so
+  the log(50) calibration under-corrects; near / elsewhere 0.10 -> 0.22). Pro held-back slipped (AUC 0.745 -> 0.713,
+  cell 4.1 -> 5.0 tiles: the cost of 70% demos). **Exam mean -0.92 at the usual calibration (log 50)**: v4 -1.19, school
+  v1 -1.06, scripted -0.63; elixir 10.4 (script 7.7). Per template (v2 ep0 / v4 / script): hog -0.58 / -0.57 / -0.11,
+  ram -0.81 / -0.98 / -0.34, melee -0.72 / -0.69 / -0.61, supported -1.62 / -2.17 / -1.54, arrows -0.85 / -0.53 /
+  +0.11, fireball -0.57 / -0.90 / -0.09, emergency -2.86 / -3.42 / -3.26 (better than the script), opening -0.03 /
+  -0.35 / +0.06, defend+counter -0.81 / -1.20 / -0.53, overcommit -0.39 / -1.05 / +0.03. Cole's starts: -0.84 (v4 -1.23,
+  script -0.63, Cole -0.31). Calibrated for the 4x (log 200): elixir 7.7, the script's, but mean -1.07: playing too
+  little costs more than over-spending, so log 50 stays.
