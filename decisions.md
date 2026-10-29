@@ -3294,3 +3294,8 @@ Full write-up: docs/simulator-validation.md. Held-back only (48 games, 346 windo
   play chance passes ~1/51): mean -1.03, elixir 8.7; better on hog -0.47, ram -0.68, supported push -1.42 (better than
   the script's -1.54), defend+counter -0.69; worse on overcommit -0.84, fireball -1.08, melee -0.90. Cole's starts
   -0.92 (beats him on 33 of 142, the most of any model). Mixed: sampling at log-50 calibration stays the default.
+- **Defence school v2, epoch 3:** timing on the demos near 1.12, elsewhere 2.66 (near / elsewhere 0.42, the best).
+  **Exam -0.90** (ep 0 -0.92, ep 1 -0.93; v4 -1.19, script -0.63), elixir 10.0. Supported push -1.40 (the script
+  -1.54), melee -0.63 (-0.61), defend+counter -0.67, emergency -2.99; still weak on hog -0.56 (-0.11) and arrows -0.88
+  (+0.11). Cole's starts -0.87, beats him on 33 of 142 (v4: 14). Imitation has plateaued at about -0.90: stopped after
+  epoch 3 (epochs 4-7 not run). Epoch 3 is the start for the leashed RL round.
