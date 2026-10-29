@@ -3662,3 +3662,14 @@ Full write-up: docs/simulator-validation.md. Held-back only (48 games, 346 windo
   code via REA (github.com/morluto/rea, Cole's pick), the replays. P0 groundwork today (tile grid, field coverage, the
   lifetime cause, lab tooling, native-library feasibility), P1 data parity, P2 mechanics parity (12 mechanics, each
   with a lab test), P3 validation, P4 back to training only after the gate. No training until then.
+- **P0.5 native library feasibility (2026-10-29 ~10:15): the battle code can't be read from the file.** The arm64
+  split of the 2026-10-09 bundle (~/tools/cr_apk; the 10-28 pull only took the asset pack) has libg.so (28 MB,
+  stripped, no exported symbols) and libsupercell_clashroyale.so (7 MB). Neither holds any logic field name
+  (LoadTime, HitSpeed, CollisionRadius, ...: 0 hits, nor in any other bundled .so). libg.so's byte entropy is 8.0
+  bits/byte from 8 to 24 MB, i.e. its code is encrypted or packed and only decrypted in memory at run time. Ghidra / REA
+  on the file would see noise. Reading the code needs a dump of the decrypted library from the running game, which
+  needs root in BlueStacks (/proc/<pid>/mem) and may trip the game's tamper checks.
+  - Installed for when that's possible: Ghidra 12.1.4 (official release, SHA-256 matches GitHub's
+    ddac49f9...d4db) and Temurin JDK 21.0.13 (checksum matches Adoptium's) under ~/tools. REA 6.8.0 not installed:
+    its setup needs Node 26.12.1+ (have 26.8.1), and it can't help before a decrypted dump exists.
+  - Until then P2 runs on the client tables plus lab battles.
