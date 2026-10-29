@@ -14,6 +14,9 @@ from functools import lru_cache
 from bot77.sim.scenario import _rows
 
 RUN = "v5l_e15"
+# Spells that fly from the King to where they land: their first detection is the projectile in flight (a Rocket
+# read at its launch, 6 tiles short of the Hog it killed; 2026-10-29), not the landing point. No spot for these.
+FLYING_SPELLS = {"Fireball", "Rocket", "Giant Snowball", "Goblin Barrel"}
 AFTER_S, BEFORE_S, NEAR = 2.5, 1.5, 2.0
 TEAM = {"bottom": "friendly", "top": "enemy"}
 
@@ -34,6 +37,8 @@ def recover(game_id: str, play: dict) -> tuple[float, float] | None:
     """(x, y) box centre in the bottom frame for a play (card, side, t = video time), or None."""
     if play.get("x") is not None:
         return play["x"], play["y"]
+    if play.get("card") in FLYING_SPELLS:
+        return None
     dets = _dets(game_id).get((play["card"], TEAM[play["side"]]), [])
     t = play["t"]
     before = [(x, y) for tt, x, y in dets if t - BEFORE_S <= tt < t]

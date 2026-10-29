@@ -3733,3 +3733,55 @@ Full write-up: docs/simulator-validation.md. Held-back only (48 games, 346 windo
     likely higher: read the tower max HP and the Battle Log entry); starting elixir; the HUD reader on a friendly
     battle's screen; real ADB taps landing on the tile (the live AIM_DY -0.55 is 0.75 of an engine row; L00 and L19 measure
     it on buildings); who accepts the invite on BlueStacks (by hand).
+- **Why units outlive their real selves: traced (2026-10-29, held-back only; scratch work in data/work/sim_fix).**
+  Mean sim - real life time over the same held-back windows (life_diff, every play accepted): **+1.82 s -> +1.27 s**;
+  what is left is not explained yet. Per cause:
+  - **The replay side reads deaths early (measurement, -0.33 s).** (a) The detector misses units for a frame or
+    three mid-fight and mislabels them (Archers read as Firecracker / Rascals while standing still on video, a
+    Valkyrie seen in 6 of its 21 frames); the "last run of 2 consecutive frames" rule then dates the death seconds
+    early. Frames up to 1 s apart now count as one run (`validate.RUN_GAP_S`): -0.26 s on its own. Counting
+    single frames too (MIN_RUN 1, which also counts mislabels) gives -0.47 s; the truth is between. (b) **Tesla**
+    hides underground between targets (its HP bar stays; checked on video, tv_2026-10-13_r54 at 71 s: "dies" after
+    3 s, alive for the whole window): Tesla, Royal Ghost, Suspicious Bush are left out of life_diff
+    (`validate.HIDES`). (c) **Flying spells were placed at their launch point**: a Rocket's first detection is in
+    flight beside the King, 6 tiles short of the Hog it killed (tv_2026-10-14_r11 at 12 s; tv_2026-10-12_r32 at
+    75 s, Royal Hogs): Fireball / Rocket / Snowball / Goblin Barrel get no spot from detections now
+    (`spots.FLYING_SPELLS`), so the window ends there. 15 of 241 windows.
+  - **Princess Towers had the Knight's load time (engine bug, since 10-24).** `towerTroopStats()` leaves
+    `CardStats::id` at 0 (the Knight), so `applyCardMetadata` gave every Princess Tower a 0.7 s windup on every new
+    target and a 1 s deploy after reset (the King, built the other way, had neither). Part of why switching load
+    times on (10-24) made life times worse. Fixed in the fork worktree (towers: no load, no deploy).
+  - **Load time was applied backwards (engine).** The engine waited the whole LoadTime before each first hit (Knight
+    0.7 s, Valkyrie 1.4 s, Bomber 1.6 s). The game: a unit loads LoadTime while not attacking, so a loaded unit's
+    first hit lands HitSpeed - LoadTime after it starts (Knight 0.5, Valkyrie 0.1, Bomber 0.2, Hog 0.6, Musketeer
+    0.7: slower). Sources: RoyaleAPI "The Secret Stats" (royaleapi.com/blog/secret-stats; Knight 1.2 - 0.7 = 0.5);
+    Supercell's balance notes call it "first hit speed" (Archers 0.1 -> 0.5 s in April 2023 = 0.9 - 0.4); the
+    client's LoadFirstHit is set only on Sparky (she spawns unloaded). Measured on replays: a lone Hog's play to
+    its first tower hit (tower HP OCR every 0.1 s, 12 train / held-back plays) was 0.35 s late in the sim, -0.05 s
+    with the fix; Battle Ram +0.35 -> +0.05. Load and first-hit times now come from the client tables
+    (`scripts/sim_load_times_client.py`; ~35 cards' 2023 RoyaleAPI values were stale), spawned bodies take their
+    card's, and huts / lock-on cards (Inferno, Mighty Miner: load >= hit speed) keep the old rule. Effect on held-back
+    life times -0.22 s (tower fix about half of it).
+  - **Ruled out:** clock rate (video time vs game clock slope 1.000-1.008 on 48 games; ticks are 0.1 s); walking
+    speed and deploy (move-start vs replay within +-0.15 s for 11 of 16 cards; along-lane lag: sim units are 0.0-0.2
+    tiles *ahead*); hit speed (Hog's tower hits 1.6 s apart on video, as in the engine); tower arrows (engine's are
+    faster than the client's 600, not slower).
+  - **Numbers, held-back 48 games** (sim_validation runs; engine column says which build): s2_heldback_2026-10-29
+    (restored, below) / s2_heldback_2026-10-29_meas (measurement fixes, current engine) / simfix_final_meas (both):
+    life mean +1.82 / +1.49 / +1.27 s (median +1.75 / +1.50 / +1.25); fight winner (both played) 64.3% / 63.3% /
+    62.4% (n 241 / 226 / 226: within noise, SE ~3 pts); big tower damage, sim / real summed: own 0.57 / 0.58 / 0.54,
+    opp 0.66 / 0.62 / 0.67. **Fight winners and tower damage did not move.**
+  - Not yet fixed, ranked (field-by-field table of the client's behaviour fields vs the engine, same day): shots
+    wasted on doomed units (client USE_TARGET_QUEUEING / pending damage; engine has none), splash shots that vanish
+    when their target dies (client ALLOW_AOE_ATTACKS_WITHOUT_TARGET), crown towers' +2 tiles of sight
+    (EXTRA_SIGHT_RANGE_TO_CROWN_TOWERS; the engine gives troops +1.75 over towers instead), fixed projectile speeds
+    (1.5 / 2.0 tiles a tick for every unit and tower; client 170-1000), one troop radius (0.4) and no Mass, Royal
+    Hogs' charge (client has none), Balloon / Golem death bombs.
+  - **Data bug found and fixed:** `bot77.sim.store.write` checked `table in db.table_names()`, which returns one
+    page (10 of 47 tables), so every write to sim_validation (and sim_runs) replaced the whole table: only the last
+    run survived (the 10-24 runs are gone). My first run erased s2_heldback_2026-10-29; it was re-run on the same
+    engine and matches the logged numbers exactly. Fixed (`store._exists`); `build_sources.py` had the same call.
+  - Engine changes are uncommitted in a fork worktree (data/work/sim_fix/fork, diff data/work/sim_fix/fork.diff,
+    C++ suite 758 cases, 1 expected failure); GAMEPLAY-AFFECTING for every card and both towers. Four existing tests
+    pinned the old timing and were updated (Battle Ram, X-Bow, Firecracker, Evo Furnace); the Cannon-vs-Hog QA
+    test now sees two Hog swings instead of one (Cannon first shot 0.9 s = 1000 - 100 ms): a question for Cole.

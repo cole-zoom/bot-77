@@ -23,6 +23,11 @@ below are **held-back** (48 games), never test / held-out. Engine: fork commit i
   feet: `FEET_DY` 1.27 for ground units; flying units sit ~2.0 above their shadow, spells ~0 (from both players'
   forward-most placements, which mirror about the river).
 
+**Method changes, 2026-10-29** (decisions.md, "Why units outlive their real selves"): a replay unit's death is the
+end of its last run of detections with gaps up to 1 s (was: consecutive frames); Tesla, Royal Ghost and Suspicious
+Bush are left out of life times (they vanish alive); flying spells (Fireball, Rocket, Snowball, Goblin Barrel) get
+no spot from detections (the first one is in flight). Held-back life mean +1.82 -> +1.49 s from these alone.
+
 ## Numbers (held-back)
 
 | | empty start (105 windows, 98 with every play accepted) | 1-2 units at start (241, 196) |

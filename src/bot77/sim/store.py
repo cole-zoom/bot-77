@@ -24,13 +24,24 @@ def engine_commit() -> str:
     return sha + ("+dirty" if dirty else "")
 
 
+def _exists(db, table: str) -> bool:
+    """Whether the table exists. Not `table in db.table_names()`: that call returns one page (10 names) of the 47
+    tables, so a table past the first page read as missing and `write` overwrote it (found 2026-10-29: every
+    sim_validation write since the table count passed 10 replaced the whole table, keeping only the last run)."""
+    try:
+        db.open_table(table)
+        return True
+    except (FileNotFoundError, ValueError):
+        return False
+
+
 def write(table: str, rows: list[dict], mode: str = "append", where: str | None = None) -> int:
     """Append (or overwrite) rows; `where` first deletes the rows it matches (re-running a run replaces it)."""
     if not rows:
         return 0
     db = lancedb.connect(DB)
     data = pa.Table.from_pylist(rows)
-    if table in db.table_names() and mode == "append":
+    if _exists(db, table) and mode == "append":
         t = db.open_table(table)
         if where:
             t.delete(where)

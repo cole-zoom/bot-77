@@ -53,7 +53,7 @@ for g in bot_games:
         results[g["game_id"]] = g["result"]
 results = {k: v for k, v in results.items() if v in ("win", "loss")}
 # replays' results read off their end screens (scripts/fill_results.py -> match_results), kept across rebuilds
-if "match_results" in db.table_names():
+if "match_results" in db.table_names(limit=10**6):
     for r in db.open_table("match_results").to_arrow().to_pylist():
         results.setdefault(r["match_id"], r["result"])
 

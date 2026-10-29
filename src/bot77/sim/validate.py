@@ -267,14 +267,21 @@ def _first_run(ts: list[float], min_run: int) -> float | None:
 
 
 MIN_RUN = 2  # a replay unit counts as there only in runs of this many frames (one-frame flickers and mislabels)
+# ...where frames up to this far apart count as one run (2026-10-29): the detector misses units for a frame or
+# three mid-fight (Valkyrie seen in 6 of 21 frames of its life), and a strict run of consecutive frames read their
+# death seconds early. Moved the held-back life bias -0.26 s (engine 5e7711b, 1.82 -> 1.56 mean).
+RUN_GAP_S = 1.0
+# Cards the detector loses while they are alive: Tesla under the ground between targets (its HP bar stays),
+# Royal Ghost and Suspicious Bush invisible. Their replay "death" is not one; left out of life_diff.
+HIDES = {"Tesla", "Royal Ghost", "Suspicious Bush"}
 
 
-def _last_run(dts: list[float], min_run: int) -> float | None:
-    """The end of the last run of >= min_run consecutive frames (DET_DT apart) in sorted times."""
+def _last_run(dts: list[float], min_run: int, gap: float = DET_DT * 1.5) -> float | None:
+    """The end of the last run of >= min_run frames in sorted times, frames up to `gap` apart counting as one run."""
     dts = sorted(dts)
     best, run_start, prev, n = None, None, None, 0
     for t in dts:
-        if prev is not None and t - prev <= DET_DT * 1.5:
+        if prev is not None and t - prev <= gap + 1e-6:
             n += 1
         else:
             run_start, n = t, 1
@@ -323,9 +330,9 @@ def metrics(g: Game, w: dict, r: dict) -> list[dict]:
     end = r["frames"][-1][0] if r["frames"] else 0.0
     played = {(p["card"], SIDE[p["side"]]) for p in w["plays"]}
     for (card, team), p in present.items():
-        if (card, team) not in played:  # only units played in the window: start units' HP is unknown
+        if (card, team) not in played or card in HIDES:  # start units' HP is unknown; hiders vanish alive
             continue
-        ls, ld = _last_run(p["sim"], 1), _last_run(p["det"], MIN_RUN)
+        ls, ld = _last_run(p["sim"], 1), _last_run(p["det"], MIN_RUN, RUN_GAP_S)
         if ls is None or ld is None:
             continue
         if min(ls, ld) < end - 1.0:  # at least one side lost it before the window ended
