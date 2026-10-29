@@ -3511,3 +3511,13 @@ Full write-up: docs/simulator-validation.md. Held-back only (48 games, 346 windo
   - Stopped there as the plan says: no RL, no live games. v2 epoch 3 stays the model to run live (log 20 calibration,
     8-2); `--full-bar-guard` and the spell guard (on in live decide() for every selfplay run now) are the live-side
     changes from this plan.
+- **75-game run, replay break 1 (2026-10-29 03:04-04:15):** 22 replays recorded (data/raw/replays/2026-10-29,
+  ~3 min each). The first version of the LaCie move then took every older video, not just this run's: all 342 older
+  live-game recordings (data/raw/live_games/*/game.mkv) and the 2026-10-17 / 10-20 / 10-23 replays plus 11 of 10-24
+  are now on the LaCie behind symlinks (paths still resolve while it's mounted). The replay test set (10-12 r01 /
+  r08 / r12 / r13) and 10-22 stayed on the laptop: the run was stopped mid-move between chunks (no game in progress)
+  and the one half-copied file removed from the drive. Laptop disk 94% -> 85%. The move now only takes the run's own
+  videos. To do after the run: scripts/build_media.py and scripts/inventory.py (the media table's tiers are stale).
+  Restarted for the remaining 53 games (run75b, chunks of 20):
+
+  uv run --no-sync python scripts/live_with_replays.py --ckpt data/models/bc_defence_v2/epoch03_cal20.pth --games 53 --chunk 20 --tag run75b

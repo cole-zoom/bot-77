@@ -44,14 +44,16 @@ def live_running() -> bool:
     return subprocess.run(["pgrep", "-f", "scripts/live_play.py"], capture_output=True).returncode == 0
 
 
-def to_lacie(sup: Path) -> None:
-    """Videos older than 2 min (finished) -> the LaCie, a symlink left behind (memory: storage on the LaCie)."""
+def to_lacie(sup: Path, since: float) -> None:
+    """This run's videos (newer than `since`, older than 2 min: finished) -> the LaCie, a symlink left behind (memory:
+    storage on the LaCie). Only this run's: the first version took every older replay folder too (2026-10-29), and
+    some of those are test sets meant to stay on the laptop."""
     if not LACIE.parent.exists():
         log("LaCie not mounted: videos stay on the laptop", sup)
         return
     moved = 0
     for p in list(GAMES.glob("*/game.mkv")) + list(REPLAYS.glob("2026-*/replay_*.mp4")) + list(REPLAYS.glob("2026-*/replay_*.mkv")):
-        if p.is_symlink() or time.time() - p.stat().st_mtime < 120:
+        if p.is_symlink() or p.stat().st_mtime < since or time.time() - p.stat().st_mtime < 120:
             continue
         dst = LACIE / p.relative_to(ROOT / "data/raw")
         dst.parent.mkdir(parents=True, exist_ok=True)
@@ -72,6 +74,7 @@ def main() -> None:
     ap.add_argument("--adopt", default=None, help="the log of a live_play.py run already going: its first chunk")
     ap.add_argument("--decision-s", default="0.1")
     a = ap.parse_args()
+    since = time.time() - 6 * 3600 if a.adopt else time.time()  # an adopted run started before us
     sup = LIVE / f"{a.tag}_supervisor.log"
     record: list[str] = []
     chunk_no = 0
@@ -112,7 +115,7 @@ def main() -> None:
         r = subprocess.run(["uv", "run", "--no-sync", "python", "scripts/replay_runner.py", "-n", str(len(got)), "--no-known"],
                            cwd=ROOT, stdout=rlog.open("w"), stderr=subprocess.STDOUT)
         log(f"chunk {chunk_no}: replay runner exit {r.returncode} ({rlog.name})", sup)
-        to_lacie(sup)
+        to_lacie(sup, since)
         if (LIVE / "STOP_ALL").exists():
             log("STOP_ALL found: no more chunks", sup)
             break
