@@ -3373,3 +3373,11 @@ Full write-up: docs/simulator-validation.md. Held-back only (48 games, 346 windo
     every decision, so live the two spend scalars (the only opponent-elixir signal in the observation) are ~0 always,
     and the opponent's card-recency block is "just now" for every card seen. Live, the model can't count their
     elixir at all.
+- **P1 spell guard checked (2026-10-29 ~01:55).** tests/test_guards.py 7/7 pass. The exam with the guard on vs off
+  (school v2 epoch 3, log 50): Cole's starts -0.84 vs -0.87 (beats him on 34 vs 33); vetoes are rare (0-0.16 per
+  situation, 0.32 on don't-overcommit). The reach uses the engine's spell radius plus the target's hitbox, so a
+  Fireball on a troop or their tower is never vetoed; only spells that would touch nothing are. Exams:
+  data/models/elixir_spells/p1/ (local).
+- **Cole on the P5 C++ change (2026-10-29, verbatim):** "idrk c++ so if ur good with it im good". The fork's C++
+  diffs are now mine to approve after review (build + tests + bindings/obs-size check), with a plain-language summary
+  here; python_ai/ stays read-only.
