@@ -34,6 +34,30 @@ TOWER_PRESETS = {
 }
 
 
+def has_opp_elixir_input() -> bool:
+    """The engine build with plan P5's input (observation scalar 10: the opponent's estimated elixir, and the
+    `set_elixir_spent` setter). Older builds have neither; everything below is then a no-op, so code from this module
+    still runs on them."""
+    return hasattr(cre.ClashRoyaleEnv, "set_elixir_spent")
+
+
+def sync_spent_to_bars(env) -> bool:
+    """Plan P5: a state rebuilt mid-match (the live / replay mirror, a situation template) sets each side's cumulative
+    spend so the engine's elixir estimate, clip(5 + regen(now) - spent, 0, 10), reads that side's current bar. The bars
+    are what the caller set: the opponent's is our estimate live (5 + regen - what we saw them spend) and theirs
+    from the HUD in a replay; a template's is its spec. Without this the spend reads 0 in every rebuilt state and
+    the estimate is 5 + regen, capped at 10, whatever they hold. May go negative (a bar above what the clock allows,
+    e.g. a full bar at tick 0). Off with BOT77_NO_SPENT_SYNC=1 (the zero-pad reproduction check). Returns whether it
+    set anything."""
+    import os
+    if not has_opp_elixir_input() or os.environ.get("BOT77_NO_SPENT_SYNC") == "1":
+        return False
+    regen = float(cre.elixir_regen_through_tick(int(env.get_current_tick())))
+    for team in (OWN_TEAM, OPP_TEAM):
+        env.set_elixir_spent(team, 5.0 + regen - float(env.get_elixir_for_team(team)))
+    return True
+
+
 def legal_deck(deck: list[int]) -> list[int]:
     """8 engine ids in an order the engine accepts (an Evolution in slot 0, a Champion / Hero in slot 1, one more of
     either in the wild-card slot 2). Raises if no order fits."""

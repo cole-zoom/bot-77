@@ -861,6 +861,11 @@ class Situation:
                 game.step_self_play(4, 0.0, 0.0, 4, 0.0, 0.0, 1)
         if not spec.get("drop"):
             self._inject(deploy_ticks=0)  # already on the move (the supported push starts mid-push)
+        # plan P5: both sides' spend set so the engine's elixir estimate reads each bar the spec set (their estimate is
+        # observation scalar 10; the chill and press halves of a pair differ there). Before spent0 is read: the score
+        # counts spend from here.
+        from bot77.sim.engine import sync_spent_to_bars
+        sync_spent_to_bars(game)
         self.tower0 = [max(0, game.get_tower_hp(0, s)) for s in range(3)]
         # any standing Princess Tower's max (ours on the left reads -1 once it's destroyed: the desperate template)
         self.princess_max = float(max(game.get_tower_max_hp(t, sl) for t in (0, 1) for sl in (1, 2)))

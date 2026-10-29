@@ -10,7 +10,7 @@ from __future__ import annotations
 import numpy as np
 
 from bot77.sim import cards as sc
-from bot77.sim.engine import Sim
+from bot77.sim.engine import Sim, sync_spent_to_bars
 from bot77.sim.scenario import place_units
 
 
@@ -38,6 +38,9 @@ def mirror(own_deck: list[int], opp_deck: list[int], t_match: float, hand: list[
     place_units(sim, units)
     for e in opp_played or []:
         sim.env.note_played_card(1, e)
+    # plan P5: the spend that makes the engine's opponent-elixir estimate (observation scalar 10) read elixir_opp, and
+    # our own read elixir_own (a no-op on an engine without it)
+    sync_spent_to_bars(sim.env)
     sim.step(1)  # commit the injected units
     return sim
 
