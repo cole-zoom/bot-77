@@ -3795,3 +3795,14 @@ Full write-up: docs/simulator-validation.md. Held-back only (48 games, 346 windo
   replay-side death reading, 0.22 s these two bugs); fight winner and tower damage unchanged. The preload model's
   rule (first hit 0.5 s for a Knight, not 0.7) is still a hypothesis from RoyaleAPI / balance notes: lab tests L01,
   L02, L12 settle it tonight, and the sim side of lab_compare can run both models.
+
+## 2026-10-29 · Cole's answers to the attack-cycle questions
+
+Cole, asked the lifetime agent's six questions (unsure on some, says so himself):
+1. Knight vs Knight first swing 0.5 s or 0.7 s: can't say. Lab L01 settles it.
+2. Valkyrie / Bomber first hit almost instant on arrival: **yes**. Agrees with the preload model now in the fork (load happens while walking).
+3. Cannon vs Hog, one or two swings on the tower: depends on placement; "a cannon can fully counter a hog if placed right." Lab test, placement on the cheat sheet.
+4. Princess tower fires right away on a new target: **yes**. Agrees with the fix (towers have no load time).
+5. Next hit after a kill with another enemy in range: "after a full hit cycle I believe." Agrees with the preload model (hits stay HitSpeed apart).
+6. Full windup again after a Zap/stun: "no / it depends, not sure." Lab test.
+Two of six now have two sources (client LoadTime field + Cole): 2 and 4 settled; 5 is client + Cole's belief, lab to confirm.
