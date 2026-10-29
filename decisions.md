@@ -3562,3 +3562,10 @@ Full write-up: docs/simulator-validation.md. Held-back only (48 games, 346 windo
     310 steps an epoch, 4 epochs), from migrated v2 epoch 3, into data/models/bc_school_p5. Each epoch: exam (log 50,
     guard on, n 50), the defence gate against v2 epoch 3 as it runs today, the tempo report; stop after two failed
     gates in a row.
+- **School p5 epoch 0** (data/models/bc_school_p5/exam_epoch00.txt; two false starts first: a 13977 literal in
+  train_bc.py's batch, fixed on the branch): defence mean -0.885 -> -0.911; **gate FAIL** on arrows_value -0.88 ->
+  -1.07 (-0.19) and emergency -2.97 -> -3.13 (-0.16); dont_overcommit -0.28 (v3 ep0 -0.35, ep1 -0.57). Tempo: chill
+  -0.09, press_calm -0.22, desperate_even -0.19, desperate +0.07, spell_finish +0.07. Cole's starts -0.84 (beats him
+  on 29). Tempo report: right thing chill 6% / press_calm 70% / desperate_even 4% / desperate 94% / spell_finish 18%;
+  plays per 10 s calm 1.16, threat 1.29, ahead 3+ 2.19 (v3 ep0: 0% / 72% / 2% / 96% / 18%; 1.24 / 1.32 / 2.73).
+  Pro held-back AUC 0.720 -> 0.726.
