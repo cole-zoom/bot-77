@@ -31,6 +31,11 @@ TOWER_PRESETS = {
     "royaleapi_l11": ((6144, 128, 10), (3584, 128, 8)),
     # Liquipedia's level-11 Tower Princess (3052 / 109 / 0.8 s); King scaled by cr-api-data's King/Princess ratio
     "liquipedia_l11": ((5232, 109, 10), (3052, 109, 8)),
+    # 2026-10-29: level 11 by the client and the replays. Princess 3052 / 109 / 0.8 s (the 10-24 hit-fraction
+    # measurement; TowerPrincessProjectile Damage 50 x 1.08^10 = 108). King 4824 (Liquipedia level 11; the replays'
+    # HP bars: King / Princess max 1.58-1.59 at every level, not cr-api-data's level-1 2400 / 1400 = 1.714), the
+    # same 109 (KingProjectile Damage 50, same growth), HitSpeed 1000.
+    "client_l11": ((4824, 109, 10), (3052, 109, 8)),
 }
 
 
@@ -174,8 +179,12 @@ class Sim:
         return self.env.set_tower_hp(tm, s, max(1.0, frac * self.env.get_tower_max_hp(tm, s)))
 
     def wake_king(self, team: str) -> bool:
-        """Wake a sleeping King the way real damage does (hp just below max: Tower::update latches on hp < maxHp)."""
+        """Wake a sleeping King the way real damage does (hp just below max: Tower::update latches on hp < maxHp).
+        An engine with the King's activation delay (fork 2026-10-29: 3.3 s from the trigger) wakes it at once
+        instead (`wake_king`): this sets up a King that woke before the state being built."""
         tm = _team(team)
+        if hasattr(self.env, "wake_king"):
+            return self.env.wake_king(tm)
         mx = self.env.get_tower_max_hp(tm, 0)
         hp = self.env.get_tower_hp(tm, 0)
         return hp > 0 and self.env.set_tower_hp(tm, 0, min(hp, mx - 1))

@@ -77,7 +77,7 @@ def load_game(game_id: str, split: str, source: str, recover_spots: bool = True)
             frames[t].append({"card": d["card"], "cls": d["cls"], "team": TEAM[d["team"]], "x": d["x"],
                               "y": d["y"] + FEET_DY})
     tw = _rows("moments", f"game_id = '{game_id}' AND side = 'bottom'", ["t_match", "towers"])
-    towers = sorted(((m["t_match"], m["towers"]) for m in tw if m["towers"]), key=lambda x: x[0])
+    towers = _steady_flags(sorted(((m["t_match"], m["towers"]) for m in tw if m["towers"]), key=lambda x: x[0]))
     offs = [p["t"] - p["t_match"] for p in plays if p["t_match"] is not None]
     decks, card_map, missing = {}, {}, []
     sides = side_decks(game_id)
@@ -97,9 +97,39 @@ def load_game(game_id: str, split: str, source: str, recover_spots: bool = True)
     return g
 
 
+DOWN_SHARE = 0.8  # a "destroyed" flag counts only if this share of the tower's later flags agree
+
+
+def _steady_flags(towers: list[tuple[float, dict]]) -> list[tuple[float, dict]]:
+    """Alive flags with the detector's dropouts removed: a princess tower read destroyed counts as destroyed only if
+    at least DOWN_SHARE of its flags from then to the end of the game say so too (a destroyed tower never comes
+    back). Found 2026-10-29: flags drop to False for seconds while the tower's HP bar still reads 0.93
+    (tv_2026-10-13_r06 at 27-33 s), which read as a whole tower lost in the window and, at a window's start, put
+    the sim's tower at 0."""
+    out = [(t, dict(f)) for t, f in towers]
+    keys = {k for _, f in towers for k in f}
+    for k in keys:
+        down = later = 0
+        for i in range(len(out) - 1, -1, -1):
+            v = out[i][1].get(k)
+            if v is None:
+                continue
+            later += 1
+            down += v is False
+            if v is False and down < DOWN_SHARE * later:
+                out[i][1][k] = True
+    return out
+
+
 TOWER_KEYS = {"own_king": ("own", "king"), "own_l": ("own", "l"), "own_r": ("own", "r"),
               "opp_king": ("opp", "king"), "opp_l": ("opp", "l"), "opp_r": ("opp", "r")}
-KING_PER_PRINCESS = 6144 / 3584  # a king's HP fraction in princess-tower units (cr-api-data, every level)
+# A king's HP in princess-tower units. Was 6144 / 3584 = 1.714 (cr-api-data's level-1 ratio, 2400 / 1400) until
+# 2026-10-29; the replays' own HP bars say 1.59: the highest king reading per princess max is 7728 / 4858, 7032 / 4424,
+# 5832 / 3668 (1.59) and 4824 / 3052 (1.58, Liquipedia's level 11). The king grows slower per level than a princess
+# tower (globals HITPOINT_INCREASE_PERCENT_PER_KING_LEVEL 7 vs _PER_TOWER_LEVEL 8). tower_hp's king max_hp was built
+# with 1.714 (scripts/build_tower_hp.py), so a full king read 0.93: load_tower_hp re-scales it.
+KING_PER_PRINCESS = 1.59
+_KING_RATIO_IN_TABLE = 6144 / 3584
 
 
 def load_tower_hp(game_id: str) -> dict[str, list[tuple[float, float]]]:
@@ -111,7 +141,8 @@ def load_tower_hp(game_id: str) -> dict[str, list[tuple[float, float]]]:
     out: dict[str, list[tuple[float, float]]] = collections.defaultdict(list)
     for r in sorted(rows, key=lambda r: r["t"]):
         if r["frac"] is not None:
-            out[r["tower"]].append((r["t"], r["frac"]))
+            f = r["frac"] * (_KING_RATIO_IN_TABLE / KING_PER_PRINCESS if r["tower"].endswith("king") else 1.0)
+            out[r["tower"]].append((r["t"], min(f, 1.0)))
     return dict(out)
 
 
@@ -274,6 +305,7 @@ RUN_GAP_S = 1.0
 # Cards the detector loses while they are alive: Tesla under the ground between targets (its HP bar stays),
 # Royal Ghost and Suspicious Bush invisible. Their replay "death" is not one; left out of life_diff.
 HIDES = {"Tesla", "Royal Ghost", "Suspicious Bush"}
+FOREIGN_FRAMES = 6
 
 
 def _last_run(dts: list[float], min_run: int, gap: float = DET_DT * 1.5) -> float | None:
@@ -328,6 +360,20 @@ def metrics(g: Game, w: dict, r: dict) -> list[dict]:
     for b, v in count_err.items():
         rows.append({**base, "metric": "count_err", "card": "", "dt_bin": b, "value": float(np.mean(v)), "n": len(v)})
     end = r["frames"][-1][0] if r["frames"] else 0.0
+    # Bodies one side had and the other never did (2026-10-29): a replay unit (in a run of MIN_RUN frames) of a
+    # card / team the sim never had is a unit the window didn't give the sim (a start unit the detector missed, a
+    # play outside the window); a sim unit is a fight the replay didn't have. Either changes every life and winner
+    # in the window, so the life / winner numbers are also read on windows where both are 0.
+    sim_keys = {k for k, p in present.items() if p["sim"]}
+    det_keys = {k for k, p in present.items() if _last_run(p["det"], MIN_RUN, RUN_GAP_S) is not None}
+    rows.append({**base, "metric": "foreign_det", "card": "", "dt_bin": -1, "value": float(len(det_keys - sim_keys)),
+                 "n": 1})
+    rows.append({**base, "metric": "foreign_sim", "card": "", "dt_bin": -1, "value": float(len(sim_keys - det_keys)),
+                 "n": 1})
+    # ...and a replay card seen in at least FOREIGN_FRAMES frames (1.5 s): not a one-off mislabel
+    solid = {k for k, p in present.items() if len(p["det"]) >= FOREIGN_FRAMES}
+    rows.append({**base, "metric": "foreign_det_solid", "card": "", "dt_bin": -1,
+                 "value": float(len(solid - sim_keys)), "n": 1})
     played = {(p["card"], SIDE[p["side"]]) for p in w["plays"]}
     for (card, team), p in present.items():
         if (card, team) not in played or card in HIDES:  # start units' HP is unknown; hiders vanish alive
@@ -337,6 +383,11 @@ def metrics(g: Game, w: dict, r: dict) -> list[dict]:
             continue
         if min(ls, ld) < end - 1.0:  # at least one side lost it before the window ended
             rows.append({**base, "metric": "life_diff", "card": card, "dt_bin": -1, "value": ls - ld, "n": 1})
+        # Both sides lost it before the window ended (2026-10-29): the replay's detector loses units early, never
+        # late, while the sim's death is exact, so a window where only the replay "died" reads the detector's
+        # dropouts as sim units living too long. This one is censored on neither side.
+        if max(ls, ld) < end - 1.0:
+            rows.append({**base, "metric": "life_diff_both", "card": card, "dt_bin": -1, "value": ls - ld, "n": 1})
     if r["frames"]:
         last = [f for f in r["frames"] if f[0] >= end - 1.0]  # the last second, averaged (detector flicker)
         vs = {k: np.mean([value(f[1])[k] for f in last]) for k in ("own", "opp")}
@@ -361,7 +412,10 @@ def metrics(g: Game, w: dict, r: dict) -> list[dict]:
                     break
                 k = KING_PER_PRINCESS if key.endswith("king") else 1.0
                 real += (f0 - f1) * k
-                sim_ += (r["towers0"][key] - sim_end[key]["frac"]) * k
+                # the sim's own King / Princess ratio (the tower preset's), not the replay's
+                ks = sim_end[key]["max"] / max(sim_end[f"{side}_l"]["max"], sim_end[f"{side}_r"]["max"], 1) \
+                    if key.endswith("king") else 1.0
+                sim_ += (r["towers0"][key] - sim_end[key]["frac"]) * ks
             if known:
                 rows.append({**base, "metric": f"tower_dmg_{side}_real", "card": "", "dt_bin": -1, "value": real,
                              "n": 1})

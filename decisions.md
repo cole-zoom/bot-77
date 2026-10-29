@@ -3806,3 +3806,56 @@ Cole, asked the lifetime agent's six questions (unsure on some, says so himself)
 5. Next hit after a kill with another enemy in range: "after a full hit cycle I believe." Agrees with the preload model (hits stay HitSpeed apart).
 6. Full windup again after a Zap/stun: "no / it depends, not sure." Lab test.
 Two of six now have two sources (client LoadTime field + Cole): 2 and 4 settled; 5 is client + Cole's belief, lab to confirm.
+
+## 2026-10-29 · Sim fidelity P2: the six suspects, measured one at a time (held-back S2)
+
+Same 48 held-back games / 329 windows as the lifetime agent, `scripts/sim_validate.py --splits heldback`, engine
+from a fork worktree (data/work/sim_fix2/fork, diff data/work/sim_fix2/fork.diff, not merged), each fix behind a
+switch so it can be measured alone. Base = merged fork 4a921c6, `--towers royaleapi_l11`; reproduces
+simfix_final_meas exactly. Runs: LanceDB sim_validation `sf2_*`; logs data/work/sim_fix2/val_*.log.
+
+**Measurement fixes first (bot-77 `bot77.sim.validate`, no engine change):**
+- Princess tower alive flags drop to False for seconds while the HP bar still reads 0.93 (tv_2026-10-13_r06 at
+  27-33 s): a whole tower "lost" in a window, and at a window's start the sim's tower set to 0. A destroyed flag now
+  counts only if 80% of that tower's later flags agree. Tower damage sum sim / real 1.14 -> 1.05, per-window
+  correlation 0.35 -> 0.42.
+- The King's HP is 1.59 x a princess tower's, not 1.714 (cr-api-data's level-1 2400 / 1400). Replay HP bars: highest
+  King reading per princess max 7728 / 4858, 7032 / 4424, 5832 / 3668, 4824 / 3052. tower_hp's King fraction was
+  built with 1.714, so a full King read 0.93: rescaled on load; the sim side now uses the preset's own ratio.
+- **"Big tower damage sim / real 0.14-0.60" is mostly a selection effect, not low sim damage.** Conditioning on
+  real > 0.10 picks the windows where real is high; the mirror statistic (real / sim where sim > 0.10) is 0.39-0.43
+  too, and the summed damage is sim / real 1.05-1.08. What is wrong is which windows get the damage (correlation
+  0.41), not how much. The 0.9-1.1 target only makes sense on the sum.
+- **Life time is censored on one side.** The detector loses units early, never late; the sim's death is exact. New
+  `life_diff_both` (both sides lost the unit before the window's last second): base **+0.50 s** (n 84) against
+  +1.25 s for `life_diff`. About 0.75 s of the gap is the replay side.
+- Window consistency: new `foreign_det_solid` / `foreign_sim` (a card one side has for >= 6 frames and the other
+  never). Only 66 of 226 two-sided windows are consistent; there the winner is right **68%** (62% overall), life
+  +1.25, tower correlation 0.52. Windows where the replay has a unit the sim lacks: life +2.0 (missing enemies make
+  sim units live longer).
+
+**The six suspects** (each alone, all else off; life median / mean, winner both-played, tower sum s/r):
+
+| | real? | client source | life | winner | tower sum |
+|---|---|---|---|---|---|
+| base | | | +1.25 / +1.28 | 62.4% | 1.08 |
+| 1 target queueing | yes | globals USE_TARGET_QUEUEING, CURRENT_TARGET_IGNORES_PENDING_DAMAGE | +1.25 / +1.28 | 62.4% | 1.08 |
+| 2 splash lands without target | yes | ALLOW_AOE_ATTACKS_WITHOUT_TARGET | +1.25 / +1.28 | 62.4% | 1.07 |
+| 3 crown-tower sight +2 | yes (towers' own sight/range match: 7.5 / 7.0) | EXTRA_SIGHT_RANGE_TO_CROWN_TOWERS 2000 | +1.25 / +1.28 | 62.4% | 1.08 |
+| 4 per-projectile speed + Homing | yes | each unit's PROJECTILE Speed / Homing; towers 600 / 1000; buildings now fire theirs | +1.25 / +1.34 | 61.9% | 1.10 |
+| 5 Royal Hogs charge | yes | royalhog.toml has no ChargeRange / DamageSpecial | +1.25 / +1.31 | 62.4% | 1.06 |
+| 6 per-unit radius + Mass | yes | CollisionRadius (troops 0.4-1.0, buildings 0.5-1.0, Princess 1.0, King 1.4), Mass | +1.25 / +1.39 | 61.9% | 0.98 |
+| King activation 3.3 s (found here) | yes | king_tower.toml WaitForKingTowerActivation ActionDuration 3300 | +1.25 / +1.28 | 62.4% (one-sided 74.1%) | 1.08 |
+| all on | | | +1.50 / +1.43 | 61.9% | 1.00 |
+
+None moves the winner or tower numbers beyond noise (SE ~3 pts); 4 and 6 lengthen lives slightly (life_diff_both
++0.50 -> +0.75). They are kept because each is a client field or rule, not because S2 likes them.
+
+**Tower level (the preset S2 runs with):** `royaleapi_l11` is 3584 / 128 princess, 6144 / 128 King: level ~12-13,
+17% tankier and harder-hitting than level-11 cards (the 10-24 hit-fraction measurement said 3052). New preset
+`client_l11` = 4824 / 109 King, 3052 / 109 princess. Alone: tower sum 1.08 -> 1.29, sim / real where real > 0.1
+0.42 -> 0.54; life +1.25 (mean +1.29); winner 62.4%. All fixes + client_l11: tower sum 1.21, life +1.50, winner 61.9%.
+
+**Not found:** a mechanic that moves the fight winner. On consistent windows it is 68%, against the 10-24 ceiling of
+~69% (the replay agrees with itself 1.5 s earlier). The remaining levers are the windows (missing units, detector
+dropouts), then lab tests.
