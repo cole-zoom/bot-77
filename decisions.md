@@ -3299,3 +3299,12 @@ Full write-up: docs/simulator-validation.md. Held-back only (48 games, 346 windo
   -1.54), melee -0.63 (-0.61), defend+counter -0.67, emergency -2.99; still weak on hog -0.56 (-0.11) and arrows -0.88
   (+0.11). Cole's starts -0.87, beats him on 33 of 142 (v4: 14). Imitation has plateaued at about -0.90: stopped after
   epoch 3 (epochs 4-7 not run). Epoch 3 is the start for the leashed RL round.
+- **RL round v5 launched (2026-10-28 ~20:20)** (data/models/rl_clones_v5): from the defence school v2 epoch 3
+  (log-50 calibrated), the leash on (scripts/rl_vs_clones.py `--leash-demos data/cache/bc/defence_t01`: 2 imitation
+  steps of 8 windows x 6.4 s after every PPO update, 70% demos / 30% of 200 pro games, play weight 1, lead 3, own
+  Adam at 1e-4); otherwise v4's setup: 0.1 s, situation share 0.5 (Cole's starts 0.3 of those), league 0.5 (its own
+  and v4's snapshots), card-entropy 0.04, critic warm-up 500, 8,000 episodes, 7 envs. The comparison with v4 is the
+  start and the leash. Checks: the exam at ~4k and at the end against the school's -0.90, the openings, then 20 real
+  games.
+
+  uv run --no-sync --with gymnasium==1.3.0 --with tensorboard python scripts/rl_vs_clones.py --run data/models/rl_clones_v5 --init data/models/bc_defence_v2/epoch03_cal50.pth --decision-ticks 1 --situation-share 0.5 --reference-share 0.3 --league-share 0.5 --snapshots data/models/rl_clones_v4/historical_checkpoints --card-entropy 0.04 --episodes 8000 --envs 7 --leash-demos data/cache/bc/defence_t01
