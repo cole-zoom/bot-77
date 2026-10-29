@@ -3594,3 +3594,14 @@ Full write-up: docs/simulator-validation.md. Held-back only (48 games, 346 windo
   for every caller (the live run's 13977 checkpoint included) and no model uses the input yet (school p5 failed the
   gate; the probe moved p(wait) 0.002 across their 0-10 estimate). It stays on the worktree / branch
   p5-opp-elixir until a trained model needs it.
+- **75-game run ended at 51 games: 21-30 (41%)** (2026-10-29 09:07). Chunks: 12-10, 7-13, 2-7. BlueStacks
+  disconnected after game 9 of the last chunk (~07:20; ADB "offline"); live_play sat on a dead screen ("no threats",
+  0 elixir) until stopped at 09:07. The last 9 games' replays weren't recorded (Battle Log still has them; pull them
+  once BlueStacks is back). The first 22 games (12-10) overlapped the P1-P4 agent's school v3 training; the next 29
+  (9-20) overlapped P5 training: CPU load is a possible cause, not measured. Same model that went 8-2 earlier at
+  a lower trophy count. Cole: "Lowk horrid result".
+- **Process miss (Cole, 2026-10-29):** "I thought I was supposed to do examples first then we train?" Yes: the plan's
+  order was his play-page answer keys for the tempo templates first, then school v3. P4 (the earlier agent) and P5
+  (launched by the main session) both trained on the scripted tempo policy's demos instead, which the previous agent
+  itself rated as only 68% (chill) / 34% (desperate_even) right by its own test. No more tempo training until his
+  examples are in.
