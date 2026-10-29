@@ -3475,3 +3475,10 @@ Full write-up: docs/simulator-validation.md. Held-back only (48 games, 346 windo
 - **75-game run, chunk 1 (01:52-03:03): 12-10** (22 games: the STOP landed with games 21-22 already under way).
   Game 3 lost in 1.1 min with 2 plays, a likely disconnect or misread (Cole to confirm): 12-9 without it. Started
   4-9, then won 8 of the last 9. Games run ~3 min, so 75 games is ~4 h of play plus the replay breaks.
+- **School v3 epoch 1** (exam_epoch01.txt): defence mean -0.913 (v2 ep3 -0.885); **defence gate FAIL** on
+  arrows_value -1.06 (-0.18) and **dont_overcommit -0.25 -> -0.57 (-0.32; tower HP lost 0 -> 933 median)**; better
+  on hog -0.42, ram -0.72, defend+counter -0.57, supported -1.34. Tempo: chill -0.11, press_calm -0.12,
+  desperate_even -0.22, desperate +0.13, spell_finish +0.11. Cole's starts -0.79 (beats him on 39). The overcommit
+  drop is the P5 diagnosis showing up: dont_overcommit is an empty board with them on 10, press_calm an empty board
+  with them on 0-3, and the network sees the same inputs in both (their spend reads 0 in both), so the press demos
+  push it to commit into a full bar.
