@@ -3544,3 +3544,21 @@ Full write-up: docs/simulator-validation.md. Held-back only (48 games, 346 windo
     data/models/p5/migrated. Exam n 50, all 15 templates + Cole's 142 starts, spend sync off: every number identical
     to the old build's, cal50 and cal20 (the old-build rerun is itself identical to P2's exam_v2ep3.txt and P3's
     tempo exam). Cal20 (the live model): defence mean -0.890, Cole's starts -0.79 (beats him on 38).
+- **P5: v2 epoch 3 (migrated) in the new environment** (spend synced in every template, so their estimate shows and
+  both spend scalars carry the bars; data/models/p5/v2ep3_newenv): the defence templates come out identical to two
+  decimals (gate vs its old-build self: PASS, +0.000), the tempo ones move by at most 0.04 (desperate +0.01 -> +0.05,
+  press_calm -0.34 -> -0.33, desperate_even -0.15 -> -0.14), Cole's starts -0.85 (beats him on 32), the same. Tempo
+  report: chill 28% / press_calm 50% / desperate_even 16% / desperate 72% / spell_finish 4% right; plays per 10 s calm
+  0.93, threat 1.32, ahead by 3+ 1.56. So the environment change alone does nothing to the old net: what follows is
+  what training with the input does.
+  - **Training data, one change at a time vs school v3:** the demos rebuilt on the P5 build into
+    data/cache/bc/school_p5_t01 (same 15 templates, seeds 0-499, Cole's 142; per-template script means equal to v3's
+    to two decimals except desperate_even +0.22 -> +0.23). Their first-step estimate: chill 8.3-10, press_calm 0.2-2.9,
+    dont_overcommit 10. The pro shards: rebuilt on today's engine they differ from shards_t01 in the spatial channels
+    too (the 2026-10-28 client stat audit came after shards_t01; checked: the old and new build agree on everything
+    but scalars 1, 2, 10 on a same-day rebuild), so school p5 trains on shards_t01 with only scalars 1-2 and 10 taken
+    from the rebuild (scripts/p5_pad_shards.py -> data/cache/bc/shards_p5pad_t01; labels and rows checked equal).
+  - School p5 training as P4 (demo share 0.7, tempo share 0.333, lead 3, window 256, burn-in 64, play weight 50,
+    310 steps an epoch, 4 epochs), from migrated v2 epoch 3, into data/models/bc_school_p5. Each epoch: exam (log 50,
+    guard on, n 50), the defence gate against v2 epoch 3 as it runs today, the tempo report; stop after two failed
+    gates in a row.
