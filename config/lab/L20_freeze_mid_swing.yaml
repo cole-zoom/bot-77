@@ -1,0 +1,15 @@
+id: L20
+name: "Ice Spirit freeze on a Mini P.E.K.K.A mid-swing"
+mechanic: "P2 #2 attack cycle (stun / freeze)"
+settles: "Whether a freeze pauses the swing and resumes it (the game code, docs/client-code-notes.md s. 1) or restarts the full windup (the engine before cf673ea): the gap between the hit before and the first hit after the freeze. Stands in for Zap, which neither deck has."
+lane: left
+decks:
+  bluestacks: [Bomber, Battle Ram, Giant, Mega Minion, Goblin Hut, Mini P.E.K.K.A, Fireball, Arrows]
+  cole: [Mini P.E.K.K.A, Knight, Bomber, Skeletons, Goblins, Hog Rider, Cannon, Ice Spirit]
+placements:
+  - {side: bluestacks, card: Mini P.E.K.K.A, tile: [3, 13], t: 30}
+  - {side: cole, card: Ice Spirit, tile: [3, 22], t: 40, cue: "right after the Mini P.E.K.K.A's 2nd hit on your tower"}
+watch:
+  - Mini P.E.K.K.A hit times on the tower before and after the freeze; freeze start and end frames
+cole_notes: "Let it hit your left tower twice, then the Ice Spirit in front of the tower. Nothing else."
+tail_s: 40

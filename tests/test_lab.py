@@ -11,7 +11,7 @@ ROOT = Path(__file__).resolve().parents[1]
 
 def test_tests_load_in_order():
     ts = lab.load_tests(ROOT / "config/lab")
-    assert len(ts) == 20
+    assert len(ts) == 22
     assert list(ts) == sorted(ts)
     for t in ts.values():
         assert t.placements and sorted(t.decks["bluestacks"]) == sorted(lab.BOMBER_DECK)

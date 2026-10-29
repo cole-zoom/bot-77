@@ -1,0 +1,15 @@
+id: L21
+name: "Hog Rider past a Goblin Hut placed behind it"
+mechanic: "P2 #3 targeting (building-targeter sight limits, SightClip)"
+settles: "Whether a Hog that has already passed a building turns back for it. The game code has side / forward sight limits on Hog, Giant, Balloon and Royal Hogs but doesn't settle which way 'forward' faces; with L09 (building ahead) this settles it."
+lane: right
+decks:
+  bluestacks: [Bomber, Battle Ram, Giant, Mega Minion, Goblin Hut, Mini P.E.K.K.A, Fireball, Arrows]
+  cole: [Mini P.E.K.K.A, Knight, Bomber, Skeletons, Goblins, Hog Rider, Cannon, Ice Spirit]
+placements:
+  - {side: cole, card: Hog Rider, tile: [14, 19], t: 25}
+  - {side: bluestacks, card: Goblin Hut, tile: [9, 13], t: 29.5, cue: "the bot drops it once the Hog is past the river"}
+watch:
+  - Hog position when the Hut lands; does it turn back for the Hut or keep going to the tower
+cole_notes: "Hog at your right bridge on time (t = 0:25 on the sheet's clock); nothing else."
+tail_s: 40
