@@ -3348,3 +3348,8 @@ Full write-up: docs/simulator-validation.md. Held-back only (48 games, 346 windo
     must learn when to chill and when to place a lot, not get it from a willingness knob. Plan:
     docs/plan-elixir-spells.md (spell guard, leak / wasted-spell scoring, chill-vs-press matched pairs, school v3 with
     a defence gate, the opponent-elixir input as a gated proposal).
+- **Cole on when to press (2026-10-29, verbatim):** "in a even game, +3 is a valid placeholder. But if were desperate,
+  like late game, and were down a tower, we need to go all in, so even 0 or +1, we try for a hail mary. Or if we need
+  like 10 damage, hail marry/spell their tower". So: +3 in an even game; all in at 0-1 lead when late and down a
+  tower; spell a tower that's within a spell's tower damage of falling regardless of the lead. Goes into P3 as a
+  desperate pair and into spell_finish; the "late" / "down a tower" cut-offs are ours, to confirm with him.

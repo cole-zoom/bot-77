@@ -142,6 +142,16 @@ elixir):
 - If an ordering doesn't come out right, report it and stop. Don't ship a template the scoring can't judge.
 - The +3 threshold is a guess: ask Cole what lead he goes in at (and whether it depends on the clock or double
   elixir) before it goes into demos.
+- **Cole's answer (2026-10-29, verbatim):** "in a even game, +3 is a valid placeholder. But if were desperate, like
+  late game, and were down a tower, we need to go all in, so even 0 or +1, we try for a hail mary. Or if we need like
+  10 damage, hail marry/spell their tower". So the press threshold depends on the game state:
+  - even game: press at a lead of +3;
+  - desperate (late, and down a tower / behind on crowns): all in at a lead of 0 or +1;
+  - small finish: a tower within a spell's tower damage of falling gets the spell, whatever the lead.
+  Built as: a **desperate pair** (late clock, us down a tower; all-in is right even at a 0-1 lead) matched against the
+  even-game chill half, and the "~10 damage" case folded into spell_finish (a tower within reach of Arrows' or
+  Fireball's tower damage). The cut-offs for "late" and "down a tower" are ours (P3 in decisions.md) and open
+  questions for Cole.
 
 Cole plays the new templates on the play page; they become his answer keys like the defence ones. That's his step:
 list the commands for him and don't play them.
