@@ -3929,3 +3929,72 @@ Clash ran on the rooted BlueStacks; no root detection at launch. Read `libg.so`'
 - Some other strings look obfuscated.
 
 **Next:** load it into Ghidra (base 0x71fee9c000), follow the field-name strings to their loaders and from there to the code that uses each value. Plan P0.5 is answered: code reading is possible.
+
+## 2026-10-29 · Read from the client's code: attack cycle, tick, targeting, King (docs/client-code-notes.md)
+
+The dumped `libg.so` was rebuilt into a loadable image and read in Ghidra 12.1.4 headless (decompiler built for
+macOS arm64 from Ghidra's sources). Function boundaries come from `.eh_frame_hdr`, the way in from the field-name
+strings, struct offsets from the table loaders. Tools in `scripts/client_re/` (my own code, no game code). The
+image, Ghidra projects and decompiler output stay in `data/work/ghidra/`. Full notes, addresses and the repeat
+recipe: docs/client-code-notes.md. Nothing in the engine changed.
+
+**Attack cycle** (combat update 0x71fff599e4, timer advance 0x71fff5ac3c; sure):
+- two timers. The attack timer runs while attacking, and a hit lands each time it crosses a multiple of
+  HitSpeed. The load timer counts down 50 ms every tick, whatever the unit does;
+- an attack starts at LoadTime minus the missing load, and the load is reset to full at that **start**. First
+  hit = HitSpeed - LoadTime when loaded (the preload model holds);
+- units spawn loaded, except LoadFirstHit (Sparky);
+- a kill opens a 250 ms window (ATTACK_FINISH_TIME_MS). A new target in reach keeps the cycle: next hit HitSpeed
+  after the last, as Cole believed. Otherwise the swing is reset, and so is a switch to a target out of reach;
+- **stun:** Zap / Freeze are HitSpeedMultiplier -100, which makes the step 0, so the swing **pauses, not resets**.
+  The frozen unit drops its target every tick and re-acquires the nearest (the "Zap retargets" effect). Its load
+  keeps counting. Only Sparky is reset (WHEN_ZAPPED);
+- a started swing continues out of reach. Projectile units keep a started target to +0.5 tiles; everyone keeps it
+  to +0.025;
+- SpecialLoadTime = the special attack's windup (Fisherman 1.3 s);
+- HitSpeedOffset is an area-effect field (first pulse), not a troop field.
+
+**Engine differences:**
+- the engine reloads from the hit, the client from the attack start, so the client strikes again sooner after a
+  kill or walk (Knight up to 0.5 s);
+- the engine restarts the full windup after a stun; the client resumes it;
+- missing in the engine: the 250 ms finish window, the +0.025 / +0.5 keeps, Fisherman's 1.3 s hook windup.
+
+**Tick:** every logic timer steps 50 ms per update, not 100 (combat, load, deploy, King wake-up). Likely 20 updates
+a second; the battle loop itself was not traced.
+
+**Elixir (table, not code):** Default timeline 28000 / 14000 / 9300 ms per bar for 120 / 120 / 60 s, so 2.8 s per
+elixir; the engine's 2.857 is 2% slow. **StartingElixir 6** where the engine starts at 5: open, check a lab replay's
+HUD at 0:00.
+
+**Targeting** (find target 0x71fff56878; sure):
+- runs every tick until the current target is in reach; then locked;
+- sight is **edge to edge**: SightRange + own radius + target radius (+2 to crown towers). Knight vs Knight 6.5
+  tiles centre to centre; the engine's fitted 7.25 is centre + 1.75;
+- choice: a priority class first (building-targeters: buildings), then plain squared centre distance;
+- SightClip / SightClipSide limit Hog, Royal Hogs (4 / 4), Giant, Royal Giant (2 / 2), Balloon (side 2): the
+  engine lacks them;
+- pending-damage skip only for units with a Projectile, and only when the killing damage lands within 600 ms;
+- **USE_TARGET_QUEUEING is a queue of forced-target requests, not pending damage**: the engine's
+  `Fidelity::targetQueueing` mixes the two.
+
+**King and towers:**
+- the King is INACTIVE until damaged or a tower falls, then ACTIVATING for 3.3 s; combat is disabled under both
+  tags (confirms the engine's 3.3 s);
+- then King LoadTime 500 / HitSpeed 1000: first shot **0.5 s after acquiring**;
+- the Princess Tower building has HitSpeed 800 and **no LoadTime**, so by the same rule its first arrow comes
+  **0.8 s after acquiring from idle**;
+- the engine fires both at once. This contradicts Cole's "right away" and the 10-29 tower fix: likely, pending
+  lab L18 (Hog alone to the tower).
+
+**Deploy:** DeployTime counts down 50 ms a tick, the unit inert meanwhile. DeployTimerDelay goes only to the
+presentation side and is 0 for every card. DeployDelay (400 on most troops) is not traced.
+
+**Next (a later step, engine):**
+- reload from the attack start;
+- stun pauses;
+- edge-to-edge sight, dropping TROOP_SIGHT_BONUS (it was a fit to this);
+- SightClip;
+- the pending-damage rule as the client has it; rename the queueing switch;
+- tower and King first-shot delays, after L18;
+- consider the 50 ms tick.
