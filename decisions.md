@@ -3486,3 +3486,28 @@ Full write-up: docs/simulator-validation.md. Held-back only (48 games, 346 windo
   emergency -3.17 (-0.20), dont_overcommit -0.60 (-0.35); better on hog -0.42, melee -0.47, defend+counter -0.51.
   Tempo: chill -0.04, press_calm -0.14, desperate_even -0.10, desperate +0.11, spell_finish +0.05 (script +0.28 /
   +0.49 / +0.19 / +0.40 / +0.53). Cole's starts -0.82 (beats him on 32). Flat since epoch 0.
+- **School v3 epoch 3** (exam_epoch03.txt; training done, 4 epochs, 29-40 min each): defence mean **-0.930** (v2 ep3
+  -0.885); **gate FAIL** on arrows_value -1.12 (-0.24), fireball_value -0.86 (-0.16), dont_overcommit -0.46 (-0.21);
+  better on hog -0.44, melee -0.51, ram -0.75. Tempo: chill -0.00, press_calm +0.00, desperate_even -0.07, desperate
+  +0.10, spell_finish +0.07. Cole's starts -0.78 (beats him on 35). **No v3 epoch passes the defence gate** (ep0 1
+  template, ep1 2, ep2 3, ep3 3), so none is a candidate to replace v2 epoch 3.
+- **P4 tempo report** (scripts/tempo_report.py, exam seeds, n 50, log 50, guard on;
+  data/models/elixir_spells/p4/tempo_report_*.txt). Right thing per half (press: a play within 3 s; chill: before
+  their first troop crosses, at most one play and none below 9 elixir), v2 ep3 / v3 ep0 / v3 ep3 / script:
+  chill 28% / 0% / 4% / 68%; press_calm 52% / 72% / 82% / 100%; desperate_even 16% / 2% / 6% / 34%; desperate 72% /
+  96% / 100% / 100%; spell_finish (a spell within 3 s) 4% / 18% / 24% / 100%. Plays per 10 s calm / threat / ahead
+  by 3+: v2 0.94 / 1.31 / 1.59; v3 ep0 1.24 / 1.32 / 2.73; v3 ep3 1.38 / 1.24 / 3.06; script 0.82 / 1.33 / 2.61.
+  Elixir leaked a situation (v2 -> v3 ep3): chill 1.14 -> 0.14, press_calm 1.72 -> 0.19, desperate_even 1.40 ->
+  0.18, desperate 1.42 -> 0.01, safe opening 0.67 -> 0.28. Spell-guard vetoes (spells tried on nothing) went up on
+  the tempo templates (desperate 0.42 -> 1.08, press_calm 0.26 -> 0.66) and stayed 0.02-0.34 on the defence ones.
+  - **Reading:** v3 stopped sitting on a full bar (leak down 5-10x) and presses more where it should. But it did so
+    on the chill halves too, and in dont_overcommit (they're on 10): it learned "spend more when it's calm", not
+    "spend when they can't punish". That's what the inputs allow. On the calm pair the halves are identical to the
+    network (their spend reads 0 in both), and the desperate pair, which it can tell apart (clock, a tower down),
+    didn't separate in 4 epochs either (desperate_even 6% right). The play rate does vary by state (calm 1.38,
+    ahead 3.06), but "ahead" overlaps with the desperate starts, which it can see. **This is the P5 evidence**: the
+    model needs their elixir as an input before chill vs press can be learned. Proposal written into
+    docs/plan-elixir-spells.md (P5), for Cole's OK.
+  - Stopped there as the plan says: no RL, no live games. v2 epoch 3 stays the model to run live (log 20 calibration,
+    8-2); `--full-bar-guard` and the spell guard (on in live decide() for every selfplay run now) are the live-side
+    changes from this plan.
