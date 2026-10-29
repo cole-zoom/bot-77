@@ -3624,3 +3624,22 @@ Full write-up: docs/simulator-validation.md. Held-back only (48 games, 346 windo
   to find mistakes (tower HP lost, full bar, wasted spells), which become play-page situations whose right answer comes
   from Cole. The opponents' side of the replays (to fit a ladder opponent) is allowed: it teaches nothing about
   our plays. Plan item 4 of the 75-game entry ("our own plays from the won games as extra demos") is dropped.
+
+## 2026-10-29 · Sim fidelity first (Cole: "before we train again, can we focus on making the sim closer to a 1:1 representation of the actual game?")
+
+- **S2 re-measured on the current engine** (fork 5e7711b: client stat audit, splash, pulls, Bush, Skeleton Barrel all
+  in since the 10-24 run), same held-back 48 games / 346 windows, `--towers royaleapi_l11`; log
+  data/live/s2_heldback_2026-10-29.log, LanceDB sim_validation run s2_heldback_2026-10-29. Barely moved:
+
+  | held-back | 10-24 empty / near-empty | 10-29 empty / near-empty |
+  |---|---|---|
+  | position error +5-7.5 s | 1.14 / 0.99 | 0.96 / 0.87 |
+  | same lane +2.5-10 s | 90% / 98% | 90% / 98% |
+  | fight winner right (both played) | 57.6% / 62.2% | **60.0% / 66.7%** |
+  | life time, sim - real | +1.75 / +2.25 s | **+1.75 / +1.50 s** |
+  | big tower damage (real > 0.1 princess), sim / real | own 0.02 / 0.30, opp 0.07 / 0.55 | own 0.34 / 0.34, opp 0.14 / 0.60 |
+
+  **Lead:** units outlive their real selves on almost every card (median sim - real: Skeletons +1.4, Knight +1.75,
+  Hog +2.4, Wall Breakers +2.25, Valkyrie +4.1, Royal Hogs +3.0, Ice Wizard +2.75, Battle Ram +1.0); Ice Spirit and
+  Mortar +0.0. A bias that broad points at something systemic (damage landing late or slow: load time, retarget,
+  hit timing; or how the replay side's "death" is read), not per-card stats. Next: trace a few windows hit by hit.
