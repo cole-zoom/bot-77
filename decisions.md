@@ -3643,3 +3643,16 @@ Full write-up: docs/simulator-validation.md. Held-back only (48 games, 346 windo
   Hog +2.4, Wall Breakers +2.25, Valkyrie +4.1, Royal Hogs +3.0, Ice Wizard +2.75, Battle Ram +1.0); Ice Spirit and
   Mortar +0.0. A bias that broad points at something systemic (damage landing late or slow: load time, retarget,
   hit timing; or how the replay side's "death" is read), not per-card stats. Next: trace a few windows hit by hit.
+- **Cole's sim goals (2026-10-29, verbatim):** "Almost every interaction felt off, and it didn't help that the UI
+  kinda sucked. I think we need to make sure that: 1. the interactions are as close to 1:1 as possible 2. the UI
+  shows every tile, seperated. rn I cannot tell what tile I am placing things on. 3. every troop behaves the same way,
+  does the same damage, has same stats, etc. Lets dig into the game files on bluestacks to do this. what do you need
+  from me? bluestacks root access? I almsot think we should reverse engineer the game, minus the graphics ofcourse."
+  - What's already in hand: the client's logic tables (data/external/cr_client/logic, pulled without root on
+    10-28) hold every unit's stats plus behaviour fields (LoadTime, DeployTime / DeployDelay, HitSpeedOffset,
+    Pushback, Mass, CollisionRadius, projectile Speed / Homing / Gravity, AreaDamageRadius,
+    CrownTowerDamagePercent, ...). Stats were matched on 10-28 (101 of 101 cards); the behaviour fields haven't
+    been checked field by field. Asked the lifetime agent for a field-coverage table (engine models it? reads the
+    client value?).
+  - What the files don't hold: how the game uses those fields (targeting, retarget, the attack cycle, pushing,
+    pathing). That lives in the compiled client.
