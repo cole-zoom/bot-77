@@ -9,6 +9,15 @@ agent's weights and plays Cole's current deck; team 1 is a frozen copy of the sa
 (python_ai/trainers/train_selfplay.py) with a lower learning rate and a critic warm-up (below), minus its league: no
 historical snapshots, scripted bots or exploiters join the pool, so the only opponent is the clone.
 
+--leash-demos (2026-10-28, after the defence school): a leash to the teachers. After every PPO update the trainee takes
+--leash-steps imitation steps (scripts/train_bc.py's loss) on short windows of the defence demos (Cole's and the
+scripted defence's, scripts/build_defence_demos.py) and of --leash-pro pro games, with its own Adam. Rounds v3 / v4
+drifted from their start to what the clones reward (the bridge-rush opener, committing in the overcommit situation:
+-0.22 -> -1.05) and added nothing on the exam; the leash keeps what the school learned while RL works on the rest. The
+fork's PPO loss has no hook for an extra term (python_ai/ stays untouched), hence separate steps. Play weight 1 and
+lead 3 (a play also labels the 0.3 s before it): the school was trained at weight 50 and played at a log-50 wait
+calibration, which is the same optimum as weight 1, so the leash pulls toward the policy the school played, not away.
+
 Under $RUN (gitignored): bootstrap.pth (the imitation weights the run starts from), bootstrap_selfplay.pth (the live
 checkpoint), runs/rl_selfplay (TensorBoard), historical_checkpoints/ (snapshots every 2,000 episodes).
 """
@@ -47,6 +56,13 @@ def main():
                     help="share of situation episodes that replay one of Cole's winning play-page starts")
     ap.add_argument("--init", default=None, help="start the trainee from these weights instead of the clone")
     ap.add_argument("--critic-warmup", type=int, default=500, help="episodes during which only the value head learns")
+    ap.add_argument("--leash-demos", default=None, help="defence-school demos to replay after every update (see above)")
+    ap.add_argument("--leash-pro", type=int, default=200, help="pro games (train split) in the leash's mix")
+    ap.add_argument("--leash-share", type=float, default=0.7, help="share of the leash's windows from the demos")
+    ap.add_argument("--leash-steps", type=int, default=2, help="imitation steps after every PPO update")
+    ap.add_argument("--leash-batch", type=int, default=8)
+    ap.add_argument("--leash-window", type=int, default=64, help="decisions a window (6.4 s; burn-in 16 mid-episode)")
+    ap.add_argument("--leash-lr", type=float, default=1e-4)
     a = ap.parse_args()
     run = (ROOT / a.run).resolve()
     run.mkdir(parents=True, exist_ok=True)
@@ -129,6 +145,19 @@ def main():
     bt.compute_shaping = lambda *x, **k: _shaping(*x, **k) * (1.0 - situation_mask(current["t"]))
     bt.flawless_defense_bonus = lambda *x, **k: _flawless(*x, **k) * (1.0 - situation_mask(current["t"]))
 
+    leash_demos, leash_pro = [], []
+    if a.leash_demos:
+        sys.path.insert(0, str(ROOT / "scripts"))
+        import train_bc as tb
+        tb.WINDOW, tb.BURN_IN, tb.PLAY_WEIGHT, tb.LEAD = a.leash_window, 16, 1.0, 3
+        tb.SHARDS = (ROOT / "data/cache/bc/shards_t01").resolve()
+        tb.store.DB = str((ROOT / "data/lancedb").resolve())  # the cwd is the fork from here
+        leash_demos = tb.load_demos((ROOT / a.leash_demos).resolve())
+        pro = [e for e in tb.load_meta() if e["split"] == "train"]
+        leash_pro = [pro[i] for i in np.random.default_rng(77).choice(len(pro), min(a.leash_pro, len(pro)), replace=False)]
+        print(f"leash: {len(leash_demos)} demo episodes, {len(leash_pro)} pro games, {a.leash_steps} steps of "
+              f"{a.leash_batch} x {a.leash_window} after every update", flush=True)
+
     class CloneTrainer(ts.Phase2Trainer):
         pipeline_name = "rl_clones"
 
@@ -160,6 +189,31 @@ def main():
                     self.writer.add_scalar("Situations/Score100", float(np.mean(last)), self.episodes_completed)
             super().on_episode_end(i, ctx)
 
+        def leash(self):
+            """--leash-steps imitation steps on the teachers' windows (scripts/train_bc.py's loss)."""
+            if not hasattr(self, "_leash_opt"):
+                self._leash_opt = torch.optim.Adam(self.net.parameters(), lr=a.leash_lr)
+                self._leash_rng = np.random.default_rng(77)
+            n_demo = int(round(a.leash_batch * a.leash_share))
+            lc = lp = 0.0
+            for _ in range(a.leash_steps):
+                batch = ([leash_demos[i] for i in self._leash_rng.choice(len(leash_demos), n_demo, replace=False)]
+                         + [leash_pro[i] for i in self._leash_rng.choice(len(leash_pro), a.leash_batch - n_demo,
+                                                                         replace=False)])
+                l_card, l_cell, _ = tb.batch_loss(self.net, batch, self._leash_rng, self.device)
+                self._leash_opt.zero_grad()
+                (l_card + l_cell).backward()
+                torch.nn.utils.clip_grad_norm_(self.net.parameters(), 1.0)
+                self._leash_opt.step()
+                lc += float(l_card.detach())
+                lp += float(l_cell.detach())
+            self.writer.add_scalar("Leash/CardLoss", lc / a.leash_steps, self.episodes_completed)
+            self.writer.add_scalar("Leash/CellLoss", lp / a.leash_steps, self.episodes_completed)
+            self._leash_log = getattr(self, "_leash_log", 0) + 1
+            if self._leash_log % 20 == 1:
+                print(f"  >> leash @ ep {self.episodes_completed}: card loss {lc / a.leash_steps:.3f}, "
+                      f"cell loss {lp / a.leash_steps:.3f}", flush=True)
+
         def run_update(self):
             # Critic warm-up: imitation never trained the value head, so its early advantages are noise (the smoke
             # run's first update clipped 57% of samples). For the first --critic-warmup episodes only the value head
@@ -174,6 +228,8 @@ def main():
                 if warm:
                     for p in self.net.parameters():
                         p.requires_grad_(True)
+                elif leash_demos:
+                    self.leash()
 
         def build_envs(self):
             seeds = worker_seeds(self.cfg.seed, self.cfg.num_envs)
