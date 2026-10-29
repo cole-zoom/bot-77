@@ -1,0 +1,15 @@
+id: L05
+name: "Arrows on Skeletons"
+mechanic: "P2 #5 splash and area effects, #4 projectiles"
+settles: "Arrows flight time from the King to a spot on the far side and when the damage lands (Skeletons die on it)."
+lane: left
+decks:
+  bluestacks: [Bomber, Battle Ram, Giant, Mega Minion, Goblin Hut, Mini P.E.K.K.A, Fireball, Arrows]
+  cole: [Mini P.E.K.K.A, Knight, Bomber, Skeletons, Goblins, Hog Rider, Cannon, Ice Spirit]
+placements:
+  - {side: cole, card: Skeletons, tile: [8, 23], t: 30}
+  - {side: bluestacks, card: Arrows, tile: [8, 22], t: 31, cue: "(the bot fires about 1 s after your Skeletons)"}
+watch:
+  - Skeleton death times vs the Arrows play time
+cole_notes: "Skeletons in the middle of your side, then nothing."
+tail_s: 20

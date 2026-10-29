@@ -1,0 +1,21 @@
+id: L00
+name: "Goblin Hut alone (setup check)"
+mechanic: "P2 #11 buildings (spawner interval, decay); #1 elixir rate; #12 tile alignment"
+settles: >-
+  Spear Goblin spawn interval and the Hut's life; elixir 5 -> 10 time on both bars (replay HUD); where the
+  bot's tap lands on the engine grid (a building never moves, so its tile is exact); which way Cole's screen is
+  turned (rotate or flip); the card and tower levels the friendly battle uses.
+lane: left
+decks:
+  bluestacks: [Bomber, Battle Ram, Giant, Mega Minion, Goblin Hut, Mini P.E.K.K.A, Fireball, Arrows]
+  cole: [Mini P.E.K.K.A, Knight, Bomber, Skeletons, Goblins, Hog Rider, Cannon, Ice Spirit]
+placements:
+  - {side: bluestacks, card: Goblin Hut, tile: [5, 9], t: 15}
+watch:
+  - Hut tile vs (5, 9); spawn times; Hut death time; Spear Goblin damage on Cole's left tower
+  - both elixir bars from 0:00 to full; tower max HP on both sides (levels)
+cole_notes: >-
+  Play NOTHING the whole battle (let it run out). Check where the bot's Goblin Hut appears: on YOUR right half
+  means 'rotate' (the cheat sheet's default), on your left half means 'flip' (tell Claude; the sheets get redrawn).
+  Note the level shown on each tower.
+tail_s: 120

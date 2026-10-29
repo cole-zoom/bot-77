@@ -1,0 +1,15 @@
+id: L16
+name: "Giant pushing Skeletons"
+mechanic: "P2 #7 collision, mass, pushing"
+settles: "How far a walking Giant pushes Skeletons standing in its path while they hit it."
+lane: left
+decks:
+  bluestacks: [Bomber, Battle Ram, Giant, Mega Minion, Goblin Hut, Mini P.E.K.K.A, Fireball, Arrows]
+  cole: [Mini P.E.K.K.A, Knight, Bomber, Skeletons, Goblins, Hog Rider, Cannon, Ice Spirit]
+placements:
+  - {side: bluestacks, card: Giant, tile: [3, 13], t: 25}
+  - {side: cole, card: Skeletons, tile: [3, 19], t: 28, cue: "when the Giant reaches the bridge"}
+watch:
+  - Skeleton positions while the Giant walks into them; their death times
+cole_notes: "Skeletons right in front of the Giant at your left bridge; nothing else."
+tail_s: 40

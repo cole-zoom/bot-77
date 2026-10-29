@@ -1,0 +1,16 @@
+id: L06
+name: "Fireball on Bomber + Knight"
+mechanic: "P2 #5 splash (radius, knockback)"
+settles: "Fireball radius and travel time, knockback on a Knight and a Bomber, whether the Bomber dies."
+lane: left
+decks:
+  bluestacks: [Bomber, Battle Ram, Giant, Mega Minion, Goblin Hut, Mini P.E.K.K.A, Fireball, Arrows]
+  cole: [Mini P.E.K.K.A, Knight, Bomber, Skeletons, Goblins, Hog Rider, Cannon, Ice Spirit]
+placements:
+  - {side: cole, card: Knight, tile: [3, 21], t: 30}
+  - {side: cole, card: Bomber, tile: [4, 22], t: 31, cue: "right after the Knight"}
+  - {side: bluestacks, card: Fireball, tile: [3, 20], t: 32}
+watch:
+  - Bomber death (or not); Knight and Bomber positions just after the hit (knockback)
+cole_notes: "Knight then Bomber, both in your left lane; let them walk on."
+tail_s: 40

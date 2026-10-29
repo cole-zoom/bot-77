@@ -1,0 +1,14 @@
+id: L04
+name: "Giant alone to the princess tower"
+mechanic: "P2 #10 towers, #8 movement"
+settles: "Giant walking speed across the bridge, princess tower damage and hit speed on it, Giant damage per hit on the tower."
+lane: left
+decks:
+  bluestacks: [Bomber, Battle Ram, Giant, Mega Minion, Goblin Hut, Mini P.E.K.K.A, Fireball, Arrows]
+  cole: [Mini P.E.K.K.A, Knight, Bomber, Skeletons, Goblins, Hog Rider, Cannon, Ice Spirit]
+placements:
+  - {side: bluestacks, card: Giant, tile: [3, 13], t: 25}
+watch:
+  - time the Giant reaches the bridge and the tower; Cole's left tower HP over time; Giant death time
+cole_notes: "Play nothing; let the Giant hit your left tower until it dies."
+tail_s: 60

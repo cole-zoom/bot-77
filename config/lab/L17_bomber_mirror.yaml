@@ -1,0 +1,15 @@
+id: L17
+name: "Bomber mirror"
+mechanic: "P2 #4 projectiles, #2 attack cycle"
+settles: "Two Bombers at range: first throw (load time + flight), who dies first."
+lane: left
+decks:
+  bluestacks: [Bomber, Battle Ram, Giant, Mega Minion, Goblin Hut, Mini P.E.K.K.A, Fireball, Arrows]
+  cole: [Mini P.E.K.K.A, Knight, Bomber, Skeletons, Goblins, Hog Rider, Cannon, Ice Spirit]
+placements:
+  - {side: bluestacks, card: Bomber, tile: [3, 12], t: 30}
+  - {side: cole, card: Bomber, tile: [3, 21], t: 30, cue: "same moment as the bot's Bomber lands"}
+watch:
+  - death time of the loser
+cole_notes: "Nothing else until the fight is over."
+tail_s: 30

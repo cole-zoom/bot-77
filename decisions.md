@@ -3691,3 +3691,45 @@ Full write-up: docs/simulator-validation.md. Held-back only (48 games, 346 windo
     per-building sizes. Both go to P1 / P2.
   - Log: data/live/situation_play.jsonl unchanged; a refused play gets an additive `why` ("spell guard: nothing in
     reach" / "not a legal tile" / "not enough elixir"). New `--log` flag so a test server writes elsewhere.
+- **P0.4 lab tooling for tonight's friendly battles (2026-10-29).** Cole plays scripted friendly battles from his phone
+  against the BlueStacks account; both sides place scripted cards on scripted tiles at scripted times; the replay comes
+  from the Battle Log and is compared with the sim running the same placements.
+  - **Scripts:** 20 tests in config/lab/L00-L19 (bot77.lab: id, mechanic, what it settles, lane, both decks, timed
+    placements `side, card, tile, t`). Tiles are engine cells in the BlueStacks frame (the play page's grid), t is game
+    seconds (clock 3:00 - t). BlueStacks plays the live Bomber deck (Bomber, Battle Ram, Giant, Mega Minion, Goblin Hut,
+    Mini P.E.K.K.A, Fireball, Arrows; the bot_games decks of 10-29); Cole brings Mini P.E.K.K.A, Knight, Bomber,
+    Skeletons, Goblins, Hog Rider, Cannon, Ice Spirit for all 20. Knight vs Knight became a Mini P.E.K.K.A mirror (the
+    Bomber deck has no Knight). Every placement and both cycling spots are legal in the engine (tests/test_lab.py).
+  - **BlueStacks side:** scripts/lab_play.py --test Lnn: refuses to start while live_play / replay_runner /
+    live_with_replays / live_session / another lab_play runs (pgrep); waits for the battle with the live loop's reader
+    (LiveReader: clock + elixir = in battle), keeps game time from the clock anchored on the frame where the shown
+    second turns, places by bot77.live.device.deploy (the live tap path, AIM_DY included; --aim-dy overrides). A card
+    not in hand is cycled in first (cheapest card not needed next, back of the other lane; spells into its back corner)
+    only if the scripted card is still affordable by its time. Each run is logged to data/lab/sessions/<date>.jsonl.
+  - **Dry runs** (no ADB): all 20 tests against the *_at.jpg frames of two 10-29 bot games: battle found on the first
+    frame, clock / elixir / hand read against the Bomber deck (~0.13 s a frame), scripted cards tapped in their slot,
+    cycling inside the elixir budget, no crash. Drawn on the frames (data/lab/dryrun/<test>/): the engine grid over the
+    arena puts the engine's princess tower cells on the towers. The frames don't react to taps, so the cycling counts
+    there mean nothing.
+  - **Cheat sheet:** scripts/lab_sheet.py -> data/lab/cheatsheet.html, one printable page per test: the board in
+    Cole's view with his tiles (orange) and the bot's (blue) numbered in time order, clock, card, tile, and the tile
+    in words ("1 tile left of the right tower's column, row 3 back from the river").
+  - **Compare:** scripts/lab_compare.py (bot77.sim.labcmp). --ingest marks the date's Battle Log replays as lab games
+    (config/lab_replays.json; build_sources.py gives them source and split `lab`, so they never reach training) and
+    runs ingest_replays + build_sources / detections / plays / moments + tower_hp. Each replay is mapped to the test
+    whose placements it fits (or --map). The sim plays the whole battle with every real play at its real time (scripted
+    ones on their tile, cycling plays on the replay's spot), and per test reports landing tile vs script, who died when
+    (body counts real vs sim, a drop held 1.5 s), tower HP fractions over time, positions at play + 1/2/4/6/8 s, and a
+    frame-pair viewer (data/lab/viewer/<test>_<match>.html: replay frame | sim board, the replay's detections as rings).
+  - **Proven end to end on held-back bl_2026-10-12_r18_m01**, its first 4 plays treated as a lab test (tiles from
+    their own spots, so landing error ~0 by construction: this checks plumbing, not accuracy): 4 of 4 matched,
+    positions +1 s 0.2-1.1 engine tiles, Witch +8 s 1.9; the tower flags' detector misses (a tower read destroyed, then
+    back) are smoothed. A ladder game is noisy in ways a lab battle isn't (10 plays without a spot, flicker).
+  - **Found:** replay_runner's "recorded before" check can't tell rematches with identical decks apart (its own note:
+    0.997), so lab replays must be pulled with `--no-known -n <battles played>`, right after the session.
+  - **Only checkable tonight:** friendly battles in the Battle Log with a Watch button (if not, nothing else works:
+    check first); which way Cole's screen is turned vs BlueStacks (sheets assume 180 degrees, L00 checks; `lab_sheet.py
+    --cole-view flip` redraws); the levels a friendly battle uses (the engine is level 11 both sides; Cole's cards are
+    likely higher: read the tower max HP and the Battle Log entry); starting elixir; the HUD reader on a friendly
+    battle's screen; real ADB taps landing on the tile (the live AIM_DY -0.55 is 0.75 of an engine row; L00 and L19 measure
+    it on buildings); who accepts the invite on BlueStacks (by hand).

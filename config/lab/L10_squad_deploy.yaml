@@ -1,0 +1,15 @@
+id: L10
+name: "Squad deploy positions (Skeletons, Goblins)"
+mechanic: "P2 #6 deploy, #4 projectiles (tower vs Skeletons)"
+settles: "Where each body of a squad lands relative to the tile, the delay before it moves, tower shots on small units."
+lane: left
+decks:
+  bluestacks: [Bomber, Battle Ram, Giant, Mega Minion, Goblin Hut, Mini P.E.K.K.A, Fireball, Arrows]
+  cole: [Mini P.E.K.K.A, Knight, Bomber, Skeletons, Goblins, Hog Rider, Cannon, Ice Spirit]
+placements:
+  - {side: cole, card: Skeletons, tile: [3, 22], t: 25}
+  - {side: cole, card: Goblins, tile: [14, 22], t: 40}
+watch:
+  - each body's first position; when it starts walking; death times at the bot's towers
+cole_notes: "Skeletons in your left lane, Goblins in your right lane (as you see them on the sheet), nothing else."
+tail_s: 30

@@ -1,0 +1,15 @@
+id: L13
+name: "Fireball and Arrows on a princess tower"
+mechanic: "P2 #10 towers (crown tower damage), #5 spells"
+settles: "Crown tower damage of Fireball and Arrows (CrownTowerDamagePercent) and when it lands."
+lane: left
+decks:
+  bluestacks: [Bomber, Battle Ram, Giant, Mega Minion, Goblin Hut, Mini P.E.K.K.A, Fireball, Arrows]
+  cole: [Mini P.E.K.K.A, Knight, Bomber, Skeletons, Goblins, Hog Rider, Cannon, Ice Spirit]
+placements:
+  - {side: bluestacks, card: Fireball, tile: [3, 27], t: 20}
+  - {side: bluestacks, card: Arrows, tile: [3, 27], t: 40}
+watch:
+  - Cole's left tower HP drop at each spell and the time it lands
+cole_notes: "Play nothing in your left lane."
+tail_s: 20

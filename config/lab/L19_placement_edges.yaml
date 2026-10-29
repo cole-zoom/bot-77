@@ -1,0 +1,16 @@
+id: L19
+name: "Placement at the edges"
+mechanic: "P2 #12 placement rules and the grid's real alignment"
+settles: "Where cards land at the corners of the legal area (front row at both edges, back corner) vs the engine tile."
+lane: left
+decks:
+  bluestacks: [Bomber, Battle Ram, Giant, Mega Minion, Goblin Hut, Mini P.E.K.K.A, Fireball, Arrows]
+  cole: [Mini P.E.K.K.A, Knight, Bomber, Skeletons, Goblins, Hog Rider, Cannon, Ice Spirit]
+placements:
+  - {side: bluestacks, card: Bomber, tile: [0, 14], t: 15}
+  - {side: bluestacks, card: Mega Minion, tile: [17, 14], t: 30}
+  - {side: bluestacks, card: Goblin Hut, tile: [2, 1], t: 50}
+watch:
+  - each unit's first position vs its tile
+cole_notes: "Play nothing; let the units come."
+tail_s: 30

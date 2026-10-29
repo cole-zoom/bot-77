@@ -1,0 +1,15 @@
+id: L07
+name: "Battle Ram into a Knight"
+mechanic: "P2 #9 charge units, #7 collision"
+settles: "Battle Ram charge start and charge damage on a unit, the Barbarians it drops, Knight vs Barbarians after."
+lane: right
+decks:
+  bluestacks: [Bomber, Battle Ram, Giant, Mega Minion, Goblin Hut, Mini P.E.K.K.A, Fireball, Arrows]
+  cole: [Mini P.E.K.K.A, Knight, Bomber, Skeletons, Goblins, Hog Rider, Cannon, Ice Spirit]
+placements:
+  - {side: bluestacks, card: Battle Ram, tile: [14, 12], t: 30}
+  - {side: cole, card: Knight, tile: [14, 20], t: 30, cue: "same moment as the bot's Battle Ram lands"}
+watch:
+  - where the Ram meets the Knight, Ram death time, Barbarian spawn positions, the fight after
+cole_notes: "Knight in your lane on the bot's Battle Ram side; nothing else."
+tail_s: 40

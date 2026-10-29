@@ -1,0 +1,15 @@
+id: L12
+name: "Mini P.E.K.K.A vs Skeletons"
+mechanic: "P2 #2 attack cycle (retarget), #3 targeting"
+settles: "Whether LoadTime applies again after each retarget: time to kill three Skeletons one by one."
+lane: left
+decks:
+  bluestacks: [Bomber, Battle Ram, Giant, Mega Minion, Goblin Hut, Mini P.E.K.K.A, Fireball, Arrows]
+  cole: [Mini P.E.K.K.A, Knight, Bomber, Skeletons, Goblins, Hog Rider, Cannon, Ice Spirit]
+placements:
+  - {side: bluestacks, card: Mini P.E.K.K.A, tile: [3, 13], t: 30}
+  - {side: cole, card: Skeletons, tile: [3, 20], t: 30, cue: "same moment as the bot's Mini P.E.K.K.A lands"}
+watch:
+  - the three Skeleton death times
+cole_notes: "Nothing else until the fight is over."
+tail_s: 30

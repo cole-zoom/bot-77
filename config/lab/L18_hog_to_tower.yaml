@@ -1,0 +1,14 @@
+id: L18
+name: "Hog Rider alone to the tower"
+mechanic: "P2 #8 movement (fast unit), #10 towers"
+settles: "Hog speed bridge to tower (clocked), Hog damage per hit, princess tower DPS on a fast unit."
+lane: right
+decks:
+  bluestacks: [Bomber, Battle Ram, Giant, Mega Minion, Goblin Hut, Mini P.E.K.K.A, Fireball, Arrows]
+  cole: [Mini P.E.K.K.A, Knight, Bomber, Skeletons, Goblins, Hog Rider, Cannon, Ice Spirit]
+placements:
+  - {side: cole, card: Hog Rider, tile: [14, 19], t: 25}
+watch:
+  - Hog arrival time at the bot's right tower; tower HP over time; Hog death time
+cole_notes: "Hog at your bridge on the sheet's side; nothing else."
+tail_s: 40

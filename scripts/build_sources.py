@@ -2,13 +2,13 @@
 matches / videos.
 
 Adds to every match (the existing columns are kept):
-  source        replay_tv / replay_bl / replay_bot / pov_cole / pov_friend / youtube / bot
+  source        replay_tv / replay_bl / replay_bot / lab / pov_cole / pov_friend / youtube / bot
                 (replay_bot: a Battle Log replay of the bot's own game -- its bottom player is the bot, so it is never
                 imitation data; the bot's deck on a day the bot played)
   pov_side      bottom / top (a replay is stored twice: once per player's hand, the top one as <id>_top_m01)
   pair_match_id the same game from the other player's side (replays), else null
   truth_set     replay (both hands, exact) / auto (paired POVs) / live (POV keyed by its replay) / none
-  split         heldout / test / heldback / dev / train -- once, here, from the config lists (precedence in that order;
+  split         heldout / test / heldback / dev / train / lab (lab battles, config/lab_replays.json) -- once, here, from the config lists (precedence in that order;
                 a replay's top side follows its bottom side). Replaces the per-script logic (bot77.holdout, build_*).
   league        TV Royale tab (0 = Ultimate Champion, 1.. down the leagues), -1 for Battle Log games, null otherwise
   result        win / loss for the bot's games (from bot_games / data/live/game_results.json); for replays from the
@@ -30,6 +30,8 @@ live = cfg("live_test_games.json")
 HELDOUT = set(cfg("benchmark_holdout.json")["matches"]) | set(live["matches"]) | set(live["replays"])
 TEST = set(cfg("replay_test_games.json")["matches"])
 HELDBACK = set(cfg("heldback_replays.json")["matches"])
+# lab battles (scripted friendly battles, scripts/lab_play.py; docs/plan-sim-1to1.md P0.4): replay ids, both sides
+LAB = set(cfg("lab_replays.json")["replays"]) if Path("config/lab_replays.json").exists() else set()
 truth = {}
 for f in glob.glob("data/ground_truth/opponent_truth_*.json"):
     kind = Path(f).name.split("_")[2]  # replay / auto / live; the benchmark's own truth file is named by video id
@@ -82,7 +84,13 @@ def is_bot_replay(m: str) -> bool:
     return m.startswith("bl_") and m[3:13] in bot_days and bool(d) and any(set(d) <= dk for dk in bot_decks)
 
 
+def is_lab(m: str) -> bool:
+    return m.rsplit("_m", 1)[0].replace("_top", "") in LAB
+
+
 def source(m: str) -> str:
+    if is_lab(m):
+        return "lab"
     if is_bot_replay(m):
         return "replay_bot"
     return ("replay_tv" if m.startswith("tv_") else "replay_bl" if m.startswith("bl_") else "pov_cole" if m.startswith("cole_")
@@ -95,6 +103,8 @@ def bottom_of(m: str) -> str:
 
 def split(m: str) -> str:
     b = bottom_of(m)
+    if is_lab(m):  # scripted battles: for the simulator only, never training or evaluation of play
+        return "lab"
     for name, s in (("heldout", HELDOUT), ("test", TEST), ("heldback", HELDBACK)):
         if m in s or b in s:
             return name

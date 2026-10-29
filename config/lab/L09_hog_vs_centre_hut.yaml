@@ -1,0 +1,15 @@
+id: L09
+name: "Hog Rider vs a centre Goblin Hut"
+mechanic: "P2 #3 targeting (building pull)"
+settles: "Whether and where a Hog crossing the bridge turns for a building placed in the centre; the Hut's life under Hog hits."
+lane: left
+decks:
+  bluestacks: [Bomber, Battle Ram, Giant, Mega Minion, Goblin Hut, Mini P.E.K.K.A, Fireball, Arrows]
+  cole: [Mini P.E.K.K.A, Knight, Bomber, Skeletons, Goblins, Hog Rider, Cannon, Ice Spirit]
+placements:
+  - {side: bluestacks, card: Goblin Hut, tile: [8, 10], t: 25}
+  - {side: cole, card: Hog Rider, tile: [3, 19], t: 35, cue: "10 s after the Hut lands"}
+watch:
+  - Hog path (does it turn for the Hut, where), Hut death time, Hog death time
+cole_notes: "Hog at your left bridge, nothing else."
+tail_s: 45

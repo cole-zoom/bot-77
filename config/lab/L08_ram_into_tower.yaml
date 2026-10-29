@@ -1,0 +1,14 @@
+id: L08
+name: "Battle Ram into the tower"
+mechanic: "P2 #9 charge units, #8 movement, #10 towers"
+settles: "Battle Ram speed (walk and charge), charge damage on a princess tower, the two Barbarians' damage after."
+lane: right
+decks:
+  bluestacks: [Bomber, Battle Ram, Giant, Mega Minion, Goblin Hut, Mini P.E.K.K.A, Fireball, Arrows]
+  cole: [Mini P.E.K.K.A, Knight, Bomber, Skeletons, Goblins, Hog Rider, Cannon, Ice Spirit]
+placements:
+  - {side: bluestacks, card: Battle Ram, tile: [14, 13], t: 25}
+watch:
+  - Ram arrival time at the tower, tower HP drop on the hit, Barbarian deaths
+cole_notes: "Play nothing; let the Ram and its Barbarians hit your tower."
+tail_s: 45

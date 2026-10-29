@@ -1,0 +1,16 @@
+id: L01
+name: "Mini P.E.K.K.A mirror"
+mechanic: "P2 #2 attack cycle"
+settles: >-
+  First hit after LoadTime, then HitSpeed: two identical units meeting at the bridge; who wins and when the loser dies.
+lane: left
+decks:
+  bluestacks: [Bomber, Battle Ram, Giant, Mega Minion, Goblin Hut, Mini P.E.K.K.A, Fireball, Arrows]
+  cole: [Mini P.E.K.K.A, Knight, Bomber, Skeletons, Goblins, Hog Rider, Cannon, Ice Spirit]
+placements:
+  - {side: bluestacks, card: Mini P.E.K.K.A, tile: [3, 13], t: 30}
+  - {side: cole, card: Mini P.E.K.K.A, tile: [3, 20], t: 30, cue: "same moment as the bot's Mini P.E.K.K.A lands"}
+watch:
+  - death time of the loser vs sim; survivor's walk to the tower
+cole_notes: "Nothing else until the fight is over; afterwards let the survivor go (don't defend)."
+tail_s: 40

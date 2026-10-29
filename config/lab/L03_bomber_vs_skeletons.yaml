@@ -1,0 +1,15 @@
+id: L03
+name: "Bomber vs Skeletons"
+mechanic: "P2 #2 attack cycle, #4 projectiles"
+settles: "Bomber's first throw (load time + projectile flight) on three Skeletons crossing the bridge; who dies when."
+lane: left
+decks:
+  bluestacks: [Bomber, Battle Ram, Giant, Mega Minion, Goblin Hut, Mini P.E.K.K.A, Fireball, Arrows]
+  cole: [Mini P.E.K.K.A, Knight, Bomber, Skeletons, Goblins, Hog Rider, Cannon, Ice Spirit]
+placements:
+  - {side: cole, card: Skeletons, tile: [3, 20], t: 30}
+  - {side: bluestacks, card: Bomber, tile: [3, 11], t: 30}
+watch:
+  - each Skeleton's death time; Bomber survival
+cole_notes: "Nothing else until the fight is over."
+tail_s: 35

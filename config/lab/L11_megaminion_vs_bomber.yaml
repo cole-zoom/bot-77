@@ -1,0 +1,15 @@
+id: L11
+name: "Mega Minion vs Bomber"
+mechanic: "P2 #2 attack cycle, #3 air vs ground targeting"
+settles: "Mega Minion first hit and hit speed on a Bomber that can't hit back (air); Bomber death time."
+lane: left
+decks:
+  bluestacks: [Bomber, Battle Ram, Giant, Mega Minion, Goblin Hut, Mini P.E.K.K.A, Fireball, Arrows]
+  cole: [Mini P.E.K.K.A, Knight, Bomber, Skeletons, Goblins, Hog Rider, Cannon, Ice Spirit]
+placements:
+  - {side: cole, card: Bomber, tile: [3, 20], t: 30}
+  - {side: bluestacks, card: Mega Minion, tile: [3, 13], t: 30}
+watch:
+  - Bomber death time
+cole_notes: "Bomber at your left bridge, nothing else."
+tail_s: 35

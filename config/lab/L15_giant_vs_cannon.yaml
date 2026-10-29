@@ -1,0 +1,15 @@
+id: L15
+name: "Giant past a Cannon"
+mechanic: "P2 #3 targeting (building-only unit, pull)"
+settles: "Whether a Giant crossing the left bridge turns for a Cannon in the centre or goes to the tower; Cannon damage on it."
+lane: left
+decks:
+  bluestacks: [Bomber, Battle Ram, Giant, Mega Minion, Goblin Hut, Mini P.E.K.K.A, Fireball, Arrows]
+  cole: [Mini P.E.K.K.A, Knight, Bomber, Skeletons, Goblins, Hog Rider, Cannon, Ice Spirit]
+placements:
+  - {side: cole, card: Cannon, tile: [8, 23], t: 20}
+  - {side: bluestacks, card: Giant, tile: [3, 13], t: 25}
+watch:
+  - Giant path and target; Cannon death time; Giant death time
+cole_notes: "Cannon in the centre of your side, nothing else."
+tail_s: 50
