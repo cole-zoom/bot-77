@@ -3618,3 +3618,9 @@ Full write-up: docs/simulator-validation.md. Held-back only (48 games, 346 windo
   So: at a full bar with nothing on the board, never sit; start a push or cycle something cheap; with the Bomber deck,
   a Giant or Mega Minion at the back. It's to be learned from his play-page examples, not hard-coded (the live
   --full-bar-guard stays an off-by-default band-aid, and the scripted tempo policy is a baseline, not the teacher).
+- **Cole on learning from the 51 ladder games (2026-10-29, verbatim):** "they are really only for showing the bots
+  mistakes. what if they somehow tell teh bot its doing good". Rule: the bot's own live games are never positive
+  training signal. No imitation of its plays (won games included), no reward from their outcomes. They're used only
+  to find mistakes (tower HP lost, full bar, wasted spells), which become play-page situations whose right answer comes
+  from Cole. The opponents' side of the replays (to fit a ladder opponent) is allowed: it teaches nothing about
+  our plays. Plan item 4 of the 75-game entry ("our own plays from the won games as extra demos") is dropped.
