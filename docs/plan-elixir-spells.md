@@ -21,6 +21,22 @@ another agent.
   centre of our side, with nothing there as far as the logs show (v4: about 9 of 120). The situation score charges
   0.04 per elixir, so a wasted Fireball costs about 0.16, which is small next to the tower terms.
 
+## Don't lose the defence (Cole, 2026-10-29: "its actually really good at defending though, when its not freezing. so
+lets make sure we don't get rid of its defesnive capabilities")
+
+The defence is the thing that works, so every phase protects it:
+- **The baseline stays.** data/models/bc_defence_v2/epoch03.pth (and its _cal50 / _cal20 copies) and
+  data/cache/bc/defence_t01 are read-only. New work goes in new folders.
+- **A defence gate** for every new checkpoint or scoring change: the exam on the 10 existing defence templates at
+  `--n 50`, with the same calibration, compared per template with v2 epoch 3. It fails if the defence-template mean
+  drops more than 0.05 below v2 epoch 3's, or if any single template drops more than 0.15. A failed gate is reported
+  as it stands, not tuned away.
+- **The new data adds; it doesn't replace.** The press demos join the defence demos. The defence share of the demo
+  windows stays at least what v2 had (no defence template gets fewer demos than before), and the press templates are
+  capped at about a quarter of the demo windows.
+- **The guards never touch a defence play except a wasted spell.** The full-bar guard only fires with no enemy unit
+  on our side of the river.
+
 ## Phases
 
 Each phase ends with a commit + push (scan the diff first: no secrets, no `/Users/...`, no binaries), a decisions.md
