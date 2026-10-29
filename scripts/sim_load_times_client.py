@@ -39,7 +39,7 @@ for r in csv.DictReader(open(LOGIC / "spells_characters.csv")):
     if r["Name"] and not r["SummonCharacter"] and r["Rarity"] in FIRST_LEVEL and r["Name"] in UNIT_OF:
         cards[norm(r["Name"])] = {**r, "SummonCharacter": UNIT_OF[r["Name"]]}
 
-rows, missing, first, by_name, fh_rows = [], [], [], {}, []
+rows, missing, first, by_name, fh_rows, ms_rows, ms_by_name = [], [], [], {}, [], [], {}
 info = sc.engine_cards()
 for eid, c in sorted(info.items()):
     if c["is_spell"]:
@@ -61,14 +61,20 @@ for eid, c in sorted(info.items()):
     # a unit that never hits (huts, Furnace, Elixir Collector: their HitSpeed is a spawn interval) has none
     fh = int((hs - lt) / 100 + 0.5) if hs > lt and attacks else -1
     fh_rows.append((eid, fh, f"{name}: {hs} - {lt} ms"))
+    # LoadTime in ms for the client attack cycle (CombatEntity, Fidelity::reloadFromAttackStart): only where the
+    # first-hit rule applies (fh >= 0); -1 otherwise
+    ms_rows.append((eid, lt if fh >= 0 else -1, f"{name}: {unit_name} LoadTime {lt} ms"))
     if not c["evolution"] and not c["is_hero"]:
         by_name.setdefault(name, fh)
+        ms_by_name.setdefault(name, lt if fh >= 0 else -1)
     if unit.get("LoadFirstHit"):
         first.append((eid, f"{name}: {unit_name} LoadFirstHit"))
 
 body = "\n".join(f"        case {eid}: return {t};  // {cmt}" for eid, t, cmt in rows)
 fh_body = "\n".join(f"        case {eid}: return {t};  // {cmt}" for eid, t, cmt in fh_rows)
 names = "\n".join(f'    if (name == "{n}") return {t};' for n, t in sorted(by_name.items()))
+ms_body = "\n".join(f"        case {eid}: return {t};  // {cmt}" for eid, t, cmt in ms_rows)
+ms_names = "\n".join(f'    if (name == "{n}") return {t};' for n, t in sorted(ms_by_name.items()))
 Path(a.out).write_text(f"""#pragma once
 #include <string>
 
@@ -107,6 +113,22 @@ inline int firstHitTicksForCard(int cardId) {{
 // is the playable card of the same name's (the engine's card names). -1 = no such card.
 inline int firstHitTicksForUnitName(const std::string& name) {{
 {names}
+    return -1;
+}}
+
+// LoadTime in ms, for the client attack cycle (CombatEntity: an attack starts LoadTime minus the missing load into
+// its HitSpeed cycle, and the load is reset to full at that start). -1 where firstHitTicksForCard is -1 (no entry,
+// or a load not shorter than the hit speed).
+inline int loadMsForCard(int cardId) {{
+    switch (cardId) {{
+{ms_body}
+        default: return -1;
+    }}
+}}
+
+// The same for a spawned body, by the playable card of the same name. -1 = no such card.
+inline int loadMsForUnitName(const std::string& name) {{
+{ms_names}
     return -1;
 }}
 """)

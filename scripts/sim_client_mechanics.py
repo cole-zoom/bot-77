@@ -16,6 +16,11 @@ Per card / spawned unit:
 Towers (buildings.toml / characters/princesstower.toml, king_tower.toml): projectile Speed, CollisionRadius, and the
 King's activation (ACTION.WaitForKingTowerActivation -> OnActivateAction ActionDuration). Globals (globals.csv):
 EXTRA_SIGHT_RANGE_TO_CROWN_TOWERS.
+Attack cycle and targeting (2026-10-29, from the code reading in docs/client-code-notes.md): the globals
+ATTACK_FINISH_TIME_MS, LOGIC_PENDING_DAMAGE_IGNORE_IF_DURATION_LESS, LOGIC_RANGE_EXTENSION_TO_KEEP_TARGET and
+LOGIC_CANCEL_HIT_FROM_LONG_DISTANCE_RANGE; the towers' LoadTime / HitSpeed; each unit's SpecialLoadTime (the windup of
+a special attack: Fisherman's hook); the Default battle timeline's elixir (ElixirFullBarMS per section, StartingElixir).
+Two numbers are constants in the code, not table values, and are written here with the address they were read at.
 """
 import argparse
 import csv
@@ -89,6 +94,23 @@ king = tomllib.loads((LOGIC / "characters" / "king_tower.toml").read_text())
 act = king["ACTION"]["WaitForKingTowerActivation"]["OnActivateAction"]["ActionDuration"]
 glob = {r["Name"]: r for r in csv.DictReader(open(LOGIC / "globals.csv")) if r.get("Name")}
 crown_sight = int(glob["EXTRA_SIGHT_RANGE_TO_CROWN_TOWERS"]["NumberValue"])
+gnum = lambda k: int(glob[k]["NumberValue"])
+special_cases = []
+for eid, pr, rad, mass, cmt in rows:
+    un = cmt.split(": ", 1)[1].split(" (")[0].split(",")[0]
+    u = chars.get(un)
+    if u and int(u.get("SpecialLoadTime", 0) or 0) > 0:
+        special_cases.append((eid, str(int(u["SpecialLoadTime"])), f"{cmt.split(':')[0]}: {un} SpecialLoadTime "
+                              f"{u['SpecialLoadTime']} ms, SpecialMinRange {u.get('SpecialMinRange', 0)}, "
+                              f"SpecialRange {u.get('SpecialRange', 0)}"))
+tl = list(csv.reader(open(LOGIC / "battle_timelines.csv")))
+hdr = tl[0]
+i0 = next(i for i, r in enumerate(tl) if r and r[0] == "Default")
+sec = [tl[i0]] + [r for r in tl[i0 + 1:i0 + 4] if r and not r[0]]
+col = {h: hdr.index(h) for h in ("StartingElixir", "ElixirRateLength", "ElixirFullBarMS")}
+bars = [int(r[col["ElixirFullBarMS"]]) for r in sec if r[col["ElixirFullBarMS"]]]
+lens = [int(r[col["ElixirRateLength"]]) for r in sec if r[col["ElixirRateLength"]]]
+start_elixir = int(tl[i0][col["StartingElixir"]])
 
 
 def sw(fn: str, ret: str, cases: list[tuple[int, str, str]], default: str) -> str:
@@ -135,6 +157,37 @@ inline constexpr int CLIENT_KING_TOWER_COLLISION_RADIUS = {int(kt['CollisionRadi
 inline constexpr int CLIENT_KING_ACTIVATION_MS = {int(act)};
 // globals.csv: a troop sees a crown tower this much further than its SightRange.
 inline constexpr int CLIENT_EXTRA_SIGHT_RANGE_TO_CROWN_TOWERS = {crown_sight};
+
+// Tower attack cycle (characters/princesstower.toml, king_tower.toml): LoadTime (absent = 0) and HitSpeed, ms.
+inline constexpr int CLIENT_PRINCESS_TOWER_LOAD_TIME_MS = {int(pt.get('LoadTime', 0))};
+inline constexpr int CLIENT_PRINCESS_TOWER_HIT_SPEED_MS = {int(pt['HitSpeed'])};
+inline constexpr int CLIENT_KING_TOWER_LOAD_TIME_MS = {int(kt.get('LoadTime', 0))};
+inline constexpr int CLIENT_KING_TOWER_HIT_SPEED_MS = {int(kt['HitSpeed'])};
+
+// globals.csv, the attack cycle and targeting (docs/client-code-notes.md sections 1 and 3):
+// a lost target leaves the swing alive this long for a new target in reach (ATTACK_FINISH_TIME_MS);
+inline constexpr int CLIENT_ATTACK_FINISH_TIME_MS = {gnum('ATTACK_FINISH_TIME_MS')};
+// damage in flight skips a candidate only if it lands sooner than this (LOGIC_PENDING_DAMAGE_IGNORE_IF_DURATION_LESS);
+inline constexpr int CLIENT_PENDING_DAMAGE_WINDOW_MS = {gnum('LOGIC_PENDING_DAMAGE_IGNORE_IF_DURATION_LESS')};
+// the current target is kept this far past reach, thousandths of a tile (LOGIC_RANGE_EXTENSION_TO_KEEP_TARGET);
+inline constexpr int CLIENT_RANGE_EXTENSION_TO_KEEP_TARGET = {gnum('LOGIC_RANGE_EXTENSION_TO_KEEP_TARGET')};
+// a hit whose target is further than this past reach is cancelled (LOGIC_CANCEL_HIT_FROM_LONG_DISTANCE_RANGE).
+inline constexpr int CLIENT_CANCEL_HIT_DISTANCE = {gnum('LOGIC_CANCEL_HIT_FROM_LONG_DISTANCE_RANGE')};
+// Code constants, not table values (combat update 0x71fff599e4 in the 2026-10-29 build): a swing has started once
+// its attack timer is more than 50 ms into a hit cycle; a unit with a projectile keeps a target whose hit has started
+// up to 500 (thousandths of a tile) past reach (LOGIC_PRESERVE_TARGET_IF_HIT_STARTED).
+inline constexpr int CLIENT_HIT_STARTED_MS = 50;
+inline constexpr int CLIENT_PRESERVE_TARGET_IF_HIT_STARTED_RANGE = 500;
+
+// battle_timelines.csv "Default" (Ladder, Friendly): ms per full bar (10 elixir) in each section
+// ({', '.join(f'{l} s' for l in lens)}), and the starting elixir.
+inline constexpr int CLIENT_ELIXIR_FULL_BAR_MS_1X = {bars[0]};
+inline constexpr int CLIENT_ELIXIR_FULL_BAR_MS_2X = {bars[1]};
+inline constexpr int CLIENT_ELIXIR_FULL_BAR_MS_3X = {bars[2]};
+inline constexpr int CLIENT_STARTING_ELIXIR = {start_elixir};
+
+// The windup of a unit's special attack (SpecialLoadTime, ms): Fisherman's hook. 0 = none.
+{sw("clientSpecialLoadTimeForCard", "int", special_cases, "0")}
 
 // The unit's projectile Speed (client units; CardRegistry.h clientProjectileSpeed converts). -1 = no projectile.
 {sw("clientProjectileSpeedForCard", "int", speed_cases, "-1")}

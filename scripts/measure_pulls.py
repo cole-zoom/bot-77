@@ -21,6 +21,11 @@ What it does, per human replay (sources replay_tv / replay_bl, detections run v5
   footprint (1.0), R swept; accuracy for the engine's 3.3 against the best R, on train + dev, then held-back.
 
 Ground troops and flyers (Balloon, Lava Hound) are reported apart. Never on test / held-out.
+
+2026-10-29 (--client): also scores the client's own targeting rule, read from its code (bot-77
+docs/client-code-notes.md section 3, find target 0x71fff56878; the engine's Fidelity::clientTargeting): the nearest
+candidate by plain centre distance wins (pulled iff d_building < d_tower), sight edge to edge (d_building <=
+SightRange + the troop's CollisionRadius + the building's), radii from the client's tables.
 """
 import argparse
 import collections
@@ -139,10 +144,42 @@ def accuracy(ev, R, r=R_BUILDING):
     return sum(ok) / max(1, len(ok))
 
 
+def client_radii() -> tuple[dict, dict]:
+    """{targeter card: CollisionRadius}, {building card: CollisionRadius} in tiles, from the client's tables."""
+    import csv
+    import sys
+    from pathlib import Path
+    sys.path.insert(0, str(Path(__file__).resolve().parent))
+    from audit_client_stats import CLIENT_NAME, LOGIC, UNIT_OVERRIDE, norm, units
+    chars, _ = units()
+    summon = {}
+    for f in ("spells_characters.csv", "spells_buildings.csv"):
+        for r in csv.DictReader(open(LOGIC / f)):
+            if r.get("Name") and r.get("SummonCharacter"):
+                summon.setdefault(norm(r["Name"]), r["SummonCharacter"])
+
+    def rad(card):
+        unit = UNIT_OVERRIDE.get(card) or summon.get(norm(card)) or summon.get(norm(CLIENT_NAME.get(card, "")))
+        u = chars.get(unit or "")
+        return int(u["CollisionRadius"]) / 1000 if u and u.get("CollisionRadius") else None
+    return {c: rad(c) for c in TARGETERS}, {c: rad(c) for c in BUILDINGS}
+
+
+def accuracy_client(ev, r_troop, r_building):
+    """The client's rule: centre distance ranks, sight edge to edge."""
+    ok = []
+    for e in ev:
+        rt, rb = r_troop.get(e["card"]) or 0.0, r_building.get(e["building"]) or 1.0
+        pulled = e["d_building"] < e["d_tower"] and e["d_building"] <= TARGETERS[e["card"]] + rt + rb
+        ok.append(pulled == e["pulled"])
+    return sum(ok) / max(1, len(ok))
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--workers", type=int, default=4)
     ap.add_argument("--examples", type=int, default=6)
+    ap.add_argument("--client", action="store_true", help="also score the client's targeting rule (2026-10-29)")
     a = ap.parse_args()
     ms = store.read("matches", "source IN ('replay_tv', 'replay_bl') AND pov_side = 'bottom'")
     jobs = [(m["match_id"], m["split"]) for m in ms if m["split"] in ("train", "dev", "heldback")]
@@ -160,6 +197,15 @@ def main():
     print(f"  tower targeting radius 3.3 (engine): {accuracy(fit, 3.3):.1%} | best R {best} ({max(accs):.1%}; "
           f"equally good {band[0]}-{band[-1]}) | collision radius 1.5: {accuracy(fit, 1.5):.1%}")
     print(f"  held-back ({len(held)}): 3.3 {accuracy(held, 3.3):.1%}, R {best} {accuracy(held, best):.1%}")
+    if a.client:
+        rt, rb = client_radii()
+        print(f"  client rule (centre distance, sight edge to edge; radii troops {rt}, buildings {rb}):")
+        print(f"    fit set {accuracy_client(fit, rt, rb):.1%} (fitted R 1.5: {accuracy(fit, 1.5):.1%}); held-back "
+              f"{accuracy_client(held, rt, rb):.1%} (fitted R 1.5: {accuracy(held, 1.5):.1%}); flyers "
+              f"{accuracy_client(fly, rt, rb):.1%} (fitted R 1.5: {accuracy(fly, 1.5):.1%})")
+        for card, n in collections.Counter(e["card"] for e in fit).most_common():
+            sub = [e for e in fit if e["card"] == card]
+            print(f"    {card:14s} {n:4d} | client {accuracy_client(sub, rt, rb):.0%} | fitted 1.5 {accuracy(sub, 1.5):.0%}")
     for R in (1.5, 2.0, 2.5, 3.0, 3.3):
         print(f"    R {R}: {accuracy(fit, R):.1%}")
     print("  per troop (fit set): card n pulled | acc 3.3 | acc best R")
