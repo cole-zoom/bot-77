@@ -4080,3 +4080,30 @@ Also not modelled: DeprioritizeTargetsWithBuff, TargetLowestHP, SightRangeForCha
 RetargetAfterAttack, the forced-target queue (USE_TARGET_QUEUEING), LoadAfterRetarget (no card sets it).
 Soak (tools/audit/soak.cpp, 200 matches): 283 flagged idle units vs 265 on the base, the same Hog-at-tower pattern (the
 audit's own reach uses the old radii), no new kind of stall.
+
+## 2026-10-29 · Code-derived attack cycle and targeting merged into the fork
+
+Reviewed the third sim-fix agent's diff (its per-change table is in the entry above) and merged it.
+
+**What changed in the code:**
+- The hit logic moved into helpers (`performHit` / `jumpStep` / `hookStep`).
+- The client cycle runs as its own path when `reloadFromAttackStart` is on.
+- With every new switch off, the build reproduces 41fe8ad.
+
+**Results:**
+- C++ suite: 786 cases, 785 pass + 1 expected failure.
+- bot-77 pytest: 131 pass + the old `curated_coverage` failure.
+
+**Held-back S2 with the defaults:**
+- life +1.25 / +1.32 s, was +1.50 / +1.48;
+- tower damage sum 1.10, was 1.21;
+- fight winner unchanged within noise.
+
+**Watch item:** the client targeting rule pulls flyers to buildings worse than the fitted rule, 74.5% vs 83.0% (n=47). Probably a rule the code reading didn't cover yet: SightClip, or the troop-specific sight field.
+
+**Off pending Cole / the lab:**
+- the 50 ms tick;
+- 6 starting elixir;
+- the Princess tower's 0.8 s first shot;
+- the 2.8 s elixir rate;
+- side/forward sight limits.
