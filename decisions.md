@@ -3332,3 +3332,19 @@ Full write-up: docs/simulator-validation.md. Held-back only (48 games, 346 windo
     82-153 s collapses: it loses on tempo and leaked elixir, not to counter-pushes.
   - So imitation fixed what RL broke (the rush) and RL breaks what imitation fixed (the patience): the next round has
     to keep the school's placements while spending its elixir.
+- **Live test, defence school v2 epoch 3 at log-20 calibration (2026-10-29 01:08-01:55): 8-2**, the best live result
+  so far (log 50: 6-12 clean; v4 7-7; v2 9-9). Game 7 (a loss logged 56 s in, 5 plays, 3 threats on the board) may
+  be a disconnect or a misread end screen; Cole to confirm (7-1 without it). The checkpoint is the same school with
+  card_head.bias[4] at +log 20 instead of +log 50 (higher = more waiting: log 200 spent less, not more; corrected
+  in chat). Log: data/live/school_v2_cal20.log (local).
+  - Openings: still no bum rush (one Mini P.E.K.K.A at the left bridge, game 7; the rest at or behind a tower or the
+    centre). The first play at 7.8-10 elixir. Full bar on 32 lines over 10 games (log 50: 154 over 20).
+  - **The freeze is the model.** Game 2 (bot_2026-10-29_011219, a win) had 34 s at 10 elixir with no plays: 226 of
+    233 decisions chose wait at p(wait) 0.95-0.99 with no threats; the unreadable slot was picked 5 times. The school
+    learned that nothing to defend means wait.
+  - Spells: 17 of 52 Fireballs / Arrows behind our towers or in the centre (log 50: ~26 of 70). Cole saw spells
+    cycled onto nothing.
+  - Cole: it defends well when it isn't freezing; it doesn't know when it has an elixir lead or when to press; it
+    must learn when to chill and when to place a lot, not get it from a willingness knob. Plan:
+    docs/plan-elixir-spells.md (spell guard, leak / wasted-spell scoring, chill-vs-press matched pairs, school v3 with
+    a defence gate, the opponent-elixir input as a gated proposal).
