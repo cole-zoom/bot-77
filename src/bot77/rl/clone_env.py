@@ -83,6 +83,10 @@ class CloneEnv(MicroRoyaleSelfPlayEnv):
         # spell_guard False) for the guard-off record. RL v1-v5 ran without it.
         self.spell_guard = bool(env_config.get("spell_guard", os.environ.get("RL_SPELL_GUARD", "1") != "0"))
         self.spell_vetoes = 0  # this episode's
+        # full games (RL, plan P2): a per-step penalty on elixir lost at the cap, RL_LEAK_COEF per elixir. Default 0 so
+        # v1-v5 stay reproducible; ~0.009 makes a whole regulation game of sitting at 10 (~84 elixir) cost about one
+        # Princess Tower in the fork's reward (W_TOWER_DESTROYED 0.6 + W_BLDG 0.5 x 2534 / MAX_BUILDING_HP ~ 0.74)
+        self.rl_leak_coef = float(os.environ.get("RL_LEAK_COEF", "0"))
 
     def _snapshots(self) -> list[str]:
         return sorted(p for d in self.snapshot_dirs for p in glob.glob(os.path.join(d, "*.pth")))
@@ -99,8 +103,8 @@ class CloneEnv(MicroRoyaleSelfPlayEnv):
         else:
             path = self.clone
             self.opp_deck = self.pro_decks[int(self.rng.choice(len(self.pro_decks), p=self.deck_p))]
-        if (self._start_tpl or self.forced_template) in sit.REVIEW_TEMPLATES:
-            self.opp_deck = list(sit.SCRIPT_DECK)  # Cole's 1 / 8 / 9: the scripted opponent's cards
+        if (self._start_tpl or self.forced_template) in sit.SCRIPTED_OPP:
+            self.opp_deck = list(sit.SCRIPT_DECK)  # Cole's 1 / 8 / 9 and the tempo situations: the scripted opponent's cards
         if path != self.loaded:
             self.set_historical_opponent(path)
             self.loaded = path
@@ -157,22 +161,25 @@ class CloneEnv(MicroRoyaleSelfPlayEnv):
         return obs, info
 
     def _guard(self, action):
-        """The spell guard on our action: (the action to play, vetoed?)."""
+        """The spell guard on our action: (the action to play, vetoed?, the whiffed spell's id if it goes through)."""
         k = int(np.asarray(action["card_index"]).reshape(-1)[0])
-        if not self.spell_guard or k >= 4:
-            return action, False
+        if k >= 4:
+            return action, False, None
         hand = list(self.game.get_hand())
         if k >= len(hand) or hand[k] not in guards.GUARDED or self.game.get_elixir() < sit.COST.get(hand[k], 99):
-            return action, False
+            return action, False, None
         x = float(np.asarray(action["target_x"]).reshape(-1)[0])
         y = float(np.asarray(action["target_y"]).reshape(-1)[0])
         if not guards.spell_vetoed(hand[k], x, y, self.game.get_units()):
-            return action, False
-        return {**action, "card_index": 4}, True
+            return action, False, None
+        if not self.spell_guard:
+            return action, False, hand[k]
+        return {**action, "card_index": 4}, True, None
 
     def step(self, action, skip_frames=None):
-        action, vetoed = self._guard(action)
+        action, vetoed, whiff = self._guard(action)
         self.spell_vetoes += vetoed
+        el0, spent0 = float(self.game.get_elixir()), float(self.game.get_elixir_spent(0))
         before = (list(self.game.get_hand()), float(self.game.get_elixir_spent(0))) if self.situation is not None else None
         obs, reward, terminated, truncated, info = super().step(action, skip_frames or self.decision_ticks)
         k = int(action["card_index"])
@@ -180,6 +187,11 @@ class CloneEnv(MicroRoyaleSelfPlayEnv):
             # our play, timed as the play page logs Cole's (the time after this step)
             self.situation.my_plays.append((round(self.situation.seconds + self.situation.dt, 1), before[0][k],
                                             float(action["target_x"][0]), float(action["target_y"][0])))
+        if whiff is not None and self.situation is not None and float(self.game.get_elixir_spent(0)) > spent0 + 1e-6:
+            self.situation.wasted_spells += 1
+            self.situation.wasted_spell_elixir += sit.COST.get(whiff, 0)
+        if self.situation is None and self.rl_leak_coef > 0:
+            reward -= self.rl_leak_coef * sit.leak_step(self.game, 0, el0, spent0, int(skip_frames or self.decision_ticks))
         info["spell_veto"] = float(vetoed)
         info["spell_vetoes"] = float(self.spell_vetoes)
         info["rl_situation"] = 0.0

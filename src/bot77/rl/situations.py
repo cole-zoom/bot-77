@@ -63,6 +63,37 @@ DEALT_COEF = 0.15  # tower damage we deal, a princess's worth = +0.15 (Cole: "sl
 KEY_BONUS = 0.3
 KEY_DT = 1.5
 KEY_DIST = 2.5
+# Elixir is worth something on both sides (docs/plan-elixir-spells.md P2, 2026-10-29): what regen would have added
+# while we sat at 10 is lost, at the same rate as spending it; a Fireball / Arrows that touches nothing of theirs costs
+# its elixir again on top (the spell guard makes that rare in the sim; kept for the guard-off exam and the record).
+# Both apply to every score kind (score v2; score_v1, the formula Cole played under, is unchanged).
+LEAK_COEF = ELIXIR_COST
+WASTED_SPELL_COEF = 0.04
+
+
+_REGEN: list[float] = []
+
+
+def regen_per_tick() -> float:
+    """The engine's elixir regeneration per tick at 1x, measured once (no copy of the engine's constant here)."""
+    if not _REGEN:
+        import clash_royale_env as cre
+        g = cre.ClashRoyaleEnv([0, 1, 2, 3, 5, 6, 7, 9], [0, 1, 2, 3, 5, 6, 7, 9], 3600,
+                               cre.TowerTroopType.NONE, cre.TowerTroopType.NONE)
+        g.seed(0)
+        g.set_elixir_for_team(0, 0.0)
+        g.step_self_play(4, 0.0, 0.0, 4, 0.0, 0.0, 100)
+        _REGEN.append(float(g.get_elixir_for_team(0)) / 100.0 / float(cre.elixir_multiplier_at_tick(50)))
+    return _REGEN[0]
+
+
+def leak_step(game, team: int, el_before: float, spent_before: float, ticks: int) -> float:
+    """Elixir regen would have added over the last `ticks` ticks that the cap threw away (for `team`)."""
+    import clash_royale_env as cre
+    now = int(game.get_current_tick())
+    regen = sum(regen_per_tick() * float(cre.elixir_multiplier_at_tick(t)) for t in range(max(0, now - ticks), now))
+    spent = float(game.get_elixir_spent(team)) - spent_before
+    return max(0.0, el_before + regen - spent - float(game.get_elixir_for_team(team)))
 
 
 def _lane(rng) -> float:
@@ -234,6 +265,8 @@ def opponent_script(sit_, env):
         return None
 
     plan = spec["opp"]
+    if plan == "tempo":
+        return _tempo_opponent(sit_, env)
     lane = spec.get("lane", 3.0)
     if plan == "defend":
         return defend()
@@ -299,8 +332,301 @@ def opponent_script(sit_, env):
     return None
 
 
+# --- Tempo situations: when to spend (docs/plan-elixir-spells.md P3, 2026-10-29) ---
+# Matched pairs: the same board (drawn first, from the same seed), a different elixir picture or game state, opposite
+# right answers. Cole: "it needs to know when to chill, and when to place a lot ... its knowing when to spend, and needs
+# to be learnt." Scored over a fixed window with the tempo opponent below.
+#
+# Cole on when to press (2026-10-29, verbatim): "in a even game, +3 is a valid placeholder. But if were desperate, like
+# late game, and were down a tower, we need to go all in, so even 0 or +1, we try for a hail mary. Or if we need like
+# 10 damage, hail marry/spell their tower".
+PRESS_LEAD = 3.0  # an even game: press at our elixir - theirs >= +3 (Cole's placeholder)
+DESPERATE_LEAD = 0.0  # desperate: all in at 0 or +1 (Cole)
+# OUR CUT-OFFS, open questions for Cole: "late" = the last minute of regulation (engine tick >= 1200, 2:00 elapsed,
+# where double elixir starts) or overtime; "down a tower" = fewer of our towers standing than theirs
+LATE_TICK = 1200
+MID_TICKS = (600, 1150)  # the calm / pressure templates: 1:00-1:55 elapsed, single elixir
+DESPERATE_TICKS = (1250, 1700)  # 2:05-2:50 elapsed, double elixir
+CHILL_AT = 9.5  # chill: hold until about to leak, then one cheap or back play
+TEMPO_WINDOW = 25  # seconds, the same for both halves of a pair
+DEALT_COEF_PRESS = 1.0  # press / desperate: a hit point of theirs is worth one of ours (losing a Princess = -1)
+_SPELL_TOWER: dict[int, float] = {}
+
+
+def spell_tower_damage(card: int) -> float:
+    """A spell's damage to a Princess Tower, measured by casting it on one (no copy of the engine's numbers)."""
+    if card not in _SPELL_TOWER:
+        import clash_royale_env as cre
+        g = cre.ClashRoyaleEnv([0, 1, 2, 3, 5, 6, 7, 9], [0, 1, 2, 3, 5, 6, 7, 9], 3600,
+                               cre.TowerTroopType.NONE, cre.TowerTroopType.NONE)
+        g.seed(0)
+        tw = next(u for u in g.get_units() if u.team == 1 and u.tower and u.x < 8)
+        hp0 = g.get_tower_hp(1, 1)
+        g.inject(int(card), float(tw.x), float(tw.y), 0, -1.0, -1)
+        g.step_self_play(4, 0.0, 0.0, 4, 0.0, 0.0, 60)
+        _SPELL_TOWER[card] = float(hp0 - g.get_tower_hp(1, 1))
+    return _SPELL_TOWER[card]
+
+
+def _calm_board(rng) -> dict:
+    """Nothing is happening: an empty board, or a lone Cannon of theirs in the middle of their side."""
+    units = [(CANNON, 8.5, rng.uniform(23.5, 25.5))] if rng.random() < 0.4 else []
+    return {"units": units, "lane": _lane(rng), "tick": int(rng.integers(*MID_TICKS)),
+            "tank": int(rng.choice([GIANT, GOLEM])), "support": int(rng.choice([MUSKETEER, WIZARD])),
+            "rush": int(rng.choice([HOG, BATTLE_RAM])), "answers": [BATTLE_RAM, GIANT],
+            "answers2": [GOBLIN_HUT, BOMBER, MEGA_MINION, MINI_PEKKA]}
+
+
+def _pressure_board(rng) -> dict:
+    """We just defended their push: our survivors (hurt) on our side in its lane, theirs dead or one nearly dead."""
+    b = _calm_board(rng)
+    x = b["lane"]
+    own = [(MINI_PEKKA, x + rng.uniform(-0.8, 0.8), rng.uniform(9.0, 12.5), rng.uniform(0.35, 0.9))]
+    if rng.random() < 0.6:
+        own.append((MEGA_MINION, x + rng.uniform(-1.2, 1.2), rng.uniform(8.0, 11.5), rng.uniform(0.4, 1.0)))
+    b["own_units"] = own
+    b["units"] = [(MUSKETEER, x + rng.uniform(-0.6, 0.6), rng.uniform(11.0, 13.5), rng.uniform(0.05, 0.15))] \
+        if rng.random() < 0.5 else []
+    return b
+
+
+def _tempo(name, board, own, opp, score, **kw) -> dict:
+    return {**board, "name": name, "timeout": TEMPO_WINDOW, "own_elixir": own, "opp_elixir": opp, "window": True,
+            "score": score, "opp": "tempo", "tempo": True, **kw}
+
+
+def chill(rng) -> dict:
+    """Calm pair, chill half: nothing happening, they're at about our elixir or more (8-10). Hold to 9-10, then one
+    cheap or back play, keep elixir for what they drop. Dumping at the bridge loses to their counter; never playing
+    loses to the leak and their push."""
+    b = _calm_board(rng)
+    own = rng.uniform(6.0, 9.0)
+    return _tempo("chill", b, own, rng.uniform(max(8.0, own), 10.0), "tempo")
+
+
+def press_calm(rng) -> dict:
+    """Calm pair, press half: the same board, but they're at 0-3 (they just spent). Go in now, before they rebuild."""
+    b = _calm_board(rng)
+    own = rng.uniform(6.0, 9.0)
+    return _tempo("press_calm", b, own, rng.uniform(0.0, 3.0), "press")
+
+
+def punish(rng) -> dict:
+    """Pressure pair, press half: we just defended (survivors on our side), ours 7-10, theirs 0-3: counter-push behind
+    the survivors."""
+    b = _pressure_board(rng)
+    own = rng.uniform(7.0, 10.0)
+    return _tempo("punish", b, own, rng.uniform(0.0, 3.0), "press")
+
+
+def hold_after_defence(rng) -> dict:
+    """Pressure pair, chill half: the same board, but they're at 7-10: one support play behind the survivors or
+    nothing; keep elixir for their next push."""
+    b = _pressure_board(rng)
+    own = rng.uniform(7.0, 10.0)
+    return _tempo("hold_after_defence", b, own, rng.uniform(7.0, 10.0), "tempo")
+
+
+def desperate(rng) -> dict:
+    """Desperate pair, press half (Cole: "late game, and were down a tower, we need to go all in, so even 0 or +1"):
+    late in regulation (double elixir), one of our Princess Towers down, a lead of 0 to +1. All in."""
+    b = _calm_board(rng)
+    own = rng.uniform(5.0, 8.0)
+    opp = max(0.0, own - rng.uniform(0.0, 1.0))
+    down = 1 if b["lane"] < 8.5 else 2  # the tower on their planned lane's side fell
+    return _tempo("desperate", b, own, opp, "desperate", tick=int(rng.integers(*DESPERATE_TICKS)), destroy_own=down)
+
+
+def desperate_even(rng) -> dict:
+    """Desperate pair, chill half: the same board and elixir (lead 0 to +1) in an even game, mid-game, no tower down:
+    chill."""
+    b = _calm_board(rng)
+    own = rng.uniform(5.0, 8.0)
+    opp = max(0.0, own - rng.uniform(0.0, 1.0))
+    rng.integers(*DESPERATE_TICKS)  # the same draws as desperate() (the board is identical; the clock stays mid-game)
+    return _tempo("desperate_even", b, own, opp, "tempo")
+
+
+def spell_finish(rng) -> dict:
+    """Single (Cole: "if we need like 10 damage, hail marry/spell their tower"): one of their Princess Towers within a
+    spell's tower damage of falling, our elixir 4+, the spell in hand. Spell the tower, whatever the lead."""
+    b = _calm_board(rng)
+    spell = int(rng.choice([FIREBALL, ARROWS]))
+    hp = rng.uniform(5.0, max(6.0, spell_tower_damage(spell) - 2.0))
+    slot = 1 if b["lane"] < 8.5 else 2
+    b.update({"answers": [spell], "answers2": [BATTLE_RAM, GIANT, GOBLIN_HUT, BOMBER]})
+    return _tempo("spell_finish", b, rng.uniform(max(4.0, COST[spell]), 9.0), rng.uniform(2.0, 9.0), "press",
+                  opp_tower_hp={slot: round(hp, 1)}, timeout=10)
+
+
+TEMPO_PAIRS = [(chill, press_calm), (hold_after_defence, punish), (desperate_even, desperate)]  # (chill half, press half)
+TEMPO_TEMPLATES = [chill, press_calm, hold_after_defence, punish, desperate_even, desperate, spell_finish]
+
+
+def _ours_alive(game, team: int) -> int:
+    return sum(1 for s in range(3) if game.get_tower_hp(team, s) > 0)
+
+
+def _tempo_opponent(sit_, env):
+    """The tempo situations' opponent (one script for both halves of a pair: only the elixir differs). In order: answer
+    what crosses (a Cannon in the middle for a tank / win condition, a Mini P.E.K.K.A in front of anything else,
+    retried until it can afford it); punish a commitment of ours in the other lane (their win condition at the bridge,
+    support behind it) once we've spent 5+ or put 3+ elixir across; and at 9.5+ elixir build its own push (a tank at
+    the back of the planned lane, support behind it at the bridge), as a player on a full bar does."""
+    spec, st, g = sit_.spec, sit_.opp_state, env.game
+    t, el = sit_.seconds, g.get_elixir_for_team(1)
+
+    def play(card, x, board_y):
+        if el < COST.get(card, 10):
+            return None
+        hand = list(g.get_hand_for_team(1))
+        if card not in hand:
+            g.set_hand_for_team(1, [card] + [c for c in hand if c != card][:3])
+            hand = list(g.get_hand_for_team(1))
+        st.setdefault("plays", []).append((round(t, 1), card, round(x, 1), board_y))
+        return hand.index(card), float(x), float(33.0 - board_y)
+
+    for u in _ours_across(g):
+        if u.id in st.setdefault("answered", set()):
+            continue
+        card = CANNON if u.card_id in (GIANT, HOG, BATTLE_RAM, GOLEM) else MINI_PEKKA
+        r = play(card, 8.5 if card == CANNON else u.x, 25.0 if card == CANNON else min(u.y + 2.5, 30.0))
+        if r:
+            st["answered"].add(u.id)
+            return r
+        return None  # save up for the answer
+    spent = float(g.get_elixir_spent(0)) - sit_.spent0
+    across = _ours_across(g)
+    if "attacked" not in st and (sum(COST.get(u.card_id, 0) for u in across) >= 3 or spent >= 5) and t >= 1.0:
+        st["attacked"] = "punish"
+        st["punish_from"] = t
+        st["lane_p"] = (LANE_X[1] if sum(u.x for u in across) / len(across) < 8.5 else LANE_X[0]) if across else spec["lane"]
+    if st.get("attacked") == "punish":
+        if "p1" not in st:
+            r = play(spec["rush"], st["lane_p"], 18.0)
+            if r:
+                st["p1"] = True
+            return r
+        if "p2" not in st and t - st["punish_from"] >= 1.0:
+            r = play(spec["support"], st["lane_p"], 20.5)
+            if r:
+                st["p2"] = True
+            return r
+        return None
+    if "attacked" not in st and el >= CHILL_AT:
+        st["attacked"] = "push"
+    if st.get("attacked") == "push":
+        if "s1" not in st:
+            r = play(spec["tank"], spec["lane"], 30.0)
+            if r:
+                st["s1"] = True
+            return r
+        tank = next((u for u in g.get_units() if u.team == 1 and u.card_id == spec["tank"]), None)
+        if "s2" not in st and tank is not None and tank.y < 24.0:
+            r = play(spec["support"], tank.x, min(tank.y + 2.5, 30.0))
+            if r:
+                st["s2"] = True
+            return r
+    return None
+
+
+def tempo_state(env) -> dict:
+    """What the scripted tempo policy reads: the lead (our elixir - theirs: the script counts perfectly; the network
+    has no input for theirs, P5), desperate (late and down a tower), and a spell finish if one is on."""
+    g = env.game
+    lead = float(g.get_elixir()) - float(g.get_elixir_for_team(1))
+    late = int(g.get_current_tick()) >= LATE_TICK
+    desperate_ = late and _ours_alive(g, 0) < _ours_alive(g, 1)
+    return {"lead": lead, "desperate": desperate_, "threshold": DESPERATE_LEAD if desperate_ else PRESS_LEAD}
+
+
+def _finish_tower(env):
+    """(hand index, x, y) to spell an enemy Princess Tower that the spell in hand would bring down, or None."""
+    g = env.game
+    hand, el = list(g.get_hand()), g.get_elixir()
+    for c in (ARROWS, FIREBALL):
+        if c not in hand or el < COST[c]:
+            continue
+        for u in g.get_units():
+            if u.team == 1 and u.tower and abs(u.x - 8.5) > 1.0 and 0 < u.hp <= spell_tower_damage(c):
+                return hand.index(c), float(u.x), float(u.y)
+    return None
+
+
+def tempo_policy(env, played, mode=None) -> tuple[int, float, float]:
+    """The scripted tempo policy (plan P3): defend on a threat; spell a tower that the spell finishes; press when the
+    lead reaches the threshold (+3 in an even game, 0 when desperate; Cole), otherwise chill. mode "chill" / "press"
+    forces one (the reference players)."""
+    g = env.game
+    foes = [u for u in g.get_units() if u.team == 1 and not u.tower and not u.building and u.y < 19.0]
+    if foes:
+        return _reactive_defence(env, played)
+    fin = _finish_tower(env)
+    if fin is not None and mode != "chill":
+        return fin
+    hand, el = list(g.get_hand()), float(g.get_elixir())
+    ts = tempo_state(env)
+    # a press starts only when calm (no troop of theirs anywhere on the board: their push building at the back is
+    # theirs to commit, ours to defend first)
+    calm = not any(u.team == 1 and not u.tower and not u.building for u in g.get_units())
+    press = mode == "press" or (mode is None and calm and ts["lead"] >= ts["threshold"] - 1e-6)
+    mine = [u for u in g.get_units() if u.team == 0 and not u.tower and not u.building]
+    lane = env.situation.spec.get("lane", LANE_X[0])
+    if mine:
+        lead_u = max(mine, key=lambda u: u.y)
+        lane = LANE_X[0] if lead_u.x < 8.5 else LANE_X[1]
+    bridge = float(env.MAX_Y)
+    now = env.situation.seconds
+    if press or "pressing" in played:
+        played.add("pressing")  # once in, follow through: go in hard (plan: "go in hard when it's ahead"), every
+        #                         affordable troop behind the win condition, a second apart
+        if "wincon" not in played:
+            for c in (BATTLE_RAM, GIANT):
+                if c in hand and el >= COST[c]:
+                    played.add("wincon")
+                    played.add(f"@{now:.1f}")
+                    return hand.index(c), lane, bridge
+            return 4, 0.0, 0.0  # save for the win condition
+        n_sup = sum(1 for p in played if p.startswith("sup"))
+        if now - played_last(played) >= 1.0:
+            for c in (MINI_PEKKA, MEGA_MINION, BOMBER, GIANT, BATTLE_RAM):
+                if c in hand and el >= COST[c]:
+                    played.add(f"sup{n_sup}")
+                    played.add(f"@{now:.1f}")
+                    return hand.index(c), lane, max(bridge - 2.0, 1.0)
+        return 4, 0.0, 0.0
+    # chill: hold until about to leak, then one cheap or back play (behind the survivors if there are any)
+    if el < CHILL_AT:
+        return 4, 0.0, 0.0
+    if mine:
+        for c in (BOMBER, MEGA_MINION):
+            if c in hand and el >= COST[c]:
+                played.add(f"@{now:.1f}")
+                return hand.index(c), float(np.clip(lead_u.x, 0, 17)), float(np.clip(lead_u.y - 2.5, 1, 14))
+    for c, pos in ((GOBLIN_HUT, HUT_PULL), (GIANT, (lane, 1.0)), (BOMBER, (lane, 3.0)), (MEGA_MINION, (lane, 3.0)),
+                   (MINI_PEKKA, (lane, 3.0))):
+        if c in hand and el >= COST[c]:
+            played.add(f"@{now:.1f}")
+            return hand.index(c), float(pos[0]), float(pos[1])
+    return 4, 0.0, 0.0
+
+
+def tempo_dump(env, played) -> tuple[int, float, float]:
+    """The "dump everything" reference: every affordable troop at the bridge of the board's lane, as soon as it can."""
+    g = env.game
+    hand, el = list(g.get_hand()), float(g.get_elixir())
+    ok = [(COST.get(c, 9), i) for i, c in enumerate(hand) if COST.get(c, 9) <= el and c not in (FIREBALL, ARROWS)]
+    if not ok:
+        return 4, 0.0, 0.0
+    return max(ok)[1], env.situation.spec.get("lane", LANE_X[0]), float(env.MAX_Y)
+
+
 TEMPLATES = [hog_rider, battle_ram, melee, supported_push, arrows_value, fireball_value, emergency,
              *REVIEW_TEMPLATES]  # Cole's 1 / 8 / 9 in training from 2026-10-28 (reviewed on the play page)
+DEFENCE_TEMPLATES = list(TEMPLATES)  # the defence gate's ten
+TEMPLATES = TEMPLATES + TEMPO_TEMPLATES  # plan P3, 2026-10-29
+SCRIPTED_OPP = REVIEW_TEMPLATES + TEMPO_TEMPLATES  # the scripted opponent's deck (SCRIPT_DECK) in these
+
 BY_NAME = {"hog_rider": hog_rider, "battle_ram": battle_ram, "melee_mini_pekka": melee, "melee_knight": melee,
            "melee_prince": melee, "supported_giant": supported_push, "supported_golem": supported_push,
            "arrows_value": arrows_value, "fireball_value": fireball_value, "emergency": emergency,
@@ -308,7 +634,7 @@ BY_NAME = {"hog_rider": hog_rider, "battle_ram": battle_ram, "melee_mini_pekka":
            # the names a situation logs itself under (the play page's log), for 1 / 8 / 9
            "opening_tank_back": safe_opening, "opening_bridge_rush": safe_opening, "opening_support_back": safe_opening,
            "opening_wait_defend": safe_opening, "counter_giant": defend_counter, "counter_golem": defend_counter,
-           "deficit": dont_overcommit}
+           "deficit": dont_overcommit, **{t.__name__: t for t in TEMPO_TEMPLATES}}
 
 
 def _supported_defence(env, spec, played) -> tuple[int, float, float]:
@@ -446,6 +772,8 @@ def scripted_defence(env) -> tuple[int, float, float]:
     if not hasattr(env, "defend_played") or env.defend_played[0] is not env.situation:
         env.defend_played = (env.situation, set())
     played = env.defend_played[1]
+    if spec.get("tempo"):
+        return tempo_policy(env, played)
     if spec.get("opp"):
         return _review_defence(env, spec, played)
     if spec["name"] == "emergency":
@@ -512,10 +840,25 @@ class Situation:
         self.hand_ok = bool(game.set_hand_for_team(0, self.hand))
         self.threat: set[int] = set()
         self.just_dropped = False
+        # the tempo situations' game state (plan P3): the clock, a tower of ours already down, a tower of theirs low,
+        # and our survivors from a defence just made (team 0, hurt)
+        if spec.get("tick") is not None:
+            game.set_current_tick(int(spec["tick"]))
+        if spec.get("destroy_own") is not None:
+            game.destroy_tower(0, int(spec["destroy_own"]))
+        for slot, hp in (spec.get("opp_tower_hp") or {}).items():
+            game.set_tower_hp(1, int(slot), float(hp))
+        if spec.get("own_units"):
+            import clash_royale_env as cre
+            for card, x, y, frac in spec["own_units"]:
+                game.inject(int(card), float(x), float(y), 0, float(dict(cre.get_card_stats(int(card)))["hp"]) * frac, 0)
+            if not spec.get("units"):
+                game.step_self_play(4, 0.0, 0.0, 4, 0.0, 0.0, 1)
         if not spec.get("drop"):
             self._inject(deploy_ticks=0)  # already on the move (the supported push starts mid-push)
         self.tower0 = [max(0, game.get_tower_hp(0, s)) for s in range(3)]
-        self.princess_max = float(game.get_tower_max_hp(0, 1))
+        # any standing Princess Tower's max (ours on the left reads -1 once it's destroyed: the desperate template)
+        self.princess_max = float(max(game.get_tower_max_hp(t, sl) for t in (0, 1) for sl in (1, 2)))
         self.etower0 = [max(0, game.get_tower_hp(1, s)) for s in range(3)]
         self.opp_state: dict = {}
         self.push_beaten_at: float | None = None  # defend_counter: when the starting push was dead
@@ -526,6 +869,11 @@ class Situation:
         self.neutral_since: float | None = None
         self.key: list[list[tuple]] = []  # Cole's takes on this start: [(t, card, x, y), ...] each
         self.my_plays: list[tuple] = []  # ours, the same way
+        self.leaked = 0.0  # P2: elixir lost at the cap
+        self.wasted_spell_elixir = 0.0  # P2: cost of our Fireballs / Arrows that touched nothing (CloneEnv books it)
+        self.wasted_spells = 0
+        self._el = float(game.get_elixir())
+        self._spent = self.spent0
 
     def _board(self) -> tuple[float, float]:
         """Elixir on the board at HP share: ours anywhere (buildings too), theirs on our side (towers aside)."""
@@ -589,6 +937,8 @@ class Situation:
         the timeout, or when the game ends."""
         self.seconds += self.dt
         self.just_dropped = False
+        self.leaked += leak_step(self.game, 0, self._el, self._spent, int(round(self.dt * 10)))
+        self._el, self._spent = float(self.game.get_elixir()), float(self.game.get_elixir_spent(0))
         if self.spec.get("drop") and not self.threat and self.seconds >= 1.0 - 1e-6 and not game_over:
             # the board starts empty; the opponent drops the card now, with the normal 1 s deploy, as in a real game
             self._inject(deploy_ticks=-1)
@@ -633,7 +983,16 @@ class Situation:
         # the board term every kind shares now (v2, 2026-10-28): half a refund for what we have left, their value left
         # on our side, a little for tower damage
         board = BOARD_REFUND * min(ours, 10.0) - min(THREAT_LEFT_CAP, THREAT_LEFT_COEF * theirs) + DEALT_COEF * dealt / pm
-        if kind in ("opening", "deficit", "counter"):
+        if kind in ("press", "desperate"):
+            # plan P3: over the window, damage dealt counts as much as damage taken (a tower of theirs that fell counts
+            # as a whole Princess Tower: Cole's "spell their tower" finish), minus what we spent (not when desperate:
+            # elixir has no later use) and the board. Leak and wasted spells come off below, as for every kind
+            felled = sum(max(0.0, pm - a) for s, a in enumerate(self.etower0) if s and a > 0 and self.game.get_tower_hp(1, s) <= 0)
+            gain = DEALT_COEF_PRESS * (dealt + felled) / pm
+            score = gain - lost / pm - (0.0 if kind == "desperate" else ELIXIR_COST * spent) + board
+            v1 = score
+            unresolved = any(u.team == 1 and not u.tower and not u.building and u.y < 17.5 for u in self.game.get_units())
+        elif kind in ("opening", "deficit", "counter", "tempo"):
             # towers first; then the elixir we end on and the board. In defend-then-counter the damage we deal counts
             # extra once the push was beaten inside the tolerance (Cole's 8)
             threat_left = any(u.team == 1 and not u.tower and not u.building and u.y < 17.5 for u in self.game.get_units())
@@ -661,7 +1020,9 @@ class Situation:
             v1 = (-lost / pm - ELIXIR_COST * spent + SURVIVOR_BONUS * min(survivors, 10)
                   - (TIMEOUT_PENALTY if unresolved else 0.0))
             score = -lost / pm - ELIXIR_COST * spent + board
-        return True, float(score), {"tower_hp_lost": lost, "elixir_spent": spent, "unresolved": unresolved,
+        score -= LEAK_COEF * self.leaked + WASTED_SPELL_COEF * self.wasted_spell_elixir
+        return True, float(score), {"tower_hp_lost": lost, "elixir_leaked": round(self.leaked, 2),
+                                    "wasted_spells": self.wasted_spells, "wasted_spell_elixir": self.wasted_spell_elixir, "elixir_spent": spent, "unresolved": unresolved,
                                     "seconds": round(self.seconds, 1), "tower_hp_dealt": dealt, "elixir_end": el_end,
                                     "opp_plays": self.opp_state.get("plays", []), "score_v1": float(v1),
                                     "board_ours": round(ours, 2), "board_theirs": round(theirs, 2),

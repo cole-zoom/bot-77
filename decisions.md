@@ -3398,3 +3398,22 @@ Full write-up: docs/simulator-validation.md. Held-back only (48 games, 346 windo
   3. **Ladder starts:** the moments where we lost tower HP or sat at full elixir become situation templates (like
      Cole's 142 starts) for the exam and for school / RL training. The first exam on the real ladder distribution.
   4. Maybe: our own plays from the won games as extra demos, only if they pass the defence gate.
+- **P2 done: elixir is worth something on both sides.** src/bot77/rl/situations.py: every score kind (score v2;
+  score_v1 unchanged) now subtracts `LEAK_COEF` (0.04, the spend rate) x elixir leaked (what regen would have added
+  while at 10: `leak_step`, from the engine's regen measured once, 0.035 / tick at 1x, times
+  elixir_multiplier_at_tick) and `WASTED_SPELL_COEF` (0.04) x the cost of a Fireball / Arrows that touched nothing
+  (booked by CloneEnv when the guard is off). Details carry `elixir_leaked`, `wasted_spells`, `wasted_spell_elixir`.
+  Full games: `RL_LEAK_COEF` (default 0, so v1-v5 reproduce; ~0.009 makes a regulation game of sitting at 10, ~84
+  elixir, cost about one Princess Tower in the fork's reward, ~0.74). Coefficients as the plan started them; none
+  tuned.
+  - **Exam under P2, guard on, n 50** (data/models/elixir_spells/p2/exam_v2ep3.txt): v2 epoch 3 **-0.885** (P1
+    -0.878), scripted -0.63 -> -0.64 (beats nothing and rush on all ten templates: Cole's check holds), nothing -1.63
+    -> -1.79 (it leaks), rush unchanged. Leak bites where the bar sits full: nothing on safe opening -0.52 -> -0.74,
+    defend+counter -2.79 -> -3.17; the scripted defence on dont_overcommit +0.03 -> -0.03, safe opening +0.06 -> -0.01.
+    Cole's starts: school -0.84 -> -0.85, scripted -0.63 -> -0.64.
+  - **Defence gate: PASS** (vs P1: mean -0.007, worst safe_opening -0.03).
+  - **Cole's 142 play-page games rescored** (scripts/rescore_cole.py, data/models/elixir_spells/p2/cole_rescored.jsonl):
+    his mean -0.443 -> **-0.449** (0.14 elixir leaked a game; 6 games leak more than 1); the scripted defence -0.602
+    -> -0.614 (0.29; 14 games). (-0.443, not his recorded -0.31: 56 of 142 replays reproduce, the old unseeded cycle.)
+    The spell guard vetoed 5 of his spells in 5 replays (a diverged replay, or a spell aimed ahead of a unit): small,
+    but the guard does touch his replays.
