@@ -3308,3 +3308,16 @@ Full write-up: docs/simulator-validation.md. Held-back only (48 games, 346 windo
   games.
 
   uv run --no-sync --with gymnasium==1.3.0 --with tensorboard python scripts/rl_vs_clones.py --run data/models/rl_clones_v5 --init data/models/bc_defence_v2/epoch03_cal50.pth --decision-ticks 1 --situation-share 0.5 --reference-share 0.3 --league-share 0.5 --snapshots data/models/rl_clones_v4/historical_checkpoints --card-entropy 0.04 --episodes 8000 --envs 7 --leash-demos data/cache/bc/defence_t01
+- **RL round v5 stopped at ~2,260 episodes (2026-10-28 22:17).** Training win rate fell 0.30 -> 0.33 -> 0.27 -> 0.26
+  per 500 episodes and elixir at play fell 5.5 -> 4.0 (v4 sat at 3.4): RL pulled it back toward playing whenever it
+  could afford a card; the leash slowed that but didn't stop it. **Exam of the ep 2,005 checkpoint: -1.05** (the
+  school it started from -0.90, v4 -1.19, script -0.63); Cole's starts -1.08 (school -0.87), beats him on 14 of 142
+  (school 33). Worse than its start on hog -0.60 (el 8.3 vs 6.1), arrows / fireball close, and **don't-overcommit
+  -0.25 -> -0.79** (the same slide v4 had, -0.22 -> -1.05); better on battle ram -0.76 (-0.85) and safe opening is
+  -0.16 (-0.02). Exam: data/models/rl_clones_v5/exam_ep2005.txt (checkpoint copied to ep2005.pth). Same story as v3 /
+  v4: the full-game reward against the clones rewards spending, and that undoes the defence. Next change (stronger
+  leash, a higher elixir cost, or a different full-game opponent) to be decided with Cole.
+- **Live test of the defence school v2 epoch 3 (log-50 calibrated)** started 22:20, BlueStacks, Bomber deck, 0.1 s,
+  20 games: its first real games; the question is whether it still opens with a bridge rush (v4: 13 of 14 openings).
+
+  uv run --no-sync python scripts/live_play.py --stream --policy selfplay --ckpt data/models/bc_defence_v2/epoch03_cal50.pth --decision-s 0.1 --games 20 --hours 3
