@@ -37,10 +37,16 @@ def main():
                          "uncalibrated imitation checkpoint this plays when its calibrated play chance passes 1/(1+play weight)")
     ap.add_argument("--reference", action="store_true",
                     help="also score every player on Cole's reference starts (data/live/cole_reference.jsonl)")
+    ap.add_argument("--no-spell-guard", action="store_true",
+                    help="turn CloneEnv's spell guard off (bot77.rl.guards; on by default from 2026-10-29): the guard-off record")
+    ap.add_argument("--reference-only", action="store_true", help="skip the templates (with --reference: only Cole's starts)")
+    ap.add_argument("--json", default=None, help="also write every episode's result here (jsonl)")
     a = ap.parse_args()
     os.environ.update({"CLASH_DECK": os.environ.get("CLASH_DECK", DECK),
                        "RL_CLONE_CKPT": str(ROOT / "data/models/bc_v2/frozen.pth"),
-                       "RL_PRO_DECKS": str(ROOT / "data/cache/rl/pro_decks.json"), "RL_SITUATION_SHARE": "1"})
+                       "RL_PRO_DECKS": str(ROOT / "data/cache/rl/pro_decks.json"), "RL_SITUATION_SHARE": "1",
+                       "RL_SPELL_GUARD": "0" if a.no_spell_guard else "1"})
+    jout = open(a.json, "w") if a.json else None
     ckpts = [str((ROOT / c).resolve()) for c in a.ckpt]
     sys.path.insert(0, str(FORK))
     os.chdir(FORK)
@@ -94,7 +100,7 @@ def main():
         return sit.scripted_defence(env)
 
     players = [("nothing", nothing), ("rush", rush), ("defend", defend)] + [(Path(c).parent.name + "/" + Path(c).stem, net_player(c)) for c in ckpts]
-    tpls = [t for t in sit.TEMPLATES if not a.only or t.__name__ in a.only]
+    tpls = [] if a.reference_only else [t for t in sit.TEMPLATES if not a.only or t.__name__ in a.only]
     print(f"{'template':16s} " + " ".join(f"{p[0][:24]:>34s}" for p in players))
     for tpl in tpls:
         row = {}
@@ -117,11 +123,16 @@ def main():
                                                           "activate_ability_slot1": 0, "activate_ability_slot2": 0})
                     if info.get("rl_situation_end") or term or trunc:
                         res.append(env.last_situation)
+                        if jout:
+                            jout.write(json.dumps({"template": tpl.__name__, "seed": 10_000 + i, "player": pname,
+                                                   **env.last_situation}, default=str) + "\n")
                         break
             sc = np.array([r["score"] for r in res])
             row[pname] = (sc.mean(), np.median([r["tower_hp_lost"] for r in res]), np.mean([r["elixir_spent"] for r in res]),
-                          np.mean([r["unresolved"] for r in res]))
+                          np.mean([r["unresolved"] for r in res]), np.mean([r.get("spell_vetoes", 0) for r in res]))
         print(f"{tpl.__name__:16s} " + " ".join(f"{v[0]:+.2f} (hp {v[1]:5.0f}, el {v[2]:3.1f}, ur {v[3]:.0%})" for v in row.values()))
+        if not a.no_spell_guard:
+            print(f"{'  spell vetoes':16s} " + " ".join(f"{v[4]:34.2f}" for v in row.values()))
     if a.reference:
         # the second yardstick: the exact starts Cole beat the scripted defence on, against his own score there
         refs = [json.loads(l) for l in open(ROOT / "data/live/cole_reference.jsonl")]

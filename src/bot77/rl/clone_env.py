@@ -37,6 +37,7 @@ import numpy as np
 import clash_royale_env
 from python_ai.envs.selfplay_env import PFSP_EXPONENT, PFSP_MIN_WEIGHT, MicroRoyaleSelfPlayEnv
 
+from bot77.rl import guards
 from bot77.rl import situations as sit
 
 
@@ -77,6 +78,11 @@ class CloneEnv(MicroRoyaleSelfPlayEnv):
         self.loaded = self.clone  # the weights in opponent_net (a snapshot load is skipped when it's already there)
         self.opponent_kind = "neural"
         self.opp_deck: list[int] | None = None
+        # the spell guard (bot77.rl.guards, plan P1, 2026-10-29): a Fireball / Arrows that would touch nothing of theirs
+        # becomes a wait. On by default so training, the exam and live play agree; RL_SPELL_GUARD=0 (or env_config
+        # spell_guard False) for the guard-off record. RL v1-v5 ran without it.
+        self.spell_guard = bool(env_config.get("spell_guard", os.environ.get("RL_SPELL_GUARD", "1") != "0"))
+        self.spell_vetoes = 0  # this episode's
 
     def _snapshots(self) -> list[str]:
         return sorted(p for d in self.snapshot_dirs for p in glob.glob(os.path.join(d, "*.pth")))
@@ -138,6 +144,7 @@ class CloneEnv(MicroRoyaleSelfPlayEnv):
             self.scenario_rng = self.rng
         obs, info = super().reset(seed=seed, options=options)
         self.opp_calls = 0
+        self.spell_vetoes = 0
         self.situation = None
         if fixed is not None or self.forced_template is not None or drawn is not None:
             tpl = fixed[0] if fixed is not None else (self.forced_template or drawn)
@@ -149,7 +156,23 @@ class CloneEnv(MicroRoyaleSelfPlayEnv):
             self.rng, self.scenario_rng = main_rng, main_srng  # back to the env's own stream
         return obs, info
 
+    def _guard(self, action):
+        """The spell guard on our action: (the action to play, vetoed?)."""
+        k = int(np.asarray(action["card_index"]).reshape(-1)[0])
+        if not self.spell_guard or k >= 4:
+            return action, False
+        hand = list(self.game.get_hand())
+        if k >= len(hand) or hand[k] not in guards.GUARDED or self.game.get_elixir() < sit.COST.get(hand[k], 99):
+            return action, False
+        x = float(np.asarray(action["target_x"]).reshape(-1)[0])
+        y = float(np.asarray(action["target_y"]).reshape(-1)[0])
+        if not guards.spell_vetoed(hand[k], x, y, self.game.get_units()):
+            return action, False
+        return {**action, "card_index": 4}, True
+
     def step(self, action, skip_frames=None):
+        action, vetoed = self._guard(action)
+        self.spell_vetoes += vetoed
         before = (list(self.game.get_hand()), float(self.game.get_elixir_spent(0))) if self.situation is not None else None
         obs, reward, terminated, truncated, info = super().step(action, skip_frames or self.decision_ticks)
         k = int(action["card_index"])
@@ -157,6 +180,8 @@ class CloneEnv(MicroRoyaleSelfPlayEnv):
             # our play, timed as the play page logs Cole's (the time after this step)
             self.situation.my_plays.append((round(self.situation.seconds + self.situation.dt, 1), before[0][k],
                                             float(action["target_x"][0]), float(action["target_y"][0])))
+        info["spell_veto"] = float(vetoed)
+        info["spell_vetoes"] = float(self.spell_vetoes)
         info["rl_situation"] = 0.0
         info["rl_situation_end"] = 0.0
         info["rl_situation_score"] = 0.0
@@ -175,7 +200,8 @@ class CloneEnv(MicroRoyaleSelfPlayEnv):
                     reward += sit.KEY_BONUS * details["key_match"]  # Cole's take as a positive signal
                 info["rl_situation_end"] = 1.0
                 info["rl_situation_score"] = score
-                self.last_situation = {"name": self.situation.spec["name"], "score": score, **details}
+                self.last_situation = {"name": self.situation.spec["name"], "score": score, **details,
+                                       "spell_vetoes": self.spell_vetoes}
                 self.situation = None
             else:
                 reward, truncated = 0.0, False
