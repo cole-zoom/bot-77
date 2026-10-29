@@ -3998,3 +3998,85 @@ presentation side and is 0 for every card. DeployDelay (400 on most troops) is n
 - the pending-damage rule as the client has it; rename the queueing switch;
 - tower and King first-shot delays, after L18;
 - consider the 50 ms tick.
+
+## 2026-10-29 · The attack cycle and targeting as the client's code runs them (fork worktree data/work/sim_fix3, not merged)
+
+The engine differences the code reading found (entry above, docs/client-code-notes.md), each behind a Fidelity switch
+(FidelitySwitches.h; Python `set_<name>` / `get_<name>`), numbers from the client tables through the generators
+(`scripts/sim_client_mechanics.py`: finish window 250, pending-damage window 600, keep extension 25, hit cancel 1500,
+tower LoadTime / HitSpeed, SpecialLoadTime, elixir timeline; `scripts/sim_load_times_client.py`: LoadTime in ms). Two
+numbers are code constants, not table values, and are written with their address (combat update 0x71fff599e4): a
+swing "has started" past 50 ms of its cycle; a projectile unit keeps a started target to +0.5 tiles. Base 41fe8ad.
+Diff: data/work/sim_fix3/fork.diff. C++ suite 786 cases (768 + 18 in tests/core/test_client_cycle.cpp): 785 pass + the
+1 expected failure. Five old tests that pinned the fitted / 41fe8ad rules now run with the new switch off.
+
+What changed (switch, default):
+1. `reload_from_attack_start` (on): two timers as in the client. An attack starts LoadTime minus the missing load into
+   its HitSpeed cycle and resets the load to full at that start; the load counts down every tick whatever the unit
+   does; hits land each time the timer crosses a multiple of HitSpeed. Test: a Knight's kill at tick 6 and a new
+   target in reach at tick 10: next hit tick 15 (preload model, reload from the hit: 18). Discretization: the client
+   steps a new attack 50 ms in the update that starts it (first hit HitSpeed - LoadTime - 50 ms); at 100 ms a tick the
+   engine keeps the preload model's on-time first hit (the 10-29 Hog first-tower-hit check supports it). Where the
+   engine's hit speed is not the client's (Battle Ram, the four Spirits, Executioner) the first hit stays the preload
+   model's.
+2. `stun_pauses_swing` (on): a stun (hit-speed factor 0) pauses the timer; the unit drops its target and re-acquires
+   the nearest every stunned tick (a re-acquired target out of reach resets the swing); a pure slow keeps the target and
+   slows the timer; Sparky is reset to unloaded every stunned tick. Tests: 5-tick stun mid-swing, hit at tick 11 (= 6 +
+   5; off: 13, full rewindup); stunned Knight switches to a nearer target in reach, keeping its paused 800 ms.
+3. `attack_finish_window` (on): after the target dies the swing waits up to 250 ms (paused) for a target in reach,
+   which keeps the cycle; otherwise it is lost and the load keeps counting. Tests: a target in reach right after the
+   kill: hits 12 ticks apart; one appearing 2 ticks later: tick 19 (off: lost at once, a fresh loaded attack, tick 13).
+4. `started_swing_finishes` (on): a started swing runs to its hit wherever the target goes (pushed 1.0 past reach: the
+   hit lands; 2.0 past: the hit is cancelled, LOGIC_CANCEL_HIT_FROM_LONG_DISTANCE_RANGE, and the unit stands until
+   then); an unstarted swing whose target leaves reach is dropped and the unit walks; targets kept to reach + 0.025
+   (+0.5 for a projectile unit whose hit has started). Off: the preload model's +1.5 keep.
+5. `special_load_time` (on): Fisherman's hook winds up 1.3 s (SpecialLoadTime 1300) on its target before it pulls;
+   once started it runs until the target changes. Test: pull at tick 13 (off: tick 1). Fisherbarrel (1.0 s) is not an
+   engine card.
+6. `client_targeting` (on): sight edge to edge (SightRange + own + candidate client radius, +2 to crown towers), no
+   troop bonus, no floor at reach; the nearest by centre distance wins (building-targeters see only buildings, so the
+   priority class needs nothing more). Tests: Knight vs Knight acquires at 6.4, not 6.6 (fitted: 7.25); a Giant 6.0 from
+   a building and 6.3 from a Princess Tower takes the building (fitted 1.5 radius: the tower). The fitted path stays
+   with the switch off. **On the measured cases:** building pulls (scripts/measure_pulls.py --client, 667 ground events,
+   58 held-back): client rule 89.2% / held-back 89.7%, fitted R 1.5 89.8% / 89.7%; flyers 74.5% vs 83.0% (n 47).
+   Kites (scripts/measure_kites.py --client, 363 events, 43 held-back): client rule 77.1% / 83.7%, fitted sight + 1.75
+   72.7% / 83.7%. The code's rule reproduces both fits without fitted constants.
+7. `pending_damage_skip` (on; was `target_queueing`, kept as an alias binding: nothing in src/ scripts/ tests/ used
+   it) + `pending_damage_client_rule` (on): only an attacker with a projectile skips a doomed candidate, and only for
+   damage landing within 600 ms (a projectile's remaining flight). Off: the 41fe8ad rule (everyone, any time). Test:
+   projectile unit skips a 400 ms shot, not an 800 ms one; melee never skips. The client's USE_TARGET_QUEUEING (a queue
+   of forced-target requests) is not modelled.
+8. `king_first_shot_delay` (on): after its 3.3 s activation the King runs the client cycle with LoadTime 500 /
+   HitSpeed 1000: first shot 0.5 s after acquiring, then every 1.0 s. Test: shots at ticks 6, 16 (off: 1, 11, 21).
+Also added, **off by default**: `princess_first_shot_delay` (Princess Tower's first arrow HitSpeed 0.8 s after it
+acquires from idle; lab L18 decides) and `client_elixir_rate` (2.8 s / 1.4 s / 0.93 s an elixir from the Default
+timeline, against the engine's 2.857; perception's opponent-elixir tracker assumes the engine rate, so for Cole).
+
+**Held-back S2** (48 games, 329 windows, `--towers client_l11`, LanceDB sim_validation `sf3_*`, logs
+data/work/sim_fix3/val_*.log; life median / mean, winner both-played, tower sum sim/real, median sim/real where
+real > 0.1, both-died life):
+
+| run | life | winner | tower sum | s/r med | both-died |
+|---|---|---|---|---|---|
+| base (41fe8ad) | +1.50 / +1.48 | 61.9% | 1.21 | 0.61 | +0.75 |
+| new build, all new switches off | +1.50 / +1.48 | 61.9% | 1.21 | 0.61 | +0.75 (identical: the off path is the old engine) |
+| **all on (defaults)** | **+1.25 / +1.32** | 60.6% | **1.10** | 0.48 | +0.75 |
+| cycle only (1-4) | +1.38 / +1.45 | 61.5% | 1.21 | 0.52 | +0.75 |
+| reload only (2-4 off) | +1.50 / +1.42 | 61.9% | 1.21 | 0.52 | +0.75 |
+| targeting only (6) | +1.50 / +1.39 | 60.6% | 1.10 | 0.53 | +0.75 |
+| King only (8), pending only (7), special only (5) | = base | | | | |
+| all, stun off / finish off / started off | +1.25 / +1.32 / +1.31 / +1.32 | 60.6 / 61.1 / 60.6% | 1.11 / 1.12 / 1.10 | | +0.75 / +0.75 / +0.50 |
+| all + Princess 0.8 s (off by default) | +1.38 / +1.37 | 61.1% | 1.21 | 0.53 | +0.75 |
+
+Read: lives get 0.15-0.25 s shorter (the cycle and the targeting each about half), tower damage sum moves 1.21 ->
+1.10 (closer to 1.0), the winner does not move beyond noise (SE ~3 pts); on the 66 consistent windows winner 68.2% both
+ways. King, pending-damage and hook windup are too rare in these windows to show. The Princess delay lengthens lives
+again (+0.13) and puts the tower sum back to 1.21: one more reason to let L18 decide it.
+
+Not done here (waiting for Cole or the lab): the 50 ms tick, starting elixir 6, the Princess delay and the elixir rate
+as defaults. **SightClip / SightClipSide not added**: the code limits the sideways and one along-lane distance, but which
+side (ahead or behind) was not settled from the code; the lab test is a Hog passing a Cannon placed behind vs ahead.
+Also not modelled: DeprioritizeTargetsWithBuff, TargetLowestHP, SightRangeForCharacters, RetargetEachTick /
+RetargetAfterAttack, the forced-target queue (USE_TARGET_QUEUEING), LoadAfterRetarget (no card sets it).
+Soak (tools/audit/soak.cpp, 200 matches): 283 flagged idle units vs 265 on the base, the same Hog-at-tower pattern (the
+audit's own reach uses the old radii), no new kind of stall.
