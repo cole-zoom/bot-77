@@ -213,10 +213,11 @@ body { margin:0; background:var(--bg); color:var(--ink); font:15px system-ui, sa
 @media (max-width: 760px) { .wrap { grid-template-columns: minmax(0,1fr); } }
 h1 { margin:0 0 4px; font-size:1.5rem; } .muted { color: var(--muted); }
 .leftcol { width: fit-content; max-width: 100%; }
+/* the bar above the board has a fixed height, so hover text never moves the board under the cursor */
 /* the board fills the laptop's height: ~22-26 px a tile on a 13-15" screen */
 canvas { height: clamp(520px, calc(100vh - 215px), 1100px); width: auto; aspect-ratio: 18/34; border-radius: 6px; cursor: crosshair; display:block; touch-action: none; }
 @media (max-width: 760px) { canvas { height: auto; width: 100%; } .leftcol { width: 100%; } }
-.topbar { contain: inline-size; overflow: hidden; display:flex; align-items:baseline; gap:10px; margin-bottom:6px; font-family: ui-monospace, monospace; }
+.topbar { contain: inline-size; overflow: hidden; height: 2rem; white-space: nowrap; display:flex; align-items:baseline; gap:10px; margin-bottom:6px; font-family: ui-monospace, monospace; }
 .clock { font: 800 1.45rem ui-monospace, monospace; letter-spacing: .02em; }
 .phase { font-size:.8rem; font-weight:700; padding:1px 6px; border-radius:4px; background: var(--elx); color:#fff; }
 .tile { margin-left:auto; font-size:.9rem; font-weight:600; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; min-width:0; }

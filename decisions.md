@@ -3673,3 +3673,21 @@ Full write-up: docs/simulator-validation.md. Held-back only (48 games, 346 windo
     ddac49f9...d4db) and Temurin JDK 21.0.13 (checksum matches Adoptium's) under ~/tools. REA 6.8.0 not installed:
     its setup needs Node 26.12.1+ (have 26.8.1), and it can't help before a decrypted dump exists.
   - Until then P2 runs on the client tables plus lab battles.
+- **P0.1 tile grid on the play page (2026-10-29).** Cole: "I cannot tell what tile I am placing things on."
+  scripts/situation_play.py now draws all 18 x 34 engine cells outlined (checkerboard, x / y numbers on the edges),
+  the river, bridges and dead back-row corners as the engine has them (bot77.sim.placement.board_geometry), the
+  hovered tile highlighted with its (x, y), the selected card's legal tiles lit and the rest dimmed, and a ghost of
+  the card's engine footprint (building 1.0, troop 0.4, spell radius 2.5 / 3.5). Unit HP on hover, both elixir bars,
+  the game clock (3:00 countdown, 2x / 3x badge). The board scales to the window (~20 px a tile on a 900 px laptop
+  window).
+  - Legality is the engine's own predicate, `is_valid_placement` at every cell centre, sent every tick (0.4 ms for
+    the four cards). A click plays at the tile's integer centre, which is exactly where the engine places it
+    (team 0's target goes straight to playCard). tests/test_play_page.py: the lit tiles equal the tiles a play is
+    accepted on, cell for cell, for a whole hand; a Goblin Hut / Giant / Bomber stands at the clicked tile.
+  - Fixed on the way: the old page drew the river and bridges half a tile low (y 15.0-17.0, not 15.5-17.5) and
+    refused row 15, which the engine allows (own-half limit y <= 15.0).
+  - Gaps vs the real game, not the page: the engine has **no pocket** (taking a princess tower opens nothing:
+    test_no_pocket_in_the_engine), and every building has the same circular footprint (radius 1.0), not the client's
+    per-building sizes. Both go to P1 / P2.
+  - Log: data/live/situation_play.jsonl unchanged; a refused play gets an additive `why` ("spell guard: nothing in
+    reach" / "not a legal tile" / "not enough elixir"). New `--log` flag so a test server writes elsewhere.
