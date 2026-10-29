@@ -3609,3 +3609,7 @@ Full write-up: docs/simulator-validation.md. Held-back only (48 games, 346 windo
   board state (no troops of either side in play), not a play style; what to do in it is the +3 rule (press at +3 in
   an even game, all in when desperate). Our tempo templates' "chill" halves need checking against this: they define
   chill by the elixir lead.
+- **Cole, refining chill (2026-10-29, verbatim):** "like there is no troops on board, and they have even elixir".
+  Chill = no troops on the board and the elixir even (the estimate within the +3 press threshold). What to do at a
+  full bar while chilling isn't answered yet; working assumption until he plays the templates: hold, and only at a
+  full bar put a cheap card at the back so no elixir leaks.
