@@ -3381,3 +3381,20 @@ Full write-up: docs/simulator-validation.md. Held-back only (48 games, 346 windo
 - **Cole on the P5 C++ change (2026-10-29, verbatim):** "idrk c++ so if ur good with it im good". The fork's C++
   diffs are now mine to approve after review (build + tests + bindings/obs-size check), with a plain-language summary
   here; python_ai/ stays read-only.
+- **75-game live test at the new trophy range (2026-10-29, started ~01:52)**, Cole: "play 75 while the agent does
+  this... would it be possible to learn from these games? if so, set it up so that we do". The school v2 epoch 3 at
+  log-20 calibration (the 8-2 model), BlueStacks, Bomber deck, 0.1 s, now **with the P1 spell guard on** (it's
+  unconditional live; full-bar guard off). Run in chunks of 20 by scripts/live_with_replays.py: after each chunk it
+  records that chunk's Battle Log replays (the log holds 25) and moves the videos to the LaCie (laptop 94% full,
+  ~0.45 GB per live game). Logs: data/live/run75_supervisor.log, school_v2_cal20_run75.log (chunk 1),
+  run75_chunkNN.log, run75_replaysNN.log; replays in data/raw/replays/2026-10-29/ (all local).
+
+  uv run --no-sync python scripts/live_with_replays.py --ckpt data/models/bc_defence_v2/epoch03_cal20.pth --games 75 --chunk 20 --tag run75 --adopt data/live/school_v2_cal20_run75.log
+
+  How these games get learned from (after the agent's school v3, so they don't share the CPU with its training):
+  1. scripts/ingest_replays.py turns each replay into both sides' exact plays, hands and elixir.
+  2. **Ladder opponents:** fine-tune the clone opponent on the real opponents at this trophy range. v3-v5 all learned
+     to spend against clones fit to pro games; an opponent that plays like the ladder is the likeliest fix.
+  3. **Ladder starts:** the moments where we lost tower HP or sat at full elixir become situation templates (like
+     Cole's 142 starts) for the exam and for school / RL training. The first exam on the real ladder distribution.
+  4. Maybe: our own plays from the won games as extra demos, only if they pass the defence gate.
