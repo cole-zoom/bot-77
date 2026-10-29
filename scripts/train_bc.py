@@ -252,6 +252,10 @@ def main():
     ap.add_argument("--demos", default=None, help="defence-school episodes (scripts/build_defence_demos.py)")
     ap.add_argument("--demo-share", type=float, default=0.3, help="share of every batch drawn from --demos")
     ap.add_argument("--lead", type=int, default=0, help="a demo play also labels this many decisions before it")
+    ap.add_argument("--tempo-share", type=float, default=None,
+                    help="school v3 (docs/plan-elixir-spells.md P4): this share of the demo windows from the tempo "
+                         "templates' episodes (bot77.rl.situations.TEMPO_TEMPLATES), the rest from the defence ones; "
+                         "default: uniform over all demo episodes")
     a = ap.parse_args()
     LEAD = a.lead
     SHARDS, WINDOW, BURN_IN, PLAY_WEIGHT = Path(a.shards), a.window, a.burn_in, a.play_weight
@@ -268,6 +272,15 @@ def main():
     probe = [e for e in demos if e["src"] == "script"]
     probe = [probe[i] for i in np.random.default_rng(1).choice(len(probe), min(80, len(probe)), replace=False)]
     n_demo = int(round(BATCH * a.demo_share)) if demos else 0
+    tempo_eps, defence_eps = [], demos
+    if demos and a.tempo_share is not None:
+        sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "third_party" / "clash-royale-env"))
+        from bot77.rl import situations as sit
+        tnames = {t.__name__ for t in sit.TEMPO_TEMPLATES}
+        tempo_eps = [e for e in demos if e["tpl"] in tnames]
+        defence_eps = [e for e in demos if e["tpl"] not in tnames]
+        print(f"tempo demos: {len(tempo_eps)} episodes, {a.tempo_share:.0%} of the demo windows; defence demos "
+              f"{len(defence_eps)} episodes", flush=True)
     if demos:
         print(f"demos: {len(demos)} episodes ({sum(e['n'] for e in demos)} decisions; "
               f"{sum(e['src'] == 'cole' for e in demos)} of Cole's), {n_demo} of every {BATCH} windows", flush=True)
@@ -288,7 +301,12 @@ def main():
         lc = lp = 0.0
         for s in range(steps):
             batch = [train[i] for i in rng.choice(len(train), BATCH - n_demo, replace=False)]
-            batch += [demos[i] for i in rng.choice(len(demos), n_demo, replace=False)] if n_demo else []
+            if n_demo and tempo_eps:
+                k = int(rng.binomial(n_demo, a.tempo_share))
+                batch += [tempo_eps[i] for i in rng.choice(len(tempo_eps), k, replace=False)]
+                batch += [defence_eps[i] for i in rng.choice(len(defence_eps), n_demo - k, replace=False)]
+            else:
+                batch += [demos[i] for i in rng.choice(len(demos), n_demo, replace=False)] if n_demo else []
             l_card, l_cell, _ = batch_loss(net, batch, rng, device)
             loss = l_card + l_cell
             opt.zero_grad()
