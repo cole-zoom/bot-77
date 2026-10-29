@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Defend It Yourself</title>
+<link rel="stylesheet" href="/static/style.css">
+</head><body>
+<header class="top">
+  <div class="brand">Defend it yourself</div>
+  <div class="sit" id="sitname">no situation yet</div>
+  <div class="clockbox"><span class="clock" id="clock">3:00</span><span class="phase" id="phase" hidden></span></div>
+  <div class="spacer"></div>
+  <div class="seg" id="speed" title="Speed ( [ slower, ] faster )">
+    <button data-s="0.25">¼×</button><button data-s="0.5">½×</button><button data-s="1">1×</button><button data-s="2">2×</button>
+  </div>
+  <button class="btn" id="pause" title="Pause / resume (Space)">Pause</button>
+  <div class="sound">
+    <button class="btn icon" id="mute" title="Sound on / off (M)">🔊</button>
+    <input type="range" id="vol" min="0" max="1" step="0.05" title="Volume">
+  </div>
+  <button class="btn icon" id="helpbtn" title="Hotkeys (?)">?</button>
+</header>
+
+<main class="main">
+  <section class="boardcol">
+    <div class="boardwrap" id="boardwrap">
+      <canvas id="board"></canvas>
+      <div class="count" id="count" hidden></div>
+      <div class="banner" id="banner" hidden></div>
+      <div class="tile" id="tile">hover a tile</div>
+      <div class="status" id="status">pick a situation and press New (N)</div>
+    </div>
+  </section>
+
+  <section class="handcol">
+    <div class="handlab"><span>Hand</span><span class="muted" id="queued"></span></div>
+    <div class="hand" id="hand"></div>
+    <div class="nextrow"><span class="muted">Next</span><div class="nextcard" id="next"></div></div>
+    <div class="ebar you" id="ebarYou"><div class="elab"><span>You</span><b id="elxn">–</b></div><div class="elx"><div id="elx"></div></div><div class="leak" id="leak">Full: leaking elixir</div></div>
+    <div class="ebar them"><div class="elab"><span>Them</span><b id="oelxn">–</b></div><div class="elx"><div id="oelx"></div></div></div>
+  </section>
+
+  <aside class="side">
+    <div class="card-panel">
+      <div class="row">
+        <select id="tpl" title="Situation">
+          <option value="hog_rider">Hog Rider</option><option value="battle_ram">Battle Ram</option>
+          <option value="melee">Melee (Mini P.E.K.K.A / Knight / Prince)</option><option value="supported_push">Supported push (Giant / Golem)</option>
+          <option value="arrows_value">5 · Arrows value</option><option value="fireball_value">6 · Fireball value</option><option value="emergency">10 · Emergency</option>
+          <option value="safe_opening">1 · Safe opening (they react)</option><option value="defend_counter">8 · Defend, then counter (they react)</option>
+          <option value="dont_overcommit">9 · Don't overcommit (they react)</option>
+          <option value="chill">Tempo · chill (calm, they're 8-10)</option><option value="press_calm">Tempo · press (calm, they're 0-3)</option>
+          <option value="desperate_even">Tempo · even game, lead 0-1 (chill)</option><option value="desperate">Tempo · desperate: late, down a tower, lead 0-1</option>
+          <option value="spell_finish">Tempo · spell finish (their tower nearly down)</option>
+          <option value="hold_after_defence">Held out · hold after defence (they're 7-10)</option><option value="punish">Held out · punish after defence (they're 0-3)</option>
+        </select>
+      </div>
+      <div class="row">
+        <button class="btn go" id="start" title="New start (N)">New</button>
+        <button class="btn" id="restart" title="Same start again (R)">Restart</button>
+      </div>
+      <div id="setup" class="muted small"></div>
+      <div class="row">
+        <input id="note" placeholder="note for this start (optional)">
+        <button class="btn" id="save" title="Bookmark this start">Save</button>
+      </div>
+      <select id="savedlist"><option value="">Saved starts…</option></select>
+    </div>
+
+    <div class="card-panel" id="resultbox" hidden><h3>Result <span class="muted small">higher is better</span></h3><div id="result"></div></div>
+
+    <div class="card-panel inspect"><h3>Inspect</h3><div id="inspect" class="muted small">Hover a unit for its HP, target and reach.</div></div>
+
+    <div class="card-panel logbox"><h3>Events</h3><ol id="log"></ol></div>
+
+    <details class="card-panel" id="help">
+      <summary><h3>Hotkeys &amp; how it works</h3></summary>
+      <table class="keys">
+        <tr><td><kbd>1</kbd>–<kbd>4</kbd></td><td>pick a card (again to drop it)</td></tr>
+        <tr><td>click a tile</td><td>play it at that tile's centre</td></tr>
+        <tr><td><kbd>Esc</kbd></td><td>cancel the card / the queued play</td></tr>
+        <tr><td><kbd>Space</kbd></td><td>pause / resume</td></tr>
+        <tr><td><kbd>Z</kbd></td><td>while paused: take back the play you queued</td></tr>
+        <tr><td><kbd>[</kbd> <kbd>]</kbd></td><td>slower / faster (¼× ½× 1× 2×)</td></tr>
+        <tr><td><kbd>R</kbd> / <kbd>N</kbd></td><td>restart the same start / a new one</td></tr>
+        <tr><td><kbd>M</kbd></td><td>sound on / off</td></tr>
+        <tr><td><kbd>L</kbd> / <kbd>G</kbd> / <kbd>D</kbd></td><td>unit labels / tile numbers / damage numbers</td></tr>
+        <tr><td><kbd>?</kbd></td><td>this list</td></tr>
+      </table>
+      <p class="muted small">The tiles you can use light up (the engine's own rule, every tick); the card's footprint, or a spell's radius, follows the cursor with its attack range (solid) and sight (dashed). A play lands on the next engine tick. Paused, a click queues the play and Z takes it back; it lands when you resume. Every game is recorded as before (data/live/situation_play.jsonl); a take-back is never recorded, because the play never reached the engine.</p>
+    </details>
+  </aside>
+</main>
+<script src="/static/sound.js"></script>
+<script src="/static/sprites.js"></script>
+<script src="/static/app.js"></script>
+</body></html>

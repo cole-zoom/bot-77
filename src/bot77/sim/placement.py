@@ -21,9 +21,16 @@ OWN_HALF_RIVER_BUFFER = 0.5  # GameManager::OWN_HALF_RIVER_BUFFER (not bound): o
 BRIDGE_HALF_WIDTH = 1.0  # Board::BRIDGE_HALF_WIDTH (not bound): a bridge spans its centre x +- 1.0
 KING_RADIUS, PRINCESS_RADIUS = 2.0, 1.5  # Tower::getCollisionRadius ('R' king 2.0, princess 1.5)
 FIREBALL = 7  # a plain disc spell: legal anywhere on the board but the dead back-row corners
-REGULATION_END_TICK = 1800  # MatchRules::REGULATION_END_TICK (not bound): 3:00, then overtime
-CLOCK = {"regulation_end": REGULATION_END_TICK / 10, "double_at": cre.ClashRoyaleEnv.DOUBLE_ELIXIR_TICK / 10,
-         "triple_at": cre.ClashRoyaleEnv.TRIPLE_ELIXIR_TICK / 10}  # seconds of engine clock
+# Seconds per engine tick. The bindings carry no tick length, but they do carry the tick double elixir starts on, and
+# that is 2:00 into the match by the game's rules, so the engine's own number fixes it (0.1 s at 1200; a 50 ms engine
+# would bind 2400 and this follows). The page paces its real-time loop and its clock with it.
+TICK_S = 120.0 / cre.ClashRoyaleEnv.DOUBLE_ELIXIR_TICK
+REGULATION_END_S = 180.0  # MatchRules::REGULATION_END_TICK (not bound): 3:00 of play, then overtime
+CLOCK = {"regulation_end": REGULATION_END_S, "double_at": cre.ClashRoyaleEnv.DOUBLE_ELIXIR_TICK * TICK_S,
+         "triple_at": cre.ClashRoyaleEnv.TRIPLE_ELIXIR_TICK * TICK_S, "tick_s": TICK_S}  # seconds of engine clock
+# Crown tower reach (not bound): GameManager::addTower builds the King with attack and sight 7.0, the Princess Tower
+# from TowerTroops.h (attackRange 7.5 for the original and every tower troop). For the page's hover circles only.
+TOWER_RANGE = {"King Tower": 7.0, "Princess Tower": 7.5}
 
 
 def legal_mask(game, card_id: int, team: int = 0) -> str:
@@ -68,3 +75,38 @@ def max_hp(game, unit) -> int | None:
         return int(cre.get_card_stats(int(unit.card_id))["hp"]) if unit.card_id >= 0 else None
     except (ValueError, TypeError):
         return None
+
+
+def catalog() -> dict:
+    """Every card in the engine's registry, for the page's sprites, ghosts and hover circles: name, cost, kind, air,
+    attack and sight range, spell radius, HP, bodies. Bodies a card spawns (Golemites, the Hut's Spear Goblins) carry
+    a negative card id and no stats of their own; the page finds them by name."""
+    out = {}
+    for i in cre.get_all_card_ids():
+        info, st = cre.get_card_info(i), cre.get_card_stats(i)
+        out[int(i)] = {"name": info["name"], "cost": info["cost"], "spell": bool(info["is_spell"]),
+                       "building": bool(info["is_building"]), "flying": bool(st["flying"]),
+                       "air": bool(st["targets_air"]), "range": round(float(st["attack_range"]), 2),
+                       "sight": round(float(st["sight_range"]), 2), "spell_radius": round(float(st["spell_radius"]), 2),
+                       "hp": int(st["hp"]), "bodies": int(st["bodies"])}
+    return out
+
+
+def next_card(game, team: int = 0) -> int | None:
+    """The card that comes into the hand after the next play, read from the engine: the deck queue is not bound, but it
+    is first-in first-out, so on a throwaway copy (ClashEnv::snapshot) with a full bar, play any slot that will go and
+    see what replaces it. The real game is untouched. None if no slot can be played on the copy."""
+    if team != 0:
+        return None
+    hand = list(game.get_hand())
+    for k, c in enumerate(hand):
+        s = game.snapshot()
+        s.set_elixir_for_team(0, 10.0)
+        cell = legal_mask(s, c).find("1")
+        if cell < 0:
+            continue
+        s.step(k, float(cell % W), float(cell // W), 1)
+        after = list(s.get_hand())
+        if after != hand:
+            return int(after[k])
+    return None

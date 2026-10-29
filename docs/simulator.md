@@ -306,6 +306,24 @@ uv run --no-sync --with gymnasium==1.3.0 python scripts/situation_play.py
 
 Stopping a round: SIGINT to the python process saves bootstrap_selfplay.pth; drop the optimizer into final.pth.
 
+### The play page (Cole's answer keys)
+
+`uv run --no-sync --with gymnasium==1.3.0 python scripts/situation_play.py`, then open http://localhost:8777
+(`--port`, `--log` for a test server that must not write to data/live/situation_play.jsonl). The server is
+scripts/situation_play.py; the page is static files in scripts/play_page/ (index.html, style.css, app.js, sprites.js,
+sound.js) served by it. Tick length (`placement.TICK_S`, from the engine's double-elixir tick), board size, legal tiles,
+the card catalogue (`/catalog`) and the next card (`placement.next_card`, played on an engine snapshot) all come from
+the engine. Sprites are pixel art drawn in code and sounds are synthesised with Web Audio: nothing from the game client.
+
+Hotkeys: `1`-`4` pick a card · click a tile to play · `Esc` cancel · `Space` pause/resume · `Z` take back the play
+queued while paused (it never reaches the engine, so it is never recorded) · `[` `]` speed (1/4x, 1/2x, 1x, 2x) ·
+`R` restart the same start · `N` new start · `M` sound · `L` unit labels · `G` tile numbers · `D` damage numbers ·
+`?` help. Hover a unit for HP, target (dashed line), attack range (solid) and sight (dashed); a selected card shows
+its footprint, range and sight on the legal tiles. Volume, mute, speed and toggles are remembered in the browser.
+
+What gets recorded and how a play maps to an engine action did not change with the 2026-10-29 revamp
+(tests/test_play_page.py replays a page game straight into CloneEnv and checks the result and the log line).
+
 ## Decks change: nothing assumes ours
 
 Cole changes the deck between sessions until we get Hog 2.8 ("it's always good to learn new cards"). The rules in

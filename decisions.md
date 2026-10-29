@@ -4107,3 +4107,29 @@ Reviewed the third sim-fix agent's diff (its per-change table is in the entry ab
 - the Princess tower's 0.8 s first shot;
 - the 2.8 s elixir rate;
 - side/forward sight limits.
+
+## 2026-10-29 · Play page revamp: sprites, sound, hotkeys, speed
+
+Cole: "can we also like totally revamp the UI of the sim? ... different sprites for all troops ... QOL ... can we add sound?"
+
+**What changed:** the page moved out of the inline string into scripts/play_page/ (served by situation_play.py).
+- A sprite per unit: every card in the engine's registry, the ~40 bodies cards spawn (Golemites, Lava Pups, the
+  Hut's Spear Goblins...), buildings, both crown towers. Original 16 x 16 pixel art drawn in code, a unique label
+  each, team outline + disc (blue you, red them), flyers raised over a shadow. Spells drawn as areas with a pattern,
+  projectiles as dots with a trail (the engine lists them as nameless untargetable entities).
+- Sound synthesised in Web Audio: deploy, melee hit, projectile/spell impact, death, tower hit, tower down, elixir
+  full, 1:00 / last 10 s / double elixir, win / in between / lose (you vs the scripted defence and the bot). Mute and
+  volume remembered.
+- Hotkeys (docs/simulator.md), speed 1/4x-2x, hover inspector (HP, target, range, sight), range circles on the
+  ghost, HP bars on everything, floating damage, the next card, a leak warning, an event log (your plays and
+  refusals, their plays, towers down, clock cues).
+- Engine-read values: the tick length (no binding has it; `120 s / DOUBLE_ELIXIR_TICK`, so a 50 ms engine changes it
+  automatically), the next card (the deck queue isn't bound; a snapshot play shows it, 20/20 right in a check), the
+  card catalogue. Tower reach 7.0 / 7.5 is not bound and is written in placement.py for the hover circles only.
+
+**Recording unchanged, measured:** the old server (HEAD) and the new one, same 4 situations, seeds and plays
+(legal, illegal, unaffordable, spell-guard refusal): every tick's state equal on the old fields, plays and scores
+equal, log lines byte-identical apart from the timestamp. A test replays a page game straight into CloneEnv.
+
+**Left out:** a true undo of a play that already landed. It would need a deep copy of CloneEnv (training code) and
+would put rewound games into the answer keys; instead a play queued while paused can be taken back before it is sent.
