@@ -3656,3 +3656,9 @@ Full write-up: docs/simulator-validation.md. Held-back only (48 games, 346 windo
     client value?).
   - What the files don't hold: how the game uses those fields (targeting, retarget, the attack cycle, pushing,
     pathing). That lives in the compiled client.
+- **Plan: docs/plan-sim-1to1.md** (Cole: "Can you come up with a detailed and structured plan for making the sim a
+  1:1 copy of the game"; he'll run friendly-battle lab tests in the evenings: "lets do as much work on the sim as
+  possible, and when I get home I can test on the real game"). Sources: the client tables, lab battles, the client's
+  code via REA (github.com/morluto/rea, Cole's pick), the replays. P0 groundwork today (tile grid, field coverage, the
+  lifetime cause, lab tooling, native-library feasibility), P1 data parity, P2 mechanics parity (12 mechanics, each
+  with a lab test), P3 validation, P4 back to training only after the gate. No training until then.
