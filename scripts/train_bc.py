@@ -105,14 +105,15 @@ def window(ep, rng, length=None):
 
 def batch_loss(net, eps, rng, device):
     """Card + placement loss on a batch of windows (padded to WINDOW; loss from BURN_IN on)."""
-    obs = np.zeros((WINDOW, len(eps), eps[0]["obs"].shape[1]), np.float32)  # the shards' width (13977, or 13978 with P5)
+    wins = [window(ep, rng) for ep in eps]
+    obs = np.zeros((WINDOW, len(eps), wins[0][0].shape[1]), np.float32)  # the shards' width (13977, 13978 with P5)
     card = np.full((WINDOW, len(eps)), -1, np.int64)
     cell = np.full((WINDOW, len(eps)), -1, np.int64)
     valid = np.zeros((WINDOW, len(eps)), bool)
     w = np.zeros((WINDOW, len(eps)), np.float32)
     burn = np.zeros(len(eps), np.int64)
     for b, ep in enumerate(eps):
-        o, c, ce, start = window(ep, rng)
+        o, c, ce, start = wins[b]
         L = len(c)
         obs[:L, b], card[:L, b], cell[:L, b], valid[:L, b], w[:L, b] = o, c, ce, True, ep["w"]
         burn[b] = 0 if start == 0 else BURN_IN  # a window from the episode's first step has a true fresh LSTM
