@@ -3353,3 +3353,23 @@ Full write-up: docs/simulator-validation.md. Held-back only (48 games, 346 windo
   like 10 damage, hail marry/spell their tower". So: +3 in an even game; all in at 0-1 lead when late and down a
   tower; spell a tower that's within a spell's tower damage of falling regardless of the lead. Goes into P3 as a
   desperate pair and into spell_finish; the "late" / "down a tower" cut-offs are ours, to confirm with him.
+- **P1 done: spell guard + live full-bar guard (docs/plan-elixir-spells.md).** src/bot77/rl/guards.py: Fireball /
+  Arrows only go down when the target touches an enemy body or tower by the engine's own hit test (AreaSpell: centre
+  distance <= spell radius + target hitbox; radii from get_card_stats: Fireball 2.5, Arrows 3.5; towers 1.5 / King 2.0
+  from Tower.h, troops the implicit 0.4, a lower bound), otherwise the play is a wait. Used by CloneEnv.step (on by
+  default; `RL_SPELL_GUARD=0` / `--no-spell-guard` for the record; RL v1-v5 ran without it) and by the live decide()
+  on the mirrored engine (veto logged as `guard: spell_veto` in decisions.json). `--full-bar-guard` on
+  scripts/live_play.py (off by default, live only): after 3 s at >= 9.8 elixir with no enemy unit on our side
+  (engine y < 17.5), the model's most likely affordable readable card at its sampled cell (spell guard still on),
+  logged `guard: full_bar` and shown as "full-bar guard" on the console. 7 tests (tests/test_guards.py).
+  - **Exam, v2 epoch 3 at log 50, n 50, guard on** (data/models/elixir_spells/p1/exam_v2ep3_guard.txt): **-0.878**
+    (guard off, same run: -0.898, identical to exam_epoch03.txt to the digit, so the new parallel runner
+    scripts/exam_par.py reproduces the serial exam; 3.5 min instead of ~40). No template got worse: ram -0.85 ->
+    -0.81, melee -0.63 -> -0.60, fireball -0.73 -> -0.70, opening -0.02 -> +0.01, the rest +0.00 to +0.02. Vetoes a
+    situation 0.00-0.32 (most in dont_overcommit, 0.32: spells cast with nothing to hit). Cole's 142 starts -0.87 ->
+    -0.84 (beats him on 34, was 33). Scripted / nothing / rush unchanged (the script never aims at nothing).
+  - **Defence gate: PASS** (scripts/defence_gate.py; mean +0.020, worst template +0.00).
+  - Finding for P3/P5: the engine has no setter for cumulative elixir spent, and the live mirror builds a fresh engine
+    every decision, so live the two spend scalars (the only opponent-elixir signal in the observation) are ~0 always,
+    and the opponent's card-recency block is "just now" for every card seen. Live, the model can't count their
+    elixir at all.
