@@ -3482,3 +3482,7 @@ Full write-up: docs/simulator-validation.md. Held-back only (48 games, 346 windo
   drop is the P5 diagnosis showing up: dont_overcommit is an empty board with them on 10, press_calm an empty board
   with them on 0-3, and the network sees the same inputs in both (their spend reads 0 in both), so the press demos
   push it to commit into a full bar.
+- **School v3 epoch 2** (exam_epoch02.txt): defence mean -0.912; **gate FAIL** on arrows_value -1.07 (-0.19),
+  emergency -3.17 (-0.20), dont_overcommit -0.60 (-0.35); better on hog -0.42, melee -0.47, defend+counter -0.51.
+  Tempo: chill -0.04, press_calm -0.14, desperate_even -0.10, desperate +0.11, spell_finish +0.05 (script +0.28 /
+  +0.49 / +0.19 / +0.40 / +0.53). Cole's starts -0.82 (beats him on 32). Flat since epoch 0.
