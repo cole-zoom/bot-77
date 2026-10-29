@@ -3321,3 +3321,14 @@ Full write-up: docs/simulator-validation.md. Held-back only (48 games, 346 windo
   20 games: its first real games; the question is whether it still opens with a bridge rush (v4: 13 of 14 openings).
 
   uv run --no-sync python scripts/live_play.py --stream --policy selfplay --ckpt data/models/bc_defence_v2/epoch03_cal50.pth --decision-s 0.1 --games 20 --hours 3
+- **Live test, defence school v2 epoch 3 (22:17-23:40): 6-14 raw; 6-12 (33%) without games 4 and 10**, both short
+  losses waiting on Cole (game 4: 0.9 min, 0 plays, sat at 10 elixir with up to 3 threats; game 10: ended ~65 s in
+  after 5 plays). v4 went 7-7 (50%), v3 8-12, v2 9-9. Log: data/live/school_v2_bomber.log (local).
+  - **The bum rush is gone:** the first play went to the bridge in 2 of 19 games (17 Bomber, 18 Battle Ram); the
+    rest were behind / in front of a tower or the centre (Mini P.E.K.K.A 5, Goblin Hut 5, Battle Ram 4 behind a
+    tower). v4: heavy card at the left bridge in 13 of 14.
+  - **But it's too passive:** the first play came at 9.2-10 elixir in 13 of 19 games (2:31-2:55 on the clock), and
+    the log shows full elixir (10.0) on 154 lines over the 20 games. Losses mostly ran the full 3 min, not v4's fast
+    82-153 s collapses: it loses on tempo and leaked elixir, not to counter-pushes.
+  - So imitation fixed what RL broke (the rush) and RL breaks what imitation fixed (the patience): the next round has
+    to keep the school's placements while spending its elixir.
