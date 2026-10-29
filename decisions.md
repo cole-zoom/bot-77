@@ -3888,3 +3888,29 @@ Every value is generated from the client tables (`ClientMechanics.h` via `script
 **Honest read:** none of the fixes moves fight winner or tower damage beyond noise. They're right per the client, and the lab battles decide the rest.
 
 **Open for Cole:** should S2 switch to the `client_l11` tower preset? It's correct for level 11, but the numbers won't be comparable with earlier runs.
+
+## 2026-10-29 · BlueStacks Air rooted (Magisk 27.0), Cole's go-ahead: "lets just root it rn"
+
+**Guide followed:** github.com/hanreev/root-bluestacks-air, method 1 (patched `initrd_hvf.img`, SIP stays on). Cole ran the `sudo cp` steps.
+
+**Where the guide didn't fit this setup:**
+- **No Kitsune Magisk download.** The guide wants it, but its repo is archived with the releases removed.
+  - Used official Magisk v27.0 instead: topjohnwu GitHub release, size 12498796 matched, SHA-256 `f511bd33…6610`.
+  - The script's file names match that version.
+- **Kitsune-only commands.** The guide's `magisk.rc` calls two that the official build doesn't have:
+  - `--setup-sbin`, and this Android 13 image has no `/sbin` either;
+  - `--auto-selinux`.
+  - Each made the boot step exit 1 without logging anything.
+- **Replacement setup:** the official emulator script's (`scripts/avd_magisk.sh`) "Android Q+ without sbin" branch:
+  - a tmpfs on `/debug_ramdisk` with the binaries and applet links;
+  - `.magisk` created 0711, as `magiskinit` does it. 0700 locked out the shell and apps.
+  - Runs from `/boot/magisk/setup.sh`, in the magisk domain; it logs to `/data/local/tmp/magisk_setup.log`.
+- **Prompts:** skipped the app's "additional setup / reflash" prompts; root works without them. The first su prompt timed out into a "forever deny"; switched it to allow in Superuser.
+
+**Result:** `su -c id` → uid 0, SELinux Disabled, kernel 5.15.137, BlueStacks 5.21.790.7505.
+
+**Files** (outside the repo):
+- `~/tools/bs-root-build/` (build, `setup.sh`, `magisk.rc`)
+- `~/tools/root-bluestacks-air-src/files/backup/initrd_hvf.img` (the original, SHA-256 `393f386e…329e`)
+
+**Undo:** `sudo cp` the backup over `/Applications/BlueStacks.app/Contents/img/initrd_hvf.img`.
