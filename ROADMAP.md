@@ -143,6 +143,15 @@ a browser view, training. LanceDB is the data layer (`tower_hp`, `sim_validation
 - [x] 55 more pro replays (TV Royale); recorder fixed; throughput ~10-11 replays an hour on one Mac.
 - [ ] Next (Cole decides): keep training the self-play agent and test it over a full session; or scale replays.
 
+## When to spend, and spell use (2026-10-29, `docs/plan-elixir-spells.md`)
+- [x] P1 spell guard (sim + live, always on) and `--full-bar-guard` (live only, off by default). Exam -0.90 -> -0.88.
+- [x] P2 leak and wasted-spell costs in every situation score; `RL_LEAK_COEF` for full games (default 0).
+- [x] P3 tempo templates: the calm pair, Cole's desperate pair and spell_finish pass their reference orderings; the
+      pressure pair fails (held out, on the play page).
+- [x] P4 school v3: fails the defence gate every epoch; spends more when calm but can't tell chill from press.
+      v2 epoch 3 stays the live model.
+- [ ] P5 the opponent's elixir as an input (C++ proposal in the plan): waiting on Cole's OK.
+
 ## Later (only if the loop stalls)
 
 - Retrain the card model on the bot's own reviewed games (needs a few hundred reviewed plays first).
