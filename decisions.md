@@ -3613,3 +3613,8 @@ Full write-up: docs/simulator-validation.md. Held-back only (48 games, 346 windo
   Chill = no troops on the board and the elixir even (the estimate within the +3 press threshold). What to do at a
   full bar while chilling isn't answered yet; working assumption until he plays the templates: hold, and only at a
   full bar put a cheap card at the back so no elixir leaks.
+- **Cole on a full bar while chilling (2026-10-29, verbatim):** "Either start a push, or cycle small troops/cheap
+  troops. Ideally, for our deck we giant or megaminion the back. this shouldnt be a rule written as code though."
+  So: at a full bar with nothing on the board, never sit; start a push or cycle something cheap; with the Bomber deck,
+  a Giant or Mega Minion at the back. It's to be learned from his play-page examples, not hard-coded (the live
+  --full-bar-guard stays an off-by-default band-aid, and the scripted tempo policy is a baseline, not the teacher).
