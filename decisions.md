@@ -3453,3 +3453,22 @@ Full write-up: docs/simulator-validation.md. Held-back only (48 games, 346 windo
     -0.05 vs +0.28, press_calm -0.34 vs +0.49, desperate_even -0.15 vs +0.19, desperate +0.01 vs +0.40, spell_finish
     -0.04 vs +0.53 (it spends 2.4 and doesn't spell the tower). Spell-guard vetoes 0.12-0.56 a situation, most on the
     calm chill half: the "spell on nothing" habit Cole saw.
+- **P4: school v3 started** (data/models/bc_school_v3; Cole's press answer unblocked it). Demos rebuilt into
+  data/cache/bc/school_v3_t01 (scripts/build_defence_demos.py, 479 s on 10 workers): the scripted defence / tempo
+  policy on the 15 templates in TEMPLATES (the ten defence + chill, press_calm, desperate_even, desperate,
+  spell_finish; the held-out pressure pair excluded), seeds 0-499, plus Cole's 142 play-page games (none new): 7,642
+  episodes, 1.74M decisions; kept by train_bc (the script's better half per template, all of Cole's): 2,633 defence +
+  1,270 tempo episodes. Training as v2 (shards_t01, demo share 0.7, lead 3, window 256, burn-in 64, play weight 50)
+  but from **v2 epoch 3** (to keep its defence), `--tempo-share 0.333` (new: a third of the demo windows from tempo
+  episodes) and **310 steps an epoch** (v2: 200) so that no defence template gets fewer demo windows an epoch than
+  in v2 (checked per template: e.g. hog 332 -> 334, arrows 239 -> 241; safe opening 239 -> 302, more of its episodes
+  tie at the median under the leak term). 4 epochs, ~40 min each. Every epoch: exam (log 50, chosen once; guard on;
+  n 50) and the defence gate against v2 epoch 3 under the same scoring (data/models/elixir_spells/p2/exam_v2ep3.txt).
+
+  uv run --no-sync python scripts/train_bc.py --shards data/cache/bc/shards_t01 --demos data/cache/bc/school_v3_t01 --demo-share 0.7 --tempo-share 0.333 --lead 3 --init data/models/bc_defence_v2/epoch03.pth --window 256 --burn-in 64 --play-weight 50 --epochs 4 --steps-per-epoch 310 --out data/models/bc_school_v3
+- **School v3 epoch 0** (exam_epoch00.txt): defence mean -0.885 -> -0.900; **defence gate FAIL** on arrows_value
+  -0.88 -> -1.06 (-0.18, the limit is 0.15); hog -0.56 -> -0.46, ram -0.81 -> -0.70, melee -0.60 -> -0.50, opening
+  +0.03, but supported -0.08, emergency -0.11, overcommit -0.10. Tempo (v2 epoch 3 -> v3 ep0; script): chill -0.05 ->
+  -0.09 (+0.28), press_calm -0.34 -> -0.14 (+0.49), desperate_even -0.15 -> -0.13 (+0.19), desperate +0.01 -> +0.20
+  (+0.40), spell_finish -0.04 -> +0.08 (+0.53). Cole's starts -0.85 -> -0.80 (beats him on 38 of 142, was 32).
+  Pro held-back: AUC 0.720 -> 0.725, cell 5.0 -> 4.5 tiles.
