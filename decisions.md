@@ -3605,3 +3605,7 @@ Full write-up: docs/simulator-validation.md. Held-back only (48 games, 346 windo
   (launched by the main session) both trained on the scripted tempo policy's demos instead, which the previous agent
   itself rated as only 68% (chill) / 34% (desperate_even) right by its own test. No more tempo training until his
   examples are in.
+- **Cole on "chill" (2026-10-29, verbatim):** "chilling is when nothing on the board is happening." So chill is a
+  board state (no troops of either side in play), not a play style; what to do in it is the +3 rule (press at +3 in
+  an even game, all in when desperate). Our tempo templates' "chill" halves need checking against this: they define
+  chill by the elixir lead.
