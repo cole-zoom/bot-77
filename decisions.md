@@ -3333,8 +3333,8 @@ Full write-up: docs/simulator-validation.md. Held-back only (48 games, 346 windo
   - So imitation fixed what RL broke (the rush) and RL breaks what imitation fixed (the patience): the next round has
     to keep the school's placements while spending its elixir.
 - **Live test, defence school v2 epoch 3 at log-20 calibration (2026-10-29 01:08-01:55): 8-2**, the best live result
-  so far (log 50: 6-12 clean; v4 7-7; v2 9-9). Game 7 (a loss logged 56 s in, 5 plays, 3 threats on the board) may
-  be a disconnect or a misread end screen; Cole to confirm (7-1 without it). The checkpoint is the same school with
+  so far (log 50: 6-12 clean; v4 7-7; v2 9-9). Game 7 (a loss logged 56 s in, 5 plays, 3 threats on the board) was
+  a real loss: Cole confirmed 8-2 (2026-10-29), not a disconnect. The checkpoint is the same school with
   card_head.bias[4] at +log 20 instead of +log 50 (higher = more waiting: log 200 spent less, not more; corrected
   in chat). Log: data/live/school_v2_cal20.log (local).
   - Openings: still no bum rush (one Mini P.E.K.K.A at the left bridge, game 7; the rest at or behind a tower or the
