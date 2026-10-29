@@ -83,6 +83,8 @@ def main():
     ap.add_argument("--workers", type=int, default=10)
     ap.add_argument("--out", default=None, help="every episode (jsonl)")
     a = ap.parse_args()
+    if a.out:
+        a.out = str(Path(a.out).resolve())  # before setup() changes directory
     setup()
     sit = _S["sit"]
     tpls = [t.__name__ for t in sit.TEMPO_TEMPLATES + sit.HELD_OUT_TEMPLATES]  # the held-out pair still reported

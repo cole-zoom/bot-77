@@ -121,6 +121,7 @@ def main():
     ap.add_argument("--workers", type=int, default=10)
     ap.add_argument("--out", default=None)
     a = ap.parse_args()
+    out = str(Path(a.out).resolve()) if a.out else None  # before setup() changes directory
     setup()
     sit = _S["sit"]
     ckpts = [c if c == "script" else str((ROOT / c).resolve()) for c in a.ckpt]
@@ -128,8 +129,8 @@ def main():
     jobs = [(c, t, 10_000 + i) for c in ckpts for t in tpls for i in range(a.n)]
     with Pool(a.workers) as pool:
         res = pool.map(run, jobs, chunksize=2)
-    if a.out:
-        with open(a.out, "w") as f:
+    if out:
+        with open(out, "w") as f:
             for r in res:
                 f.write(json.dumps(r) + "\n")
     name = {c: (c if c == "script" else Path(c).parent.name + "/" + Path(c).stem) for c in ckpts}
