@@ -26,6 +26,10 @@ conversion and track linking of scripts/measure_pulls.py, attackers mirrored to 
   pooled; accuracy for the engine's sight vs the best S, and for edge-to-edge sight (S + both radii), on train + dev,
   then held-back. (Judging over the whole path is uninformative: a pull ends with the two meeting, so every S fits.)
   Never on test / held-out.
+
+2026-10-29 (--client): also scores the client's rule from its code (docs/client-code-notes.md section 3): sight edge to
+edge with the client's radii (SightRange + attacker radius + defender radius), the tower compared by plain centre
+distance (the engine's Fidelity::clientTargeting).
 """
 import argparse
 import bisect
@@ -38,7 +42,8 @@ from pathlib import Path
 import numpy as np
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from measure_pulls import BUILDINGS, LOCK_DIST, REACH_TOWER, RUN, TOWERS, _engine, _sites, _tracks  # noqa: E402
+from measure_pulls import (BUILDINGS, LOCK_DIST, REACH_TOWER, RUN, TOWERS, _engine, _sites, _tracks,  # noqa: E402
+                           client_radius_of)
 
 from bot77.sim import store  # noqa: E402
 
@@ -152,8 +157,8 @@ def rule(e, S, tower_r=1.5):
     return d - R_TROOP <= S
 
 
-def acc(ev, S_of):
-    ok = [rule(e, S_of(e)) == e["pulled"] for e in ev]
+def acc(ev, S_of, tower_r=1.5):
+    ok = [rule(e, S_of(e), tower_r) == e["pulled"] for e in ev]
     return sum(ok) / max(1, len(ok))
 
 
@@ -161,6 +166,7 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--workers", type=int, default=4)
     ap.add_argument("--examples", type=int, default=8)
+    ap.add_argument("--client", action="store_true", help="also score the client's sight rule (2026-10-29)")
     a = ap.parse_args()
     cards = store.read("cards", "kind = 'deck_card'")
     troop_cards = {c["name"] for c in cards if c.get("type") == "troop"} | {"Barbarians", "Spear Goblins", "Goblins",
@@ -185,6 +191,12 @@ def main():
           f"{acc(fit, lambda e: engine(e) + 2 * R_SELF):.1%} | best pooled S {best} ({max(pooled):.1%}; "
           f"equally good {band[0]}-{band[-1]})")
     print(f"  held-back ({len(held)}): engine {acc(held, engine):.1%}, S {best} {acc(held, lambda e: best):.1%}")
+    if a.client:
+        rad = client_radius_of()
+        cs = lambda e: engine(e) + (rad(e["card"]) or 0.5) + (rad(e["defender"]) or 0.5)
+        print(f"  client rule (sight + both client radii, tower by centre distance): fit {acc(fit, cs, 0.0):.1%}, "
+              f"held-back {acc(held, cs, 0.0):.1%} | fitted sight + 1.75: fit {acc(fit, lambda e: engine(e) + 1.75):.1%}, "
+              f"held-back {acc(held, lambda e: engine(e) + 1.75):.1%}")
     for S in (5.5, 6.0, 6.5, 7.0, 7.5, 8.0):
         print(f"    S {S}: {acc(fit, lambda e, S=S: S):.1%}")
     turns = sorted(acquisition(e) for e in fit if e["pulled"])

@@ -144,8 +144,8 @@ def accuracy(ev, R, r=R_BUILDING):
     return sum(ok) / max(1, len(ok))
 
 
-def client_radii() -> tuple[dict, dict]:
-    """{targeter card: CollisionRadius}, {building card: CollisionRadius} in tiles, from the client's tables."""
+def client_radius_of():
+    """card name -> the client's CollisionRadius in tiles (None if not found), from its tables."""
     import csv
     import sys
     from pathlib import Path
@@ -162,6 +162,12 @@ def client_radii() -> tuple[dict, dict]:
         unit = UNIT_OVERRIDE.get(card) or summon.get(norm(card)) or summon.get(norm(CLIENT_NAME.get(card, "")))
         u = chars.get(unit or "")
         return int(u["CollisionRadius"]) / 1000 if u and u.get("CollisionRadius") else None
+    return rad
+
+
+def client_radii() -> tuple[dict, dict]:
+    """{targeter card: CollisionRadius}, {building card: CollisionRadius} in tiles, from the client's tables."""
+    rad = client_radius_of()
     return {c: rad(c) for c in TARGETERS}, {c: rad(c) for c in BUILDINGS}
 
 
