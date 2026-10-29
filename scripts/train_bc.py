@@ -105,7 +105,7 @@ def window(ep, rng, length=None):
 
 def batch_loss(net, eps, rng, device):
     """Card + placement loss on a batch of windows (padded to WINDOW; loss from BURN_IN on)."""
-    obs = np.zeros((WINDOW, len(eps), net.obs_dim if hasattr(net, "obs_dim") else 13977), np.float32)
+    obs = np.zeros((WINDOW, len(eps), eps[0]["obs"].shape[1]), np.float32)  # the shards' width (13977, or 13978 with P5)
     card = np.full((WINDOW, len(eps)), -1, np.int64)
     cell = np.full((WINDOW, len(eps)), -1, np.int64)
     valid = np.zeros((WINDOW, len(eps)), bool)
