@@ -3263,3 +3263,13 @@ Full write-up: docs/simulator-validation.md. Held-back only (48 games, 346 windo
 - **The finding of the day: RL rounds v3 / v4 added nothing on the exam over their start.** The pro imitation scores
   -1.17 against v4's -1.19, and RL made the overcommit situation worse (-0.22 -> -1.05: it learned to commit). What RL
   bought was full-game win rate against the clones (and the bridge-rush opener).
+- **Defence school v1 stopped at epoch 3 (flat): it learned what and where, not when.** Exam epoch 3 -1.06 (epoch 0
+  -1.07). On 150 demo episodes: card at plays 36% (pro imitation) -> 41% (ep 0) -> 53% (ep 3), cell 3.8 -> 2.0 -> 1.0
+  tiles, play/wait AUC 0.79 -> 0.87 -> 0.89. But its play chance (wait-calibrated) was smeared: on 80 script demos
+  0.13 expected plays in the 1 s around each script play, 1.30 elsewhere in the episode (pro imitation 0.11 / 1.75),
+  against the script's 2.4 plays, all at the right moments. Taking the argmax instead of sampling never plays (wait
+  always wins a single tick), so that's no fix. Causes: at 0.1 s a play is one tick and the equally good ticks before
+  it are labelled wait; the demos were 30% of batches (card loss 1.05 -> 1.04).
+- **Defence school v2 started** (data/models/bc_defence_v2): from v1's epoch 3, demos 70% of every batch, `--lead 3`
+  (a demo play also labels the 0.3 s before it), 8 epochs of 200 steps; after each epoch the timing measure above on the
+  same 80 demos (train_bc.py `timing`). Want: expected plays near the script's toward ~1, elsewhere toward 0.

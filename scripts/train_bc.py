@@ -21,6 +21,13 @@ Cole's are all kept, weighted as built (3). Every window that starts at an episo
 start of a pro game) is trained from that step: the LSTM is fresh there, so no burn-in is needed, and the demos'
 first decision is often the answer itself.
 
+--lead K (2026-10-28, defence school v2): a demo's play also labels the K decisions before it (same card, same cell).
+At 0.1 s a play sits on one tick and the ticks just before it, as good, were labelled "wait": the first school learned
+which card and where (53% / 1 tile on the demos at epoch 3) but its play chance was smeared over the episode (0.13
+expected plays in the second around the script's against 1.3 elsewhere), and the exam didn't move. Labelling only
+earlier ticks can't make it play twice: once played, the card leaves the hand and the elixir drops. --timing reports
+that measure on a fixed sample of demos after each epoch.
+
 Scores (held-back): card at plays (which of the 4 hand cards, given a play happened; A v3 got ~51%), play-vs-wait AUC,
 placement (the cell the pro used, and the distance in tiles to it).
 """
@@ -52,11 +59,25 @@ BOARD_W = 18
 _CACHE: dict = {}
 
 
-def obs_rows(f) -> "sp.csr_matrix":
+LEAD = 0  # --lead
+
+
+def lead_labels(card, cell, k):
+    """Each play also labels the k decisions before it (those that were waits), the same card and cell."""
+    card, cell = card.copy(), cell.copy()
+    for i in np.where(card < 4)[0]:
+        for j in range(max(0, i - k), i):
+            if card[j] == 4:
+                card[j], cell[j] = card[i], cell[i]
+    return card, cell
+
+
+def obs_rows(f, lead=0) -> "sp.csr_matrix":
     """A shard's observations as a sparse matrix, unpacked once and kept (dense float16 would be ~50 GB at 0.1 s)."""
     if f not in _CACHE:
         d = np.load(f)
-        _CACHE[f] = (sp.csr_matrix(d["obs"].astype(np.float32)), d["card"], d["cell"])
+        card, cell = (d["card"], d["cell"]) if not lead else lead_labels(d["card"], d["cell"], lead)
+        _CACHE[f] = (sp.csr_matrix(d["obs"].astype(np.float32)), card, cell)
     return _CACHE[f]
 
 
@@ -75,7 +96,7 @@ def load_meta():
 
 def window(ep, rng, length=None):
     length = length or WINDOW
-    obs, card, cell = obs_rows(ep["file"])
+    obs, card, cell = obs_rows(ep["file"], LEAD if ep.get("src") else 0)
     n = len(card)
     s = 0 if n <= length else int(rng.integers(0, n - length + 1))
     sl = slice(s, s + length)
@@ -169,6 +190,34 @@ def evaluate(net, eps, device, max_eps=0):
             "cells": cell_n}
 
 
+@torch.no_grad()
+def timing(net, eps, device) -> dict:
+    """On demos (true labels, no lead): expected plays (sum of the play chance, wait-calibrated by log(PLAY_WEIGHT)) within
+    0.5 s of each demo play, and elsewhere per episode; the demos' own plays per episode."""
+    net.eval()
+    near, rest, n = [], [], []
+    for ep in eps:
+        d = np.load(ep["file"])
+        c = d["card"]
+        obs = torch.tensor(d["obs"].astype(np.float32), device=device).unsqueeze(1)
+        card = torch.tensor(c, device=device).unsqueeze(1)
+        _, _, (cl, _, _, _) = sequence_loss(net, obs, card, card, torch.ones_like(card, dtype=torch.bool),
+                                            torch.ones_like(card, dtype=torch.float32))
+        cl = cl[:, 0].clone()
+        cl[:, net.hand_size] += float(np.log(PLAY_WEIGHT))
+        p = (1 - torch.softmax(cl, -1)[:, net.hand_size]).cpu().numpy()
+        plays = np.where(c < net.hand_size)[0]
+        m = np.ones(len(c), bool)
+        for i in plays:
+            m[max(0, i - 5): i + 6] = False
+        near += [float(p[max(0, i - 5): i + 6].sum()) for i in plays]
+        rest.append(float(p[m].sum()))
+        n.append(len(plays))
+    net.train()
+    return {"plays_near_demo_play": round(float(np.mean(near)), 3), "plays_elsewhere_per_ep": round(float(np.mean(rest)), 3),
+            "demo_plays_per_ep": round(float(np.mean(n)), 2)}
+
+
 def load_demos(path: Path) -> list[dict]:
     """The defence-school episodes: Cole's all, the script's at or above its template's median score."""
     eps = []
@@ -188,7 +237,7 @@ def load_demos(path: Path) -> list[dict]:
 
 
 def main():
-    global SHARDS, WINDOW, BURN_IN, PLAY_WEIGHT
+    global SHARDS, WINDOW, BURN_IN, PLAY_WEIGHT, LEAD
     ap = argparse.ArgumentParser()
     ap.add_argument("--epochs", type=int, default=6)
     ap.add_argument("--steps-per-epoch", type=int, default=0, help="0 = one window per training episode")
@@ -202,7 +251,9 @@ def main():
     ap.add_argument("--play-weight", type=float, default=PLAY_WEIGHT)
     ap.add_argument("--demos", default=None, help="defence-school episodes (scripts/build_defence_demos.py)")
     ap.add_argument("--demo-share", type=float, default=0.3, help="share of every batch drawn from --demos")
+    ap.add_argument("--lead", type=int, default=0, help="a demo play also labels this many decisions before it")
     a = ap.parse_args()
+    LEAD = a.lead
     SHARDS, WINDOW, BURN_IN, PLAY_WEIGHT = Path(a.shards), a.window, a.burn_in, a.play_weight
     torch.manual_seed(77)
     rng = np.random.default_rng(77)
@@ -214,6 +265,8 @@ def main():
           f"({sum(e['n'] for e in held)}); winners weighted {WIN_WEIGHT} "
           f"({sum(e['result'] == 'win' for e in train)} of {len(train)} train episodes are winners)", flush=True)
     demos = load_demos(Path(a.demos)) if a.demos else []
+    probe = [e for e in demos if e["src"] == "script"]
+    probe = [probe[i] for i in np.random.default_rng(1).choice(len(probe), min(80, len(probe)), replace=False)]
     n_demo = int(round(BATCH * a.demo_share)) if demos else 0
     if demos:
         print(f"demos: {len(demos)} episodes ({sum(e['n'] for e in demos)} decisions; "
@@ -226,6 +279,8 @@ def main():
     out = Path(a.out)
     out.mkdir(parents=True, exist_ok=True)
     print("held-back before training:", evaluate(net, held, device, a.eval_eps), flush=True)
+    if probe:
+        print("demo timing before training:", timing(net, probe, device), flush=True)
     history, best = [], -1e9
     for epoch in range(a.epochs):
         t0 = time.time()
@@ -243,6 +298,8 @@ def main():
             lc += float(l_card.detach())
             lp += float(l_cell.detach())
         ev = evaluate(net, held, device, a.eval_eps)
+        if probe:
+            ev["timing"] = timing(net, probe, device)
         history.append({"epoch": epoch, "card_loss": lc / steps, "cell_loss": lp / steps, **ev})
         print(f"epoch {epoch}: card loss {lc / steps:.3f}, cell loss {lp / steps:.3f}, held-back {ev} "
               f"({time.time() - t0:.0f} s)", flush=True)
