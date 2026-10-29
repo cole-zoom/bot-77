@@ -3859,3 +3859,32 @@ None moves the winner or tower numbers beyond noise (SE ~3 pts); 4 and 6 lengthe
 **Not found:** a mechanic that moves the fight winner. On consistent windows it is 68%, against the 10-24 ceiling of
 ~69% (the replay agrees with itself 1.5 s earlier). The remaining levers are the windows (missing units, detector
 dropouts), then lab tests.
+
+## 2026-10-29 · Client-mechanics fixes merged into the fork (41fe8ad)
+
+Reviewed the second sim-fix agent's diff (its findings and S2 tables are in the entries above) and merged it:
+- target queueing;
+- area shots landing when their target dies;
+- troops see crown towers +2 tiles;
+- each unit's projectile speed and homing;
+- the client's body radius and mass;
+- the King waking 3.3 s after its trigger;
+- no charge for Royal Hogs.
+
+Every value is generated from the client tables (`ClientMechanics.h` via `scripts/sim_client_mechanics.py`), and every fix has an off switch for tonight's lab comparison.
+
+**Review notes:**
+- Tower targeting radius and placement footprint stay at the fitted 1.5 / 2.0. Only attack reach and body spacing use the client's 1.0 / 1.4.
+- Mass pushing splits overlap by the other body's mass share. When either body has no mass, it falls back to equal halves.
+
+**One test change of my own:** the pinned navigation-wedge defect (`[!shouldfail]`) stopped reproducing, because the client's King body (1.4, not 2.0) opens the pocket. The bug itself (no global route out) is still there. The test now runs with `set_client_bodies(false)` semantics so the pin stays meaningful.
+
+**Results:**
+- C++ suite: 768 cases, 767 pass + 1 expected failure.
+- bot-77 pytest: 131 passed + the old `test_curated_coverage` failure.
+
+**Gotcha:** `uv sync --reinstall-package clash-royale-env` removes gymnasium and tensorboard, which aren't in pyproject. Restored them with `uv pip install gymnasium==1.3.0 tensorboard`.
+
+**Honest read:** none of the fixes moves fight winner or tower damage beyond noise. They're right per the client, and the lab battles decide the rest.
+
+**Open for Cole:** should S2 switch to the `client_l11` tower preset? It's correct for level 11, but the numbers won't be comparable with earlier runs.
