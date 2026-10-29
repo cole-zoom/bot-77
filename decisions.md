@@ -3472,3 +3472,6 @@ Full write-up: docs/simulator-validation.md. Held-back only (48 games, 346 windo
   -0.09 (+0.28), press_calm -0.34 -> -0.14 (+0.49), desperate_even -0.15 -> -0.13 (+0.19), desperate +0.01 -> +0.20
   (+0.40), spell_finish -0.04 -> +0.08 (+0.53). Cole's starts -0.85 -> -0.80 (beats him on 38 of 142, was 32).
   Pro held-back: AUC 0.720 -> 0.725, cell 5.0 -> 4.5 tiles.
+- **75-game run, chunk 1 (01:52-03:03): 12-10** (22 games: the STOP landed with games 21-22 already under way).
+  Game 3 lost in 1.1 min with 2 plays, a likely disconnect or misread (Cole to confirm): 12-9 without it. Started
+  4-9, then won 8 of the last 9. Games run ~3 min, so 75 games is ~4 h of play plus the replay breaks.

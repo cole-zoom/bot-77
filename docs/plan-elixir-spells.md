@@ -189,6 +189,81 @@ divided by 10) next to scalar 0, or the lead (ours − theirs) / 10. The live bo
   says no C++ change without confirming the exact diagnosis and edit with him. Gameplay physics are unchanged, so
   win-rate history stays valid.
 
+#### P5 proposal (2026-10-29, written for Cole's OK; nothing in the fork has been edited)
+
+**Diagnosis, measured in P1-P4 (decisions.md):**
+- The only opponent-elixir signal in the observation is scalar 2, their cumulative spend / 280 (scalar 1 is ours).
+  One elixir moves it by 0.0036.
+- **Live it's dead, not just faint.** bot77.sim.mirror builds a fresh engine every decision, and the engine has no
+  setter for the spend statistics (ElixirStatsCollector only adds on CardPlayedEvent; `inject` and
+  `note_played_card` don't spend), so live both spend scalars read ~0 all game. The card-recency block is also flat
+  live: the mirror notes every opponent play at the current tick, so every seen card reads "just played".
+- **In the situations it's dead too.** A template sets their bar with `set_elixir_for_team` and their spend stays 0,
+  so the chill and press halves of a pair give the network bit-identical inputs apart from the sampled board. The
+  network can't tell them apart from what it sees, and what P4 shows is the evidence for that (decisions.md, P4).
+
+**The edit (two parts, both additive):**
+
+1. A spend setter, so the mirror and the templates can state what has been spent:
+   ```cpp
+   // include/core/stats/StatsCollectors.h, class ElixirStatsCollector
+   void setTotal(int team, float value) { spentByTeam[(team == 0) ? 0 : 1] = std::max(0.0f, value); }
+   // include/core/MatchStatistics.h
+   void setElixirSpent(int team, float value) { if (elixir) elixir->setTotal(team, value); }
+   // include/core/ClashEnv.h (public, next to getElixirSpent)
+   void setElixirSpent(int team, float value) { game.getStatistics().setElixirSpent(team, value); }
+   // src/bindings.cpp
+   .def("set_elixir_spent", &ClashEnv::setElixirSpent, py::arg("team"), py::arg("value"))
+   ```
+   (`game.getStatistics()` needs a non-const overload if it only has a const one.) Per-card spend is left alone.
+2. One extra scalar: the opponent's estimated elixir, what a counting human knows. It's appended to the extra scalars
+   as index 10, after the phase. It is computed from the clock and their seen spend, never from their real bar:
+   ```cpp
+   // include/core/ClashEnv.h
+   static constexpr int NUM_EXTRA_SCALARS = 11;            // was 10
+   //   10 opponent elixir estimate / 10: clip(5 + regen(0..now) - their spend, 0, 10)
+   ...
+   obs.push_back(game.getElixirMultiplier() / GameManager::MAX_ELIXIR_MULTIPLIER);   // scalar 9, unchanged
+   obs.push_back(opponentElixirEstimate(1 - team) / 10.0f);                           // scalar 10, new
+   ...
+   float opponentElixirEstimate(int opp) const {
+       // regen integrated over GameManager's own schedule (elixirMultiplierAtTick), the same rate the bars use
+       double regen = 0.0;
+       for (int t = 0; t < currentTick; ++t) regen += game.ELIXIR_REGEN_RATE * GameManager::elixirMultiplierAtTick(t);
+       float est = 5.0f + static_cast<float>(regen) - game.getStatistics().elixirSpent(opp);
+       return std::clamp(est, 0.0f, 10.0f);
+   }
+   ```
+   (A closed form per phase instead of the loop if the encoder's 25x speed-up matters; 3,600 adds at most.) It
+   overestimates when they've sat on a full bar: the cap throws away elixir the spend never shows. That's the same
+   blind spot a human has, and the fork's own notes call it the overflow residual.
+
+**What it moves and what it invalidates:**
+- `EXTRA_SCALARS_START` stays put. `CYCLE_START` +1, `observation_size()` 13977 -> 13978. Every Python consumer
+  reads these from the bindings (python_ai/engine_constants.py, models/net.py `num_extra_scalars`,
+  models/perception_encoder.py `SCALAR_SIZE`, envs/gym_wrapper.py and envs/selfplay_env.py `observation_size()`,
+  trainers/bc_pretrain.py, opponents/teacher.py and advisors/tactics.py and eval/match_outcome.py by forward
+  offsets 0-9, unchanged), so none needs a code edit. The tests that pin 13977 do.
+- **Every checkpoint's input layer changes shape:** `ScalarEncoder.extra` goes from Linear(10, 12) to Linear(11, 12).
+  This is exactly the 2026-09 phase-scalar migration, so the same tool applies
+  (python_ai/tools/migrate_checkpoint_elixir_phase.py, generalised to 10 -> 11). It zero-pads the new column (12
+  weights, plus the Adam moments), and the migrated net is bit-identical on everything it could already see. Our
+  imitation and RL nets (bc_*, rl_clones_*, the frozen clone) migrate the same way and then must learn to use the
+  input (school v4 on the tempo demos). Nothing needs retraining from scratch.
+- Our demo shards (data/cache/bc/*) store observations, so they'd be rebuilt (the build is ~8 min).
+- Gameplay physics are unchanged, so win-rate history stays valid. Only the observation and one stats setter change.
+
+**Our side, once it lands (bot77, no fork edit):**
+- The live mirror (`SelfPlayPolicy._mirror`) calls `set_elixir_spent(1, spent)` with the cost of the opponent plays
+  it saw (it already computes this sum) and `set_elixir_spent(0, ours)` with the cost of our own recorded plays (the
+  `record_own` hook). That makes the estimate the same `5 + regen - spent` the bot already logs.
+- The templates set their spend to match their bar: `spent = 5 + regen(0..tick) - elixir` for each side. Then the
+  estimate equals the true bar at the start, and the chill and press halves finally look different to the network.
+
+**Open for Cole:** OK to make this C++ change (fork rule: no C++ change without confirming the diagnosis and the edit
+with him)? Should it be the estimate (above), or the lead (ours - theirs) / 10 directly? The estimate keeps the two
+facts separate, and our own bar is already scalar-adjacent.
+
 ## Ground rules (from docs/simulator.md; they apply here)
 
 - The repo is public. Commit and push after every working step. Scan each diff for secrets, local paths and binaries.
