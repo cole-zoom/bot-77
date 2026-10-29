@@ -3785,3 +3785,13 @@ Full write-up: docs/simulator-validation.md. Held-back only (48 games, 346 windo
     C++ suite 758 cases, 1 expected failure); GAMEPLAY-AFFECTING for every card and both towers. Four existing tests
     pinned the old timing and were updated (Battle Ram, X-Bow, Firecracker, Evo Furnace); the Cannon-vs-Hog QA
     test now sees two Hog swings instead of one (Cannon first shot 0.9 s = 1000 - 100 ms): a question for Cole.
+- **Load-time fix merged into the fork (main session review, 2026-10-29 ~11:00):** reviewed the lifetime agent's diff
+  (data/work/sim_fix/fork.diff): the preload model (first hit = HitSpeed - LoadTime, reload after each hit so hits
+  stay HitSpeed apart, a started hit keeps its target to 1.5 tiles past reach, a stun empties Sparky's load), load
+  times regenerated from the client tables, towers without load or deploy time (they had inherited the Knight's 0.7 s
+  through card id 0). set_load_model(0) keeps the old model for comparison tonight. Fork suite 758 cases, 757 + the 1
+  expected; bot-77 tests 131 pass + the old test_curated_coverage failure. Rebuilt into .venv (uv sync
+  --reinstall-package clash-royale-env). Held-back: lifetime +1.82 -> +1.27 s mean (0.33 s of the old gap was the
+  replay-side death reading, 0.22 s these two bugs); fight winner and tower damage unchanged. The preload model's
+  rule (first hit 0.5 s for a Knight, not 0.7) is still a hypothesis from RoyaleAPI / balance notes: lab tests L01,
+  L02, L12 settle it tonight, and the sim side of lab_compare can run both models.
