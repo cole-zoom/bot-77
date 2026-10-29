@@ -3569,3 +3569,19 @@ Full write-up: docs/simulator-validation.md. Held-back only (48 games, 346 windo
   on 29). Tempo report: right thing chill 6% / press_calm 70% / desperate_even 4% / desperate 94% / spell_finish 18%;
   plays per 10 s calm 1.16, threat 1.29, ahead 3+ 2.19 (v3 ep0: 0% / 72% / 2% / 96% / 18%; 1.24 / 1.32 / 2.73).
   Pro held-back AUC 0.720 -> 0.726.
+- **School p5 epoch 1: gate FAIL again, training stopped** (two in a row, as the rule says). Defence mean -0.977
+  (v2 ep3 -0.885); arrows_value -1.08 (-0.20), **dont_overcommit -0.25 -> -0.95 (-0.70)**, mean -0.092; better on
+  hog -0.44, ram -0.67, defend+counter -0.57. Tempo: chill -0.12, press_calm -0.01, desperate_even -0.29, desperate
+  +0.10, spell_finish +0.04. Cole's starts -0.88 (beats him on 33). Tempo report: right thing chill 0% / press_calm
+  92% / desperate_even 0% / desperate 100% / spell_finish 32%; plays per 10 s calm 1.72, threat 1.16, ahead 3+ 5.95.
+  Same story as v3 epoch 1 (dont_overcommit -0.57 there), only stronger: it learns "press when calm" from the press
+  demos and applies it into a full bar.
+  - **Why: the network barely uses the new input.** The weights on scalar 10 grew from 0 to an L1 of 0.05 (epoch 0)
+    and 0.07 (epoch 1) over its 12 outputs; every other scalar sits at 1.6-2.8. Probe on the demos' first states:
+    moving their estimate from 0 to 10 changes p(wait) by 0.002 (chill 0.455 -> 0.457 at epoch 1), and the chill and
+    press_calm halves of a seed get the same p(wait) to three decimals. Imitation at lr 3e-4 for 2 x 310 steps
+    doesn't grow a fresh zero column into something the policy reads; most steps are waits in both halves, so the
+    label signal on it is weak. The input reaches the network (checked in the demos: chill 8.3-10, press_calm
+    0.2-2.9); the training doesn't pick it up.
+  - No p5 checkpoint is a live candidate; v2 epoch 3 at log 20 stays. Results: data/models/bc_school_p5 (exams,
+    gates, tempo_epoch00/01).
