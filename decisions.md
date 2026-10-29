@@ -3585,3 +3585,12 @@ Full write-up: docs/simulator-validation.md. Held-back only (48 games, 346 windo
     0.2-2.9); the training doesn't pick it up.
   - No p5 checkpoint is a live candidate; v2 epoch 3 at log 20 stays. Results: data/models/bc_school_p5 (exams,
     gates, tempo_epoch00/01).
+- **75-game run, run75b chunk 1 (04:34-05:37): 7-13.** Total so far 19-23 over 42 (chunk 2 under way). Both P4 and
+  P5 trained on the same laptop during these chunks; whether CPU load hurt the 0.1 s live loop isn't measured.
+- **P5 fork diff reviewed (main session, 2026-10-29 ~07:15, under Cole's delegation):** approved as correct. One
+  appended scalar (their estimate / 10), CYCLE_START +1, a spend setter, a closed-form regen that shares the step()
+  constant and is tested against it tick by tick, no physics change, python_ai/ untouched, and zero-pad migration
+  reproduces every old exam number exactly. **Not merged into the fork's main yet:** it changes the observation size
+  for every caller (the live run's 13977 checkpoint included) and no model uses the input yet (school p5 failed the
+  gate; the probe moved p(wait) 0.002 across their 0-10 estimate). It stays on the worktree / branch
+  p5-opp-elixir until a trained model needs it.
