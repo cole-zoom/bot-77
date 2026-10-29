@@ -3914,3 +3914,18 @@ Every value is generated from the client tables (`ClientMechanics.h` via `script
 - `~/tools/root-bluestacks-air-src/files/backup/initrd_hvf.img` (the original, SHA-256 `393f386e…329e`)
 
 **Undo:** `sudo cp` the backup over `/Applications/BlueStacks.app/Contents/img/initrd_hvf.img`.
+
+## 2026-10-29 · The battle library dumped decrypted from memory (root)
+
+Clash ran on the rooted BlueStacks; no root detection at launch. Read `libg.so`'s 7 mapped regions from `/proc/<pid>/mem` as root. Gotcha: the Android shell does 32-bit math, so the dd offsets are computed on the Mac.
+
+**Dump:** 28.8 MB in `data/external/cr_client/libg_dump/` (gitignored; client files never go in the repo):
+- the code region (26.8 MB, r-xp at file offset 0) starts with an arm64 ELF header;
+- `maps.txt` holds the load addresses (base 0x71fee9c000, pid 4126, BlueStacks 5.21.790.7505).
+
+**Decrypted:**
+- Entropy per MB fell from 8.0 on disk to 3.2–6.9, normal for arm64 code and data.
+- The logic field names are readable: LoadTime, SpecialLoadTime, HitSpeed, HitSpeedOffset, HitSpeedMultiplier, DeployTime, DeployTimerDelay, KingTower, Projectile.
+- Some other strings look obfuscated.
+
+**Next:** load it into Ghidra (base 0x71fee9c000), follow the field-name strings to their loaders and from there to the code that uses each value. Plan P0.5 is answered: code reading is possible.
