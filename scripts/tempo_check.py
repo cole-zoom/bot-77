@@ -8,8 +8,8 @@ scoring can't tell its halves apart. Five scripted players on every tempo templa
   tempo   the tempo policy by the lead (+3 even, 0 desperate: Cole) - the one the demos come from
 
 Orderings it must produce (the plan's): chill > dump and chill > never on the chill halves; press > chill and
-press > never on the press halves; tempo wins both halves (>= every other player, within 0.01). spell_finish: tempo >
-chill and > never.
+press > never on the press halves; tempo wins both halves of a pair (>= every other player, within 0.01).
+spell_finish (a single): tempo (which spells the tower) > chill and > never.
 
   uv run --no-sync --with gymnasium==1.3.0 python scripts/tempo_check.py [--n 40] [--seed0 0] [--workers 10]
 
@@ -85,7 +85,7 @@ def main():
     a = ap.parse_args()
     setup()
     sit = _S["sit"]
-    tpls = [t.__name__ for t in sit.TEMPO_TEMPLATES]
+    tpls = [t.__name__ for t in sit.TEMPO_TEMPLATES + sit.HELD_OUT_TEMPLATES]  # the held-out pair still reported
     jobs = [(t, a.seed0 + i, p) for t in tpls for i in range(a.n) for p in PLAYERS]
     with Pool(a.workers) as pool:
         res = pool.map(run, jobs, chunksize=4)
@@ -115,7 +115,10 @@ def main():
         else:
             checks = [("tempo > chill", m[t, "tempo"] > m[t, "chill"]), ("tempo > never", m[t, "tempo"] > m[t, "never"])]
         best = max(m[t, p] for p in PLAYERS)
-        checks.append(("tempo wins", m[t, "tempo"] >= best - 0.01))
+        if t in chill_halves + press_halves:  # a pair: the same scripted policy wins both halves
+            checks.append(("tempo wins", m[t, "tempo"] >= best - 0.01))
+        else:  # a single (spell_finish): the plan's ordering only; tempo vs the best player reported, not gated
+            checks.append((f"(tempo - best {m[t, 'tempo'] - best:+.2f})", True))
         ok = all(c[1] for c in checks)
         ok_all &= ok
         print(f"  {t:20s} {'PASS' if ok else 'FAIL'}  " + ", ".join(f"{n} {'ok' if v else 'NO'}" for n, v in checks))

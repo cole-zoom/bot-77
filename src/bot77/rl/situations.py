@@ -460,7 +460,12 @@ def spell_finish(rng) -> dict:
 
 
 TEMPO_PAIRS = [(chill, press_calm), (hold_after_defence, punish), (desperate_even, desperate)]  # (chill half, press half)
-TEMPO_TEMPLATES = [chill, press_calm, hold_after_defence, punish, desperate_even, desperate, spell_finish]
+TEMPO_TEMPLATES = [chill, press_calm, desperate_even, desperate, spell_finish]
+# Held out (2026-10-29): the pressure pair failed its reference ordering on the training seeds (scripts/tempo_check.py):
+# against an opponent on 7-10, dumping behind the survivors (+0.32) beat holding (+0.15), so the scoring / scripted
+# opponent can't judge hold_after_defence, and punish alone would teach only one half. Not in training, demos or the
+# exam; on the play page so Cole can play it (open question: is a counter-push behind survivors right into 7-10?)
+HELD_OUT_TEMPLATES = [hold_after_defence, punish]
 
 
 def _ours_alive(game, team: int) -> int:
@@ -625,7 +630,7 @@ TEMPLATES = [hog_rider, battle_ram, melee, supported_push, arrows_value, firebal
              *REVIEW_TEMPLATES]  # Cole's 1 / 8 / 9 in training from 2026-10-28 (reviewed on the play page)
 DEFENCE_TEMPLATES = list(TEMPLATES)  # the defence gate's ten
 TEMPLATES = TEMPLATES + TEMPO_TEMPLATES  # plan P3, 2026-10-29
-SCRIPTED_OPP = REVIEW_TEMPLATES + TEMPO_TEMPLATES  # the scripted opponent's deck (SCRIPT_DECK) in these
+SCRIPTED_OPP = REVIEW_TEMPLATES + TEMPO_TEMPLATES + HELD_OUT_TEMPLATES  # the scripted opponent's deck (SCRIPT_DECK) in these
 
 BY_NAME = {"hog_rider": hog_rider, "battle_ram": battle_ram, "melee_mini_pekka": melee, "melee_knight": melee,
            "melee_prince": melee, "supported_giant": supported_push, "supported_golem": supported_push,
@@ -634,7 +639,7 @@ BY_NAME = {"hog_rider": hog_rider, "battle_ram": battle_ram, "melee_mini_pekka":
            # the names a situation logs itself under (the play page's log), for 1 / 8 / 9
            "opening_tank_back": safe_opening, "opening_bridge_rush": safe_opening, "opening_support_back": safe_opening,
            "opening_wait_defend": safe_opening, "counter_giant": defend_counter, "counter_golem": defend_counter,
-           "deficit": dont_overcommit, **{t.__name__: t for t in TEMPO_TEMPLATES}}
+           "deficit": dont_overcommit, **{t.__name__: t for t in TEMPO_TEMPLATES + HELD_OUT_TEMPLATES}}
 
 
 def _supported_defence(env, spec, played) -> tuple[int, float, float]:

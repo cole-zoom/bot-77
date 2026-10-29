@@ -157,7 +157,8 @@ def main():
         cole = [r["result"]["you"]["score"] for r in refs]
         print(f"\nCole's {len(refs)} reference starts (his score then {np.mean(cole):+.2f}): " +
               ", ".join(f"{p} {np.mean(v):+.2f} (beats Cole on {sum(x > c for x, c in zip(v, cole))})" for p, v in tot.items()))
-    print("score (v2) = -(tower HP lost / princess max) - 0.04 * elixir spent + 0.04 * our board left - 0.08 * theirs on our side + 0.15 * tower dealt / princess max; hp = median tower HP"
+    print("score (v2) = -(tower HP lost / princess max) - 0.04 * elixir spent + 0.04 * our board left - 0.08 * theirs on our side + 0.15 * tower dealt / princess max"
+          " - 0.04 * elixir leaked - 0.04 * wasted spell elixir (P2); tempo kinds per bot77.rl.situations (P3); hp = median tower HP"
           " lost, el = mean elixir spent, ur = share unresolved at the timeout")
 
 

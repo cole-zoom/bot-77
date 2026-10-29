@@ -52,7 +52,8 @@ def main():
     net = MicroRoyaleNet()
     net.load_state_dict(torch.load(ckpt, map_location="cpu", weights_only=False)["model"], strict=False)
     net.eval()
-    templates = {t.__name__: t for t in sit.TEMPLATES + sit.REVIEW_TEMPLATES}  # all ten, Cole's 1 / 8 / 9 included
+    # every template, Cole's 1 / 8 / 9 and the tempo ones included, plus the held-out pressure pair (P3, 2026-10-29)
+    templates = {t.__name__: t for t in sit.TEMPLATES + sit.REVIEW_TEMPLATES + sit.HELD_OUT_TEMPLATES}
     game = {}
 
     def start(env, tpl, seed):
@@ -71,7 +72,7 @@ def main():
                  "spell": c in (sit.FIREBALL, sit.ARROWS)} for c in g.get_hand()]
         return {"units": units, "hand": hand, "elixir": round(g.get_elixir(), 2),
                 "opp_elixir": round(g.get_elixir_for_team(1), 2), "towers": [[max(0, g.get_tower_hp(t, s)) for s in range(3)] for t in (0, 1)],
-                "t": game.get("t", 0), "done": done}
+                "t": game.get("t", 0), "done": done, "clock": round(g.get_current_tick() / 10.0, 1)}
 
     def run_other(tpl, seed, who):
         # the yardstick once a second as in the exam's replays; the bot at its trained interval
@@ -213,7 +214,7 @@ table { border-collapse: collapse; font-size:.9rem; } td, th { padding: 4px 8px;
   <div class="panel">
     <div><h1>Defend it yourself</h1><div class="muted">Pick a situation and press New (Restart replays the same start). A 3-2-1 holds the game so you can get to the board, and you can already queue a card; then it runs in real time (a tick every 0.1 s) and a card lands on the next tick after you place it. Half and quarter speed slow everything down, and take effect immediately. Click a card (or press 1-4), then a tile on our half (spells anywhere); Esc cancels, Space pauses. Do nothing and you wait.</div></div>
     <div class="row">
-      <select id="tpl"><option value="hog_rider">Hog Rider</option><option value="battle_ram">Battle Ram</option><option value="melee">Melee (Mini P.E.K.K.A / Knight / Prince)</option><option value="supported_push">Supported push (Giant / Golem)</option><option value="arrows_value">5 · Arrows value</option><option value="fireball_value">6 · Fireball value</option><option value="emergency">10 · Emergency</option><option value="safe_opening">1 · Safe opening (they react)</option><option value="defend_counter">8 · Defend, then counter (they react)</option><option value="dont_overcommit">9 · Don't overcommit (they react)</option></select>
+      <select id="tpl"><option value="hog_rider">Hog Rider</option><option value="battle_ram">Battle Ram</option><option value="melee">Melee (Mini P.E.K.K.A / Knight / Prince)</option><option value="supported_push">Supported push (Giant / Golem)</option><option value="arrows_value">5 · Arrows value</option><option value="fireball_value">6 · Fireball value</option><option value="emergency">10 · Emergency</option><option value="safe_opening">1 · Safe opening (they react)</option><option value="defend_counter">8 · Defend, then counter (they react)</option><option value="dont_overcommit">9 · Don't overcommit (they react)</option><option value="chill">Tempo · chill (calm, they're 8-10)</option><option value="press_calm">Tempo · press (calm, they're 0-3)</option><option value="desperate_even">Tempo · even game, lead 0-1 (chill)</option><option value="desperate">Tempo · desperate: late, down a tower, lead 0-1</option><option value="spell_finish">Tempo · spell finish (their tower nearly down)</option><option value="hold_after_defence">Held out · hold after defence (they're 7-10)</option><option value="punish">Held out · punish after defence (they're 0-3)</option></select>
       <select id="speed"><option value="100">real time</option><option value="200">half speed</option><option value="400">quarter speed</option></select>
       <button class="act go" id="start">New</button><button class="act" id="restart">Restart</button><button class="act" id="pause">Pause</button>
     </div>
@@ -286,7 +287,8 @@ function updateHand() {
   });
   if (S) {
     $("elx").style.width = (S.elixir * 10) + "%";
-    $("elxt").textContent = `elixir ${S.elixir.toFixed(1)}  ·  theirs ${S.opp_elixir.toFixed(1)}  ·  ${(+S.t).toFixed(1)} s`;
+    const ck = S.clock == null ? "" : `  ·  game clock ${Math.floor(S.clock / 60)}:${String(Math.floor(S.clock % 60)).padStart(2, "0")}${S.clock >= 120 ? " (2x)" : ""}`;
+    $("elxt").textContent = `elixir ${S.elixir.toFixed(1)}  ·  theirs ${S.opp_elixir.toFixed(1)}  ·  ${(+S.t).toFixed(1)} s${ck}`;
   }
 }
 
@@ -347,7 +349,8 @@ function showResult(R) {
 }
 
 const PLAN = {tank_back: "tank in the back", bridge_rush: "bridge rush", support_back: "support in the back",
-  wait_defend: "wait and defend", defend: "defend what crosses", punish: "punish an overcommit"};
+  wait_defend: "wait and defend", defend: "defend what crosses", punish: "punish an overcommit",
+  tempo: "defend what crosses, punish a commitment, push at a full bar"};
 $("start").onclick = () => begin(null);
 $("restart").onclick = () => { if (lastSeed !== null) { $("tpl").value = lastTpl; begin(lastSeed); } };
 $("pause").onclick = () => { paused = !paused; $("pause").textContent = paused ? "Resume" : "Pause"; };

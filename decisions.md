@@ -3417,3 +3417,39 @@ Full write-up: docs/simulator-validation.md. Held-back only (48 games, 346 windo
     -> -0.614 (0.29; 14 games). (-0.443, not his recorded -0.31: 56 of 142 replays reproduce, the old unseeded cycle.)
     The spell guard vetoed 5 of his spells in 5 replays (a diverged replay, or a spell aimed ahead of a unit): small,
     but the guard does touch his replays.
+- **P3: tempo situations, matched pairs** (src/bot77/rl/situations.py; reference check scripts/tempo_check.py). Built:
+  calm pair `chill` (they're 8-10, score kind `tempo` = the deficit-style score: towers, elixir at the end, board,
+  leak) / `press_calm` (same board, they're 0-3, kind `press`); pressure pair `hold_after_defence` (our hurt
+  survivors on our side, they're 7-10, `tempo`) / `punish` (same, they're 0-3, `press`); Cole's desperate pair
+  `desperate_even` (lead 0 to +1, mid-game, towers even, `tempo`) / `desperate` (same board and elixir, 2:05-2:50 in
+  double elixir, one of our Princess Towers down, kind `desperate` = press without the spend cost); single
+  `spell_finish` (one of their Princess Towers within a spell's tower damage, measured by casting it: Fireball 158,
+  Arrows 75 a cast). One 25 s window per pair (spell_finish 10 s); the board is drawn first from the seed so both
+  halves of a pair get the same one. `press` = DEALT_COEF_PRESS (1.0: their hit point = ours) x dealt (a tower that
+  falls counts as a whole Princess) - lost - 0.04 x spent + board - leak. Opponent `tempo` (one script for both
+  halves): answer what crosses (Cannon in the middle / Mini P.E.K.K.A, saving up for it), punish a commitment in the
+  other lane (5+ spent or 3+ elixir across), push at 9.5+ (tank at the back, support at the bridge). Scripted tempo
+  policy `tempo_policy` (in scripted_defence, so the demos and the exam's "defend" column use it): defend a threat;
+  spell a tower the spell finishes; press when calm (no troop of theirs on the board) and lead >= +3, or >= 0 when
+  desperate (late = tick >= 1200, down = fewer towers standing: our cut-offs, open with Cole); else chill (hold to
+  9.5, then one cheap / back play, behind survivors if any). The lead uses their true elixir (the script counts
+  perfectly; the network can't, P5).
+  - Two fixes during the check (not tuning): princess_max read our left tower's max HP, -1 once it's destroyed (the
+    desperate template: scores of -900); and the press reference was all-in while the tempo policy capped support at
+    two plays, so press now always follows through with every affordable troop a second apart ("go in hard").
+  - **Reference orderings, training seeds 0-39** (data/models/elixir_spells/p3/tempo_check_train.txt), score means
+    never / dump / chill / press / tempo: chill -0.56 / -0.20 / +0.30 / -0.11 / +0.30 PASS; press_calm -0.29 / +0.21
+    / -0.28 / +0.47 / +0.47 PASS; desperate_even -0.24 / -0.12 / +0.21 / -0.05 / +0.21 PASS; desperate -0.92 / +0.28
+    / +0.13 / +0.52 / +0.52 PASS; spell_finish -0.04 / +0.07 / -0.03 / +0.55 / +0.59 PASS. **Pressure pair FAILS:**
+    hold_after_defence -1.31 / +0.32 / +0.15 / +0.41 / +0.15 (dumping behind the survivors beats holding against an
+    opponent on 7-10: the scoring / scripted opponent can't judge that half); punish -0.61 / +1.05 / +0.48 / +1.75 /
+    +1.65 (press > chill, but tempo trails press by 0.10). **Held out** (HELD_OUT_TEMPLATES: not in training, demos or
+    the exam; on the play page for Cole). Not tuned.
+  - **Held-out seeds 10000-10049** (tempo_check_exam.txt): the same verdicts; chill +0.28 vs dump -0.17 / never
+    -0.57; press_calm press +0.49 vs chill -0.31; desperate press +0.40 vs chill +0.12; desperate_even chill +0.19 vs
+    press -0.12. spell_finish: tempo +0.53 beats chill / never, but always-press is +0.56 (it keeps attacking after
+    the spell); the plan's ordering for it passes, the 0.03 is reported, not gated.
+  - **v2 epoch 3 on the tempo templates** (log 50, guard on, n 50; exam_v2ep3_tempo.txt), model vs script: chill
+    -0.05 vs +0.28, press_calm -0.34 vs +0.49, desperate_even -0.15 vs +0.19, desperate +0.01 vs +0.40, spell_finish
+    -0.04 vs +0.53 (it spends 2.4 and doesn't spell the tower). Spell-guard vetoes 0.12-0.56 a situation, most on the
+    calm chill half: the "spell on nothing" habit Cole saw.
