@@ -32,6 +32,9 @@ def main():
     ap.add_argument("--only", nargs="*", default=None, help="template names (default: all)")
     ap.add_argument("--ticks", type=int, default=1,
                     help="engine ticks between our decisions (1 = every 0.1 s, as v3 / v4 train; 10 = once a second)")
+    ap.add_argument("--greedy", action="store_true",
+                    help="the networks take their most likely card (or wait) and cell instead of sampling; on an "
+                         "uncalibrated imitation checkpoint this plays when its calibrated play chance passes 1/(1+play weight)")
     ap.add_argument("--reference", action="store_true",
                     help="also score every player on Cole's reference starts (data/live/cole_reference.jsonl)")
     a = ap.parse_args()
@@ -65,8 +68,9 @@ def main():
                 m = net.affordability_mask(o)
                 f, e, sp, hi = net.extract_features_hires(o)
                 lg, _, _, _, state["h"] = net.step_lstm_and_card(f, state["h"], m)
-                k = Categorical(logits=lg).sample()
-                cell = Categorical(logits=net.placement_given_card(state["h"][0], e, k, o, sp, hires_map=hi)).sample()
+                k = lg.argmax(-1) if a.greedy else Categorical(logits=lg).sample()
+                pl = net.placement_given_card(state["h"][0], e, k, o, sp, hires_map=hi)
+                cell = pl.argmax(-1) if a.greedy else Categorical(logits=pl).sample()
                 x, y = net.cell_to_xy(cell)
             return int(k.item()), float(x.item()), float(y.item())
         return act

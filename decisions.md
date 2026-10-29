@@ -3283,3 +3283,14 @@ Full write-up: docs/simulator-validation.md. Held-back only (48 games, 346 windo
   -0.35 / +0.06, defend+counter -0.81 / -1.20 / -0.53, overcommit -0.39 / -1.05 / +0.03. Cole's starts: -0.84 (v4 -1.23,
   script -0.63, Cole -0.31). Calibrated for the 4x (log 200): elixir 7.7, the script's, but mean -1.07: playing too
   little costs more than over-spending, so log 50 stays.
+- **Defence school v2, epoch 1:** timing on the demos near 0.55, elsewhere 2.51 -> 1.66; pro cell 5.0 -> 4.5 tiles.
+  Exam -0.93 (epoch 0 -0.92), elixir 9.8 (10.4): flat on the mean; better on overcommit (-0.39 -> -0.09) and safe
+  opening (+0.04, the script +0.06), worse on fireball / emergency / hog. Cole's starts -0.90.
+- **Why the Hog stays weak** (scratchpad peek, 6 held-out seeds, script vs epoch 1): the script answers on the first
+  tick (the Hog starts at the bridge: Goblin Hut at (8, 12) or Mini P.E.K.K.A at (3, 9), 4 elixir, 0-98 HP lost); the
+  model often misses that one tick and plays 13-19 s later after the Hog has hit, or in the wrong lane (Mini
+  P.E.K.K.A at x 14 against a left Hog), 634-2,696 HP lost. The lead labels can't help a first-tick play.
+- **Greedy instead of sampling** (`situation_exam.py --greedy` on the uncalibrated epoch 1: plays when its calibrated
+  play chance passes ~1/51): mean -1.03, elixir 8.7; better on hog -0.47, ram -0.68, supported push -1.42 (better than
+  the script's -1.54), defend+counter -0.69; worse on overcommit -0.84, fireball -1.08, melee -0.90. Cole's starts
+  -0.92 (beats him on 33 of 142, the most of any model). Mixed: sampling at log-50 calibration stays the default.
