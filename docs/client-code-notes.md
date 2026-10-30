@@ -274,3 +274,110 @@ target requests `0x71fff55d3c` / `0x71fff55e80`.
 | Stun pauses rather than resets a swing | a new test: Mini P.E.K.K.A on a tower, Zap mid-swing; next hit should come HitSpeed - (time already wound) after the stun ends |
 | SightClip direction | a Hog passing a Cannon placed behind vs ahead of it (L09 variant) |
 | HitSpeedOffset use | L13 (Fireball / Arrows on a tower) has no pulses; a Poison or Earthquake on a tower: first damage tick time |
+
+## 5. Unit collision (body pushing), avoidance, river and jump (2026-10-29)
+
+Asked because of two play-page reports from Cole: a Mini P.E.K.K.A in front of a Hog slows the Hog (not in the real
+game), and a Mini P.E.K.K.A and a Battle Ram reaching a bridge together get stuck. Units: client positions and radii
+are in 1/1000 tile (the engine's `bodyRadius = CollisionRadius / 1000`); one logic tick is 50 ms.
+
+**Functions:** move component per-tick `0x71fff5e134` (vtable slot at `0x72008f0a30`); walking tick `0x71fff5ea20`;
+knockback tick `0x71fff5e49c`; **separation (collision) `0x71fff6058c`**; avoidance `0x71fff600b8`; apply one move
+step `0x71fff60bd4`; terrain move with per-axis cell clamp `0x720017de58`; cell has river flag `0x71ffe0ceac`; ability
+push into the same accumulator `0x71fff61d5c` (caller `0x71fff0bd18`); knockback start gates `0x71fff61750`,
+`0x71fff61c7c`; jump start `0x71fff61220` (from the walking tick). Character virtuals used: radius (slot 0xa0,
+`0x71fff146c0`, CollisionRadius 0x4e4), Mass (0xb0, `0x71fff146e8`, CharacterData 0x4ec), step length (0xb8,
+`0x71fff146f4`), avoidance on (0xd0, `0x71fff149f0`), collisions on (0xd8, `0x71fff14a88`), collidable (0xe0,
+`0x71fff14b44`), avoidable (0xe8, `0x71fff14cb4`), flying (0x108, `0x71fff14224`), hovering (0x118, `0x71fff142fc`,
+data Hovering 0x3a1). Height above ground `0x71fff26100`. Tag masks (initialiser `0x71fff04350`): NO_CHECKCOLLISIONS
+`0x7200a26178`, NO_CHECKAVOIDANCE `…180`, NO_PUSHED_BY_ENEMY `…190`, NO_PUSHBACK `…228`,
+DISABLE_PHYSICAL_INTERACTIONS_WITH_OBJECTS `…248`, NO_PUSHED_BY_ALLY `…268`, AVOIDANCE_AS_OBSTACLE `…270`; code reads
+them through GOT slots `0x7200936640…66f0` (gstore.py on the GOT address finds the readers).
+Move component fields: push sum x/y +0x1d4/+0x1d8, contact count +0x1dc, charge progress +0x1e0 (>= 10000 = charging),
+avoidance steer +0x1f4, ability-push flags +0x216 (clamp to terrain) / +0x217 (no length cap), path +0x38/+0x3c.
+
+**Separation (sure, read line by line in `0x71fff6058c` and `0x71fff60bd4`):**
+- Each unit moves **only itself**, inside its own move tick, before its own step. Units are updated one after another,
+  so a later unit sees the positions earlier units already moved to this tick (the order over units is likely the
+  object list order; the battle loop was not traced).
+- Neighbours: everything within own radius + 0.02 tiles, same layer (both on the ground or both above it, by height,
+  so a jumping unit is in the air layer), collidable, not the same object.
+- Per neighbour: overlap = own radius + its radius - centre distance, clamped to [0, 0.3 tile]; multiplied by
+  **its Mass / own Mass** (not a share of the total), capped at 0.299; the push is (that + 0.001) along the line from
+  it to self. Against something with no move component (a building), own radius counts at most 0.5.
+- The pushes are **averaged** over all contacts (sum / count), the average is capped at **0.15 tile per tick**, and it
+  is added to the unit's walking step for the tick. One pass, no iterations.
+- Same rule for friend and enemy. The only team difference is the tags: NO_PUSHED_BY_ALLY / NO_PUSHED_BY_ENEMY on self
+  = ignore that team's bodies; on the other unit = it counts as immovable (full overlap, no mass scaling). No card in
+  our decks has them (evo Valkyrie, hero Wizard do).
+- Coincident centres: pushed 0.001 along y, the sign by the unit's side.
+- Who does it: walking, idle and attacking units all run it (the push is applied even with a zero step), charging
+  units too. Not run / not counted: NO_MOVE units, NO_CHECKCOLLISIONS, units attached to another, **jump (state 5)**,
+  dash (state 3, unless a dash data value is set), state 12, DISABLE_PHYSICAL (also set during the deploy states 6/7:
+  likely), units winding up a special attack (Fisherman).
+- Mass 0 on self: the push is just the 0.001 (likely only matters for buildings; how a building reports Mass through
+  slot 0xb0 is **open**).
+- Consequence (my integer re-implementation, 1-D, both update orders): a Hog (120) running into a walking Mini
+  P.E.K.K.A (90), equal Mass: the Mini P.E.K.K.A is shoved forward at the Hog's speed and the Hog keeps its own
+  speed. Behind a Giant (Mass 18) the Hog drops to the Giant's pace. Behind a Battle Ram (6) the Hog still keeps 120.
+
+**Avoidance (sure on the code, likely on the geometry, `0x71fff600b8`):** only while walking (states 1, 4, 10, 11).
+It looks at a circle of the unit's radius (max 0.5) 0.256 tile ahead. A blocker is any static object, or a unit that
+is not moving the same way (facing dot product <= 0, or idle / attacking / deploying) and is at least as heavy, the
+weight test applying only while self is charging. It sets a steering value of +-200 / 256 (side: by which side the
+blocker is on, or the blocker's own steering side); the step is turned toward the side by that weight and renormalised.
+The value decays by 10 a tick. Units walking the same way are never avoided: they are pushed.
+
+**River and bridge (sure on the code, `0x71fff60bd4`, `0x720017de58`; flags from the tilemap):**
+- Map: 36 x 64 cells of 0.5 tile (`assets/tilemaps/tilemap.csv` in the asset pack, LZMA). River = flag 32, rows 30-33
+  (2 tiles). Bridges are cells 5-8 and 27-30, all four river rows: 2 tiles wide, x 2.5-4.5 and 13.5-15.5 client tiles,
+  centred on the princess towers' columns.
+- Walking follows a cell path and does not test terrain. A collision push from a dry cell is **not clamped**: a unit
+  can be shoved with its centre into a river cell.
+- When the centre is already in a river cell and the unit is being pushed: the move is clamped per axis at the cell
+  border (it cannot enter another river cell, the other axis keeps moving: a slide), and it is nudged 0.256 tile a
+  tick in y toward the nearer bank (by which half of the map it is in). Flying and Hovering units skip all of this.
+- Ability pushes (`0x71fff61d5c`, e.g. the evo Ram's PushToSide) always clamp and skip the 0.15 cap. A knockback that
+  ends in a river cell relocates the unit to the nearest free cell (`0x71fff5e49c`).
+
+**Jump (sure):** JumpEnabled units (Hog, Royal Hogs, Ram Rider, Prince, Dark Prince, ...) path straight across the
+river. When the next path cell is a river cell, the unit jumps (state 5) to the first dry cell beyond it, at its
+JumpSpeed (Hog 160 vs walking 120). While jumping it is neither pushed nor pushes (state 5 is not collidable, and it is
+off the ground). The Hog's `JumpHack_*` actions (actions.toml) give it a 50 ms IgnorePushBack buff every tick it is
+jumping, which blocks knockback, not body pushes. On a bridge cell the Hog just walks.
+
+**The fields asked about:** IgnorePushback (CharacterData 0x58e), the IgnorePushBack buff and NO_PUSHBACK gate
+knockback only (`0x71fff61750`, `0x71fff61c7c`), not body collision. CheckCollisions is a projectile field (Hunter).
+PushToSide and FullPushBackCollisionCheck are fields of the ActionDamagingPushBack ability (evo Battle Ram, hero Dark
+Prince), not of unit collision. MoveSpeedByFriendlyMass / MoveRadiusByFriendlyMass exist in the schema, unused by our
+cards.
+
+**Engine differences** (Board.h resolveCollisions / clampToBoard, Troop::moveTowards):
+- **share:** the engine splits each pair's overlap by m_other / (m1 + m2) (halves at equal Mass), so the pair always
+  separates by exactly the overlap; the client moves each unit by its own m_other / m_self share, sequentially. This is
+  the Hog case: measured on the engine, a Hog injected 1.2 tiles behind a Mini P.E.K.K.A covers 9.75 tiles in 3.9 s
+  vs 10.34 alone (-6% over the run, about -12% while in contact), and the Mini P.E.K.K.A is dragged 8.1 vs 7.7;
+- **when:** the engine resolves after every unit has moved, once per 100 ms; the client resolves per unit, before
+  its step, every 50 ms;
+- **limits:** the engine resolves the full overlap with no cap; the client caps the overlap at 0.3, the share at
+  0.3, averages contacts and caps the result at 0.15 a tick;
+- **noise:** the engine adds a 0.01 sideways nudge per pair (0.05 against buildings); the client has none;
+- **avoidance:** missing in the engine;
+- **river:** the engine snaps any troop in the river band off a bridge to the nearer bank in one step; the client lets
+  a push carry the centre into the first river cell, then clamps per axis and nudges 0.256 a tick;
+- **bridge position (likely):** the tilemap puts the bridges at client tiles 2.5-4.5 / 13.5-15.5 (engine x 2.0-4.0 /
+  13.0-15.0, by geometry.py's 0.5 offset); the engine has 1.5-3.5 / 13.5-15.5. The replay-measured crossings
+  (geometry.py: 3.7 / 14.2 in our frame) sit nearer the tilemap's centres (3.5 / 14.5) than the engine's (3.0 / 15.0);
+- **jump:** the engine's Hog has riverIgnores and walks straight with collisions on; the client's Hog is
+  non-colliding and at JumpSpeed over river cells;
+- **deploying units** collide in the engine; in the client they don't (likely).
+- The Mini P.E.K.K.A + Battle Ram stall was **not reproduced** on the engine (600 injected same-team placements around
+  both bridges, enemy head-on cases too): the cause is open. Likely candidates are the bank snap and the bridge offset.
+
+**Lab test (proposed L22, Hog behind a walking Mini P.E.K.K.A):** lane right, Cole's deck as in L18. Cole plays the
+Mini P.E.K.K.A at [14, 21] and the Hog Rider at [14, 23] together at t = 25 (both 4 elixir; Hog 2 tiles behind, same
+column). Nothing else. Code prediction: the Hog reaches the BlueStacks right tower as early as a lone Hog from
+[14, 23] would (sim with the Mini P.E.K.K.A removed). The Mini P.E.K.K.A crosses the bridge pushed at Hog speed:
+about 1 tile further than walking alone at play + 4 s, about 2 at play + 6 s. Current engine (measured, deploy
+included): the Hog is 0.5 tile behind its lone run at play + 4 s and 1.0 at play + 6 s. Compare the positions at
+play + 1 / 2 / 4 / 6 s (lab_compare) and the Hog's first-hit time.

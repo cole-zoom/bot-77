@@ -4137,3 +4137,20 @@ would put rewound games into the answer keys; instead a play queued while paused
 ## 2026-10-29 · Unit pushing: Cole's report, and the client's masses
 
 Cole on the play page: a Mini P.E.K.K.A in front of a Hog slows the Hog, which doesn't happen in the real game. A Mini P.E.K.K.A and a Battle Ram reaching a bridge together get stuck. From the client tables: Mass is Hog 4, Mini P.E.K.K.A 4, Knight 6, Battle Ram 6. CollisionRadius is Hog 600, Mini P.E.K.K.A 450, Knight 500, Battle Ram 750. Mass alone can't explain the Hog case (equal masses). The engine (Board.h resolveCollisions) splits each overlap by mass ratio every tick, then clamps to the river edge. The pushing rule has to come from the client's code; the tables have no globals for it. An agent is reading the separation routine in libg.so (read-only).
+
+## 2026-10-29 · The client's unit pushing, read from libg.so
+
+Read-only agent. Notes: docs/client-code-notes.md §5. Addresses are for the 0x71fee9c000 build.
+- **Separation (0x71fff6058c):** each unit pushes only itself, inside its own move tick and before its step.
+  - Overlap is clamped to 0–0.3 tile, then times neighbour Mass ÷ own Mass, capped at 0.299, plus 0.001.
+  - Pushes are averaged over contacts, the result capped at 0.15 tile per 50 ms. One pass. Same rule for friend and enemy.
+  - Jumping, dashing and NO_MOVE units don't collide, and probably not deploying ones either.
+- **The engine instead** splits each pair's overlap m2/(m1+m2) after all units have moved, resolves it fully every 100 ms and adds a sideways nudge. That is the Hog case.
+  - Measured on the engine: a Hog 1.2 tiles behind a Mini P.E.K.K.A covers 9.75 tiles in 3.9 s vs 10.34 alone, about 12% slower in contact.
+  - A re-implementation of the client rule keeps the Hog at full speed.
+- **Avoidance steering (0x71fff600b8):** walking units steer around static objects and around units not moving their way that are at least as heavy. The engine has none.
+- **River:** a body push may carry a unit's centre into the first river cell, then it clamps per axis with a 0.256 tile-per-tick nudge to the bank. The engine snaps it to the bank.
+  - JumpEnabled units (Hog) jump river cells at JumpSpeed (160 vs 120) and don't collide while jumping.
+- **Bridges (tilemap, likely):** engine x 2.0–4.0 / 13.0–15.0, vs the engine's 1.5–3.5 / 13.5–15.5. The replay crossings (3.7 / 14.2) sit nearer the tilemap.
+- **Mini P.E.K.K.A + Battle Ram bridge stall:** not reproduced in 600 engine placements. Cause still open.
+- **Proposed lab L22:** Mini P.E.K.K.A [14,21] and Hog [14,23], both at t=25. The code predicts the Hog keeps its solo pace.
