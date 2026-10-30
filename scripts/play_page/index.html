@@ -21,6 +21,7 @@
 
 <main class="main">
   <section class="boardcol">
+    <div class="ebar them"><div class="elab"><span>Them</span><b id="oelxn">–</b></div><div class="elx"><div id="oelx"></div></div></div>
     <div class="boardwrap" id="boardwrap">
       <canvas id="board"></canvas>
       <div class="count" id="count" hidden></div>
@@ -28,14 +29,11 @@
       <div class="tile" id="tile">hover a tile</div>
       <div class="status" id="status">pick a situation and press New (N)</div>
     </div>
-  </section>
-
-  <section class="handcol">
-    <div class="handlab"><span>Hand</span><span class="muted" id="queued"></span></div>
-    <div class="hand" id="hand"></div>
-    <div class="nextrow"><span class="muted">Next</span><div class="nextcard" id="next"></div></div>
-    <div class="ebar you" id="ebarYou"><div class="elab"><span>You</span><b id="elxn">–</b></div><div class="elx"><div id="elx"></div></div><div class="leak" id="leak">Full: leaking elixir</div></div>
-    <div class="ebar them"><div class="elab"><span>Them</span><b id="oelxn">–</b></div><div class="elx"><div id="oelx"></div></div></div>
+    <div class="tray">
+      <div class="nextcol"><span class="muted">Next</span><div class="nextcard" id="next"></div></div>
+      <div class="hand" id="hand"></div>
+    </div>
+    <div class="ebar you" id="ebarYou"><div class="elab"><span>You <span class="muted" id="queued"></span></span><b id="elxn">–</b></div><div class="elx"><div id="elx"></div></div><div class="leak" id="leak">Full: leaking elixir</div></div>
   </section>
 
   <aside class="side">
