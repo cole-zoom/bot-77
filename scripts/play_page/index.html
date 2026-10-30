@@ -6,7 +6,7 @@
 <header class="top">
   <div class="brand">Defend it yourself</div>
   <div class="sit" id="sitname">no situation yet</div>
-  <div class="clockbox"><span class="clock" id="clock">3:00</span><span class="phase" id="phase" hidden></span></div>
+  <div class="clockbox"><span class="clock" id="clock">3:00</span><span class="phase" id="phase" hidden></span><span class="tempo" id="tempo" hidden></span></div>
   <div class="spacer"></div>
   <div class="seg" id="speed" title="Speed ( [ slower, ] faster )">
     <button data-s="0.25">¼×</button><button data-s="0.5">½×</button><button data-s="1">1×</button><button data-s="2">2×</button>
@@ -45,9 +45,9 @@
           <option value="arrows_value">5 · Arrows value</option><option value="fireball_value">6 · Fireball value</option><option value="emergency">10 · Emergency</option>
           <option value="safe_opening">1 · Safe opening (they react)</option><option value="defend_counter">8 · Defend, then counter (they react)</option>
           <option value="dont_overcommit">9 · Don't overcommit (they react)</option>
-          <option value="chill">Tempo · chill (calm, they're 8-10)</option><option value="press_calm">Tempo · press (calm, they're 0-3)</option>
-          <option value="desperate_even">Tempo · even game, lead 0-1 (chill)</option><option value="desperate">Tempo · desperate: late, down a tower, lead 0-1</option>
-          <option value="spell_finish">Tempo · spell finish (their tower nearly down)</option>
+          <option value="desperate_even">Tempo · chill / even (empty board, elixir even) · full game</option><option value="chill">Tempo · chill, they're up (they're 8-10) · full game</option>
+          <option value="press_calm">Tempo · press (they just spent: 0-3) · full game</option><option value="desperate">Tempo · desperate (late, down a tower) · full game</option>
+          <option value="spell_finish">Tempo · spell finish (their tower nearly down) · full game</option>
           <option value="hold_after_defence">Held out · hold after defence (they're 7-10)</option><option value="punish">Held out · punish after defence (they're 0-3)</option>
         </select>
       </div>

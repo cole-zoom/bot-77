@@ -107,11 +107,16 @@ def main():
         """The vector env, keeping the last step's infos (situation steps switch the game's shaping off, below)."""
 
         def __init__(self, envs):
-            self.envs, self.infos = envs, {}
+            self.envs, self.infos, self.scores = envs, {}, []
 
         def step(self, action):
             out = self.envs.step(action)
             self.infos = out[4]
+            # situation scores as they come (a defence window scores mid-game when the game plays on)
+            end = self.infos.get("rl_situation_end")
+            if end is not None:
+                for i in np.flatnonzero(np.asarray(end) > 0):
+                    self.scores.append(float(self.infos["rl_situation_score"][i]))
             return out
 
         def __getattr__(self, name):
@@ -167,10 +172,10 @@ def main():
             self.situation_scores: dict[str, list[float]] = {}
 
         def _truncation_bootstrap(self, dones, raw_rewards, next_obs, truncateds):
-            # a situation's end is final: its score is the whole return (no bootstrap from the game that would
-            # have gone on)
+            # a situation's end that ended the episode (RL_SITUATION_FULL_GAME=0) is final: its score is the whole
+            # return (no bootstrap from the game that would have gone on). With full games the game's own end is.
             boot = super()._truncation_bootstrap(dones, raw_rewards, next_obs, truncateds)
-            end = self.envs.infos.get("rl_situation_end")
+            end = self.envs.infos.get("rl_situation_final")
             if end is not None and np.any(end):
                 e = torch.as_tensor(np.asarray(end, np.float32), device=self.device)
                 boot["nonterminal"] = boot["nonterminal"] * (1 - e)
@@ -179,14 +184,14 @@ def main():
             return boot
 
         def on_episode_end(self, i, ctx):
-            end = ctx.infos.get("rl_situation_end")
-            if end is not None and end[i]:
-                self.situation_scores.setdefault("all", []).append(float(ctx.infos["rl_situation_score"][i]))
-                if len(self.situation_scores["all"]) % 100 == 0:
-                    last = self.situation_scores["all"][-100:]
-                    print(f">>> situations: last 100 scores mean {np.mean(last):+.3f} "
-                          f"(n={len(self.situation_scores['all'])})", flush=True)
+            scores = self.situation_scores.setdefault("all", [])
+            for sc in self.envs.scores:
+                scores.append(sc)
+                if len(scores) % 100 == 0:
+                    last = scores[-100:]
+                    print(f">>> situations: last 100 scores mean {np.mean(last):+.3f} (n={len(scores)})", flush=True)
                     self.writer.add_scalar("Situations/Score100", float(np.mean(last)), self.episodes_completed)
+            self.envs.scores.clear()
             super().on_episode_end(i, ctx)
 
         def leash(self):

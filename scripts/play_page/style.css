@@ -25,6 +25,8 @@ h3 { margin: 0 0 6px; font-size: .78rem; text-transform: uppercase; letter-spaci
 .clockbox { display: flex; align-items: center; gap: 6px; }
 .clock { font: 800 1.45rem ui-monospace, "SF Mono", Menlo, monospace; font-variant-numeric: tabular-nums; }
 .clock.late { color: var(--theirs); }
+.tempo { font-size: .75rem; font-weight: 800; padding: 2px 8px; border-radius: 999px; background: var(--panel2); border: 1px solid var(--line); white-space: nowrap; }
+.tempo.press { background: var(--ours); border-color: var(--ours); color: #fff; } .tempo.desperate { background: var(--theirs); border-color: var(--theirs); color: #fff; }
 .phase { font-size: .75rem; font-weight: 800; padding: 2px 7px; border-radius: 999px; background: var(--elx); color: #fff; }
 .spacer { flex: 1; }
 .btn, select, input { font: inherit; color: var(--ink); background: var(--panel2); border: 1px solid var(--line); border-radius: 8px; padding: 6px 11px; }

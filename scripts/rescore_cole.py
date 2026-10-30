@@ -76,8 +76,12 @@ def main():
     print(f"{'situation':22s} {'seed':>5s}  {'you then':>8s} {'you v1':>7s} {'you v2':>7s}  {'scr v1':>7s} {'scr v2':>7s}")
     for g in games:
         tpl = sit.BY_NAME[g["situation"]]
-        # the physics the game was played under (older lines, before the "engine" key: the engine's own pushing)
-        cre.set_client_collision(g.get("engine", {}).get("client_collision", False))
+        # the physics the game was played under (older lines, before the "engine" key: the engine's own pushing; before
+        # 2026-10-30 ~16:00 the key held client_collision only, and the pathing switches did not exist: off)
+        eng = g.get("engine", {})
+        cre.set_client_collision(eng.get("client_collision", False))
+        for k in ("obstacle_slide", "bridge_own_line"):
+            getattr(cre, "set_" + k)(eng.get(k, False))
         you = run(tpl, g["seed"], g["plays"])
         scr = None if a.no_scripted else run(tpl, g["seed"], None, ticks=10)
         then = g["result"]["you"]["score"]

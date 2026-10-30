@@ -13,9 +13,16 @@ to ~78% and flattened): with probability RL_LEAGUE_SHARE team 1 is instead one o
 least most often), playing our deck, the one it was trained with.
 
 Optionally defence situations (bot77.rl.situations, Cole's scenarios): with probability RL_SITUATION_SHARE an episode
-starts mid-fight and ends when the threat resolves, scored on the outcome (info["rl_situation"] marks its steps,
-"rl_situation_end" the scored one; the trainer turns the game's shaping off on those steps and treats the end as
-terminal). When on, the fork's own scenarios are off.
+starts mid-fight and is scored on the outcome when the threat resolves (info["rl_situation"] marks its steps,
+"rl_situation_end" the scored one; the trainer turns the game's shaping off on the marked steps). When on, the fork's
+own scenarios are off.
+
+Full games (2026-10-30; Cole's brother: the 25 s windows "make the bot think the scenario is over/game is over"; the
+trainer valued everything after a situation at 0): with situation_full_game (env_config, or RL_SITUATION_FULL_GAME;
+on unless "0") a defence situation pays its score at its end and the game plays on as an ordinary one against the
+clone, and a tempo start (bot77.rl.situations.FULL_GAME_MODES) is rewarded every step by the tempo the game is in, to
+the end of the game, plus the game's result. Only an end that is also the episode's end ("rl_situation_final") is
+final to the trainer. Off: as before, the situation's end ends the episode.
 
 Decision rate (2026-10-28, Cole: "0.1 decisions"): our side acts every `decision_ticks` engine ticks (env_config, or
 RL_DECISION_TICKS; 10 = once a second, the fork's rate; 1 = every 0.1 s). The opponent keeps deciding once a second
@@ -87,6 +94,7 @@ class CloneEnv(MicroRoyaleSelfPlayEnv):
         # v1-v5 stay reproducible; ~0.009 makes a whole regulation game of sitting at 10 (~84 elixir) cost about one
         # Princess Tower in the fork's reward (W_TOWER_DESTROYED 0.6 + W_BLDG 0.5 x 2534 / MAX_BUILDING_HP ~ 0.74)
         self.rl_leak_coef = float(os.environ.get("RL_LEAK_COEF", "0"))
+        self.full_game = bool(env_config.get("situation_full_game", os.environ.get("RL_SITUATION_FULL_GAME", "1") != "0"))
 
     def _snapshots(self) -> list[str]:
         return sorted(p for d in self.snapshot_dirs for p in glob.glob(os.path.join(d, "*.pth")))
@@ -196,7 +204,22 @@ class CloneEnv(MicroRoyaleSelfPlayEnv):
         info["spell_vetoes"] = float(self.spell_vetoes)
         info["rl_situation"] = 0.0
         info["rl_situation_end"] = 0.0
+        info["rl_situation_final"] = 0.0
         info["rl_situation_score"] = 0.0
+        if self.situation is not None and self.situation.spec.get("full_game"):
+            # a tempo start: the tempo's reward every step, the game's result on its last
+            info["rl_situation"] = 1.0
+            info["is_scenario"] = 1.0
+            info["scenario_defensive"] = 1.0
+            over = bool(terminated or truncated)
+            reward, _, details = self.situation.tempo_step(over, float(reward) if over else 0.0)
+            if over:
+                info["rl_situation_end"] = 1.0
+                info["rl_situation_final"] = 1.0
+                info["rl_situation_score"] = self.situation.total
+                self.last_situation = {**details, "spell_vetoes": self.spell_vetoes}
+                self.situation = None
+            return obs, reward, terminated, truncated, info
         if self.situation is not None:
             info["rl_situation"] = 1.0
             info["is_scenario"] = 1.0  # out of the headline W/L, as the fork does for its scenarios
@@ -205,9 +228,8 @@ class CloneEnv(MicroRoyaleSelfPlayEnv):
             if self.situation.just_dropped:  # the threat appeared after this step's observation was taken
                 obs = np.array(self.game.get_observation_for_team(0), dtype=np.float32)
             if done:
-                # the score is the whole reward; ended as a truncation so the trainer's draw penalty (terminated with
-                # |reward| < 0.5) can't fire, and the trainer zeroes the bootstrap on rl_situation_end
-                reward, terminated, truncated = score, False, True
+                game_reward = float(reward)
+                reward = score
                 if details.get("key_match") is not None:
                     reward += sit.KEY_BONUS * details["key_match"]  # Cole's take as a positive signal
                 info["rl_situation_end"] = 1.0
@@ -215,6 +237,17 @@ class CloneEnv(MicroRoyaleSelfPlayEnv):
                 self.last_situation = {"name": self.situation.spec["name"], "score": score, **details,
                                        "spell_vetoes": self.spell_vetoes}
                 self.situation = None
+                if self.full_game and not (terminated or truncated):
+                    # the game plays on as an ordinary one (the clone takes over from a script)
+                    return obs, reward, terminated, truncated, info
+                if self.full_game:
+                    reward += game_reward  # the game ended inside the window: its result too
+                    info["rl_situation_final"] = 1.0
+                    return obs, reward, terminated, truncated, info
+                # the old episodes: the score is the whole reward; ended as a truncation so the trainer's draw
+                # penalty (terminated with |reward| < 0.5) can't fire, and the trainer zeroes the bootstrap here
+                terminated, truncated = False, True
+                info["rl_situation_final"] = 1.0
             else:
                 reward, truncated = 0.0, False
                 terminated = False

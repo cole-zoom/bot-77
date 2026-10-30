@@ -436,6 +436,12 @@ function updateHud() {
     const ph = S.clock >= B.triple_at ? "3× elixir" : S.clock >= B.double_at ? "2× elixir" : "";
     $("phase").textContent = ph; $("phase").hidden = !ph;
   }
+  const tp = S.tempo;   // a full-game tempo start: the tempo the game is in and the reward so far
+  $("tempo").hidden = !tp;
+  if (tp) {
+    $("tempo").className = "tempo " + tp.mode;
+    $("tempo").textContent = `${TEMPO_NAME[tp.mode] || tp.mode} · ${(tp.total >= 0 ? "+" : "") + tp.total.toFixed(2)}`;
+  }
   status();
   inspect();
 }
@@ -582,7 +588,10 @@ async function begin(seed) {
   loop(g);
 }
 
+const TEMPO_NAME = {chill: "chill", even: "even", press: "press", desperate: "desperate", spell_finish: "spell finish"};
+const sgn = v => (v >= 0 ? "+" : "") + v.toFixed(2);
 function showResult(R) {
+  if (R.you.full_game) return showGameResult(R);
   const rows = [["You", R.you], ["Scripted defence", R.scripted], ["Bot", R.model]];
   const best = Math.max(...rows.map(r => r[1].score)), worst = Math.min(R.scripted.score, R.model.score);
   const fmt = r => `<td class="score">${(r.score >= 0 ? "+" : "") + r.score.toFixed(2)}</td><td>${Math.round(r.tower_hp_lost)}</td><td>${r.elixir_spent}</td><td>${r.unresolved ? "alive" : "handled"}</td><td>${r.seconds}s</td>`;
@@ -598,6 +607,29 @@ function showResult(R) {
   bn.hidden = false;
   Sfx.play(snd);
   logEvent("·", `Finished: you ${you.toFixed(2)}, scripted ${R.scripted.score.toFixed(2)}, bot ${R.model.score.toFixed(2)}`);
+}
+
+// A full-game tempo start (Cole's rewards, 2026-10-30): the game's result, then what each tempo earned.
+function showGameResult(R) {
+  const rows = [["You", R.you], ["Scripted", R.scripted], ["Bot", R.model]];
+  const best = Math.max(...rows.map(r => r[1].score)), worst = Math.min(R.scripted.score, R.model.score);
+  const res = r => r.result > 0 ? "win" : r.result < 0 ? "loss" : "draw";
+  const parts = r => Object.entries(r.parts).filter(([, v]) => Math.abs(v) >= 0.005)
+    .map(([k, v]) => `${k === "result" ? "result" : TEMPO_NAME[k] || k} ${sgn(v)}`).join(" · ");
+  $("result").innerHTML = `<table class="res"><tr><th></th><th>score</th><th>game</th><th>tower HP lost</th><th>dealt</th><th>ended</th></tr>
+    ${rows.map(([n, r]) => `<tr class="${r.score >= best - 1e-9 ? "best" : ""}"><td>${n}</td><td class="score">${sgn(r.score)}</td><td>${res(r)}</td><td>${Math.round(r.tower_hp_lost)}</td><td>${Math.round(r.tower_hp_dealt)}</td><td>${mmss(Math.round(r.clock))}</td></tr>
+      <tr><td></td><td colspan="5" class="muted small" style="text-align:left">${parts(r)}</td></tr>`).join("")}</table>
+    <div class="muted small" style="margin-top:6px">Same start for all three, played to the end of the game against the pro clone, whose plays can differ. Score: each tempo's reward while the game was in it (chill / even: towers kept and elixir advantage; press: damage dealt minus taken; desperate and spell finish: ±1), plus the game's result (±1).</div>`;
+  $("resultbox").hidden = false;
+  const you = R.you.score, top = Math.max(R.scripted.score, R.model.score);
+  const cls = you >= top - 1e-9 ? "win" : you >= worst - 1e-9 ? "even" : "lose";
+  const head = R.you.result > 0 ? "You won" : R.you.result < 0 ? "You lost" : "Draw";
+  const bn = $("banner");
+  bn.className = "banner " + cls;
+  bn.innerHTML = `<b>${head}</b>you ${sgn(you)} · scripted ${sgn(R.scripted.score)} · bot ${sgn(R.model.score)}<div class="small" style="opacity:.75;margin-top:4px">R restart · N new</div>`;
+  bn.hidden = false;
+  Sfx.play(cls === "lose" ? "lose" : cls);
+  logEvent("·", `Finished (${res(R.you)}): you ${sgn(you)}, scripted ${sgn(R.scripted.score)}, bot ${sgn(R.model.score)}`);
 }
 
 const PLAN = {tank_back: "tank in the back", bridge_rush: "bridge rush", support_back: "support in the back",

@@ -407,9 +407,32 @@ def _pressure_board(rng) -> dict:
     return b
 
 
+# --- Full-game tempo (Cole, 2026-10-30): "These tempos should start out in these situatins, and last the rest of teh
+# game to teach teh bot how to act in certain situations, and clear out the game." A tempo start plays on to the end of
+# the game against the pro clone (no script: it played three Mini P.E.K.K.As in a row), and every step is rewarded by
+# the tempo the game is in then, with the game's result on top (decisions.md, 2026-10-30):
+#   chill / even  less damage on our towers and a higher elixir advantage (Cole: "goal is to get to press")
+#   press         the damage differential, theirs - ours ("bigger damamge differential = higher reward")
+#   desperate     pass / fail when regulation ends: overtime (or a win) passes ("simple as that")
+#   spell finish  pass / fail on the start's window: a Princess Tower of theirs fell to our spell
+# The tempo moves with the board: chill / even -> press at a lead of PRESS_LEAD; press -> even once the lead is gone and
+# nothing of ours is across; anything -> desperate late with fewer towers than theirs; desperate -> even once paid.
+FULL_GAME_MODES = {"chill": "chill", "press_calm": "press", "desperate_even": "even", "desperate": "desperate",
+                   "spell_finish": "spell_finish"}
+ADVANTAGE_COEF = ELIXIR_COST  # chill / even: an elixir of advantage (bank + board at HP share, ours - theirs)
+PASS_FAIL = 1.0  # desperate and spell finish: +1 pass, -1 fail (a Princess Tower's worth)
+RESULT_COEF = 1.0  # the game's result on top (+1 win, -1 loss, 0 draw; the trainer prices a draw like a loss)
+REGULATION_END_TICK = 1800  # 3:00 in 0.1 s ticks (MatchRules::REGULATION_END_TICK)
+PRESS_HOLD = 10.0  # s: a press lasts at least this long, to start the push it's for
+
+
 def _tempo(name, board, own, opp, score, **kw) -> dict:
-    return {**board, "name": name, "timeout": TEMPO_WINDOW, "own_elixir": own, "opp_elixir": opp, "window": True,
+    spec = {**board, "name": name, "timeout": TEMPO_WINDOW, "own_elixir": own, "opp_elixir": opp, "window": True,
             "score": score, "opp": "tempo", "tempo": True, **kw}
+    if name in FULL_GAME_MODES:
+        # the rest of the game against the pro clone; spell_finish keeps its window for the pass / fail
+        spec.update({"full_game": True, "mode": FULL_GAME_MODES[name], "opp": None, "window": False})
+    return spec
 
 
 def chill(rng) -> dict:
@@ -640,7 +663,8 @@ TEMPLATES = [hog_rider, battle_ram, melee, supported_push, arrows_value, firebal
              *REVIEW_TEMPLATES]  # Cole's 1 / 8 / 9 in training from 2026-10-28 (reviewed on the play page)
 DEFENCE_TEMPLATES = list(TEMPLATES)  # the defence gate's ten
 TEMPLATES = TEMPLATES + TEMPO_TEMPLATES  # plan P3, 2026-10-29
-SCRIPTED_OPP = REVIEW_TEMPLATES + TEMPO_TEMPLATES + HELD_OUT_TEMPLATES  # the scripted opponent's deck (SCRIPT_DECK) in these
+# the scripted opponent's deck (SCRIPT_DECK) in these; the full-game tempo starts play the pro clone with a pro deck
+SCRIPTED_OPP = REVIEW_TEMPLATES + HELD_OUT_TEMPLATES
 
 BY_NAME = {"hog_rider": hog_rider, "battle_ram": battle_ram, "melee_mini_pekka": melee, "melee_knight": melee,
            "melee_prince": melee, "supported_giant": supported_push, "supported_golem": supported_push,
@@ -889,6 +913,108 @@ class Situation:
         self.wasted_spells = 0
         self._el = float(game.get_elixir())
         self._spent = self.spent0
+        if spec.get("full_game"):
+            self.mode = spec["mode"]
+            self.modes = [(0.0, self.mode)]  # (seconds, tempo) each time it changes
+            self.parts: dict[str, float] = {}  # reward so far by where it came from
+            self.total = 0.0
+            self.passed: dict[str, bool] = {}  # desperate / spell_finish: pass or fail, once paid
+            self._lost_t, self._dealt_t, self._adv = 0.0, 0.0, self.advantage()
+
+    def advantage(self) -> float:
+        """Our elixir advantage: (bank + board) ours - theirs, the board at HP share (every unit and building of each
+        side but towers, anywhere). Playing a card moves elixir from bank to board (no change); a good trade, or their
+        bar leaking while ours fills, moves it our way."""
+        import clash_royale_env as cre
+        side = [float(self.game.get_elixir_for_team(0)), float(self.game.get_elixir_for_team(1))]
+        for u in self.game.get_units():
+            if u.tower or u.hp <= 0 or u.card_id < 0 or u.attached_to >= 0:
+                continue
+            st = dict(cre.get_card_stats(int(u.card_id)))
+            worth = COST.get(u.card_id, st.get("cost", 0) or 0) / max(1, int(st.get("bodies", 1) or 1))
+            side[u.team] += worth * min(1.0, u.hp / max(float(st.get("hp", u.hp) or u.hp), 1.0))
+        return side[0] - side[1]
+
+    def tempo_step(self, game_over: bool, result: float = 0.0) -> tuple[float, bool, dict]:
+        """After each env step of a full-game tempo start: (this step's reward, the game is over, details). `result`
+        is the game's own (+1 / -1 / 0) on its last step."""
+        self.seconds += self.dt
+        self.leaked += leak_step(self.game, 0, self._el, self._spent, int(round(self.dt * 10)))
+        self._el, self._spent = float(self.game.get_elixir()), float(self.game.get_elixir_spent(0))
+        g, pm = self.game, self.princess_max
+        lost = self._lost()
+        dealt = sum(max(0.0, a - max(0, g.get_tower_hp(1, s))) for s, a in enumerate(self.etower0))
+        adv = self.advantage()
+        d_lost, d_dealt, d_adv = lost - self._lost_t, dealt - self._dealt_t, adv - self._adv
+        self._lost_t, self._dealt_t, self._adv = lost, dealt, adv
+        got: dict[str, float] = {}
+        if self.mode in ("chill", "even"):
+            got[self.mode] = -d_lost / pm + ADVANTAGE_COEF * d_adv
+        elif self.mode == "press":
+            got["press"] = (d_dealt - d_lost) / pm
+        tick = int(g.get_current_tick())
+        if self.mode == "spell_finish":
+            felled = any(a > 0 and g.get_tower_hp(1, s) <= 0 for s, a in enumerate(self.etower0) if s)
+            spelled = any(c in (FIREBALL, ARROWS) for _, c, _, _ in self.my_plays)
+            if felled and spelled:
+                self.passed["spell_finish"] = True
+            elif self.seconds >= self.spec["timeout"] - 1e-6 or game_over:
+                self.passed["spell_finish"] = False
+            if "spell_finish" in self.passed:
+                got["spell_finish"] = PASS_FAIL if self.passed["spell_finish"] else -PASS_FAIL
+                self._switch("even")
+        if self.mode == "desperate" and (tick >= REGULATION_END_TICK or game_over):
+            # overtime reached (the crowns level at 3:00), or the game won: pass
+            self.passed["desperate"] = (not game_over) or result > 0
+            got["desperate"] = PASS_FAIL if self.passed["desperate"] else -PASS_FAIL
+            self._switch("even")
+        if game_over:
+            got["result"] = RESULT_COEF * result
+        else:
+            self._next_mode(tick)
+        r = 0.0
+        for k, v in got.items():
+            self.parts[k] = self.parts.get(k, 0.0) + v
+            r += v
+        self.total += r
+        return r, game_over, (self.details(result) if game_over else {})
+
+    def _switch(self, mode: str) -> None:
+        if mode != self.mode:
+            self.mode = mode
+            self.modes.append((round(self.seconds, 1), mode))
+
+    def _next_mode(self, tick: int) -> None:
+        g = self.game
+        if self.mode in ("desperate", "spell_finish"):
+            return
+        if tick >= LATE_TICK and tick < REGULATION_END_TICK and _ours_alive(g, 0) < _ours_alive(g, 1) \
+                and "desperate" not in self.passed:
+            self._switch("desperate")
+            return
+        lead = float(g.get_elixir()) - float(g.get_elixir_for_team(1))
+        if self.mode in ("chill", "even") and lead >= PRESS_LEAD - 1e-6:
+            self._switch("press")
+        elif self.mode == "press":
+            # a press holds while our push is on the board (spending on it drops the lead), or PRESS_HOLD s from its
+            # start to begin one; it's over once the lead is gone and none of our troops is left
+            mine = any(u.team == 0 and not u.tower and not u.building and u.hp > 0 for u in g.get_units())
+            since = self.seconds - self.modes[-1][0]
+            if lead < PRESS_LEAD - 1e-6 and not mine and since >= PRESS_HOLD:
+                self._switch("even")
+
+    def details(self, result: float = 0.0) -> dict:
+        lost = self._lost()
+        dealt = sum(max(0.0, a - max(0, self.game.get_tower_hp(1, s))) for s, a in enumerate(self.etower0))
+        return {"name": self.spec["name"], "score": float(self.total), "full_game": True, "result": result,
+                "parts": {k: round(v, 4) for k, v in self.parts.items()}, "modes": self.modes, "mode": self.mode,
+                "passed": dict(self.passed), "tower_hp_lost": lost, "tower_hp_dealt": dealt,
+                "elixir_advantage": round(self._adv, 2), "elixir_spent": float(self.game.get_elixir_spent(0)) - self.spent0,
+                "elixir_leaked": round(self.leaked, 2), "seconds": round(self.seconds, 1),
+                "clock": round(int(self.game.get_current_tick()) * 0.1, 1), "elixir_end": float(self.game.get_elixir()),
+                "wasted_spells": self.wasted_spells, "wasted_spell_elixir": self.wasted_spell_elixir,
+                "opp_plays": self.opp_state.get("plays", []), "unresolved": False,
+                "key_match": self.key_match() if self.key else None}
 
     def _board(self) -> tuple[float, float]:
         """Elixir on the board at HP share: ours anywhere (buildings too), theirs on our side (towers aside)."""

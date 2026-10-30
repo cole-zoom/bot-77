@@ -62,3 +62,59 @@ def test_the_scripted_opponent_only_plays_cards_it_holds(mods, name):
             if info.get("rl_situation_end") or term or trunc:
                 break
     assert plays > 0  # it did play
+
+
+def play_out(env, sit, policy="scripted"):
+    """Steps to the episode's end: [(reward, info, terminated or truncated)] per step."""
+    steps, played = [], set()
+    while True:
+        if policy == "scripted" and env.situation is not None:
+            k, x, y = sit.scripted_defence(env)
+        else:
+            k, x, y = 4, 0.0, 0.0
+        _, r, term, trunc, info = env.step(act(k, x, y))
+        steps.append((float(r), {k2: float(v) for k2, v in info.items() if k2.startswith("rl_situation")}, term or trunc))
+        if term or trunc:
+            return steps
+
+
+@pytest.mark.parametrize("name", ["chill", "press_calm", "desperate_even", "desperate", "spell_finish"])
+def test_a_tempo_start_plays_to_the_end_of_the_game(mods, name):
+    # Cole (2026-10-30): "These tempos should start out in these situatins, and last the rest of teh game". Every step
+    # is a tempo step; the one scored end is the game's own; the rewards add up to the score, the result included.
+    sit, CloneEnv = mods
+    env = start(sit, CloneEnv, sit.BY_NAME[name], 3)
+    assert env.situation.spec["opp"] is None and list(env.opp_deck) != list(sit.SCRIPT_DECK)  # the pro clone
+    steps = play_out(env, sit)
+    assert all(i["rl_situation"] == 1 for _, i, _ in steps)
+    ends = [n for n, (_, i, _) in enumerate(steps) if i["rl_situation_end"]]
+    assert ends == [len(steps) - 1] and steps[-1][1]["rl_situation_final"] == 1
+    r = env.last_situation
+    assert r["full_game"] and r["result"] in (-1.0, 0.0, 1.0) and r["parts"]["result"] == r["result"]
+    assert sum(s[0] for s in steps) == pytest.approx(r["score"], abs=1e-4)
+    assert sum(r["parts"].values()) == pytest.approx(r["score"], abs=1e-3)
+    if name == "desperate":  # pass: reached overtime, or won
+        assert r["passed"]["desperate"] == (r["clock"] > 180.0 or r["result"] > 0)
+    if name == "spell_finish":
+        assert "spell_finish" in r["passed"]
+
+
+def test_a_defence_window_scores_then_the_game_plays_on(mods):
+    # Cole's brother: the windows "make the bot think the scenario is over/game is over". The score is paid when the
+    # window ends; the game goes on as an ordinary one (its shaping back on) and only its own end is final.
+    sit, CloneEnv = mods
+    env = start(sit, CloneEnv, sit.BY_NAME["hog_rider"], 5)
+    steps = play_out(env, sit)
+    ends = [n for n, (_, i, _) in enumerate(steps) if i["rl_situation_end"]]
+    assert len(ends) == 1 and ends[0] < len(steps) - 1
+    assert steps[ends[0]][1]["rl_situation_final"] == 0 and not steps[ends[0]][2]
+    assert all(i["rl_situation"] == 0 for _, i, _ in steps[ends[0] + 1:])
+    assert abs(steps[-1][0]) == 1.0 or steps[-1][0] == 0.0  # the game's own result
+
+
+def test_without_full_games_the_window_ends_the_episode(mods):
+    sit, CloneEnv = mods
+    env = start(sit, CloneEnv, sit.BY_NAME["hog_rider"], 5, situation_full_game=False)
+    steps = play_out(env, sit)
+    assert steps[-1][1]["rl_situation_end"] == 1 and steps[-1][1]["rl_situation_final"] == 1
+    assert env.game.get_current_tick() < 600  # well short of the game's end

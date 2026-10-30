@@ -4382,3 +4382,43 @@ Cole: "ok lets do it." The engine ticks 100 ms; the client 50 ms (game code). Th
   817 + 3 new cases pass (tests/core/test_pathing_obstacles.cpp, one checks the stall comes back with the switches
   off); pytest 155 pass, the known test_curated_coverage failure unchanged; the lab regressions pass.
 - The fork commit went out without the Co-Authored-By line; not force-pushed to fix it.
+
+## 2026-10-30 · Steps 2-3: situations play to the end of the game; Cole's reward per tempo
+
+- **Full games (clone_env `situation_full_game`, RL_SITUATION_FULL_GAME; on by default):**
+  - a tempo start (chill, press_calm, desperate_even, desperate, spell_finish) runs to the game's own end against the
+    pro clone with a pro deck (no script; SCRIPTED_OPP is 1 / 8 / 9 and the held-out pressure pair now), rewarded
+    every step, the game's result (+1 / -1 / 0) on its last;
+  - a defence situation pays its score when its window ends and the game plays on as an ordinary one (the clone
+    takes over from any script; the game's shaping back on);
+  - the trainer (scripts/rl_vs_clones.py) zeroes the bootstrap only on "rl_situation_final" (a situation end that
+    ended the episode: the old mode, or a game that ended inside a window), not on every situation end, so nothing is
+    valued at 0 because a window closed. It counts situation scores as they come, not only at episodes' ends.
+  - RL_SITUATION_FULL_GAME=0 restores the old episodes (the window ends the episode) for reproducing v1-v5.
+- **Cole's rewards (bot77.rl.situations, Situation.tempo_step), the tempo read live:**
+  - chill / even: -(our tower HP lost) / a Princess's max + 0.04 x the change in our elixir advantage, where the
+    advantage is (bank + board at HP share) ours - theirs: a play moves elixir from bank to board (no change), a good
+    trade or their bar leaking while ours fills moves it our way.
+  - press: (their tower HP lost - ours) / a Princess's max.
+  - desperate: +1 if regulation ends with the game going on (overtime) or won, -1 if it's lost by then.
+  - spell finish: +1 if a Princess Tower of theirs falls within the 10 s window after we've played a spell, else -1.
+  - the game's result x 1.0 on top for all.
+  - transitions: chill / even -> press at a lead of +3 (Cole's placeholder); press holds while any troop of ours is on
+    the board, at least 10 s (a push spends the lead: a first version dropped back to even 0.1 s into press_calm);
+    press -> even once the lead is gone and our troops are gone; any -> desperate from 2:00 to 3:00 with fewer
+    towers than theirs; desperate / spell finish -> even once paid.
+- **Measured, scripted tempo policy, seeds 1-2:** games end 2:16-3:57 game clock (desperate seed 2 went to overtime
+  and passed); e.g. chill 1: chill 0 / press -0.61 / even -0.94 / desperate +1 / result +1. Doing nothing in
+  press_calm: lost three crowns by 1:58, -3.58. Rewards sum to the score in every test (tests/test_situations.py: all
+  five tempo starts, the defence window then the game, the old mode).
+- **Play page:** tempo starts run to the game's end (Cole plays the whole rest of the game; 2x speed is there); a
+  badge by the clock shows the tempo and the reward so far; the result table shows win / loss, tower HP lost and
+  dealt, when it ended, and what each tempo earned. The tempo options are named as Cole's tempos. Defence situations
+  still stop at their window on the page (they're his defence keys). Log lines record all four physics switches;
+  rescore_cole sets them per line (older lines: the pathing switches off).
+- **Edge case kept:** the trainer prices a draw like a loss when |reward| < 0.5 on a terminated step; on a tempo game's
+  last step the reward is the result plus that step's tempo reward, so a draw whose last step also earned 0.5+ of
+  tempo reward escapes the penalty. Rare (it needs a tower to fall on the final tick); noted, not patched (the fork's
+  python_ai is read-only).
+- tempo_check / tempo_report measured the 25 s pairs against the tempo script; they now run full games against the
+  clone and their pair orderings no longer apply.

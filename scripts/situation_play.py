@@ -104,6 +104,9 @@ def main():
                 "opp_elixir": round(g.get_elixir_for_team(1), 2), "towers": [[max(0, g.get_tower_hp(t, s)) for s in range(3)] for t in (0, 1)],
                 "t": game.get("t", 0), "done": done, "clock": round(g.get_current_tick() * pl.TICK_S, 3),
                 "tick": g.get_current_tick(),
+                # a full-game tempo start: the tempo the game is in now and the reward so far (bot77.rl.situations)
+                "tempo": ({"mode": env.situation.mode, "total": round(env.situation.total, 3)}
+                          if env.situation is not None and env.situation.spec.get("full_game") else None),
                 "next": None if n is None else {"id": n, "name": names.get(n, str(n)), "cost": sit.COST.get(n, 0)}}
 
     def run_other(tpl, seed, who):
@@ -216,7 +219,9 @@ def main():
                     with log.open("a") as f:
                         f.write(json.dumps({"when": time.strftime("%Y-%m-%d %H:%M:%S"), "situation": game["spec_name"],
                                             "seed": game["seed"], "plays": game["plays"], "result": out["result"],
-                                            "engine": {"client_collision": cre.get_client_collision()}}) + "\n")
+                                            "engine": {k: getattr(cre, "get_" + k)() for k in
+                                                       ("client_collision", "tower_reach_footprint", "obstacle_slide",
+                                                        "bridge_own_line")}}) + "\n")
                     game["env"] = None
                 return self.send(200, json.dumps(out, default=float))
             self.send(404, "{}")
