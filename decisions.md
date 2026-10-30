@@ -4259,3 +4259,14 @@ Cole: "ok lets do it." The engine ticks 100 ms; the client 50 ms (game code). Th
   - pytest: 147 pass, 1 fail: test_cards::test_curated_coverage. It reads the 10-09 API snapshot, which has an Electro Wizard hero and an Electro Giant evo with no curated facts. Not today's change.
 - **S2 held-back** (client collision on), 560eb49 → 91702a1: position error 1.336 → 1.332; winner 59.3% → 58.8% (one window); lifetime +1.25 s and tower damage unchanged. Neutral, as expected: Huts are rare in the held-back pro games.
 - **lab_play fixes (05759e6):** a tap counts only once the hand or elixir shows it took; the retry is logged as a failed tap, not a second play. Joining past the plan moves the whole plan 12 s ahead and logs the shift. The clock shows overtime ("OT 1:42") instead of 0:00.
+
+## 2026-10-30 · L20b: the freeze pauses the swing (engine already right)
+
+- Cole's read: "it resets the swing, but not the wait."
+- The replay (r56, Cole's right tower, HP OCR at 20 fps, frames checked by eye):
+  - Mini P.E.K.K.A hits on the tower at 219.10, 220.75, 222.30 s (1.6 s apart).
+  - The Ice Spirit's freeze lands about 222.45 s, 0.15 s after the 3rd hit; frozen until about 223.55 s (BuffTime 1100).
+  - It winds up again from about 223.7 s and dies at about 224.8 s with no 4th hit (the tower stays at 625).
+- Predicted 4th hit: no effect 223.9 s; a restarted swing with no load (hit 0.5 s after the freeze) 224.05 s; a paused swing 225.0 s; a full restart with the load 225.15 s. Only the last two fit.
+- So the engine's stunPausesSwing (the game code: the freeze sets HitSpeedMultiplier -100, so the swing clock stops) agrees. The swing animation visibly restarts, as Cole saw, but no new full wait is added. Pause vs full restart (0.15 s apart) is not separable from this run.
+- The sim: three hits, no 4th, Mini P.E.K.K.A dies 224.5 vs 224.8 s.
