@@ -1,0 +1,15 @@
+id: L22
+name: "Hog Rider behind a Mini P.E.K.K.A"
+mechanic: "P2 #7 collision, mass, pushing"
+settles: "Whether a Hog walking into a same-team Mini P.E.K.K.A (both Mass 4) keeps its own pace and shoves it ahead (the client's code, Fidelity::clientCollision) or is slowed (the engine's old pairwise split)."
+lane: right
+decks:
+  bluestacks: [Bomber, Battle Ram, Giant, Mega Minion, Goblin Hut, Mini P.E.K.K.A, Fireball, Arrows]
+  cole: [Mini P.E.K.K.A, Knight, Bomber, Skeletons, Goblins, Hog Rider, Cannon, Ice Spirit]
+placements:
+  - {side: cole, card: Mini P.E.K.K.A, tile: [14, 21], t: 25}
+  - {side: cole, card: Hog Rider, tile: [14, 23], t: 25}
+watch:
+  - Hog position at play + 1 / 2 / 4 / 6 s against a lone Hog (L18); Mini P.E.K.K.A position against its solo walk; Hog first hit on the tower
+cole_notes: "Mini P.E.K.K.A first, then the Hog right behind it in the same column, as fast as you can; nothing else."
+tail_s: 40
