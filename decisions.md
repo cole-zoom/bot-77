@@ -4204,3 +4204,7 @@ Read-only agent. Notes: docs/client-code-notes.md §5. Addresses are for the 0x7
 - **L02 (Mini P.E.K.K.A vs Knight at the bridge):** the bot's Mini P.E.K.K.A went down at 2:30, on plan (after cycling a Goblin Hut and a Bomber to the other lane). Cole put his Knight "a hair earlier". Cole: "mini pekka won with a decent amount of hp." The replay gives death time and HP left.
 - **L09 (Hog vs a centre Goblin Hut at engine (8,10)):** the Hut went down at 2:35, on plan; Cole's Hog came about 10 s later. Cole: "to the hut, destroyed the hut, but died too." The building pull is confirmed for a Hut ahead in the lane's path.
 - **Lanes:** Cole's view is rotated, so engine x=14 is his left. For L18, L21 and L22 I told him "right bridge", so he played the engine x=3 lane, mirrored from the plan. lab_compare uses the replay's real tiles, so this doesn't break the comparison.
+
+## 2026-10-29 · Decision (Cole): the engine moves to the client's 50 ms tick
+
+Cole: "ok lets do it." The engine ticks 100 ms; the client 50 ms (game code). The bot's decisions stay at 0.1 s, with two engine ticks per decision. Sim speed roughly halves. Done on a fork worktree behind tests. It's merged only after the suite, S2 and tonight's lab comparison are re-run on it.
