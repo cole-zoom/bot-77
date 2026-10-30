@@ -4196,3 +4196,8 @@ Read-only agent. Notes: docs/client-code-notes.md §5. Addresses are for the 0x7
   - Correction: lab_play didn't miss any battles. Its output to a file is block-buffered, so the log looked stuck at "waiting for the battle" while it was playing. I stopped two working runs (Hog 2:00 / Hut 1:55, and 1:35 / 1:30) because of this, and dropped one Hut by hand over ADB at about 1:28 (not logged by lab_play). Run it with `python -u`.
   - L21 (fresh battle) worked: the Hut went down at 2:30, on plan, after 2 cycles.
   - To fix: the double cycle taps, and late scripted cards when the card isn't in hand.
+- **L21 redo:** Hut at 2:32, on plan; Cole's Hog at 2:35. (After Cole: "u dropped it late" on the 2:30 run, since the Hut lands about 1 s after the tap.) What the Hog did: not yet from Cole, to read from the replay.
+- **L22 (Hog behind a Mini P.E.K.K.A, same team), Cole:** "it got slightly stuck behind."
+  - So the real game slows the Hog a little. This goes against the reading agent's prediction (full pace) and against the engine with clientCollision on (it reproduces the lone Hog exactly).
+  - Equal masses (4 vs 4) under the client's self-push still push the Hog back by up to the cap each tick. The agent's re-implementation may have missed this.
+  - The replay positions at +1/2/4/6 s settle how much. Hold any change to clientCollision until then.
