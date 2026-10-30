@@ -187,6 +187,37 @@ def after(d: Device, im: np.ndarray, fp: np.ndarray) -> tuple[np.ndarray, int] |
     return None
 
 
+def nth_button(d: Device, k: int) -> tuple[np.ndarray, int] | None:
+    """Screen + Watch-button y of the k-th entry from the top (0 = newest), found by position, not by look: friendly
+    battles with the same two decks look identical, so the fingerprint walk loses its place (2026-10-29 lab night:
+    stopped after 1 of 16). Each scroll's real shift is measured by finding a band of the old screen in the new one,
+    so every Watch button gets a position on the whole list."""
+    im = open_log(d)
+    offset, seen_at = 0, []
+    for _ in range(80):
+        for _, by in watch_buttons(im):
+            y = by + offset
+            if not any(abs(y - s) < 60 for s in seen_at):
+                seen_at.append(y)
+        seen_at.sort()
+        if len(seen_at) > k:
+            by = seen_at[k] - offset
+            if by - ENTRY_UP >= VIEW_TOP and by < H - 60:
+                return im, by
+        d.scroll(); im2 = d.cap()
+        band = cv2.cvtColor(im[1100:1300, 40:W - 40], cv2.COLOR_BGR2GRAY)
+        r = cv2.matchTemplate(cv2.cvtColor(im2[VIEW_TOP:1300], cv2.COLOR_BGR2GRAY), band, cv2.TM_CCOEFF_NORMED)
+        _, v, _, (_, y) = cv2.minMaxLoc(r)
+        if v < 0.8:
+            return None  # lost track of the scroll
+        shift = 1100 - (y + VIEW_TOP)
+        if shift <= 2:
+            return None  # the list didn't move: bottom of the Battle Log
+        offset += shift
+        im = im2
+    return None
+
+
 def thumb(fp: np.ndarray) -> np.ndarray:
     """Blurred, small fingerprint: robust to the cards' shine animation."""
     return cv2.resize(cv2.GaussianBlur(fp, (0, 0), 3), (250, 72), interpolation=cv2.INTER_AREA)
@@ -274,6 +305,8 @@ def main() -> None:
                     "deck every game, the both-decks thumbnail can match an older game (2026-10-19: stopped after 2 of 12)")
     ap.add_argument("--device", default="emulator-5554")
     ap.add_argument("--source", choices=SOURCES, default="log", help="log = Battle Log, tv = TV Royale")
+    ap.add_argument("--by-index", action="store_true", help="Battle Log: walk the list by position from --skip on, not by "
+                    "fingerprint (identical-looking friendly battles, lab nights)")
     ap.add_argument("--max-tabs", type=int, default=6, help="TV: leagues to go through, from the top")
     a = ap.parse_args()
     global TITLE
@@ -289,7 +322,7 @@ def main() -> None:
     if a.source == "tv":
         to_top_tab(d)
     for i in range(first, first + a.n):
-        nb = next_button(d, last_fp, a.skip, known)
+        nb = nth_button(d, a.skip + i - first) if a.by_index else next_button(d, last_fp, a.skip, known)
         while nb is None and a.source == "tv" and tab < a.max_tabs - 1:  # this league is done: one league down
             if not switch_tab(d, "tv_left"):
                 break
