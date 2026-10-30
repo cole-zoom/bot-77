@@ -190,12 +190,19 @@ def after(d: Device, im: np.ndarray, fp: np.ndarray) -> tuple[np.ndarray, int] |
 def nth_button(d: Device, k: int) -> tuple[np.ndarray, int] | None:
     """Screen + Watch-button y of the k-th entry from the top (0 = newest), found by position, not by look: friendly
     battles with the same two decks look identical, so the fingerprint walk loses its place (2026-10-29 lab night:
-    stopped after 1 of 16). Each scroll's real shift is measured by finding a band of the old screen in the new one,
-    so every Watch button gets a position on the whole list."""
+    stopped after 1 of 16). The default scroll moves the list ~350 px, less than the ~600 px between entries; each scroll's
+    shift is the one that lines up the most Watch buttons before and after, so every button gets a position on the
+    whole list. (A matched band of the screen skipped entries: the decks repeat from entry to entry.)"""
     im = open_log(d)
+    for _ in range(60):  # to the top: the list stays where it was left (e.g. at the bottom after a failed walk)
+        d.scroll(-600); im2 = d.cap()
+        if np.abs(im2.astype(np.int16) - im.astype(np.int16)).mean() < 1.0:
+            break
+        im = im2
     offset, seen_at = 0, []
-    for _ in range(80):
-        for _, by in watch_buttons(im):
+    prev = [by for _, by in watch_buttons(im)]
+    for _ in range(150):
+        for by in prev:
             y = by + offset
             if not any(abs(y - s) < 60 for s in seen_at):
                 seen_at.append(y)
@@ -204,17 +211,25 @@ def nth_button(d: Device, k: int) -> tuple[np.ndarray, int] | None:
             by = seen_at[k] - offset
             if by - ENTRY_UP >= VIEW_TOP and by < H - 60:
                 return im, by
-        d.scroll(); im2 = d.cap()
-        band = cv2.cvtColor(im[1100:1300, 40:W - 40], cv2.COLOR_BGR2GRAY)
-        r = cv2.matchTemplate(cv2.cvtColor(im2[VIEW_TOP:1300], cv2.COLOR_BGR2GRAY), band, cv2.TM_CCOEFF_NORMED)
-        _, v, _, (_, y) = cv2.minMaxLoc(r)
-        if v < 0.8:
-            return None  # lost track of the scroll
-        shift = 1100 - (y + VIEW_TOP)
+        d.scroll(); im = d.cap()
+        cur = [by for _, by in watch_buttons(im)]
+        votes = {}
+        for a in prev:
+            for b in cur:
+                sh = a - b
+                if 0 <= sh < 450:
+                    votes[sh // 10] = votes.get(sh // 10, 0) + 1
+        if not votes:
+            print("lost track of the scroll (no Watch button in both screens)", flush=True)
+            return None
+        best = max(votes, key=lambda v: (votes[v] + votes.get(v - 1, 0) + votes.get(v + 1, 0), -v))
+        shifts = [a - b for a in prev for b in cur if abs((a - b) - best * 10 - 5) <= 15]
+        shift = int(np.median(shifts))
         if shift <= 2:
-            return None  # the list didn't move: bottom of the Battle Log
+            print(f"the list didn't move (shift {shift}): bottom of the Battle Log", flush=True)
+            return None
         offset += shift
-        im = im2
+        prev = cur
     return None
 
 
