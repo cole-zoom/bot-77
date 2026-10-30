@@ -94,3 +94,27 @@ def test_carried_units_are_bodies_riding_their_carrier():
     rider = next(u for u in rr if u["attached_to"] >= 0)
     assert rider["attached_to"] == ram["id"] and not rider["spell"]
     assert abs(rider["x"] - ram["x"]) < 1e-3 and abs(rider["y"] - ram["y"]) < 1e-3
+
+
+@pytest.mark.parametrize("when,tile,turns", [
+    (4.0, (14, 14), True),   # 3.0 behind the Hog, the tower 5.0 ahead: turns back
+    (4.2, (12, 14), True),   # 4.0 behind and to the side, the tower 4.5: turns back
+    (3.4, (5, 13), False),   # far side, 9.0 away, the tower 6.6: keeps on
+])
+def test_hog_switches_to_whichever_building_is_closer_when_it_lands(when, tile, turns):
+    # Cole (2026-10-30): "which ever building is closest it will turn too ... if you place a building behind or to the
+    # side of a hog, and at that moment it appears on the board, the hog is closer to the cannon, it will turn".
+    from bot77.sim import cards as sc
+    from bot77.sim.engine import Sim
+    from bot77.sim.geometry import engine_to_ours
+    sim = Sim.new([sc.engine_id("Cannon")], [sc.engine_id("Hog Rider")])
+    sim.reset()
+    for t in ("own", "opp"):
+        sim.set_elixir(t, 10)
+    sim.play(sc.engine_id("Hog Rider"), *engine_to_ours(14, 19), "opp")
+    sim.run_to(when)
+    sim.play(sc.engine_id("Cannon"), *engine_to_ours(*tile), "own")
+    sim.step(25)
+    hog = next(u for u in sim.units() if u["card"] == "Hog Rider")
+    can = next(u for u in sim.units() if u["card"] == "Cannon")
+    assert (hog["target"] == can["id"]) == turns

@@ -4305,3 +4305,14 @@ Cole: "ok lets do it." The engine ticks 100 ms; the client 50 ms (game code). Th
 - **Princess first-shot delay** (Fidelity::princessFirstShotDelay, off): with it on, L18's Hog gets its 7th hit (75.60, as real). But every other lab unit lives longer than real: mean +0.5 to +1.0 s; the L20 Mini P.E.K.K.A +4.2 s with the reach change. **Stays off.**
 - **S2 held-back:** positions 1.332 → 1.333 and winner 59.3% → 59.3%, unchanged. The sim's princess-tower damage rises: own 17.51 → 19.17, opp 19.03 → 20.20 (real 14.97 / 15.96). That total was already above the replays'. They are pro games at card and tower levels the engine doesn't model, so it confounds level with the mechanic. The lab timing, which doesn't depend on level, decides.
 - **Tests:** C++ 817 cases, 816 pass plus 1 expected failure. pytest 148 pass; the only failure is test_cards::test_curated_coverage (from before).
+
+## 2026-10-30 · Cole: a Hog switches to whichever building is closer when one lands
+
+- Cole, verbatim: "which ever building is closest it will turn too ... if you place a building behind or to the side of a hog, and at that moment it appears on the board, the hog is closer to the cannon, it will turn and switch targets to cannon."
+- Fits L21 (r54): when the Hut landed, the tower was nearer the Hog than the Hut, so it kept going.
+- The engine already does this.
+  - A Cannon dropped 3.0 behind the Hog, with the tower 5.0 ahead: turns back.
+  - 4.0 behind and to the side, tower 4.5: turns back.
+  - Far side, 9.0 away, tower 6.6: keeps on.
+  - Pinned in tests/test_lab_regressions.py.
+- **SightClip:** the client's side and along-lane clip (Hog 4.0 / 4.0) is not added. Cole's rule plus L21 cover the cases that matter, so the planned "Hog past a Cannon behind vs ahead" lab test is dropped unless a replay shows a case the rule gets wrong.
