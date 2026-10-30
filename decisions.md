@@ -4133,3 +4133,7 @@ equal, log lines byte-identical apart from the timestamp. A test replays a page 
 
 **Left out:** a true undo of a play that already landed. It would need a deep copy of CloneEnv (training code) and
 would put rewound games into the answer keys; instead a play queued while paused can be taken back before it is sent.
+
+## 2026-10-29 · Unit pushing: Cole's report, and the client's masses
+
+Cole on the play page: a Mini P.E.K.K.A in front of a Hog slows the Hog, which doesn't happen in the real game. A Mini P.E.K.K.A and a Battle Ram reaching a bridge together get stuck. From the client tables: Mass is Hog 4, Mini P.E.K.K.A 4, Knight 6, Battle Ram 6. CollisionRadius is Hog 600, Mini P.E.K.K.A 450, Knight 500, Battle Ram 750. Mass alone can't explain the Hog case (equal masses). The engine (Board.h resolveCollisions) splits each overlap by mass ratio every tick, then clamps to the river edge. The pushing rule has to come from the client's code; the tables have no globals for it. An agent is reading the separation routine in libg.so (read-only).
