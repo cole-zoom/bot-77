@@ -37,6 +37,8 @@ def main():
     ap.add_argument("--model-ticks", type=int, default=1, help="the model's decision interval in 0.1 s ticks (v3: 1)")
     ap.add_argument("--port", type=int, default=8777)
     ap.add_argument("--log", default=str(LOG), help="where finished games are appended (a test server writes elsewhere)")
+    ap.add_argument("--engine-collision", action="store_true",
+                    help="the engine's old pairwise pushing instead of the client's (Fidelity::clientCollision, notes §5)")
     a = ap.parse_args()
     log = Path(a.log)
     os.environ.update({"CLASH_DECK": "2,81,5,43,9,95,7,3", "RL_CLONE_CKPT": str(ROOT / "data/models/bc_v2/frozen.pth"),
@@ -55,6 +57,8 @@ def main():
     from bot77.sim import cards as sc
     from bot77.sim import placement as pl
     torch.set_num_threads(2)
+    import clash_royale_env as cre
+    cre.set_client_collision(not a.engine_collision)  # Cole 10-29: a Mini P.E.K.K.A shouldn't slow his Hog
     names = {i: c["name"] for i, c in sc.engine_cards().items()}
     net = MicroRoyaleNet()
     net.load_state_dict(torch.load(ckpt, map_location="cpu", weights_only=False)["model"], strict=False)
@@ -211,7 +215,8 @@ def main():
                     log.parent.mkdir(parents=True, exist_ok=True)
                     with log.open("a") as f:
                         f.write(json.dumps({"when": time.strftime("%Y-%m-%d %H:%M:%S"), "situation": game["spec_name"],
-                                            "seed": game["seed"], "plays": game["plays"], "result": out["result"]}) + "\n")
+                                            "seed": game["seed"], "plays": game["plays"], "result": out["result"],
+                                            "engine": {"client_collision": cre.get_client_collision()}}) + "\n")
                     game["env"] = None
                 return self.send(200, json.dumps(out, default=float))
             self.send(404, "{}")

@@ -38,6 +38,7 @@ def main():
     from bot77.rl import situations as sit
     from bot77.rl.clone_env import CloneEnv
     from bot77.sim import cards as sc
+    import clash_royale_env as cre
     torch.set_num_threads(2)  # as the play page (sampling follows the float results)
     ids = {c["name"]: i for i, c in sc.engine_cards().items() if not c.get("evolution")}
 
@@ -75,6 +76,8 @@ def main():
     print(f"{'situation':22s} {'seed':>5s}  {'you then':>8s} {'you v1':>7s} {'you v2':>7s}  {'scr v1':>7s} {'scr v2':>7s}")
     for g in games:
         tpl = sit.BY_NAME[g["situation"]]
+        # the physics the game was played under (older lines, before the "engine" key: the engine's own pushing)
+        cre.set_client_collision(g.get("engine", {}).get("client_collision", False))
         you = run(tpl, g["seed"], g["plays"])
         scr = None if a.no_scripted else run(tpl, g["seed"], None, ticks=10)
         then = g["result"]["you"]["score"]

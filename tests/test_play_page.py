@@ -174,6 +174,8 @@ os.environ.update({"CLASH_DECK": "2,81,5,43,9,95,7,3", "RL_CLONE_CKPT": ROOT + "
                    "RL_PRO_DECKS": ROOT + "/data/cache/rl/pro_decks.json", "RL_SITUATION_SHARE": "1"})
 sys.path.insert(0, ROOT + "/third_party/clash-royale-env"); os.chdir(ROOT + "/third_party/clash-royale-env")
 import python_ai, torch
+import clash_royale_env as cre
+cre.set_client_collision(True)  # the page's physics (its log line's "engine")
 from bot77.rl import situations as sit
 from bot77.rl.clone_env import CloneEnv
 torch.set_num_threads(2)
@@ -235,7 +237,8 @@ def test_the_page_records_and_plays_exactly_what_it_did(tmp_path):
             if st["done"]:
                 break
         line = json.loads(log.read_text().splitlines()[-1])
-        assert set(line) == {"when", "situation", "seed", "plays", "result"} and line["seed"] == seed
+        assert set(line) == {"when", "situation", "seed", "plays", "result", "engine"} and line["seed"] == seed
+        assert line["engine"] == {"client_collision": True}
         assert [set(p) - {"why"} for p in line["plays"]] == [{"t", "card", "x", "y", "landed"}] * 3
         assert [p["t"] for p in line["plays"]] == [0.3, 1.2, 3.0] and line["plays"][1]["landed"] is False
         assert set(line["result"]) == {"you", "scripted", "model"}

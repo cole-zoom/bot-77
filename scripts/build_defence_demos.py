@@ -93,10 +93,12 @@ def episode(tpl_name: str, seed: int, plays=None):
 
 
 def job(args):
-    source, tpl_name, seed, plays, weight, min_score, out = args
+    source, tpl_name, seed, plays, weight, min_score, out, collision = args
     path = Path(out) / f"{source}_{tpl_name}_{seed}.npz"  # Cole's sources carry the game's index: one file a game
     if not _ENV:
         setup()
+    import clash_royale_env as cre
+    cre.set_client_collision(collision)  # the physics his game was played under (the script: the engine's own)
     res, obs, card, cell = episode(tpl_name, seed, plays)
     if res is None or (plays is None and res["score"] < min_score):
         return source, tpl_name, None if res is None else res["score"], 0
@@ -120,12 +122,13 @@ def main():
     Path(a.out).mkdir(parents=True, exist_ok=True)
     setup()
     sit = _ENV["sit"]
-    jobs = [("script", t.__name__, s, None, 1.0, a.min_score, a.out) for t in sit.TEMPLATES for s in range(a.seeds)]
+    jobs = [("script", t.__name__, s, None, 1.0, a.min_score, a.out, False) for t in sit.TEMPLATES for s in range(a.seeds)]
     if not a.no_cole:
         for n, g in enumerate(json.loads(l) for l in open(ROOT / "data/live/situation_play.jsonl")):
             name = sit.BY_NAME[g["situation"]].__name__
             # one file per game (the same start can have several of his takes)
-            jobs.append((f"cole{n:03d}", name, int(g["seed"]), g["plays"], a.cole_weight, a.min_score, a.out))
+            jobs.append((f"cole{n:03d}", name, int(g["seed"]), g["plays"], a.cole_weight, a.min_score, a.out,
+                         g.get("engine", {}).get("client_collision", False)))
     t0, kept, rows, by = time.time(), 0, 0, {}
     with Pool(a.workers) as pool:
         for n, (source, name, score, r) in enumerate(pool.imap_unordered(job, jobs), 1):

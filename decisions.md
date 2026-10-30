@@ -4154,3 +4154,21 @@ Read-only agent. Notes: docs/client-code-notes.md §5. Addresses are for the 0x7
 - **Bridges (tilemap, likely):** engine x 2.0–4.0 / 13.0–15.0, vs the engine's 1.5–3.5 / 13.5–15.5. The replay crossings (3.7 / 14.2) sit nearer the tilemap.
 - **Mini P.E.K.K.A + Battle Ram bridge stall:** not reproduced in 600 engine placements. Cause still open.
 - **Proposed lab L22:** Mini P.E.K.K.A [14,21] and Hog [14,23], both at t=25. The code predicts the Hog keeps its solo pace.
+
+## 2026-10-29 · Client unit pushing merged (fork 29596b4), on in the play page
+
+- **`Fidelity::clientCollision`**, off by default in the engine. Each troop pushes itself by neighbour Mass ÷ own Mass; overlap and push caps as in notes §5; two 50 ms passes per 100 ms tick. A body push can carry a unit into the first river cell, with a 0.256 nudge back. JumpEnabled troops (Hog, Royal Hogs, Ram Rider, Prince, Dark Prince) jump river cells at JumpSpeed 160 without colliding. Deploying, dashing and hook-windup units don't collide. Buildings keep the static push-out.
+- **C++ tests:** 793 cases, 792 pass plus 1 expected failure. The 7 new cases include the Hog behind a Mini P.E.K.K.A within 2% of a lone Hog, and a Battle Ram with a Mini P.E.K.K.A crossing both bridges.
+  - Engine: the Hog reaches y 18.86 after 3.9 s with the switch on, the same as alone; 18.28 with it off.
+- **S2 held-back (client_l11), off → on:**
+  - empty start: lifetime +1.38 → +1.25 s; winner 61.8% → 61.8%; tower damage to opponent 1.57 → 1.80 (real 2.74);
+  - 1–2 units at start: lifetime +1.25 → +1.25 s; winner 60.0% → 59.3%;
+  - position error, mean: 1.349 → 1.368. Worse for squads, Mega Knight and Goblin Machine (0.91 → 1.11).
+  - Roughly neutral. It's kept anyway: it's the client's rule, and the sim fidelity work keeps correct fixes even when S2 doesn't move.
+- **Known gaps:**
+  - Carried bodies (Ram Rider's crossbow, Goblin Giant's Spear Goblins, Goblin Machine's turret) still collide with their carrier; the client doesn't. This is the likely cause of Goblin Machine's regression.
+  - Avoidance steering isn't implemented (geometry only "likely").
+  - Bridge position isn't changed (the tilemap puts the bridges 0.5 tile inward).
+  - The Mini P.E.K.K.A + Battle Ram stall is still unreproduced.
+- **Play page:** client pushing is on, and `--engine-collision` gives the old rule. Each game's log line now records `"engine": {"client_collision": …}`. rescore_cole.py and build_defence_demos.py replay each of Cole's games under its own physics; lines without the key use the engine's old pushing.
+  - The play page test caught this: a game played with the new pushing didn't replay the same without it.
