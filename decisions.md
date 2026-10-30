@@ -4201,3 +4201,4 @@ Read-only agent. Notes: docs/client-code-notes.md §5. Addresses are for the 0x7
   - So the real game slows the Hog a little. This goes against the reading agent's prediction (full pace) and against the engine with clientCollision on (it reproduces the lone Hog exactly).
   - Equal masses (4 vs 4) under the client's self-push still push the Hog back by up to the cap each tick. The agent's re-implementation may have missed this.
   - The replay positions at +1/2/4/6 s settle how much. Hold any change to clientCollision until then.
+- **L02 (Mini P.E.K.K.A vs Knight at the bridge):** the bot's Mini P.E.K.K.A went down at 2:30, on plan (after cycling a Goblin Hut and a Bomber to the other lane). Cole put his Knight "a hair earlier". Cole: "mini pekka won with a decent amount of hp." The replay gives death time and HP left.
