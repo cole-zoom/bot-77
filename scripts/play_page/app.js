@@ -201,8 +201,19 @@ function drawBars(u, px, cy, size) {
 }
 const maxSeen = new Map();
 
+let drawErrors = 0;
 function frame(now) {
-  draw(now);
+  // one bad frame must never freeze the board (it did: a negative radius threw, 2026-10-30): reset the canvas (a
+  // throw inside save() / clip() leaves them set), report the first few to the server's log, and keep drawing
+  try { draw(now); }
+  catch (e) {
+    if (ctx.reset) ctx.reset(); else { ctx.setTransform(1, 0, 0, 1, 0, 0); ctx.globalAlpha = 1; }
+    if (drawErrors++ < 3) {
+      console.error(e);
+      fetch("/client_error", {method: "POST", headers: {"Content-Type": "application/json"},
+        body: JSON.stringify({error: String(e && e.stack || e), clock: S && S.clock})}).catch(() => {});
+    }
+  }
   requestAnimationFrame(frame);
 }
 function draw(now) {

@@ -4422,3 +4422,10 @@ Cole: "ok lets do it." The engine ticks 100 ms; the client 50 ms (game code). Th
   python_ai is read-only).
 - tempo_check / tempo_report measured the 25 s pairs against the tempo script; they now run full games against the
   clone and their pair orderings no longer apply.
+- **Play page freeze (Cole, 2026-10-30, "it just glitched", a chill / even full game at 72.8 s):** the board stopped
+  drawing (no towers or units, his 0:31 Fireball frozen in place) while the game stepped on. Cause: a spell's
+  animation age is the frame's timestamp minus the moment it was first seen, which can be a few ms negative; the
+  Fireball's rings take `% 1` of it (negative stays negative in JS), so a ring radius went below 0 and
+  `ctx.ellipse` threw IndexSizeError (checked in Chrome), which ended the requestAnimationFrame loop. Fixed: the age
+  is clamped at 0; and any throw while drawing now resets the canvas and keeps drawing, the first three reported to
+  the server's output (POST /client_error). That game wasn't finished, so it isn't in his log.

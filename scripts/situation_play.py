@@ -179,6 +179,9 @@ def main():
                 return self.send(200, json.dumps({"state": state(env), "situation": spec["name"], "seed": seed,
                                                   "threat": game["threat"], "plan": spec.get("opp"),
                                                   "board": {**pl.board_geometry(env.game), **pl.CLOCK}, "start_elixir": [round(spec["own_elixir"], 1), round(spec["opp_elixir"], 1)]}))
+            if self.path == "/client_error":  # the page's drawing threw (it carries on): kept in the server's output
+                print(f"page error at clock {body.get('clock')}: {body.get('error', '')[:2000]}", flush=True)
+                return self.send(200, "{}")
             if self.path == "/save":
                 saved = json.loads(SAVED.read_text()) if SAVED.exists() else []
                 saved.append({"template": body["template"], "seed": int(body["seed"]), "note": body.get("note", ""),

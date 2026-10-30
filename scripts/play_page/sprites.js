@@ -437,6 +437,9 @@ window.Sprites = {
   },
   // a spell's pattern inside a disc of radius (rx, ry) device px; t = seconds since it appeared
   spell(ctx, name, px, py, rx, ry, t, team) {
+    // the frame's timestamp can be a few ms before the moment the spell was first seen: a negative age made the
+    // rings' radius negative and ellipse() threw, which stopped the page drawing (Cole, 2026-10-30)
+    t = Math.max(0, t);
     const [col, style] = SPELLS[name] || ["#cccccc", "pulse"];
     ctx.save();
     ctx.beginPath(); ctx.ellipse(px, py, rx, ry, 0, 0, 7);
