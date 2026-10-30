@@ -232,6 +232,28 @@ def dont_overcommit(rng) -> dict:
 REVIEW_TEMPLATES = [safe_opening, defend_counter, dont_overcommit]
 # the scripted opponent's deck in those (the engine only deals a team cards from its own deck)
 SCRIPT_DECK = [GIANT, GOLEM, HOG, BATTLE_RAM, MUSKETEER, WIZARD, CANNON, MINI_PEKKA]
+# What the scripted opponent plays when the card it wants isn't in its hand: the same job from the cards it holds, in
+# this order, or nothing (it waits). It used to put the card it wanted into its hand (set_hand_for_team), skipping its
+# cycle: three Mini P.E.K.K.As in a row on the play page (Cole, 2026-10-30, "how is this bot playing 3 Mini pekkas in
+# a row??")
+SCRIPT_SUBS = {CANNON: (CANNON, MINI_PEKKA, MUSKETEER, WIZARD), MINI_PEKKA: (MINI_PEKKA, CANNON, MUSKETEER, WIZARD),
+               GIANT: (GIANT, GOLEM), GOLEM: (GOLEM, GIANT), HOG: (HOG, BATTLE_RAM), BATTLE_RAM: (BATTLE_RAM, HOG),
+               MUSKETEER: (MUSKETEER, WIZARD), WIZARD: (WIZARD, MUSKETEER)}
+
+
+def script_play(sit_, g, card: int, x: float, board_y: float, near=None):
+    """The scripted opponent's play of `card` (or the card in its hand that does the same job, SCRIPT_SUBS) at (x,
+    board_y) in board coordinates: (hand index, x, y in its own frame), or None to wait (not in hand, or short of
+    elixir). A defender standing in for a Cannon goes in front of `near` (the unit it answers); a Cannon standing in
+    for a defender goes in the middle."""
+    hand, el = list(g.get_hand_for_team(1)), float(g.get_elixir_for_team(1))
+    have = next((c for c in SCRIPT_SUBS.get(card, (card,)) if c in hand), None)
+    if have is None or el < COST.get(have, 10):
+        return None
+    if have != card and CANNON in (card, have) and near is not None:
+        x, board_y = (8.5, 25.0) if have == CANNON else (near.x, min(near.y + 2.5, 30.0))
+    sit_.opp_state.setdefault("plays", []).append((round(sit_.seconds, 1), have, round(x, 1), board_y))
+    return hand.index(have), float(x), float(33.0 - board_y)
 
 
 def _ours_across(game) -> list:
@@ -241,27 +263,22 @@ def _ours_across(game) -> list:
 def opponent_script(sit_, env):
     """The scripted opponent's move this second for the review situations: (card, x, y) in its own frame, or None."""
     spec, st, g = sit_.spec, sit_.opp_state, env.game
-    t, el = sit_.seconds, g.get_elixir_for_team(1)
+    t = sit_.seconds
 
-    def play(card, x, board_y):
-        if el < COST.get(card, 10):
-            return None
-        hand = list(g.get_hand_for_team(1))
-        if card not in hand:
-            g.set_hand_for_team(1, [card] + [c for c in hand if c != card][:3])  # the script's card is in hand
-            hand = list(g.get_hand_for_team(1))
-        st.setdefault("plays", []).append((round(t, 1), card, round(x, 1), board_y))
-        return hand.index(card), float(x), float(33.0 - board_y)
+    def play(card, x, board_y, near=None):
+        return script_play(sit_, g, card, x, board_y, near)
 
     def defend():
         # a defender in front of whatever of ours has crossed, once per crossing unit
         for u in _ours_across(g):
             if u.id in st.setdefault("answered", set()):
                 continue
-            st["answered"].add(u.id)
             card = CANNON if u.card_id in (GIANT, HOG, BATTLE_RAM, GOLEM) else MINI_PEKKA
             x = 8.5 if card == CANNON else u.x
-            return play(card, x, 25.0 if card == CANNON else min(u.y + 2.5, 30.0))
+            r = play(card, x, 25.0 if card == CANNON else min(u.y + 2.5, 30.0), near=u)
+            if r:
+                st["answered"].add(u.id)
+            return r  # or save up for the answer
         return None
 
     plan = spec["opp"]
@@ -481,21 +498,14 @@ def _tempo_opponent(sit_, env):
     spec, st, g = sit_.spec, sit_.opp_state, env.game
     t, el = sit_.seconds, g.get_elixir_for_team(1)
 
-    def play(card, x, board_y):
-        if el < COST.get(card, 10):
-            return None
-        hand = list(g.get_hand_for_team(1))
-        if card not in hand:
-            g.set_hand_for_team(1, [card] + [c for c in hand if c != card][:3])
-            hand = list(g.get_hand_for_team(1))
-        st.setdefault("plays", []).append((round(t, 1), card, round(x, 1), board_y))
-        return hand.index(card), float(x), float(33.0 - board_y)
+    def play(card, x, board_y, near=None):
+        return script_play(sit_, g, card, x, board_y, near)
 
     for u in _ours_across(g):
         if u.id in st.setdefault("answered", set()):
             continue
         card = CANNON if u.card_id in (GIANT, HOG, BATTLE_RAM, GOLEM) else MINI_PEKKA
-        r = play(card, 8.5 if card == CANNON else u.x, 25.0 if card == CANNON else min(u.y + 2.5, 30.0))
+        r = play(card, 8.5 if card == CANNON else u.x, 25.0 if card == CANNON else min(u.y + 2.5, 30.0), near=u)
         if r:
             st["answered"].add(u.id)
             return r
