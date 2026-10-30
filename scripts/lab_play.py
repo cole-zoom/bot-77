@@ -38,6 +38,9 @@ SESSIONS = Path("data/lab/sessions")
 DRYRUN = Path("data/lab/dryrun")
 EXCLUSIVE = ("live_play.py", "replay_runner.py", "live_with_replays.py", "live_session.py", "lab_play.py")
 ACTION_GAP_S = 1.2  # after a tap, let the hand animate and the elixir drop before the next decision
+CONFIRM_S = 2.5  # a tap not seen in the hand or the elixir by then didn't take (lab night 1: the first tap after
+                 # joining mid-battle often didn't, and its retry was logged as a second play)
+JOIN_LEAD_S = 12.0  # joined a battle already past the plan: the first placement moves to this many s from now
 
 
 def others_running() -> list[str]:
@@ -115,6 +118,9 @@ class LabRunner:
         self.cued: set[int] = set()
         self.out_dir = out_dir
         self.reads = 0
+        self.shift = None  # s the plan moved on joining (0: on plan)
+        self.pending: dict | None = None  # the last tap, until the hand or elixir shows it took
+        self.end_t = test.end_t
 
     # --- one decision ---
     def _tap(self, im, card_id: int, slot: int, tile: tuple[int, int], kind: str, t: float, st, sched=None) -> None:
@@ -126,16 +132,62 @@ class LabRunner:
                "elixir": None if st.elixir is None else round(st.elixir, 2), "hand": [self.name_of.get(h) for h in st.hand],
                "taps_px": [round(v * k) for v in taps], "aim_dy": live_device.AIM_DY, "wall": time.time(),
                "placement_i": None if sched is None else sched.i}
+        row["taken"] = None
         self.actions.append(row)
         self.last_action = self.dev.now()
+        self.pending = {"row": row, "card": card_id, "slot": slot, "elixir": st.elixir, "at": self.last_action,
+                        "sched": sched}
         late = "" if sched is None else f" ({t - sched.t:+.1f} s vs plan)"
         self.log(f"  {lab.clock_text(t)}  {kind:8s} {row['card']:16s} tile {tuple(tile)}{late}  elixir {row['elixir']}")
         if self.out_dir is not None:
             self._draw(im, taps, tile, f"{len(self.actions):02d}_{kind}_{row['card'].replace(' ', '_')}.jpg")
 
+    def rebase(self, t: float) -> None:
+        """Joined a battle already past the plan (or a test run mid-battle): move the whole plan so the first
+        placement is JOIN_LEAD_S from now. The shift is logged; lab_compare's session map takes it."""
+        first = min(p.t for p in self.test.placements)
+        self.shift = max(0.0, t + JOIN_LEAD_S - first) if t > first - JOIN_LEAD_S else 0.0
+        if self.shift:
+            moved = self.test.shifted(self.shift)
+            self.queue, self.cole = moved.side("bluestacks"), moved.side("cole")
+            self.end_t = moved.end_t
+            self.log(f"joined at {lab.clock_text(t)}, past the plan: everything moves {self.shift:+.0f} s")
+            for p in self.queue:
+                self.log(f"  bot  {lab.clock_text(p.t)}  {p.card:16s} tile {p.tile}")
+            for p in self.cole:
+                self.log(f"  Cole {lab.clock_text(p.t)}  {p.card:16s} tile {p.tile}  {p.cue}")
+
+    def confirm(self, st, now: float) -> bool:
+        """True while the last tap is still unconfirmed (no new tap until it is, or until CONFIRM_S says it failed).
+        Taken: its card left that slot, or the elixir dropped by at least half its cost."""
+        pd = self.pending
+        if pd is None:
+            return False
+        if self.dry_run:  # saved frames never show a tap's effect
+            st = SimpleNamespace(hand=[None] * 4, elixir=-99.0)
+        left_slot = len(st.hand) > pd["slot"] and st.hand[pd["slot"]] not in (pd["card"], None)
+        spent = (st.elixir is not None and pd["elixir"] is not None
+                 and st.elixir <= pd["elixir"] - 0.5 * self.cost[pd["card"]])
+        if left_slot or spent:
+            pd["row"]["taken"] = True
+            if pd["sched"] is not None and self.queue and self.queue[0] is pd["sched"]:
+                self.queue.pop(0)
+            self.pending = None
+            return False
+        if now - pd["at"] >= CONFIRM_S:
+            pd["row"]["taken"] = False
+            self.log(f"    (that {pd['row']['card']} tap didn't take: trying again)")
+            self.pending = None
+            return False
+        return True
+
     def step(self, st, im, now: float) -> None:
         t = self.clock.t(now)
         if t is None:
+            return
+        if self.shift is None:
+            self.rebase(t)
+        if self.confirm(st, now):
             return
         for p in self.cole:  # a heads-up on the terminal for Cole's half
             if p.i not in self.cued and p.t - 5 <= t:
@@ -147,8 +199,7 @@ class LabRunner:
         cid = self.id_of[nxt.card]
         if cid in st.hand:
             if t >= nxt.t and st.elixir >= self.cost[cid] - 0.05:
-                self._tap(im, cid, st.hand.index(cid), nxt.tile, "scripted", t, st, nxt)
-                self.queue.pop(0)
+                self._tap(im, cid, st.hand.index(cid), nxt.tile, "scripted", t, st, nxt)  # leaves the queue once confirmed
             return
         # not in hand: cycle the cheapest card that isn't needed for the next two placements, if the elixir allows
         keep = {self.id_of[p.card] for p in self.queue[:2]}
@@ -196,13 +247,14 @@ class LabRunner:
             self.clock.update(st.elapsed_s, now)
             self.step(st, im, now)
             t = self.clock.t(now)
-            if t is not None and not self.queue and t > self.test.end_t:
+            if t is not None and not self.queue and self.pending is None and t > self.end_t:
                 self.log(f"{self.test.tail_s:.0f} s past the last placement: done (the battle runs on; Cole can let it end)")
                 break
             if not self.dry_run:
                 time.sleep(0.03)
         return {"test": self.test.id, "dry_run": self.dry_run, "started": self.started_wall, "ended": time.time(),
-                "actions": self.actions, "missed": [{"card": p.card, "tile": list(p.tile), "t": p.t} for p in self.queue]}
+                "shift": self.shift, "actions": self.actions,
+                "missed": [{"card": p.card, "tile": list(p.tile), "t": p.t} for p in self.queue]}
 
     def _draw(self, im, taps, tile, name: str) -> None:
         """The frame with the engine grid laid over the arena (bot77.sim.geometry), the target tile filled and the

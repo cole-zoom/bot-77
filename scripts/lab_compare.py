@@ -31,6 +31,7 @@ import sys
 from pathlib import Path
 
 import cv2
+import yaml
 
 from bot77 import lab
 from bot77.sim import labcmp, store
@@ -40,6 +41,8 @@ ROOT = Path(__file__).resolve().parents[1]
 LAB_REPLAYS = ROOT / "config/lab_replays.json"
 RESULTS = Path("data/lab/results")
 VIEWER = Path("data/lab/viewer")
+SESSIONS = ROOT / "config/lab/sessions"
+SESSION_MATCH_DT = 12.0  # a session map says when each run was; its placements match real plays this close
 CHAIN = ["ingest_replays", "build_sources", "build_detections", "build_plays", "build_moments"]
 
 
@@ -84,8 +87,9 @@ def game(match_id: str):
 
 def auto_map(tests: dict[str, lab.LabTest], date: str) -> dict[str, str]:
     """Each of the date's lab replays -> the test it fits best (greedy on the fit score)."""
+    lab_ids = set(json.loads(LAB_REPLAYS.read_text())["replays"]) if LAB_REPLAYS.exists() else set()
     ms = [m["match_id"] for m in store.read("matches", f"match_id LIKE 'bl_{date}_r%_m01'")]
-    ms = [m for m in ms if "_top_" not in m]
+    ms = [m for m in ms if "_top_" not in m and m.removesuffix("_m01") in lab_ids]  # never the ladder games
     scores = []
     for mid in ms:
         g, _ = game(mid)
@@ -113,6 +117,8 @@ def fmt_events(e: dict) -> str:
 
 def print_report(rep: dict) -> None:
     print(f"\n### {rep['test']} {rep['name']}  ({rep['match_id']}, engine {rep['engine']})")
+    if "status" in rep:
+        print(f"run: shift {rep['shift']:+.1f} s, {rep['status']}; Cole: {rep['read'] or '-'}")
     print("landing (engine tiles):")
     for r in rep["landing"]:
         where = (f"seen {r['first_seen_t']:.1f} s at ({r['real_tile'][0]:.1f}, {r['real_tile'][1]:.1f}), "
@@ -224,13 +230,23 @@ show(0);
 </script></body></html>"""
 
 
-def compare(test: lab.LabTest, match_id: str, towers: str, no_viewer: bool) -> dict:
+def load_session(date: str) -> list[dict]:
+    """config/lab/sessions/<date>.yaml: each run's test, replay, time shift, status and Cole's read."""
+    return yaml.safe_load((SESSIONS / f"{date}.yaml").read_text())["runs"]
+
+
+def compare(test: lab.LabTest, match_id: str, towers: str, no_viewer: bool, run: dict | None = None) -> dict:
     g, mrow = game(match_id)
-    lr = labcmp.run(test, g, towers=towers)
+    if run is not None:
+        test = test.shifted(float(run["shift"]))
+    lr = labcmp.run(test, g, towers=towers, match_dt=SESSION_MATCH_DT if run is not None else labcmp.MATCH_DT)
     rep = labcmp.report(lr)
+    if run is not None:
+        rep.update({"shift": run["shift"], "status": run["status"], "read": run.get("read", "")})
     print_report(rep)
     RESULTS.mkdir(parents=True, exist_ok=True)
-    (RESULTS / f"{test.id}_{match_id}.json").write_text(json.dumps(rep, indent=1, default=str))
+    tag = f"_s{round(float(run['shift']))}" if run is not None else ""
+    (RESULTS / f"{test.id}_{match_id}{tag}.json").write_text(json.dumps(rep, indent=1, default=str))
     if not no_viewer:
         print(f"viewer: {viewer(lr, rep, mrow)}")
     return rep
@@ -241,6 +257,8 @@ def main() -> None:
     ap.add_argument("--date", help="the session's date (data/raw/replays/<date>/): auto-map its replays to tests")
     ap.add_argument("--only", help="with --ingest: only these replay numbers of the date, e.g. 3-22 or 43-46,52-60")
     ap.add_argument("--ingest", action="store_true", help="mark the date's replays as lab games and run the pipeline first")
+    ap.add_argument("--session", metavar="DATE", help="run the session map config/lab/sessions/DATE.yaml")
+    ap.add_argument("--all", action="store_true", help="--session: also the void runs")
     ap.add_argument("--map", action="append", default=[], help="TEST=MATCH_ID (repeatable)")
     ap.add_argument("--test", action="append", default=[], help="only these tests")
     ap.add_argument("--selftest", metavar="MATCH_ID", help="treat a recorded replay as a lab test (its own first plays)")
@@ -262,6 +280,11 @@ def main() -> None:
     tests = lab.load_tests()
     if a.test:
         tests = {k: v for k, v in tests.items() if k in a.test}
+    if a.session:
+        for r in load_session(a.session):
+            if r["test"] in tests and (a.all or r["status"] != "void"):
+                compare(tests[r["test"]], r["replay"], a.towers, a.no_viewer, r)
+        return
     mapping = dict(m.split("=", 1) for m in a.map)
     if a.date and not mapping:
         mapping = auto_map(tests, a.date)

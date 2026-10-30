@@ -1,0 +1,21 @@
+# Lab night 1 (2026-10-29): which Battle Log replay holds each run, and when in the battle it happened.
+# Built from data/lab/sessions/2026-10-29.jsonl (lab_play's own log: battle start = tap wall time - game time) and
+# each replay's plays (data/raw/replays/2026-10-29/runner_log.jsonl lengths agree). r01-r42 and r47-r51 are the
+# bot's ladder games (live_with_replays), never lab. r46 and r58 are the same battle (L04), as are r45 and r56.
+# shift: seconds added to the test's planned times (the run happened that much later in the battle).
+# status: ok = ran as planned; void = Cole called it off (kept for the record, not scored); unread = no read from Cole.
+date: 2026-10-29
+runs:
+  - {test: L00, replay: bl_2026-10-29_r60_m01, shift: 4.6, status: ok, read: "rotate: Cole sees the BlueStacks view turned 180 degrees"}
+  - {test: L18, replay: bl_2026-10-29_r59_m01, shift: 36.0, status: ok, read: ""}
+  - {test: L04, replay: bl_2026-10-29_r58_m01, shift: 4.0, status: ok, read: ""}
+  - {test: L20, replay: bl_2026-10-29_r57_m01, shift: 0.0, status: void, read: "Ice Spirit a moment late: the 3rd hit landed before the freeze"}
+  - {test: L20, replay: bl_2026-10-29_r56_m01, shift: 25.0, status: void, read: "Cole: 'u didnt play it'"}
+  - {test: L20, replay: bl_2026-10-29_r56_m01, shift: 122.9, status: unread, read: ""}
+  - {test: L20b, replay: bl_2026-10-29_r56_m01, shift: 178.7, status: ok, read: "the freeze resets the swing, but not the wait (load)"}
+  - {test: L21, replay: bl_2026-10-29_r44_m01, shift: 121.4, status: unread, read: "Hut at 2:30 game clock, 4 s after the Hog"}
+  - {test: L21, replay: bl_2026-10-29_r55_m01, shift: 0.0, status: void, read: "Cole: the Hut dropped late"}
+  - {test: L21, replay: bl_2026-10-29_r54_m01, shift: 0.0, status: ok, read: "the Hog did not turn back for the Hut (Hut tapped at 2:32)"}
+  - {test: L22, replay: bl_2026-10-29_r53_m01, shift: 2.5, status: ok, read: "the Hog got slightly stuck behind the Mini P.E.K.K.A"}
+  - {test: L02, replay: bl_2026-10-29_r52_m01, shift: 0.0, status: ok, read: "Cole's Knight a hair early; the Mini P.E.K.K.A won with decent HP"}
+  - {test: L09, replay: bl_2026-10-29_r43_m01, shift: 0.0, status: ok, read: "the Hog went to the Hut, destroyed it, and died"}

@@ -35,14 +35,15 @@ CHECKPOINTS = (1.0, 2.0, 4.0, 6.0, 8.0)
 TOWERS = ("own_l", "own_r", "own_king", "opp_l", "opp_r", "opp_king")
 
 
-def match_plays(test: lab.LabTest, g: Game) -> list[dict]:
-    """Scripted placement -> the real play (same side and card, nearest in time, each used once)."""
+def match_plays(test: lab.LabTest, g: Game, match_dt: float = MATCH_DT) -> list[dict]:
+    """Scripted placement -> the real play (same side and card, nearest in time, each used once). A session map
+    (config/lab/sessions/) knows when each run happened, so it matches within a tighter `match_dt`."""
     used, out = set(), []
     plays = [p for p in g.plays if p["kind"] == "play" and p["t_match"] is not None]
     for pl in sorted(test.placements, key=lambda p: (p.t, p.i)):
         cands = [(abs(p["t_match"] - pl.t), k) for k, p in enumerate(plays)
                  if k not in used and p["side"] == SIDE_OF[pl.side] and p["card"] == pl.card
-                 and abs(p["t_match"] - pl.t) <= MATCH_DT]
+                 and abs(p["t_match"] - pl.t) <= match_dt]
         if cands:
             _, k = min(cands)
             used.add(k)
@@ -78,8 +79,11 @@ class LabRun:
     skipped: list[dict] = field(default_factory=list)
 
 
-def run(test: lab.LabTest, g: Game, towers: str = "liquipedia_l11", t_end: float | None = None) -> LabRun:
-    matched = match_plays(test, g)
+def run(test: lab.LabTest, g: Game, towers: str = "liquipedia_l11", t_end: float | None = None,
+        match_dt: float = MATCH_DT) -> LabRun:
+    """Cole places by hand (his lanes were mirrored from the plan on some runs), so his scripted cards go on the
+    spot the replay shows; the BlueStacks side's taps are scripted, so its cards go on their tile."""
+    matched = match_plays(test, g, match_dt)
     scripted = {id(r["play"]): r["placement"] for r in matched if r["play"] is not None}
     sim = Sim.new(g.decks["bottom"], g.decks["top"], towers=towers)
     sim.reset()
@@ -90,7 +94,7 @@ def run(test: lab.LabTest, g: Game, towers: str = "liquipedia_l11", t_end: float
     for p in sorted((p for p in g.plays if p["kind"] == "play" and p["t_match"] is not None), key=lambda p: p["t"]):
         card = p.get("engine_card")
         pl = scripted.get(id(p))
-        if pl is not None:
+        if pl is not None and not (pl.side == "cole" and card is not None and _play_spot(p) is not None):
             spot = engine_to_ours(float(pl.tile[0]), float(pl.tile[1]))
         else:
             spot = _play_spot(p) if card is not None else None

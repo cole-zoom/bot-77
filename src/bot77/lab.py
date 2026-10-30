@@ -27,7 +27,7 @@ the BlueStacks right lane) or flipped top-to-bottom (left stays left) is checked
 """
 from __future__ import annotations
 
-from dataclasses import dataclass, field
+from dataclasses import dataclass, field, replace
 from pathlib import Path
 
 import yaml
@@ -78,6 +78,11 @@ class LabTest:
     @property
     def end_t(self) -> float:
         return max(p.t for p in self.placements) + self.tail_s
+
+    def shifted(self, dt: float) -> "LabTest":
+        """The same test played `dt` s later in the battle (a session run that started off-plan, or one of several
+        tests in one battle): every placement's t moves by dt."""
+        return replace(self, placements=[replace(p, t=p.t + dt) for p in self.placements])
 
     def dump_spots(self) -> dict[str, tuple[int, int]]:
         """Where the BlueStacks side cycles cards it doesn't need (engine tiles): troops and buildings at the back
@@ -162,7 +167,10 @@ def own_tile_words(tile: tuple[int, int]) -> str:
 
 
 def clock_text(t: float) -> str:
-    """Game time (s since the start) -> the clock as shown (3:00 counting down; overtime not handled)."""
+    """Game time (s since the start) -> the clock as shown: 3:00 counting down, then overtime's 2:00 ("OT 1:42")."""
+    if t >= 180:
+        left = max(0, round(300 - t))
+        return f"OT {left // 60}:{left % 60:02d}"
     left = max(0, round(180 - t))
     return f"{left // 60}:{left % 60:02d}"
 

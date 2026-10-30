@@ -1,0 +1,18 @@
+{
+ "_doc": "Battle Log replays that are lab battles (scripted friendly battles, scripts/lab_play.py): source and split 'lab' in build_sources.py, never training data.",
+ "replays": [
+  "bl_2026-10-29_r43",
+  "bl_2026-10-29_r44",
+  "bl_2026-10-29_r45",
+  "bl_2026-10-29_r46",
+  "bl_2026-10-29_r52",
+  "bl_2026-10-29_r53",
+  "bl_2026-10-29_r54",
+  "bl_2026-10-29_r55",
+  "bl_2026-10-29_r56",
+  "bl_2026-10-29_r57",
+  "bl_2026-10-29_r58",
+  "bl_2026-10-29_r59",
+  "bl_2026-10-29_r60"
+ ]
+}
