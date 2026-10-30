@@ -4316,3 +4316,37 @@ Cole: "ok lets do it." The engine ticks 100 ms; the client 50 ms (game code). Th
   - Far side, 9.0 away, tower 6.6: keeps on.
   - Pinned in tests/test_lab_regressions.py.
 - **SightClip:** the client's side and along-lane clip (Hog 4.0 / 4.0) is not added. Cole's rule plus L21 cover the cases that matter, so the planned "Hog past a Cannon behind vs ahead" lab test is dropped unless a replay shows a case the rule gets wrong.
+
+## 2026-10-30 · Cole plays the tempo examples: situations should run to the end of the game, with a reward per tempo
+
+- **What he saw (play page, first tempo games, Cole's words):**
+  - chill: "I would argue I punished opposite, and got damage" (their Princess Tower to 810) and still scored -0.01:
+    the situation score has no credit for damage dealt.
+  - press: "I have a giant and ram coming down, and I have arrows for small troops/swarm. this is textbook clash,
+    and im being penalized because it didn't happen within thte timeframe" (25 s window; same on a second start).
+  - "how is this bot playing 3 Mini pekkas in a row??" Measured: the scripted opponent's `play()`
+    (src/bot77/rl/situations.py:246-251 and 484-490) forces the card it wants into its hand with
+    set_hand_for_team, so it skips its cycle. A bug; it also makes the opponent stronger than any real one.
+  - Two Giants and Mini P.E.K.K.As stuck on the bridge ("normally they get passed eachother with some difficulty,
+    this time they just got stuck"); a Giant stuck beside our King Tower near (10, 5). Both still to reproduce.
+- **His brother's point (Cole, verbatim):** "he thinks that the scenarios should play out longer, and be closer to
+  real games. the scenarios are good to teach what to do, but they also make the bot think the scenario is over/game
+  is over". Measured: true. clone_env ends a situation as a truncation, but the trainer zeroes the bootstrap on
+  rl_situation_end (src/bot77/rl/clone_env.py:207-210), so the value after 25 s is 0: the end of the world.
+- **Cole's rule:** "These tempos should start out in these situatins, and last the rest of teh game to teach teh bot
+  how to act in certain situations, and clear out the game."
+- **Cole's reward per tempo (verbatim):**
+  - Chill: "taking the situation slow, not going down in elixir early, and winning the game. Ideally in this
+    situation we are reactive, and we send our tank in the lane they send theirs. (that cannot be scripted though).
+    less damage on our tower and higher elixir advantage = higher reward. goal is to get to press."
+  - Press: "Building up a push, letting small threats go, cheap defense, and pressing offense. we should be rewarded
+    on highest damage differential ... bigger damamge differential = higher reward."
+  - Even: "We need to feel them out. figure out their strategy. So we should play defesnive, and try to gain an
+    elixir advantage. once that happens, press mode happens. we should be rewarded on similar to chill, less damage
+    on our tower and higher elixir avantage."
+  - Desperate: "were down a tower. we need to sacrifise HP on our towers for damage on theirs, and ideally we take
+    it ... If we go to overtime = succeed, if we don't, fail. simple as that."
+  - Spell finish: "if we spell their tower and it takes tower, then succeed, otherwise fail."
+- **His options for the opponent (verbatim summary):** (1) script the scenario, the bot takes over; (2) script the
+  scenario and the rest of the game from pro footage, found by "semantically search games" over frames in Lance
+  tables; (3) I script the rest of the game myself. My reply and his decision follow.
