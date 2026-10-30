@@ -4289,3 +4289,19 @@ Cole: "ok lets do it." The engine ticks 100 ms; the client 50 ms (game code). Th
   - Goblin Machine: 1.10 → 1.12 over its 10 windows. Most windows improved; r148 at 81.6 s went 0.99 → 1.93.
   - Its earlier 0.91 → 1.10 is not from client pushing: with pushing off on this engine it's also 1.12. It moved between cf673ea and 29596b4 for another reason. Too few windows to tune on.
 - **Not done:** SingleDeployOffsetAngle and the client's seat geometry (SpawnRadius 900, SpawnAngleShift -22). The seats keep the engine's offsets.
+
+## 2026-10-30 · Tower reach to the footprint, and the Princess first-shot delay (fork 3839d85, 1d0b1dd)
+
+- **Correction:** lab_compare never set the play page's client pushing, so the session comparisons logged above (lab night 1 compared; the Hut fix) ran with pushing **off**, not on. lab_compare now sets it, and `--switch NAME=0|1` sets any other fidelity switch. Rerun with pushing on: the same reads (Hut timing, L21, L09; positions within ±0.1 of the earlier numbers).
+- **Measured** (tower HP OCR on every frame at 20 fps; sim at every 0.1 s):
+  - L18 Hog: real tower hits at 66.00, 67.60, 69.20, 70.80, 72.40, ~74.0, 75.60 s; dies ~75.8 s. Sim: each hit 0.2 s later; six hits; dies 75.2 s.
+  - L04 Giant: real first hit 42.50 s, then every ~1.5 s. Sim 43.50 s: one hit behind throughout. Positions match within 0.1-0.2 tiles all the way in. The real Giant hits at y 23.8 **still walking** (0.4 tiles in the next 0.5 s, its full 0.75 tiles/s) and stands at 24.1, where the sim stops. The replays' standing Giants (tests/test_sim.py, 7.97 in our frame) agree on 24.1.
+- **Reading:** an attack on a crown tower starts at its tile footprint (Princess 3x3: 1.5; King 4x4: 2.0, the radii the pull measurement already gave targeting). The unit keeps walking, swinging, until it is at its reach to the tower's body (CollisionRadius 1.0 / 1.4), and stands there.
+- **Fork:** `Fidelity::towerReachFootprint` (on), as above.
+  - L18: the sim's six hits now land at the replay's times to the frame (66.00 ... 74.00).
+  - L04: first hit 42.90 vs 42.50 s (was 43.50); Giant death 0.0 s off (was +0.5).
+  - Lab deaths, sim − real over 7 units (leaving out two detector gaps): mean −0.17 s, mean |d| 0.26 s (was −0.10 / 0.33).
+  - C++ test: reach to the footprint, on and off. tests/test_sim.py's standing Giant still passes; a first version without the closing walk stood the Giant 0.5 short and failed it.
+- **Princess first-shot delay** (Fidelity::princessFirstShotDelay, off): with it on, L18's Hog gets its 7th hit (75.60, as real). But every other lab unit lives longer than real: mean +0.5 to +1.0 s; the L20 Mini P.E.K.K.A +4.2 s with the reach change. **Stays off.**
+- **S2 held-back:** positions 1.332 → 1.333 and winner 59.3% → 59.3%, unchanged. The sim's princess-tower damage rises: own 17.51 → 19.17, opp 19.03 → 20.20 (real 14.97 / 15.96). That total was already above the replays'. They are pro games at card and tower levels the engine doesn't model, so it confounds level with the mechanic. The lab timing, which doesn't depend on level, decides.
+- **Tests:** C++ 817 cases, 816 pass plus 1 expected failure. pytest 148 pass; the only failure is test_cards::test_curated_coverage (from before).

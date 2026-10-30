@@ -267,7 +267,14 @@ def main() -> None:
     ap.add_argument("--self-t0", type=float, default=0.0, help="--selftest: take the plays from this game time on")
     ap.add_argument("--towers", default="liquipedia_l11")
     ap.add_argument("--no-viewer", action="store_true")
+    ap.add_argument("--switch", action="append", default=[], metavar="NAME=0|1",
+                    help="an engine fidelity switch for this run (clash_royale_env.set_NAME), e.g. princess_first_shot_delay=1")
     a = ap.parse_args()
+    import clash_royale_env as cre
+    cre.set_client_collision(True)  # the play page's physics (scripts/situation_play.py)
+    for kv in a.switch:
+        name, _, v = kv.partition("=")
+        getattr(cre, f"set_{name}")(v == "1")
     if a.selftest:
         g, _ = game(a.selftest)
         t = labcmp.synthetic_test(g, t0=a.self_t0)
