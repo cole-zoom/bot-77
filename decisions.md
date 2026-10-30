@@ -4350,3 +4350,35 @@ Cole: "ok lets do it." The engine ticks 100 ms; the client 50 ms (game code). Th
 - **His options for the opponent (verbatim summary):** (1) script the scenario, the bot takes over; (2) script the
   scenario and the rest of the game from pro footage, found by "semantically search games" over frames in Lance
   tables; (3) I script the rest of the game myself. My reply and his decision follow.
+
+## 2026-10-30 · Step 1: the scripted opponent's cycle, and the two stuck Giants (fork 838861e)
+
+- **Scripted opponent (b6b96a7):** `script_play` plays the card the script wants only if it's in its hand, else a card
+  that does the same job (SCRIPT_SUBS: Cannon / Mini P.E.K.K.A / Musketeer / Wizard defend; Giant <-> Golem; Hog <->
+  Ram; Musketeer <-> Wizard), else it waits. A unit counts as answered only once something was played on it.
+  tests/test_situations.py checks every scripted play came from the hand it held (the old code fails 4 of 4).
+- **Found the stuck Giants by replaying Cole's games** (log lines 162-183, his exact plays on the code they were played
+  on, a Giant flagged if it moved < 0.6 tiles in 3 s while not next to its target):
+  - line 170 (chill, seed 95178): our Giant and their Giant meet on the left bridge at t 20 s and stop for good.
+  - lines 173-175 (press_calm 95463, desperate_even 95521 x2): our Giant dropped at (9, 0) parks at (9.6, 0.7) behind
+    the King Tower. Bare engine: it crawls along the tower's back at ~0.2 tiles/s for ~5 s (at (5, 0), ~3 s under the
+    left Princess Tower).
+- **Causes:** (1) the engine walks straight at the waypoint and lets the static push-out move it off a tower, which
+  leaves only the sideways part of each step; (2) every bridge crossing aims at the bridge's centre point, so two units
+  on a bridge are steered onto one line, and two Giants ignoring each other push nose to nose. A per-tick probe showed
+  the second: each Giant's waypoint pulled it toward the other, and the push only ever cancelled the step.
+- **The client:** routes over tiles (globals.csv: PATHFINDING_DEFAULT_COST 8, ROAD 5, BUILDING 50, WATER 7, BLOCKED 50,
+  PATHFINDING_DYNAMIC_OCCLUSIONS TRUE), so it walks around towers and occupied tiles. Not ported (a full tile
+  pathfinder is the plan's item 8); two stand-ins instead, both switches (on):
+  - Fidelity::obstacleSlide: a troop whose step runs into a building, tower or enemy ground body that isn't where
+    it's going slides along the tangent at full speed (the side it was heading; its own right when dead centre). A
+    unit fighting a troop is going to it, so this only steers units past what they ignore.
+  - Fidelity::bridgeOwnLine: a troop within a bridge's width crosses on its own x (centre anywhere on the 2-tile
+    bridge; two Giants, body 0.75, fit side by side). A first version kept a body radius inside the edges, which left a
+    Giant x 2.25-2.75 and still jammed them.
+- **Measured:** Giant from (9, 0) now ~1 tile/s round the King; two Giants dead on, 0.3 apart and 0.76 apart all pass
+  within ~2 s. Held-back S2 (s2_reachwalk_cc -> s2_pathing_cc): position error 1.333 -> 1.309, winner 59.3% -> 59.7%,
+  lifetime |d| 2.00 -> 2.00, sim princess damage own 19.17 -> 18.03 / opp 20.20 -> 21.15 (real 14.97 / 15.96). C++
+  817 + 3 new cases pass (tests/core/test_pathing_obstacles.cpp, one checks the stall comes back with the switches
+  off); pytest 155 pass, the known test_curated_coverage failure unchanged; the lab regressions pass.
+- The fork commit went out without the Co-Authored-By line; not force-pushed to fix it.
