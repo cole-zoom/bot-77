@@ -77,3 +77,20 @@ def test_l21_goblin_hut_wakes_on_the_passing_hog():
     fr = labcmp.bare_run(_test("L21"), t_end=45)
     sg = [f["t"] for f in fr if any(u["card"] == "Spear Goblins" and u["team"] == "own" for u in f["units"])]
     assert sg and sg[0] - 29.5 <= 1.4
+
+
+def test_carried_units_are_bodies_riding_their_carrier():
+    # Fork 592364b (client SpawnAttach): the rider rides the Ram, can't be hit, and is reported as a body, not a spell.
+    from bot77.sim import cards as sc
+    from bot77.sim.engine import Sim
+    sim = Sim.new([sc.engine_id("Ram Rider")], [sc.engine_id("Knight")])
+    sim.reset()
+    from bot77.sim.geometry import engine_to_ours
+    sim.play(sc.engine_id("Ram Rider"), *engine_to_ours(3.0, 10.0), "own")
+    sim.step(30)
+    rr = [u for u in sim.units() if u["card"] == "Ram Rider"]
+    assert len(rr) == 2
+    ram = next(u for u in rr if u["attached_to"] < 0)
+    rider = next(u for u in rr if u["attached_to"] >= 0)
+    assert rider["attached_to"] == ram["id"] and not rider["spell"]
+    assert abs(rider["x"] - ram["x"]) < 1e-3 and abs(rider["y"] - ram["y"]) < 1e-3

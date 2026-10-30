@@ -198,7 +198,7 @@ class Sim:
 
     def units(self, towers: bool = False) -> list[dict]:
         """Live units in our frame: card (our name), engine_name, card_id (engine, -1 for spawned bodies), team, x, y
-        (feet), hp, flying, building, tower, deploying, id, target."""
+        (feet), hp, flying, building, tower, deploying, id, target, attached_to (a carried unit's carrier, else -1)."""
         out = []
         for u in self.env.get_units():
             if u.tower and not towers:
@@ -207,7 +207,9 @@ class Sim:
             out.append({"id": u.id, "card": sc.our_name(u.card_id) if u.card_id >= 0 else u.name,
                         "engine_name": u.name, "card_id": u.card_id, "team": TEAM_NAME[u.team], "x": x, "y": y,
                         "hp": u.hp, "flying": u.flying, "building": u.building, "tower": u.tower,
-                        "spell": not u.targetable, "deploying": u.deploy_ticks > 0, "target": u.target_id})
+                        "spell": not u.targetable and getattr(u, "attached_to", -1) < 0,  # a carried unit is a body
+                        "attached_to": getattr(u, "attached_to", -1),
+                        "deploying": u.deploy_ticks > 0, "target": u.target_id})
         return out
 
     # --- playing and stepping ---

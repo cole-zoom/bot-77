@@ -4270,3 +4270,22 @@ Cole: "ok lets do it." The engine ticks 100 ms; the client 50 ms (game code). Th
 - Predicted 4th hit: no effect 223.9 s; a restarted swing with no load (hit 0.5 s after the freeze) 224.05 s; a paused swing 225.0 s; a full restart with the load 225.15 s. Only the last two fit.
 - So the engine's stunPausesSwing (the game code: the freeze sets HitSpeedMultiplier -100, so the swing clock stops) agrees. The swing animation visibly restarts, as Cole saw, but no new full wait is added. Pause vs full restart (0.15 s apart) is not separable from this run.
 - The sim: three hits, no 4th, Mini P.E.K.K.A dies 224.5 vs 224.8 s.
+
+## 2026-10-30 · Carried units (fork 592364b)
+
+- **Before:** the Ram Rider's rider (1766 HP), Goblin Giant's two Spear Goblins and the Goblin Machine's rocket turret (2150 HP) were separate units. They walked on their own at speed 0.5, could be targeted and killed apart, and collided with their carrier.
+- **Client data:** goblingiant.toml and ram_rider.toml spawn the passenger with SpawnAttach. SpearGoblinGiant has DeathSpawnCharacter SpearGoblin (DeathSpawnDeployTime 700). The Goblin Machine is one unit with a rocket action (goblin_machine_rocket); its launcher is modelled by the same carried rule.
+- **Now:**
+  - A carried unit takes its carrier's position plus its seat every tick.
+  - It can't be targeted or hit by area damage, doesn't push, and dies with its carrier.
+  - Goblin Giant's Spear Goblins drop off as ordinary Spear Goblins when it dies.
+  - The passenger still picks its own targets and shoots.
+  - get_units reports `attached_to`. bot77's Sim.units counts a carried unit as a body, not a spell.
+  - The observation encoder leaves it out (it skips the untargetable), as the game shows one health pool.
+- **Tests:**
+  - C++: 816 cases, 815 pass plus 1 expected failure. New test_carried_units.cpp covers the seat while crossing the river, death with the carrier, the drop-off, and that the passenger still shoots.
+  - pytest: the new case passes. The only failure is test_cards::test_curated_coverage (from before).
+- **S2 held-back** (client collision on): position error 1.332 → 1.332; winner 58.8% → 59.3%; tower damage to own, sim 17.68 → 17.51 (real 14.97).
+  - Goblin Machine: 1.10 → 1.12 over its 10 windows. Most windows improved; r148 at 81.6 s went 0.99 → 1.93.
+  - Its earlier 0.91 → 1.10 is not from client pushing: with pushing off on this engine it's also 1.12. It moved between cf673ea and 29596b4 for another reason. Too few windows to tune on.
+- **Not done:** SingleDeployOffsetAngle and the client's seat geometry (SpawnRadius 900, SpawnAngleShift -22). The seats keep the engine's offsets.
