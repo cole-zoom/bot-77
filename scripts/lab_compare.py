@@ -239,10 +239,12 @@ def compare(test: lab.LabTest, match_id: str, towers: str, no_viewer: bool, run:
     g, mrow = game(match_id)
     if run is not None:
         test = test.shifted(float(run["shift"]))
-    lr = labcmp.run(test, g, towers=towers, match_dt=SESSION_MATCH_DT if run is not None else labcmp.MATCH_DT)
+    lr = labcmp.run(test, g, towers=towers, match_dt=SESSION_MATCH_DT if run is not None else labcmp.MATCH_DT,
+                    play_dt=(run or {}).get("play_dt"))
     rep = labcmp.report(lr)
     if run is not None:
-        rep.update({"shift": run["shift"], "status": run["status"], "read": run.get("read", "")})
+        rep.update({"shift": run["shift"], "status": run["status"], "read": run.get("read", ""),
+                    "play_dt": run.get("play_dt", {})})
     print_report(rep)
     RESULTS.mkdir(parents=True, exist_ok=True)
     tag = f"_s{round(float(run['shift']))}" if run is not None else ""

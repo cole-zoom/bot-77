@@ -4234,3 +4234,28 @@ Cole: "ok lets do it." The engine ticks 100 ms; the client 50 ms (game code). Th
   - Firecracker Evo 0.25 s pulse;
   - 250 / 550 / 1050 ms spell timings.
 - **Play page:** restarted on the new engine.
+
+## 2026-10-30 · Lab night 1 compared, test by test; the Goblin Hut fixed (fork 91702a1)
+
+- **Cole on L21:** "it did not turn back to the hut."
+- **The first comparison was wrong, not the sim.** `lab_compare --date` auto-mapped tests over every replay of the date, so it paired L00, L03, L07, L08 with the bot's own ladder games (r47-r51) and other tests with old lab-like ladder plays. It also matched placements at their planned times, while several tests ran mid-battle (L20 runs 3-4 and L20b in one battle, at 55 s, 153 s, 209 s). And Cole's scripted cards were placed on the plan's tile, though he played some lanes mirrored.
+  - Now: `config/lab/sessions/2026-10-29.yaml` maps each run to its replay with a time shift, a status (ok / void / unread) and Cole's read, built from lab_play's own log. `lab_compare --session DATE` runs it. Auto-mapping only looks at replays in config/lab_replays.json. Cole's cards go on the replay's spot.
+  - r46 = r58 (L04) and r45 = r56 (one battle: L21 attempt, L20 runs 3-4, L20b) are duplicate recordings. The battle at 20:59 (two interrupted L21c runs) was never recorded.
+  - r60 (L00) was skipped by the first ingest (its file was still being written); re-ingested. Its Hut play reads as "Giant" in the hand reader, so the sim never places it; L00's orientation check was already done live.
+- **What matched the replays (engine 560eb49, client collision on):**
+  - Giant walking the lane (L04): within 0.06-0.22 tiles at play +1 to +8 s; dies 68.5 vs 68.0 s.
+  - Hog alone (L18): within 0.16-0.85 tiles; dies 75.5 vs 75.8 s.
+  - Mini P.E.K.K.A vs Knight (L02): positions within 0.2-0.5; the Mini P.E.K.K.A wins (Cole's read); dies 45.5 vs 45.8 s.
+  - Mini P.E.K.K.A walks (L20 run 4, L20b): within 0.05-0.5; deaths within 0.3 s.
+- **L21 r54 (the good run):** the sim's Hog turned back for the Hut; the real one didn't. Cause: measurement. The replay's hand read put Cole's Hog play about 1 s late (the real Hog had moved 2.2 tiles within 0.9 s of its read play time, which a 1 s deploy rules out). With the play 1 s earlier (`play_dt` in the session map) the sim's Hog goes to the tower, as Cole saw, within 0.2-1.0 tiles. When the Hut landed, the tower was nearer the Hog than the Hut was. No SightClip evidence either way from this run.
+- **Goblin Hut (engine bug, fixed):** the real first Spear Goblin shows 0.7-1.2 s after the Hut (r44, r54, r55), three while the Hog passes, none after. The engine ran a free 2.2 s timer that skipped a spawn when nobody was near at that tick: first goblin 3-30 s late.
+  - Fork 91702a1 (client goblin_hut_rework.toml, ActionGoblinHutLifeState): asleep until an enemy troop (not a building or tower) is within Range 6 **edge to edge**, then a Spear Goblin at once (the deploy end) and every 2.2 s while one stays in range. Edge to edge because in r54 the Hog was 6.8 tiles from the Hut's centre when its deploy ended and the real Hut still woke. Each goblin appears SpawnOffset 1.2 tiles toward the nearest such enemy (L09: real goblins appear on the Hog's side; the engine's were pushed out to one fixed side). SingleDeployOffsetAngle 20 left out (rule unread).
+  - After: L21 r44: first goblin 154.0 vs 154.0 s, three, deaths within 0.3 s, Hog dies 158.8 vs 158.8 s. r54: 30.5 vs 30.2 s, deaths within 0.4 s, Hog 36.8 vs 36.5 s. L09: first goblin 32.8 vs 31.8 s, four, early deaths 36.5 / 42.8 vs 34.2 / 35.5 s.
+  - L09 still differs by one Hog hit: the sim's Hog lands one hit on the tower (0.896) before dying at 46.5 s; the real one died short of it (still seen at 44.0 s; the replay's "gone 41.0" is a detector gap). Within what a level difference between the two accounts would make; not chased.
+- **L22 (Hog behind a Mini P.E.K.K.A, Cole: "slightly stuck"):** sim within 0.6-0.9 tiles of the real Hog, and slightly *behind* it at +1 / +2 s; the Mini P.E.K.K.A 1.0-1.3 behind. So the replay doesn't show the sim's push under-slowing the Hog. Push left as is.
+- **Tests:**
+  - C++: 810 cases, 809 pass plus 1 expected failure. New test_lab_night1.cpp: Hut spawn timing, sleep, edge-to-edge range both sides, wake-up, spawn side.
+  - bot-77: tests/test_lab_regressions.py plays tonight's plans in the bare engine and pins Cole's reads (L21 no turn-back, L09 Hut first, L02 Mini P.E.K.K.A wins with ≥35% HP) and the replay's Giant path and Hut timing. tests/test_lab.py pins the session map (never a ladder replay) and lab_play's fixes.
+  - pytest: 147 pass, 1 fail: test_cards::test_curated_coverage. It reads the 10-09 API snapshot, which has an Electro Wizard hero and an Electro Giant evo with no curated facts. Not today's change.
+- **S2 held-back** (client collision on), 560eb49 → 91702a1: position error 1.336 → 1.332; winner 59.3% → 58.8% (one window); lifetime +1.25 s and tower damage unchanged. Neutral, as expected: Huts are rare in the held-back pro games.
+- **lab_play fixes (05759e6):** a tap counts only once the hand or elixir shows it took; the retry is logged as a failed tap, not a second play. Joining past the plan moves the whole plan 12 s ahead and logs the shift. The clock shows overtime ("OT 1:42") instead of 0:00.

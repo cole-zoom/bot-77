@@ -15,7 +15,7 @@ runs:
   - {test: L20b, replay: bl_2026-10-29_r56_m01, shift: 178.7, status: ok, read: "the freeze resets the swing, but not the wait (load)"}
   - {test: L21, replay: bl_2026-10-29_r44_m01, shift: 121.4, status: unread, read: "Hut at 2:30 game clock, 4 s after the Hog"}
   - {test: L21, replay: bl_2026-10-29_r55_m01, shift: 0.0, status: void, read: "Cole: the Hut dropped late"}
-  - {test: L21, replay: bl_2026-10-29_r54_m01, shift: 0.0, status: ok, read: "the Hog did not turn back for the Hut (Hut tapped at 2:32)"}
+  - {test: L21, replay: bl_2026-10-29_r54_m01, shift: 0.0, play_dt: {Hog Rider: -1.0}, status: ok, read: "the Hog did not turn back for the Hut (Hut tapped at 2:32)"}
   - {test: L22, replay: bl_2026-10-29_r53_m01, shift: 2.5, status: ok, read: "the Hog got slightly stuck behind the Mini P.E.K.K.A"}
   - {test: L02, replay: bl_2026-10-29_r52_m01, shift: 0.0, status: ok, read: "Cole's Knight a hair early; the Mini P.E.K.K.A won with decent HP"}
   - {test: L09, replay: bl_2026-10-29_r43_m01, shift: 0.0, status: ok, read: "the Hog went to the Hut, destroyed it, and died"}

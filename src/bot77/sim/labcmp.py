@@ -80,9 +80,11 @@ class LabRun:
 
 
 def run(test: lab.LabTest, g: Game, towers: str = "liquipedia_l11", t_end: float | None = None,
-        match_dt: float = MATCH_DT) -> LabRun:
+        match_dt: float = MATCH_DT, play_dt: dict[str, float] | None = None) -> LabRun:
     """Cole places by hand (his lanes were mirrored from the plan on some runs), so his scripted cards go on the
-    spot the replay shows; the BlueStacks side's taps are scripted, so its cards go on their tile."""
+    spot the replay shows; the BlueStacks side's taps are scripted, so its cards go on their tile. `play_dt`
+    moves a scripted card's play in the sim by that many s (a session map's correction where the replay's hand read
+    is off: the real unit already moved before its read play time)."""
     matched = match_plays(test, g, match_dt)
     scripted = {id(r["play"]): r["placement"] for r in matched if r["play"] is not None}
     sim = Sim.new(g.decks["bottom"], g.decks["top"], towers=towers)
@@ -102,8 +104,9 @@ def run(test: lab.LabTest, g: Game, towers: str = "liquipedia_l11", t_end: float
             lr.skipped.append({"card": p["card"], "side": p["side"], "t": p["t_match"],
                                "why": "no engine card" if card is None else "no spot"})
             continue
-        queue.append((round(p["t_match"] * 10), p, card, spot, pl))
-    queue = collections.deque(queue)
+        dt = (play_dt or {}).get(pl.card, 0.0) if pl is not None else 0.0
+        queue.append((round((p["t_match"] + dt) * 10), p, card, spot, pl))
+    queue = collections.deque(sorted(queue, key=lambda q: q[0]))
     if t_end is None:
         t_end = (g.frame_ts[-1] - g.offset) if g.frame_ts else test.end_t
     fticks = {}
@@ -356,3 +359,40 @@ def synthetic_test(g: Game, t0: float = 0.0, n: int = 4, window: float = 60.0) -
     decks = {s: [names.get(c, str(c)) for c in v] for s, v in (("bluestacks", []), ("cole", []))}
     return lab.LabTest("SELF", f"self-check on {g.game_id}", "pipeline check", "the compare runs end to end",
                        "left", decks, ps, tail_s=20.0)
+
+
+# --- a lab test in the bare engine (no replay): the regression tests' runner ---
+
+def bare_run(test: lab.LabTest, t_end: float | None = None, every: float = 0.25,
+             client_collision: bool = True) -> list[dict]:
+    """Play a test's placements on their tiles at their times in a fresh engine (both sides on 10 elixir) and
+    snapshot the board every `every` s: [{'t', 'units': [{card, team, x, y (engine tiles), hp, building, id,
+    target}], 'towers': {name: frac}}]. Runs under the play page's physics (client collision) unless told not to."""
+    import clash_royale_env as cre
+    cre.set_client_collision(client_collision)
+    sim = Sim.new([sc.engine_id(n) for n in test.decks["bluestacks"]], [sc.engine_id(n) for n in test.decks["cole"]])
+    sim.reset()
+    for team in ("own", "opp"):
+        sim.set_elixir(team, 10.0)
+    queue = collections.deque(sorted(test.placements, key=lambda p: (p.t, p.i)))
+    t_end = test.end_t if t_end is None else t_end
+    out, next_snap = [], 0.0
+    while sim.t <= t_end:
+        while queue and queue[0].t <= sim.t + 1e-9:
+            p = queue.popleft()
+            x, y = engine_to_ours(float(p.tile[0]), float(p.tile[1]))
+            res = sim.play(sc.engine_id(p.card), x, y, TEAM_OF[p.side])
+            assert res.played and not res.moved, (test.id, p, res.reason)
+        if sim.t + 1e-9 >= next_snap:
+            us = []
+            for u in sim.units():
+                if u["spell"]:
+                    continue
+                ex, ey = _eng(u["x"], u["y"])
+                us.append({"card": u["card"], "team": u["team"], "x": ex, "y": ey, "hp": u["hp"],
+                           "building": u["building"], "id": u["id"], "target": u["target"]})
+            out.append({"t": round(sim.t, 3), "units": us, "towers": {k: v["frac"] for k, v in sim.towers().items()}})
+            next_snap += every
+        if sim.step(1):
+            break
+    return out
