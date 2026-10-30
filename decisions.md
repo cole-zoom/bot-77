@@ -4193,6 +4193,6 @@ Read-only agent. Notes: docs/client-code-notes.md §5. Addresses are for the 0x7
   - The replay's hit times before and after the freeze settle it.
 - **Later the same night:**
   - L21 at Cole's times (Hog 0:35, Hut 0:30 left) ran. The Hut went down on time. What the Hog did is to read from the replay.
-  - The next try (Hog 2:00, Hut 1:55) never started: lab_play didn't see the battle already on screen at 2:40.
-  - Session stopped there.
-  - Tomorrow, before any more lab: fix lab_play's battle detection mid-battle, the double cycle taps, and late scripted cards.
+  - Correction: lab_play didn't miss any battles. Its output to a file is block-buffered, so the log looked stuck at "waiting for the battle" while it was playing. I stopped two working runs (Hog 2:00 / Hut 1:55, and 1:35 / 1:30) because of this, and dropped one Hut by hand over ADB at about 1:28 (not logged by lab_play). Run it with `python -u`.
+  - L21 (fresh battle) worked: the Hut went down at 2:30, on plan, after 2 cycles.
+  - To fix: the double cycle taps, and late scripted cards when the card isn't in hand.
