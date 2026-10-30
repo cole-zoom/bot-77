@@ -4191,3 +4191,8 @@ Read-only agent. Notes: docs/client-code-notes.md §5. Addresses are for the 0x7
   - My reading: the swing animation restarts after the freeze, but the time to the next hit isn't a full new windup on top.
   - Engine since cf673ea (stunPausesSwing): a freeze pauses the swing and resumes it.
   - The replay's hit times before and after the freeze settle it.
+- **Later the same night:**
+  - L21 at Cole's times (Hog 0:35, Hut 0:30 left) ran. The Hut went down on time. What the Hog did is to read from the replay.
+  - The next try (Hog 2:00, Hut 1:55) never started: lab_play didn't see the battle already on screen at 2:40.
+  - Session stopped there.
+  - Tomorrow, before any more lab: fix lab_play's battle detection mid-battle, the double cycle taps, and late scripted cards.
