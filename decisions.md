@@ -4208,3 +4208,29 @@ Read-only agent. Notes: docs/client-code-notes.md §5. Addresses are for the 0x7
 ## 2026-10-29 · Decision (Cole): the engine moves to the client's 50 ms tick
 
 Cole: "ok lets do it." The engine ticks 100 ms; the client 50 ms (game code). The bot's decisions stay at 0.1 s, with two engine ticks per decision. Sim speed roughly halves. Done on a fork worktree behind tests. It's merged only after the suite, S2 and tonight's lab comparison are re-run on it.
+
+## 2026-10-29 · 50 ms engine tick merged (fork 560eb49)
+
+- **The change:**
+  - Tick.h: TICK_MS 50, two engine ticks per API step.
+  - The Python API, every exposed tick count and the observation scales stay at 100 ms. Old vs new observations over a scripted 40 s opening: the scalar and cycle blocks are bit-identical, and the board first differs at 5.0 s (movement and deploy timing).
+  - 398 card-data tick literals → `secs()`. LoadTimes.h regenerated at 50 ms; scripts/sim_load_times_client.py patched to emit `msToTicks`.
+  - clientCollision: now one real pass per tick.
+  - Two per-tick rates found by measurement (the pairwise nudge, the building slide) are converted too.
+  - Timers that fire "on the update after 0" now fire 50 ms earlier, e.g. deploy ends at 1.05 s instead of 1.1 s.
+- **Tests:**
+  - C++: 803 cases, 802 pass plus 1 expected failure. New test_tick50 pins 1.15 s hits, Dart Goblin 350 ms, King 66 ticks, steps at the API.
+  - bot-77 pytest: 136 pass. test_scenario_from_moment fails because the matches table is mid-rebuild (lab ingest running); it fails on the old engine too.
+- **S2 held-back** (client_l11, client collision on), 100 ms → 50 ms:
+  - lifetime: +1.25 → +1.25 s;
+  - fight winner: 60.2% → 59.3%;
+  - tower damage to opponent: 18.39 → 19.03 (real 16.04);
+  - position error: 1.334 → 1.336.
+  - Neutral, as expected: the tick was never the main cause of the lifetime bias.
+- **Speed:** matches 1.44× slower (233 → 161 games/s); 10 s rollouts 1.7×.
+- **Open (now possible on the 50 ms grid, not done):**
+  - the client cycle's −50 ms first hit;
+  - Tower Princess 0.35 s;
+  - Firecracker Evo 0.25 s pulse;
+  - 250 / 550 / 1050 ms spell timings.
+- **Play page:** restarted on the new engine.
