@@ -52,8 +52,11 @@ def mark_lab(date: str, only: str | None) -> list[str]:
     """The date's Battle Log recordings -> config/lab_replays.json (merged with what's there)."""
     ids = sorted(f"bl_{date}_r{p.stem.split('_')[1]}" for p in (ROOT / "data/raw/replays" / date).glob("replay_*.mp4"))
     if only:
-        a, b = (int(x) for x in only.split("-"))
-        ids = [i for i in ids if a <= int(i.rsplit("_r", 1)[1]) <= b]
+        keep = set()  # "3-22" or "43-46,52-60"
+        for part in only.split(","):
+            a, _, b = part.partition("-")
+            keep |= set(range(int(a), int(b or a) + 1))
+        ids = [i for i in ids if int(i.rsplit("_r", 1)[1]) in keep]
     cur = json.loads(LAB_REPLAYS.read_text()) if LAB_REPLAYS.exists() else {"_doc": "", "replays": []}
     cur["_doc"] = ("Battle Log replays that are lab battles (scripted friendly battles, scripts/lab_play.py): "
                    "source and split 'lab' in build_sources.py, never training data.")
@@ -236,7 +239,7 @@ def compare(test: lab.LabTest, match_id: str, towers: str, no_viewer: bool) -> d
 def main() -> None:
     ap = argparse.ArgumentParser()
     ap.add_argument("--date", help="the session's date (data/raw/replays/<date>/): auto-map its replays to tests")
-    ap.add_argument("--only", help="with --ingest: only these replay numbers of the date, e.g. 3-22")
+    ap.add_argument("--only", help="with --ingest: only these replay numbers of the date, e.g. 3-22 or 43-46,52-60")
     ap.add_argument("--ingest", action="store_true", help="mark the date's replays as lab games and run the pipeline first")
     ap.add_argument("--map", action="append", default=[], help="TEST=MATCH_ID (repeatable)")
     ap.add_argument("--test", action="append", default=[], help="only these tests")
