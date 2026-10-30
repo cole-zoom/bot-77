@@ -4172,3 +4172,22 @@ Read-only agent. Notes: docs/client-code-notes.md §5. Addresses are for the 0x7
   - The Mini P.E.K.K.A + Battle Ram stall is still unreproduced.
 - **Play page:** client pushing is on, and `--engine-collision` gives the old rule. Each game's log line now records `"engine": {"client_collision": …}`. rescore_cole.py and build_defence_demos.py replay each of Cole's games under its own physics; lines without the key use the engine's old pushing.
   - The play page test caught this: a game played with the new pushing didn't replay the same without it.
+
+## 2026-10-29 · Lab night 1: runs, and Cole's read of the freeze
+
+- **Runs:**
+  - Logged: L00 (setup), L18 (Cole's Hog went down at 2:00, not 2:35, after he cycled), L04.
+  - L20: two attempts void. In the first the Ice Spirit came after the 3rd hit; in the second Cole saw no Mini P.E.K.K.A (the log shows it tapped; the replay will tell).
+  - L20b, the same test in the right lane (Cole asked for it), ran mid-battle at 1:42 left, after the bot cycled 3 cards.
+- **Setup:**
+  - L00: the bot's left-lane Hut shows top-right on Cole's phone, so his view is rotated, as the cheat sheet assumes.
+  - L00: the bot's right tower was at 1542 with no logged play there. To check in the replay.
+- **lab_play problems:**
+  - It double-taps cycle cards (two taps per cycle in L00, L20, L20b).
+  - It plays its scripted card late whenever the card isn't in the starting hand (up to +25 s in a fresh battle).
+  - Clock labels read 0:00 when it joins mid-battle.
+  - It starts a fresh battle against the same account's previous battle if the first is still on screen.
+- **Cole on the freeze (L20b), verbatim:** "it resets the swing, but not the wait, if you know what that means."
+  - My reading: the swing animation restarts after the freeze, but the time to the next hit isn't a full new windup on top.
+  - Engine since cf673ea (stunPausesSwing): a freeze pauses the swing and resumes it.
+  - The replay's hit times before and after the freeze settle it.
