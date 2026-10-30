@@ -4429,3 +4429,29 @@ Cole: "ok lets do it." The engine ticks 100 ms; the client 50 ms (game code). Th
   `ctx.ellipse` threw IndexSizeError (checked in Chrome), which ended the requestAnimationFrame loop. Fixed: the age
   is clamped at 0; and any throw while drawing now resets the canvas and keeps drawing, the first three reported to
   the server's output (POST /client_error). That game wasn't finished, so it isn't in his log.
+
+## 2026-10-30 · The pocket (Cole: "Once you take a tower, you can place higher up. we should be doing this for like plays in the pocket")
+
+- **Engine (fork 8d746bb; Fidelity::pocketDeploy, on):** with an enemy Princess Tower down, troops and buildings
+  may be placed on that lane's half of their side (x on that side of the centre line) from the river to 4 tiles past it
+  (Cole's "pocket = 4 tiles past the river", from the spawn work). Engine rows 18-21 for us, 12-15 for them: 36 tiles a
+  lane. Spells and deploy-anywhere cards unchanged. tests/core/test_pocket.cpp (depth, other lane, river, mirror,
+  switch off). The play page lights it with no change (it reads is_valid_placement); tests/test_play_page.py's
+  "no pocket" pin became "taking a tower opens its pocket".
+- **The network couldn't use it:** the fork's MicroRoyaleNet.placement_mask caches legality with a delta for our own
+  towers only. python_ai/ stays read-only, so bot77.rl.pocket wraps the method from our side: it ORs in the cells the
+  engine opens for the chosen card (built by asking is_valid_placement after destroy_tower, 0.04 s) when the
+  observation's enemy-building channel (7) reads 0 at that Princess's centre. Installed by bot77.rl.clone_env
+  (training, the page's bot, the exams) and the live player (the real game has the pocket). tests/test_pocket.py: the
+  mask equals the engine's legality cell for cell, for every card in hand, either tower down. The clone (team 1) gets
+  it through the same class.
+- **python_ai's own tripwires now fail, as written to:** test_placement_legality_is_static
+  (test_destroying_an_ENEMY_princess_does_not_change_legality[1, 2]) and test_placement_mask_after_tower_loss
+  (test_an_enemy_tower_dying_changes_nothing). They say "if the engine ever extends the deploy zone on taking a tower
+  (the real game does), this fails". Left failing (python_ai is read-only); bot77.rl.pocket is the delta they ask for.
+- **Held-back S2 (s2_pathing_cc -> s2_pocket_cc):** replay plays refused 52 -> 18 of 758 (real pocket plays now land),
+  so 281 -> 303 clean windows; position error 1.309 -> 1.290; winner 59.7% -> 59.7%; lifetime |d| 2.00.
+- **A measurement bug the new windows exposed (src/bot77/sim/validate.py):** the sim's King-to-Princess HP ratio divided
+  by the larger of that side's Princess maxes, which reads nothing when both are down, so one window
+  (tv_2026-10-13_r161_m01 @232.8) counted the King's damage x4008 (opp tower damage 2224). Now any standing Princess of
+  either side (one preset). After: sim princess damage own 22.92 / opp 23.40 vs real 18.88 / 17.05 on the 303 windows.

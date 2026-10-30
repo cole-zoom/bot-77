@@ -46,6 +46,9 @@ from python_ai.envs.selfplay_env import PFSP_EXPONENT, PFSP_MIN_WEIGHT, MicroRoy
 
 from bot77.rl import guards
 from bot77.rl import situations as sit
+from bot77.rl import pocket
+
+pocket.install()  # the network may place in the pocket the engine opens (bot77.rl.pocket)
 
 
 class CloneEnv(MicroRoyaleSelfPlayEnv):

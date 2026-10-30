@@ -412,9 +412,11 @@ def metrics(g: Game, w: dict, r: dict) -> list[dict]:
                     break
                 k = KING_PER_PRINCESS if key.endswith("king") else 1.0
                 real += (f0 - f1) * k
-                # the sim's own King / Princess ratio (the tower preset's), not the replay's
-                ks = sim_end[key]["max"] / max(sim_end[f"{side}_l"]["max"], sim_end[f"{side}_r"]["max"], 1) \
-                    if key.endswith("king") else 1.0
+                # the sim's own King / Princess ratio (the tower preset's), not the replay's. A destroyed Princess reads
+                # no max, so any standing one of either side's (one preset); with both of a side's down it read 1 and
+                # the King's damage counted ~4000x (2026-10-30: the pocket's newly clean windows start with towers down)
+                pmax = max(sim_end[f"{s}_{lr}"]["max"] for s in ("own", "opp") for lr in ("l", "r"))
+                ks = (sim_end[key]["max"] / pmax if pmax > 0 else KING_PER_PRINCESS) if key.endswith("king") else 1.0
                 sim_ += (r["towers0"][key] - sim_end[key]["frac"]) * ks
             if known:
                 rows.append({**base, "metric": f"tower_dmg_{side}_real", "card": "", "dt_bin": -1, "value": real,

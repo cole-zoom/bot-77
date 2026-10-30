@@ -80,13 +80,16 @@ def test_the_terrain_is_the_engines():
     assert pl.card_spec(95)["placement_radius"] == 1.0 and pl.card_spec(7)["spell_radius"] == 2.5
 
 
-def test_no_pocket_in_the_engine():
-    """The engine never opens the pocket (fork: test_placement_legality_is_static). If it starts to, the page
-    shows it with no change (it reads is_valid_placement), and this test says so."""
+def test_taking_a_tower_opens_its_pocket_on_the_page():
+    """Cole (2026-10-30): "Once you take a tower, you can place higher up" (the engine's Fidelity::pocketDeploy, 4 tiles
+    past the river on that lane's half). The page lights what is_valid_placement accepts, so it shows the pocket too."""
     g = fresh()
     before = pl.legal_mask(g, 2)
-    g.destroy_tower(1, 1)
-    assert pl.legal_mask(g, 2) == before
+    g.destroy_tower(1, 1)  # their left Princess
+    after = pl.legal_mask(g, 2)
+    opened = {(i % 18, i // 18) for i, (a, b) in enumerate(zip(before, after)) if a != b}
+    assert opened and all(x <= 8 and 18 <= y <= 21 for x, y in opened)
+    assert all(after[y * 18 + x] == "1" for x, y in opened)
 
 
 # --- the revamped page (2026-10-29): engine clock, sprites for everything, the next card, and the recording unchanged

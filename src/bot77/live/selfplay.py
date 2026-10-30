@@ -40,6 +40,8 @@ class SelfPlayPolicy:
             sys.path.insert(0, str(FORK))
         import torch
         from python_ai.models.policy_io import LSTM_HIDDEN, load_net
+        from bot77.rl import pocket
+        pocket.install()  # the real game has the pocket too
         self.torch = torch
         self.net = load_net(ckpt, "cpu", verbose=False)
         self.hidden = LSTM_HIDDEN
