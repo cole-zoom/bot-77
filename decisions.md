@@ -4561,3 +4561,11 @@ Cole: "ok lets do it." The engine ticks 100 ms; the client 50 ms (game code). Th
   Default now 127.0.0.1:5555, and an empty capture exits with the runner's own message. STOP_ALL'd the supervisor
   before chunk 2 so the Battle Log (25 games) still holds chunk 1's 16; recorded by hand with --device 127.0.0.1:5555.
   The remaining 24 games run as run40v4b after that.
+- **Result: 26-14 over 40 games (65%)**, school v4 epoch 3, 2026-10-31 01:05-05:13. run40v4: 12-4 over 16 (stopped by
+  the profile popup); run40v4b: 14-10 over 24 (12-8, then 2-2). Trophies 937 after the first 16 -> **1,104** at the
+  end (the last opponent 1,105), so the second batch was played against a rising ladder. For comparison the 8-2 model
+  (school v2 epoch 3): 8-2 on its first night, then 21-30 over 51 (12-10, 9-20), the second part overlapping RL
+  training on the CPU. Two losses read as very short (game 19 of run40v4b at 0.6 min, game 4 of its last chunk at
+  0.9 min, 5 plays each): the last one's Battle Log entry is a real **0-3 defeat** (replay 61 s), not a misread end
+  screen; a fast three-crown. All 40 replays recorded (data/raw/replays/2026-10-31, replay_01-40, newest first in each
+  chunk; the bot's own videos on the LaCie). The profile popup didn't recur (no "close profile" taps needed).
