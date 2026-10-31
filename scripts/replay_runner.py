@@ -55,7 +55,8 @@ class Device:
 
     def cap(self) -> np.ndarray:
         r = subprocess.run([ADB, "-s", self.s, "exec-out", "screencap", "-p"], capture_output=True, timeout=30)
-        im = cv2.imdecode(np.frombuffer(r.stdout, np.uint8), cv2.IMREAD_COLOR)
+        # OpenCV 5 raises on an empty buffer (4 returned None): an absent device gives one
+        im = cv2.imdecode(np.frombuffer(r.stdout, np.uint8), cv2.IMREAD_COLOR) if r.stdout else None
         if im is None or im.shape[:2] != (H, W):
             sys.exit(f"screencap failed ({len(r.stdout)} bytes); is BlueStacks running with ADB on?")
         return im
@@ -318,7 +319,9 @@ def main() -> None:
     ap.add_argument("--skip", type=int, default=0, help="skip this many of the newest battles first")
     ap.add_argument("--no-known", action="store_true", help="don't skip entries that look recorded before: with the same "
                     "deck every game, the both-decks thumbnail can match an older game (2026-10-19: stopped after 2 of 12)")
-    ap.add_argument("--device", default="emulator-5554")
+    # the live player's (bot77.live.device); emulator-5554 is gone after a BlueStacks restart (2026-10-31: run40v4's
+    # replays failed on it twice)
+    ap.add_argument("--device", default="127.0.0.1:5555")
     ap.add_argument("--source", choices=SOURCES, default="log", help="log = Battle Log, tv = TV Royale")
     ap.add_argument("--by-index", action="store_true", help="Battle Log: walk the list by position from --skip on, not by "
                     "fingerprint (identical-looking friendly battles, lab nights)")
