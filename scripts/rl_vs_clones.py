@@ -52,6 +52,8 @@ def main():
     ap.add_argument("--card-entropy", type=float, default=None,
                     help="target card-head entropy fraction (the fork's 0.35 is for 1 s decisions; at 0.1 s ~97%% of "
                          "decisions are waits and 0.35 would force random plays)")
+    ap.add_argument("--reference-file", default="data/live/cole_reference.jsonl",
+                    help="Cole's starts (cole_reference_v3.jsonl: his takes plus his full-game tempo games, 2026-10-30)")
     ap.add_argument("--reference-share", type=float, default=0.0,
                     help="share of situation episodes that replay one of Cole's winning play-page starts")
     ap.add_argument("--init", default=None, help="start the trainee from these weights instead of the clone")
@@ -83,7 +85,7 @@ def main():
         "RL_SITUATION_SHARE": str(a.situation_share),
         "RL_DECISION_TICKS": str(a.decision_ticks),
         "RL_REFERENCE_SHARE": str(a.reference_share),
-        "RL_REFERENCE_FILE": str((ROOT / "data/live/cole_reference.jsonl").resolve()),
+        "RL_REFERENCE_FILE": str((ROOT / a.reference_file).resolve()),
         "RL_SNAPSHOT_DIRS": os.pathsep.join([str(run / "historical_checkpoints")]
                                             + [str((ROOT / d).resolve()) for d in a.snapshots]),
     })

@@ -14,6 +14,11 @@ Two teachers, every 0.1 s (decision_ticks 1, the pace the network plays at):
   better ones (the script loses the emergency and most supported pushes: a fixed bar would leave those with no demos);
 - Cole's play-page games (data/live/situation_play.jsonl, all of them: "take all of my takes and use them as answer
   keys or positive signal"), replayed from their exact starts as scripts/rescore_cole.py does, weight --cole-weight.
+- Full games (2026-10-30): a tempo start of Cole's runs to the end of the game (his whole game is the demo); his
+  older 25 s tempo takes are left out (replayed as full games they would teach waiting once his plays ran out), and
+  the scripted tempo player is never a teacher (Cole: the scripted tempo policy is a baseline, not the teacher), so
+  scripted demos come from the defence templates only. Each game replays under the physics it was played on
+  (physics()).
 Per decision the network's observation (float16), the hand slot played (4 = wait) and its board cell (the fork's
 binning, -1 for a wait), the same fields as data/cache/bc/shards_t01.
 """
@@ -92,13 +97,25 @@ def episode(tpl_name: str, seed: int, plays=None):
             return env.last_situation, np.stack(obs), np.array(card, np.int64), np.array(cell, np.int64)
 
 
+def physics(g: dict) -> dict:
+    """The engine switches a logged game was played under. The log records them from 2026-10-30 ~15:30 (all four;
+    the pocket from ~17:10); before, by when the page's server restarted onto each engine: tower reach (fork 1d0b1dd)
+    at 11:41, the pocket (8d746bb) at 16:23; collision alone was recorded from 2026-10-29."""
+    eng, when = g.get("engine", {}), g.get("when", "")
+    return {"client_collision": eng.get("client_collision", False),
+            "obstacle_slide": eng.get("obstacle_slide", False), "bridge_own_line": eng.get("bridge_own_line", False),
+            "tower_reach_footprint": eng.get("tower_reach_footprint", when >= "2026-10-30 11:41"),
+            "pocket_deploy": eng.get("pocket_deploy", when >= "2026-10-30 16:23")}
+
+
 def job(args):
-    source, tpl_name, seed, plays, weight, min_score, out, collision = args
+    source, tpl_name, seed, plays, weight, min_score, out, switches = args
     path = Path(out) / f"{source}_{tpl_name}_{seed}.npz"  # Cole's sources carry the game's index: one file a game
     if not _ENV:
         setup()
     import clash_royale_env as cre
-    cre.set_client_collision(collision)  # the physics his game was played under (the script: the engine's own)
+    for k, v in switches.items():  # the physics his game was played under (the script: today's)
+        getattr(cre, "set_" + k)(v)
     res, obs, card, cell = episode(tpl_name, seed, plays)
     if res is None or (plays is None and res["score"] < min_score):
         return source, tpl_name, None if res is None else res["score"], 0
@@ -122,13 +139,19 @@ def main():
     Path(a.out).mkdir(parents=True, exist_ok=True)
     setup()
     sit = _ENV["sit"]
-    jobs = [("script", t.__name__, s, None, 1.0, a.min_score, a.out, False) for t in sit.TEMPLATES for s in range(a.seeds)]
+    today = {"client_collision": True, "obstacle_slide": True, "bridge_own_line": True, "tower_reach_footprint": True,
+             "pocket_deploy": True}
+    tempo = {t.__name__ for t in sit.TEMPO_TEMPLATES + sit.HELD_OUT_TEMPLATES}
+    jobs = [("script", t.__name__, s, None, 1.0, a.min_score, a.out, today)
+            for t in sit.TEMPLATES if t.__name__ not in tempo for s in range(a.seeds)]
     if not a.no_cole:
         for n, g in enumerate(json.loads(l) for l in open(ROOT / "data/live/situation_play.jsonl")):
             name = sit.BY_NAME[g["situation"]].__name__
+            if name in tempo and not g["result"]["you"].get("full_game"):
+                continue  # a 25 s tempo take, superseded by his full games
             # one file per game (the same start can have several of his takes)
             jobs.append((f"cole{n:03d}", name, int(g["seed"]), g["plays"], a.cole_weight, a.min_score, a.out,
-                         g.get("engine", {}).get("client_collision", False)))
+                         physics(g)))
     t0, kept, rows, by = time.time(), 0, 0, {}
     with Pool(a.workers) as pool:
         for n, (source, name, score, r) in enumerate(pool.imap_unordered(job, jobs), 1):
