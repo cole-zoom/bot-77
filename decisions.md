@@ -4608,3 +4608,27 @@ Cole: "ok lets do it." The engine ticks 100 ms; the client 50 ms (game code). Th
   (card, seconds ago) and stamps each play at its own match time; both callers pass ages. Checked: plays 40 / 25 / 10 /
   2 s ago read recency 0.14 / 0.29 / 0.60 / 0.90 (all ~1.0 before); tests/test_sim.py pins it. The pro shards are
   being rebuilt with it (data/cache/bc/shards_t01c; the old shards_t01 kept).
+
+## 2026-10-31 · Mining failure moments for yes / no review (Cole: "make a pipeline that lets us 'mine for these moments'
+... I can just mark yes or no so we can train on all of the moments where our model is failing")
+
+- **scripts/mine_moments.py**: pairs each bot game with its Battle Log replay (opponent name on the entry, as the loss
+  review) and reads the ingested replay (both sides' plays and hands, units every 0.25 s, towers). Detectors:
+  missed_spell (Arrows / Fireball in hand and affordable; enemy bodies on our half worth >= 5 / 6 elixir, >= 3 / 2
+  bodies, in one cast's radius, held 1 s; not cast within 3 s), counter_spent (their win condition reaches one of our
+  standing towers for 2 s within 12 s of its play while our hand holds no counter: Mini P.E.K.K.A / Goblin Hut / Mega
+  Minion vs ground, Mega Minion vs air, from Cole's review; the moment is our last counter spent before it, with
+  whether it was in their hand then), tower_lost (the 10 s before one falls), leaked (10 elixir for 3+ s).
+- First cut on the 10-29 bot games (run75b, the 8-2 model; 21 of 29 paired with a replay): 205 moments, ~7 missed
+  spells a game (a passing bunch reads as a target for one frame). Tightened (on our half, held 1 s, bigger
+  thresholds) and win conditions "reach the tower" by their unit's position (tower HP reads are sparse in replays,
+  so the HP-drop version found none): **100 moments** (missed spell 36, leaked ~45, tower lost ~20, counter spent 1).
+- **scripts/build_moment_review.py**: one moment at a time, a looping clip of the bot's recording from 6 s before to
+  6 s after (the replay one key away), the miner's line, Y / N (optional "should have" and note), keyboard only;
+  Export -> moments_review.json. Checked in the browser (clip starts 6 s before, Y moves on). Dev set served at
+  localhost:8792 (data/reviews/mined_dev_2026-10-29). The 2026-10-31 games need their replays ingested first (~5-6
+  min a replay, CPU-heavy): after the live run, not during it.
+- Not yet: turning the yes marks into training rows (a positive label where the right action is clear, e.g. the
+  spell on the bunch; a "not this" label otherwise) — next, with Cole's first marks to check against.
+- Live run40v4c started 06:3x (school v4 epoch 3, BOT77_FLAT_OPP_CYCLE=1 for comparability); the pro shard rebuild
+  (shards_t01c, real cycle recency) finished during its game 1.
