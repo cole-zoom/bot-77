@@ -224,7 +224,7 @@ def main():
                                             "seed": game["seed"], "plays": game["plays"], "result": out["result"],
                                             "engine": {k: getattr(cre, "get_" + k)() for k in
                                                        ("client_collision", "tower_reach_footprint", "obstacle_slide",
-                                                        "bridge_own_line")}}) + "\n")
+                                                        "bridge_own_line", "pocket_deploy")}}) + "\n")
                     game["env"] = None
                 return self.send(200, json.dumps(out, default=float))
             self.send(404, "{}")

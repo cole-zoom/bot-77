@@ -243,7 +243,7 @@ def test_the_page_records_and_plays_exactly_what_it_did(tmp_path):
         assert set(line) == {"when", "situation", "seed", "plays", "result", "engine"} and line["seed"] == seed
         # the physics it was played under (rescore_cole / find-the-stuck replays set the same switches)
         assert line["engine"] == {"client_collision": True, "tower_reach_footprint": True, "obstacle_slide": True,
-                                  "bridge_own_line": True}
+                                  "bridge_own_line": True, "pocket_deploy": True}
         assert [set(p) - {"why"} for p in line["plays"]] == [{"t", "card", "x", "y", "landed"}] * 3
         assert [p["t"] for p in line["plays"]] == [0.3, 1.2, 3.0] and line["plays"][1]["landed"] is False
         assert set(line["result"]) == {"you", "scripted", "model"}
