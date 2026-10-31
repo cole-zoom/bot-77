@@ -4455,3 +4455,29 @@ Cole: "ok lets do it." The engine ticks 100 ms; the client 50 ms (game code). Th
   by the larger of that side's Princess maxes, which reads nothing when both are down, so one window
   (tv_2026-10-13_r161_m01 @232.8) counted the King's damage x4008 (opp tower damage 2224). Now any standing Princess of
   either side (one preset). After: sim princess damage own 22.92 / opp 23.40 vs real 18.88 / 17.05 on the 303 windows.
+
+## 2026-10-30 · Cole's full-game tempo examples, and RL round v6
+
+- **His examples (log lines 184-206):** 23 full games (chill / even 8, chill they're up 5, press 5, desperate 3, spell
+  finish 2), all **wins**; he beat the scripted player's score on 18 and the current bot's (rl_clones_v3) on 22; on
+  the same starts the scripted player won 9 and the bot 14. All 23 replay exactly (score, result and end tick, with
+  each game's physics: the pocket from the 16:23 restart).
+- **Cole:** "I think we should use my best ones as the ground truth, or maybe use all since I played against diff
+  decks? idk I think i did a good job." Decision: all. Every one is a win, a "best" by score mostly picks the games
+  the clone misplayed, and each was against a different pro deck.
+- **What trains on them:** (1) demos (scripts/build_defence_demos.py -> data/cache/bc/school_v3: 3,000 scripted
+  defence episodes on today's physics, no scripted tempo teacher, plus 170 of his games at weight 3; his 25 s tempo
+  takes left out: replayed as full games they'd teach waiting once his plays ran out) through the trainer's imitation
+  leash; (2) his starts (data/live/cole_reference_v3.jsonl: the 142 takes + 5 Hog defences + the 23 full games),
+  30% of situation episodes. The replayed full games' scores equal the page's (chill / even mean +3.35).
+- **Found while setting up:** the trainer never turned on the client's pushing (Fidelity::clientCollision is off by
+  default and the env processes don't inherit a parent's switch), so v1-v5 trained on the engine's old pushing while
+  the page ran the client's. Now RL_CLIENT_COLLISION (rl_vs_clones sets it; --engine-collision for the old).
+- **Concern noted to Cole:** he went 23-0 against the pro clone; it's a weak opponent, a likely ceiling. Half of
+  v6's games are against past snapshots (v4, v5) for variety; a stronger opponent is next if this plateaus.
+- **v6 launched (2026-10-30 ~17:3x):** `rl_vs_clones.py --run data/models/rl_clones_v6 --init
+  data/models/bc_defence_v2/epoch03_cal20.pth` (the 8-2 live model) `--decision-ticks 1 --situation-share 0.5
+  --reference-share 0.3 --reference-file data/live/cole_reference_v3.jsonl --league-share 0.5 --snapshots
+  data/models/rl_clones_v4/historical_checkpoints data/models/rl_clones_v5/historical_checkpoints --card-entropy 0.04
+  --episodes 8000 --envs 7 --leash-demos data/cache/bc/school_v3`. Full games, Cole's tempo rewards, the pocket, the
+  client's pushing. Leash: 1,675 demo episodes kept + 200 pro games.
