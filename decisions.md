@@ -4494,3 +4494,17 @@ Cole: "ok lets do it." The engine ticks 100 ms; the client 50 ms (game code). Th
   data/models/rl_clones_v6_14envs_stalled. Relaunched 18:29 at 8 envs (the fork's default), with a watchdog that
   reports a log silent for 10+ min. Cole closed BlueStacks and Kino for it. GPU (RunPod): not until a round shows
   the approach works (Cole: "not worth gpu until we know it works").
+- **Whole-game eval (scripts/match_eval.py), built while v6 runs:** a checkpoint plays N full games on held-out
+  seeds (20,000+) vs the pro clone or vs another checkpoint. Three things it turned up:
+  - with situations off, CloneEnv turns the FORK's own scenario injection back on: a third of "games" ended at
+    1.3 s as draws (scenario windows). The eval passes scenarios_enabled False. (Training is unaffected: our
+    situations switch the fork's off.)
+  - the league's checkpoint opponents decide once a second (CloneEnv asks the opponent at the clone's 1 s pace),
+    which handicaps a checkpoint trained at 0.1 s: the 8-2 model "beat" itself 3-0-1 that way. The eval lets a
+    checkpoint opponent decide every 0.1 s. **v6's league snapshots (v4, v5, its own) play handicapped the same
+    way**; not changed mid-run, a fix for the next round.
+  - even at equal pace the mirror isn't 50%: the 8-2 model as team 0 vs itself wins 67% (+-12%, 60 games, 0 draws).
+    Team 0 has an edge in this setup (likely the spell guard, which only vetoes our side's whiffed spells; not
+    measured). So a checkpoint is judged against the 8-2 model by beating that 67%, not 50%.
+  - baselines, the 8-2 model (bc_defence_v2 epoch03_cal20): vs the pro clone 75% (+-11%), 1.87 crowns for / 0.75
+    against, mean 146 s; vs itself 67%.
