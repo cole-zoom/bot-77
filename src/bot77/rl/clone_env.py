@@ -98,6 +98,11 @@ class CloneEnv(MicroRoyaleSelfPlayEnv):
         # Princess Tower in the fork's reward (W_TOWER_DESTROYED 0.6 + W_BLDG 0.5 x 2534 / MAX_BUILDING_HP ~ 0.74)
         self.rl_leak_coef = float(os.environ.get("RL_LEAK_COEF", "0"))
         self.full_game = bool(env_config.get("situation_full_game", os.environ.get("RL_SITUATION_FULL_GAME", "1") != "0"))
+        # the physics (2026-10-30): the trainer's env processes don't inherit a switch set in the parent, so it comes
+        # by RL_CLIENT_COLLISION (scripts/rl_vs_clones.py sets it; v1-v5 trained on the engine's old pushing while the
+        # play page ran the client's). Unset: whatever the caller set (the page, the exams)
+        if "RL_CLIENT_COLLISION" in os.environ:
+            clash_royale_env.set_client_collision(os.environ["RL_CLIENT_COLLISION"] != "0")
 
     def _snapshots(self) -> list[str]:
         return sorted(p for d in self.snapshot_dirs for p in glob.glob(os.path.join(d, "*.pth")))
