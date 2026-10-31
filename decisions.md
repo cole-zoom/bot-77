@@ -4487,3 +4487,10 @@ Cole: "ok lets do it." The engine ticks 100 ms; the client 50 ms (game code). Th
   per decision and per update (a PPO update plus 2 imitation steps, the main process at ~3.6 cores during them), not
   per batch, so more envs didn't help. 0.1 s decisions over full games are ~10x the old 1 s runs' work. 8,000 episodes
   ~ 6.5-7 h. Left at 14 envs (no slower, a wider mix per update).
+- **The 14-env v6 hung (found 18:27):** no log line after episode 530 (17:40) for 47 min; the main process at ~3-4
+  cores inside BLAS, the 14 workers idle, 4.3 GB of swap in use and ~65 MB free on the 16 GB Mac. It stopped just
+  past the 500-episode critic warmup. Cause not pinned (no Python-level stack on macOS without root); memory pressure
+  with the larger rollout (segments per rollout scale with envs, PPOConfig) is the leading suspect. Kept as
+  data/models/rl_clones_v6_14envs_stalled. Relaunched 18:29 at 8 envs (the fork's default), with a watchdog that
+  reports a log silent for 10+ min. Cole closed BlueStacks and Kino for it. GPU (RunPod): not until a round shows
+  the approach works (Cole: "not worth gpu until we know it works").
