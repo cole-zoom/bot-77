@@ -91,7 +91,9 @@ class SelfPlayPolicy:
         units = [{"card": u.card, "cls": u.cls, "team": "own" if u.team == "friendly" else "opp", "x": u.x,
                   "y": u.y + FEET_DY} for u in st.units
                  if u.card and u.team in ("friendly", "enemy") and "tower" not in u.cls and "bar" not in u.cls]
-        opp_played = [e for e in (sc.engine_id(p["card"]) for p in opp_plays) if e is not None]
+        # (card, seconds ago), so the cycle blocks' recency says which of their cards are cycled away (bot77.sim.mirror)
+        opp_played = [(e, max(0.0, st.t - p["t"])) for e, p in ((sc.engine_id(p["card"]), p) for p in opp_plays)
+                      if e is not None]
         return mirror(deck, opp_deck[:8], float(st.elapsed_s), hand, st.elixir, 5.0 + regen - spent, units,
                       None, opp_played)
 

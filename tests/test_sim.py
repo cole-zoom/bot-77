@@ -130,3 +130,27 @@ def test_legal_deck_puts_evolution_and_hero_in_their_slots():
     order = legal_deck(deck)
     assert cre.validate_deck_slots(order) == ""
     assert sorted(order) == sorted(deck)
+
+
+def test_the_mirror_stamps_each_opponent_play_at_its_own_time():
+    # 2026-10-31 (Cole: "knowing their cycle, and what cards they have in their hand"): note_played_card stamps the
+    # engine's current tick and the mirror is rebuilt per decision, so every play used to read "just played"; the
+    # observation's recency block couldn't say which of their cards were cycled away (pro imitation data and live).
+    import numpy as np
+    import clash_royale_env as E
+    from bot77.sim import cards as sc
+    from bot77.sim.mirror import mirror
+    names = ["Giant", "Battle Ram", "Mini P.E.K.K.A", "Mega Minion", "Bomber", "Goblin Hut", "Fireball", "Arrows"]
+    deck = [sc.engine_id(n) for n in names]
+    opp = [sc.engine_id(n) for n in ["Hog Rider", "Musketeer", "Cannon", "Ice Golem", "Skeletons", "Ice Spirit",
+                                       "The Log", "Fireball"]]
+    plays = [(opp[0], 40.0), (opp[1], 25.0), (opp[2], 10.0), (opp[3], 2.0)]
+    sim = mirror(deck, opp, 90.0, deck[:4], 6.0, 5.0, [], None, plays)
+    now = sim.env.get_current_tick()
+    ticks = [sim.env.get_last_played_tick(1, e) for e, _ in plays]
+    assert ticks == sorted(ticks) and all(abs((now - 1 - t) / 10 - ago) < 0.2 for t, (_, ago) in zip(ticks, plays))
+    o = np.asarray(sim.env.get_observation_for_team(0))
+    rec = [o[E.ClashRoyaleEnv.CYCLE_START + E.ClashRoyaleEnv.NUM_CARD_IDS + e] for e, _ in plays]
+    assert rec == sorted(rec) and rec[0] < 0.2 and rec[-1] > 0.85  # older plays fade
+    flat = mirror(deck, opp, 90.0, deck[:4], 6.0, 5.0, [], None, [e for e, _ in plays])  # bare ids: played now
+    assert all(flat.env.get_last_played_tick(1, e) == flat.env.get_current_tick() - 1 for e, _ in plays)

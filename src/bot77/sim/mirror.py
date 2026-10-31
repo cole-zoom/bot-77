@@ -16,10 +16,16 @@ from bot77.sim.scenario import place_units
 
 def mirror(own_deck: list[int], opp_deck: list[int], t_match: float, hand: list[int], elixir_own: float,
            elixir_opp: float, units: list[dict], towers: dict[str, float] | None = None,
-           opp_played: list[int] | None = None) -> Sim | None:
+           opp_played: list | None = None) -> Sim | None:
     """Engine ids throughout. units: card (our name), cls, team own / opp, x, y (feet, acting player's frame).
     towers: HP fractions {own_king, own_l, ...} (0 = destroyed; missing = full). opp_played: the opponent's plays so
-    far, oldest first (the observation's card-cycle blocks). None if the hand can't be set."""
+    far, oldest first, each (engine id, seconds ago) (the observation's card-cycle blocks: which of their cards they
+    have, and how recently each was played; a bare id counts as played now). None if the hand can't be set.
+
+    Each play is stamped at its own match time (2026-10-31, Cole's review: "knowing their cycle, and what cards they
+    have in their hand"): note_played_card stamps the engine's CURRENT tick, and the mirror is rebuilt per decision, so
+    noting every play at t_match made every card read "just played" (recency 1.0), in the pro imitation data
+    (scripts/build_bc_dataset.py) and live alike; the bot never saw which of their cards were cycled away."""
     sim = Sim.new(own_deck, opp_deck or [sc.engine_id("Knight")])
     sim.reset()
     sim.set_clock(float(t_match))
@@ -37,7 +43,10 @@ def mirror(own_deck: list[int], opp_deck: list[int], t_match: float, hand: list[
             sim.set_tower(team, slot, frac)
     place_units(sim, units)
     for e in opp_played or []:
+        e, ago = e if isinstance(e, tuple) else (e, 0.0)
+        sim.set_clock(max(0.0, float(t_match) - float(ago)))
         sim.env.note_played_card(1, e)
+    sim.set_clock(float(t_match))
     sim.step(1)  # commit the injected units
     return sim
 

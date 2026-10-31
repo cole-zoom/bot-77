@@ -4580,3 +4580,31 @@ Cole: "ok lets do it." The engine ticks 100 ms; the client 50 ms (game code). Th
   intro), so a play's jump lands 2 s before it in either video (checked: a 2:35 play opens the replay at 2:36).
   python -m http.server ignores Range requests (sent all 444 MB for a 1 KB range), so the page couldn't seek:
   serve_review.py answers ranges (206).
+
+## 2026-10-31 · Cole's review of the first loss, and the bot was blind to the opponent's cycle
+
+- **Cole's review (loss_review_2026-10-31.json, game vs ivan asef; Cole: "I think it encapsulates what the bot gets
+  wrong"):** 1. placement and timing; 2. counters: "knowing their cycle, and what cards they have in their hand, and
+  always keeping cards in ours to counter their hand, at all times"; 3. missed spells. His moments, verbatim in part:
+  - 0:59: "we mega minion the valk. That was our last defensive card in our hand ... We know he has battle ram, so we
+    should try to save a card for that. This is a good example of 'saving counters' ... We play our mini pekka,
+    goblin hut and mega minion on plays that don't necessarily require them. We should defend with other cards, then
+    use our mini pekka or goblin hut for the battle ram ... we could have kited the valk, and left the bomber, and used
+    mega minion on their battle ram".
+  - the Giant into their Mini P.E.K.K.A, then the Bomber in the wrong lane: the tower lost.
+  - "bad placement loses games. if we played mini pekka closer to the center, or farther away, then it would have
+    given it time for the cooldown ... Because we play it right ontop, the opposing mini pekka is able to kill ours".
+  - "We masively miss our arrows, giving them a defense boost as we activated king tower".
+  - Later (screenshot): "we also don't react against Spam very well" (Barbarians, Spear Goblins and a Valkyrie stacked
+    on our tower: an Arrows / Bomber target).
+  - Cole: "Were at a good point - This model is showing promise. some plays it makes I'm genuinely impressed with."
+- **Found while checking #2: the bot never saw the opponent's cycle.** The observation's cycle blocks carry, per card,
+  seen (they have it) and recency (exp(-age / 20 s): how recently they played it), which together say what's in their
+  hand. bot77.sim.mirror rebuilds an engine per decision and noted every opponent play with note_played_card, which
+  stamps the engine's CURRENT tick (GameManager.h notePlayedCard), so every card they'd played read recency ~1.0 ("just
+  played"). That was the case in the pro imitation data (scripts/build_bc_dataset.py, every model since bc_v2) and
+  live (bot77.live.selfplay): only "which cards they have" got through. (The sim's own episodes, Cole's play-page
+  games and RL, had real recency, so the network saw two different meanings of the block.) Fixed: the mirror takes
+  (card, seconds ago) and stamps each play at its own match time; both callers pass ages. Checked: plays 40 / 25 / 10 /
+  2 s ago read recency 0.14 / 0.29 / 0.60 / 0.90 (all ~1.0 before); tests/test_sim.py pins it. The pro shards are
+  being rebuilt with it (data/cache/bc/shards_t01c; the old shards_t01 kept).

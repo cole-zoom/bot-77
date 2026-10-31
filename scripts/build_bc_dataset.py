@@ -117,7 +117,8 @@ def _build(args) -> tuple[str, int]:
                 f = tower_frac(g, key if side == "bottom" else SWAP[key], t)
                 if f is not None:
                     towers[key] = f
-            opp_played = [p["engine_card"] for p in op_plays if p["t"] < t and p["engine_card"] is not None]
+            # (card, seconds ago): the cycle blocks' recency (bot77.sim.mirror; flat before 2026-10-31)
+            opp_played = [(p["engine_card"], t - p["t"]) for p in op_plays if p["t"] < t and p["engine_card"] is not None]
             sim = mirror(g.decks[side], g.decks[opp], h["t_match"], hand, h["elixir"],
                          oh["elixir"] if oh else 5.0, units, towers, opp_played)
             if sim is None:
