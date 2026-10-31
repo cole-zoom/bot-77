@@ -4551,3 +4551,13 @@ Cole: "ok lets do it." The engine ticks 100 ms; the client 50 ms (game code). Th
   data/models/bc_school_v4/epoch03_cal20.pth --games 40 --chunk 20 --tag run40v4` (BlueStacks via hd-adb, re-connected
   to 127.0.0.1:5555 after Cole's restart; Bomber deck; 0.1 s; spell guard on; the pocket in the network's mask).
   Logs data/live/run40v4_*.log (local). Comparison: the 8-2 model's live runs (8-2, then 21-30 over 51 games).
+- **Chunk 1: 12-4 over 16 games** (01:05-01:58; results W W W W W W W L W L W W L W W L). Game 5 a 1.5 min win on 10
+  plays (likely a passive opponent). It stopped at 16, not 20: a between-games "nudge" tap at (540, 330) landed on the
+  name banner on home and opened our profile, which nothing recognised (4 min, "unrecognised screen: stopping"). Fixed:
+  between_games_tap closes the profile by its red X (matched on "current" / "battles won": the fast OCR reads "current
+  streak" as "currents sbreak"); checked on the stuck screenshot (close profile) and on home (Battle tab).
+- **The chunk's replays failed twice**: replay_runner's default device was emulator-5554, gone since Cole restarted
+  BlueStacks (only 127.0.0.1:5555 is listed; the live player uses that), and OpenCV 5 raises on the empty screenshot.
+  Default now 127.0.0.1:5555, and an empty capture exits with the runner's own message. STOP_ALL'd the supervisor
+  before chunk 2 so the Battle Log (25 games) still holds chunk 1's 16; recorded by hand with --device 127.0.0.1:5555.
+  The remaining 24 games run as run40v4b after that.
