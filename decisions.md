@@ -4518,3 +4518,11 @@ Cole: "ok lets do it." The engine ticks 100 ms; the client 50 ms (game code). Th
   the outcome: PPO fine-tuning of the imitation model degrades it in this setup, whatever the situations' scoring.
   What's common to all four: lr 1e-4 on an imitation-trained policy with no KL to it (only the 2-step "leash"),
   the fork's game shaping on ordinary games, opponents that decide once a second.
+- **School v4 instead (started ~21:40):** imitation, the recipe that made the 8-2 model (school v2 epoch 3), continued
+  from bc_defence_v2/epoch03.pth with the new demos: `train_bc.py --shards data/cache/bc/shards_t01 --demos
+  data/cache/bc/school_v3 --demo-share 0.7 --tempo-share 0.333 --lead 3 --init data/models/bc_defence_v2/epoch03.pth
+  --window 256 --burn-in 64 --play-weight 50 --epochs 4 --steps-per-epoch 310 --out data/models/bc_school_v4`.
+  Its tempo windows (a third of the demo windows) are Cole's 23 full games only (the 10-29 "school v3" used the
+  scripted tempo player's: Cole's process-miss rule); 1,652 defence episodes (scripted on today's physics + his
+  takes) and 866 pro games. After each epoch: wait-calibrated at log 20 (card_head.bias[4] += 2.996, checked equal to
+  the 8-2 model's) and 60 held-out whole games vs the pro clone (bar 75%) and vs the 8-2 model (bar 67%).
