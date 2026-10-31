@@ -4544,3 +4544,10 @@ Cole: "ok lets do it." The engine ticks 100 ms; the client 50 ms (game code). Th
   0.97). Against the pro clone it's level (72-78% across epochs vs 75%). Imitation losses fell every epoch (card
   1.14 -> 0.66, cell 3.21 -> 1.42); the pro held-back slipped a little (play/wait AUC 0.719 -> 0.707, card at plays
   37.9% -> 36.5%). Candidate for the next live test: data/models/bc_school_v4/epoch03_cal20.pth.
+
+## 2026-10-31 · Live test: school v4 epoch 3, 40 games (Cole: "bluestacks open. do a 40 match run")
+
+- Started 01:05: `uv run --no-sync python scripts/live_with_replays.py --ckpt
+  data/models/bc_school_v4/epoch03_cal20.pth --games 40 --chunk 20 --tag run40v4` (BlueStacks via hd-adb, re-connected
+  to 127.0.0.1:5555 after Cole's restart; Bomber deck; 0.1 s; spell guard on; the pocket in the network's mask).
+  Logs data/live/run40v4_*.log (local). Comparison: the 8-2 model's live runs (8-2, then 21-30 over 51 games).
