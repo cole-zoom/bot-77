@@ -4508,3 +4508,13 @@ Cole: "ok lets do it." The engine ticks 100 ms; the client 50 ms (game code). Th
     measured). So a checkpoint is judged against the 8-2 model by beating that 67%, not 50%.
   - baselines, the 8-2 model (bc_defence_v2 epoch03_cal20): vs the pro clone 75% (+-11%), 1.87 crowns for / 0.75
     against, mean 146 s; vs itself 67%.
+- **v6 stopped at episode ~2,010 (21:2x), the fourth RL round in a row to make its start worse.** The ep-2004
+  snapshot (kept as data/models/rl_clones_v6/ep2004.pth), 60 held-out whole games each: vs the pro clone **62%**
+  (+-12%; its start, the 8-2 model, 75% on the same seeds); vs the 8-2 model **33%** (the 8-2 model vs itself 67%).
+  Training: win rate 0.66 (ep 200) -> 0.38 (ep 2000); situation scores -0.5 -> -0.79; elixir at play 5.0 -> ~4.0;
+  policy entropy 0.70 -> 0.95-1.02 while the entropy controller sat at its floor (0.01, pushing DOWN), i.e. the PPO
+  updates themselves flattened the policy; ClipFrac 0.13-0.22. v5 (2026-10-28) slid the same way (win 0.30 -> 0.26,
+  elixir at play 5.5 -> 4.0, exam below its start), as did v3 and v4. So full games and Cole's rewards didn't change
+  the outcome: PPO fine-tuning of the imitation model degrades it in this setup, whatever the situations' scoring.
+  What's common to all four: lr 1e-4 on an imitation-trained policy with no KL to it (only the 2-step "leash"),
+  the fork's game shaping on ordinary games, opponents that decide once a second.
