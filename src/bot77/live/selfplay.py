@@ -11,6 +11,8 @@ Not mirrored: tower HP (the live bot doesn't read it: towers count as full), uni
 """
 from __future__ import annotations
 
+import os
+
 import sys
 from pathlib import Path
 
@@ -91,9 +93,12 @@ class SelfPlayPolicy:
         units = [{"card": u.card, "cls": u.cls, "team": "own" if u.team == "friendly" else "opp", "x": u.x,
                   "y": u.y + FEET_DY} for u in st.units
                  if u.card and u.team in ("friendly", "enemy") and "tower" not in u.cls and "bar" not in u.cls]
-        # (card, seconds ago), so the cycle blocks' recency says which of their cards are cycled away (bot77.sim.mirror)
-        opp_played = [(e, max(0.0, st.t - p["t"])) for e, p in ((sc.engine_id(p["card"]), p) for p in opp_plays)
-                      if e is not None]
+        # (card, seconds ago), so the cycle blocks' recency says which of their cards are cycled away (bot77.sim.mirror).
+        # BOT77_FLAT_OPP_CYCLE=1: every play "just now", as every model up to school v4 was trained and live-tested
+        # (run40v4: 26-14); for a comparable run of such a model
+        flat = os.environ.get("BOT77_FLAT_OPP_CYCLE") == "1"
+        opp_played = [(e, 0.0 if flat else max(0.0, st.t - p["t"]))
+                      for e, p in ((sc.engine_id(p["card"]), p) for p in opp_plays) if e is not None]
         return mirror(deck, opp_deck[:8], float(st.elapsed_s), hand, st.elixir, 5.0 + regen - spent, units,
                       None, opp_played)
 
