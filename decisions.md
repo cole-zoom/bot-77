@@ -4481,3 +4481,9 @@ Cole: "ok lets do it." The engine ticks 100 ms; the client 50 ms (game code). Th
   data/models/rl_clones_v4/historical_checkpoints data/models/rl_clones_v5/historical_checkpoints --card-entropy 0.04
   --episodes 8000 --envs 7 --leash-demos data/cache/bc/school_v3`. Full games, Cole's tempo rewards, the pocket, the
   client's pushing. Leash: 1,675 demo episodes kept + 200 pro games.
+- **v6 speed (Cole: "why can't we do more then 20 episodes a min?"):** with 7 envs the main process sat at ~1 core and
+  the env workers at ~10% each, so I restarted at 17:16 with 14 envs (the 7-env run's first 10 min kept as
+  data/models/rl_clones_v6_7envs_aborted). Measured: 340 episodes in 17 min, about 20 a minute again. The cost is
+  per decision and per update (a PPO update plus 2 imitation steps, the main process at ~3.6 cores during them), not
+  per batch, so more envs didn't help. 0.1 s decisions over full games are ~10x the old 1 s runs' work. 8,000 episodes
+  ~ 6.5-7 h. Left at 14 envs (no slower, a wider mix per update).
