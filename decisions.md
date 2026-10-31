@@ -4569,3 +4569,14 @@ Cole: "ok lets do it." The engine ticks 100 ms; the client 50 ms (game code). Th
   0.9 min, 5 plays each): the last one's Battle Log entry is a real **0-3 defeat** (replay 61 s), not a misread end
   screen; a fast three-crown. All 40 replays recorded (data/raw/replays/2026-10-31, replay_01-40, newest first in each
   chunk; the bot's own videos on the LaCie). The profile popup didn't recur (no "close profile" taps needed).
+- **Loss review page with video (Cole: "I cant review still frames"; scripts/build_loss_review.py, served by
+  scripts/serve_review.py):** data/reviews/losses_2026-10-31/index.html (local, gitignored), at http://localhost:8791.
+  Per loss: the bot's own recording (game.mkv remuxed to .mp4 beside it on the LaCie, no re-encode) and the Battle Log
+  replay (both sides, both hands) matched by the opponent's name on its entry (13 of 14; game 8 vs "ivan asef" wasn't
+  among the recorded replays: the first batch's recording took an older game, replay_15 at 694 trophies); the bot's
+  plays from the run log with OK / Mistake, the card it should have played or wait, a note; "mark this moment" notes
+  at game time; a game note; Export to JSON. Timing: each video's offset to game time is read off the game's own
+  "Time left" timer in 4 frames (bot recordings start 4-7 s into the game, one 1 s before it; replays have ~4 s of
+  intro), so a play's jump lands 2 s before it in either video (checked: a 2:35 play opens the replay at 2:36).
+  python -m http.server ignores Range requests (sent all 444 MB for a 1 KB range), so the page couldn't seek:
+  serve_review.py answers ranges (206).
