@@ -4526,3 +4526,21 @@ Cole: "ok lets do it." The engine ticks 100 ms; the client 50 ms (game code). Th
   scripted tempo player's: Cole's process-miss rule); 1,652 defence episodes (scripted on today's physics + his
   takes) and 866 pro games. After each epoch: wait-calibrated at log 20 (card_head.bias[4] += 2.996, checked equal to
   the 8-2 model's) and 60 held-out whole games vs the pro clone (bar 75%) and vs the 8-2 model (bar 67%).
+- **School v4 results (2026-10-30 21:37-23:2x; 4 epochs of 310 steps, ~4 min each with the CPU free).** Each
+  epoch wait-calibrated at log 20, 60 held-out whole games; bars = the 8-2 model on the same seeds (clone 75%, vs
+  itself 67%):
+
+  | epoch | vs the pro clone | vs the 8-2 model |
+  |---|---|---|
+  | 0 | 78% | 78% |
+  | 1 | 75% | 68% |
+  | 2 | 72% | 77% |
+  | 3 | 77% | 75% |
+
+  Then 300 games each vs the 8-2 model, seeds 20,000-20,299 (h2h_*.jsonl in data/models/bc_school_v4): the 8-2
+  model vs itself **65%** (crowns 1.36 / 0.97), epoch 0 **67%** (1.37 / 0.83), **epoch 3 73%** (1.36 / 0.70).
+  Paired by seed (McNemar on the games one won and the other didn't): epoch 0 71 vs 63, p 0.49 (no difference);
+  **epoch 3 67 vs 43, p 0.022**: better than the 8-2 model head to head, mostly by conceding fewer crowns (0.70 vs
+  0.97). Against the pro clone it's level (72-78% across epochs vs 75%). Imitation losses fell every epoch (card
+  1.14 -> 0.66, cell 3.21 -> 1.42); the pro held-back slipped a little (play/wait AUC 0.719 -> 0.707, card at plays
+  37.9% -> 36.5%). Candidate for the next live test: data/models/bc_school_v4/epoch03_cal20.pth.
