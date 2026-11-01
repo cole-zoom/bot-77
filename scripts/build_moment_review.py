@@ -20,7 +20,8 @@ import build_loss_review as blr  # noqa: E402
 
 ROOT = Path(__file__).resolve().parents[1]
 LEAD, TAIL = 6.0, 6.0
-KIND = {"missed_spell": "Missed spell", "counter_spent": "Spent the counter", "tower_lost": "Tower lost",
+KIND = {"missed_spell": "Missed spell", "counter_spent": "Spent the counter", "push_through": "Push got through",
+        "tower_lost": "Tower lost",
         "leaked": "Leaked elixir"}
 
 PAGE = r"""<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">

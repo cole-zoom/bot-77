@@ -12,11 +12,15 @@ both hands every frame, units every 0.25 s, towers). Detectors, the failure kind
   missed_spell    their units bunched so one Arrows / Fireball would hit at least SPELL_MIN elixir of them (a body's
                   share of its card's cost), on our half or at our towers, while that spell is in our hand and we can
                   afford it, and we don't cast it within SPELL_WINDOW s.
-  counter_spent   they play their win condition and it reaches our tower (its unit stands within CONNECT_R of one of
-                  our standing towers for CONNECT_S s within WINCON_WINDOW s: tower HP reads are sparse in replays)
-                  while our hand holds none of our counters to it; the moment is our last
+  counter_spent   a push with their win condition takes TOWER_HIT of a tower of ours within WINCON_WINDOW s while our
+                  hand holds none of our counters to it; the moment is our last
                   counter played before it, when their win condition was in their hand (Cole: "We know he has battle
                   ram, so we should try to save a card for that").
+  push_through    a tower of ours loses TOWER_HIT of its HP within WINCON_WINDOW s (and counter_spent doesn't
+                  explain it): the moment is their last win-condition play (else their last play) before it, so the
+                  clip shows their push and our answer (which card, where, when). Tower HP, not unit positions: a
+                  Battle Ram dies on contact and its Barbarians aren't read by that name (2026-10-31: the position
+                  version fired 7 times in 70 games with 56 towers lost).
   tower_lost      one of our towers falls: the TOWER_LEAD s before it.
   leaked          our elixir sits at 10 for LEAK_S s or more.
 
@@ -104,8 +108,9 @@ def mine_game(db, g, gm: dict) -> list[dict]:
     out = []
     ours = hud(db, g.game_id)
     theirs = hud(db, g.game_id.replace("_m01", "_top_m01"))
-    my_plays = [p for p in g.plays if p["side"] == "bottom" and p["t_match"] is not None]
-    their_plays = [p for p in g.plays if p["side"] == "top" and p["t_match"] is not None]
+    # plays with a read card and time (a few hand reads have no card)
+    my_plays = [p for p in g.plays if p["side"] == "bottom" and p["t_match"] is not None and p["card"]]
+    their_plays = [p for p in g.plays if p["side"] == "top" and p["t_match"] is not None and p["card"]]
     tm = lambda t: t - g.offset  # video t -> game t
 
     # missed spells
@@ -147,45 +152,47 @@ def mine_game(db, g, gm: dict) -> list[dict]:
                     last = tm(t)
                     break
 
-    # counters spent before their win condition
-    for wp in their_plays:
-        if wp["card"] not in WINCON:
+    # pushes that got through: a tower of ours loses TOWER_HIT of its HP within WINCON_WINDOW s (tower_hp reads; a
+    # unit's position isn't enough: a Battle Ram dies on contact and turns into Barbarians, 2026-10-31)
+    names = dict(own_l="left", own_r="right", own_king="King")
+    last_hit = -99.0
+    for t0 in range(0, int(tm(g.frame_ts[-1])) - 2):
+        if t0 - last_hit < 15:
             continue
-        tw = wp["t_match"]
-        hit = None
-        near: dict[str, float] = {}
-        for t in g.frame_ts:
-            if not tw <= tm(t) <= tw + WINCON_WINDOW:
-                continue
-            for u in g.frames.get(t, []):
-                if u["team"] != "opp" or u["card"] != wp["card"]:
-                    continue
-                x, y = ours_to_engine(u["x"], u["y"])
-                for key, (tx, ty) in OWN_TOWERS.items():
-                    if tower_frac(g, key, t) == 0.0 or (x - tx) ** 2 + (y - ty) ** 2 > CONNECT_R ** 2:
-                        continue
-                    near.setdefault(key, tm(t))
-                    if tm(t) - near[key] >= CONNECT_S and hit is None:
-                        hit = (key, tm(t))
-        if not hit:
+        drop = None
+        for key in OWN_TOWERS:
+            f0, f1 = tower_frac(g, key, t0 + g.offset), tower_frac(g, key, t0 + WINCON_WINDOW + g.offset)
+            if f0 is not None and f1 is not None and f0 - f1 >= TOWER_HIT:
+                drop = (key, f0 - f1)
+                break
+        if drop is None:
             continue
-        counters = COUNTERS_AIR if wp["card"] in AIR else COUNTERS_GROUND
-        h = at(ours, tw + g.offset)
-        if h is None or any(c in counters for c in h[1]):
+        # where it started dropping, to the second
+        start = next((t for t in range(t0, t0 + int(WINCON_WINDOW))
+                      if (tower_frac(g, drop[0], t + 1 + g.offset) or 1) < (tower_frac(g, drop[0], t0 + g.offset) or 1) - 0.01), t0)
+        last_hit = start
+        theirs_before = [p for p in their_plays if start - 15 <= p["t_match"] <= start]
+        ours_before = [p for p in my_plays if start - 15 <= p["t_match"] <= start + 3]
+        wcs = [p for p in theirs_before if p["card"] in WINCON]
+        origin = (wcs or theirs_before or [{"t_match": start - 8}])[-1]["t_match"]
+        h = at(ours, origin + g.offset)
+        counters = COUNTERS_AIR if wcs and wcs[-1]["card"] in AIR else COUNTERS_GROUND
+        spent = [p for p in my_plays if p["card"] in counters and origin - 20 <= p["t_match"] < origin]
+        if wcs and h is not None and not any(c in counters for c in h[1]) and spent:
+            sp = spent[-1]
+            th = at(theirs, sp["t_match"] + g.offset)
+            w = wcs[-1]["card"]
+            target = next((p["card"] for p in reversed(their_plays) if p["t_match"] <= sp["t_match"]), "?")
+            out.append({"kind": "counter_spent", "t": round(sp["t_match"], 1), "card": sp["card"], "wincon": w,
+                        "text": f"spent {sp['card']} (on their {target}) at {mmss(sp['t_match'])}"
+                                f"{', their ' + w + ' in their hand' if th is not None and w in th[1] else ''}; "
+                                f"their {w} came at {mmss(wcs[-1]['t_match'])} with no counter in our hand "
+                                f"({', '.join(h[1])}): our {names[drop[0]]} tower -{drop[1]:.0%}"})
             continue
-        spent = [p for p in my_plays if p["card"] in counters and tw - 20 <= p["t_match"] < tw]
-        if not spent:
-            continue
-        sp = spent[-1]
-        th = at(theirs, sp["t_match"] + g.offset)
-        in_hand = th is not None and wp["card"] in th[1]
-        target = next((p["card"] for p in reversed(their_plays) if p["t_match"] <= sp["t_match"]), "?")
-        out.append({"kind": "counter_spent", "t": round(sp["t_match"], 1), "card": sp["card"], "wincon": wp["card"],
-                    "text": f"spent {sp['card']} (on their {target}) at {mmss(sp['t_match'])}"
-                            f"{', their ' + wp['card'] + ' in their hand' if in_hand else ''}; "
-                            f"their {wp['card']} came at {mmss(tw)} with no counter in our hand "
-                            f"({', '.join(h[1])}); it reached our {dict(own_l='left', own_r='right', own_king='King')[hit[0]]} "
-                            f"tower at {mmss(hit[1])}"})
+        out.append({"kind": "push_through", "t": round(max(0.0, origin - 1), 1),
+                    "text": f"our {names[drop[0]]} tower lost {drop[1]:.0%} from {mmss(start)}; their plays before it: "
+                            f"{', '.join(p['card'] + ' ' + mmss(p['t_match']) for p in theirs_before) or 'none read'}; "
+                            f"ours: {', '.join(p['card'] + ' ' + mmss(p['t_match']) for p in ours_before) or 'none'}"})
 
     # towers lost
     for key, name in (("own_l", "left"), ("own_r", "right")):
@@ -242,7 +249,7 @@ def main():
         found = mine_game(db, g, gm)
         cands += found
         print(f"{gm['gid']} vs {gm['opp']:18s} {gm['result']:4s} {rid}: "
-              + ", ".join(f"{k} {sum(c['kind'] == k for c in found)}" for k in ("missed_spell", "counter_spent", "tower_lost", "leaked")))
+              + ", ".join(f"{k} {sum(c['kind'] == k for c in found)}" for k in ("missed_spell", "counter_spent", "push_through", "tower_lost", "leaked")))
     out = Path(a.out or ROOT / f"data/reviews/mined_{a.date}")
     out.mkdir(parents=True, exist_ok=True)
     (out / "moments.json").write_text(json.dumps({"games": {g["gid"]: {k: g[k] for k in ("gid", "opp", "result", "run", "n")}

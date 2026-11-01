@@ -4640,3 +4640,15 @@ Cole: "ok lets do it." The engine ticks 100 ms; the client 50 ms (game code). Th
 - **run40v4c: 16-24 over 40** (8-12, 8-12; 16:20-19:35), at ~1,000-1,100 trophies. School v4 epoch 3 over 80 live
   games: 42-38 (26-14 climbing ~870 -> 1,104, then 16-24 there). Its level is ~1,050 trophies. All 80 replays recorded
   (data/raw/replays/2026-10-31, replay_01-80); ingest_replays started 20:45 for mining (~5-6 min a replay).
+- **The 80 games mined (2026-11-01 ~01:00).** ingest_replays (20:45-00:12, 160 videos) then build_sources /
+  detections / plays / moments / tower_hp (00:13-00:50). The bot's replays are source replay_bot (bot_games holds
+  2026-10-31), so build_bc_dataset (source IN replay_tv, replay_bl) never reads them; checked.
+  - The position-based "win condition reaches our tower" check fired 7 times in 70 games with 56 towers lost: a Battle
+    Ram dies on contact (closest read 7 tiles) and its Barbarians aren't detected by that name, and at ~1,050 trophies
+    most pushes are spam (Barbarians, Mini P.E.K.K.A, Spear Goblins). Replaced by tower HP (now built for these games):
+    **push_through** = a tower of ours loses 15%+ within 12 s, the moment their last win-condition play (else their
+    last play) before it; counter_spent = the same with their win condition in the push, no counter in our hand and
+    one spent in the 20 s before. Plays with no card read are skipped.
+  - **341 moments from 70 games** (8 without a replay): push_through 138, missed_spell 75, tower_lost 56, leaked 51,
+    counter_spent 21 (e.g. "spent Mini P.E.K.K.A (on their Minions) at 0:51, their Giant in their hand; their Giant
+    came at 0:42 with no counter in our hand (Fireball, Bomber, Arrows, Battle Ram): our right tower -21%").
