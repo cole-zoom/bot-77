@@ -4632,3 +4632,8 @@ Cole: "ok lets do it." The engine ticks 100 ms; the client 50 ms (game code). Th
   spell on the bunch; a "not this" label otherwise) — next, with Cole's first marks to check against.
 - Live run40v4c started 06:3x (school v4 epoch 3, BOT77_FLAT_OPP_CYCLE=1 for comparability); the pro shard rebuild
   (shards_t01c, real cycle recency) finished during its game 1.
+- **run40v4c chunk 1: 8-12** (16:20-17:24; started 1-5). Trophies on its replay entries: ~1,000-1,100 for both
+  sides (the bot 1,104 at the start, ~1,035 by game 20); run40v4 climbed ~870 -> 1,104. So school v4 epoch 3 settles
+  around ~1,050 trophies (about even there): the drop from 65% is the ladder finding its level, not a regression.
+  Memory was tight during it (swap 5.9 of 7 GB: BlueStacks 5 GB, the bot 2 GB, ~8 other Claude Code sessions ~4 GB);
+  not shown to matter.
