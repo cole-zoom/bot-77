@@ -4637,3 +4637,6 @@ Cole: "ok lets do it." The engine ticks 100 ms; the client 50 ms (game code). Th
   around ~1,050 trophies (about even there): the drop from 65% is the ladder finding its level, not a regression.
   Memory was tight during it (swap 5.9 of 7 GB: BlueStacks 5 GB, the bot 2 GB, ~8 other Claude Code sessions ~4 GB);
   not shown to matter.
+- **run40v4c: 16-24 over 40** (8-12, 8-12; 16:20-19:35), at ~1,000-1,100 trophies. School v4 epoch 3 over 80 live
+  games: 42-38 (26-14 climbing ~870 -> 1,104, then 16-24 there). Its level is ~1,050 trophies. All 80 replays recorded
+  (data/raw/replays/2026-10-31, replay_01-80); ingest_replays started 20:45 for mining (~5-6 min a replay).
