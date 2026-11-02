@@ -4699,3 +4699,11 @@ Cole: "ok lets do it." The engine ticks 100 ms; the client 50 ms (game code). Th
   (build_moment_review.py) now shows the guessed mode and "found by"; Y = the bot made a mistake, N = it played fine,
   1-8 set the kind of mistake. Pointless push now only covers plays at the bridge or over (y >= 12.5): its hybrid
   score on his notes went 6/9 -> 4/9 (two of his are plays on our side), traded for guesses that make sense on the page.
+- **Round 1 marked: 102 of 150** (data/reviews/cole/round1_moments_review_2026-11-02.json). Flagged clips 50/66 = 76%
+  mistakes; **random plays 26/36 = 72%** (z 0.39: no difference). By guess: placement 9/9, spent the counter 6/6,
+  didn't defend 5/5, pointless push 11/14, wasted spell 6/8, didn't wait 5/7, missed spell 7/11, didn't finish 1/6
+  (the one rule that's mostly wrong); a third of the yeses got a different mode than the guess. Read: by Cole's eye
+  about three in four of the bot's plays are mistakes, so finding mistakes isn't the bottleneck; knowing the right
+  move is. Y / N gives the right move only when "should have" is filled (16 of 102). His notes again put spells
+  first: "we Need to arrows here. this is the biggest thing we need to train on"; "always the barbarians we don't do
+  anything about"; defending too late. 4 fine examples to 50+26 mistakes.
