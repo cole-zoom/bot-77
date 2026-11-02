@@ -4679,3 +4679,16 @@ Cole: "ok lets do it." The engine ticks 100 ms; the client 50 ms (game code). Th
   the reader had a card locked out (flagged `blind`). Recall vs his notes, a hit of the same mode within 5 s: 9 of 31
   (missed spell 3/8, pointless push 1/10, didn't wait 2/2, didn't defend 2/5, wasted spell 1/4, others 0); 4 of his
   notes are in a game with no replay (ivan asef). Not good enough to hand him as "these are the mistakes" yet.
+- **frame_states built** (scripts/build_frame_states.py, docs/frame-states.md): one row per replay hand read (0.1 s),
+  122,369 rows for the 70 run40v4 games with a replay, ~1 min. Named frame_states: `board_states` is already A's
+  per-decision table (scripts/build_board_states.py, 2026-10-22). I overwrote that script by mistake while writing the new
+  one, restored it from git before anything ran; the old table was never touched. Spell value now counts each unit's
+  worth x the share of its HP the spell takes (Arrows on a lone Valkyrie: 0.8 elixir, not 4).
+- **Queries in LanceDB only** (scripts/query_modes.py): rule filters, and hybrid = vector search prefiltered to the rows a
+  mode can be about, scored leave-one-out on Cole's notes. DuckDB (for lambdas over the units list) tried and dropped;
+  the one thing it was for is a column now (play_nearest_foe). Scores (27 notes in games with a replay, 32 note x mode
+  pairs): rule 6, hybrid 9, either **15 of 32**. Missed-spell rule 4/8 at 2.4 a game (random: 0). But the hand-made
+  vector barely beats random: pointless push 6/9 at 5 a game vs 4.3 random at 3.6, wasted spell 2/3 vs 1.5; adding the
+  play (card, spot, lane, lead) to it didn't change that. With 27 positives and no negatives nothing separates a bad
+  push from a fine one: the next step is Cole's yes / no on candidates (the nos are the negatives), then a small
+  classifier reranks.
