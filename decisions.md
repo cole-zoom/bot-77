@@ -4721,3 +4721,16 @@ Cole: "ok lets do it." The engine ticks 100 ms; the client 50 ms (game code). Th
     supports reader = eyes, tracker = memory: the tracker covers the unsure frames, and requiring two agreeing
     confident reads before a read overrides the tracker covers the ~0.5%. It also confirms Cole's premise: the cycle
     is deterministic (the card coming in is the one played 4 plays earlier) on every play the reads can check.
+- **Cycle tracker built** (src/bot77/live/cycle.py; Cole's idea: the cycle is deterministic). The deck is fixed from
+  config (live_play --deck, default Cole's 8): no learning, resets or 7-card fallback. The reader is the eyes, the
+  tracker the memory: a play = a slot reading the tracker's Next for 0.2 s with the bar down by about its cost; anything
+  else is ignored unless the screen holds it 0.5 s (then the screen wins, logged as a re-sync). Found on the first
+  offline pass and fixed: the bot plays a card the instant it can read it, so a slot can go Giant -> Mini P.E.K.K.A ->
+  Goblin Hut inside a second; a slot settling on a card further back in the queue is now a chain of plays, and a Next
+  showing a card from further back waits for the slot (3 s) before it counts as a mismatch. tests/test_cycle.py (10).
+- **Offline check** (scripts/check_cycle_tracker.py: recorded games through the live reader + tracker at live pace),
+  13 games incl. the 3 worst lock-out games: re-syncs 0 in all 13; a slot unknown 15-32 s a game with the reader alone
+  -> 0-1.3 s tracked (the opening deal); plays tracked = the bot's taps, or 1-6 fewer where taps failed (031532: 20
+  tracked, 20 seen in the replay, 23 taps).
+- Live check started: run20cyc, 20 games, school v4 epoch 3 (BOT77_FLAT_OPP_CYCLE=1 as in run40v4c), so the only
+  change is the hand path. Per game: cycle.json (plays, re-syncs) and decisions.json (hand vs hand_read).
