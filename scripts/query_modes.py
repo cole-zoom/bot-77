@@ -64,7 +64,8 @@ QUERIES = {
 # the rows each mode can be about (the hybrid search's prefilter), and whether a note sits on one of our plays
 SCOPE = {
     "missed_spell": ("best_arrows_value >= 2 OR best_fireball_value >= 3", False),
-    "pointless_push": ("our_play_now.card IN ('Giant', 'Battle Ram', 'Mini P.E.K.K.A', 'Mega Minion', 'Bomber')", True),
+    "pointless_push": ("our_play_now.card IN ('Giant', 'Battle Ram', 'Mini P.E.K.K.A', 'Mega Minion', 'Bomber') "
+                       "AND our_play_now.y >= 12.5", True),  # at the bridge or over: a defender on our side isn't a push
     "spent_counter": ("our_play_now.card IN ('Mini P.E.K.K.A', 'Goblin Hut', 'Mega Minion')", True),
     "wasted_spell": ("our_play_now.card IN ('Arrows', 'Fireball')", True),
     "too_early": ("our_play_now.card IN ('Mini P.E.K.K.A', 'Mega Minion', 'Bomber')", True),

@@ -20,9 +20,13 @@ import build_loss_review as blr  # noqa: E402
 
 ROOT = Path(__file__).resolve().parents[1]
 LEAD, TAIL = 6.0, 6.0
-KIND = {"missed_spell": "Missed spell", "counter_spent": "Spent the counter", "push_through": "Push got through",
-        "tower_lost": "Tower lost",
-        "leaked": "Leaked elixir"}
+sys.path.insert(0, str(ROOT / "scripts"))
+import failure_modes as fm  # noqa: E402
+
+# Cole's failure modes (scripts/failure_modes.py; number keys 1-8 on the page), then the miner's older kinds
+MODES = {k: v[0] for k, v in fm.MODES.items()}
+KIND = {**MODES, "random": "Random play", "counter_spent": "Spent the counter", "push_through": "Push got through",
+        "tower_lost": "Tower lost", "leaked": "Leaked elixir"}
 
 PAGE = r"""<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Moment Review</title><style>
@@ -41,7 +45,8 @@ video{width:100%;max-height:calc(100vh - 140px);background:#000;border-radius:8p
 .kind{display:inline-block;font-size:12px;font-weight:700;padding:2px 8px;border-radius:9px;background:var(--accent);color:#fff}
 .what{font-size:17px;font-weight:600}.row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
 .yn button{flex:1;font-size:17px;font-weight:700;padding:12px}.yn .y.on{background:var(--bad);border-color:var(--bad);color:#fff}
-.yn .n.on{background:var(--good);border-color:var(--good);color:#fff}textarea{width:100%;min-height:3.5em;resize:vertical}
+.yn .n.on{background:var(--good);border-color:var(--good);color:#fff}
+.mode{font-size:12px;padding:3px 8px}.mode.on{background:var(--accent);border-color:var(--accent);color:#fff}textarea{width:100%;min-height:3.5em;resize:vertical}
 kbd{font:700 12px ui-monospace,monospace;border:1px solid var(--line);border-bottom-width:2px;border-radius:4px;padding:0 5px}
 </style></head><body>
 <header><h1>Moment review</h1><div class="bar"><div id="fill"></div></div><span class="muted small" id="prog"></span>
@@ -50,19 +55,26 @@ kbd{font:700 12px ui-monospace,monospace;border:1px solid var(--line);border-bot
 <span id="vsrc"></span><button id="swap">R: switch video</button><button id="slow">0.5×</button><button id="norm">1×</button></div></div>
 <div class="box"><div><span class="kind" id="kind"></span> <span class="muted small" id="where"></span></div>
 <div class="what" id="text"></div>
-<div class="muted small">Is this a real mistake by the bot?</div>
+<div class="muted small" id="how"></div>
+<div class="muted small">Did the bot make a mistake here? If it's a different kind than the guess, press its number.</div>
+<div class="row" id="modes"></div>
 <div class="row yn"><button class="y" id="yes">Y · yes, a mistake</button><button class="n" id="no">N · no, fine</button></div>
 <div class="row"><select id="should"><option value="">should have… (optional)</option></select></div>
 <textarea id="note" placeholder="Note (optional): what it should have done"></textarea>
 <div class="row"><button id="prev">← prev</button><button id="skip">S skip</button><button id="next">next →</button></div>
-<div class="muted small"><kbd>Y</kbd> yes · <kbd>N</kbd> no (both move on) · <kbd>S</kbd> skip · <kbd>←</kbd><kbd>→</kbd> move · <kbd>R</kbd> other video · <kbd>Space</kbd> pause</div></div></main>
+<div class="muted small"><kbd>Y</kbd> yes · <kbd>N</kbd> no (both move on) · <kbd>1</kbd>-<kbd>8</kbd> kind of mistake · <kbd>S</kbd> skip · <kbd>←</kbd><kbd>→</kbd> move · <kbd>R</kbd> other video · <kbd>Space</kbd> pause</div></div></main>
 <script>
-const D=__DATA__,DECK=__DECK__,LEAD=__LEAD__,TAIL=__TAIL__,KEY="bot77-moments-"+D.moments.length+"-"+(D.moments[0]||{}).game+(D.moments[0]||{}).t;
+const D=__DATA__,DECK=__DECK__,MODES=__MODES__,MK=Object.keys(MODES),LEAD=__LEAD__,TAIL=__TAIL__,KEY="bot77-moments-"+D.moments.length+"-"+(D.moments[0]||{}).game+(D.moments[0]||{}).t;
 let S={};try{S=JSON.parse(localStorage.getItem(KEY)||"{}")}catch(e){}
 const save=()=>{try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){}};
 const v=document.getElementById("v");let i=0,vid="bot";
 const id=m=>m.game+"@"+m.t+"/"+m.kind;
 const list=()=>{const f=document.getElementById("filter").value;return D.moments.map((m,k)=>k).filter(k=>!f||D.moments[k].kind===f)};
+document.getElementById("modes").innerHTML=MK.map((k,j)=>`<button class="mode" data-k="${k}">${j+1} ${MODES[k]}</button>`).join("");
+document.querySelectorAll(".mode").forEach(b=>b.onclick=()=>setMode(b.dataset.k));
+function setMode(k){const m=D.moments[i];S[id(m)]={...(S[id(m)]||{}),mode:k};save();paintModes()}
+function paintModes(){const m=D.moments[i],r=S[id(m)]||{},cur=r.mode||(MODES[m.kind]?m.kind:"");
+ document.querySelectorAll(".mode").forEach(b=>b.classList.toggle("on",b.dataset.k===cur))}
 document.getElementById("should").innerHTML+= ["wait",...DECK].map(c=>`<option>${c}</option>`).join("");
 function clip(){const m=D.moments[i],g=D.games[m.game]||{},src=vid==="bot"?g.bot_video:g.replay_video,off=vid==="bot"?g.bot_offset:g.replay_offset;
  document.getElementById("vsrc").textContent=src?(vid==="bot"?"bot's screen":"Battle Log replay"):"(no video)";
@@ -71,7 +83,8 @@ function clip(){const m=D.moments[i],g=D.games[m.game]||{},src=vid==="bot"?g.bot
  if(!v.src.endsWith(src))v.src=src;const go=()=>{v.currentTime=a;v.play().catch(()=>{})};if(v.readyState>=1)go();else v.onloadedmetadata=go}
 v.ontimeupdate=()=>{if(v.currentTime>=+v.dataset.b)v.currentTime=+v.dataset.a};
 function show(){const ks=list();if(!ks.includes(i))i=ks[0]??0;const m=D.moments[i],r=S[id(m)]||{};const g=D.games[m.game]||{};
- document.getElementById("kind").textContent=D.kinds[m.kind]||m.kind;
+ document.getElementById("kind").textContent=m.kind==="random"?"Random play":(D.kinds[m.kind]||m.kind)+"?";
+ document.getElementById("how").textContent=m.how?"found by: "+m.how:"";paintModes();
  document.getElementById("where").textContent=`${m.clock} · vs ${g.opp||m.opp} (${g.result||m.result}) · ${ks.indexOf(i)+1} of ${ks.length}`;
  document.getElementById("text").textContent=m.text;
  document.getElementById("yes").classList.toggle("on",r.v==="yes");document.getElementById("no").classList.toggle("on",r.v==="no");
@@ -79,7 +92,8 @@ function show(){const ks=list();if(!ks.includes(i))i=ks[0]??0;const m=D.moments[
  const done=D.moments.filter(m=>(S[id(m)]||{}).v).length;document.getElementById("prog").textContent=`${done} / ${D.moments.length} marked`;
  document.getElementById("fill").style.width=(100*done/D.moments.length)+"%";clip()}
 function move(d){const ks=list(),k=ks.indexOf(i);i=ks[Math.max(0,Math.min(ks.length-1,k+d))];show()}
-function mark(x){const m=D.moments[i];S[id(m)]={...(S[id(m)]||{}),v:x};save();move(1)}
+function mark(x){const m=D.moments[i],r=S[id(m)]||{};const mode=x==="yes"?(r.mode||(MODES[m.kind]?m.kind:"")):r.mode;
+ S[id(m)]={...r,v:x,...(mode?{mode}:{})};save();move(1)}
 document.getElementById("yes").onclick=()=>mark("yes");document.getElementById("no").onclick=()=>mark("no");
 document.getElementById("skip").onclick=()=>move(1);document.getElementById("next").onclick=()=>move(1);document.getElementById("prev").onclick=()=>move(-1);
 document.getElementById("swap").onclick=()=>{vid=vid==="bot"?"rep":"bot";clip()};
@@ -89,7 +103,8 @@ document.getElementById("should").onchange=e=>{const m=D.moments[i];S[id(m)]={..
 document.getElementById("note").oninput=e=>{const m=D.moments[i];S[id(m)]={...(S[id(m)]||{}),note:e.target.value};save()};
 document.addEventListener("keydown",e=>{if(["TEXTAREA","INPUT","SELECT"].includes(e.target.tagName))return;const k=e.key.toLowerCase();
  if(k==="y")mark("yes");else if(k==="n")mark("no");else if(k==="s"||e.key==="ArrowRight")move(1);else if(e.key==="ArrowLeft")move(-1);
- else if(k==="r")document.getElementById("swap").click();else if(e.key===" "){e.preventDefault();v.paused?v.play():v.pause()}else return;e.preventDefault()});
+ else if(k==="r")document.getElementById("swap").click();
+ else if(/^[1-8]$/.test(k)&&MK[+k-1])setMode(MK[+k-1]);else if(e.key===" "){e.preventDefault();v.paused?v.play():v.pause()}else return;e.preventDefault()});
 document.getElementById("export").onclick=()=>{const out=D.moments.map(m=>({...m,...(S[id(m)]||{})}));
  const b=new Blob([JSON.stringify({by:"cole",exported:new Date().toISOString(),moments:out},null,1)],{type:"application/json"});
  const a=document.createElement("a");a.href=URL.createObjectURL(b);a.download="moments_review_"+new Date().toISOString().slice(0,10)+".json";a.click()};
@@ -125,7 +140,7 @@ def main():
     data["kinds"] = KIND
     kinds = "".join(f'<option value="{k}">{v}</option>' for k, v in KIND.items())
     html = (PAGE.replace("__DATA__", json.dumps(data)).replace("__DECK__", json.dumps(blr.DECK))
-            .replace("__LEAD__", str(LEAD)).replace("__TAIL__", str(TAIL)).replace("__KINDS__", kinds))
+            .replace("__MODES__", json.dumps(MODES)).replace("__LEAD__", str(LEAD)).replace("__TAIL__", str(TAIL)).replace("__KINDS__", kinds))
     (out / "index.html").write_text(html)
     print(f"{len(data['moments'])} moments, {len(data['games'])} games -> {out / 'index.html'}")
 

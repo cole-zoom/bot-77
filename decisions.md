@@ -4692,3 +4692,10 @@ Cole: "ok lets do it." The engine ticks 100 ms; the client 50 ms (game code). Th
   play (card, spot, lane, lead) to it didn't change that. With 27 positives and no negatives nothing separates a bad
   push from a fine one: the next step is Cole's yes / no on candidates (the nos are the negatives), then a small
   classifier reranks.
+- **Review round 1** (scripts/build_round.py -> data/reviews/round1_2026-11-02, served at localhost:8794): 150 clips,
+  100 flagged by the mode searches (missed spell 20, pointless push 20, spent the counter 12, wasted spell 12, didn't
+  wait 10, placement 10, didn't defend 10, didn't finish 6; those both searches agree on first) + 50 random plays (the
+  "fine" examples the searches lack), shuffled, none within 5 s of a note Cole already wrote, none blind. The page
+  (build_moment_review.py) now shows the guessed mode and "found by"; Y = the bot made a mistake, N = it played fine,
+  1-8 set the kind of mistake. Pointless push now only covers plays at the bridge or over (y >= 12.5): its hybrid
+  score on his notes went 6/9 -> 4/9 (two of his are plays on our side), traded for guesses that make sense on the page.
