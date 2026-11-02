@@ -121,7 +121,7 @@ class SelfPlayPolicy:
             probs = torch.softmax(logits, -1)[0].tolist()
             entry = {"t": round(st.t, 1), "clock": st.elapsed_s, "elixir": st.elixir, "value": float(value.item()),
                      "slot": slot, "p": [round(p, 3) for p in probs], "blind": list(self.blind),
-                     "hand": list(st.hand)}
+                     "hand": list(st.hand), "hand_read": getattr(st, "hand_read", None)}
             self.log.append(entry)
             units = sim.env.get_units()
             # the full bar: how long we've sat at it

@@ -29,7 +29,8 @@ SHOT_W = 540  # saved frames are halved (review pages, not training)  # screens 
 class Runner:
     def __init__(self, dev, layout, cards: list[dict], detector=None, db_dir: Path = Path("data/lancedb"),
                  max_games: int = 1, max_hours: float = 1.0, unknown_limit_s: float = 240.0, step_s: float = 0.1,
-                 dry_run: bool = False, record: bool = True, log=print, policy_factory=None, fast_reader: bool = False):
+                 dry_run: bool = False, record: bool = True, log=print, policy_factory=None, fast_reader: bool = False,
+                 deck: list[int] | None = None):
         self.dev, self.layout, self.cards, self.detector = dev, layout, cards, detector
         # a new policy per game: Policy (rules + A) by default; the self-play agent with --policy selfplay
         self.policy_factory = policy_factory or (lambda: Policy(self.cards))
@@ -37,6 +38,7 @@ class Runner:
         self.max_games, self.max_hours, self.unknown_limit_s, self.step_s = max_games, max_hours, unknown_limit_s, step_s
         self.dry_run, self.log, self.record = dry_run, log, record
         self.fast_reader = fast_reader
+        self.deck = list(deck) if deck else None  # our 8 cards, fixed (the cycle tracker keeps the hand; bot77.live.cycle)
         self.games, self.actions = [], []
         self.last_nudge = self.last_shot = 0.0
         self.home_since = None  # when the home screen was first seen in a row (tap Battle once it has settled)
@@ -199,9 +201,9 @@ class Runner:
                                    # under nohup / `&` SIGINT is ignored and children inherit that: restore it, or the
                                    # recorder never stops (2026-10-24)
                                    preexec_fn=lambda: signal.signal(signal.SIGINT, signal.SIG_DFL))
-        reader = LiveReader(self.layout, self.cards, self.detector)
+        reader = LiveReader(self.layout, self.cards, self.detector, deck=self.deck)
         reader.fast = self.fast_reader  # decisions every 0.1 s: clock / hand / units cached (bot77.live.state)
-        if len(self.known_deck) == 8:  # our deck from earlier games: read only those 8 cards from the first frame
+        if not self.deck and len(self.known_deck) == 8:  # our deck from earlier games: read only those 8 cards from the first frame
             reader.deck, reader.reader = list(self.known_deck), reader.full.restrict(set(self.known_deck))  # (~1 s -> ~0.1 s)
         return {"id": gid, "t0": t, "reader": reader,
                 "policy": self.policy_factory(), "opp": OpponentTracker(), "n": 0, "rec": rec, "after": [],
@@ -285,6 +287,10 @@ class Runner:
         log = getattr(game["policy"], "log", None)
         if log:
             (GAMES_DIR / game["id"] / "decisions.json").write_text(json.dumps(log))
+        tr = getattr(game["reader"], "tracker", None)
+        if tr is not None:  # the cycle tracker's plays and re-syncs (bot77.live.cycle), for the live check and CI
+            (GAMES_DIR / game["id"] / "cycle.json").write_text(json.dumps(
+                {"deck": tr.deck, "mismatches": tr.mismatches(), "events": [vars(e) for e in tr.events]}))
         g = {"game_id": game["id"], "t_start": game["t0"], "t_end": t, "n_actions": game["n"], "result": game.get("result", "?"),
              "deck": json.dumps(game["reader"].deck, default=int), "opp_plays": len(game["opp"].plays)}
         self._save("bot_games", [g])

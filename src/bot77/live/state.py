@@ -39,6 +39,8 @@ class LiveState:
     multiplier: int
     phase: str | None  # regulation | overtime | None: no clock on screen (not in a battle)
     units: list[Unit] = field(default_factory=list)
+    queue: list[int | None] = field(default_factory=list)  # our cycle after Next (bot77.live.cycle), front first
+    hand_read: list[int | None] | None = None  # what the screen read this frame, before the tracker
 
     @property
     def in_battle(self) -> bool:
@@ -50,11 +52,21 @@ class LiveState:
 
 
 class LiveReader:
-    def __init__(self, layout: Layout, cards: list[dict], detector=None):
+    def __init__(self, layout: Layout, cards: list[dict], detector=None, deck: list[int] | None = None):
+        """`deck`: our 8 cards (2026-11-02). Given, the reader reads against those 8 from the first frame and never
+        relearns them, and the cycle tracker (bot77.live.cycle) keeps the hand: a slot the reader can't make out still
+        holds its card. Without it, the old path: learn the deck from the hand."""
         self.layout, self.cards, self.detector = layout, cards, detector
         self.names = [c["name"] for c in cards]
         self.full = HandReader.from_cards(layout, cards)
         self.reader, self.reads, self.deck = self.full, [], []
+        self.fixed = bool(deck)
+        self.tracker = None
+        if deck:
+            from bot77.live.cycle import CycleTracker
+            cost = {c["id"]: float(c["elixir"]) for c in cards if c["id"] in deck and c.get("elixir") is not None}
+            self.deck, self.reader = list(deck), self.full.restrict(set(deck))
+            self.tracker = CycleTracker(list(deck), cost)
         self.last_hand: list[int | None] = [None] * 4
         self.unknown_since: float | None = None
         self.last_deck: list[int] = []  # the 8-card deck before a reset
@@ -112,13 +124,13 @@ class LiveReader:
         # read again: 52 of run40v4's 80 games had a slot blank for 79 s on average, the agent playing on 3 cards.
         stuck = clock.elapsed_s is not None and n_unknown > (1 if len(self.deck) == 7 else 0)
         self.unknown_since = (self.unknown_since if self.unknown_since is not None else t) if stuck else None
-        if self.deck and self.unknown_since is not None and t - self.unknown_since >= self.RESET_S:
+        if not self.fixed and self.deck and self.unknown_since is not None and t - self.unknown_since >= self.RESET_S:
             # a slot unreadable for RESET_S: a card outside the known deck (swapped in): relearn from all cards
             self.last_deck = self.deck if len(self.deck) == 8 else self.last_deck
             self.deck, self.reader, self.reads = [], self.full, []
             self.unknown_since = None
         fresh = not self.reads or hand is not self.reads[-1][1]  # fast mode hands back the same read while nothing moves
-        if len(self.deck) < 8 and fresh:  # learn our deck from the hand, then read against it only (faster, fewer mistakes)
+        if not self.fixed and len(self.deck) < 8 and fresh:  # learn our deck from the hand, then read against it only (faster, fewer mistakes)
             self.reads.append((t, hand))
             deck = infer_deck([h for _, h in self.reads[-90:]])
             if len(deck) == 8:
@@ -138,9 +150,15 @@ class LiveReader:
         cur = [s.card_id if s and s.state == "card" else (None if s and s.state == "empty" else self.last_hand[k])
                for k, s in enumerate(slots)]
         self.last_hand = cur
-        st = LiveState(t, cur,
-                       nxt.card_id if nxt and nxt.state == "card" else None, el.elixir, clock.time_left_s, clock.elapsed_s,
-                       clock.multiplier or 1, clock.phase)
+        nxt_id = nxt.card_id if nxt and nxt.state == "card" else None
+        hand, queue = cur, []
+        if self.tracker is not None and clock.elapsed_s is not None:
+            sure = [s.card_id if s and s.state == "card" else None for s in slots]
+            self.tracker.update(t, sure, nxt_id, el.elixir)
+            if self.tracker.started:
+                hand, nxt_id, queue = list(self.tracker.hand), self.tracker.next, list(self.tracker.queue[1:])
+        st = LiveState(t, hand, nxt_id, el.elixir, clock.time_left_s, clock.elapsed_s, clock.multiplier or 1,
+                       clock.phase, queue=queue, hand_read=cur)
         if self.detector is not None and st.in_battle:
             if self.fast and self._units and t - self._units[0] < self.DETECT_EVERY:
                 st.units = list(self._units[1])

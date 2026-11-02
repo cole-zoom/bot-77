@@ -30,14 +30,20 @@ ap.add_argument("--full-bar-guard", action="store_true",
                 help="--policy selfplay: temporary band-aid (docs/plan-elixir-spells.md P1): after 3 s at >= 9.8 elixir with "
                      "nothing of theirs on our side, play the model's most likely affordable card instead of waiting; "
                      "logged as 'full-bar guard'")
+ap.add_argument("--deck", default="Giant,Battle Ram,Mini P.E.K.K.A,Mega Minion,Bomber,Goblin Hut,Fireball,Arrows",
+                help="our 8 cards (names): read against these from the first frame, the cycle tracker keeps the hand "
+                     "(bot77.live.cycle); '' to learn the deck from the hand as before")
 a = ap.parse_args()
 STOP_FILE.parent.mkdir(parents=True, exist_ok=True)
 STOP_FILE.unlink(missing_ok=True)
 print(ui.banner(a.device, a.layout, getattr(a, "games", 0) or 999, a.hours), flush=True)
 cards = lancedb.connect("data/lancedb").open_table("cards").search().where("kind = 'deck_card'").limit(1000).to_arrow().to_pylist()
+by_name = {c["name"]: c["id"] for c in cards}
+deck = [by_name[n.strip()] for n in a.deck.split(",")] if a.deck else None
+assert deck is None or len(set(deck)) == 8, f"--deck needs 8 different cards, got {a.deck!r}"
 factory = None
 if a.policy == "selfplay":
     from bot77.live.selfplay import SelfPlayPolicy
     factory = lambda: SelfPlayPolicy(cards, a.ckpt, decision_s=a.decision_s, full_bar_guard=a.full_bar_guard)  # noqa: E731
 Runner(Device(a.device, stream=a.stream), Layout.load(a.layout), cards, Bot77Detector(Path(a.weights)), max_games=a.games,
-       max_hours=a.hours, policy_factory=factory, fast_reader=a.decision_s < 1.0).run()
+       max_hours=a.hours, policy_factory=factory, fast_reader=a.decision_s < 1.0, deck=deck).run()
