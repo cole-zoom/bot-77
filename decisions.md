@@ -4652,3 +4652,23 @@ Cole: "ok lets do it." The engine ticks 100 ms; the client 50 ms (game code). Th
   - **341 moments from 70 games** (8 without a replay): push_through 138, missed_spell 75, tower_lost 56, leaked 51,
     counter_spent 21 (e.g. "spent Mini P.E.K.K.A (on their Minions) at 0:51, their Giant in their hand; their Giant
     came at 0:42 with no counter in our hand (Fireball, Bomber, Arrows, Battle Ram): our right tower -21%").
+
+## 2026-11-02 — Cole's review of 7 losses; the live hand reader locked a card out
+
+- Cole reviewed 7 of the 14 losses (loss_review_2026-11-02.json, kept under data/reviews/, not in the repo): 31
+  moments with a "should have" and a note; he expects the rest to repeat the same mistakes.
+- **His "we just freeze up" (BRit, 0:44) was a live reader bug.** From 0:56 to the end the hand read "Arrows, Battle
+  Ram, ?, Fireball"; the screenshot at 0:23 shows a Giant there and the reader reads it at 0.82 offline (deck reader
+  and full reader alike). The agent wanted the blank slot (p up to 0.66) and a blank slot is a wait, so it sat at 10
+  elixir under attack. Cause: the deck reset and the 7-card fallback counted reads (15 and 90), set at a read a second.
+  At 0.1 s decisions (fast mode, 10-28 on) a card sliding into its slot after a play reset the deck in 1.5 s (the log
+  shows 1.3 s reads from 1:31, the full reader), and the relearned deck was the 7 cards seen in the next ~18 s: the
+  Giant, at the back of the cycle, was left out and could never be read again.
+- Scale: **52 of the 80 run40v4 games had a slot blank 10 s or more, 79 s on average** (about half the game on 3
+  cards); 40% of all decisions had a blank slot. By date: 10-25/26 (the old 7-card art gap) all games, **10-27 none
+  (the 8-2 run, a read a second)**, 10-28 18/57, 10-29 50/61, 10-31 52/80. So every result since 10-28 (school v4's
+  42-38 included) was played mostly with a card missing.
+- Fix (src/bot77/live/state.py): both limits in seconds (RESET_S 15, SEVEN_S 90); fast mode's repeated cached read
+  no longer counts as a read; a relearned 7 that all belong to the deck we had restores that deck. tests/test_live_deck.py
+  (3 cases: a 2 s slide-in keeps the deck, a reset with the Giant cycling brings it back, 30 s of 7 cards doesn't lock
+  in 7): all fail on the old code, pass now. Needs a live run to confirm (blank-slot seconds per game -> ~0).

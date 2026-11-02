@@ -56,7 +56,8 @@ class LiveReader:
         self.full = HandReader.from_cards(layout, cards)
         self.reader, self.reads, self.deck = self.full, [], []
         self.last_hand: list[int | None] = [None] * 4
-        self.unknown_streak = 0
+        self.unknown_since: float | None = None
+        self.last_deck: list[int] = []  # the 8-card deck before a reset
         # Fast mode (2026-10-28, decisions every 0.1 s): the clock is read at most every CLOCK_EVERY s and counted
         # forward in between (it is real time); the hand only when its pixels change; units every DETECT_EVERY s
         # (the replays the agent learned from had units 4 times a second). Off by default (fast = False).
@@ -73,6 +74,8 @@ class LiveReader:
 
     CLOCK_EVERY = 0.5
     DETECT_EVERY = 0.2
+    RESET_S = 15.0  # a slot unreadable this long: relearn the deck
+    SEVEN_S = 90.0  # reads this long showing only 7 cards: play on 7
 
     def _read_clock(self, frame: np.ndarray, t: float) -> ClockRead:
         if self.fast and self._clock and t - self._clock[0] < self.CLOCK_EVERY and self._clock[1].elapsed_s is not None:
@@ -103,20 +106,30 @@ class LiveReader:
         # with a 7-card deck (one card the reader has no art for, 2026-10-25) one unreadable slot is expected
         # only in battle (the clock reads): the hand leaves the screen at the end, and that wiped the learned deck
         # before the next game could start from it (2026-10-27)
+        # Both limits in seconds, not reads (2026-11-02): they were 15 and 90 reads, set at a read a second. At 0.1 s
+        # decisions 15 reads was 1.5 s, so a card still sliding into its slot reset the deck; and 90 reads was 9 s,
+        # so the relearned deck was the 7 cards seen in 9 s and the 8th (at the back of the cycle) could never be
+        # read again: 52 of run40v4's 80 games had a slot blank for 79 s on average, the agent playing on 3 cards.
         stuck = clock.elapsed_s is not None and n_unknown > (1 if len(self.deck) == 7 else 0)
-        self.unknown_streak = self.unknown_streak + 1 if stuck else 0
-        if self.deck and self.unknown_streak >= 15:  # a slot unreadable for ~15 reads: a card outside the known
-            self.deck, self.reader, self.reads = [], self.full, []  # deck (swapped in): relearn from all cards
-            self.unknown_streak = 0
-        if len(self.deck) < 8:  # learn our deck from the hand, then read against it only (faster, fewer mistakes)
-            self.reads.append(hand)
-            deck = infer_deck(self.reads[-90:])
+        self.unknown_since = (self.unknown_since if self.unknown_since is not None else t) if stuck else None
+        if self.deck and self.unknown_since is not None and t - self.unknown_since >= self.RESET_S:
+            # a slot unreadable for RESET_S: a card outside the known deck (swapped in): relearn from all cards
+            self.last_deck = self.deck if len(self.deck) == 8 else self.last_deck
+            self.deck, self.reader, self.reads = [], self.full, []
+            self.unknown_since = None
+        fresh = not self.reads or hand is not self.reads[-1][1]  # fast mode hands back the same read while nothing moves
+        if len(self.deck) < 8 and fresh:  # learn our deck from the hand, then read against it only (faster, fewer mistakes)
+            self.reads.append((t, hand))
+            deck = infer_deck([h for _, h in self.reads[-90:]])
             if len(deck) == 8:
                 self.deck, self.reader = deck, self.full.restrict(set(deck))
-            elif len(deck) == 7 and len(self.reads) >= 90 and not self.deck:
-                # 90 reads and only 7 cards: the 8th has no art here. Read against the 7 (the full set took 1.2 s a
-                # read and slowed the agent to a decision every ~4.5 s); the 8th stays unknown. (30 reads was too
-                # few at a read a second: a card at the back of the cycle hadn't shown yet, 2026-10-27)
+            elif len(deck) == 7 and set(deck) <= set(self.last_deck):
+                # the 7 seen all belong to the deck we had: no swap, the reset was a misread. That deck again
+                self.deck, self.reader = list(self.last_deck), self.full.restrict(set(self.last_deck))
+            elif len(deck) == 7 and t - self.reads[0][0] >= self.SEVEN_S and not self.deck:
+                # SEVEN_S of reads and only 7 cards: the 8th has no art here. Read against the 7 (the full set took
+                # 1.2 s a read and slowed the agent to a decision every ~4.5 s); the 8th stays unknown. (30 reads was
+                # too few at a read a second: a card at the back of the cycle hadn't shown yet, 2026-10-27)
                 self.deck, self.reader = deck, self.full.restrict(set(deck))
         slots = [hand.get(f"slot{k}") for k in range(1, 5)]
         nxt = hand.get("next")
