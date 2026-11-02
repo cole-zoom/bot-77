@@ -62,6 +62,7 @@ class LiveReader:
         self.reader, self.reads, self.deck = self.full, [], []
         self.fixed = bool(deck)
         self.tracker = None
+        self.in_transit: dict[int, float] = {}  # slot -> when the bot tapped it (played())
         if deck:
             from bot77.live.cycle import CycleTracker
             cost = {c["id"]: float(c["elixir"]) for c in cards if c["id"] in deck and c.get("elixir") is not None}
@@ -78,6 +79,10 @@ class LiveReader:
         self._hand: tuple[np.ndarray, dict] | None = None
         self._units: tuple[float, list] | None = None
 
+    def played(self, slot: int, t: float) -> None:
+        """The bot tapped this slot (the loop, after deploy)."""
+        self.in_transit[slot] = t
+
     def tile_px(self, frame_w: int) -> tuple[float, float, float]:
         """(tile size, arena x0, arena y0) in frame pixels."""
         s = self.layout.scale(frame_w)
@@ -86,6 +91,7 @@ class LiveReader:
 
     CLOCK_EVERY = 0.5
     DETECT_EVERY = 0.2
+    IN_TRANSIT_S = 2.5  # after the bot taps a slot: not playable until the tracker sees the play, or this long
     RESET_S = 15.0  # a slot unreadable this long: relearn the deck
     SEVEN_S = 90.0  # reads this long showing only 7 cards: play on 7
 
@@ -157,6 +163,15 @@ class LiveReader:
             self.tracker.update(t, sure, nxt_id, el.elixir)
             if self.tracker.started:
                 hand, nxt_id, queue = list(self.tracker.hand), self.tracker.next, list(self.tracker.queue[1:])
+                # a slot the bot just played from shows its old card until the new one has slid in (~1.4 s): it read
+                # as playable and the bot tapped it again (run20cyc game 1: Goblin Hut three times in 2 s). Blank
+                # until the tracker sees that slot's play, or IN_TRANSIT_S (a tap that didn't land: playable again)
+                for k, t0 in list(self.in_transit.items()):
+                    done = any(e.kind == "play" and e.slot == k and e.t >= t0 for e in self.tracker.events[-8:])
+                    if done or t - t0 > self.IN_TRANSIT_S:
+                        del self.in_transit[k]
+                    else:
+                        hand[k] = None
         st = LiveState(t, hand, nxt_id, el.elixir, clock.time_left_s, clock.elapsed_s, clock.multiplier or 1,
                        clock.phase, queue=queue, hand_read=cur)
         if self.detector is not None and st.in_battle:

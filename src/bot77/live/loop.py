@@ -26,6 +26,9 @@ GAMES_DIR = Path("data/raw/live_games")  # per game: screen recording + a frame 
 SHOT_W = 540  # saved frames are halved (review pages, not training)  # screens met between games (gitignored), for new rules
 
 
+STALE_FRAME_S = 1.0  # in battle, no new frame for this long: the stream is frozen, don't decide on it
+
+
 class Runner:
     def __init__(self, dev, layout, cards: list[dict], detector=None, db_dir: Path = Path("data/lancedb"),
                  max_games: int = 1, max_hours: float = 1.0, unknown_limit_s: float = 240.0, step_s: float = 0.1,
@@ -248,12 +251,22 @@ class Runner:
             self.log(ui.game_start(game["num"], game["opp_name"]))
         if st.t - game["last_status"] >= 10:
             self.log(ui.status_line(st, self.names)); game["last_status"] = st.t
+        stream = getattr(self.dev, "stream", None)
+        if stream is not None and time.time() - stream.t_frame > STALE_FRAME_S:
+            # the stream stalled (run20cyc game 1: 27 s on one frame at the start, the bot "playing" six cards on it;
+            # in battle the screen changes every frame, so an old frame is a frozen picture): no decisions on it
+            if not game.get("stale_logged"):
+                self.log(ui.c(f"  stream frozen ({time.time() - stream.t_frame:.0f} s): not deciding on a stale frame", "yellow"))
+                game["stale_logged"] = True
+            return
+        game["stale_logged"] = False
         act = game["policy"].decide(st, game["opp"].plays)
         if act is None:
             return
         k = game["n"]
         shot = self._shot(game, im, f"{k:03d}_at.jpg")
         taps = deploy(self.dev, self.layout, game["reader"], act, im.shape)
+        game["reader"].played(act.slot, st.t)
         game["after"].append((k, st.t + 2.0))
         game["policy"].record_own(st.t, act.card)
         game["n"] += 1

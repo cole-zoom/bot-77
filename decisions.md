@@ -4734,3 +4734,14 @@ Cole: "ok lets do it." The engine ticks 100 ms; the client 50 ms (game code). Th
   tracked, 20 seen in the replay, 23 taps).
 - Live check started: run20cyc, 20 games, school v4 epoch 3 (BOT77_FLAT_OPP_CYCLE=1 as in run40v4c), so the only
   change is the hand path. Per game: cycle.json (plays, re-syncs) and decisions.json (hand vs hand_read).
+- **run20cyc stopped after 2 games (1-1) to fix two things it showed:**
+  - The bot tapped a slot again while its next card slid in (Goblin Hut three times in 2 s): the tracker keeps the
+    old card until the new one is confirmed (~1.4 s). Now a slot the bot tapped is not playable until the tracker sees
+    that slot's play, or 2.5 s (a tap that didn't land). The bot's taps only block a slot, they never move the tracker.
+  - Game 1: the screen stream froze 27 s at the start (clock stuck at 0:06, elixir 8.25); the bot decided on the frozen
+    frame and two of its taps landed unseen; when the picture came back the tracker re-synced at once (its 3 re-syncs).
+    Now no decisions while the newest frame is over 1 s old (STALE_FRAME_S).
+  - Also: Next changes the instant a card is played, ~1 s before the old Next settles in its slot, so any new Next
+    now waits up to 3 s for the slots before it counts as a mismatch (it re-synced a correct queue in a test).
+  - Otherwise: decisions with a blank slot 231 / 149 by the reader alone -> 1 / 0 tracked; game 2 0 re-syncs, 4 chained
+    plays. Restarted as run20cyc2.

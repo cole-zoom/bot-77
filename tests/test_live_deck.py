@@ -73,3 +73,28 @@ def test_seven_card_deck_needs_90_seconds(cards):
              (28000001, 26000036, 27000001, 28000000, 26000018)]
     run(r, lambda t: cycle[int(t) % 3], 0.0, 30.0)  # 300 reads, 30 s: the old code locked 7 cards in after 90 reads
     assert r.deck == []
+
+
+def test_a_slot_just_played_is_not_playable_until_the_play_shows(cards):
+    """run20cyc game 1: the tracker kept the Goblin Hut in its slot while the next card slid in, and the bot tapped it
+    three times in 2 s. After a tap the slot is blank until the tracker sees that slot's play, or 2.5 s pass."""
+    r = LiveReader(Layout.load("bluestacks_live"), cards, deck=DECK)
+    r.fast = True
+    r._read_clock = lambda frame, t: ClockRead("regulation", int(180 - t), 1, int(t))
+    import bot77.live.state as S
+    el = {"v": 8.0}
+    S.read_elixir = lambda frame, layout: type("E", (), {"elixir": el["v"]})()
+    hand0 = (DECK[0], DECK[1], DECK[2], DECK[3], DECK[4])
+    run(r, lambda t: hand0, 0.0, 1.0)
+    assert r.tracker.started
+    r.played(0, 1.0)
+    el["v"] = 3.0  # the Giant (5) left the bar
+    st = run(r, lambda t: ("u", DECK[1], DECK[2], DECK[3], DECK[5]), 1.0, 2.0)  # slot 1 sliding: unreadable
+    assert st.hand[0] is None  # in transit: not playable
+    st = run(r, lambda t: (DECK[4], DECK[1], DECK[2], DECK[3], DECK[5]), 2.0, 2.5)  # the Bomber (Next) settles
+    assert st.hand[0] == DECK[4]
+    r.played(1, 2.5)  # a tap that doesn't land: nothing changes on screen
+    st = run(r, lambda t: (DECK[4], DECK[1], DECK[2], DECK[3], DECK[5]), 2.5, 4.0)
+    assert st.hand[1] is None
+    st = run(r, lambda t: (DECK[4], DECK[1], DECK[2], DECK[3], DECK[5]), 4.0, 5.2)
+    assert st.hand[1] == DECK[1]  # after 2.5 s it's playable again

@@ -163,9 +163,10 @@ class CycleTracker:
             self._fill_last_unknown()
             self.events.append(Event(t, "next_learned", new=nxt))
             self._next_seen = None
-        elif held >= (NEXT_AHEAD_HOLD_S if nxt in self.queue[1:] else OVERRIDE_HOLD_S) - 1e-9:
-            # Next showing a card further back in the queue is a play the slots haven't shown yet (a card sliding
-            # in): the slot settles and chains it; only if nothing settles for NEXT_AHEAD_HOLD_S is it a mismatch
+        elif held >= NEXT_AHEAD_HOLD_S - 1e-9:
+            # Next changes the moment a card is played, ~1 s before the old Next has slid into its slot, so a new Next
+            # is a play the slots haven't shown yet: the slot settles and plays (or chains) it. Only if nothing
+            # settles for NEXT_AHEAD_HOLD_S is it a mismatch
             old = self.queue[0]
             self.queue = [nxt] + [None if q == nxt else q for q in self.queue[1:]]
             self._fill_last_unknown()
