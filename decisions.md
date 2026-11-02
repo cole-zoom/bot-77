@@ -4745,3 +4745,16 @@ Cole: "ok lets do it." The engine ticks 100 ms; the client 50 ms (game code). Th
     now waits up to 3 s for the slots before it counts as a mismatch (it re-synced a correct queue in a test).
   - Otherwise: decisions with a blank slot 231 / 149 by the reader alone -> 1 / 0 tracked; game 2 0 re-syncs, 4 chained
     plays. Restarted as run20cyc2.
+- **run20cyc2: 5-15 over 20 games** (school v4 epoch 3, same model; Cole: the account is higher in trophies now, so
+  bad plays cost more; the record isn't comparable to run40v4's 42-38 on its own). The hand path held up:
+  - re-syncs 0 in all 20 games; no "stream frozen" lines.
+  - a tapped slot stays blank 1.6-2.3 s (median per game), about the slide-in time; the longest single stretch 7.2 s.
+  - the bot almost never wanted a blocked slot: 0-3 decisions a game with 7+ elixir chose one.
+  - time at a full bar 2% of decisions (run40v4, 10-31: 5%); at 7+ elixir 19% (14%).
+  - same card tapped twice within 2 s: 5 times in 20 games, 3 of them in the opening freeze below.
+- **6 of 20 games opened with a ~27 s freeze** (games 5, 8, 11, 13, 17, 19; went 1-5): the game clock sat at 0:04 for
+  26-28 s and then jumped to 0:31-0:35. Game 13's recording shows Clash's "Please wait a moment" and the same 2:56 for
+  15 s, and the opponent had a tower and most of our king's HP by 2:26. Frames kept arriving, so this is the client
+  stalling, not the stream: STALE_FRAME_S never fires (run20cyc game 1's freeze was the same thing). The 3 shortest
+  losses (0.7-1.0 min) are these. Clock jumps over 10 s by day: 10-27 12/67 games, 10-28 5/57, 10-29 0/61,
+  10-31 0/80, 11-02 7/22. Without them: 4-10.
