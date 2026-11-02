@@ -4707,3 +4707,17 @@ Cole: "ok lets do it." The engine ticks 100 ms; the client 50 ms (game code). Th
   move is. Y / N gives the right move only when "should have" is filled (16 of 102). His notes again put spells
   first: "we Need to arrows here. this is the biggest thing we need to train on"; "always the barbarians we don't do
   anything about"; defending too late. 4 fine examples to 50+26 mistakes.
+- **How accurate is the hand reader (2026-11-02, Cole: "has it gotten any card wrong before?")**, checked against the
+  cycle rules, no hand labels needed:
+  - Live, run40v4's 80 games (85,293 decision reads, 302,844 slot reads): a card in two slots at once 0 times;
+    a slot flicking A->B->A within 2 s 2 times. In the 24 games the lock-out bug didn't touch, 360 of 375 plays (96%)
+    brought in exactly the card played 4 plays before; the 15 misses are runs in 2 games (one slipped play
+    cascading), not 15 misreads. Over all 80 it reads 78%, because a locked-out card's plays never show.
+  - Replays (70 games, both sides, hand + Next every 0.1 s): of 3,234 cards entering a hand, 98.9% (ours) and 99.8%
+    (theirs) were the Next shown just before. Of the 20 that weren't, several are the opening deal; the rest (e.g.
+    a Fireball "arriving" in slot 3) are the candidate misreads, ~0.5% of arrivals. Unread: 13.8% / 7.2% of slot
+    reads, mostly cards mid-animation.
+  - Read: when it names a card it is nearly always right; its weakness is being unsure, not being wrong. That
+    supports reader = eyes, tracker = memory: the tracker covers the unsure frames, and requiring two agreeing
+    confident reads before a read overrides the tracker covers the ~0.5%. It also confirms Cole's premise: the cycle
+    is deterministic (the card coming in is the one played 4 plays earlier) on every play the reads can check.
