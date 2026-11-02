@@ -4758,3 +4758,7 @@ Cole: "ok lets do it." The engine ticks 100 ms; the client 50 ms (game code). Th
   stalling, not the stream: STALE_FRAME_S never fires (run20cyc game 1's freeze was the same thing). The 3 shortest
   losses (0.7-1.0 min) are these. Clock jumps over 10 s by day: 10-27 12/67 games, 10-28 5/57, 10-29 0/61,
   10-31 0/80, 11-02 7/22. Without them: 4-10.
+- **run20cyc2 review page for Cole** (all 20 games, same layout as the 10-31 loss review): data/reviews/
+  games_run20cyc2_2026-11-02/index.html, served at http://localhost:8795. All 20 have both videos; game 15's replay
+  (opponent "euan", logged by the bot as "Nena") matched by order between its neighbours'. Video sync now takes the
+  most common timer reading over 7 frames (latest on a tie), so the 6 stall games sync after the stall.
