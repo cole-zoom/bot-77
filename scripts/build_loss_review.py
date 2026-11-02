@@ -27,7 +27,7 @@ ROOT = Path(__file__).resolve().parents[1]
 LIVE = ROOT / "data/live"
 GAMES = ROOT / "data/raw/live_games"
 REPLAYS = ROOT / "data/raw/replays"
-TIMER_AT = (20, 30, 40, 50)  # s into a video where its "Time left" timer is read (offset_of)
+TIMER_AT = (20, 30, 40, 50, 60, 75, 90)  # s into a video where its "Time left" timer is read (offset_of)
 DECK = ["Giant", "Battle Ram", "Mini P.E.K.K.A", "Mega Minion", "Bomber", "Goblin Hut", "Fireball", "Arrows"]
 
 
@@ -107,18 +107,32 @@ def match_replays(games: list[dict], texts: dict[Path, list[str]]) -> None:
         games[i]["_replay"], games[i]["_replay_score"] = mp4, round(score, 2)
         used_g.add(i)
         used_r.add(mp4)
+    # a name the bot misread (run20cyc2 game 15: "Nena" for euan): the replay between its neighbours' (replay_NN is
+    # newest first), when both neighbours matched and that replay is unused
+    num = {mp4: int(m.group(1)) for mp4 in texts if (m := re.search(r"replay_(\d+)", mp4.name))}
+    by_num = {n: mp4 for mp4, n in num.items()}
+    for i, g in enumerate(games):
+        if "_replay" in g or not 0 < i < len(games) - 1:
+            continue
+        a, b = games[i - 1].get("_replay"), games[i + 1].get("_replay")
+        if a in num and b in num and num[a] - num[b] == 2 and by_num.get(num[a] - 1) not in used_r | {None}:
+            g["_replay"], g["_replay_score"] = by_num[num[a] - 1], "by order"
+            used_r.add(g["_replay"])
 
 
 def offset_of(video: Path) -> float | None:
     """Game time minus video time, from the "Time left m:ss" timer (top right: the top 10% in the bot's recording, 13-18%
-    in a Battle Log replay, under the opponent's name) in frames at TIMER_AT seconds (the
-    median; whole seconds, so +-0.5 s). None if the timer never reads."""
+    in a Battle Log replay, under the opponent's name) in frames at TIMER_AT seconds (whole seconds, so +-0.5 s). None
+    if the timer never reads. The most common reading, the latest on a tie: a game that opens with the client stalled
+    (run20cyc2: the timer stuck at 2:56 for ~27 s, then jumping) reads short in its first frames, and its plays after
+    the stall need the offset after it."""
     import io
-    import statistics
     from ocrmac import ocrmac
     from PIL import Image
     got = []
-    for vt in TIMER_AT:
+    dur = float(subprocess.run(["ffprobe", "-v", "error", "-show_entries", "format=duration", "-of", "csv=p=0", str(video)],
+                               capture_output=True, text=True).stdout.strip() or 0)
+    for vt in [v for v in TIMER_AT if v < dur - 2] or [max(1.0, dur / 2)]:
         png = subprocess.run(["ffmpeg", "-loglevel", "error", "-ss", str(vt), "-i", str(video), "-frames:v", "1",
                               "-f", "image2pipe", "-vcodec", "png", "-"], capture_output=True).stdout
         if not png:
@@ -130,7 +144,12 @@ def offset_of(video: Path) -> float | None:
             if m:
                 got.append(180 - (int(m.group(1)) * 60 + int(m.group(2))) - vt)
                 break
-    return float(statistics.median(got)) if got else None
+    if not got:
+        return None
+    count = {}
+    for g in got:
+        count[g] = count.get(g, 0) + 1
+    return float(max(reversed(got), key=lambda g: count[g]))
 
 
 def norm(s: str) -> str:
