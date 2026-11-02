@@ -4672,3 +4672,10 @@ Cole: "ok lets do it." The engine ticks 100 ms; the client 50 ms (game code). Th
   no longer counts as a read; a relearned 7 that all belong to the deck we had restores that deck. tests/test_live_deck.py
   (3 cases: a 2 s slide-in keeps the deck, a reset with the Giant cycling brings it back, 30 s of 7 cards doesn't lock
   in 7): all fail on the old code, pass now. Needs a live run to confirm (blank-slot seconds per game -> ~0).
+- **Failure modes** (scripts/failure_modes.py): Cole's 31 notes sorted into 8 modes, by main mode: pointless push 9,
+  missed spell 8, wasted spell 4, didn't defend / kite 4, spent the counter 2, didn't finish 2, didn't wait 1,
+  placement 1 (+ second modes). Detectors for each added to scripts/mine_moments.py (missed_spell widened to the
+  bridge, Arrows from 3.5 elixir: the old one found 1 of his 8). Re-mined the 80 games: 748 moments, 258 of them while
+  the reader had a card locked out (flagged `blind`). Recall vs his notes, a hit of the same mode within 5 s: 9 of 31
+  (missed spell 3/8, pointless push 1/10, didn't wait 2/2, didn't defend 2/5, wasted spell 1/4, others 0); 4 of his
+  notes are in a game with no replay (ivan asef). Not good enough to hand him as "these are the mistakes" yet.
