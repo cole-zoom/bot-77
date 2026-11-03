@@ -28,6 +28,11 @@ expected plays in the second around the script's against 1.3 elsewhere), and the
 earlier ticks can't make it play twice: once played, the card leaves the hand and the elixir drops. --timing reports
 that measure on a fixed sample of demos after each epoch.
 
+--reviews data/cache/bc/review_v1 (2026-11-03, school v5; scripts/build_review_demos.py): Cole's review answers on
+the bot's own games, every row unlabelled but his answer's, --review-share of every batch. A quarter of the games
+(REVIEW_HOLDOUT, by game id) are only scored: the mean chance the network gives his answer there, and at the
+training ones, after each epoch (before wait calibration, so "wait" reads low on both).
+
 Scores (held-back): card at plays (which of the 4 hand cards, given a play happened; A v3 got ~51%), play-vs-wait AUC,
 placement (the cell the pro used, and the distance in tiles to it).
 """
@@ -60,6 +65,45 @@ _CACHE: dict = {}
 
 
 LEAD = 0  # --lead
+REVIEW_HOLDOUT = 4  # every 4th game (by a hash of its id) of the review answers is only scored
+
+
+def load_reviews(path: Path) -> tuple[list[dict], list[dict]]:
+    import zlib
+    tr, ho = [], []
+    for f in sorted(path.glob("review_*.npz")):
+        d = np.load(f)
+        gid = f.stem.split("_", 1)[1].rsplit("_", 2)[0]
+        e = {"file": str(f), "n": len(d["card"]), "split": "train", "w": float(d["weight"][0]), "result": None,
+             "src": "review", "tpl": "review", "score": 0.0, "game": gid}
+        (ho if zlib.crc32(gid.encode()) % REVIEW_HOLDOUT == 0 else tr).append(e)
+    return tr, ho
+
+
+@torch.no_grad()
+def review_score(net, eps, device) -> dict:
+    """The network's chance of Cole's answer at his labelled ticks (episodes from their first step), wait and card."""
+    p_wait, p_card, held = [], [], []  # held: the chance of no play at all over an answer's wait ticks (10 = 1 s)
+    for ep in eps:
+        d = np.load(ep["file"])
+        obs = torch.tensor(d["obs"].astype(np.float32), device=device).unsqueeze(1)
+        card = torch.tensor(d["card"], device=device).unsqueeze(1)
+        L = obs.shape[0]
+        _, _, (cl, _, rows, _) = sequence_loss(net, obs, card, torch.full_like(card, -1),
+                                              torch.ones(L, 1, dtype=torch.bool, device=device),
+                                              torch.ones(L, 1, device=device))
+        pr = torch.softmax(cl, -1)
+        waits = []
+        for i in torch.where(rows[:, 0])[0].tolist():
+            c = int(card[i, 0])
+            (p_wait if c == net.hand_size else p_card).append(float(pr[i, 0, c]))
+            if c == net.hand_size:
+                waits.append(float(pr[i, 0, c]))
+        if waits:
+            held.append(float(np.prod(waits)))
+    return {"n": len(eps), "p_wait_at_wait": round(float(np.mean(p_wait)), 3) if p_wait else None,
+            "p_card_at_card": round(float(np.mean(p_card)), 3) if p_card else None,
+            "p_waits_whole_second": round(float(np.mean(held)), 3) if held else None}
 
 
 def lead_labels(card, cell, k):
@@ -256,6 +300,8 @@ def main():
                     help="school v3 (docs/plan-elixir-spells.md P4): this share of the demo windows from the tempo "
                          "templates' episodes (bot77.rl.situations.TEMPO_TEMPLATES), the rest from the defence ones; "
                          "default: uniform over all demo episodes")
+    ap.add_argument("--reviews", default=None, help="Cole's review answers (scripts/build_review_demos.py)")
+    ap.add_argument("--review-share", type=float, default=0.125, help="share of every batch drawn from --reviews")
     a = ap.parse_args()
     LEAD = a.lead
     SHARDS, WINDOW, BURN_IN, PLAY_WEIGHT = Path(a.shards), a.window, a.burn_in, a.play_weight
@@ -284,6 +330,11 @@ def main():
     if demos:
         print(f"demos: {len(demos)} episodes ({sum(e['n'] for e in demos)} decisions; "
               f"{sum(e['src'] == 'cole' for e in demos)} of Cole's), {n_demo} of every {BATCH} windows", flush=True)
+    reviews, review_ho = load_reviews(Path(a.reviews)) if a.reviews else ([], [])
+    n_review = int(round(BATCH * a.review_share)) if reviews else 0
+    if reviews:
+        print(f"reviews: {len(reviews)} answers to train on, {len(review_ho)} held out (by game); {n_review} of every "
+              f"{BATCH} windows", flush=True)
     net = MicroRoyaleNet().to(device)
     if a.init:
         net.load_state_dict(torch.load(a.init, map_location=device, weights_only=False)["model"])
@@ -294,13 +345,17 @@ def main():
     print("held-back before training:", evaluate(net, held, device, a.eval_eps), flush=True)
     if probe:
         print("demo timing before training:", timing(net, probe, device), flush=True)
+    if reviews:
+        print("reviews before training:", {"train": review_score(net, reviews, device),
+                                           "held_out": review_score(net, review_ho, device)}, flush=True)
     history, best = [], -1e9
     for epoch in range(a.epochs):
         t0 = time.time()
         steps = a.steps_per_epoch or max(1, len(train) // BATCH)
         lc = lp = 0.0
         for s in range(steps):
-            batch = [train[i] for i in rng.choice(len(train), BATCH - n_demo, replace=False)]
+            batch = [train[i] for i in rng.choice(len(train), BATCH - n_demo - n_review, replace=False)]
+            batch += [reviews[i] for i in rng.choice(len(reviews), n_review, replace=False)] if n_review else []
             if n_demo and tempo_eps:
                 k = int(rng.binomial(n_demo, a.tempo_share))
                 batch += [tempo_eps[i] for i in rng.choice(len(tempo_eps), k, replace=False)]
@@ -318,11 +373,13 @@ def main():
         ev = evaluate(net, held, device, a.eval_eps)
         if probe:
             ev["timing"] = timing(net, probe, device)
+        if reviews:
+            ev["reviews"] = {"train": review_score(net, reviews, device), "held_out": review_score(net, review_ho, device)}
         history.append({"epoch": epoch, "card_loss": lc / steps, "cell_loss": lp / steps, **ev})
         print(f"epoch {epoch}: card loss {lc / steps:.3f}, cell loss {lp / steps:.3f}, held-back {ev} "
               f"({time.time() - t0:.0f} s)", flush=True)
         torch.save({"model": net.state_dict(), "bc_epoch": epoch, "bc_history": history}, out / "last.pth")
-        if demos:  # the defence school is judged by the situation exam, so every epoch is kept for it
+        if demos or reviews:  # the defence school is judged by the situation exam, so every epoch is kept for it
             torch.save({"model": net.state_dict(), "bc_epoch": epoch}, out / f"epoch{epoch:02d}.pth")
         # the best held-back checkpoint (card at plays + play/wait AUC - cell distance / 20): placement over-fits
         # after ~70 epochs (v3: train cell loss falling, held-back distance rising)
