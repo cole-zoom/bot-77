@@ -4777,3 +4777,34 @@ Cole: "ok lets do it." The engine ticks 100 ms; the client 50 ms (game code). Th
 - Cole's labels so far: 41 moments over 10 losses (31 on 11-02, 10 today), 16 "should haves" in round 1's 102 marks,
   his 23 full tempo games and the play-page situations. None of the review notes are training data yet: the
   imitation data reads only replay_tv / replay_bl, and nothing turns a note into a demo.
+
+## 2026-11-03 · School v5 step 1: Cole's answers as training data; the wait-nudge test
+
+- **scripts/build_review_demos.py -> data/cache/bc/review_v1** (gitignored). One episode per answer on the bot's own
+  game, from its Battle Log replay, mirrored exactly as the pro data (build_bc_dataset), 0.1 s, 24 s of context.
+  Every row is unlabelled except Cole's answer, so the bot's own plays never become labels:
+  - "wait": the 1 s up to the bot's play nearest the note.
+  - a card: 0.3 s at that point, wherever it's in the hand. Arrows / Fireball get the spot that wins the most elixir
+    (best_spell); a troop gets no cell (card loss only).
+  - round 1 "no" (Cole: the bot's play was right): that play, card and cell.
+- **First pass: 56 of 143 answers kept** (22 confirmed plays, 20 cards, 14 waits). Dropped:
+  - 64 had no answer (round-1 "yes" with no "should").
+  - 9 are on 11-02 games whose replays are still ingesting (chain started 22:2x, data/logs/ingest_2026-11-02.log).
+  - 6 named a card that wasn't in the hand at that point.
+  - 4 are the game vs ivan asef, which has no replay.
+  - 4 had no bot play near a "confirmed" moment, or no labelled tick.
+- **train_bc.py --reviews / --review-share** (default 2 of 16 windows). Every 4th game is held out (by a hash of its id)
+  and scored after each epoch: the chance of Cole's answer at his ticks, and for a wait the chance of no play
+  through the whole second.
+- **v4 epoch 3 on all 56 answers** (chance it holds the whole second at Cole's waits; per-tick card chance):
+
+  | Checkpoint | Holds the whole second | Card chance per tick |
+  |---|---|---|
+  | uncalibrated | 3% | 0.14 |
+  | live cal20 | 60% | 0.034 |
+  | cal80 | 83% | 0.012 |
+
+  So the live bot plays through 4 of 10 of the seconds Cole said to wait. More nudge trades that for his card answers.
+- **Wait-nudge head-to-head** (scripts/match_eval.py, 300 games, seeds 20,000+): cal40 vs cal20 won **54.3%** (+-5.6%), not
+  a clear difference. cal80 and cal160 are still running. A caveat on all of these: the sim opponent is the same
+  model, which doesn't punish overplaying the way the ladder does.
