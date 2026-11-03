@@ -4857,3 +4857,14 @@ Cole: "ok lets do it." The engine ticks 100 ms; the client 50 ms (game code). Th
   a win; that mid-battle game 3 is abandoned and excluded). Started **run20v5raw**: 20 games, v5 epoch 3
   uncalibrated (no wait nudge; on Cole's answers it held 2-4% of the seconds he said wait, so expect it to play
   much more often). Same setup otherwise; log data/logs/run20v5raw.log.
+- **run20v5raw (v5 e3, no wait nudge), first 15 games: 8-7**; 4 of them opened with the ~27 s freeze (1-3), so
+  **7-4 without freezes**. Chunk 1 then stopped on an unrecognised screen between games (Cole's laptop was closed,
+  09:2x), and its replay runner couldn't reach the Battle Log ("couldn't reach the list"): no Battle Log replays for
+  these 15 yet. Chunk 2 (5 games) started 11:24.
+  - It plays far more: 28.7 plays a game that the screen confirmed (run20cyc2, v4 cal20: 16.5); 94 play decisions a
+    game (26), most of them at cards it can't afford yet.
+  - It never leaks: 0.8 s a game at a full bar (v4 cal20 1.8 s, v5 cal40 32.4 s); at 7+ elixir 6% of decisions
+    (13%, 41%); under 2 elixir 23% (19%, 3.5%).
+  - So on Cole's read, the nudge was hurting: the same model at no nudge is 7-4 against 6-13 at log 40 (different
+    hours, about the same trophies; small samples). Cole's 6 "wait" notes say it overplays in spots, and this is the
+    most overplaying model yet, so its losses are where to look next.
