@@ -4852,3 +4852,8 @@ Cole: "ok lets do it." The engine ticks 100 ms; the client 50 ms (game code). Th
   or the same leak count in the sim for v4 / v5 at cal20 / cal40 first.
 - Cole: "ok. so run at the usual nudge". Live check started: **run20v5cal20**, 20 games, v5 e3 cal20, same setup;
   log data/logs/run20v5cal20.log.
+- Cole (after 2 games of run20v5cal20): "stop the current model, it sucks. I think we should run it without the nudge
+  for a real test, I think the nudge hurts it". Stopped run20v5cal20 at game 3, mid-battle (games 1-2 logged: game 1
+  a win; that mid-battle game 3 is abandoned and excluded). Started **run20v5raw**: 20 games, v5 epoch 3
+  uncalibrated (no wait nudge; on Cole's answers it held 2-4% of the seconds he said wait, so expect it to play
+  much more often). Same setup otherwise; log data/logs/run20v5raw.log.
