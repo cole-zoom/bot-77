@@ -4810,3 +4810,7 @@ Cole: "ok lets do it." The engine ticks 100 ms; the client 50 ms (game code). Th
   the sim past log 40, and a lot more loses badly. The sim opponent is the same model, which doesn't punish
   overplaying the way the ladder does, so this only bounds the nudge from above: up to log 40-80 doesn't cost games
   in the sim.
+- **11-02 replays ingested** (chain done 23:59; pair_bot_replays: 252 of 303 bot replays paired). Rebuilt review_v1:
+  **65 of 143 kept**; all 9 answers from Cole's 11-03 review of games 1-3 are in (6 waits, Goblin Hut x2, Arrows,
+  Mega Minion). The one unkept 11-03 moment has no answer. Training v5 on the v4 recipe plus `--reviews
+  data/cache/bc/review_v1` -> data/models/bc_school_v5 (log data/logs/train_school_v5.log).
