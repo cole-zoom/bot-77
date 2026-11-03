@@ -4835,3 +4835,8 @@ Cole: "ok lets do it." The engine ticks 100 ms; the client 50 ms (game code). Th
   182 s. The same as v4 cal40 vs cal20 (54%), so it passes; what v5 adds over a plain cal40 isn't visible in the sim.
 - Live check started: **run20v5**, 20 games, v5 e3 cal40, same setup as run20cyc2 (BOT77_FLAT_OPP_CYCLE=1,
   live_with_replays.py); log data/logs/run20v5.log. Freeze games (clock jump over 10 s) are reported separately.
+- **run20v5 stopped after game 1 (a loss): Clash showed "Content Update ... Restart the game"** on its loading screen,
+  which the between-games handler doesn't know (unrecognised for 240 s). I tapped RESTART; the client reloaded straight
+  into a battle already at 2:43 (our towers 1826 / 2184, 10 elixir, nobody playing), so the bot had queued a battle
+  before the prompt. Resumed as **run20v5b** (19 games). That joined-mid-game battle is excluded like the freezes.
+  Todo: the between-games handler should tap the update dialog's RESTART itself.
