@@ -4762,3 +4762,18 @@ Cole: "ok lets do it." The engine ticks 100 ms; the client 50 ms (game code). Th
   games_run20cyc2_2026-11-02/index.html, served at http://localhost:8795. All 20 have both videos; game 15's replay
   (opponent "euan", logged by the bot as "Nena") matched by order between its neighbours'. Video sync now takes the
   most common timer reading over 7 frames (latest on a tie), so the 6 stall games sync after the stall.
+
+## 2026-11-03 · Cole: the freezes are real lag; his review of run20cyc2 games 1-3
+
+- **The opening freezes are the network at Cole's work** (Cole: "At work, like 1/4 games freeze up and lagout ... unfortunate,
+  but real"). Games with one aren't counted: run20cyc2 without its 6 is **4-10** (school v4 epoch 3, at a higher
+  trophy level than run40v4c's ~1,050).
+- **loss_review_2026-11-03.json** (data/reviews/cole/; games 1-3: daRkon., DevansH, EteRnalWatsoN, all losses): 10
+  moments, every one with a "should" except one. 6 say **wait**: "we just play randomly here", "very unnecessary",
+  "we're giving them elixir", "we're feeding elixir", "because we don't wait, we get overwhelmed and feed them
+  elixir", and a wasted spell. The other 4 are defence the bot couldn't afford after those plays (Goblin Hut x2, Mega
+  Minion) and Arrows on Barbarians. One chain explains game 1: an early random play cost both defensive cards and 7
+  elixir, then they punished the other lane.
+- Cole's labels so far: 41 moments over 10 losses (31 on 11-02, 10 today), 16 "should haves" in round 1's 102 marks,
+  his 23 full tempo games and the play-page situations. None of the review notes are training data yet: the
+  imitation data reads only replay_tv / replay_bl, and nothing turns a note into a demo.
