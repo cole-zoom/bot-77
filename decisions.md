@@ -4814,3 +4814,20 @@ Cole: "ok lets do it." The engine ticks 100 ms; the client 50 ms (game code). Th
   **65 of 143 kept**; all 9 answers from Cole's 11-03 review of games 1-3 are in (6 waits, Goblin Hut x2, Arrows,
   Mega Minion). The one unkept 11-03 moment has no answer. Training v5 on the v4 recipe plus `--reviews
   data/cache/bc/review_v1` -> data/models/bc_school_v5 (log data/logs/train_school_v5.log).
+- **v5 trained** (4 epochs, ~24 min each with the machine loaded). Scored at the wait nudge, against v4 at the same
+  nudge (chance it holds the whole second at Cole's waits; per-tick chance of the card he named):
+
+  | Checkpoint | Held-out 12: waits | Held-out 12: card | All 65: waits | All 65: card |
+  |---|---|---|---|---|
+  | v4 e3 cal20 (live) | 0.76 | 0.055 | 0.60 | 0.036 |
+  | v4 e3 cal40 | 0.85 | 0.038 | 0.73 | 0.022 |
+  | v5 e0 cal20 | 0.61 | 0.053 | 0.52 | 0.088 |
+  | v5 e1 cal20 | 0.60 | 0.034 | 0.45 | 0.162 |
+  | v5 e2 cal20 | 0.55 | 0.049 | 0.52 | 0.200 |
+  | v5 e3 cal20 | 0.71 | 0.033 | 0.67 | 0.182 |
+  | v5 e3 cal40 | 0.82 | 0.018 | 0.79 | 0.115 |
+
+  So **v5 learned the 53 answers it trained on (card 3-5x v4) but doesn't carry them to the 12 from other games**:
+  held out it is about v4, slightly worse on cards. 53 answers are too few to generalize from; the held-out 12 are
+  too few to measure small changes either. Candidate for the live check: v5 e3 cal40 (waits as v4 cal40, cards 5x v4
+  on the answers). Sim gate: 300 games vs v4 e3 cal20 (h2h_e3cal40_vs_v4cal20.jsonl).
