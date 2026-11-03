@@ -4850,3 +4850,5 @@ Cole: "ok lets do it." The engine ticks 100 ms; the client 50 ms (game code). Th
   same for plain v4 cal40.
 - Can't tell from this run whether it's the doubled nudge (cal40) or v5's training. Next check: v5 at cal20 live,
   or the same leak count in the sim for v4 / v5 at cal20 / cal40 first.
+- Cole: "ok. so run at the usual nudge". Live check started: **run20v5cal20**, 20 games, v5 e3 cal20, same setup;
+  log data/logs/run20v5cal20.log.
