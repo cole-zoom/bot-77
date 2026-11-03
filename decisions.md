@@ -4890,3 +4890,7 @@ Cole: "ok lets do it." The engine ticks 100 ms; the client 50 ms (game code). Th
   - **Tower HP: always full** (towers aren't read live), while the pro data had the real HP from the replays.
   - **The opponent's cycle: only which cards they have**: with the flat cycle every play reads recency ~1.0, as in the
     pro shards the models trained on (shards_t01). shards_t01c has the real ages; school_v3 and review_v1 already do.
+  - **The opponent tracker over-counts:** by 1:15 of that game it had 17 "plays" from 12 different cards (a deck has
+    8), including Battle Ram x3, Mini P.E.K.K.A x2 and Mega Minion, which are in our deck: our own units read as
+    theirs, or the same unit counted again after 6 s out of sight. So the model's "cards they have" block is
+    polluted too. To check against the game's Battle Log replay once it's ingested.
