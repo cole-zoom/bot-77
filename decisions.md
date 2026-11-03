@@ -4872,3 +4872,21 @@ Cole: "ok lets do it." The engine ticks 100 ms; the client 50 ms (game code). Th
   So the first 15's 7-4 was mostly variance: no nudge is about even, better than v5 cal40 (6-13) and v4 cal20 in
   run20cyc2 (4-10 without freezes), at about the same trophies. Chunk 2's replays are being recorded now; chunk 1's
   are still to pull.
+
+## 2026-11-03 · What the screen reader hands the model (Cole: "make a file with the exact output the detector gives to the decision maker")
+
+- **scripts/dump_live_inputs.py <game>**: the live stack as live_play.py builds it (adopted detector, our 8-card deck,
+  fast reader, OpponentTracker, SelfPlayPolicy, BOT77_FLAT_OPP_CYCLE=1 as every live run) over the game's recording at
+  10 fps. Per decision: the LiveState, the opponent plays counted, the exact mirror() arguments, the 13,977-float
+  observation decoded (board channels, hand, the 10 scalars, the opponent cycle blocks) and the net's chances.
+  Out: data/reviews/live_inputs/<game>/ (decisions.jsonl, obs.npz, sample.md). On bot_2026-11-03_113837 (run20v5raw
+  game 20): 1,230 decisions; the hand matches the live log slot by slot 99.1% (2,654 / 2,677, slots blanked after a
+  tap left out), elixir within 0.1. Live decided 6.1 times a game second, not 10 (the capture is the limit).
+- **Read off the dump, what the model does not get live:**
+  - **The opponent's elixir: nothing.** The observation has no opponent bar, only both sides' cumulative spend, and
+    the mirror builds a fresh engine every decision, so both spend scalars are always 0 (also in every training set:
+    shards_t01, school_v3, review_v1). Its only clue is which of their cards it has seen. (I told Cole the model
+    sees an estimate of their elixir: wrong; mirror() takes the estimate but the observation doesn't carry it.)
+  - **Tower HP: always full** (towers aren't read live), while the pro data had the real HP from the replays.
+  - **The opponent's cycle: only which cards they have**: with the flat cycle every play reads recency ~1.0, as in the
+    pro shards the models trained on (shards_t01). shards_t01c has the real ages; school_v3 and review_v1 already do.
