@@ -4868,3 +4868,7 @@ Cole: "ok lets do it." The engine ticks 100 ms; the client 50 ms (game code). Th
   - So on Cole's read, the nudge was hurting: the same model at no nudge is 7-4 against 6-13 at log 40 (different
     hours, about the same trophies; small samples). Cole's 6 "wait" notes say it overplays in spots, and this is the
     most overplaying model yet, so its losses are where to look next.
+- **run20v5raw final: 9-11 over 20; without the 4 freeze games 8-8.** Chunk 2 (11:25-11:41, no freezes) went 1-4.
+  So the first 15's 7-4 was mostly variance: no nudge is about even, better than v5 cal40 (6-13) and v4 cal20 in
+  run20cyc2 (4-10 without freezes), at about the same trophies. Chunk 2's replays are being recorded now; chunk 1's
+  are still to pull.
