@@ -4806,5 +4806,7 @@ Cole: "ok lets do it." The engine ticks 100 ms; the client 50 ms (game code). Th
 
   So the live bot plays through 4 of 10 of the seconds Cole said to wait. More nudge trades that for his card answers.
 - **Wait-nudge head-to-head** (scripts/match_eval.py, 300 games, seeds 20,000+): cal40 vs cal20 won **54.3%** (+-5.6%), not
-  a clear difference. cal80 and cal160 are still running. A caveat on all of these: the sim opponent is the same
-  model, which doesn't punish overplaying the way the ladder does.
+  a clear difference. **cal80 47% (+-6%), cal160 30% (+-5%)** (crowns against 1.39). So waiting more stops helping in
+  the sim past log 40, and a lot more loses badly. The sim opponent is the same model, which doesn't punish
+  overplaying the way the ladder does, so this only bounds the nudge from above: up to log 40-80 doesn't cost games
+  in the sim.
