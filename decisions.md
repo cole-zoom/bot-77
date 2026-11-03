@@ -4831,3 +4831,7 @@ Cole: "ok lets do it." The engine ticks 100 ms; the client 50 ms (game code). Th
   held out it is about v4, slightly worse on cards. 53 answers are too few to generalize from; the held-out 12 are
   too few to measure small changes either. Candidate for the live check: v5 e3 cal40 (waits as v4 cal40, cards 5x v4
   on the answers). Sim gate: 300 games vs v4 e3 cal20 (h2h_e3cal40_vs_v4cal20.jsonl).
+- **v5 sim gate: v5 e3 cal40 vs v4 e3 cal20, 300 games: win 54.3% (+-5.6%)**, crowns 1.17 for / 1.02 against, mean
+  182 s. The same as v4 cal40 vs cal20 (54%), so it passes; what v5 adds over a plain cal40 isn't visible in the sim.
+- Live check started: **run20v5**, 20 games, v5 e3 cal40, same setup as run20cyc2 (BOT77_FLAT_OPP_CYCLE=1,
+  live_with_replays.py); log data/logs/run20v5.log. Freeze games (clock jump over 10 s) are reported separately.
