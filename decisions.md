@@ -4840,3 +4840,13 @@ Cole: "ok lets do it." The engine ticks 100 ms; the client 50 ms (game code). Th
   into a battle already at 2:43 (our towers 1826 / 2184, 10 elixir, nobody playing), so the bot had queued a battle
   before the prompt. Resumed as **run20v5b** (19 games). That joined-mid-game battle is excluded like the freezes.
   Todo: the between-games handler should tap the update dialog's RESTART itself.
+- **run20v5 + run20v5b: 6-14 over 20 games** (v5 e3 cal40). Game 2 (run20v5b game 1) was the battle joined at 2:43
+  after the restart (1 play, a loss): without it **6-13**. **No freezes** this time (no clock jump over 10 s in any
+  game). Trophy level about as run20cyc2's (opponents ~1000-1400 shown).
+- **v5 cal40 sits on a full bar: 32 s a game at 9.5+ elixir** (18% of decisions; 41% at 7+), against **1.8 s** (1.3%;
+  13%) for v4 cal20 in run20cyc2 and 7.6 s for v4 on 10-31. It's the model, not the hand path: at a full bar with
+  all four cards known it chose wait 2698 of 2787 times (play chance 0.035 a tick; v4 0.066). So it leaks about a
+  sixth of its elixir. The sim gate (54%) didn't show this; the sim opponent doesn't punish it, and the 54% was the
+  same for plain v4 cal40.
+- Can't tell from this run whether it's the doubled nudge (cal40) or v5's training. Next check: v5 at cal20 live,
+  or the same leak count in the sim for v4 / v5 at cal20 / cal40 first.
