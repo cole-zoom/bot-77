@@ -4894,3 +4894,23 @@ Cole: "ok lets do it." The engine ticks 100 ms; the client 50 ms (game code). Th
     8), including Battle Ram x3, Mini P.E.K.K.A x2 and Mega Minion, which are in our deck: our own units read as
     theirs, or the same unit counted again after 6 s out of sight. So the model's "cards they have" block is
     polluted too. To check against the game's Battle Log replay once it's ingested.
+
+## 2026-11-04 · Opponent deck playbooks from YouTube guides
+
+- Cole binned Codex's 16 archetype drafts (docs/scenarios/, never committed: generic, invented decks, prose scripts
+  that couldn't be coded). He asked instead for one playbook per standard deck, built from the newest "how to play"
+  video: 2.6 Hog, Golem Beatdown, P.E.K.K.A Bridge Spam, Miner Control, Giant Double Prince, classic Log Bait.
+- Search: yt-dlp, `ytsearch15:<query> clash royale`, sorted by upload date (data/external/guides/search.json). The
+  newest video with English commentary was taken. Two newest picks were unusable: GDP (Kamikaze CR 2026-10-26, no
+  commentary, 163 words) and Miner (Mohamed Light Extra 2026-01-12, mostly stream chat). They were replaced by Sweaty
+  Clash 2025-09 + giodelion 2025-10 (GDP) and Nate's Miner Control guide 2023-09 (Miner Rocket list). YouTube
+  rate-limited (HTTP 429) three of the six caption downloads; retried with pauses.
+- Transcripts (auto-captions, timestamped) stay in data/external/guides/<deck>/ (gitignored). docs/decks/*.md
+  paraphrase them, cite timestamps and mark everything not from a video **[inferred]** for Cole to check.
+- Decks as found: 2.6 Hog (standard 8). Golem is a Golem + Hog list with no spells (Barbarians, Valkyrie,
+  Firecracker, Dart Goblin, Skeletons, Heal Spirit), not classic Night Witch / Lightning. P.E.K.K.A BS runs Fireball, not
+  Poison. Miner is Miner Rocket (Royal Delivery, Inferno, Knight, Electro Spirit, Goblins). GDP: Giant, Prince, Dark
+  Prince, Baby Dragon, Minions, Goblin Gang, Vines, Zap. Log Bait is classic. All 48 cards are in the sim engine.
+  The videos' evo/hero forms are dropped: the scripted opponents play normal forms.
+- Placements use the engine frame (ArenaLayout.h): bot towers at y 6 / king 2.5, opponent towers at y 27 / king 30.5.
+- Not yet: Cole's review of the [inferred] parts; none is coded or checked in the sim.
