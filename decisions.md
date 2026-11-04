@@ -4940,3 +4940,13 @@ Cole: "ok lets do it." The engine ticks 100 ms; the client 50 ms (game code). Th
   0:30 opening of the heavy decks fires only against a player who doesn't play. tests/test_deck_bots.py covers whole
   games, own cards only, beating random, and the 0:30 wait.
 - Next: Cole plays each one; his notes on the Save list drive the fixes. Not yet: plugging them into training.
+
+## 2026-11-04 · The deck bots against the current live model (Cole: "do they all beat the current model rn?")
+
+- **scripts/deck_vs_model.py**: a checkpoint on our deck (0.1 s, sampling as live, match_eval.py's loop) against each
+  deck bot as team 1, ticked every 0.1 s and told every play of ours that lands. Seeds 30,000+, 30 games a deck.
+  Results in data/rl/deck_vs_v5e3.jsonl.
+- **v5 epoch 3, no nudge (the run20v5raw model), bot-model:** P.E.K.K.A Bridge Spam 29-1, Golem 25-5, GDP 21-9,
+  Log Bait 21-9, **2.6 Hog 13-17, Miner Control 1-29**. No draws; +-~17% at 30 games.
+- So four of six beat it. Hog only breaks even and Miner is nearly free for the model (0.13 crowns a game against
+  it): its chip is too slow for our deck's pressure, as against the random player (45/60, the weakest there too).
