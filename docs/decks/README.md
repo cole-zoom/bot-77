@@ -88,3 +88,9 @@ delay). Save keeps the seed, the clock, the last rules fired and a note (`data/l
 is logged in full to `data/live/deck_play.jsonl`. The code: `src/bot77/rl/deck_bots.py` (the shared framework:
 hand, cycle, reaction delay, table-driven defence) and one module per deck in `src/bot77/rl/decks/`.
 `scripts/deck_bot_smoke.py --deck <key> -v` plays one against a random player and prints every rule event.
+
+**You play the deck (do this first, 2026-11-04).** The same page, "You play <deck> vs the model": you pilot the deck as
+team 1, seen from your side, against the live model (v5 e3, no nudge) on our deck. The rules run alongside without
+playing: the Events list shows what they would play ("Rules"), and each of your plays says whether a rule had it (the
+same card within 3 s) or "GAP?". The end of the game sums it up per rule. Where you and the rules disagree is what
+gets fixed. Then `scripts/deck_vs_model.py` re-checks each deck over 30 sim games against the model.

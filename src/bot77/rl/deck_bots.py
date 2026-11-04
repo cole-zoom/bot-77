@@ -253,6 +253,25 @@ class DeckBot:
                 self.decide()
         return self._act()
 
+    def shadow_tick(self):
+        """While a person plays this deck (deck_play.py's "you play the deck" mode): what the rules would play this
+        tick, as (rule, card, (x, y) on the board), or None. Nothing is sent; the step counts as played so the plan
+        moves on. The person's own plays go in through note_own_play."""
+        self.tick()
+        if self._sent is None:
+            return None
+        p, s, _, spot = self._sent
+        self._sent = None
+        if p.steps and p.steps[0] is s:
+            p.steps.pop(0)
+        if not p.steps and p in self.plans:
+            self.plans.remove(p)
+        return p.rule, s.card, spot
+
+    def note_own_play(self, card: int, x: float, y: float):
+        """A play of this deck's that landed, made by someone else (the person piloting it), on the board."""
+        self.mine.append((round(self.t, 1), self.names.get(card, str(card)), round(x, 1), round(y, 1)))
+
     def _act(self):
         """The first plan's next step, once it's due and affordable. A step stays until the engine takes it (a card
         just drawn can't be played for 2 s: the engine's hand cooldown, PlayerState.h), then it's recorded in self.mine."""

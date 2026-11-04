@@ -4950,3 +4950,9 @@ Cole: "ok lets do it." The engine ticks 100 ms; the client 50 ms (game code). Th
   Log Bait 21-9, **2.6 Hog 13-17, Miner Control 1-29**. No draws; +-~17% at 30 games.
 - So four of six beat it. Hog only breaks even and Miner is nearly free for the model (0.13 crowns a game against
   it): its chip is too slow for our deck's pressure, as against the random player (45/60, the weakest there too).
+- **"You play the deck" mode on the play page** (Cole: play as the decks first, to teach them; then against them as
+  the bot). deck_play.py "You play <deck> vs the model": Cole is team 1 on the deck's cards, the board turned round
+  (y -> 33 - y), against bot77.rl.model_player.ModelPlayer (v5 e3, sampling, spell guard, pocket, every 0.1 s). The
+  deck's rules run alongside (DeckBot.shadow_tick: nothing sent, the step counts as played) and each of his plays is
+  matched to a suggestion of the same card within 3 s, or marked "GAP?". Logged as mode you_play_the_deck in
+  data/live/deck_play.jsonl with every suggestion. Checked headless (2 ms a tick) and in Chrome.

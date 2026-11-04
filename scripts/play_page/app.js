@@ -564,7 +564,7 @@ async function loop(g) {
       if (act) lastPlay = act;
       onPlays(out.plays || []);
       setState(out.state, performance.now());
-      for (const e of out.events || []) logEvent("Them", `<b>${e.rule}</b> ${e.text}`, "rule");   // the deck bots' rules
+      for (const e of out.events || []) logEvent(e.who || "Them", `<b>${e.rule}</b> ${e.text}`, "rule");   // the deck bots' rules ("Rules"/"You": you play the deck)
       if (out.result) { showResult(out.result); break; }
     }
     await sleep(Math.max(0, tickMs() / speed - (performance.now() - t0)));
@@ -650,6 +650,7 @@ function showDeckResult(r) {
   const head = r.result > 0 ? "You won" : r.result < 0 ? "You lost" : "Draw";
   const fired = Object.entries(r.fired).sort((a, b) => b[1] - a[1]).map(([k, v]) => `${k} ×${v}`).join(" · ");
   $("result").innerHTML = `<div><b>${head}</b> ${r.crowns[0]}–${r.crowns[1]} vs ${r.deck} at ${mmss(Math.round(r.clock))}</div>
+    ${r.summary_text ? `<div style="margin-top:6px">${r.summary_text}</div>` : ""}
     <div class="muted small" style="margin-top:6px">Rules fired: ${fired || "none"}. Every rule event is in the Events list and the game log; Save keeps this seed with your note.</div>`;
   $("resultbox").hidden = false;
   const bn = $("banner");
