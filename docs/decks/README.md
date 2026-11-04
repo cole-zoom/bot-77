@@ -79,3 +79,12 @@ DEFAULT: what it does when no rule fires (single elixir, double elixir, overtime
 
 ## Open questions for Cole
 ```
+
+## Playing them (Cole's check before training)
+
+`uv run --no-sync python scripts/deck_play.py` → http://localhost:8778. Pick a deck, press New, and play the bot's deck
+the way the bot does. The Events list shows each rule the opponent fires (its id here, what it does, its reaction
+delay). Save keeps the seed, the clock, the last rules fired and a note (`data/live/deck_play_notes.json`); every game
+is logged in full to `data/live/deck_play.jsonl`. The code: `src/bot77/rl/deck_bots.py` (the shared framework:
+hand, cycle, reaction delay, table-driven defence) and one module per deck in `src/bot77/rl/decks/`.
+`scripts/deck_bot_smoke.py --deck <key> -v` plays one against a random player and prints every rule event.

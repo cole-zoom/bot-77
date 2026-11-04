@@ -564,6 +564,7 @@ async function loop(g) {
       if (act) lastPlay = act;
       onPlays(out.plays || []);
       setState(out.state, performance.now());
+      for (const e of out.events || []) logEvent("Them", `<b>${e.rule}</b> ${e.text}`, "rule");   // the deck bots' rules
       if (out.result) { showResult(out.result); break; }
     }
     await sleep(Math.max(0, tickMs() / speed - (performance.now() - t0)));
@@ -602,6 +603,7 @@ async function begin(seed) {
 const TEMPO_NAME = {chill: "chill", even: "even", press: "press", desperate: "desperate", spell_finish: "spell finish"};
 const sgn = v => (v >= 0 ? "+" : "") + v.toFixed(2);
 function showResult(R) {
+  if (R.you.deck) return showDeckResult(R.you);
   if (R.you.full_game) return showGameResult(R);
   const rows = [["You", R.you], ["Scripted defence", R.scripted], ["Bot", R.model]];
   const best = Math.max(...rows.map(r => r[1].score)), worst = Math.min(R.scripted.score, R.model.score);
@@ -643,6 +645,21 @@ function showGameResult(R) {
   logEvent("·", `Finished (${res(R.you)}): you ${sgn(you)}, scripted ${sgn(R.scripted.score)}, bot ${sgn(R.model.score)}`);
 }
 
+// A game against a scripted deck (scripts/deck_play.py): the result, the crowns and how often each rule fired.
+function showDeckResult(r) {
+  const head = r.result > 0 ? "You won" : r.result < 0 ? "You lost" : "Draw";
+  const fired = Object.entries(r.fired).sort((a, b) => b[1] - a[1]).map(([k, v]) => `${k} ×${v}`).join(" · ");
+  $("result").innerHTML = `<div><b>${head}</b> ${r.crowns[0]}–${r.crowns[1]} vs ${r.deck} at ${mmss(Math.round(r.clock))}</div>
+    <div class="muted small" style="margin-top:6px">Rules fired: ${fired || "none"}. Every rule event is in the Events list and the game log; Save keeps this seed with your note.</div>`;
+  $("resultbox").hidden = false;
+  const bn = $("banner");
+  bn.className = "banner " + (r.result > 0 ? "win" : r.result < 0 ? "lose" : "even");
+  bn.innerHTML = `<b>${head}</b>${r.crowns[0]}–${r.crowns[1]} vs ${r.deck}<div class="small" style="opacity:.75;margin-top:4px">R restart · N new</div>`;
+  bn.hidden = false;
+  Sfx.play(r.result > 0 ? "win" : r.result < 0 ? "lose" : "even");
+  logEvent("·", `Finished: ${head.toLowerCase()} ${r.crowns[0]}–${r.crowns[1]}`);
+}
+
 const PLAN = {tank_back: "tank in the back", bridge_rush: "bridge rush", support_back: "support in the back",
   wait_defend: "wait and defend", defend: "defend what crosses", punish: "punish an overcommit",
   tempo: "defend what crosses, punish a commitment, push at a full bar"};
@@ -676,6 +693,13 @@ Promise.all([fetch("/board").then(r => r.json()), fetch("/catalog").then(r => r.
   for (const k of Object.values(cat.cards)) if (!byName.has(k.name)) byName.set(k.name, k);
   resize(); updateHud();
 });
+// a server with its own picker (scripts/deck_play.py: the deck bots) replaces the situations list
+fetch("/templates").then(r => (r.ok ? r.json() : null)).then(T => {
+  if (!T) return;
+  $("tpl").innerHTML = T.templates.map(t => `<option value="${t.value}">${t.name}</option>`).join("");
+  $("tpl").title = T.label;
+  document.title = T.title; document.querySelector(".brand").textContent = T.title;
+}).catch(() => {});
 loadSaved(); updateHud();
 requestAnimationFrame(frame);
 })();

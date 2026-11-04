@@ -117,3 +117,4 @@ kbd { font: 700 .75rem ui-monospace, monospace; border: 1px solid var(--line); b
   canvas#board { height: auto; width: 100%; }
   .boardwrap, .boardcol { width: 100%; }
 }
+.logbox li.rule { font-size: 0.92em; opacity: 0.85; }

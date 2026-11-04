@@ -4914,3 +4914,29 @@ Cole: "ok lets do it." The engine ticks 100 ms; the client 50 ms (game code). Th
   The videos' evo/hero forms are dropped: the scripted opponents play normal forms.
 - Placements use the engine frame (ArenaLayout.h): bot towers at y 6 / king 2.5, opponent towers at y 27 / king 30.5.
 - Not yet: Cole's review of the [inferred] parts; none is coded or checked in the sim.
+
+## 2026-11-04 · The six deck playbooks as scripted opponents, and a page to play them
+
+- Cole: "the best way to fact check and see if these rules actually work is if I play against them with the bots deck
+  ... once I get these bots to my liking, likely they will be ready for training". Built:
+  - `src/bot77/rl/deck_bots.py`: the shared framework. Team 1 with its own legal deck and cycle. It sees the bot's
+    plays only as they land, and "out of the bot's hand" means among its last 4 plays. Each fired rule queues a plan
+    after a seeded 0.5-1.0 s reaction delay. Defence is table-driven (each deck's answers to our 8 cards, best first).
+    It picks only cards in hand, ones it can pay for first, and only anti-air cards against air. A cheap fallback
+    covers the rest, and a threat still hitting a tower 5 s after its answer gets another one.
+  - `src/bot77/rl/decks/`: one module per deck. Rule ids match docs/decks/*.md. 2.6 Hog was written first as the
+    pattern; the other five were written in parallel from their docs.
+  - `scripts/deck_play.py` (port 8778): the existing play page, full games from 0:00, the opponent's rule events in
+    the Events list, Save with the clock and last rules. The page changes are additive: a /templates picker, events,
+    and a deck result. The situation page is unchanged.
+- Engine facts found on the way: a just-drawn card can't be played for 2 s (handCooldownTicks, PlayerState.h).
+  Team 1's actions take its own frame (y mirrored, x not), and is_valid_placement takes board coordinates. Tower slot
+  1 = left and 2 = right. The bot's spells sit on the board as team-0 units named after the spell, now excluded from
+  threats.
+- Smoke (scripts/deck_bot_smoke.py, against a random legal player on our deck): every deck beats it in most games.
+  Hog 58/60 seeds, Miner Control 45/60 (its Miner chip is slow; Mini P.E.K.K.A and Mega Minion hurt it), P.E.K.K.A BS
+  20/20, Golem 12/12, GDP 6/6, Log Bait 6/6. Rules that rarely or never fire against random play: Golem R4, P.E.K.K.A
+  BS R5, Miner R5 (it wants the Miner back within 10 s, but cycling makes that nearly impossible), Log Bait R5. The
+  0:30 opening of the heavy decks fires only against a player who doesn't play. tests/test_deck_bots.py covers whole
+  games, own cards only, beating random, and the 0:30 wait.
+- Next: Cole plays each one; his notes on the Save list drive the fixes. Not yet: plugging them into training.
