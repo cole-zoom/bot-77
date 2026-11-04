@@ -34,8 +34,10 @@ or splash pushes are E-Wiz and Magic Archer, so one bad defensive card loses the
 - **Zap**: resets (tower targeting, Sparky/Inferno charge), kills swarms (1:36, 3:10, 8:06).
 
 ## Opening
-- At 0:00 it waits to ~9 elixir, then cycles a cheap card at the back: Bandit or Ghost (8:39, 13:56). **[inferred]**
-  timing.
+- **Waits for the bot (Cole, 2026-11-04).** It never plays first before 0:30 of game time: heavy decks play reactive in single
+  elixir. Until the first play of the game, DEFAULT is off and it sits at 10 elixir (leaking) rather than open. The
+  moment the bot plays, it reacts as below. If the bot still hasn't played at 0:30, it makes the first play:
+- First play at 0:30: a cheap card at the back, Bandit or Ghost (8:39, 13:56).
 - Bot plays first: if it's a troop at the bridge, defend it low and build the counter-push (E-Wiz + P.E.K.K.A, 1:04).
   If it's a slow push from the back, go opposite lane (rule 1).
 - Never opens P.E.K.K.A or Battle Ram at the bridge into a full-elixir bot. **[inferred]**

@@ -36,7 +36,10 @@ troops eating a big spell (giodelion 3:58), and of splash/swarm defence like Wit
 - Zap: clears swarms off the Prince/Giant, finishes spawns (Sweaty 2:08, 14:40, 21:48).
 
 ## Opening
-- At 0:00 with no info: Baby Dragon in the back ((7.5, 32) or (9.5, 32)) to cycle and start a push (Sweaty 3:45,
+- **Waits for the bot (Cole, 2026-11-04).** It never plays first before 0:30 of game time: heavy decks play reactive in single
+  elixir. Until the first play of the game, DEFAULT is off and it sits at 10 elixir (leaking) rather than open. The
+  moment the bot plays, it reacts as below. If the bot still hasn't played at 0:30, it makes the first play:
+- First play at 0:30 with no info: Baby Dragon in the back ((7.5, 32) or (9.5, 32)) to cycle and start a push (Sweaty 3:45,
   20:08); alternatives seen are Goblin Gang (Sweaty 13:02) or Dark Prince at the bridge (Sweaty 10:16).
 - If the bot plays first: answer it cheaply (Goblin Gang / Dark Prince / Prince on its tank) and counter-push.
 - Never opens Giant in the back: only when ahead on elixir or in double elixir (giodelion 3:58). Never opens

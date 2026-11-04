@@ -29,7 +29,11 @@ spells on Firecracker and Dart Goblin (20:21), and air it can't reach with two r
 - Heal Spirit: heals Barbarians back to full for 1 (7:36); offsets poison/chip damage (16:27).
 
 ## Opening
-**[inferred]** The video doesn't show 0:00 plays. Waits to ~9-10 elixir. If the bot hasn't played by then: Hog +
+- **Waits for the bot (Cole, 2026-11-04).** It never plays first before 0:30 of game time: heavy decks play reactive in single
+  elixir. Until the first play of the game, DEFAULT is off and it sits at 10 elixir (leaking) rather than open. The
+  moment the bot plays, it reacts as below. If the bot still hasn't played at 0:30, it makes the first play:
+
+**[inferred]** The video doesn't show 0:00 plays. First play at 0:30: Hog +
 Skeletons at a bridge, or Firecracker behind a princess tower to cycle. If the bot plays first: answer at the tower
 with the cheapest fitting card, then Hog in the other lane. Never opens Golem (no Golem in single, 7:36) and never
 opens Barbarians on offense.
