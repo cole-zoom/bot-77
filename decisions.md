@@ -4962,7 +4962,7 @@ Cole: "ok lets do it." The engine ticks 100 ms; the client 50 ms (game code). Th
 Six games (seeds 92403-92963, `data/live/deck_play.jsonl`, mode `you_play_the_deck`), Cole on GDP against v5 e3:
 Cole won all six, every one 3 crowns, in 42-144 s (median ~110 s). The model took one princess tower in total.
 No Save notes yet. Rule agreement (the same card within 3 s):
-- Of his 62 plays, 44 had no rule. All 8 Giants were gaps: he Giants at the back (0-1 tiles from his king) and at
+- Of his 62 plays, 43 had no rule. All 8 Giants were gaps: he Giants at the back (0-1 tiles from his king) and at
   the bridge. The rules only Giant as an R6 counter-push. 9/11 Minions, 9/11 Baby Dragons and all 3 Zaps were also
   gaps.
 - R7 ("the bot is empty: Prince at the bridge") was suggested 59 times and matched 9. It fires far too often, and
