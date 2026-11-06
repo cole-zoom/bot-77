@@ -2,9 +2,10 @@
 from __future__ import annotations
 
 from bot77.rl.situations import spell_tower_damage
-from bot77.rl.deck_bots import (BRIDGE_X, LANE_X, MID_X, MY_BRIDGE_Y, DeckBot, Step, lane_of, register)
+from bot77.rl.deck_bots import (LANE_X, MID_X, MY_BRIDGE_Y, DeckBot, Step, lane_of, register)
 
 CANNON_SPOT = (MID_X, 24.5)
+HOG_X = (1.0, 17.0)  # Cole: the outer edge of the bridge (20 of his 27 Hogs, 2026-11-06)
 MUSK_DEEP_Y = 28.0
 
 
@@ -17,7 +18,7 @@ class Hog26(DeckBot):
     # ------------------------------------------------------------------ helpers
     def hog_plan(self, rule: str, text: str, lane: int, *, spirit=False, golem=False, musk=False) -> bool:
         """Hog at this lane's bridge, with an Ice Golem in front / Ice Spirit or Musketeer behind if asked and in hand."""
-        bx = BRIDGE_X[lane]
+        bx = HOG_X[lane]
         steps = []
         if golem and self.has("Ice Golem"):
             steps.append(Step("Ice Golem", (bx, MY_BRIDGE_Y)))

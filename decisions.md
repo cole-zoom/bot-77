@@ -5005,3 +5005,30 @@ Cole, on the deck play page: plays refused that go through at the same speed in 
   lock.
 - **Effect on training and the sim tests.** Every sim result from here on uses the 1 s lock. Results from before
   aren't directly comparable: the lock limits fast cycling, so cycle decks (Hog, Log Bait) gain the most.
+
+## 2026-11-06 · Cole's Hog games: his placements written down; copying them into the rules piecemeal made Hog weaker
+
+Cole played 5 Hog games against the model (seeds 93405, 93651, 8051, 8237, 8427) and won all 5 (2-0, 3-0, 1-0, 2-0,
+3-0). With the 1 s lock, the last 3 had no refused plays. His placements per card, with what the model had just
+played (from replaying the last 3 tick for tick), are in docs/decks/hog-2.6.md "Cole's placements". Cole: "it needs
+to have good placement".
+
+- **Baseline on the 1 s engine.** All six decks against the model, 30 games each
+  (`data/rl/deck_vs_v5e3_lock1s.jsonl`, bot-model): GDP 20-10, Golem 26-4, Hog 17-13 (was 13-17 on the 2 s lock),
+  Log Bait 17-13 (was 21-9), Miner 1-29, PEKKA BS 29-1.
+- **First try: four changes at once.** Fireball a Goblin Hut as it lands (R12), Log first on a Bomber, Ice Golem in the
+  middle then Musketeer on a Mini P.E.K.K.A, Musketeer in the middle (8.5, 25). Hog 9-21. Each change taken back on
+  its own (30 games each):
+  - without R12: 14
+  - with the old Mini P.E.K.K.A answer: 11
+  - with the old Musketeer spot: 6
+  - with the old Bomber answer: 10
+
+  Only the middle Musketeer, on its own: 12-18. None of these beat the old rules. Copying where Cole puts a card
+  without when and why he puts it there doesn't transfer, so all four were dropped. Most of his Hut Fireballs didn't
+  touch a tower in the sim (1 of 5).
+- **Kept: the Hog at the outer edge of the bridge.** x 1 / 17 (20 of Cole's 27 Hogs), instead of 2.5 / 14.5. 17-13,
+  crowns 1.37 → 1.53 (`data/rl/deck_vs_v5e3_hog_edge.jsonl`).
+- **Royal Delivery** (Cole: "the delivery should do damage"). It does in the engine: 384 on landing, radius 3.0.
+  Replaying his Miner game (seed 8650), each of his 4 hit: three on a Mini P.E.K.K.A (1390 → 1006) and one that killed
+  two Barbarians. Asked Cole what he saw on the page.

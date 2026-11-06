@@ -55,6 +55,32 @@ All **[inferred]** except where cited.
 - **Our cards that hurt it:** Mini P.E.K.K.A and Goblin Hut (hard Hog counters), Bomber (kills its Skeletons), Fireball
   on Musketeer + Cannon, and a Giant + Mini P.E.K.K.A stack in one lane that its Cannon can't hold alone.
 
+## Cole's placements (his 5 Hog games vs the model, 2026-11-06)
+
+Every landed play, board frame (Cole's side is high y; his bridge is y 18, his king y 30.5, the river y 15.5-17.5;
+x is the same on his screen). Seeds 93405, 93651, 8051, 8237, 8427 in `data/live/deck_play.jsonl`; what the model
+had just played comes from replaying the last three tick for tick. Once one of the model's princess towers is
+down, Cole also plays into the pocket on its side (y 12-15), marked "pocket".
+
+- **Hog Rider (27):** at the outer edge of the bridge, x 0-1 or 17, y 18-19 (20 of 27). The rules used x 2.5 / 14.5.
+  Behind his own princess tower twice ((0, 26), (1, 32)) to make a slower push. Pocket 5 times (x 2-13, y 12-14).
+  Usually within 0-4 s after the model spent: Arrows, Fireball, Mini P.E.K.K.A or Mega Minion.
+- **Ice Spirit (29):** right behind the Hog at the bridge ((1-3, 18-19), about 1 s later), or in the middle at the
+  river ((7-8, 18-20)) on a Bomber / Mini P.E.K.K.A. A few in a back corner to cycle ((0, 32), (16, 32), (17, 27)).
+  Pocket late.
+- **Ice Golem (28):** the middle near the river, (6-9, 19-22), to kite (15). At the bridge with a Hog
+  ((2, 18), (14, 18)). Pocket late ((8-11, 12-13)).
+- **Musketeer (29):** the middle, (7-10, 23-26) (14), the main defender against Mini P.E.K.K.A, Mega Minion and Bomber.
+  Behind the king, (8-9, 33) (6), to start a push or cycle. In a lane corner, (16-17, 23-24) (2). Pocket late.
+- **Skeletons (27):** the middle, (7-10, 19-26) (15), on Mini P.E.K.K.A / Bomber / Battle Ram. Lane side,
+  (2-5, 18-23), with a Hog or on a lane push. Pocket late.
+- **Cannon (9):** the middle, (6-9, 23-24) (7), on Battle Ram 3-4 s after it's played. In the pocket at the river
+  ((10, 15), (14, 15)) after a tower fell.
+- **Fireball (10):** on the Goblin Hut 1.5-4.5 s after it lands (5): (5-6, 8-9) or (11, 8-9) with the Hut at
+  (8-9, 9-12). In the sim only one of those also hit the tower. The rest finish towers or the pocket.
+- **The Log (7):** from the river or his bridge (y 16-21), in the lane of a Bomber walking up (4). Once early, at
+  (3, 18), on the opening Bomber.
+
 ## Punish rules (checked top to bottom, every tick)
 "Bot hand" = the 4 cards the bot hasn't played among its last 4 plays (cycle tracking, 7:06, 11:26). "Committed" =
 elixir of the bot cards played in one lane in the last 6 s, troops still alive.
