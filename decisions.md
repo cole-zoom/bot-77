@@ -4956,3 +4956,16 @@ Cole: "ok lets do it." The engine ticks 100 ms; the client 50 ms (game code). Th
   deck's rules run alongside (DeckBot.shadow_tick: nothing sent, the step counts as played) and each of his plays is
   matched to a suggestion of the same card within 3 s, or marked "GAP?". Logged as mode you_play_the_deck in
   data/live/deck_play.jsonl with every suggestion. Checked headless (2 ms a tick) and in Chrome.
+
+## 2026-11-06 · Cole's first "you play the deck" games: Giant Double Prince vs the live model
+
+Six games (seeds 92403-92963, `data/live/deck_play.jsonl`, mode `you_play_the_deck`), Cole on GDP against v5 e3:
+Cole won all six, every one 3 crowns, in 42-144 s (median ~110 s). The model took one princess tower in total.
+No Save notes yet. Rule agreement (the same card within 3 s):
+- Of his 62 plays, 44 had no rule. All 8 Giants were gaps: he Giants at the back (0-1 tiles from his king) and at
+  the bridge. The rules only Giant as an R6 counter-push. 9/11 Minions, 9/11 Baby Dragons and all 3 Zaps were also
+  gaps.
+- R7 ("the bot is empty: Prince at the bridge") was suggested 59 times and matched 9. It fires far too often, and
+  Cole mostly plays a Prince from the back or a Giant in its place.
+- DEF matched 6/35, R3 0/5, R6 0/3, DEFAULT 1/12.
+Next: rewrite the GDP default plan around a back Giant with support, cut R7 down, then re-run deck_vs_model.py.
