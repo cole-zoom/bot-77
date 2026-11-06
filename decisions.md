@@ -4983,3 +4983,25 @@ A lone Prince at the bridge: "Rarely ... its better to not go prince alone at te
   before. 3-crown wins went from 1 to 5, average crowns 1.47 → 1.53, average length 181 → 173 s. R7 now fires 0.5 per
   game (was 5.1); R10 and R11 fire 2.0 each. Still far from Cole's 6-0, all 3 crowns: the rules win as often but less
   decisively. His next Hog games show whether the same gap holds.
+
+## 2026-11-06 · The engine's lock on a just-drawn card: 2 s → 1 s (Cole: "card placed too quickly")
+
+Cole, on the deck play page: plays refused that go through at the same speed in the real game.
+- **What refused them.** Replaying his 8 games tick for tick (model sampling seeded, every play matched the log)
+  showed that 27 of his 28 refused plays were the engine's post-cycle lock (`PlayerState::playCard`,
+  `secs(2.0)`), not elixir. He was trying 0.3–1.9 s after the card came in, mostly 1.0–1.9 s. The only real elixir
+  shortage was one Zap (0.2 elixir).
+- **The real value.** From the Battle Log replay ground truth (842 files, `data/ground_truth/opponent_truth_replay_*`),
+  I took each card's arrival in hand as the play 4 after its last play (8-card deck, 4 in hand). Plays sooner than
+  that after the card came in, out of 9,336:
+  - < 0.5 s: 1
+  - < 1.0 s: 3
+  - < 1.5 s: 20
+  - < 2.0 s: 182
+
+  So the real lock is about 1 s; the few under 1 s fit the detector's 0.25 s timing. The 2.0 s had no source.
+- **The change.** Fork f9ea937 sets `secs(1.0)`; checked in the rebuilt engine (a new card plays 1.0 s after it
+  came in). The deck play page now says which reason refused a play: tile, elixir (with the amount), or the 1 s
+  lock.
+- **Effect on training and the sim tests.** Every sim result from here on uses the 1 s lock. Results from before
+  aren't directly comparable: the lock limits fast cycling, so cycle decks (Hog, Log Bait) gain the most.

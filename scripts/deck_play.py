@@ -139,6 +139,14 @@ def main():
         return {"deck": bot.NAME, "result": win, "crowns": crowns, "towers": tw, "clock": round(g.get_current_tick() / 10, 1),
                 "fired": bot.fired, "opp_plays": len(bot.mine)}
 
+    def refusal(legal, el, cid):
+        """Why a play didn't land: the tile, the elixir, or the engine's 1 s lock on a card that just came in."""
+        if not legal:
+            return "not a legal tile"
+        if cid is None or el < cost.get(cid, 0):
+            return f"not enough elixir ({el:.1f})"
+        return "the card just came in (1 s lock)"
+
     def step_as(body):
         """One tick of "you play the deck": your play (team 1, page frame = team 1's own frame), the model's, and the
         rules' suggestion alongside."""
@@ -147,6 +155,7 @@ def main():
         k, x, y = (4, 0.0, 0.0) if slot is None else (int(slot), float(body["x"]), float(body["y"]))
         hand1, hand0 = list(g.get_hand_for_team(1)), list(g.get_hand())
         legal = k < 4 and k < len(hand1) and g.is_valid_placement(hand1[k], x, 33.0 - y, 1)
+        el1 = float(g.get_elixir_for_team(1))
         sp0, sp1 = float(g.get_elixir_spent(0)), float(g.get_elixir_spent(1))
         events = list(bot.events)
         bot.events.clear()
@@ -183,7 +192,7 @@ def main():
                 else:
                     events.append({"who": "You", "rule": "GAP?", "text": f"{card}: no rule had this play"})
             else:
-                play["why"] = "not a legal tile" if not legal else "not enough elixir (or the card just came)"
+                play["why"] = refusal(legal, el1, hand1[k] if k < len(hand1) else None)
             game["plays"].append(play)
         # a pending suggestion of the same card counts as yours a little later too
         for p in game["plays"][-3:]:
@@ -301,6 +310,7 @@ def main():
                 k, x, y = (4, 0.0, 0.0) if slot is None else (int(slot), float(body["x"]), float(body["y"]))
                 hand = list(g.get_hand())
                 legal = k < 4 and k < len(hand) and g.is_valid_placement(hand[k], x, y, 0)
+                el0 = float(g.get_elixir_for_team(0))
                 spent0 = float(g.get_elixir_spent(0))
                 mv = bot.tick()
                 k1, x1, y1 = mv if mv else (4, 0.0, 0.0)
@@ -314,7 +324,7 @@ def main():
                     if landed:
                         bot.note_play(hand[k], x, y)
                     else:
-                        play["why"] = "not a legal tile" if not legal else "not enough elixir (or the card just came)"
+                        play["why"] = refusal(legal, el0, hand[k] if k < len(hand) else None)
                     game["plays"].append(play)
                 events = list(bot.events)
                 bot.events.clear()

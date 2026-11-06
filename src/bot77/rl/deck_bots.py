@@ -7,7 +7,7 @@ elixir, the bot's elixir (counted, as good players do) and the bot's plays as th
 steps the game). It never sees the bot's hand; "out of the bot's hand" means among the bot's last 4 plays.
 
 A rule that fires queues a plan: one or more plays, the first after a seeded 0.5-1.0 s reaction delay. A play waits
-for its card, elixir and the engine's 2 s cooldown on a just-drawn card (up to WAIT_S, then it's dropped); a defence preempts a queued attack. Every fired rule is an
+for its card, elixir and the engine's 1 s cooldown on a just-drawn card (up to WAIT_S, then it's dropped); a defence preempts a queued attack. Every fired rule is an
 event (rule id + what it does) for the play page and the logs, so Cole can see which rule made each play.
 
 Coordinates are the engine board's (docs/decks/README.md "The board"): the bot is team 0 and defends low y, this
@@ -274,7 +274,7 @@ class DeckBot:
 
     def _act(self):
         """The first plan's next step, once it's due and affordable. A step stays until the engine takes it (a card
-        just drawn can't be played for 2 s: the engine's hand cooldown, PlayerState.h), then it's recorded in self.mine."""
+        just drawn can't be played for 1 s: the engine's hand cooldown, PlayerState.h), then it's recorded in self.mine."""
         if self._sent is not None:  # last tick's play: did it land?
             p, s, spent, spot = self._sent
             self._sent = None
