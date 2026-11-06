@@ -4969,3 +4969,17 @@ No Save notes yet. Rule agreement (the same card within 3 s):
   Cole mostly plays a Prince from the back or a Giant in its place.
 - DEF matched 6/35, R3 0/5, R6 0/3, DEFAULT 1/12.
 Next: rewrite the GDP default plan around a back Giant with support, cut R7 down, then re-run deck_vs_model.py.
+
+## 2026-11-06 · GDP rules from Cole's answers: Giant in the back + support by the bot's answer, R7 made rare
+
+Cole: after a back Giant, "If they play a goblin hut, I'll want splash ... like dark prince or baby dragon. If they
+play mini pekka, I'll want high dps like prince. If they play megaminion or flying, I'll do baby dragon or minions."
+A lone Prince at the bridge: "Rarely ... its better to not go prince alone at teh bridge against the models deck."
+- New R10: Giant behind the king at 8 elixir (7 in double) when no push is on and nothing needs defending.
+- New R11: one support card behind our Giant, picked by the bot's answer as Cole said. If nothing shows by the
+  bridge: Baby Dragon [inferred].
+- R7: the bot must be at ≤ 1 for 2 s with no Prince answer up, and it's Prince only.
+- The model vs GDP over 30 sim games (seeds 30000+, `data/rl/deck_vs_v5e3_gdp_r10.jsonl`): bot 21-9, the same as
+  before. 3-crown wins went from 1 to 5, average crowns 1.47 → 1.53, average length 181 → 173 s. R7 now fires 0.5 per
+  game (was 5.1); R10 and R11 fire 2.0 each. Still far from Cole's 6-0, all 3 crowns: the rules win as often but less
+  decisively. His next Hog games show whether the same gap holds.

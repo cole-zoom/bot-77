@@ -1,8 +1,8 @@
-"""Giant Double Prince: docs/decks/giant-double-prince.md as code. Rule ids match the doc's punish rules (R1-R9)."""
+"""Giant Double Prince: docs/decks/giant-double-prince.md as code. Rule ids match the doc's punish rules (R1-R11)."""
 from __future__ import annotations
 
-from bot77.rl.deck_bots import (BRIDGE_X, LANE_X, MID_X, MY_BRIDGE_Y, RIVER_HI, WAIT_S, DeckBot, Step, lane_of,
-                                register)
+from bot77.rl.deck_bots import (BRIDGE_X, LANE_X, MID_X, MY_BACK_Y, MY_BRIDGE_Y, RIVER_HI, RIVER_LO, WAIT_S,
+                                DeckBot, Step, lane_of, register)
 
 BACK_Y = 32.0
 PRINCES = ("Prince", "Dark Prince")
@@ -55,6 +55,35 @@ class GiantDoublePrince(DeckBot):
             if behind:
                 steps.append(Step(behind, (LANE_X[lane], 21.0), 0.8))
         return self.queue(rule, text, *steps)
+
+    def support_plan(self) -> bool:
+        """R11: one support card behind our walking Giant. The bot's answer near it decides (Cole, 2026-11-06): a Goblin
+        Hut -> splash (Dark Prince, Baby Dragon); Mini P.E.K.K.A -> damage (Prince); Mega Minion or anything flying ->
+        Baby Dragon / Minions. Nothing shown by the time the Giant reaches the bridge -> Baby Dragon, else Dark Prince.
+        [inferred: the no-answer default]"""
+        done = self.st.setdefault("supported", set())
+        g = next((u for u in self.my_units("Giant") if u.id not in done and u.y >= RIVER_LO), None)
+        if g is None:
+            return False
+        lane = lane_of(g.x)
+        near = [u for u in self.bot_troops() if abs(u.x - g.x) + abs(u.y - g.y) < 10]
+        if any(lane_of(h.x) == lane or abs(h.x - MID_X) <= 2 for h in self.bot_buildings("Goblin Hut")):
+            why, cards = "Goblin Hut", ("Dark Prince", "Baby Dragon")
+        elif any(u.name == "Mini PEKKA" for u in near):
+            why, cards = "Mini P.E.K.K.A", ("Prince", "Dark Prince")
+        elif any(u.flying for u in near):
+            why, cards = "air", ("Baby Dragon", "Minions")
+        elif g.y <= MY_BRIDGE_Y + 1.0:
+            why, cards = "no answer yet", ("Baby Dragon", "Dark Prince", "Prince")
+        else:
+            return False
+        card = next((c for c in cards if self.soon(c)), None)
+        if card is None:
+            return False
+        done.add(g.id)
+        behind = lambda b, gid=g.id: next(((u.x, max(u.y + 1.5, MY_BRIDGE_Y)) for u in b.my_units("Giant")
+                                            if u.id == gid), None)
+        return self.queue("R11", f"Giant's support vs {why}: {card} behind it", Step(card, behind))
 
     def survivors(self) -> list:
         """R6: own Princes at >= 50% HP back on our side of the river."""
@@ -154,6 +183,10 @@ class GiantDoublePrince(DeckBot):
                 if self.has(card):
                     return self.queue("OPEN", f"0:30, no info: {card}", Step(card, at))
             return
+        # R11 (Cole, 2026-11-06): our Giant is walking in -> support behind it, picked by what the bot answers with
+        sup = self.support_plan()
+        if sup:
+            return sup
         # R3: Mini P.E.K.K.A just played, our Giant or Prince alive -> Prince the other lane (Giant in front at 9+)
         mp = next((s for s in reversed(self.seen[-4:]) if s.name == "Mini PEKKA"), None)
         if mp and ("r3", mp.t) not in self.st and (self.my_units("Giant") or self.my_units("Prince")) \
@@ -175,14 +208,21 @@ class GiantDoublePrince(DeckBot):
             self.st["r6_at"] = t
             u = max(surv, key=lambda v: -v.y)
             return self.queue("R6", f"counter-push: Giant in front of the {u.name}", Step("Giant", (u.x, u.y - 1.0)))
-        # R7: the bot has been on 2 or less for 1 s and we have 4 -> a Prince at the weaker tower's bridge
-        if t - self.st.get("low_since", t) >= 1.0 and el >= 4 and not self.crossed():
-            card = "Prince" if self.has("Prince") and el >= 5 else "Dark Prince" if self.has("Dark Prince") else None
-            if card:
-                self.st.pop("low_since", None)
-                lane = self.push_lane(self.weaker_bot_lane())
-                return self.queue("R7", f"bot is empty: {card} at the bridge",
-                                  Step(card, (BRIDGE_X[lane], MY_BRIDGE_Y)))
+        # R7 (rare, Cole 2026-11-06): the bot has been on 1 or less for 2 s AND has no Prince answer up (Mini P.E.K.K.A
+        # just played, no Goblin Hut in the lane) -> Prince at the weaker tower's bridge. Never a lone Dark Prince.
+        lane = self.push_lane(self.weaker_bot_lane())
+        if self.bot_elixir <= 1 and t - self.st.get("low_since", t) >= 2.0 and el >= 5 and self.has("Prince") \
+                and not self.crossed() and self.out_of_bot_hand("Mini PEKKA") \
+                and not any(lane_of(h.x) == lane for h in self.bot_buildings("Goblin Hut")):
+            self.st.pop("low_since", None)
+            return self.queue("R7", "bot is empty, no Prince answer up: Prince at the bridge",
+                              Step("Prince", (BRIDGE_X[lane], MY_BRIDGE_Y)))
+        # R10 (Cole, 2026-11-06): no push on, nothing to defend, 8 elixir (7 in double) -> Giant behind the king on
+        # the weaker tower's side; R11 adds the support once the bot shows its answer
+        if not self.my_units("Giant") and not self.threats() and self.has("Giant") \
+                and el >= (8 if self.phase == "single" else 7):
+            self.st["giant_at"] = t
+            return self.queue("R10", "Giant in the back", Step("Giant", (7.5 if lane == 0 else 9.5, MY_BACK_Y)))
         other = 1 - last.lane if last else int(self.rng.integers(2))
         # DEFAULT
         if self.phase == "double" or (self.phase == "triple" and not self.leading()):

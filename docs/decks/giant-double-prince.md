@@ -85,14 +85,21 @@ last 6 s that are still alive.
 6. IF a defence just ended with own Prince or Dark Prince alive at ≥ 50% HP on its own side AND own elixir ≥ 5
    AND (bot elixir ≤ 4 OR Mini P.E.K.K.A out of the bot's hand) → Giant 1 tile in front of the survivors (1 lower y)
    (giodelion 2:52; Sweaty 9:43).
-7. IF bot elixir ≤ 2 for ≥ 1 s (it just spent) AND own elixir ≥ 4 → Dark Prince or Prince at the bridge of the
-   lane with the lower-HP bot tower (Sweaty 11:54: the opponent is out of elixir, so go in). **[inferred
-   thresholds]**
+7. IF bot elixir ≤ 1 for ≥ 2 s AND the bot has no Prince answer up (Mini P.E.K.K.A among its last 4 plays, no
+   Goblin Hut in the lane) AND own elixir ≥ 5 → Prince at the bridge of the lane with the lower-HP bot tower. Rare:
+   Cole, 2026-11-06: "IMO its better to not go prince alone at teh bridge against the models deck". (Was: bot ≤ 2
+   for 1 s → Prince or Dark Prince, which fired ~10 times a game and matched 9 of 59 of Cole's plays.)
 8. IF the bot's push is Giant + Mega Minion → Minions on the Mega Minion as soon as it crosses, Prince on the Giant
    at (lane, 24) after it locks the tower. **[inferred]**
 9. IF the bot has Mini P.E.K.K.A in hand (not seen in its last 3 plays) AND bot elixir ≥ 4 → do not start a
    same-lane Giant + Prince push; cycle Baby Dragon / Goblin Gang instead (Sweaty 15:11: can't attack while the
    tank killer is up). **[inferred mapping: Sweaty's case was Inferno]**
+10. IF no Giant of ours is out AND nothing to defend AND own elixir ≥ 8 (≥ 7 in double/overtime) → Giant behind the
+   king on the weaker tower's side ((7.5 or 9.5, 32.5)) (Cole's GDP games 2026-11-06: most of his Giants went there).
+11. IF our Giant is walking in on our side and hasn't had support → one card behind it (1.5 tiles), picked by the bot's
+   answer (Cole, 2026-11-06): Goblin Hut in that lane or the middle → splash, Dark Prince / Baby Dragon; Mini
+   P.E.K.K.A near the Giant → damage, Prince; Mega Minion or anything flying → Baby Dragon / Minions. Nothing shown
+   by the time the Giant reaches the bridge → Baby Dragon, else Dark Prince, else Prince. **[inferred: that default]**
 DEFAULT:
 - Single elixir: cycle (Baby Dragon back, Goblin Gang, Zap; Sweaty 3:45, 19:02), defend with Princes, counter-push
   per rule 6. Never both Princes on defence of one push (giodelion 4:31). Never Giant without support behind it.
