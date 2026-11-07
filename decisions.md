@@ -5044,3 +5044,24 @@ to have good placement".
   the middle of its own side, x 8.5, up to y 12-13. Both towers overlap in the middle from the king up to about y 12.
   Only the strip just before the river, y 13-14 in the middle, is out of reach, plus the river and the bridges.
   Nothing to change. Asked Cole for the moment on the page where a unit in the middle wasn't shot.
+
+## 2026-11-06 · Real princess towers keep shooting kited troops ~1-1.5 tiles past the sim's reach (Cole's clip)
+
+Cole: "it didnt hit some troops it should, especially when kiting". He recorded a live match in BlueStacks
+(`data/raw/cole_clips/2026-11-06/tower_kite_161003.mkv`, local only) and named three kites: 2:05, 1:27 and 0:15
+left. Each time a Mini P.E.K.K.A was kited to the middle at the river.
+
+- **Calibration.** x from bluestacks_live.json's arena (51.33 px per tile; the towers' archers land on engine
+  x 2.9-3.1). y from this frame's river centre (px ≈ 811 = engine 16.5) at bot77.sim.geometry's Y_SCALE (37.5 px
+  per engine row). That puts the opponent's princess tower plates on engine y 27 within a few px.
+- **Measured, at frames with a tower arrow in flight toward the Mini P.E.K.K.A** (centre-to-centre, engine tiles):
+  - 2:05, opponent's left tower: 8.1 at the first shot, then 10.4 (t = 22.5 s) while the Ice Golem kites it to the
+    middle.
+  - 1:27, Cole's left tower: 9.9 (t = 60.5 s), Mini P.E.K.K.A at (9.2, 13.7) chasing the Giant.
+  - 0:15, Cole's right tower: 9.2 (t = 130.5 s), Mini P.E.K.K.A at (10.5, 14.6) chasing the Battle Ram.
+- **The sim's reach** on a Mini P.E.K.K.A is 7.5 + 1.0 (tower body) + its body, about 9.0, plus 1.5 only while a hit
+  is already started (`HIT_CANCEL_DISTANCE`). So the real towers keep a target they locked onto out to at least 10.4,
+  where the sim drops it. Every case is a target first locked closer, then kited away. That looks like a keep-target
+  margin the engine lacks, not a longer first-lock range.
+- **Next:** find the client's keep-target rule in the decompiled targeting code, then add it to the engine (fork
+  C++, reviewed) and re-check these three moments.
