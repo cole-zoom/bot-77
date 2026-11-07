@@ -5032,3 +5032,15 @@ to have good placement".
 - **Royal Delivery** (Cole: "the delivery should do damage"). It does in the engine: 384 on landing, radius 3.0.
   Replaying his Miner game (seed 8650), each of his 4 hit: three on a Mini P.E.K.K.A (1390 → 1006) and one that killed
   two Barbarians. Asked Cole what he saw on the page.
+
+## 2026-11-06 · Princess tower reach checked (Cole: "it should be able to hit things at the center on its side")
+
+- **The engine's rule.** A tower attacks a target when center-to-center distance ≤ 7.5 range + 1.0 (the princess
+  tower's client CollisionRadius) + the target's body radius (`CombatEntity::effectiveRangeTo`). Range 7.5 is the
+  sourced value (TowerTroops.h).
+- **Measured.** With the bot's right tower destroyed, the left tower (3, 6) targeted a Cannon at (9, 12), 8.5 tiles
+  center to center. That confirms the edge-to-edge reach.
+- **What it covers.** For a medium troop (body 0.5), reach is 9.0 from the tower's center. Each princess tower covers
+  the middle of its own side, x 8.5, up to y 12-13. Both towers overlap in the middle from the king up to about y 12.
+  Only the strip just before the river, y 13-14 in the middle, is out of reach, plus the river and the bridges.
+  Nothing to change. Asked Cole for the moment on the page where a unit in the middle wasn't shot.
