@@ -302,6 +302,10 @@ def main():
                          "default: uniform over all demo episodes")
     ap.add_argument("--reviews", default=None, help="Cole's review answers (scripts/build_review_demos.py)")
     ap.add_argument("--review-share", type=float, default=0.125, help="share of every batch drawn from --reviews")
+    ap.add_argument("--games", default=None,
+                    help="Cole's whole games against the deck bots (scripts/build_deck_demos.py), 2026-11-06")
+    ap.add_argument("--games-share", type=float, default=0.125,
+                    help="share of every batch drawn from --games, taken out of the --demos windows")
     a = ap.parse_args()
     LEAD = a.lead
     SHARDS, WINDOW, BURN_IN, PLAY_WEIGHT = Path(a.shards), a.window, a.burn_in, a.play_weight
@@ -327,6 +331,12 @@ def main():
         defence_eps = [e for e in demos if e["tpl"] not in tnames]
         print(f"tempo demos: {len(tempo_eps)} episodes, {a.tempo_share:.0%} of the demo windows; defence demos "
               f"{len(defence_eps)} episodes", flush=True)
+    games = load_demos(Path(a.games)) if a.games else []
+    n_games = int(round(BATCH * a.games_share)) if games else 0
+    if games:
+        assert n_games <= n_demo, "--games windows come out of the --demos windows"
+        print(f"deck-bot games: {len(games)} of Cole's ({sum(e['n'] for e in games)} decisions), {n_games} of every "
+              f"{BATCH} windows (out of the demos' {n_demo})", flush=True)
     if demos:
         print(f"demos: {len(demos)} episodes ({sum(e['n'] for e in demos)} decisions; "
               f"{sum(e['src'] == 'cole' for e in demos)} of Cole's), {n_demo} of every {BATCH} windows", flush=True)
@@ -356,12 +366,14 @@ def main():
         for s in range(steps):
             batch = [train[i] for i in rng.choice(len(train), BATCH - n_demo - n_review, replace=False)]
             batch += [reviews[i] for i in rng.choice(len(reviews), n_review, replace=False)] if n_review else []
-            if n_demo and tempo_eps:
-                k = int(rng.binomial(n_demo, a.tempo_share))
+            batch += [games[i] for i in rng.choice(len(games), n_games, replace=False)] if n_games else []
+            m = n_demo - n_games
+            if m and tempo_eps:
+                k = int(rng.binomial(m, a.tempo_share))
                 batch += [tempo_eps[i] for i in rng.choice(len(tempo_eps), k, replace=False)]
-                batch += [defence_eps[i] for i in rng.choice(len(defence_eps), n_demo - k, replace=False)]
+                batch += [defence_eps[i] for i in rng.choice(len(defence_eps), m - k, replace=False)]
             else:
-                batch += [demos[i] for i in rng.choice(len(demos), n_demo, replace=False)] if n_demo else []
+                batch += [demos[i] for i in rng.choice(len(demos), m, replace=False)] if m else []
             l_card, l_cell, _ = batch_loss(net, batch, rng, device)
             loss = l_card + l_cell
             opt.zero_grad()

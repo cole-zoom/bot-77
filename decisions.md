@@ -5145,3 +5145,13 @@ What went wrong for the bot (all games from the logs, the last replayed tick for
   All 13 replay exactly: 18,597 decisions at 0.1 s, weight 3 (as build_defence_demos' Cole weight), in
   `data/cache/bc/deck_t01/`. deck_play.py now logs `code` (repo and engine revisions, plus a dirty flag) with each
   game, and the builder prefers it.
+- **School v6 training started** (17:5x). The v5 recipe exactly (pro shards, school_v3 demos at 0.7 with a third of them
+  tempo, lead 3, reviews 2 of 16, from bc_defence_v2/epoch03, 4 epochs of 310 steps) plus `--games
+  data/cache/bc/deck_t01`. That new train_bc option gives Cole's 13 deck-bot games 2 of every 16 windows, out of the
+  demos' 11, so the pro and review shares are unchanged. Output data/models/bc_school_v6, log
+  data/logs/train_school_v6.log.
+- **Checks once trained:**
+  - the sim exams as v5;
+  - deck_vs_model-style games against the four rule bots;
+  - head-to-head against v5 e3;
+  - then Cole's 20-game live test only if it holds up.
