@@ -5102,3 +5102,19 @@ left. Each time a Mini P.E.K.K.A was kited to the middle at the river.
 - **Baby Dragon.** The base card was right (splash 1.5 = BabyDragonProjectile Radius 1500). Both Evolution forms had
   no splash at all; now 1.5. Check: three bunched Knights take 606 / 336 / 270 in 3 s from either card.
 - **C++ suite:** 821 cases, 820 pass, 1 expected failure.
+
+## 2026-11-06 · Cole vs the P.E.K.K.A Bridge Spam bot: 4-0, every game 3 crowns
+
+Cole played our deck against the P.E.K.K.A BS rule bot, 4 games (seeds 12386, 12528, 12628, 12751), on the engine with
+today's fixes. He won 3-0 every time, in 95-149 s, and lost one princess tower in one game. The same bot beats the
+live model 29-1 in the sim.
+
+What went wrong for the bot (all games from the logs, the last replayed tick for tick with its elixir; 0 mismatches):
+- **It goes broke on offence, then can't defend.** R4 put the P.E.K.K.A at the bridge from 7.0 elixir (left with
+  1.2), and R3 the Ram from 5.5 (left 2.6). The next defence it queued (E-Wiz or Magic Archer, 4 elixir) waited its
+  4 s and was dropped unpaid. 5-8 drops a game, almost all "couldn't play it".
+- **It cycles 3-elixir cards behind its king at a full bar** (Royal Ghost, Bandit), where a real player sends them
+  to the bridge.
+- **"Nothing in hand to answer it"** with the P.E.K.K.A in hand against Giant / Mini P.E.K.K.A (seed 12751,
+  137.6-143.7 s). This is a bug to check in answer_options.
+- **Two "no spot" drops:** Zap on a unit that had moved on, and Magic Archer behind the P.E.K.K.A.
