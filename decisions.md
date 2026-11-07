@@ -5155,3 +5155,24 @@ What went wrong for the bot (all games from the logs, the last replayed tick for
   - deck_vs_model-style games against the four rule bots;
   - head-to-head against v5 e3;
   - then Cole's 20-game live test only if it holds up.
+- **School v6 trained** (4 epochs, done ~23:00; the first epoch slowed to 4.4 h by the laptop sleeping). Checks of e3
+  against v5 e3 (the live model), both on today's engine and today's bot rules:
+  - **Against the deck bots,** 30 games each, model wins out of 30:
+
+    | Deck | v6 | v5 |
+    |---|---|---|
+    | PEKKA BS | 23 | 17 |
+    | Golem | 3 | 7 |
+    | GDP | 10 | 10 |
+    | Log Bait | 15 | 10 |
+    | Hog | 17 | 17 |
+    | Total | 68 / 150 | 61 / 150 |
+
+    (`data/rl/deck_vs_bc_school_v6_epoch03_1106.jsonl`)
+  - **Head-to-head** (match_eval, 200 games): v6 won 56% (±7%). Crowns 1.23 vs 1.06.
+  - **Situation exam** (50 starts per template). Level on most templates. Better: desperate (+0.32), supported_push
+    (+0.16), emergency (+0.13). Worse: chill (-1.27: +1.07 → -0.20, median tower HP lost 1850 → 2552) and
+    fireball_value (-0.13). On Cole's 142 reference starts: -0.71 vs -0.67, and it beats his result on 47 vs 42.
+  - **Read:** a small, not significant gain overall. Clearly better against PEKKA BS and Log Bait (the decks of
+    Cole's games), worse against Golem and in calm games. 13 games are 2 of 16 windows; more of his games would
+    weigh more.
