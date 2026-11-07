@@ -5133,3 +5133,9 @@ What went wrong for the bot (all games from the logs, the last replayed tick for
   not the rule changes, which are level within noise. On the same engine: Golem 23-7, GDP 20-10, Log Bait 20-10.
 - **Cole's 3 Golem games** (seeds 12925, 13126, 13312): 2-0, 2-1, 3-0 to Cole. The bot took a tower in one game.
   3-7 dropped plays a game.
+- **Cole's games against Log Bait and Giant Double Prince** (seeds 13724-14462), 3 each:
+  - Log Bait 2-1 (went to overtime, 187 s; the bot took a tower), 3-0, 3-0.
+  - GDP 3-0, 3-0, 3-0, each at about 160 s; the bot took nothing.
+
+  Totals: 13 games of Cole on our deck against the four rule bots, all won, 0 refused plays since the 1 s lock. They
+  are the imitation set's newest examples ([[project-deck-bot-games-are-imitation-data]]).
