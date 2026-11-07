@@ -5085,3 +5085,20 @@ left. Each time a Mini P.E.K.K.A was kited to the middle at the river.
   - Hog 13-17 (was 17-13)
   All within the ±~5-game noise of 30 games, except perhaps Hog.
 - **Play page.** The four rule bots that beat the model are first in the dropdown ("vs <deck> (you play the bot)").
+
+## 2026-11-06 · Three card fixes from Cole: Royal Ghost, Magic Archer, Baby Dragon (fork 1 commit, checked in the sim)
+
+- **Royal Ghost.** Cole: "when royal ghost hits it needs to be able to be hit too". The engine showed it only 0.5 s
+  after each hit, and with its 1.8 s hit speed that left it cloaked most of a fight. The client (ghost.toml) gives it
+  Invisibility only after 2.0 s of not attacking (BuffWhenNotAttackingTime 2000), where attacking means a target in
+  attack reach (UseAttackRange). New `withInvisibilityWhenNotAttacking(secs(2.0))` on the base card and the
+  Evolution's un-evolved form. The Evolution's evolved form runs on scripted client actions and still uses its 1.8 s
+  reveal after a hit. Check: a Knight fighting it targets it 38 of 60 ticks and kills it in 6 s.
+- **Magic Archer.** Cole: "projectiles should pierce enemies, up to a massive range". The engine already had the 11-tile
+  pierce (ProjectileRange 11000). But its line test counted only the 0.25 half-width from each unit's centre, and the
+  arrow flies to where the target stood at launch, so a walking Knight took **0 damage in 5 s**. Line shots now hit
+  what they overlap (half-width plus the body's radius), as disc spells have since 09-25. After: 544 in 5 s (every
+  shot), and the Knight behind it in the line is hit too. This also covers the Bowler.
+- **Baby Dragon.** The base card was right (splash 1.5 = BabyDragonProjectile Radius 1500). Both Evolution forms had
+  no splash at all; now 1.5. Check: three bunched Knights take 606 / 336 / 270 in 3 s from either card.
+- **C++ suite:** 821 cases, 820 pass, 1 expected failure.
