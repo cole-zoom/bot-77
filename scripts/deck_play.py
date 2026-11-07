@@ -246,10 +246,16 @@ def main():
                     return self.send(200, f.read_bytes(), STATIC_TYPES[f.suffix])
                 return self.send(404, "{}")
             if self.path == "/templates":  # the page's picker: the decks instead of the situations
+                # the four rule bots that beat the model come first (Cole plays our deck against them, 2026-11-06)
+                first = [k for k in ("pekka_bs", "golem", "gdp", "log_bait") if k in DECKS]
+                rest = [k for k in DECKS if k not in first]
                 return self.send(200, json.dumps({"title": "Play the deck bots", "label": "Opponent deck",
-                                                  "templates": [{"value": f"as:{k}", "name": f"You play {c.NAME} vs the model"}
-                                                                for k, c in DECKS.items()]
-                                                  + [{"value": k, "name": f"vs {c.NAME} (you play the bot)"} for k, c in DECKS.items()]}))
+                                                  "templates": [{"value": k, "name": f"vs {DECKS[k].NAME} (you play the bot)"}
+                                                                for k in first]
+                                                  + [{"value": f"as:{k}", "name": f"You play {c.NAME} vs the model"}
+                                                     for k, c in DECKS.items()]
+                                                  + [{"value": k, "name": f"vs {DECKS[k].NAME} (you play the bot)"}
+                                                     for k in rest]}))
             if self.path == "/catalog":
                 return self.send(200, json.dumps({"cards": catalog, "tower_range": pl.TOWER_RANGE, "tick_s": pl.TICK_S}))
             if self.path == "/board":

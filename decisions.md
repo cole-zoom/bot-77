@@ -5065,3 +5065,23 @@ left. Each time a Mini P.E.K.K.A was kited to the middle at the river.
   margin the engine lacks, not a longer first-lock range.
 - **Next:** find the client's keep-target rule in the decompiled targeting code, then add it to the engine (fork
   C++, reviewed) and re-check these three moments.
+- **Fixed (fork fa2129e).** `Fidelity::princessFirstShotDelay` was already built and is now on by default. It runs
+  Princess Towers on the client attack cycle: the first arrow comes 0.8 s after acquiring, and a started arrow still
+  flies at a target that has been kited out of reach. The client code notes had left it off pending lab L18. The clip
+  answers L18: the first arrow left ~1 s after the Mini P.E.K.K.A entered reach. No keep-target rule needed changing;
+  the client keeps a target to reach + 0.025, the same as the engine.
+- **Re-check.** Sim, same Giant kite: the left tower's last hit is at 10.15 tiles (was 9.4), and the clip had 9.9-10.4.
+- **C++ suite.** 821 cases, 820 pass, 1 expected failure. Three pins updated:
+  - Princess Towers now run the client cycle.
+  - The card lock is 1 s.
+  - The default-deck QA Cannon-vs-Hog margin is loosened from 1/3 to 2/5 of the unanswered loss: it read 2853 vs
+    2851 at 1/3, since the tower's first arrow now waits.
+- **The decks against the model on the new engine,** 30 games each, bot-model
+  (`data/rl/deck_vs_v5e3_princess_cycle.jsonl`):
+  - PEKKA BS 29-1
+  - Golem 23-7 (was 26-4)
+  - GDP 20-10
+  - Log Bait 20-10 (was 17-13)
+  - Hog 13-17 (was 17-13)
+  All within the ±~5-game noise of 30 games, except perhaps Hog.
+- **Play page.** The four rule bots that beat the model are first in the dropdown ("vs <deck> (you play the bot)").
