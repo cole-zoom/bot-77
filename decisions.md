@@ -5118,3 +5118,18 @@ What went wrong for the bot (all games from the logs, the last replayed tick for
 - **"Nothing in hand to answer it"** with the P.E.K.K.A in hand against Giant / Mini P.E.K.K.A (seed 12751,
   137.6-143.7 s). This is a bug to check in answer_options.
 - **Two "no spot" drops:** Zap on a unit that had moved on, and Magic Archer behind the P.E.K.K.A.
+- **Fixes to the P.E.K.K.A BS bot, same day.**
+  - `spare(cost)`: an attack only goes ahead when it leaves RESERVE = 3 elixir, or when the bot is on ≤ 3 with nothing
+    across. This applies to R1, R2, R4 (the bridge P.E.K.K.A and its follow-up), R5, the support behind the
+    P.E.K.K.A and the double-elixir punish.
+  - At a full bar, Royal Ghost / Bandit go to the bridge, not behind the king.
+  - The "nothing in hand" moment was the same problem: on 1.3 elixir the P.E.K.K.A is filtered out on purpose, so
+    nothing was left.
+- **Against the model, 30 games each:**
+  - new rules 13-17, reserve alone 13-17, bridge cycling alone 13-17;
+  - the ORIGINAL rules on today's engine 14-16 (`data/rl/deck_vs_v5e3_cardfix.jsonl`).
+
+  So the fall from 29-1 is today's card fixes, almost surely the Royal Ghost (it was cloaked for most of every fight),
+  not the rule changes, which are level within noise. On the same engine: Golem 23-7, GDP 20-10, Log Bait 20-10.
+- **Cole's 3 Golem games** (seeds 12925, 13126, 13312): 2-0, 2-1, 3-0 to Cole. The bot took a tower in one game.
+  3-7 dropped plays a game.

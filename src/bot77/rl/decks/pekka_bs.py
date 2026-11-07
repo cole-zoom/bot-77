@@ -6,6 +6,7 @@ from bot77.rl.deck_bots import (BRIDGE_X, LANE_X, MY_BACK_Y, MY_BRIDGE_Y, RIVER_
 PK = "P.E.K.K.A."  # card_id() picks the normal one (13), not the evo (148)
 HIGH_Y, LOW_Y = 20.5, 24.5
 FINISH_HP = 700.0  # overtime, behind or level: Fireball a tower under this
+RESERVE = 3.0  # elixir kept back for the next defence (Cole's games 2026-11-06: broke after a bridge P.E.K.K.A)
 
 
 @register
@@ -25,6 +26,10 @@ class PekkaBS(DeckBot):
                 steps.append(Step(card, (bx, HIGH_Y) if steps else (bx, MY_BRIDGE_Y), 0.3 if steps else 0.0))
                 break
         return self.queue(rule, text, *steps)
+
+    def spare(self, cost: float) -> bool:
+        """Can pay `cost` and still defend: RESERVE left, or the bot is low with nothing of its across."""
+        return self.elixir - cost >= RESERVE or (self.bot_elixir <= 3 and not self.crossed())
 
     def pekkas(self) -> list:
         return self.my_units(PK)
@@ -109,7 +114,7 @@ class PekkaBS(DeckBot):
     # ------------------------------------------------------------------ the punish rules and the default
     def on_bot_play(self, s):
         # R1: a 5+ troop at the bot's back -> Battle Ram at the opposite bridge within 1 s, Bandit behind if rich
-        if s.cost >= 5 and s.y <= 8.0 and s.name not in ("Fireball", "Arrows") and self.elixir >= 4:
+        if s.cost >= 5 and s.y <= 8.0 and s.name not in ("Fireball", "Arrows") and self.spare(4):
             ram = self.has("Battle Ram")  # no Ram in hand: Bandit alone (the game plan's Ram/Bandit/Ghost punish)
             if (ram or self.has("Bandit")) and not (self.phase == "triple" and self.leading()):
                 self.bridge_plan("R1", f"{s.name} in the back: {'Ram' if ram else 'Bandit'} the opposite bridge",
@@ -134,7 +139,7 @@ class PekkaBS(DeckBot):
         if r5 and r5 != "done" and not overtime_ahead:
             if t - r5[1] > 12:
                 self.st.pop("r5")
-            elif el >= 7 and (self.has("Battle Ram") or self.has("Bandit")):
+            elif self.spare(7) and (self.has("Battle Ram") or self.has("Bandit")):
                 self.st["r5"] = "done"  # once per P.E.K.K.A push (cleared when it dies)
                 return self.bridge_plan("R5", "bot spent 6+ on the P.E.K.K.A: Ram + Bandit the other bridge",
                                         r5[0], bandit=True)
@@ -150,7 +155,7 @@ class PekkaBS(DeckBot):
             alive = [u for u in self.bot_troops() if lane_of(u.x) == r2[0] and u.y >= 9.0]
             if t - r2[1] > 20:
                 self.st.pop("r2")
-            elif not alive and t - r2[1] > 2 and el >= 4 and not overtime_ahead and self.has("Battle Ram"):
+            elif not alive and t - r2[1] > 2 and self.spare(4) and not overtime_ahead and self.has("Battle Ram"):
                 self.st.pop("r2")
                 self.bridge_plan("R2", "bot's push is dead: Ram that bridge", r2[0])
                 if el >= 7 and self.has("Bandit"):
@@ -165,12 +170,12 @@ class PekkaBS(DeckBot):
         mm_far = lambda ln: self.out_of_bot_hand("Mega Minion") and not any(  # out of cycle, and if alive, away
             u.name == "Mega Minion" and lane_of(u.x) == ln for u in self.bot_troops())
         lane = self.hut_free_lane(self.weaker_bot_lane())
-        if self.out_of_bot_hand("Mini PEKKA") and mm_far(lane) and el >= 7 and self.has(PK) and not self.pekkas():
+        if self.out_of_bot_hand("Mini PEKKA") and mm_far(lane) and self.spare(7) and self.has(PK) and not self.pekkas():
             self.st["r4"] = (lane, t)
             return self.queue("R4", "Mini P.E.K.K.A out of cycle: P.E.K.K.A at the bridge",
                               Step(PK, (BRIDGE_X[lane], MY_BRIDGE_Y)))
         r4 = self.st.get("r4")
-        if r4 and self.pekkas() and el >= 4 and t - r4[1] < 15:
+        if r4 and self.pekkas() and self.spare(4) and t - r4[1] < 15:
             self.st.pop("r4")
             card = next((c for c in ("Battle Ram", "Bandit") if self.has(c)), None)
             if card:
@@ -190,7 +195,7 @@ class PekkaBS(DeckBot):
             for ln in (0, 1):
                 if 0 < self.tower_hp(0, ln) < FINISH_HP:
                     return self.queue("DEFAULT", "overtime: Fireball the low tower", Step("Fireball", (LANE_X[ln], 6.0)))
-        if pk and pk.y <= 20.5 and "sup" not in self.st and el >= 4:  # support the P.E.K.K.A at the bridge
+        if pk and pk.y <= 20.5 and "sup" not in self.st and self.spare(4):  # support the P.E.K.K.A at the bridge
             for card in ("Electro Wizard", "Magic Archer"):
                 spot = (pk.x, pk.y + 2.5)
                 if self.has(card) and self.spaced_ok(card, *spot):
@@ -208,17 +213,21 @@ class PekkaBS(DeckBot):
             for ln in (0, 1):
                 key = ("dbl", int(t // 6))
                 if self.committed(ln, 6.0) >= 5 and self.committed(1 - ln, 6.0) == 0 and key not in self.st:
-                    if el >= 6 and self.has("Battle Ram"):
+                    if self.spare(7) and self.has("Battle Ram"):
                         self.st[key] = True
                         return self.bridge_plan("DEFAULT", f"{self.phase}: Ram + Bandit/Ghost the other lane", 1 - ln,
                                                 bandit=True, ghost=True)
         return self._cycle()
 
     def _cycle(self):
-        """Full bar with nothing better: cycle a cheap card at the back toward P.E.K.K.A / E-Wiz."""
+        """Full bar with nothing better: Royal Ghost / Bandit to the bridge for pressure (not behind the king), else
+        cycle a card at the back toward P.E.K.K.A / E-Wiz."""
         if self.elixir < 9.5:
             return
         for card in ("Royal Ghost", "Bandit", "Zap", "Electro Wizard", "Magic Archer", PK):
             if self.has(card):
+                lane = self.hut_free_lane(self.weaker_bot_lane())
+                if card in ("Royal Ghost", "Bandit"):
+                    return self.queue("CYCLE", f"full bar: {card} to the bridge", Step(card, (BRIDGE_X[lane], MY_BRIDGE_Y)))
                 at = (LANE_X[self.weaker_bot_lane()], 6.0) if card == "Zap" else (LANE_X[int(self.rng.integers(2))], MY_BACK_Y - 0.5)
                 return self.queue("CYCLE", f"full bar: cycle {card} at the back", Step(card, at))
