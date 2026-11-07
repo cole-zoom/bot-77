@@ -50,6 +50,12 @@ def main():
     from bot77.sim import placement as pl
     from bot77.rl.model_player import LIVE_CKPT, ModelPlayer
     cre.set_client_collision(True)  # as the situation page (Cole 10-29)
+    # the code the page runs, logged with every game so it replays exactly (scripts/build_deck_demos.py; the deck
+    # bots' rules change after Cole's games)
+    import subprocess
+    git = lambda *c, cwd=ROOT: subprocess.run(["git", *c], cwd=cwd, capture_output=True, text=True).stdout.strip()
+    CODE = {"rev": git("rev-parse", "HEAD"), "dirty": bool(git("status", "--porcelain", "src/bot77/rl", "scripts")),
+            "engine": git("rev-parse", "HEAD", cwd=ROOT / "third_party/clash-royale-env")}
     names = {i: c["name"] for i, c in sc.engine_cards().items()}
     cost = {i: float(c["cost"]) for i, c in sc.engine_cards().items()}
     ours = [card_id(n) for n in OUR_DECK]
@@ -221,7 +227,7 @@ def main():
                 f.write(json.dumps({"when": time.strftime("%Y-%m-%d %H:%M:%S"), "mode": "you_play_the_deck",
                                     "deck": game["key"], "seed": game["seed"], "model": model.ckpt,
                                     "plays": game["plays"], "suggestions": game["sugg"], "events": game["events"],
-                                    "result": out["result"]["you"]}, default=float) + "\n")
+                                    "result": out["result"]["you"], "code": CODE}, default=float) + "\n")
             game["g"] = None
         return out
 
@@ -343,7 +349,8 @@ def main():
                     with log.open("a") as f:
                         f.write(json.dumps({"when": time.strftime("%Y-%m-%d %H:%M:%S"), "deck": game["key"],
                                             "seed": game["seed"], "plays": game["plays"], "opp_plays": bot.mine,
-                                            "events": game["events"], "result": out["result"]["you"]}, default=float) + "\n")
+                                            "events": game["events"], "result": out["result"]["you"], "code": CODE},
+                                           default=float) + "\n")
                     game["g"] = None
                 return self.send(200, json.dumps(out, default=float))
             self.send(404, "{}")

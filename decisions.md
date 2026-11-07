@@ -5139,3 +5139,9 @@ What went wrong for the bot (all games from the logs, the last replayed tick for
 
   Totals: 13 games of Cole on our deck against the four rule bots, all won, 0 refused plays since the 1 s lock. They
   are the imitation set's newest examples ([[project-deck-bot-games-are-imitation-data]]).
+- **The 13 games as imitation data.** `scripts/build_deck_demos.py` replays each game from its seed, with the deck bot
+  as the page ran it. Its module comes from git at the game's time, since the P.E.K.K.A rules changed after Cole's
+  games (2 of 4 didn't replay on the current rules). Every one of Cole's plays has to land or be refused as logged.
+  All 13 replay exactly: 18,597 decisions at 0.1 s, weight 3 (as build_defence_demos' Cole weight), in
+  `data/cache/bc/deck_t01/`. deck_play.py now logs `code` (repo and engine revisions, plus a dirty flag) with each
+  game, and the builder prefers it.
