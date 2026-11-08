@@ -140,7 +140,9 @@ def main():
             out = self.envs.step(action)
             opp = out[4].get("league_opp")
             if opp is not None:
-                for i in np.flatnonzero(np.asarray(opp) >= 0):
+                # gymnasium fills a key some envs left out (the autoreset step's reset info) with 0 = member 0
+                have = np.asarray(out[4].get("_league_opp", np.ones(len(opp), bool)))
+                for i in np.flatnonzero(have & (np.asarray(opp) >= 0)):
                     t = self.tally[names[int(opp[i])]]
                     t[0] += int(out[1][i] > 0.5)
                     t[1] += 1

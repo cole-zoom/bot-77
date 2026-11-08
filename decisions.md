@@ -5235,3 +5235,8 @@ Same engine and bot rules as the v6 checks.
   ended without a readable result and was replayed). Games ran 10:55-13:05; the 11:40-12:45 gap is the replay runner
   for chunk 1, not a freeze. Not comparable to earlier runs without the trophy level (see the trophy-level note).
 - **League round 1 started 13:18** (data/logs/run_league_v1.sh: 3,000 episodes, 8 envs, gate on ep 1,500 and 3,000).
+- **Round 1 at ep 200 (13:28, ~20 episodes a minute on 8 envs):** the per-member tally counted the autoreset step's
+  reset info (gymnasium fills the missing league_opp with 0 = school v5, reward 0) as a v5 loss: v5 showed 20/228.
+  Logging only (the reward never reads it); fixed with the `_league_opp` mask for later runs. Corrected so far: v5
+  ~20/28, v6 15/34, v7 20/35 (the mirror is 60%), pekka_bs 13/20, log_bait 10/16, hog26 8/18, gdp 7/26, golem 3/9,
+  clone 10/14. Still in critic warm-up (no KL anchor yet); ClipFrac 0.
