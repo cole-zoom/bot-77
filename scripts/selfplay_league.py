@@ -28,6 +28,7 @@ import json
 import os
 import shutil
 import sys
+import time
 from collections import defaultdict
 from pathlib import Path
 
@@ -50,7 +51,9 @@ def league(a) -> list[dict]:
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("--init", default="data/models/bc_school_v7/epoch03.pth", help="the start, and the KL anchor")
+    ap.add_argument("--init", default="data/models/bc_school_v7/epoch03.pth", help="the start")
+    ap.add_argument("--anchor", default=None, help="the KL anchor (default: --init)")
+    ap.add_argument("--hours", type=float, default=0.0, help="stop after this much wall-clock (0: no limit)")
     ap.add_argument("--run", default="data/models/league_v1")
     ap.add_argument("--episodes", type=int, default=3000)
     ap.add_argument("--envs", type=int, default=8)
@@ -71,6 +74,7 @@ def main():
     ap.add_argument("--anchor-lr", type=float, default=1e-4)
     ap.add_argument("--place-kl-weight", type=float, default=0.5)
     a = ap.parse_args()
+    T0 = time.time()
     run = (ROOT / a.run).resolve()
     run.mkdir(parents=True, exist_ok=True)
     init = (ROOT / a.init).resolve()
@@ -117,7 +121,8 @@ def main():
     bt.DRAW_PENALTY = 0.0
 
     ref = MicroRoyaleNet()
-    ref.load_state_dict(torch.load(init, map_location="cpu", weights_only=False)["model"], strict=False)
+    anchor = (ROOT / a.anchor).resolve() if a.anchor else init
+    ref.load_state_dict(torch.load(anchor, map_location="cpu", weights_only=False)["model"], strict=False)
     ref.eval()
     for p in ref.parameters():
         p.requires_grad_(False)
@@ -151,8 +156,8 @@ def main():
         flat = obs.reshape(L * B, -1)
         feats, embeds, spatial, hires = net.extract_features_hires(flat)
         mask = net.affordability_mask(flat).view(L, B, net.hand_size + 1)
-        hx = torch.zeros(B, 256)
-        cx = torch.zeros(B, 256)
+        hx = torch.zeros(B, 256, device=obs.device)
+        cx = torch.zeros(B, 256, device=obs.device)
         out = net.forward_sequence(feats.view(L, B, -1), embeds.view(L, B, net.hand_size + 1, -1),
                                    spatial.view(L, B, *spatial.shape[1:]), flat.view(L, B, -1), mask, cards, keep,
                                    (hx, cx), hires_seq=hires.view(L, B, *hires.shape[1:]))
@@ -180,7 +185,14 @@ def main():
             self.historical_pool = []
 
         def should_stop(self):
-            return self.episodes_completed >= a.episodes
+            n = self.episodes_completed
+            late = a.hours > 0 and time.time() - T0 > a.hours * 3600
+            if (n >= a.episodes or late) and getattr(self, "_snap_at", -1) != n:
+                self._snap_at = n  # the last weights, whatever the snapshot cadence
+                d = run / "historical_checkpoints"
+                d.mkdir(exist_ok=True)
+                torch.save({"model": self.net.state_dict()}, d / f"ep{n:05d}.pth")
+            return n >= a.episodes or late
 
         def on_episode_end(self, i, ctx):
             super().on_episode_end(i, ctx)
@@ -196,8 +208,10 @@ def main():
             if not hasattr(self, "_anchor_opt"):
                 self._anchor_opt = torch.optim.Adam(self.net.parameters(), lr=a.anchor_lr)
                 self._anchor_rng = np.random.default_rng(77)
-            obs, cards, masks = batch["obs"].cpu(), batch["card_actions"].cpu(), batch["masks"].cpu()
-            dec = (batch["decision"] * batch["valid"]).cpu()
+                ref.to(self.device)  # the trainer's device: the GPU when there is one
+            dev = self.device
+            obs, cards, masks = batch["obs"], batch["card_actions"], batch["masks"]
+            dec = batch["decision"] * batch["valid"]
             T, N = cards.shape[:2]
             W, burn = a.anchor_window + a.anchor_burn_in, a.anchor_burn_in
             first = last = None
@@ -205,18 +219,18 @@ def main():
             while steps < a.anchor_max_steps:
                 t0 = self._anchor_rng.integers(0, T - W + 1, a.anchor_batch)
                 ev = self._anchor_rng.integers(0, N, a.anchor_batch)
-                tt = torch.as_tensor(t0).unsqueeze(0) + torch.arange(W).unsqueeze(1)
-                ee = torch.as_tensor(ev).unsqueeze(0).expand(W, -1)
-                o, c = obs[tt, ee], cards[tt, ee].long()
-                keep = masks[tt, ee]  # 1 - done: forward_sequence zeroes the LSTM after a game's last step, as in PPO
-                rows = dec[tt, ee] > 0.5
+                tt = (torch.as_tensor(t0).unsqueeze(0) + torch.arange(W).unsqueeze(1)).to(obs.device)
+                ee = torch.as_tensor(ev).unsqueeze(0).expand(W, -1).to(obs.device)
+                o, c = obs[tt, ee].to(dev), cards[tt, ee].long().to(dev)
+                keep = masks[tt, ee].to(dev)  # 1 - done: forward_sequence zeroes the LSTM after a game's last step, as in PPO
+                rows = dec[tt, ee].to(dev) > 0.5
                 rows[:burn] = False
                 with torch.no_grad():
                     rc, rp = unroll(ref, o, c, keep)
                 cc, cp = unroll(self.net, o, c, keep)
                 k_card = kl(rc, cc)[rows]
                 played = rows & (c < self.net.hand_size)
-                k_place = kl(rp, cp)[played] if played.any() else torch.zeros(1)
+                k_place = kl(rp, cp)[played] if played.any() else torch.zeros(1, device=dev)
                 loss = k_card.mean() + a.place_kl_weight * k_place.mean()
                 kc = float(k_card.mean().detach()) if len(k_card) else 0.0
                 first = kc if first is None else first
@@ -269,7 +283,7 @@ def main():
 
     # the step-length-dependent settings at 0.1 s, as rl_vs_clones: discount 0.999 a second, ~10 s of GAE lookahead
     cfg = dict(lr=a.lr, gamma=0.999 ** 0.1, gae_lambda=0.99, bptt_chunk=100, update_timestep=1000)
-    print(f"run {run}\ninit {init}\nleague {[(n, round(m['w'], 3)) for n, m in zip(names, pool)]} + own snapshots "
+    print(f"run {run}\ninit {init}\nanchor {anchor}\ndevice {'cuda' if torch.cuda.is_available() else 'cpu'}\nleague {[(n, round(m['w'], 3)) for n, m in zip(names, pool)]} + own snapshots "
           f"{a.w_snapshots}\nppo {cfg}", flush=True)
     LeagueTrainer(PPOConfig(**cfg)).run()
 

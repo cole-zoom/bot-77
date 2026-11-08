@@ -5224,3 +5224,10 @@ Same engine and bot rules as the v6 checks.
 - **scripts/league_gate.py:** the candidate vs the base on 200 seeds, paired with the base's own mirror on the same
   seeds (McNemar p < 0.1, must win more), plus the deck bots (total not more than 6 below the base's). Round 1 chain:
   data/logs/run_league_v1.sh (3,000 episodes, gate on ep 1,500 and 3,000), to start after the live test.
+- **RunPod (Cole, 11-08: "Once all gates pass for GPU usage, I want u to start a runpod run. I have $12 in credits, u
+  can use $10"; then "don't wait for my go ahead").** Account checked: no pods, this Mac's SSH key registered; RTX 4090
+  secure $0.89/h, 16 vCPU minimum, stock LOW in EU-RO-1 / EUR-IS-1 / US-IL-1 (community out of stock). The trainer
+  already moves itself to CUDA (base_trainer picks the device); my KL anchor assumed the CPU, fixed. New: --anchor
+  (separate from --init, so a pod run can continue from the local round's winner still anchored to v7), --hours (a
+  wall-clock stop that saves a last snapshot). scripts/pod_league.sh: setup / smoke / run on the pod, gate at the end,
+  then the pod stops itself. Launch only if the local round's gate passes.
