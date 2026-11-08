@@ -5197,5 +5197,30 @@ Same engine and bot rules as the v6 checks.
 - **Situation exam:** calm/tempo rows better than v6. Chill -0.20 → +0.27, spell_finish +0.14 → +0.46, desperate
   -0.95 → -0.74, press_calm +2.35 → +2.46. Defence rows a little worse: defend_counter -0.39 → -0.51, supported_push
   -1.13 → -1.20, hog_rider -0.38 → -0.44. Reference starts -0.67 (v6 -0.71), and it beats Cole's result on 45.
-- **Read:** mixed. Clearly the strongest model head-to-head and it fixed v6's chill regression, but no better against
-  the scripted decks. Picked **v7 e3** for Cole's 20-game live test (step 1); v5 stays the fallback.
+- **Read:** mixed. Picked **v7 e3** for Cole's 20-game live test (step 1); v5 stays the fallback.
+- **Correction (2026-11-08): the head-to-heads above show nothing.** match_eval puts the checkpoint on team 0, which
+  wins against an identical opponent (the 10-30 finding, forgotten here): **v7 vs itself 60%** (+-7%, 200 games,
+  crowns 1.39 / 1.10; data/models/bc_school_v7/h2h_mirror_n200.jsonl). So v7 vs v6 64% is 4 points over the mirror
+  (not significant) and v7 vs v5 56% is under it. The v6 vs v5 56% (11-06 entry) is under it too. None of v5 / v6 / v7
+  is shown better than another head to head; I told Cole v7 was "clearly the strongest": wrong. Gates from here pair
+  the candidate's seeds with the base's own mirror on the same seeds (scripts/league_gate.py).
+
+## 2026-11-08 · Live test of v7 started; the self-play league round built (Cole: "make the bot play against itself soon, and on a GPU")
+
+- **Live:** run20v7 (v7 e3, no wait nudge, BOT77_FLAT_OPP_CYCLE=1, live_with_replays 20 games), started 10:55;
+  BlueStacks re-connected over hd-adb at 127.0.0.1:5555. First 4: W W L L.
+- **GPU vs CPU (told Cole):** self-play time goes to the C++ engine, one game a core; the net is small. The thing to rent
+  is a many-core CPU box, a GPU only helps batch the moves. And not before one local round improves on its start
+  (Cole, 10-30: "not worth gpu until we know it works").
+- **scripts/selfplay_league.py + bot77.rl.league_env**, aimed at what the four failed rounds (v3-v6) had in common:
+  - KL anchor to the start (v7 e3) on the rollout's own states after every PPO update: card KL on every decision,
+    placement KL (given the card) on every play, from a zeroed LSTM with 32 steps of burn-in; repeated until the card
+    KL is under 0.02 nats or 8 steps;
+  - the result as the reward (+-1, +0.1 a crown of margin); the fork's shaping, flawless bonus and draw penalty off;
+  - a league at fixed weights: school v5 / v6 / v7 at 0.1 s (35%), the five deck bots (35%), the pro clone (10%), the
+    run's own snapshots every 500 episodes (20%); lr 3e-5, critic warm-up 300 episodes.
+  - Smoke run (2 envs, 6 episodes): all three kinds of opponent play, the anchor runs (card KL 0.002-0.017),
+    snapshots save. ClipFrac 0.31-0.46 on the first updates (v6 ran 0.13-0.22): to watch at 8 envs.
+- **scripts/league_gate.py:** the candidate vs the base on 200 seeds, paired with the base's own mirror on the same
+  seeds (McNemar p < 0.1, must win more), plus the deck bots (total not more than 6 below the base's). Round 1 chain:
+  data/logs/run_league_v1.sh (3,000 episodes, gate on ep 1,500 and 3,000), to start after the live test.
