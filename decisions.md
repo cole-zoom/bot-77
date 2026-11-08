@@ -5231,3 +5231,7 @@ Same engine and bot rules as the v6 checks.
   (separate from --init, so a pod run can continue from the local round's winner still anchored to v7), --hours (a
   wall-clock stop that saves a last snapshot). scripts/pod_league.sh: setup / smoke / run on the pod, gate at the end,
   then the pod stops itself. Launch only if the local round's gate passes.
+- **Live result, run20v7: 11-9 over 20 counted games** (10-6 in the first 16, 1-3 in the last 4; one game in chunk 1
+  ended without a readable result and was replayed). Games ran 10:55-13:05; the 11:40-12:45 gap is the replay runner
+  for chunk 1, not a freeze. Not comparable to earlier runs without the trophy level (see the trophy-level note).
+- **League round 1 started 13:18** (data/logs/run_league_v1.sh: 3,000 episodes, 8 envs, gate on ep 1,500 and 3,000).
