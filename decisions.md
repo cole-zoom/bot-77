@@ -5176,3 +5176,13 @@ What went wrong for the bot (all games from the logs, the last replayed tick for
   - **Read:** a small, not significant gain overall. Clearly better against PEKKA BS and Log Bait (the decks of
     Cole's games), worse against Golem and in calm games. 13 games are 2 of 16 windows; more of his games would
     weigh more.
+
+## 2026-11-07 · Six more Golem games from Cole; school v7 training
+
+Cole: "Lowk its not a bad bot lol". 6 games against the Golem bot (seeds 14541-15430, with the code revision logged).
+Cole won all six: 2-0, 2-0, 2-0, 2-1, 3-0, 2-1 (overtime). Four went the full 3:00, and the bot took a tower twice.
+Rebuilt `data/cache/bc/deck_t01`: 19 games, 29,359 decisions, all replaying exactly. **School v7** is v6's recipe
+unchanged with the 19 games (still 2 of 16 windows); the checks are chained after it (data/logs/run_v7.sh):
+- the deck bots, 30 games each;
+- the situation exam;
+- 200 games each head-to-head against v5 e3 and v6 e3.
