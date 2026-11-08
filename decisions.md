@@ -5186,3 +5186,16 @@ unchanged with the 19 games (still 2 of 16 windows); the checks are chained afte
 - the deck bots, 30 games each;
 - the situation exam;
 - 200 games each head-to-head against v5 e3 and v6 e3.
+
+## 2026-11-07 · School v7 (v6 + 6 Golem games) vs v6 and v5
+
+Same engine and bot rules as the v6 checks.
+- **Against the deck bots** (model wins out of 30): PEKKA BS 22 (v6 23), Golem 4 (3), GDP 6 (10), Log Bait 13 (15),
+  Hog 15 (17). Total **60 / 150** (v6 68, v5 61). Per deck ±~9, total ±~11: not a real drop, and not the hoped-for
+  Golem gain from 6 more Golem games. (`data/rl/deck_vs_bc_school_v7_epoch03_1107.jsonl`)
+- **Head-to-head** (200 games): v7 beats v5 56% (±7%, crowns 1.30 vs 1.05) and v6 **64%** (±7%, crowns 1.52 vs 1.06).
+- **Situation exam:** calm/tempo rows better than v6. Chill -0.20 → +0.27, spell_finish +0.14 → +0.46, desperate
+  -0.95 → -0.74, press_calm +2.35 → +2.46. Defence rows a little worse: defend_counter -0.39 → -0.51, supported_push
+  -1.13 → -1.20, hog_rider -0.38 → -0.44. Reference starts -0.67 (v6 -0.71), and it beats Cole's result on 45.
+- **Read:** mixed. Clearly the strongest model head-to-head and it fixed v6's chill regression, but no better against
+  the scripted decks. Picked **v7 e3** for Cole's 20-game live test (step 1); v5 stays the fallback.
