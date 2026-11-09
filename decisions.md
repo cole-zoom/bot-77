@@ -5263,3 +5263,14 @@ Same engine and bot rules as the v6 checks.
   keeps them), and the anchor also runs until the placement KL is under --place-kl-target 0.05 nats a play, logged
   per update. Smoke run: one PPO update moves the placement KL to 0.24-0.29 even so, and 3-7 anchor steps bring it to
   ~0.05. 2,000 episodes, gate on ep 1,000 and 2,000 (data/logs/run_league_v2.sh). The RunPod run waits on this gate.
+
+## 2026-11-08 · League round 2: level with v7 at both checkpoints, gate failed; still no RunPod run
+
+- Fork regularizers off, anchor on cards and placements, 2,000 episodes (19:10-~22:50).
+- Gate (v7 mirror 60% on the same 200 seeds):
+  - ep 1,000: 57%, only it won 39 seeds, only v7 46 (p 0.52). Deck bots 62 vs 60 (log_bait 19 vs 13, hog26 11 vs 15).
+  - ep 2,000: 57%, 43 vs 50 (p 0.53). Deck bots 61 vs 60.
+  - Not worse than v7 any more (round 1's ep 1,500 was, p 0.014), not better either. Gate fails; no RunPod run.
+- The anchor did not hold placements: placement KL after the anchor sat at 0.15-0.35 nats a play from ep ~600 on
+  (target 0.05), every update using all 8 anchor steps. Placement entropy ended at 0.37-0.53 of max (round 1:
+  0.51-0.67; v7 0.24-0.46).
