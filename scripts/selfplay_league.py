@@ -231,7 +231,8 @@ def main():
 
         def build_envs(self):
             seeds = worker_seeds(self.cfg.seed, self.cfg.num_envs)
-            return EnvsWithInfos(gym.vector.AsyncVectorEnv([make_league_env(seed=s) for s in seeds]))
+            # spawn, as on macOS: a forked worker on Linux can deadlock on lancedb's runtime (the pod's first smoke run hung)
+            return EnvsWithInfos(gym.vector.AsyncVectorEnv([make_league_env(seed=s) for s in seeds], context="spawn"))
 
         def build_replay_env(self):
             return None
