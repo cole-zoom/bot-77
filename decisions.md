@@ -5325,3 +5325,8 @@ Same engine and bot rules as the v6 checks.
   ~6-game slack, a hint, not a result. Picked **ep 4,000** (level head to head, best deck total).
 - **Live run20gpu1 started 14:04:** league_gpu1 ep 4,000, same setup as run20v7 (BOT77_FLAT_OPP_CYCLE=1,
   live_with_replays.py, 20 games, one chunk); logs data/logs/run20gpu1.log, data/live/run20gpu1_*.log. Game 1: W.
+- **run20gpu1, first half (14:04-14:36): 8-1 over 9 clean games** (W L W W W W W W W). Game 10 was cut off two plays
+  in by a Clash Royale update Cole had to install (the runner stopped on the Play Store screen; the supervisor's
+  "8-2" counts it as a loss): excluded, like a freeze game. Replay runner for chunk 1 exited 1 ("couldn't reach the
+  list") because the game was gone. The remaining 11 games resume as run20gpu1b once Clash is reinstalled and open
+  (a watcher starts them). Watch the first game after the update for reader / layout changes.
