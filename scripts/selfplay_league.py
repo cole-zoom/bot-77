@@ -73,6 +73,9 @@ def main():
     ap.add_argument("--anchor-burn-in", type=int, default=32)
     ap.add_argument("--anchor-lr", type=float, default=1e-4)
     ap.add_argument("--place-kl-weight", type=float, default=0.5)
+    ap.add_argument("--place-kl-target", type=float, default=0.05, help="placement KL (nats a play) to get back under too")
+    ap.add_argument("--fork-regularizers", action="store_true",
+                    help="keep the fork's entropy bonus, placement coverage, advisor KL and deck coverage (round 1 did)")
     a = ap.parse_args()
     T0 = time.time()
     run = (ROOT / a.run).resolve()
@@ -99,6 +102,10 @@ def main():
         "RL_SNAPSHOT_DIRS": str(run / "historical_checkpoints"),
         "RL_CROWN_COEF": str(a.crown_coef),
     })
+    if not a.fork_regularizers:
+        # round 1 (11-08): with these on, placement entropy rose from ~0.4 to ~0.6 of max while the card KL held
+        os.environ["CLASH_ADVISOR_COVERAGE_COEF"] = "0"
+        os.environ["CLASH_DECK_COVERAGE_COEF"] = "0"
     os.environ.setdefault("OMP_NUM_THREADS", str(a.envs))
     sys.path.insert(0, str(FORK))
     os.chdir(FORK)
@@ -235,9 +242,10 @@ def main():
                 k_place = kl(rp, cp)[played] if played.any() else torch.zeros(1, device=dev)
                 loss = k_card.mean() + a.place_kl_weight * k_place.mean()
                 kc = float(k_card.mean().detach()) if len(k_card) else 0.0
-                first = kc if first is None else first
-                last = kc
-                if steps >= a.anchor_min_steps and kc < a.kl_target:
+                kp = float(k_place.mean().detach())
+                first = (kc, kp) if first is None else first
+                last = (kc, kp)
+                if steps >= a.anchor_min_steps and kc < a.kl_target and kp < a.place_kl_target:
                     break
                 self._anchor_opt.zero_grad()
                 loss.backward()
@@ -256,6 +264,13 @@ def main():
                 kept["b"] = drain()
                 return kept["b"]
             self.buffer.drain = drain_and_keep
+            if not a.fork_regularizers and not getattr(self.updater, "_league_plain", False):
+                upd = self.updater.update
+
+                def plain(*x, **k):
+                    k.update(ent_coef_card=0.0, ent_coef_placement=0.0, coverage_coef=0.0, deck_coverage_coef=0.0)
+                    return upd(*x, **k)
+                self.updater.update, self.updater._league_plain = plain, True
             if warm:
                 for name, p in self.net.named_parameters():
                     p.requires_grad_(name.split(".")[0] in ("value_head", "aux_card_head", "cycle_id_head"))
@@ -268,7 +283,8 @@ def main():
                         p.requires_grad_(True)
             row = {"ep": self.episodes_completed, "warm": warm}
             if not warm and "b" in kept:
-                row["kl_before"], row["kl_after"], row["anchor_steps"] = self.anchor(kept["b"])
+                (row["kl_before"], row["place_kl_before"]), (row["kl_after"], row["place_kl_after"]), \
+                    row["anchor_steps"] = self.anchor(kept["b"])
             kept.clear()
             tally = self.envs.tally if self.envs is not None else {}
             row["members"] = {k: {"won": v[0], "games": v[1], "margin": v[2]} for k, v in tally.items()}
@@ -278,7 +294,8 @@ def main():
                 print("  >> league @ ep {}: {}{}".format(
                     self.episodes_completed,
                     ", ".join(f"{k} {v[0]}/{v[1]}" for k, v in sorted(tally.items())),
-                    f" | KL {row['kl_before']:.3f} -> {row['kl_after']:.3f} in {row['anchor_steps']}"
+                    f" | KL card {row['kl_before']:.3f} -> {row['kl_after']:.3f}, place {row['place_kl_before']:.3f} -> "
+                    f"{row['place_kl_after']:.3f} in {row['anchor_steps']}"
                     if "kl_before" in row else ""), flush=True)
                 tally.clear()
             return stats

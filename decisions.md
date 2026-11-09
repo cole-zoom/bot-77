@@ -5240,3 +5240,26 @@ Same engine and bot rules as the v6 checks.
   Logging only (the reward never reads it); fixed with the `_league_opp` mask for later runs. Corrected so far: v5
   ~20/28, v6 15/34, v7 20/35 (the mirror is 60%), pekka_bs 13/20, log_bait 10/16, hog26 8/18, gdp 7/26, golem 3/9,
   clone 10/14. Still in critic warm-up (no KL anchor yet); ClipFrac 0.
+
+## 2026-11-08 · League round 1: gate failed at both checkpoints; no RunPod run; round 2 with the fork's regularizers off
+
+- **Round 1** (3,000 episodes, 13:18-~18:00 on 8 envs, ~9 episodes a minute once the anchor was on). Card KL held
+  under 0.02 after every update, ClipFrac 0.13-0.20.
+- **Gate (paired with v7's mirror on the same 200 seeds, mirror 60%):**
+  - ep 1,500: 48% as team 0; only it won 32 seeds, only v7 56 (McNemar p 0.014): **worse than v7**. Deck bots 62 vs 60.
+  - ep 3,000: 62%; 43 vs 40 (p 0.83): **level with v7**. Deck bots 51 vs 60 (Golem 0/30, v7 4): fail.
+  - The first run of the gate said the deck check passed for both: deck_vs_model.py now also plays the Miner bot
+    (30/30), which v7's file (made before it) lacks, so the candidate got 30 free wins. league_gate.py now compares
+    only the decks both played; the numbers above are the corrected ones.
+- **No RunPod run.** Cole's condition was "once all gates pass"; a bigger run of a recipe that does not beat its start
+  would buy the same result faster.
+- **Why (my reading):** placement entropy rose all round (H(place|card) 0.24-0.46 of max at ep 5, 0.51-0.67 at
+  3,000) while the card KL stayed low. I had zeroed the fork's reward shaping but not its loss terms: the adaptive
+  entropy bonus (card and placement), the placement coverage entropy, the advisor KL (pulls Battle Ram / Goblin Hut /
+  Fireball / Arrows placements toward the fork's rule surfaces) and the deck coverage floor. They all push placements
+  away from the imitation start, and my anchor stopped on the card KL alone.
+- **Round 2 (started ~19:10):** selfplay_league.py now turns those four off (CLASH_ADVISOR_COVERAGE_COEF=0,
+  CLASH_DECK_COVERAGE_COEF=0, and the update called with zero entropy and coverage coefficients; --fork-regularizers
+  keeps them), and the anchor also runs until the placement KL is under --place-kl-target 0.05 nats a play, logged
+  per update. Smoke run: one PPO update moves the placement KL to 0.24-0.29 even so, and 3-7 anchor steps bring it to
+  ~0.05. 2,000 episodes, gate on ep 1,000 and 2,000 (data/logs/run_league_v2.sh). The RunPod run waits on this gate.

@@ -75,6 +75,9 @@ def main():
     d_base = decks(str(base), a.workers, base.parent / "gate_decks.jsonl")
     d_cand = decks(str(cand), a.workers, out / f"gate_decks_{tag(cand)}.jsonl")
     passed_h2h = b > c and p < a.p
+    # only the decks both played: deck_vs_model gained the Miner bot after the base's file (round 1 got 30 free wins)
+    both = sorted(set(d_cand) & set(d_base))
+    d_cand, d_base = {k: d_cand[k] for k in both}, {k: d_base[k] for k in both}
     passed_decks = sum(d_cand.values()) >= sum(d_base.values()) - a.deck_slack
     res = {"cand": str(cand), "base": str(base), "seeds": len(seeds), "cand_vs_base": w_cand, "base_vs_base": w_base,
            "only_cand_won": b, "only_base_won": c, "mcnemar_p": p, "decks_cand": d_cand, "decks_base": d_base,
