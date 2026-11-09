@@ -5287,3 +5287,16 @@ Same engine and bot rules as the v6 checks.
   (data/logs/run_league_v3.sh).
 - Then, per Cole, a RunPod 4090 run from the best checkpoint of rounds 1-3 by the gate (no longer conditional on
   passing), within $10, then 20 live games of its result. pod_league.sh `run` now passes extra selfplay_league args.
+- **Round 3 result (done 03:30 11-09):** ep 1,000: 60% (35 vs 36 seeds, p 1.0), deck bots 57 vs 60. ep 2,000: 52%
+  (31 vs 47, p 0.089: worse), decks 64. Placement KL before the anchor still climbed 0.135 -> ~0.3 over the round:
+  the in-minibatch pull at 10 slowed the drift, it did not stop it.
+- **All six candidates, as cand-only vs v7-only seed wins and deck-bot wins of 150:** r1 ep1500 32-56 / 62; r1
+  ep3000 43-40 / 51; r2 ep1000 39-46 / 62; r2 ep2000 43-50 / 61; r3 ep1000 35-36 / 57; r3 ep2000 31-47 / 64. None
+  differs from v7 beyond noise except the two worse ones. Picked **r3 ep1000** for the GPU run (level head to head,
+  decks within the slack, highest head-to-head + deck total, 177); continue with round 3's recipe, anchored to v7.
+- **Pod:** RTX 4090 secure went from LOW to none between the check and the create (3 tries). Took an **L40, secure,
+  $0.82/h, 16 vCPU, 250 GB RAM, EUR-IS-2** (pod ii6ebykvrmaydx, created 11:32 UTC), the same core count, which is what
+  self-play needs. No direct TCP port in that data center, so files went up as base64 chunks over the SSH proxy
+  (35 MB in ~5 min, md5-checked). The engine build failed on ocrmac (pyobjc does not build on Linux): ocrmac is now
+  macOS-only in pyproject.toml. Budget $10 = 12.2 h at this price; the training stops by wall clock, the pod is
+  stopped from here when it finishes.
