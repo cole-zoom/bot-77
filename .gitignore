@@ -36,3 +36,6 @@ data/lab/
 ui/node_modules/
 ui/dist/
 data/cache/
+
+# private planning note for upstreaming the engine fork
+UPSTREAM_PRS.md
