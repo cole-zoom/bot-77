@@ -5305,3 +5305,11 @@ Same engine and bot rules as the v6 checks.
   macOS. With OMP_NUM_THREADS=1, 40 episodes took 3 min 50 s with start-up, ~12 a minute (the laptop: ~9).
   league_gpu1: init r3 ep1000, anchor v7 e3, --hours 8.5, 14 envs, snapshots every 1,000, round 3's recipe. Spend at
   the start ~$1.2 (1.45 h); at the end ~$8.5. Snapshots come back to the laptop for the gate; then 20 live games.
+- **league_gpu1 done 13:29 PST (11-09):** 7,716 episodes in 8.5 h (~15 / min on 14 envs, faster than the smoke's 12),
+  no errors. Card KL to v7 stayed ~0.01; placement KL before the anchor stayed 0.1-0.45 the whole run (every anchor
+  hit its 8-step cap): the drift held level over 7,700 episodes instead of climbing, but was never pulled under the
+  0.05 target. Pulled back ep 2,000 / 4,000 / 6,000 / 7,716, league_log.jsonl and the train log as one base64 tarball
+  over the SSH proxy (28 MB in 2.3 min, md5 matched) to data/models/league_gpu1/. Pod ii6ebykvrmaydx terminated
+  13:41 PST after the files checked out (get-pod 404). Pod time 10.1 h x $0.82 = **~$8.30** of the $10.
+- Gating the four locally (league_gate.py, 200 paired seeds, 6 workers; data/logs/gate_gpu1_ep*.log); the best goes
+  to 20 live games.
