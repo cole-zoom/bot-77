@@ -5313,3 +5313,15 @@ Same engine and bot rules as the v6 checks.
   13:41 PST after the files checked out (get-pod 404). Pod time 10.1 h x $0.82 = **~$8.30** of the $10.
 - Gating the four locally (league_gate.py, 200 paired seeds, 6 workers; data/logs/gate_gpu1_ep*.log); the best goes
   to 20 live games.
+- **Gate on league_gpu1 (14:04, 200 paired seeds; v7's own mirror 60%; deck bots of 150, v7 60):**
+  | snapshot | head to head | cand-only / v7-only seeds | McNemar p | deck bots |
+  |---|---|---|---|---|
+  | ep 2,000 | 56% | 36 / 45 | 0.37 | 65 |
+  | ep 4,000 | 58% | 36 / 40 | 0.73 | 68 |
+  | ep 6,000 | 50% | 33 / 54 | 0.031 (worse) | 55 |
+  | ep 7,716 | 52% | 35 / 53 | 0.069 (worse) | 68 |
+  None passes (none beats v7 head to head). The longer run did not help: past ep 4,000 the head to head falls, the
+  same shape as rounds 1-3 (placement drift held at 0.1-0.45 KL). Deck bots +8 at ep 4,000 is just above the
+  ~6-game slack, a hint, not a result. Picked **ep 4,000** (level head to head, best deck total).
+- **Live run20gpu1 started 14:04:** league_gpu1 ep 4,000, same setup as run20v7 (BOT77_FLAT_OPP_CYCLE=1,
+  live_with_replays.py, 20 games, one chunk); logs data/logs/run20gpu1.log, data/live/run20gpu1_*.log. Game 1: W.
