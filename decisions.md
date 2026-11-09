@@ -5300,3 +5300,8 @@ Same engine and bot rules as the v6 checks.
   (35 MB in ~5 min, md5-checked). The engine build failed on ocrmac (pyobjc does not build on Linux): ocrmac is now
   macOS-only in pyproject.toml. Budget $10 = 12.2 h at this price; the training stops by wall clock, the pod is
   stopped from here when it finishes.
+- **Pod run started 04:59 PST (12:59 UTC):** smoke (40 episodes, 14 envs) hung on its first try: AsyncVectorEnv forks
+  on Linux and the forked workers deadlocked on lancedb's runtime (bot77 imports it); the workers now spawn, as on
+  macOS. With OMP_NUM_THREADS=1, 40 episodes took 3 min 50 s with start-up, ~12 a minute (the laptop: ~9).
+  league_gpu1: init r3 ep1000, anchor v7 e3, --hours 8.5, 14 envs, snapshots every 1,000, round 3's recipe. Spend at
+  the start ~$1.2 (1.45 h); at the end ~$8.5. Snapshots come back to the laptop for the gate; then 20 live games.
