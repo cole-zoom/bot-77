@@ -74,6 +74,10 @@ def main():
     ap.add_argument("--anchor-lr", type=float, default=1e-4)
     ap.add_argument("--place-kl-weight", type=float, default=0.5)
     ap.add_argument("--place-kl-target", type=float, default=0.05, help="placement KL (nats a play) to get back under too")
+    ap.add_argument("--ppo-kl-card", type=float, default=0.0,
+                    help="KL(anchor || net) on the card head inside every PPO minibatch (round 3)")
+    ap.add_argument("--ppo-kl-place", type=float, default=0.0,
+                    help="the same on the placement head, on the rows that placed a card")
     ap.add_argument("--fork-regularizers", action="store_true",
                     help="keep the fork's entropy bonus, placement coverage, advisor KL and deck coverage (round 1 did)")
     a = ap.parse_args()
@@ -159,18 +163,60 @@ def main():
         def __getattr__(self, name):
             return getattr(self.envs, name)
 
-    def unroll(net, obs, cards, keep):
-        """Card and placement logits over (L, B) from a zeroed LSTM; placement given the stored card."""
+    def unroll(net, obs, cards, keep, hidden=None):
+        """Card and placement logits over (L, B) from a zeroed LSTM (or `hidden`); placement given the stored card."""
         L, B = cards.shape
         flat = obs.reshape(L * B, -1)
         feats, embeds, spatial, hires = net.extract_features_hires(flat)
         mask = net.affordability_mask(flat).view(L, B, net.hand_size + 1)
-        hx = torch.zeros(B, 256, device=obs.device)
-        cx = torch.zeros(B, 256, device=obs.device)
+        hx, cx = hidden if hidden is not None else (torch.zeros(B, 256, device=obs.device),
+                                                    torch.zeros(B, 256, device=obs.device))
         out = net.forward_sequence(feats.view(L, B, -1), embeds.view(L, B, net.hand_size + 1, -1),
                                    spatial.view(L, B, *spatial.shape[1:]), flat.view(L, B, -1), mask, cards, keep,
                                    (hx, cx), hires_seq=hires.view(L, B, *hires.shape[1:]))
         return out[0], out[1]
+
+    class PullTo(torch.autograd.Function):
+        """Identity forward; backward adds coef * d KL(ref || softmax(x)) / dx = coef * (softmax(x) - p_ref) on the
+        chosen rows, averaged over them. Puts the anchor inside the PPO minibatch's own backward pass, so the
+        update cannot drift and be pulled back afterwards (round 2's placements outran the post-update anchor)."""
+
+        @staticmethod
+        def forward(ctx, x, p_ref, rows, coef):
+            ctx.save_for_backward(x, p_ref, rows)
+            ctx.coef = coef
+            return x.view_as(x)
+
+        @staticmethod
+        def backward(ctx, g):
+            x, p_ref, rows = ctx.saved_tensors
+            p_cur = torch.nan_to_num(F.softmax(x.detach(), -1))
+            pull = (p_cur - p_ref) * rows.unsqueeze(-1) * (ctx.coef / rows.sum().clamp(min=1.0))
+            return g + pull, None, None, None
+
+    def pulled_forward_sequence(net, orig):
+        """net.forward_sequence with the anchor's pull on its card and placement logits, while net._pull is set."""
+        def fwd(feats_seq, card_embeds_seq, spatial_seq, obs_seq, card_mask_seq, card_idx_seq, reset_seq,
+                hidden_state, *x, **k):
+            out = orig(feats_seq, card_embeds_seq, spatial_seq, obs_seq, card_mask_seq, card_idx_seq, reset_seq,
+                       hidden_state, *x, **k)
+            if not getattr(net, "_pull", False):
+                return out
+            L, B = card_idx_seq.shape
+            with torch.no_grad():
+                # the anchor runs on the trainee's recorded LSTM state: the two start equal and stay close
+                rc, rp = unroll(ref, obs_seq, card_idx_seq, reset_seq, hidden_state)
+                rows = torch.zeros(L * B, device=rc.device)
+                act = k.get("active_rows")
+                rows[act if act is not None else slice(None)] = 1.0
+                rows = rows.view(L, B)
+                placed = rows * (card_idx_seq < net.hand_size).float()
+                p_rc = torch.nan_to_num(F.softmax(rc, -1))
+                p_rp = torch.nan_to_num(F.softmax(rp, -1))
+            cl = PullTo.apply(out[0], p_rc, rows, a.ppo_kl_card) if a.ppo_kl_card > 0 else out[0]
+            pl = PullTo.apply(out[1], p_rp, placed, a.ppo_kl_place) if a.ppo_kl_place > 0 else out[1]
+            return (cl, pl) + tuple(out[2:])
+        return fwd
 
     def kl(ref_logits, cur_logits):
         """KL(ref || cur) per row, over the arms the reference allows."""
@@ -274,9 +320,15 @@ def main():
             if warm:
                 for name, p in self.net.named_parameters():
                     p.requires_grad_(name.split(".")[0] in ("value_head", "aux_card_head", "cycle_id_head"))
+            pull = not warm and (a.ppo_kl_card > 0 or a.ppo_kl_place > 0)
+            if pull and not hasattr(self.net, "_pull"):
+                ref.to(self.device)
+                self.net.forward_sequence = pulled_forward_sequence(self.net, self.net.forward_sequence)
+            self.net._pull = pull
             try:
                 stats = super().run_update()
             finally:
+                self.net._pull = False
                 self.buffer.drain = drain
                 if warm:
                     for p in self.net.parameters():

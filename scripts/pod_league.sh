@@ -3,7 +3,7 @@
 #
 #   on the pod:  bash /workspace/bot-77/scripts/pod_league.sh setup              # clone, build, check the GPU
 #                bash /workspace/bot-77/scripts/pod_league.sh smoke              # 8 episodes: speed + GPU path
-#                bash /workspace/bot-77/scripts/pod_league.sh run <hours> <envs> <init> <run-name>
+#                bash /workspace/bot-77/scripts/pod_league.sh run <hours> <envs> <init> <run-name> [selfplay_league args]
 #
 # Expects /workspace/bot77_data.tgz (copied up beforehand): the gitignored files the league needs (the school
 # checkpoints, the pro clone, the pro decks, the base's gate results). `run` trains for <hours> of wall clock, gates
@@ -33,9 +33,10 @@ smoke)
   ;;
 run)
   hours=$2 envs=$3 init=$4 name=$5
+  shift 5
   cd $R
   .venv/bin/python scripts/selfplay_league.py --init "$init" --anchor data/models/bc_school_v7/epoch03.pth \
-      --run data/models/$name --episodes 1000000 --hours "$hours" --envs "$envs" --snapshot-every 1000 \
+      --run data/models/$name --episodes 1000000 --hours "$hours" --envs "$envs" --snapshot-every 1000 "$@" \
       > $W/train_$name.log 2>&1 || echo "trainer exited $?" >> $W/train_$name.log
   last=$(ls data/models/$name/historical_checkpoints/ep*.pth | sort | tail -1)
   .venv/bin/python scripts/league_gate.py --cand "$last" --n 200 --workers "$(nproc)" > $W/gate_$name.log 2>&1 || true
@@ -43,6 +44,6 @@ run)
   if command -v runpodctl >/dev/null && [ -n "${RUNPOD_POD_ID:-}" ]; then runpodctl stop pod "$RUNPOD_POD_ID"; fi
   ;;
 *)
-  echo "usage: $0 setup | smoke [envs] | run <hours> <envs> <init> <run-name>"; exit 1
+  echo "usage: $0 setup | smoke [envs] | run <hours> <envs> <init> <run-name> [selfplay_league args]"; exit 1
   ;;
 esac

@@ -5274,3 +5274,16 @@ Same engine and bot rules as the v6 checks.
 - The anchor did not hold placements: placement KL after the anchor sat at 0.15-0.35 nats a play from ep ~600 on
   (target 0.05), every update using all 8 anchor steps. Placement entropy ended at 0.37-0.53 of max (round 1:
   0.51-0.67; v7 0.24-0.46).
+
+## 2026-11-08 · League round 3: the anchor inside every PPO minibatch (Cole: "lets try that, then do a GPU training run on the best one, and see how it performs on 20 games")
+
+- New in selfplay_league.py: --ppo-kl-card / --ppo-kl-place. While PPO updates, net.forward_sequence is wrapped so
+  its card and placement logits carry an identity op whose backward adds coef x (softmax - anchor's softmax) on the
+  decision rows (placement: rows that placed), i.e. the gradient of KL(anchor || net) inside the same backward pass.
+  The anchor runs on the trainee's recorded LSTM state (the two start equal). The post-update anchor stays.
+- Smoke runs (2 envs): coef 1 / 1 left placement KL before the anchor at 0.12-0.92; coef 3 / 10 at 0.05-0.51. It
+  helps but does not stop it, so round 3 also halves the lr (1.5e-5).
+- Round 3 started ~23:35: 2,000 episodes, --lr 1.5e-5 --ppo-kl-card 3 --ppo-kl-place 10, gate on ep 1,000 / 2,000
+  (data/logs/run_league_v3.sh).
+- Then, per Cole, a RunPod 4090 run from the best checkpoint of rounds 1-3 by the gate (no longer conditional on
+  passing), within $10, then 20 live games of its result. pod_league.sh `run` now passes extra selfplay_league args.
