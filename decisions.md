@@ -5385,3 +5385,9 @@ Same engine and bot rules as the v6 checks.
   snapshots on held-out seeds; a GPU run only if the exam moves and the v7 head to head holds.
 - Cole's idea for scaling imitation: play on the phone with the bot watching live, scored on matching his plays
   (live_shadow.py does this offline already). Next build after this run is going.
+
+## 2026-11-10 · shadow mode, test game on the phone
+- Cole's first shadow game (2026-11-10_202532): 178 touch gestures, 136 of them taps on a card slot (75 repeat taps on the same slot under 0.4 s), 36 arena presses after a card tap, 3 drags from a slot. Cole selects a card by tapping it, often several times, then presses the arena.
+- The toggle rule (a second tap deselects) labelled 27 plays; without it, 39. Fixed: a slot tap always selects. The test game is set aside (data/cache/bc/shadow_test_mislabeled/), not trained on.
+- Decisions came every 0.23 s, not 0.1 s, with sit_v1 training on the same CPU: sit_v1 paused (SIGSTOP) while Cole records.
+- End screen not recognised: the game closed on the 20 s timeout, result "?".
