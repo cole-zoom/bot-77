@@ -5360,3 +5360,10 @@ Same engine and bot rules as the v6 checks.
   before the server listens (connect after 2 s); no frames while the phone screen is off (Cole turned Stay awake on).
   Check in a game: logged clock vs screen 2:53/2:53, 2:52/2:52, 2:30/2:30, 1:49/1:50: lag gone.
 - **run20gpu1c** (11 games, ep 4,000, phone, scrcpy stream) started 17:2x; game 1: L.
+- **run20gpu1 final (league_gpu1 ep 4,000): 13-7 over 20 counted games.** BlueStacks 8-1 (11-09, before the game
+  update); phone, after the lag fix, 5-6 (run20gpu1c, 11-10; L W W W L L W L L L W), the account ~200 trophies higher
+  than in the BlueStacks games (1330 at the phone's start; Cole). Excluded: game 10 of run20gpu1 (cut off by the
+  update), the idle game while the phone layout was missing, and run20gpu1b's 2-7 (stream ~3 s behind). v7's run20v7:
+  11-9. Not comparable without the trophy level (the halves differ by ~200); the gate had it level with v7 (58% vs
+  60%). Each phone game opens with a 1-4 s "stream frozen" pause (the stream restarts to begin the recording); no
+  mid-fight stalls in the log.
