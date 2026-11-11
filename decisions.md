@@ -5391,3 +5391,9 @@ Same engine and bot rules as the v6 checks.
 - The toggle rule (a second tap deselects) labelled 27 plays; without it, 39. Fixed: a slot tap always selects. The test game is set aside (data/cache/bc/shadow_test_mislabeled/), not trained on.
 - Decisions came every 0.23 s, not 0.1 s, with sit_v1 training on the same CPU: sit_v1 paused (SIGSTOP) while Cole records.
 - End screen not recognised: the game closed on the 20 s timeout, result "?".
+
+## 2026-11-10 · shadow moments in LanceDB (scripts/shadow_lance.py)
+- **Built:** data/lancedb/shadow_moments, one row per recorded decision of every shadow game (shadow_t01 + shadow_t01_held npz), rebuilt whole each run (overwrite). Columns: game, held, i, t, cole_card (0-4) + cole_card_name, cole_cell, is_play, hand (4 engine names, from the obs one-hots), elixir, result, p (5), p_wait, model_card + model_card_name, model_cell (placement given its top card), model_cell_his (given Cole's card, at his plays), p_his, model, `vector` (raw obs, 13977 float32), `embed` (the LSTM state, 256). No trophies (not recorded by shadow_play).
+- The guesses are recomputed offline from obs with v7 e3 (train_bc's sequence_loss over the whole game, fresh LSTM): on game 2026-11-10_203307 (held, the only kept game so far) the model's top card is Cole's at 0.522 of his 23 plays, exactly the live summary's card_top1, so the offline pass reproduces the live one.
+- 1,176 rows, built in ~1 s (2 torch threads); 128 MB on disk (~110 KB a row, nearly all the raw vector): ~30 games would be ~4 GB.
+- `--similar GAME T`: nearest moments where Cole played, by `embed` (cosine, default) or `vector` (L2); ~20-40 ms brute force at this size. With one game the raw vector's nearest are mostly the seconds just after the query (the board barely changes); the embedding's are moments with a similar elixir / hand (9.5+ elixir with Giant in hand). Too little data to judge either; the embedding is the better bet and 50x smaller.
