@@ -5349,3 +5349,14 @@ Same engine and bot rules as the v6 checks.
 - **live_with_replays.py:** `--device` and `--layout`, passed to live_play.py and the replay runner.
 - **run20gpu1b** (the remaining 11 games of run20gpu1, ep 4,000) started 16:19 on the phone; first plays land where
   aimed. Phone games and BlueStacks games are reported separately as well as together.
+- **run20gpu1b on the phone: 2-7, discarded as a setup failure, not a model result.** The bot's log said 2:56 / 7.3
+  elixir while its own play frames showed 2:53 and "Not enough Elixir!": the stream ran ~3 s behind in battle
+  (BlueStacks: the logged clock matched the frame). screenrecord on the A16 encodes the game's 60 fps, the decoder
+  keeps ~30 (measured 29.4 frames/s), so a backlog builds. Tried: ffmpeg low_delay/nobuffer, decoding every 3rd frame,
+  4 Mbit/s: no better. Screenshots: 1.3-2.7 s each (8 MB raw over USB): worse.
+- **Fix: scrcpy's server as the stream source on USB phones** (bot77.live.stream: `source` = scrcpy when the serial
+  has no ':'; BlueStacks keeps screenrecord). scrcpy 5.0.1's server, raw H.264 at max_fps 30 over an adb tunnel, same
+  decoder and recorder after it. Gotchas: the server deletes its jar on exit (pushed every start); the tunnel accepts
+  before the server listens (connect after 2 s); no frames while the phone screen is off (Cole turned Stay awake on).
+  Check in a game: logged clock vs screen 2:53/2:53, 2:52/2:52, 2:30/2:30, 1:49/1:50: lag gone.
+- **run20gpu1c** (11 games, ep 4,000, phone, scrcpy stream) started 17:2x; game 1: L.
