@@ -73,6 +73,8 @@ def main() -> None:
     ap.add_argument("--tag", default="run75")
     ap.add_argument("--adopt", default=None, help="the log of a live_play.py run already going: its first chunk")
     ap.add_argument("--decision-s", default="0.1")
+    ap.add_argument("--device", default="127.0.0.1:5555", help="ADB serial: BlueStacks, or a phone over USB")
+    ap.add_argument("--layout", default="bluestacks_live", help="config/layouts/<name>.json (a16_live: the Galaxy A16 at 1080x1920)")
     a = ap.parse_args()
     since = time.time() - 6 * 3600 if a.adopt else time.time()  # an adopted run started before us
     sup = LIVE / f"{a.tag}_supervisor.log"
@@ -86,7 +88,7 @@ def main() -> None:
             live_log = LIVE / f"{a.tag}_chunk{chunk_no:02d}.log"
             STOP.unlink(missing_ok=True)
             cmd = ["uv", "run", "--no-sync", "python", "scripts/live_play.py", "--stream", "--policy", "selfplay",
-                   "--ckpt", a.ckpt, "--decision-s", a.decision_s, "--games", str(want), "--hours", "4"]
+                   "--ckpt", a.ckpt, "--decision-s", a.decision_s, "--games", str(want), "--hours", "4", "--device", a.device, "--layout", a.layout]
             log(f"chunk {chunk_no}: {want} games -> {live_log.name}", sup)
             subprocess.Popen(cmd, cwd=ROOT, stdout=live_log.open("w"), stderr=subprocess.STDOUT)
             time.sleep(20)
@@ -112,7 +114,7 @@ def main() -> None:
         time.sleep(10)
         # the chunk's replays: newest len(got) battles, without the known-deck skip (same deck every game)
         rlog = LIVE / f"{a.tag}_replays{chunk_no:02d}.log"
-        r = subprocess.run(["uv", "run", "--no-sync", "python", "scripts/replay_runner.py", "-n", str(len(got)), "--no-known"],
+        r = subprocess.run(["uv", "run", "--no-sync", "python", "scripts/replay_runner.py", "-n", str(len(got)), "--no-known", "--device", a.device],
                            cwd=ROOT, stdout=rlog.open("w"), stderr=subprocess.STDOUT)
         log(f"chunk {chunk_no}: replay runner exit {r.returncode} ({rlog.name})", sup)
         to_lacie(sup, since)

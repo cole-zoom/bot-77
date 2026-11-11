@@ -5330,3 +5330,22 @@ Same engine and bot rules as the v6 checks.
   "8-2" counts it as a loss): excluded, like a freeze game. Replay runner for chunk 1 exited 1 ("couldn't reach the
   list") because the game was gone. The remaining 11 games resume as run20gpu1b once Clash is reinstalled and open
   (a watcher starts them). Watch the first game after the update for reader / layout changes.
+
+## 2026-11-10 · The bot moves to a phone (Galaxy A16 5G): BlueStacks can't run the updated Clash Royale
+
+- **Why:** the 11-09 Clash update (version 160635010, minSdk 32 = Android 12L) crashes at launch on BlueStacks Air
+  (14 crashes; it dies in the game's protected native-library loader, before any screen). A fresh BlueStacks instance
+  with root off (enable_root_access 0, `su` denied, no root apps) crashed the same way; MuMu couldn't install it.
+  Not worked around (that would be evading the game's protection). Cole bought a Samsung Galaxy A16 5G (SM-S166V,
+  Android 16, 1080x2340); Clash runs on it, account bot-77 at 1330 trophies (trophy level differs from earlier runs).
+- **Setup (reversible, `adb shell wm size reset` / `wm density reset`):** `wm size 1080x1920` + `wm density 320`, so
+  Android renders the game at BlueStacks' resolution and every 1080x1920 assumption (screenshots, stream, templates)
+  holds. Home and end screens then match BlueStacks to a few pixels, but the battle view sits ~95 px lower (a top
+  inset), so the old layout read nothing (no clock: the first restart sat idle a whole game, lost, excluded).
+  `live_calibrate.py --device RZCY610FR5J --layout a16_live` fit config/layouts/a16_live.json: hand, next, elixir and
+  clock read on all 14 frames; arena fit to the towers.
+- **Templates re-cut** from the phone after the update (old ones in data/raw/live_ui/bluestacks_pre_update/):
+  home_battle 0.76 -> 1.0, end_again 0.71 -> recognised (the update moved the buttons a few pixels).
+- **live_with_replays.py:** `--device` and `--layout`, passed to live_play.py and the replay runner.
+- **run20gpu1b** (the remaining 11 games of run20gpu1, ep 4,000) started 16:19 on the phone; first plays land where
+  aimed. Phone games and BlueStacks games are reported separately as well as together.
