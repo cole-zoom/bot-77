@@ -78,6 +78,9 @@ def main():
                     help="KL(anchor || net) on the card head inside every PPO minibatch (round 3)")
     ap.add_argument("--ppo-kl-place", type=float, default=0.0,
                     help="the same on the placement head, on the rows that placed a card")
+    ap.add_argument("--situations", action="store_true",
+                    help="Cole's situations only (bot77.rl.situations via CloneEnv), scored when each resolves, instead "
+                         "of the league's whole games (2026-11-10, Cole: train on the scenarios until it beats them)")
     ap.add_argument("--fork-regularizers", action="store_true",
                     help="keep the fork's entropy bonus, placement coverage, advisor KL and deck coverage (round 1 did)")
     a = ap.parse_args()
@@ -106,6 +109,9 @@ def main():
         "RL_SNAPSHOT_DIRS": str(run / "historical_checkpoints"),
         "RL_CROWN_COEF": str(a.crown_coef),
     })
+    if a.situations:
+        os.environ["RL_SITUATION_SHARE"] = "1"
+        os.environ["RL_SITUATION_FULL_GAME"] = "0"  # a defence ends when it resolves, its score the whole reward
     if not a.fork_regularizers:
         # round 1 (11-08): with these on, placement entropy rose from ~0.4 to ~0.6 of max while the card KL held
         os.environ["CLASH_ADVISOR_COVERAGE_COEF"] = "0"
@@ -124,6 +130,7 @@ def main():
     from python_ai.rl.seeding import worker_seeds
     from python_ai.trainers import train_selfplay as ts
 
+    from bot77.rl.clone_env import SITUATION_NAMES, make_clone_env
     from bot77.rl.league_env import make_league_env
 
     # the result is the whole reward (bot77.rl.league_env): no shaping, no flawless bonus, no draw penalty
@@ -149,6 +156,15 @@ def main():
 
         def step(self, action):
             out = self.envs.step(action)
+            kind = out[4].get("rl_situation_kind")
+            if kind is not None:
+                # a situation's score: counted as beaten when it is above 0 (better than doing nothing, roughly)
+                have = np.asarray(out[4].get("_rl_situation_kind", np.ones(len(kind), bool)))
+                for i in np.flatnonzero(have & (np.asarray(kind) >= 0)):
+                    t = self.tally[SITUATION_NAMES[int(kind[i])]]
+                    t[0] += int(out[4]["rl_situation_score"][i] > 0)
+                    t[1] += 1
+                    t[2] += float(out[4]["rl_situation_score"][i])
             opp = out[4].get("league_opp")
             if opp is not None:
                 # gymnasium fills a key some envs left out (the autoreset step's reset info) with 0 = member 0
@@ -232,7 +248,7 @@ def main():
         def build_envs(self):
             seeds = worker_seeds(self.cfg.seed, self.cfg.num_envs)
             # spawn, as on macOS: a forked worker on Linux can deadlock on lancedb's runtime (the pod's first smoke run hung)
-            return EnvsWithInfos(gym.vector.AsyncVectorEnv([make_league_env(seed=s) for s in seeds], context="spawn"))
+            return EnvsWithInfos(gym.vector.AsyncVectorEnv([(make_clone_env if a.situations else make_league_env)(seed=s) for s in seeds], context="spawn"))
 
         def build_replay_env(self):
             return None

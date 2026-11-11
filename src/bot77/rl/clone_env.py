@@ -214,6 +214,11 @@ class CloneEnv(MicroRoyaleSelfPlayEnv):
         info["rl_situation_end"] = 0.0
         info["rl_situation_final"] = 0.0
         info["rl_situation_score"] = 0.0
+        # which situation ended on this step (index into SITUATION_NAMES; -1 none): per-kind tallies in the trainers
+        info["rl_situation_kind"] = -1.0
+        if self.situation is not None:
+            self._kind = float(SITUATION_NAMES.index(self.situation.spec["name"])) \
+                if self.situation.spec.get("name") in SITUATION_NAMES else -1.0
         if self.situation is not None and self.situation.spec.get("full_game"):
             # a tempo start: the tempo's reward every step, the game's result on its last
             info["rl_situation"] = 1.0
@@ -225,6 +230,7 @@ class CloneEnv(MicroRoyaleSelfPlayEnv):
                 info["rl_situation_end"] = 1.0
                 info["rl_situation_final"] = 1.0
                 info["rl_situation_score"] = self.situation.total
+                info["rl_situation_kind"] = self._kind
                 self.last_situation = {**details, "spell_vetoes": self.spell_vetoes}
                 self.situation = None
             return obs, reward, terminated, truncated, info
@@ -242,6 +248,7 @@ class CloneEnv(MicroRoyaleSelfPlayEnv):
                     reward += sit.KEY_BONUS * details["key_match"]  # Cole's take as a positive signal
                 info["rl_situation_end"] = 1.0
                 info["rl_situation_score"] = score
+                info["rl_situation_kind"] = self._kind
                 self.last_situation = {"name": self.situation.spec["name"], "score": score, **details,
                                        "spell_vetoes": self.spell_vetoes}
                 self.situation = None
@@ -260,6 +267,9 @@ class CloneEnv(MicroRoyaleSelfPlayEnv):
                 reward, truncated = 0.0, False
                 terminated = False
         return obs, reward, terminated, truncated, info
+
+
+SITUATION_NAMES = sorted(sit.BY_NAME)
 
 
 def make_clone_env(seed=None, **env_config):

@@ -5367,3 +5367,21 @@ Same engine and bot rules as the v6 checks.
   11-9. Not comparable without the trophy level (the halves differ by ~200); the gate had it level with v7 (58% vs
   60%). Each phone game opens with a 1-4 s "stream frozen" pause (the stream restarts to begin the recording); no
   mid-fight stalls in the log.
+
+## 2026-11-10 · Scenario-only RL, local (Cole: "use the scenarios on the GPU till the model beat each one")
+
+- **Why this, after the record:** imitation on Cole's answers is still the best (school v4 26-14 live). RL on the
+  situations (rounds v3-v6) sank (v3 worse than v2 on 6 of 7 trained situations), but there they were 25% of
+  episodes and swamped by whole games (a situation is a few hundred 0.1 s decisions, a game ~15,000), with no pull
+  to the imitation model. The league (rounds 1-3 + GPU) never beat v7 in the gate.
+- **Built:** selfplay_league.py `--situations`: CloneEnv with RL_SITUATION_SHARE=1 and RL_SITUATION_FULL_GAME=0 (a
+  defence ends when it resolves, its score the whole reward; tempo starts play to the end), the same trainer (plain
+  PPO loss, pull to v7 in every minibatch, the anchor after each update). CloneEnv reports which situation ended
+  (`rl_situation_kind`, index into SITUATION_NAMES); the log tallies per kind: score > 0 counted as beaten (rough;
+  the real check is situation_exam.py on held-out seeds against v7). Smoke (2 envs, 30 episodes): runs; placement
+  KL ~0.003 (whole games: 0.1-0.45).
+- **sit_v1 started 18:09:** init and anchor v7 e3, 6,000 situations, 8 envs, snapshots every 1,000, lr 1.5e-5, pull
+  3 / 10 (data/logs/run_sit_v1.sh). Episode-count stop, so the laptop sleeping only pauses it. Then: exam v7 vs the
+  snapshots on held-out seeds; a GPU run only if the exam moves and the v7 head to head holds.
+- Cole's idea for scaling imitation: play on the phone with the bot watching live, scored on matching his plays
+  (live_shadow.py does this offline already). Next build after this run is going.
