@@ -101,8 +101,8 @@ class Touches:
         self.raw.append({"down": [round(d[0]), round(d[1])], "up": [round(u[0]), round(u[1])], "t": round(u[2], 2)})
         if s0 is not None and s1 is None and u[1] < top:  # dragged from a slot onto the arena
             self.plays.put((s0, u[0], u[1], u[2])); self.selected = None
-        elif s0 is not None and s1 == s0:  # a tap on a slot: selects it (again: deselects)
-            self.selected = None if self.selected == s0 else s0
+        elif s0 is not None and s1 == s0:  # a tap on a slot selects it; Cole taps a card several times
+            self.selected = s0             # in a row, and his next arena press still plays it (test game, 11-10)
         elif s0 is None and u[1] < top and self.selected is not None:  # a tap on the arena with a card selected
             self.plays.put((self.selected, u[0], u[1], u[2])); self.selected = None
 
