@@ -5397,3 +5397,8 @@ Same engine and bot rules as the v6 checks.
 - The guesses are recomputed offline from obs with v7 e3 (train_bc's sequence_loss over the whole game, fresh LSTM): on game 2026-11-10_203307 (held, the only kept game so far) the model's top card is Cole's at 0.522 of his 23 plays, exactly the live summary's card_top1, so the offline pass reproduces the live one.
 - 1,176 rows, built in ~1 s (2 torch threads); 128 MB on disk (~110 KB a row, nearly all the raw vector): ~30 games would be ~4 GB.
 - `--similar GAME T`: nearest moments where Cole played, by `embed` (cosine, default) or `vector` (L2); ~20-40 ms brute force at this size. With one game the raw vector's nearest are mostly the seconds just after the query (the board barely changes); the embedding's are moments with a similar elixir / hand (9.5+ elixir with Giant in hand). Too little data to judge either; the embedding is the better bet and 50x smaller.
+
+## 2026-11-12 · sit_v1 (scenario-only RL from v7) does not beat v7: no GPU
+- Training: 6,016 episodes on Cole's scenarios only (KL card 3 / place 10, lr 1.5e-5). Share of scenarios beaten in training, per 500 episodes: 31, 30, 33, 32, 32, 32, 30% — flat.
+- Exam (situation_exam.py, 20 held-out seeds per template, 15 templates; data/logs/exam_sit_v1.log): mean score v7 -0.336; ep2000 -0.442, ep4000 -0.429, ep6016 -0.404. Every snapshot is worse than v7 on average (worse on 8-9 templates, better on 3-4).
+- So no league gate and no GPU run: the eighth RL round that doesn't beat its imitation start. Next: shadow-mode imitation (school v8).
