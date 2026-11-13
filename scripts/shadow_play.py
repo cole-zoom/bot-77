@@ -252,6 +252,7 @@ def main():
         if time.time() - dev.stream.t_frame > STALE_FRAME_S:
             continue
         game["policy"].decide(st, game["opp"].plays)
+    touches.proc.kill()  # else the phone-side getevent outlives us (11-10)
 
 
 if __name__ == "__main__":
