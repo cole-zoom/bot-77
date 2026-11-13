@@ -30,7 +30,7 @@ import numpy as np
 
 ROOT = Path(__file__).resolve().parents[1]
 ADB = "/Applications/BlueStacks.app/Contents/MacOS/hd-adb"
-UI = ROOT / "data/raw/replays/_ui"
+UI = ROOT / os.environ.get("REPLAY_UI", "data/raw/replays/_ui")  # data/raw/replays/_ui_a16 on the Galaxy A16 (2026-11-13)
 W, H = 1080, 1920  # Android screen
 ENTRY_UP, ENTRY_DOWN = 330, 45  # an entry's fingerprint (both decks): from this far above its Watch button to this far above it
 VIEW_TOP = 420  # the list scrolls under the Battle Log header above this y
@@ -141,7 +141,7 @@ def open_log(d: Device) -> np.ndarray:
             continue
         elif seen(im, "home_menu"):
             x, y = POS["home_menu"]; d.tap(x + 50, y + 50); time.sleep(1.5)
-            d.tap(645, 129)  # "Battle Log", first item of the menu
+            d.tap(*POS.get("menu_log", (645, 129)))  # "Battle Log", first item of the menu
         else:  # a popup, a screen still loading, or the bot's own battle end screen (2026-10-23: after the relaunch Clash
             # came back on "Winner! / Play Again / OK", which Back doesn't leave): tap a safe button by its text, else Back
             tap = None
