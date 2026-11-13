@@ -5402,3 +5402,8 @@ Same engine and bot rules as the v6 checks.
 - Training: 6,016 episodes on Cole's scenarios only (KL card 3 / place 10, lr 1.5e-5). Share of scenarios beaten in training, per 500 episodes: 31, 30, 33, 32, 32, 32, 30% — flat.
 - Exam (situation_exam.py, 20 held-out seeds per template, 15 templates; data/logs/exam_sit_v1.log): mean score v7 -0.336; ep2000 -0.442, ep4000 -0.429, ep6016 -0.404. Every snapshot is worse than v7 on average (worse on 8-9 templates, better on 3-4).
 - So no league gate and no GPU run: the eighth RL round that doesn't beat its imitation start. Next: shadow-mode imitation (school v8).
+
+## 2026-11-12 · shadow games 2-4
+- Three more games on the phone (17:13-17:25): 171301 (result not read), 171745 (loss), 172056 (win). 171745 and 172056: every touch play labelled (22/22, 25/25), no gap in decisions, ~0.15 s a decision with nothing else on the CPU.
+- 171301: the decisions stopped for 13.8 s at ~173 s into the game and were sparse after, about when overtime would start; 12 of his last 13 plays went unlabelled. Trimmed at the gap (t < 248.3: 23 plays kept), so the missed plays aren't trained on as waits. Cause not confirmed: neither later game reached overtime, so the reader's overtime clock on the a16 layout is still unchecked.
+- Agreement so far (v7 vs Cole, card top-1 at his plays): 0.52, 0.28, 0.23, 0.36. Four usable games of ~30; three of them fell in the held-out split by the md5 rule.
