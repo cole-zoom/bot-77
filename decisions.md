@@ -5407,3 +5407,8 @@ Same engine and bot rules as the v6 checks.
 - Three more games on the phone (17:13-17:25): 171301 (result not read), 171745 (loss), 172056 (win). 171745 and 172056: every touch play labelled (22/22, 25/25), no gap in decisions, ~0.15 s a decision with nothing else on the CPU.
 - 171301: the decisions stopped for 13.8 s at ~173 s into the game and were sparse after, about when overtime would start; 12 of his last 13 plays went unlabelled. Trimmed at the gap (t < 248.3: 23 plays kept), so the missed plays aren't trained on as waits. Cause not confirmed: neither later game reached overtime, so the reader's overtime clock on the a16 layout is still unchecked.
 - Agreement so far (v7 vs Cole, card top-1 at his plays): 0.52, 0.28, 0.23, 0.36. Four usable games of ~30; three of them fell in the held-out split by the md5 rule.
+
+## 2026-11-13 · shadow games 5-9 and their replays (first replay recording on the phone)
+- Five more shadow games (093911 win, 094221 win, 094533 win, 095111 loss; 094929 cut by the work-Wi-Fi freeze after 40 s and moved to data/cache/bc/shadow_discarded/). Every touch play labelled in the four full games (23/23, 24/24, 23/23, 19/19). Usable shadow games: 9. None reached overtime, so the overtime gap (11-12, game 171301) is still unexplained.
+- Replays on the phone: replay_runner.py with REPLAY_UI=data/raw/replays/_ui_a16 (home menu, Battle Log title, replay end OK/VS cut from the A16; the Watch-button finder works unchanged). 10 of 10 recorded, end seen on all, ~3.5 min each, ~0.21 GB each (2.1 GB). The Battle Log mapping to shadow games is in data/raw/replays/2026-11-13/shadow_games.json; replay_08 (289 s) is the overtime game.
+- v7's card agreement with Cole on the new games: 0.26, 0.29, 0.35, 0.21.
