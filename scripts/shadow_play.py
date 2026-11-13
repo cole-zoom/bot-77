@@ -56,6 +56,30 @@ TOUCH_DEV = "/dev/input/event5"  # the Galaxy A16's "sec_touchscreen"
 PANEL_DY = (2340 - 1920) // 2  # the 1080x1920 game sits in the middle of the 1080x2340 panel
 COLE_WEIGHT = 3.0  # per-row weight, as Cole's other demos
 HOLD_EVERY = 4
+# every decision's screen as a JPEG, so the games can be read again when the reader changes (2026-11-13): on the LaCie,
+# ~0.2 GB a game; skipped (with a note) when the drive isn't mounted
+FRAMES = Path("/Volumes/LaCie/bot-77-data/raw/shadow_frames")
+
+
+class FrameWriter:
+    """Writes (path, image) pairs off the decision loop."""
+
+    def __init__(self):
+        self.q = queue.Queue(maxsize=200)
+        threading.Thread(target=self._run, daemon=True).start()
+
+    def _run(self) -> None:
+        import cv2
+        while True:
+            path, im = self.q.get()
+            path.parent.mkdir(parents=True, exist_ok=True)
+            cv2.imwrite(str(path), im, [cv2.IMWRITE_JPEG_QUALITY, 80])
+
+    def put(self, path: Path, im) -> None:
+        try:
+            self.q.put_nowait((path, im))
+        except queue.Full:  # the drive fell behind: drop the frame, never stall a decision
+            pass
 
 
 class Touches:
@@ -145,7 +169,7 @@ class ShadowPolicy(SelfPlayPolicy):
         return True
 
 
-def save_game(gid: str, pol: ShadowPolicy, result: str, raw_touches: list) -> dict | None:
+def save_game(gid: str, pol: ShadowPolicy, result: str, raw_touches: list, opp_plays: list) -> dict | None:
     rows = pol.rows
     if len(rows) < 50:
         return None
@@ -158,7 +182,9 @@ def save_game(gid: str, pol: ShadowPolicy, result: str, raw_touches: list) -> di
     np.savez_compressed(out, obs=np.stack([r["obs"] for r in rows]), card=card, cell=cell,
                         t=np.array([r["t"] for r in rows], np.float32),
                         weight=np.full(len(rows), COLE_WEIGHT, np.float32), split=np.array("train"),
-                        side=np.array("team0"), result=np.array(result))
+                        side=np.array("team0"), result=np.array(result),
+                        opp_plays=np.array(json.dumps(opp_plays)),  # the tracker's opponent plays, as live play sees them
+                        frames=np.array(str(FRAMES / gid) if FRAMES.parent.exists() else ""))  # <i:05d>.jpg = row i
     # agreement at his plays; play chance at his plays vs where he waited
     plays = [r for r in rows if r["label"] is not None]
     top = [int(np.argmax(r["p"][:4]) == r["label"][0]) for r in plays]
@@ -204,6 +230,9 @@ def main():
     print(ui.c(f"shadow mode on {a.device}: play our deck, the bot only watches ({a.ckpt}); stop: touch {STOP_FILE}",
                "grey"), flush=True)
     game, done = None, 0
+    frames = FrameWriter() if FRAMES.parent.exists() else None
+    if frames is None:
+        print(ui.c(f"no LaCie at {FRAMES.parent}: the screens aren't kept", "yellow"), flush=True)
     while done < a.games:
         im = dev.cap()
         if im is None:
@@ -213,7 +242,7 @@ def main():
         kind = screen_kind(im)
         if game is not None and (kind == "end" or time.time() - game["seen"] > 20):
             result = Runner._result(im) if kind == "end" else "?"
-            s = save_game(game["id"], game["policy"], result, touches.raw[game["n_raw"]:])
+            s = save_game(game["id"], game["policy"], result, touches.raw[game["n_raw"]:], game["opp"].plays)
             done += s is not None
             if s:
                 print(ui.c(f"  game {done}: {result} · his plays {s['cole_plays']} · bot's top card his "
@@ -251,7 +280,10 @@ def main():
                 game["plays"] += 1
         if time.time() - dev.stream.t_frame > STALE_FRAME_S:
             continue
+        n = len(game["policy"].rows)
         game["policy"].decide(st, game["opp"].plays)
+        if len(game["policy"].rows) > n and frames is not None:
+            frames.put(FRAMES / game["id"] / f"{n:05d}.jpg", im)
     touches.proc.kill()  # else the phone-side getevent outlives us (11-10)
 
 
