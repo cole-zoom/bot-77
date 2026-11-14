@@ -102,6 +102,14 @@ def elapsed(phase: str, time_left_s: int, mode: str = "ladder") -> int | None:
     return REGULATION_S - time_left_s
 
 
+def _overtime_red(label: np.ndarray) -> bool:
+    """The overtime box is red behind orange "Overtime", which the OCR mostly reads as nothing (Galaxy A16, 2026-11-14:
+    36 of 46 overtime frames empty). Its label crop averages red ~203 against ~116 in regulation (BGR 57,100,203 vs
+    65,97,116), so a red label counts as overtime when the text won't read."""
+    b, g, r = label.reshape(-1, 3).mean(0)
+    return r > 170 and r > 1.7 * g and r > 2.5 * b
+
+
 def _read_first(crop: np.ndarray, parse):
     for upscale in OCR_UPSCALES:
         value = parse(ocr_text(crop, upscale))
@@ -111,7 +119,10 @@ def _read_first(crop: np.ndarray, parse):
 
 
 def read_clock(frame: np.ndarray, layout: Layout, mode: str = "ladder") -> ClockRead:
-    phase = _read_first(layout.crop(frame, "timer_label"), parse_phase)
+    label = layout.crop(frame, "timer_label")
+    phase = _read_first(label, parse_phase)
+    if phase is None and _overtime_red(label):
+        phase = "overtime"
     left = _read_first(layout.crop(frame, "timer"), parse_clock)
     if phase is None or left is None:
         return ClockRead(phase, left, None, None)
