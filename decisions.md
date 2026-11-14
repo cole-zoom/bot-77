@@ -5419,3 +5419,11 @@ Same engine and bot rules as the v6 checks.
 - Cole: the placeholder deck is "almost unplayable at this level", a stand-in until Hog 2.8 EQ. So v8 is a test of the loop more than a ladder bot.
 - v7 on the 9 held-out games (scripts/shadow_agreement.py, 210 plays): card top-1 0.30, p(his card) 0.155, play-vs-wait AUC 0.655, cell median 6.0 tiles, cell exact 0.067.
 - School v8 = v7's recipe with --games data/cache/bc/games_v8 (Cole's 19 sim deck games + the 21 shadow train games, results mapped win 1 / loss -1 / ? 0) and --games-share 0.25 (v7 0.125); data/logs/run_v8.sh. Then agreement on the held-out shadow games per epoch.
+
+## 2026-11-14 · School v8 follows Cole better on his held-out shadow games; grind1 started on bot-77
+- Agreement on the 9 held-out shadow games (210 plays; scripts/shadow_agreement.py, data/logs/agreement_v8b.log), card top-1 / p(his card) / play-vs-wait AUC / cell median tiles:
+  v7 e3 0.300 / 0.155 / 0.655 / 6.04; v8 e0 0.343 / 0.214 / 0.656 / 6.08; e1 0.362 / 0.212 / 0.656 / 5.92; e2 0.343 / 0.188 / 0.661 / 5.39; e3 **0.367** / 0.195 / 0.660 / 5.83.
+- v8 e3 vs v7 e3, card top-1: +6.7 points, 95% by-game bootstrap [+1.4, +12.1]; v8 better on 7 of 9 games, worse on 2. When to play (AUC) didn't move; placement a little closer.
+- So 21 shadow games at a quarter of the batches move card choice on held-out games. Whether that wins is the live test.
+- Grind setup tested (test1114, 2 games with v7 on bot-77, 0-2): home read before each game (trophies 1330 -> 1301), 0.1 s decisions, a replay after each chunk with the phone's screen set, videos to the LaCie.
+- grind1 (data/logs/after_v8.sh): v7 e3 and v8 e3 take turns 10 games a chunk, 40 games, replays after each chunk, by-checkpoint record in data/live/grind1_supervisor.log, trophies in data/live/home_reads.jsonl. Started 15:5x at 1300 trophies with v7.
