@@ -139,6 +139,12 @@ class Runner:
                 if time.time() - self.home_since < 1.0:
                     time.sleep(0.2); continue
                 if len(self.games) < self.max_games:
+                    try:  # trophies / gold / gems before each game (data/live/home_reads.jsonl)
+                        from bot77.live.home import log_home
+                        h = log_home(im, games_played=len(self.games))
+                        self.log(ui.c(f"home: {h.get('trophies')} trophies, {h.get('gold')} gold", "grey"))
+                    except Exception as e:  # noqa: BLE001  (a read never stops the games)
+                        self.log(ui.c(f"home read failed: {e}", "yellow"))
                     tap = POS.get("home_battle_tap")
                     self.log("home: tapping Battle")
                     if tap and not self.dry_run:

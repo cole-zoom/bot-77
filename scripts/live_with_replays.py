@@ -14,6 +14,7 @@ with the STOP file, then carry on from there. Progress: data/live/<tag>_supervis
 """
 import argparse
 import json
+import os
 import re
 import shutil
 import subprocess
@@ -67,7 +68,8 @@ def to_lacie(sup: Path, since: float) -> None:
 
 def main() -> None:
     ap = argparse.ArgumentParser()
-    ap.add_argument("--ckpt", required=True)
+    ap.add_argument("--ckpt", nargs="+", required=True,
+                    help="one checkpoint, or several taking turns a chunk each (2026-11-14: v7 / v8 while grinding bot-77)")
     ap.add_argument("--games", type=int, default=75)
     ap.add_argument("--chunk", type=int, default=20, help="games per chunk (< 25, the Battle Log's length)")
     ap.add_argument("--tag", default="run75")
@@ -79,17 +81,19 @@ def main() -> None:
     since = time.time() - 6 * 3600 if a.adopt else time.time()  # an adopted run started before us
     sup = LIVE / f"{a.tag}_supervisor.log"
     record: list[str] = []
+    by_ckpt: dict[str, list[str]] = {c: [] for c in a.ckpt}
     chunk_no = 0
     live_log = Path(a.adopt) if a.adopt else None
     while len(record) < a.games:
         chunk_no += 1
         want = min(a.chunk, a.games - len(record))
+        ckpt = a.ckpt[(chunk_no - 1) % len(a.ckpt)]
         if live_log is None or chunk_no > 1:
             live_log = LIVE / f"{a.tag}_chunk{chunk_no:02d}.log"
             STOP.unlink(missing_ok=True)
             cmd = ["uv", "run", "--no-sync", "python", "scripts/live_play.py", "--stream", "--policy", "selfplay",
-                   "--ckpt", a.ckpt, "--decision-s", a.decision_s, "--games", str(want), "--hours", "4", "--device", a.device, "--layout", a.layout]
-            log(f"chunk {chunk_no}: {want} games -> {live_log.name}", sup)
+                   "--ckpt", ckpt, "--decision-s", a.decision_s, "--games", str(want), "--hours", "4", "--device", a.device, "--layout", a.layout]
+            log(f"chunk {chunk_no}: {want} games with {ckpt} -> {live_log.name}", sup)
             subprocess.Popen(cmd, cwd=ROOT, stdout=live_log.open("w"), stderr=subprocess.STDOUT)
             time.sleep(20)
         else:
@@ -101,9 +105,13 @@ def main() -> None:
             time.sleep(30)
         got = results(live_log)
         record += got
+        by_ckpt[ckpt] += got
         w = record.count("WIN")
         log(f"chunk {chunk_no}: {got.count('WIN')}-{len(got) - got.count('WIN')}; total {w}-{len(record) - w} "
             f"over {len(record)} games", sup)
+        if len(a.ckpt) > 1:
+            log("by checkpoint: " + "; ".join(f"{Path(c).parent.name}/{Path(c).stem} {r.count('WIN')}-{len(r) - r.count('WIN')}"
+                                              for c, r in by_ckpt.items()), sup)
         STOP.unlink(missing_ok=True)
         if not got:
             log("no games in this chunk: stopping (check the live log)", sup)
@@ -115,14 +123,16 @@ def main() -> None:
         # the chunk's replays: newest len(got) battles, without the known-deck skip (same deck every game)
         rlog = LIVE / f"{a.tag}_replays{chunk_no:02d}.log"
         r = subprocess.run(["uv", "run", "--no-sync", "python", "scripts/replay_runner.py", "-n", str(len(got)), "--no-known", "--device", a.device],
-                           cwd=ROOT, stdout=rlog.open("w"), stderr=subprocess.STDOUT)
+                           cwd=ROOT, stdout=rlog.open("w"), stderr=subprocess.STDOUT,
+                           # the phone's Battle Log screens (2026-11-13); BlueStacks keeps the default set
+                           env={**os.environ, **({"REPLAY_UI": "data/raw/replays/_ui_a16"} if a.layout == "a16_live" else {})})
         log(f"chunk {chunk_no}: replay runner exit {r.returncode} ({rlog.name})", sup)
         to_lacie(sup, since)
         if (LIVE / "STOP_ALL").exists():
             log("STOP_ALL found: no more chunks", sup)
             break
     (LIVE / f"{a.tag}_record.json").write_text(json.dumps({"results": record, "wins": record.count("WIN"),
-                                                          "games": len(record)}))
+                                                          "games": len(record), "by_ckpt": by_ckpt}))
     log(f"done: {record.count('WIN')}-{len(record) - record.count('WIN')} over {len(record)} games", sup)
 
 
