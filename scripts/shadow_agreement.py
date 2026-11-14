@@ -55,6 +55,9 @@ def main():
     files = sorted(Path(a.src).glob("*.npz"))
     print(f"{len(files)} held-out games in {a.src}", flush=True)
     for c in a.ckpt:
+        if not Path(c).exists():
+            print(c, "missing", flush=True)
+            continue
         print(c, score(c, files), flush=True)
 
 
