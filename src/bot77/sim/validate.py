@@ -235,13 +235,29 @@ def windows(g: Game, max_start: int = MAX_START_UNITS) -> list[dict]:
     return out
 
 
+def _badge_of(bar: dict, bars: list[dict]) -> dict | None:
+    cy = (bar["box"][1] + bar["box"][3]) / 2
+    for q in bars:
+        if q["cls"] == "bar-level" and abs((q["box"][1] + q["box"][3]) / 2 - cy) < 15 \
+                and q["box"][0] <= bar["box"][0] + 4 and q["box"][2] > bar["box"][0]:
+            return q
+    return None
+
+
+def _bar_team(bar: dict, bars: list[dict]) -> str:
+    """A bar's team is its level badge's when it has one: the detector calls a bar's team by its fill colour, and a
+    just-hit bar is white (bl_2026-10-23_r25 50.5 s: our Giant's bar read 'opp', its badge 'own')."""
+    badge = _badge_of(bar, bars)
+    return badge["team"] if badge else bar["team"]
+
+
 def bar_of(unit_box: tuple, team: str, bars: list[dict]) -> tuple[tuple, tuple | None] | None:
     """The HP bar (and its level badge) over a unit: same team, the bar's centre within the unit box's width, its
     bottom from 45 px above the box's top to 30 px into it (the bar hangs over the unit's head)."""
     x0, y0, x1, _ = unit_box
     best, bd = None, 1e9
     for b in bars:
-        if b["cls"] != "bar" or b["team"] != team:
+        if b["cls"] != "bar" or _bar_team(b, bars) != team:
             continue
         bx0, by0, bx1, by1 = b["box"]
         cx = (bx0 + bx1) / 2
@@ -251,10 +267,8 @@ def bar_of(unit_box: tuple, team: str, bars: list[dict]) -> tuple[tuple, tuple |
                 best, bd = b, d
     if best is None:
         return None
-    cy = (best["box"][1] + best["box"][3]) / 2
-    badges = [q["box"] for q in bars if q["cls"] == "bar-level" and abs((q["box"][1] + q["box"][3]) / 2 - cy) < 15
-              and q["box"][0] <= best["box"][0] + 4 and q["box"][2] > best["box"][0]]
-    return best["box"], (badges[0] if badges else None)
+    badge = _badge_of(best, bars)
+    return best["box"], (badge["box"] if badge else None)
 
 
 def with_bar_hp(g: Game, t: float, units: list[dict]) -> list[dict]:

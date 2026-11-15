@@ -221,3 +221,12 @@ def test_a_units_hp_bar_is_the_one_over_its_head():
     assert bar_of((771, 899, 860, 976), "own", bars) == ((802, 889, 861, 909), (781, 884, 809, 916))
     assert bar_of((743, 981, 814, 1055), "own", bars) is None     # Spear Goblins: undamaged, no bar
     assert bar_of((771, 899, 860, 976), "opp", bars) is None      # not the other team's bar
+
+
+def test_a_bar_takes_its_badges_team():
+    """bl_2026-10-23_r25 50.5 s: our Giant's just-hit (white) bar was detected as 'opp', its level badge as 'own'."""
+    from bot77.sim.validate import bar_of
+    bars = [{"cls": "bar", "team": "opp", "box": (353, 521, 437, 541)},
+            {"cls": "bar-level", "team": "own", "box": (331, 515, 359, 546)}]
+    assert bar_of((297, 537, 450, 675), "own", bars) == ((353, 521, 437, 541), (331, 515, 359, 546))
+    assert bar_of((297, 537, 450, 675), "opp", bars) is None
