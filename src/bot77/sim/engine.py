@@ -121,6 +121,29 @@ class Sim:
                     for slot in (1, 2):
                         self.env.set_tower_stats(tm, slot, *preset[1])
 
+    def set_levels(self, team: str, levels: dict[int, int]) -> int:
+        """Card levels for one team: {engine card id: level 1-20}; the engine's stats are level 11 (fork 345410c,
+        set_card_level). Kept by reset(). -> how many were set."""
+        n = 0
+        for cid, lv in levels.items():
+            if lv and 1 <= lv <= 20:
+                self.env.set_card_level(_team(team), cid, int(lv))
+                n += 1
+        return n
+
+    def scale_towers(self, team: str, ratio: float) -> None:
+        """Level one team's crown towers to `ratio` x the preset's HP and damage (a tower level's HP and damage grow
+        alike); call after reset(). The real ratio comes from the replay's princess max HP (tower_hp.max_hp)."""
+        preset = TOWER_PRESETS[getattr(self, "towers_preset", "liquipedia_l11")]
+        if not preset:
+            return
+        tm = _team(team)
+        (khp, kdmg, kcd), (php, pdmg, pcd) = preset
+        self.env.set_tower_stats(tm, 0, round(khp * ratio), round(kdmg * ratio), kcd)
+        if sc.TOWER_TROOPS[self.troops[tm]] == cre.TowerTroopType.NONE:
+            for slot in (1, 2):
+                self.env.set_tower_stats(tm, slot, round(php * ratio), round(pdmg * ratio), pcd)
+
     def snapshot(self) -> "Sim":
         s = Sim(self.env.snapshot(), list(self.log))
         s.towers_preset, s.troops = getattr(self, "towers_preset", "liquipedia_l11"), getattr(self, "troops", None)

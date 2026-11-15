@@ -90,6 +90,7 @@ def load_game(game_id: str, split: str, source: str, recover_spots: bool = True)
     # first time the bar is seen in a run of >= 4 frames (1 s; one-frame detections are noise)
     g.king_awake = {k: _first_run(v, 4) for k, v in king_bar.items()}
     g.tower_hp = load_tower_hp(game_id)
+    g.levels, g.tower_max = load_levels(game_id, decks)
     for p in plays:  # an Evolution card plays as 'normal' and 'evo' in turn: always the deck's engine card
         p["engine_card"] = card_map[p["side"]].get(p["card_id"]) if p["card_id"] else None
         if p["x"] is None and p["card"] and p["kind"] == "play" and recover_spots:
@@ -215,11 +216,44 @@ def _towers_at(g: Game, t_match: float) -> dict | None:
     return g.towers[i][1] if i >= 0 else None
 
 
-def run_window(g: Game, w: dict, towers: str = "liquipedia_l11", wake_kings: bool = True) -> dict:
+def load_levels(game_id: str, decks: dict[str, list[int]]) -> tuple[dict[str, dict[int, int]], dict[str, float]]:
+    """Card levels per side {side: {engine card id: level}} from `card_levels` (the Battle Log entry; 2026-11-15) and
+    each side's princess tower max HP from `tower_hp` (the replay's own HP bars). Empty where not read."""
+    vid = game_id.rsplit("_m", 1)[0].removesuffix("_top")
+    try:
+        rows = _rows("card_levels", f"video_id = '{vid}'", ["side", "card", "level"])
+    except Exception:  # noqa: BLE001  (table not built yet)
+        rows = []
+    by = {(r["side"], r["card"]): r["level"] for r in rows if r["card"] and r["level"]}
+    levels = {}
+    for side, deck in decks.items():
+        levels[side] = {e: by[(side, sc.our_name(e))] for e in deck if (side, sc.our_name(e)) in by}
+    mx = collections.defaultdict(list)
+    try:
+        for r in _rows("tower_hp", f"match_id = '{game_id}' AND accepted = true", ["tower", "max_hp"]):
+            if r["max_hp"] and not r["tower"].endswith("king"):
+                mx[r["tower"].split("_")[0]].append(r["max_hp"])
+    except Exception:  # noqa: BLE001
+        pass
+    tower_max = {k: float(np.median(v)) for k, v in mx.items() if v}
+    return levels, tower_max
+
+
+def run_window(g: Game, w: dict, towers: str = "liquipedia_l11", wake_kings: bool = True,
+               levels: bool = False) -> dict:
     """Play the window in the sim. -> {'frames': [(dt, sim units, replay units)], 'plays': [PlayResult], 'sim'}.
     Sim tick = (video t - offset) x 10; a replay frame is compared with the sim at its nearest tick."""
     sim = Sim.new(g.decks["bottom"], g.decks["top"], towers=towers)
+    if levels:  # the replay's card levels; unread cards stay at the engine's 11
+        for side, team in (("bottom", "own"), ("top", "opp")):
+            sim.set_levels(team, getattr(g, "levels", {}).get(side, {}))
     sim.reset()
+    if levels:  # towers at the replay's level: its princess max HP against the preset's
+        from bot77.sim.engine import TOWER_PRESETS
+        preset = TOWER_PRESETS[towers]
+        for team, mxhp in getattr(g, "tower_max", {}).items():
+            if preset and mxhp:
+                sim.scale_towers(team, mxhp / preset[1][0])
     tick = lambda t: round((t - g.offset) * 10)  # noqa: E731
     sim.env.set_current_tick(tick(w["t0"] - PRE_S))
     for team in ("own", "opp"):

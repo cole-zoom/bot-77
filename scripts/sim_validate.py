@@ -26,6 +26,8 @@ ap.add_argument("--kings", default="wake", choices=["wake", "asleep"], help="wak
 ap.add_argument("--collision", default="on", choices=["on", "off"], help="client collision (the _cc runs since 10-29)")
 ap.add_argument("--sources", default="replay_tv,replay_bl",
                 help="matches.source list; replay_bot = the bot's own Battle Log replays (its own card levels)")
+ap.add_argument("--levels", default="off", choices=["on", "off"],
+                help="play each card and tower at the replay's level (card_levels, tower_hp max; fork 345410c)")
 ap.add_argument("--fid-heldback", type=float, default=0.25,
                 help="sources with no held-back split (replay_bot: all train): this md5 share of games is reported as "
                      "'heldback', the rest as 'train' (2026-11-15)")
@@ -54,7 +56,7 @@ rows, n_win, t0 = [], 0, time.time()
 for i, m in enumerate(games):
     g = load_game(m["match_id"], m["split"], m["source"])
     for w in windows(g):
-        r = run_window(g, w, args.towers, args.kings == "wake")
+        r = run_window(g, w, args.towers, args.kings == "wake", levels=args.levels == "on")
         rows += metrics(g, w, r)
         n_win += 1
     if (i + 1) % 50 == 0:
