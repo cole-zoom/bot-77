@@ -200,3 +200,13 @@ def test_place_units_per_body_injects_what_was_seen():
 def _squad_size_of(card):
     from bot77.sim.scenario import _squad_size
     return _squad_size(card)
+
+
+def test_at_enemy_tower_is_about_the_towers_a_team_attacks():
+    """life_diff_field leaves out units last seen fighting a tower (drawn behind it, lost alive)."""
+    from bot77.sim.validate import at_enemy_tower
+    assert at_enemy_tower([(14.9, 19.3)], "opp")        # bl_2026-10-23_r13's Goblins at our right tower
+    assert not at_enemy_tower([(14.9, 19.3)], "own")    # our own unit there is defending, not attacking
+    assert at_enemy_tower([(3.5, 9.0)], "own")          # ours at their left tower
+    assert not at_enemy_tower([(9.0, 14.9)], "opp")     # mid-river
+    assert not at_enemy_tower([], "opp")

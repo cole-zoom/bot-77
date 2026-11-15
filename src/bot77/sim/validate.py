@@ -376,6 +376,22 @@ def _last_run(dts: list[float], min_run: int, gap: float = DET_DT * 1.5) -> floa
     return best
 
 
+TOWER_REACH = 4.5  # engine tiles from a crown tower's centre: a unit this close is fighting it (occluded)
+
+
+def at_enemy_tower(points: list[tuple[float, float]], team: str) -> bool:
+    """Whether any of these points (our frame) is within TOWER_REACH of a crown tower of the team `team` attacks."""
+    from bot77.sim.geometry import ours_to_engine
+    import clash_royale_env as cre
+    enemy = 0 if team == "opp" else 1
+    towers = [(3.0, cre.arena_princess_y(enemy)), (14.0, cre.arena_princess_y(enemy)), (8.5, cre.arena_king_y(enemy))]
+    for x, y in points:
+        ex, ey = ours_to_engine(x, y)
+        if any((ex - tx) ** 2 + (ey - ty) ** 2 <= TOWER_REACH ** 2 for tx, ty in towers):
+            return True
+    return False
+
+
 def metrics(g: Game, w: dict, r: dict) -> list[dict]:
     """One row per (metric, card, dt bin) for this window."""
     rows = []
@@ -385,7 +401,7 @@ def metrics(g: Game, w: dict, r: dict) -> list[dict]:
     dx_dy = collections.defaultdict(list)
     count_err = collections.defaultdict(list)
     lane_same = collections.defaultdict(list)
-    present = collections.defaultdict(lambda: {"sim": [], "det": []})  # (card, team) -> dts present
+    present = collections.defaultdict(lambda: {"sim": [], "det": [], "det_pos": []})  # (card, team) -> dts present
     for dt, su, du in r["frames"]:
         b = next(i for i in range(len(DT_BINS) - 1) if DT_BINS[i] <= dt < DT_BINS[i + 1]) if dt >= 0 else None
         for a, d, dist in match_frame(su, du):
@@ -402,6 +418,7 @@ def metrics(g: Game, w: dict, r: dict) -> list[dict]:
                 present[k]["sim"].append(dt)
             if by[1][k]:
                 present[k]["det"].append(dt)
+                present[k]["det_pos"] += [(dt, u["x"], u["y"]) for u in du if (u["card"], u["team"]) == k]
     for (card, b), v in errs.items():
         rows.append({**base, "metric": "pos_err", "card": card, "dt_bin": b, "value": float(np.median(v)), "n": len(v)})
     for b, v in dx_dy.items():
@@ -441,6 +458,12 @@ def metrics(g: Game, w: dict, r: dict) -> list[dict]:
         # dropouts as sim units living too long. This one is censored on neither side.
         if max(ls, ld) < end - 1.0:
             rows.append({**base, "metric": "life_diff_both", "card": card, "dt_bin": -1, "value": ls - ld, "n": 1})
+            # ...and the replay last saw it away from the towers it attacks (2026-11-15): a unit hitting a tower is
+            # drawn behind it and the detector loses it alive (bl_2026-10-23_r13: Goblins last seen 19 s, our tower
+            # kept losing HP to 28 s), so life_diff_both reads tower fights as the sim's units living too long.
+            if not at_enemy_tower([(x, y) for t, x, y in p["det_pos"] if t >= ld - 0.5], team):
+                rows.append({**base, "metric": "life_diff_field", "card": card, "dt_bin": -1, "value": ls - ld,
+                             "n": 1})
     if r["frames"]:
         last = [f for f in r["frames"] if f[0] >= end - 1.0]  # the last second, averaged (detector flicker)
         vs = {k: np.mean([value(f[1])[k] for f in last]) for k in ("own", "opp")}

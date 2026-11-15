@@ -102,6 +102,10 @@ for label, split, kind in groups:
     life = [r["value"] for r in R if r["metric"] == "life_diff" and (r["match_id"], r["t0"]) in clean]
     if life:
         print(f"  life time sim - replay: median {np.median(life):+.2f} s, |diff| median {np.median(np.abs(life)):.2f} s, n {len(life)}")
+    for metric, what in (("life_diff_both", "both saw it die"), ("life_diff_field", "...away from the towers")):
+        v = [r["value"] for r in R if r["metric"] == metric and (r["match_id"], r["t0"]) in clean]
+        if v:
+            print(f"    {what}: median {np.median(v):+.2f} s, n {len(v)}")
     for side in ("own", "opp"):
         real = {(r["match_id"], r["t0"]): r["value"] for r in R if r["metric"] == f"tower_dmg_{side}_real"}
         sim = {(r["match_id"], r["t0"]): r["value"] for r in R if r["metric"] == f"tower_dmg_{side}_sim"}
