@@ -5538,3 +5538,13 @@ Same engine and bot rules as the v6 checks.
   units), the detector's floor; held back +1.0 s on n 22 (+0.25 on n 72 with start units). No lifetime mechanic gap
   left that this check can see. Goblins' +1.4 s was occlusion at our tower (bl_2026-10-23_r13: last seen 19 s, our
   right tower losing HP every second to 28 s).
+- **Start units at their HP-bar HP** (bot77.readers.unit_hp edc6e4d, wired 3445ff0). The fill is the bright run from
+  the left (median V >= 145; every fill column of ten hand-checked bars >= 148, every track column <= 141), rows
+  searched within 6 px of the detector's box (the unit moves between the detection and the decoded frame); hue and
+  colour-split rules were tried first and misread white fills over sand. 4 fixtures in tests/fixtures/unit_hp within
+  0.1 of by-eye. Each bar goes to one unit (same team, over its head); no bar = full HP. One-body cards now also go in
+  one per detection at their own spot. Bot replays, 1-2 units at start (fid_bot_barhp_3445ff0 vs
+  fid_bot_perbody_91ee545): their towers sim 107.7 -> 86.2 (real 57.2), |sim - real| median train 0.140 -> 0.105,
+  held back 0.142 -> 0.105; our towers 0.126 -> 0.101, 0.095 -> 0.065; winners train 66.9 -> 69.3%, held back 66.0%.
+  Kept. Start-unit windows now nearly as faithful as empty ones on our towers; theirs still 1.5x on totals (the
+  median ratio is 1.00, so it's a few big windows).
