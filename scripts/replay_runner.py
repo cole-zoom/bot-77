@@ -117,11 +117,20 @@ def find_entry(im: np.ndarray, fp: np.ndarray) -> int | None:
     return y + ENTRY_UP if v >= SAME_ENTRY else None
 
 
+NUDGE = (540, 330)  # bot77.live.loop's tap for a screen with nothing safe to press
+
+
+def blind_action(n: int) -> str:
+    """The n-th screen (1, 2, ...) with no safe button: Back, then the live loop's nudge, in turn. Back alone never left
+    a chest opening (2026-11-15, collect1 chunk 2: 20 Backs on the mystery chest, no replays recorded); a tap opens it."""
+    return "back" if n % 2 else "nudge"
+
+
 def open_log(d: Device) -> np.ndarray:
     """Get to the list (Battle Log or TV Royale) from wherever we are (end screen, home). TV Royale can take a minute
     to load after OK (a spinner over the end screen), and a replay may still be playing when a run starts, so in TV
     mode an unknown screen is waited out (up to MAX_REPLAY_S), never left: Back would quit to the main menu."""
-    t0, last_ok = time.time(), 0.0
+    t0, last_ok, blind = time.time(), 0.0, 0
     # 20 tries for the Battle Log (2026-10-23: 6 ran out while Clash was still loading / a popup sat on the home
     # screen after the session's relaunch)
     for _ in range(20 if TITLE == "log_title" else 10**6):
@@ -159,7 +168,11 @@ def open_log(d: Device) -> np.ndarray:
                 d.tap(*tap); time.sleep(3.0)
             else:
                 time.sleep(2.0)
-                subprocess.run([ADB, "-s", d.s, "shell", "input", "keyevent", "4"])  # back
+                blind += 1
+                if blind_action(blind) == "nudge":  # the live loop's nudge (bot77.live.loop)
+                    d.tap(*NUDGE)
+                else:
+                    subprocess.run([ADB, "-s", d.s, "shell", "input", "keyevent", "4"])  # back
         time.sleep(2.0)
         if TITLE == "tv_title" and time.time() - t0 > MAX_REPLAY_S:
             break
