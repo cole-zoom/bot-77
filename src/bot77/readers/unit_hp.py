@@ -1,0 +1,77 @@
+"""A unit's HP fraction from its HP bar (the detector's `bar` box, next to its `bar-level` badge), 2026-11-15.
+
+The bar shows once a unit is damaged: a fill from the left over a translucent track, the level badge covering the
+bar's left end. Measured on ten v5l_e15 bars of the bot's replays (red, pink, light-blue and white fills, over grass,
+sand and units): every fill column has median V >= 148, every track column <= 141 (the track is dark and
+translucent). Hue- or split-based rules were tried first and misread white fills over sand and red fills over light
+arena (read 1.0 and 0.92 for ~0.7 and ~0.3). Fraction = the contiguous bright run from the left / the bar's length
+(from the badge's right edge to the box's right edge less its outline).
+"""
+from __future__ import annotations
+
+import cv2
+import numpy as np
+
+OUTLINE = 3  # px of dark outline inside the box's right edge
+GAP = 2      # non-fill columns allowed inside the fill run (antialiasing, a damage tick)
+
+
+FILL_V = 145  # median V of a column: fill above, track below
+
+
+def fill_mask(hsv_strip: np.ndarray) -> np.ndarray:
+    """Per column: is it bar fill (bright), not the dark track?"""
+    return np.median(hsv_strip[:, :, 2].astype(np.float32), axis=0) >= FILL_V
+
+
+SLACK = 6  # px the box may sit off the bar vertically (the unit moved between the detector's frame and this one)
+BAND = 3   # rows read
+
+
+def band_rows(frame: np.ndarray, x0: int, x1: int, y0: int, y1: int) -> tuple[int, int] | None:
+    """The BAND rows near the box that look most like a bar: the largest spread of brightness along the row (bright
+    fill against dark track). Sand or grass rows are flat; the bar's outline rows are flat and dark."""
+    lo, hi = max(0, y0 - SLACK), min(frame.shape[0], y1 + SLACK)
+    if hi - lo < BAND or x1 - x0 < 8:
+        return None
+    v = cv2.cvtColor(frame[lo:hi, x0:x1], cv2.COLOR_BGR2HSV)[:, :, 2].astype(np.float32)
+    best, at = -1.0, None
+    for y in range(0, hi - lo - BAND + 1):
+        col = np.median(v[y: y + BAND], axis=0)
+        spread = float(np.percentile(col, 90) - np.percentile(col, 10))
+        dark = float(np.percentile(col, 10)) < FILL_V  # the track must be in it, unless the bar is nearly full
+        if dark and spread > best:
+            best, at = spread, y
+    if at is None:  # nearly full bar: no dark track in reach; the box's middle rows
+        mid = (y0 + y1) // 2
+        return mid - 1, mid + 2
+    return lo + at, lo + at + BAND
+
+
+def bar_fill(frame: np.ndarray, bar: tuple[float, float, float, float],
+             badge: tuple[float, float, float, float] | None = None) -> float | None:
+    """HP fraction 0-1 of the bar box (x0, y0, x1, y1, frame pixels), or None if it doesn't read as a bar."""
+    x0, y0, x1, y1 = (int(round(v)) for v in bar)
+    if badge is not None and badge[0] <= x0 + 4 and badge[2] > x0:  # the badge covers the bar's left end
+        x0 = int(round(badge[2])) + 1
+    r = x1 - OUTLINE
+    h = y1 - y0
+    if r - x0 < 8 or h < 3 or x0 < 0 or y0 < 0:
+        return None
+    band = band_rows(frame, x0, r, y0, y1)
+    if band is None:
+        return None
+    strip = frame[band[0]: band[1], x0: r]
+    fill = fill_mask(cv2.cvtColor(strip, cv2.COLOR_BGR2HSV))
+    head = np.flatnonzero(fill[: max(3, len(fill) // 5)])
+    if len(head) == 0:  # a fill always starts at the left
+        return None
+    end, gap = head[0], 0
+    for i in range(head[0], len(fill)):
+        if fill[i]:
+            end, gap = i, 0
+        else:
+            gap += 1
+            if gap > GAP:
+                break
+    return float((end + 1) / len(fill))
