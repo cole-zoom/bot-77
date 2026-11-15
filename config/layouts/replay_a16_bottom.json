@@ -1,0 +1,146 @@
+{
+  "layout_id": "replay_a16_bottom",
+  "description": "Replay viewer (Battle Log / TV Royale), Galaxy A16 recorded at 1080x1920.. Mapped from replay_bottom (2026-11-15): arena x = 28.6 + 0.947*x, y = 132.4 + 0.925*y (the four princess HP bars, bl_2026-11-15 r01 vs bl_2026-11-02 r03); HUD and hands x = 26.3 + 0.947*x, y = 102.0 + 0.947*y (Next labels and elixir drops, both hands, within 2 px). Reads the BOTTOM player's hand.",
+  "frame_size": [
+    1080,
+    1920
+  ],
+  "hand": {
+    "ui_scale": 0.6648,
+    "next_art_scales": [
+      0.35,
+      0.37,
+      0.39
+    ],
+    "elixir_empty": "any",
+    "plays_by_swap": true
+  },
+  "katacr_arena": [
+    135,
+    441,
+    948,
+    1656
+  ],
+  "regions": {
+    "timer_label": [
+      869,
+      346,
+      1044,
+      379
+    ],
+    "timer": [
+      869,
+      380,
+      1044,
+      430
+    ],
+    "multiplier": [
+      893,
+      452,
+      1044,
+      576
+    ],
+    "arena": [
+      132,
+      391,
+      949,
+      1640
+    ],
+    "opp_left_hp": [
+      254,
+      577,
+      336,
+      610
+    ],
+    "opp_right_hp": [
+      754,
+      577,
+      834,
+      610
+    ],
+    "my_left_hp": [
+      251,
+      1364,
+      325,
+      1393
+    ],
+    "my_right_hp": [
+      754,
+      1364,
+      831,
+      1393
+    ],
+    "slot1_tab": [
+      157,
+      1646,
+      293,
+      1674
+    ],
+    "slot2_tab": [
+      291,
+      1646,
+      428,
+      1674
+    ],
+    "slot3_tab": [
+      426,
+      1646,
+      562,
+      1674
+    ],
+    "slot4_tab": [
+      561,
+      1646,
+      698,
+      1674
+    ],
+    "slot1": [
+      157,
+      1646,
+      293,
+      1859
+    ],
+    "slot2": [
+      291,
+      1646,
+      428,
+      1859
+    ],
+    "slot3": [
+      426,
+      1646,
+      562,
+      1859
+    ],
+    "slot4": [
+      561,
+      1646,
+      698,
+      1859
+    ],
+    "next": [
+      43,
+      1685,
+      134,
+      1786
+    ],
+    "elixir_bar": [
+      93,
+      1859,
+      1011,
+      1887
+    ],
+    "elixir_number": [
+      62,
+      1843,
+      121,
+      1907
+    ],
+    "opp_name": [
+      727,
+      178,
+      1044,
+      225
+    ]
+  }
+}
