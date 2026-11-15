@@ -5483,3 +5483,26 @@ Same engine and bot rules as the v6 checks.
   at "no more battles" after 5. Those 15 have since scrolled off the 25-game log. Cause not yet looked at.
 - Videos moved to the LaCie each chunk; all 1 409 LaCie links resolve after Cole's accidental unplug/replug (00:30).
 - Ended 10:25, before the home router was unplugged.
+
+## 2026-11-15 · Triage run (Cole: "just start triaging everything, and dont stop ... build tests for the changes to stop regression")
+- **Tests:** after collect1 ended, .venv rebuilt on fork 345410c (`uv sync`; it drops the gymnasium/tensorboard
+  overlay, so the suite runs as `uv run --no-sync --with gymnasium==1.3.0 --with tensorboard python -m pytest tests`).
+  186/187 passed; the one failure was test_curated_coverage: the 10-09 card snapshot added hero Electro Wizard and
+  Evo Electro Giant, nobody has written their facts. Listed as known gaps (7898ca3), not invented.
+- **Lane-queue lead: wrong.** Alone in the sim a Mini P.E.K.K.A behind a Giant overtakes it and reaches the tower at
+  every gap (1-3 s) with collision on or off. In bl_2026-10-23_r29 at 108 s with levels on the sim tracks the replay
+  within 0.5 tiles and our right tower ends at 1759 in both; the earlier reading came from the level-11 run.
+- **Half the "sim deals too little damage to our towers" gap was the check** (5bc4c61): a princess tower's alive flag
+  drops to False from its first hits, 4-10 s before it falls (bl_2026-10-29_r42 own_r: False from 24.7 s match time
+  while its bar reads 0.93 ... 0.09 to 31 s). Every flag after it falls is False too, so _steady_flags kept them and a
+  window counted a whole tower lost; at a window's start it also set a standing tower to 0 in the sim
+  (bl_2026-10-23_r55: own_l read 0.33). Now a princess tower stands while its HP bar is still read
+  (_standing_while_read; test_a_tower_whose_bar_is_still_read_is_standing). Bot replays, levels on, empty start
+  (run fid_bot_flags_5bc4c61 vs fid_bot_levels_345410c):
+  - our towers, train: real 42.4 -> 35.8 vs sim 29.3; sim/real median (real > 0.1) 0.74 -> 0.88; |sim - real| median
+    0.114 -> 0.080. Held back: real 13.2 -> 9.9 vs sim 7.6; 0.75 -> 0.88; 0.100 -> 0.083.
+  - their towers, winners, lifetimes: unchanged (winner 71.2% train, 71.0% held back).
+  - What's left on our towers: sim/real 0.88 (train and held back).
+- **Lifetime gap:** of the Mini P.E.K.K.A's 92 windows (the most common card), only 39 see it die on both sides
+  (median +0.5 s); the other 53 are the replay's detector losing it while the sim's is alive (median +2.25 s). The
+  +1.0 / +1.5 s headline is mostly that censoring; life_diff_both is the number to chase.
