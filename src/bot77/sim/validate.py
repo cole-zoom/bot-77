@@ -259,7 +259,7 @@ def load_levels(game_id: str, decks: dict[str, list[int]]) -> tuple[dict[str, di
 
 
 def run_window(g: Game, w: dict, towers: str = "liquipedia_l11", wake_kings: bool = True,
-               levels: bool = False) -> dict:
+               levels: bool = False, per_body: bool = True) -> dict:
     """Play the window in the sim. -> {'frames': [(dt, sim units, replay units)], 'plays': [PlayResult], 'sim'}.
     Sim tick = (video t - offset) x 10; a replay frame is compared with the sim at its nearest tick."""
     sim = Sim.new(g.decks["bottom"], g.decks["top"], towers=towers)
@@ -292,7 +292,7 @@ def run_window(g: Game, w: dict, towers: str = "liquipedia_l11", wake_kings: boo
                 sim.wake_king(team)
     towers0 = {k: v["frac"] for k, v in sim.towers().items()}
     start_units = _frame(g, w["t0"] - PRE_S) or []
-    injected, _ = place_units(sim, start_units)
+    injected, _ = place_units(sim, start_units, per_body=per_body)  # per_body: one detected Goblin is one Goblin
     plays = collections.deque(sorted(w["plays"], key=lambda p: p["t"]))
     dets = {}
     for t in g.frame_ts[bisect.bisect_left(g.frame_ts, w["t0"] - PRE_S):bisect.bisect_right(g.frame_ts, w["t1"])]:

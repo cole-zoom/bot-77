@@ -170,3 +170,33 @@ def test_a_tower_whose_bar_is_still_read_is_standing():
         offset, towers, tower_hp = 3.0, out, hp
     assert tower_frac(G, "own_r", 31.0) == 0.93   # mid-attack: the reading, not 0
     assert tower_frac(G, "own_r", 45.0) == 0.0    # after it fell: the flag
+
+
+def test_place_units_per_body_injects_what_was_seen():
+    """One detected Goblin is one Goblin, where it stood; the default (live mirror, datasets) keeps whole cards; a
+    mount and its rider stay together."""
+    from bot77.sim.scenario import _independent_bodies, place_units
+    gob, ram = sc.our_name(4), sc.our_name(87)
+    assert _independent_bodies(4) and not _independent_bodies(87) and not _independent_bodies(2)
+    seen = [{"card": gob, "cls": "goblin", "team": "opp", "x": 5.0, "y": 10.0},
+            {"card": gob, "cls": "goblin", "team": "opp", "x": 5.6, "y": 10.4}]
+    for per_body, n in ((True, 2), (False, _squad_size_of(4))):  # 2 seen close together: one whole card by default
+        s = Sim.new([4], [4])
+        s.reset()
+        place_units(s, seen, per_body=per_body)
+        s.step(1)
+        us = [u for u in s.units() if u["team"] == "opp"]
+        assert len(us) == n
+        if per_body:
+            got = sorted((u["x"], u["y"]) for u in us)   # one tick: walking and the two bodies pushing apart
+            assert all(abs(a - c) < 0.3 and abs(b - d) < 0.3 for (a, b), (c, d) in zip(got, [(5.0, 10.0), (5.6, 10.4)]))
+    s = Sim.new([87], [87])
+    s.reset()
+    place_units(s, [{"card": ram, "cls": "ram-rider", "team": "opp", "x": 9.0, "y": 10.0}], per_body=True)
+    s.step(1)
+    assert len([u for u in s.units() if u["team"] == "opp"]) == _squad_size_of(87)
+
+
+def _squad_size_of(card):
+    from bot77.sim.scenario import _squad_size
+    return _squad_size(card)

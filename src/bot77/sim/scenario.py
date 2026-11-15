@@ -113,9 +113,24 @@ def real_multiplier(t_match: float) -> int:
     return 1 if t_match < 120 else 2 if t_match < 240 else 3
 
 
-def place_units(sim: Sim, units: list[dict]) -> tuple[list[tuple], list[tuple]]:
+@lru_cache(maxsize=4096)
+def _independent_bodies(card: int) -> bool:
+    """A card of several bodies that are all the same troop and carry nothing (Goblins, Skeleton Army, Barbarians):
+    one of them can stand on the board alone. Not a mount and rider (Ram Rider) or a mixed squad."""
+    s = Sim.new([card], [card])
+    s.reset()
+    s.inject(card, 9.0, 20.0, "own")
+    s.step(1)
+    us = s.units()
+    return len(us) > 1 and len({u["engine_name"] for u in us}) == 1 and all(u["attached_to"] < 0 for u in us)
+
+
+def place_units(sim: Sim, units: list[dict], per_body: bool = False) -> tuple[list[tuple], list[tuple]]:
     """Inject detected units (card, cls, team own/opp, x, y = FEET) as deployed, full HP. Bodies of one card within
     SQUAD_RADIUS are one deploy: one card per cluster (so a half-dead squad comes back whole). Spells are skipped.
+    per_body: a card of independent bodies (_independent_bodies) is injected one body per detection, where it was
+    seen, instead (the fidelity check, 2026-11-15: a whole card per cluster put 4 Goblins for one flicker). Off by
+    default: the live mirror and the imitation datasets were built with whole cards.
     -> (injected: (card, team, x, y, bodies seen, bodies injected), skipped: (card, why))."""
     injected, skipped, groups = [], [], []
     for u in units:
@@ -137,6 +152,11 @@ def place_units(sim: Sim, units: list[dict]) -> tuple[list[tuple], list[tuple]]:
             groups.append({"card": e, "team": u["team"], "x": x, "y": y, "pts": [(x, y)]})
     for g in groups:
         n = len(g["pts"])
+        if per_body and _independent_bodies(g["card"]):
+            for x, y in g["pts"]:
+                sim.inject(g["card"], x, y, g["team"], bodies=1)
+            injected.append((sc.our_name(g["card"]), g["team"], round(g["x"], 2), round(g["y"], 2), n, n))
+            continue
         k = -(-n // _squad_size(g["card"]))  # injections for this cluster
         cx, cy = sum(p[0] for p in g["pts"]) / n, sum(p[1] for p in g["pts"]) / n
         for _ in range(k):

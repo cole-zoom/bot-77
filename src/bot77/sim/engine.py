@@ -213,11 +213,14 @@ class Sim:
         return hp > 0 and self.env.set_tower_hp(tm, 0, min(hp, mx - 1))
 
     # --- units ---
-    def inject(self, card: int, x: float, y: float, team: str, hp: float | None = None, deployed: bool = True) -> None:
+    def inject(self, card: int, x: float, y: float, team: str, hp: float | None = None, deployed: bool = True,
+               bodies: int | None = None) -> None:
         """Put a unit on the board as if it were already there (no elixir, no cycle). `deployed` skips the 1 s deploy
-        time, for units already seen on the field; hp None = full."""
+        time, for units already seen on the field; hp None = full. `bodies`: keep only this many of a multi-body
+        card's bodies (1: exactly at x, y; fork 5dead64); None = the whole card."""
         ex, ey = ours_to_engine(x, y)
-        self.env.inject(card, ex, ey, _team(team), -1.0 if hp is None else float(hp), 0 if deployed else -1)
+        self.env.inject(card, ex, ey, _team(team), -1.0 if hp is None else float(hp), 0 if deployed else -1,
+                        -1 if bodies is None else int(bodies))
 
     def units(self, towers: bool = False) -> list[dict]:
         """Live units in our frame: card (our name), engine_name, card_id (engine, -1 for spawned bodies), team, x, y
