@@ -14,6 +14,7 @@ the windows lean toward troop fights.
 from __future__ import annotations
 
 import bisect
+from pathlib import Path
 import collections
 from dataclasses import dataclass, field
 
@@ -64,9 +65,10 @@ def load_game(game_id: str, split: str, source: str, recover_spots: bool = True)
     plays = _rows("plays", f"game_id = '{game_id}' AND source = 'hand'",
                   ["side", "t", "t_match", "card", "card_id", "form", "kind", "elixir_after", "x", "y"])
     plays.sort(key=lambda p: p["t"])
-    dets = _rows("detections", f"match_id = '{game_id}' AND run_id = '{RUN}'", ["t", "card", "cls", "team", "x", "y"],
-                 limit=10**7)
+    dets = _rows("detections", f"match_id = '{game_id}' AND run_id = '{RUN}'",
+                 ["t", "card", "cls", "team", "x", "y", "x0", "y0", "x1", "y1"], limit=10**7)
     frames: dict[float, list[dict]] = collections.defaultdict(list)
+    bars: dict[float, list[dict]] = collections.defaultdict(list)  # unit HP bars and level badges, frame pixels
     king_bar: dict[str, list[float]] = {"own": [], "opp": []}  # the king's HP bar shows once it has been damaged
     for d in dets:
         if d["cls"] == "king-tower-bar" and d["team"] in TEAM:
@@ -75,7 +77,9 @@ def load_game(game_id: str, split: str, source: str, recover_spots: bool = True)
         frames.setdefault(t, [])
         if _is_unit(d["cls"], d["card"]) and d["team"] in TEAM:
             frames[t].append({"card": d["card"], "cls": d["cls"], "team": TEAM[d["team"]], "x": d["x"],
-                              "y": d["y"] + FEET_DY})
+                              "y": d["y"] + FEET_DY, "box": (d["x0"], d["y0"], d["x1"], d["y1"])})
+        elif d["cls"] in ("bar", "bar-level") and d["team"] in TEAM:
+            bars[t].append({"cls": d["cls"], "team": TEAM[d["team"]], "box": (d["x0"], d["y0"], d["x1"], d["y1"])})
     tw = _rows("moments", f"game_id = '{game_id}' AND side = 'bottom'", ["t_match", "towers"])
     towers = _steady_flags(sorted(((m["t_match"], m["towers"]) for m in tw if m["towers"]), key=lambda x: x[0]))
     offs = [p["t"] - p["t_match"] for p in plays if p["t_match"] is not None]
@@ -89,6 +93,7 @@ def load_game(game_id: str, split: str, source: str, recover_spots: bool = True)
              float(np.median(offs)) if offs else 0.0, decks, card_map, missing)
     # first time the bar is seen in a run of >= 4 frames (1 s; one-frame detections are noise)
     g.king_awake = {k: _first_run(v, 4) for k, v in king_bar.items()}
+    g.bars = dict(bars)
     g.tower_hp = load_tower_hp(game_id)
     g.towers = _standing_while_read(g.towers, g.tower_hp, g.offset)
     g.levels, g.tower_max = load_levels(game_id, decks)
@@ -230,6 +235,65 @@ def windows(g: Game, max_start: int = MAX_START_UNITS) -> list[dict]:
     return out
 
 
+def bar_of(unit_box: tuple, team: str, bars: list[dict]) -> tuple[tuple, tuple | None] | None:
+    """The HP bar (and its level badge) over a unit: same team, the bar's centre within the unit box's width, its
+    bottom from 45 px above the box's top to 30 px into it (the bar hangs over the unit's head)."""
+    x0, y0, x1, _ = unit_box
+    best, bd = None, 1e9
+    for b in bars:
+        if b["cls"] != "bar" or b["team"] != team:
+            continue
+        bx0, by0, bx1, by1 = b["box"]
+        cx = (bx0 + bx1) / 2
+        if x0 - 10 <= cx <= x1 + 10 and y0 - 45 <= by1 <= y0 + 30:
+            d = abs(cx - (x0 + x1) / 2) + abs(by1 - y0)
+            if d < bd:
+                best, bd = b, d
+    if best is None:
+        return None
+    cy = (best["box"][1] + best["box"][3]) / 2
+    badges = [q["box"] for q in bars if q["cls"] == "bar-level" and abs((q["box"][1] + q["box"][3]) / 2 - cy) < 15
+              and q["box"][0] <= best["box"][0] + 4 and q["box"][2] > best["box"][0]]
+    return best["box"], (badges[0] if badges else None)
+
+
+def with_bar_hp(g: Game, t: float, units: list[dict]) -> list[dict]:
+    """The units of the frame nearest t, each with hp_frac read off its HP bar (none: full, the bar shows only once
+    a unit is damaged; 2026-11-15)."""
+    from bot77.calibrate import read_frame
+    from bot77.readers.unit_hp import bar_fill
+    i = bisect.bisect_left(g.frame_ts, t)
+    ts = [g.frame_ts[j] for j in (i - 1, i) if 0 <= j < len(g.frame_ts)]
+    if not ts:
+        return units
+    tf = min(ts, key=lambda x: abs(x - t))
+    bars = getattr(g, "bars", {}).get(tf, [])
+    if not any(b["cls"] == "bar" for b in bars):
+        return units
+    video = Path("data/raw/replay_links") / f"{g.game_id.rsplit('_m', 1)[0]}.mp4"
+    try:
+        frame = read_frame(video, tf)
+    except Exception:  # noqa: BLE001  (video not on disk)
+        return units
+    out, free = [dict(u) for u in units], list(bars)
+    # each bar to one unit, closest pairs first (overlapping units would otherwise share one)
+    pairs = []
+    for i, u in enumerate(out):
+        hit = bar_of(u["box"], u["team"], free) if u.get("box") else None
+        if hit:
+            pairs.append((abs((hit[0][0] + hit[0][2]) / 2 - (u["box"][0] + u["box"][2]) / 2) + abs(hit[0][3] - u["box"][1]), i))
+    for _, i in sorted(pairs):
+        u = out[i]
+        hit = bar_of(u["box"], u["team"], free)
+        if not hit:
+            continue
+        free = [b for b in free if b["box"] != hit[0]]
+        f = bar_fill(frame, hit[0], hit[1])
+        if f is not None:
+            u["hp_frac"] = f
+    return out
+
+
 def _towers_at(g: Game, t_match: float) -> dict | None:
     i = bisect.bisect_right([t for t, _ in g.towers], t_match) - 1
     return g.towers[i][1] if i >= 0 else None
@@ -292,6 +356,8 @@ def run_window(g: Game, w: dict, towers: str = "liquipedia_l11", wake_kings: boo
                 sim.wake_king(team)
     towers0 = {k: v["frac"] for k, v in sim.towers().items()}
     start_units = _frame(g, w["t0"] - PRE_S) or []
+    if per_body and start_units:
+        start_units = with_bar_hp(g, w["t0"] - PRE_S, start_units)
     injected, _ = place_units(sim, start_units, per_body=per_body)  # per_body: one detected Goblin is one Goblin
     plays = collections.deque(sorted(w["plays"], key=lambda p: p["t"]))
     dets = {}

@@ -128,6 +128,7 @@ class Sim:
         for cid, lv in levels.items():
             if lv and 1 <= lv <= 20:
                 self.env.set_card_level(_team(team), cid, int(lv))
+                self.__dict__.setdefault("levels", {}).setdefault(team, {})[cid] = int(lv)
                 n += 1
         return n
 

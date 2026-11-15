@@ -125,12 +125,27 @@ def _independent_bodies(card: int) -> bool:
     return len(us) > 1 and len({u["engine_name"] for u in us}) == 1 and all(u["attached_to"] < 0 for u in us)
 
 
+@lru_cache(maxsize=4096)
+def _body_max_hp(card: int, level: int | None) -> float:
+    """One body's full HP of an engine card at a level (None: the engine's 11)."""
+    s = Sim.new([card], [card])
+    if level:
+        s.set_levels("own", {card: level})
+    s.reset()
+    s.inject(card, 9.0, 20.0, "own", bodies=1)
+    s.step(1)
+    us = s.units()
+    return float(us[0]["hp"]) if us else 0.0
+
+
 def place_units(sim: Sim, units: list[dict], per_body: bool = False) -> tuple[list[tuple], list[tuple]]:
     """Inject detected units (card, cls, team own/opp, x, y = FEET) as deployed, full HP. Bodies of one card within
     SQUAD_RADIUS are one deploy: one card per cluster (so a half-dead squad comes back whole). Spells are skipped.
-    per_body: a card of independent bodies (_independent_bodies) is injected one body per detection, where it was
-    seen, instead (the fidelity check, 2026-11-15: a whole card per cluster put 4 Goblins for one flicker). Off by
-    default: the live mirror and the imitation datasets were built with whole cards.
+    per_body: a one-body card or a card of independent bodies (_independent_bodies) is injected one body per
+    detection, where it was seen, at its `hp_frac` of full HP when the unit carries one (its HP bar; none = full),
+    instead (the fidelity check, 2026-11-15: a whole card per cluster put 4 Goblins for one flicker, and a Mini
+    P.E.K.K.A that had fought came back fresh). Off by default: the live mirror and the imitation datasets were built
+    with whole cards.
     -> (injected: (card, team, x, y, bodies seen, bodies injected), skipped: (card, why))."""
     injected, skipped, groups = [], [], []
     for u in units:
@@ -147,14 +162,17 @@ def place_units(sim: Sim, units: list[dict], per_body: bool = False) -> tuple[li
         for g in groups:
             if g["card"] == e and g["team"] == u["team"] and ((g["x"] - x) ** 2 + (g["y"] - y) ** 2) ** 0.5 < SQUAD_RADIUS:
                 g["pts"].append((x, y))
+                g["hp"].append(u.get("hp_frac"))
                 break
         else:
-            groups.append({"card": e, "team": u["team"], "x": x, "y": y, "pts": [(x, y)]})
+            groups.append({"card": e, "team": u["team"], "x": x, "y": y, "pts": [(x, y)], "hp": [u.get("hp_frac")]})
     for g in groups:
         n = len(g["pts"])
-        if per_body and _independent_bodies(g["card"]):
-            for x, y in g["pts"]:
-                sim.inject(g["card"], x, y, g["team"], bodies=1)
+        if per_body and (_squad_size(g["card"]) == 1 or _independent_bodies(g["card"])):
+            lv = getattr(sim, "levels", {}).get(g["team"], {}).get(g["card"])
+            for (x, y), f in zip(g["pts"], g["hp"]):
+                hp = None if f is None else max(1.0, f * _body_max_hp(g["card"], lv))
+                sim.inject(g["card"], x, y, g["team"], hp=hp, bodies=1)
             injected.append((sc.our_name(g["card"]), g["team"], round(g["x"], 2), round(g["y"], 2), n, n))
             continue
         k = -(-n // _squad_size(g["card"]))  # injections for this cluster

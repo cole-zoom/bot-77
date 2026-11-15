@@ -210,3 +210,14 @@ def test_at_enemy_tower_is_about_the_towers_a_team_attacks():
     assert at_enemy_tower([(3.5, 9.0)], "own")          # ours at their left tower
     assert not at_enemy_tower([(9.0, 14.9)], "opp")     # mid-river
     assert not at_enemy_tower([], "opp")
+
+
+def test_a_units_hp_bar_is_the_one_over_its_head():
+    """bl_2026-10-31_r29 at 73 s: the Mini P.E.K.K.A's bar sits over its box; the Spear Goblins below have none."""
+    from bot77.sim.validate import bar_of
+    bars = [{"cls": "bar", "team": "own", "box": (802, 889, 861, 909)},
+            {"cls": "bar-level", "team": "own", "box": (781, 884, 809, 916)},
+            {"cls": "bar-level", "team": "own", "box": (765, 958, 793, 990)}]
+    assert bar_of((771, 899, 860, 976), "own", bars) == ((802, 889, 861, 909), (781, 884, 809, 916))
+    assert bar_of((743, 981, 814, 1055), "own", bars) is None     # Spear Goblins: undamaged, no bar
+    assert bar_of((771, 899, 860, 976), "opp", bars) is None      # not the other team's bar
