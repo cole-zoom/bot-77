@@ -5469,3 +5469,8 @@ Same engine and bot rules as the v6 checks.
 - Phone replays (11-13 .. 11-15, 69 so far) are not ingested yet: they need A16 replay layouts (the hands and arena
   sit elsewhere than BlueStacks', new arena skin) and the detector checked on them. Heavy processing waits for gaps
   in the collect1 live run (CPU starvation cost a game before).
+- **Levels on (fork 345410c merged; run fid_bot_levels_345410c, else as the baseline), empty-start windows:**
+  fight winner 68.5 -> 71.0% (held back 69.1 -> 71.3%); tower damage |sim - real| median, ours 0.142 -> 0.114, theirs
+  0.102 -> 0.067 (held back 0.103 -> 0.100, 0.083 -> 0.068); lifetime +1.25 -> +1.00 s (held back +1.38 -> +1.50,
+  n 89); positions unchanged (0.74 / 0.71 tiles at +10 s). Kept: it's the replays' own levels. **The gap on our towers
+  stays** (sim/real totals 29.2 / 42.4, held back 7.8 / 13.2), so it isn't levels: next, the fast-behind-slow lane lead.
