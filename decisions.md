@@ -5474,3 +5474,12 @@ Same engine and bot rules as the v6 checks.
   0.102 -> 0.067 (held back 0.103 -> 0.100, 0.083 -> 0.068); lifetime +1.25 -> +1.00 s (held back +1.38 -> +1.50,
   n 89); positions unchanged (0.74 / 0.71 tiles at +10 s). Kept: it's the replays' own levels. **The gap on our towers
   stays** (sim/real totals 29.2 / 42.4, held back 7.8 / 13.2), so it isn't levels: next, the fast-behind-slow lane lead.
+
+## 2026-11-15 — overnight collection run collect1 (v8 e3, 100 games, 10 play / 10 replay)
+- v8solo (11-14 evening, 10 games): 6-4. collect1: 41-59 (chunks 3-7, 5-5, 4-6, 5-5, 5-5, 4-6, 3-7, 4-6, 4-6, 4-6).
+  v8 over all its live games: 54-76 (42%). Trophies read between chunks stayed 1210-1365 (no climb).
+- Gold stopped rising after ~02:40 (141 842): the day's win-gold looks capped, so grinding past it earns no gold.
+- Replays: 85 of 100. Chunk 2's runner couldn't reach the Battle Log list (exit 1, 0 recorded); chunk 3's stopped
+  at "no more battles" after 5. Those 15 have since scrolled off the 25-game log. Cause not yet looked at.
+- Videos moved to the LaCie each chunk; all 1 409 LaCie links resolve after Cole's accidental unplug/replug (00:30).
+- Ended 10:25, before the home router was unplugged.
