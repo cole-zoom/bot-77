@@ -125,6 +125,9 @@ def _independent_bodies(card: int) -> bool:
     return len(us) > 1 and len({u["engine_name"] for u in us}) == 1 and all(u["attached_to"] < 0 for u in us)
 
 
+ONE_BODY_R = 1.0  # our units: two detections of a one-body card this close are one unit
+
+
 @lru_cache(maxsize=4096)
 def _body_max_hp(card: int, level: int | None) -> float:
     """One body's full HP of an engine card at a level (None: the engine's 11)."""
@@ -170,10 +173,17 @@ def place_units(sim: Sim, units: list[dict], per_body: bool = False) -> tuple[li
         n = len(g["pts"])
         if per_body and (_squad_size(g["card"]) == 1 or _independent_bodies(g["card"])):
             lv = getattr(sim, "levels", {}).get(g["team"], {}).get(g["card"])
-            for (x, y), f in zip(g["pts"], g["hp"]):
+            pts = list(zip(g["pts"], g["hp"]))
+            if _squad_size(g["card"]) == 1:  # one body: detections within ONE_BODY_R of each other are the same unit
+                kept = []
+                for (x, y), f in pts:  # (bl_2026-10-29_r19 71 s: one Battle Ram detected twice, injected twice)
+                    if all((x - a) ** 2 + (y - b) ** 2 >= ONE_BODY_R ** 2 for (a, b), _ in kept):
+                        kept.append(((x, y), f))
+                pts = kept
+            for (x, y), f in pts:
                 hp = None if f is None else max(1.0, f * _body_max_hp(g["card"], lv))
                 sim.inject(g["card"], x, y, g["team"], hp=hp, bodies=1)
-            injected.append((sc.our_name(g["card"]), g["team"], round(g["x"], 2), round(g["y"], 2), n, n))
+            injected.append((sc.our_name(g["card"]), g["team"], round(g["x"], 2), round(g["y"], 2), n, len(pts)))
             continue
         k = -(-n // _squad_size(g["card"]))  # injections for this cluster
         cx, cy = sum(p[0] for p in g["pts"]) / n, sum(p[1] for p in g["pts"]) / n

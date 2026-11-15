@@ -230,3 +230,15 @@ def test_a_bar_takes_its_badges_team():
             {"cls": "bar-level", "team": "own", "box": (331, 515, 359, 546)}]
     assert bar_of((297, 537, 450, 675), "own", bars) == ((353, 521, 437, 541), (331, 515, 359, 546))
     assert bar_of((297, 537, 450, 675), "opp", bars) is None
+
+
+def test_one_body_card_detected_twice_is_one_unit():
+    from bot77.sim.scenario import place_units
+    ram = sc.our_name(sc.engine_id("Battle Ram"))
+    s = Sim.new([sc.engine_id("Battle Ram")], [4])
+    s.reset()
+    two = [{"card": ram, "cls": "battle-ram", "team": "own", "x": 3.7, "y": 12.0},
+           {"card": ram, "cls": "battle-ram", "team": "own", "x": 3.75, "y": 12.05}]
+    place_units(s, two, per_body=True)
+    s.step(1)
+    assert len([u for u in s.units() if u["team"] == "own"]) == 1   # bl_2026-10-29_r19 71 s: injected twice before
