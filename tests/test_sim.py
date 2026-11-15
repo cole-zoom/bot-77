@@ -242,3 +242,14 @@ def test_one_body_card_detected_twice_is_one_unit():
     place_units(s, two, per_body=True)
     s.step(1)
     assert len([u for u in s.units() if u["team"] == "own"]) == 1   # bl_2026-10-29_r19 71 s: injected twice before
+
+
+def test_a_window_doesnt_start_while_a_tower_is_falling():
+    from bot77.sim.validate import towers_falling
+
+    class G:
+        offset = 3.0
+        towers = [(0.0, {"own_l": True, "own_r": True, "opp_l": True, "opp_r": True})]
+        tower_hp = {"own_l": [(90.0, 1.0), (92.0, 1.0), (94.0, 0.9), (96.0, 0.73)], "own_king": [(10.0, 1.0)]}
+    assert not towers_falling(G, 93.0)
+    assert towers_falling(G, 96.0)    # bl_2026-10-29_r26: the left tower already under an unseen Knight

@@ -210,6 +210,21 @@ def _engine_card(p: dict) -> int | None:
     return p.get("engine_card")
 
 
+FALLING_S, FALLING_DROP = 3.0, 0.02  # a tower losing this share of its HP in the last FALLING_S before a window
+
+
+def towers_falling(g: Game, t0: float) -> bool:
+    """Whether a crown tower lost HP in the FALLING_S before video time t0. A unit hitting a tower from behind it is
+    drawn behind the tower and not detected, so the board read empty while the tower fell (2026-11-15:
+    bl_2026-10-29_r26 at 94.6 s, our left tower 1.0 -> 0.25 to a Knight the sim never had; the worst windows of the
+    'sim deals too little to our towers' gap were these)."""
+    for key in TOWER_KEYS:
+        a, b = tower_frac(g, key, t0 - FALLING_S), tower_frac(g, key, t0)
+        if a is not None and b is not None and a - b >= FALLING_DROP and b > 0:
+            return True
+    return False
+
+
 def windows(g: Game, max_start: int = MAX_START_UNITS) -> list[dict]:
     """Candidate windows: {'t0': video t of the first play, 't1': end, 'plays': [...]}. Windows don't overlap."""
     out, busy_until = [], -1.0
@@ -220,6 +235,8 @@ def windows(g: Game, max_start: int = MAX_START_UNITS) -> list[dict]:
             continue
         before = [_frame(g, t0 - dt) for dt in EMPTY_BEFORE_S]
         if any(f is None or len(f) > max_start for f in before):
+            continue
+        if towers_falling(g, t0):  # something unseen is already hitting a tower
             continue
         t1, ws = t0 + WINDOW_S, []
         for q in plays[i:]:
