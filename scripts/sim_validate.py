@@ -119,5 +119,18 @@ for label, split, kind in groups:
               f"{a.sum():.2f}, sim {b.sum():.2f}; damaged in either: {hit.sum()}, both agree it was damaged "
               f"{np.mean((a > 0.02) == (b > 0.02)):.0%}; |sim - real| median {np.median(np.abs(b - a)[hit]) if hit.any() else 0:.3f}"
               + (f"; where real > 0.10: sim/real median {np.median(b[big] / a[big]):.2f} (n {big.sum()})" if big.any() else ""))
+    # complete windows: no replay unit (seen >= 1.5 s) the sim never had, i.e. the mechanics' share of the error
+    # (2026-11-15: most of what's left elsewhere is a start unit the detector missed)
+    full = {(r["match_id"], r["t0"]) for r in R if r["metric"] == "foreign_det_solid" and r["value"] == 0} & clean
+    w = [r["value"] for r in R if r["metric"] == "winner_agree" and (r["match_id"], r["t0"]) in full]
+    line = [f"  complete windows ({len(full)}): winner_agree {np.mean(w):.1%}" if w else f"  complete windows ({len(full)})"]
+    for side in ("own", "opp"):
+        real = {(r["match_id"], r["t0"]): r["value"] for r in R if r["metric"] == f"tower_dmg_{side}_real"}
+        sim = {(r["match_id"], r["t0"]): r["value"] for r in R if r["metric"] == f"tower_dmg_{side}_sim"}
+        keys = [k for k in real if k in sim and k in full]
+        if keys:
+            a, b = np.array([real[k] for k in keys]), np.array([sim[k] for k in keys])
+            line.append(f"tower damage to {side} real {a.sum():.2f} sim {b.sum():.2f}")
+    print("; ".join(line))
     ref = [r for r in R if r["metric"] == "plays_refused"]
     print(f"  plays refused: {sum(r['value'] for r in ref):.0f} of {sum(r['n'] for r in ref)}")
