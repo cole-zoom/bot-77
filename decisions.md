@@ -5427,3 +5427,12 @@ Same engine and bot rules as the v6 checks.
 - So 21 shadow games at a quarter of the batches move card choice on held-out games. Whether that wins is the live test.
 - Grind setup tested (test1114, 2 games with v7 on bot-77, 0-2): home read before each game (trophies 1330 -> 1301), 0.1 s decisions, a replay after each chunk with the phone's screen set, videos to the LaCie.
 - grind1 (data/logs/after_v8.sh): v7 e3 and v8 e3 take turns 10 games a chunk, 40 games, replays after each chunk, by-checkpoint record in data/live/grind1_supervisor.log, trophies in data/live/home_reads.jsonl. Started 15:5x at 1300 trophies with v7.
+
+## 2026-11-14 — grind1 result (bot-77 live ladder, v7 e3 vs v8 e3 alternating, 10 a chunk)
+- 18-22 over 40 games. v7 e3 11-9 (chunks 1, 3: 7-3, 4-6); v8 e3 7-13 (chunks 2, 4: 4-6, 3-7).
+- Trophies read before chunks: 1300, 1425, 1309, 1330; none after chunk 4. The 1425→1309 drop (−116) is larger than
+  chunk 2's 4-6 should cost; unexplained (misread or uneven trophy swings), to check.
+- v8's better held-out card agreement (+6.7 points) did not show up live; 20 games each is too few to call either
+  way (v8 20-game 95% interval roughly 15-57% wins).
+- Replays of all 40 recorded (data/raw/replays/2026-11-14, 85 files incl. earlier); videos moved to the LaCie.
+- Ended 20:27; phone idle after. Next: grind on with v7 only.
