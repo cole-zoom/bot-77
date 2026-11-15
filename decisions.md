@@ -5529,3 +5529,12 @@ Same engine and bot rules as the v6 checks.
   ingest_replays picks the layouts per video by the opponent's HP bar row (bot77.replay_capture, 41a2265): right on
   10-22, 11-02 (BlueStacks) and 11-13/14/15 (A16). Test replay bl_2026-11-13_r01: clock 1-172 s, the bot's 8 cards,
   19 / 18 plays read (a BlueStacks replay of similar length: 16). All 147 phone replays ingesting (started 12:58).
+- **Per-body start units measured** (bot replays, levels on; fid_bot_perbody_91ee545 vs fid_bot_whole_91ee545, same
+  code otherwise; `matches` read at version 6552 while the ingest runs). Windows with 1-2 units at start: damage to
+  their towers train sim 120.2 -> 107.7 (real 57.2), |sim - real| median 0.175 -> 0.140 (held back 0.166 -> 0.142);
+  ours 0.144 -> 0.126 (held back 0.116 -> 0.095); winners held back 64.6 -> 66.0%, train 67.2 -> 66.9%. Empty-start
+  windows unchanged (as they must be). Kept. The rest of the 1.8x: start units come back at full HP.
+- **Lifetimes away from the towers** (life_diff_field, 91ee545): train +0.25 s (n 88 empty start, 298 with start
+  units), the detector's floor; held back +1.0 s on n 22 (+0.25 on n 72 with start units). No lifetime mechanic gap
+  left that this check can see. Goblins' +1.4 s was occlusion at our tower (bl_2026-10-23_r13: last seen 19 s, our
+  right tower losing HP every second to 28 s).
