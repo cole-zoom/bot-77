@@ -90,6 +90,7 @@ def load_game(game_id: str, split: str, source: str, recover_spots: bool = True)
     # first time the bar is seen in a run of >= 4 frames (1 s; one-frame detections are noise)
     g.king_awake = {k: _first_run(v, 4) for k, v in king_bar.items()}
     g.tower_hp = load_tower_hp(game_id)
+    g.towers = _standing_while_read(g.towers, g.tower_hp, g.offset)
     g.levels, g.tower_max = load_levels(game_id, decks)
     for p in plays:  # an Evolution card plays as 'normal' and 'evo' in turn: always the deck's engine card
         p["engine_card"] = card_map[p["side"]].get(p["card_id"]) if p["card_id"] else None
@@ -119,6 +120,24 @@ def _steady_flags(towers: list[tuple[float, dict]]) -> list[tuple[float, dict]]:
             down += v is False
             if v is False and down < DOWN_SHARE * later:
                 out[i][1][k] = True
+    return out
+
+
+def _standing_while_read(towers: list[tuple[float, dict]], tower_hp: dict[str, list[tuple[float, float]]],
+                         offset: float) -> list[tuple[float, dict]]:
+    """A princess tower whose HP bar is still read is standing: its flags before its last reading > 0 are True.
+    Found 2026-11-15 on the bot's replays: the flag drops to False from a tower's first hits, 4-10 s before it falls
+    (bl_2026-10-29_r42 own_r: False from 24.7 s match time, bar read 0.93 ... 0.09 until 31 s). Every later flag is
+    False too, so _steady_flags keeps them, and the window counted a whole tower lost. tower_hp is in video time, flags in match time."""
+    last = {k: max(t for t, f in v if f > 0) - offset for k, v in tower_hp.items()
+            if not k.endswith("king") and any(f > 0 for _, f in v)}
+    out = []
+    for t, f in towers:
+        f = dict(f)
+        for k, t_last in last.items():
+            if f.get(k) is False and t <= t_last:
+                f[k] = True
+        out.append((t, f))
     return out
 
 

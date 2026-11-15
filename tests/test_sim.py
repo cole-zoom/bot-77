@@ -154,3 +154,19 @@ def test_the_mirror_stamps_each_opponent_play_at_its_own_time():
     assert rec == sorted(rec) and rec[0] < 0.2 and rec[-1] > 0.85  # older plays fade
     flat = mirror(deck, opp, 90.0, deck[:4], 6.0, 5.0, [], None, [e for e, _ in plays])  # bare ids: played now
     assert all(flat.env.get_last_played_tick(1, e) == flat.env.get_current_tick() - 1 for e, _ in plays)
+
+
+def test_a_tower_whose_bar_is_still_read_is_standing():
+    """Flags drop to False from a tower's first hits (bl_2026-10-29_r42): while its HP bar is still read, it stands."""
+    from bot77.sim.validate import _standing_while_read, tower_frac
+    flags = [(20.0, {"own_r": True, "own_l": True}), (25.0, {"own_r": False, "own_l": True}),
+             (30.0, {"own_r": False, "own_l": True}), (40.0, {"own_r": False, "own_l": True})]
+    hp = {"own_r": [(23.0, 1.0), (28.0, 0.93), (34.0, 0.09)], "own_king": [(10.0, 1.0)]}
+    out = _standing_while_read(flags, hp, offset=3.0)   # last reading 34 s video = 31 s match
+    assert [f["own_r"] for _, f in out] == [True, True, True, False]
+    assert flags[1][1]["own_r"] is False   # input untouched
+
+    class G:
+        offset, towers, tower_hp = 3.0, out, hp
+    assert tower_frac(G, "own_r", 31.0) == 0.93   # mid-attack: the reading, not 0
+    assert tower_frac(G, "own_r", 45.0) == 0.0    # after it fell: the flag
