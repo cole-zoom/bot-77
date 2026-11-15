@@ -5506,3 +5506,26 @@ Same engine and bot rules as the v6 checks.
 - **Lifetime gap:** of the Mini P.E.K.K.A's 92 windows (the most common card), only 39 see it die on both sides
   (median +0.5 s); the other 53 are the replay's detector losing it while the sim's is alive (median +2.25 s). The
   +1.0 / +1.5 s headline is mostly that censoring; life_diff_both is the number to chase.
+- **Human replays after the flag fix** (fid_pro_flags_5bc4c61): barely moved (held back, empty start: our towers real
+  2.67 -> 2.80 vs sim 2.56; winners 63.3% both). The early-False flags were a bot-replay problem (lower trophies:
+  towers take long chip fights).
+- **Units at a window's start: one body per detection** (fork 5dead64 `inject(bodies=N)`, 4ae747f): a Goblin seen
+  is one Goblin where it stood, not a whole card at the cluster's centre. Only cards whose bodies are all one troop
+  and carry nothing (`_independent_bodies`; Ram Rider and mixed squads stay whole). sim_validate `--start-bodies
+  per-body` (default) / `whole`. The live mirror and the dataset builders keep whole cards (default off), so the
+  bot's inputs don't shift. Measurement waits for the phone-replay ingest (it rewrites `matches` without its source
+  columns until build_sources runs).
+- **Lifetime, both sides saw it die** (life_diff_both): +0.25 to +0.5 s for nearly every card, kamikazes included
+  (Wall Breakers +0.75, Ice Spirit +0.25, Skeletons +0.5): the detector samples every 0.25 s and loses a unit in its
+  death flash, so this is the measurement's floor, not a mechanic. Outliers to look at: Goblins +1.75 s (n 33, bot
+  games), Bats +1.0 (n 24), Hog Rider +0.75 (n 93).
+- **collect1's 15 missing replays.** Chunk 2: the runner met a chest opening (no text, no button), pressed Back 20
+  times and gave up (data/raw/live_ui/unknown/replay_list_fail_1794736194.png). Now Back and the live loop's nudge
+  (540, 330) in turn (30988a8; tests/test_replay_runner.py drives open_log on that screenshot). Chunk 3 stopped at
+  "no more battles" after 5 of 10 with --no-known; no screenshot of it, cause unknown.
+- **Phone replays: A16 layouts** replay_a16_bottom/top (3465406): arena x = 28.6 + 0.947x, y = 132.4 + 0.925y from
+  the four princess HP bars; HUD and both hands x = 26.3 + 0.947x, y = 102 + 0.947y (Next labels, elixir drops,
+  within 2 px). The detector (v5l e15) reads the wooden arena fine by eye on 4 frames (towers, bars, units, teams).
+  ingest_replays picks the layouts per video by the opponent's HP bar row (bot77.replay_capture, 41a2265): right on
+  10-22, 11-02 (BlueStacks) and 11-13/14/15 (A16). Test replay bl_2026-11-13_r01: clock 1-172 s, the bot's 8 cards,
+  19 / 18 plays read (a BlueStacks replay of similar length: 16). All 147 phone replays ingesting (started 12:58).
