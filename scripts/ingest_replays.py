@@ -43,8 +43,12 @@ def main() -> None:
     if not a.truth:
         LINKS.mkdir(parents=True, exist_ok=True)
         jobs = []
+        from bot77.replay_capture import layouts_for
         for rid, mp4 in reps.items():
-            for vid, layout, gpu in ((rid, "replay_bottom", True), (f"{rid}_top", "replay_top", False)):
+            if rid in done and f"{rid}_top" in done:
+                continue
+            bottom, top = layouts_for(mp4)  # BlueStacks or the A16's replay viewer (2026-11-15)
+            for vid, layout, gpu in ((rid, bottom, True), (f"{rid}_top", top, False)):
                 link = LINKS / f"{vid}.mp4"  # distinct names, never a case-only variant of another file
                 if not link.exists():
                     link.symlink_to(Path("..") / mp4.relative_to(ROOT / "data/raw"))
