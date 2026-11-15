@@ -7,6 +7,7 @@ Calibrate on train / dev, report on held-back; test and held-out are never run.
 """
 import argparse
 import collections
+import hashlib
 import time
 
 import numpy as np
@@ -22,14 +23,26 @@ ap.add_argument("--towers", default="liquipedia_l11", help="bot77.sim.engine.TOW
 ap.add_argument("--sight", default="strict", choices=["strict", "edge"], help="engine sight rule (calibration)")
 ap.add_argument("--load-times", default="on", choices=["on", "off"], help="first-hit windup (calibration)")
 ap.add_argument("--kings", default="wake", choices=["wake", "asleep"], help="wake a King whose HP bar was seen before")
+ap.add_argument("--collision", default="on", choices=["on", "off"], help="client collision (the _cc runs since 10-29)")
+ap.add_argument("--sources", default="replay_tv,replay_bl",
+                help="matches.source list; replay_bot = the bot's own Battle Log replays (its own card levels)")
+ap.add_argument("--fid-heldback", type=float, default=0.25,
+                help="sources with no held-back split (replay_bot: all train): this md5 share of games is reported as "
+                     "'heldback', the rest as 'train' (2026-11-15)")
 args = ap.parse_args()
 import clash_royale_env  # noqa: E402  (the calibration switch; process-wide)
 clash_royale_env.set_sight_edge_to_edge(args.sight == "edge")
 clash_royale_env.set_load_times(args.load_times == "on")
+clash_royale_env.set_client_collision(args.collision == "on")
 splits = args.splits.split(",")
 assert not {"test", "heldout"} & set(splits), "never on test / held-out"
 
-games = store.read("matches", "source IN ('replay_tv', 'replay_bl') AND pov_side = 'bottom'")
+srcs = ", ".join(f"'{x}'" for x in args.sources.split(","))
+games = store.read("matches", f"source IN ({srcs}) AND pov_side = 'bottom'")
+for g in games:  # replay_bot is never imitation data, so its split is ours to draw for the fidelity check
+    if g["source"] == "replay_bot":
+        h = int(hashlib.md5(g["match_id"].encode()).hexdigest(), 16) % 10_000 / 10_000
+        g["split"] = "heldback" if h < args.fid_heldback else "train"
 games = sorted((g for g in games if g["split"] in splits), key=lambda g: g["match_id"])
 if args.games:
     per = collections.defaultdict(list)

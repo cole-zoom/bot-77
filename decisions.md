@@ -5436,3 +5436,36 @@ Same engine and bot rules as the v6 checks.
   way (v8 20-game 95% interval roughly 15-57% wins).
 - Replays of all 40 recorded (data/raw/replays/2026-11-14, 85 files incl. earlier); videos moved to the LaCie.
 - Ended 20:27; phone idle after. Next: grind on with v7 only.
+
+## 2026-11-15 · Fidelity on our own replays: the bot's Battle Log games against the sim (Cole: "use the replays were getting to make our fork better ... if they dont, fix the sim. merge whatever u need")
+- **Card levels read from the Battle Log entries** (src/bot77/readers/levels.py, scripts/read_card_levels.py -> LanceDB
+  `card_levels`): tiles found from their dark borders (BlueStacks and A16 entries both), the "lvl." prefix by template,
+  digits by templates cut from the 506 entries (data/cards/level_digits.npz; Apple OCR read 7 as "Z" and missed most
+  labels); cards by clustering each tile's art across entries, named by matches.deck_names. 416 of 506 entries read
+  (the 91 skipped are mostly Cole's main-account games 10-12..10-20: tiles not found, not chased), level read on 98.9%
+  of tiles, card named on 99.2%. The bot's cards: level 1-4 on 10-22 (fresh account), 5 by 10-23, 7 from 10-31;
+  opponents 4-7. 14 entries read level 11 for both sides (10-29 r43-60, 11-08 r16): friendlies at tournament level.
+- **The engine is level 11 only.** Level growth from rarities.csv PowerLevelMultiplier: the ratio to level 11 is the
+  same for every rarity within ~1% (L7: Common 176/256 = 0.6875, Rare 146/212 = 0.689, Epic 110/160 = 0.6875), so one
+  table serves all cards. Per-card levels in the fork: in progress (branch card-levels, not merged).
+- **S2 on the bot's own replays** (scripts/sim_validate.py --sources replay_bot; replay_bot is never imitation data, so
+  its split for this check is drawn by md5, 25% held back; --collision on as the _cc runs), engine 1289ff7, run
+  fid_bot_base_1289ff7; pro baseline on the same engine fid_pro_base_1289ff7 (logs in data/logs/fidelity/):
+  - 303 games, 1333 clean windows. Positions at +10-12.5 s: 0.73-0.86 tiles held back (pro 1.16); fight winner 66-69%
+    (pro 59%). Units walk the right lane ~99%.
+  - **Tower damage to the opponent looked 2.1x too high, and it is the check, not the engine:** the excess is all in
+    windows that start with units on the board (held back: 49.3 sim vs 23.6 real; empty start 2.78 vs 2.65).
+    scenario.place_units rebuilds a whole card per detected body at full HP (right for the S3 search, wrong here): one
+    flickering "goblin" detection came back as 4 Goblins, and a Mini P.E.K.K.A that had already fought arrived fresh and
+    took a tower (bl_2026-10-31_r29, 73 s: real 0.89 -> 0.62, sim 2.12 towers). Unit HP bars are detected but not read.
+    Until they are, start-unit windows don't count for tower damage or winners.
+  - **Real gaps on empty-start windows:** damage to OUR towers sim/real 0.76 (train 32.0 / 42.4) and 0.63 held back
+    (8.3 / 13.2); sim units live +1.25 s (held back +1.38 s) longer. Levels explain ~3% of the tower gap (L7 cards vs
+    L6-7 towers). By opponent card in the window, sim - real: Giant -6.1 (3.25 vs 9.39 over 89 windows), Spear Goblins
+    -5.8, Valkyrie -5.8, Knight -4.9, Barbarians -3.9; Mini P.E.K.K.A and Battle Ram match.
+  - Lead, one window so far (bl_2026-10-23_r29, 108 s, Giant then Mini P.E.K.K.A in the right lane): the real push hits
+    the tower at ~119 s (131 then 472 HP); in the sim the Mini P.E.K.K.A walks behind the Giant at its pace and never
+    reaches it in the window. To measure across windows: fast units queued behind slow ones in a lane.
+- Phone replays (11-13 .. 11-15, 69 so far) are not ingested yet: they need A16 replay layouts (the hands and arena
+  sit elsewhere than BlueStacks', new arena skin) and the detector checked on them. Heavy processing waits for gaps
+  in the collect1 live run (CPU starvation cost a game before).
