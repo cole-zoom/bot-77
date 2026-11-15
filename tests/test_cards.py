@@ -76,7 +76,11 @@ def test_deck_special_forms(rows):
 def test_curated_coverage(rows):
     """Every evo / hero / champion has its curated facts, except known gaps."""
     _, warnings = rows
-    assert [w for w in warnings if "not filled in" in w] == ["Ice Wizard: ability name/cost not filled in"]
+    # Known gaps: forms the 2026-10-09 API snapshot added that nobody has written up yet (no source to copy from).
+    assert sorted(w for w in warnings if "not filled in" in w) == sorted([
+        "Ice Wizard: ability name/cost not filled in",
+        "Electro Wizard: ability name/cost not filled in",
+        "Electro Giant: evo cycles not filled in"])
 
 
 def test_tower_troops(rows):
