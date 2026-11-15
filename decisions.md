@@ -5548,3 +5548,23 @@ Same engine and bot rules as the v6 checks.
   held back 0.142 -> 0.105; our towers 0.126 -> 0.101, 0.095 -> 0.065; winners train 66.9 -> 69.3%, held back 66.0%.
   Kept. Start-unit windows now nearly as faithful as empty ones on our towers; theirs still 1.5x on totals (the
   median ratio is 1.00, so it's a few big windows).
+- **Bar team from its badge** (fid_bot_barteam): a just-hit bar is white and the detector calls it the other team
+  (bl_2026-10-23_r25 50.5 s: our Giant at their King, really 0.36 HP, came back full and took 0.7 of the King).
+  Start-unit windows, their towers sim 86.2 -> 84.6 (train), 32.1 -> 31.6 (held back). Small; kept. The worst left:
+  units with no bar detected that die in the first second (bl_2026-10-29_r31: a Mini P.E.K.K.A gone 0.3 s in,
+  full HP in the sim, takes a tower) — not recoverable from these detections. Also 3b51294: a one-body card detected
+  twice within a tile is one unit (a Battle Ram injected twice).
+- **No window starts while a tower is falling** (towers_falling: a crown tower lost >= 2% in the 3 s before).
+  Tank cards dealt half their real tower damage in the sim (Knight 4.3 vs 8.4, Valkyrie 6.2 vs 10.2, Giant 3.1 vs
+  6.6 over 56-89 windows; fast units matched, Mini P.E.K.K.A 20.1 vs 20.1). The worst of those windows had an
+  attacker already on the tower, hidden behind it (bl_2026-10-29_r26 94.6 s: left tower 1.0 -> 0.25 in the window,
+  the sim never had the unit). Windows drop 344 -> 313 (bot, empty, train). Bot replays (fid_bot_falling_*): empty
+  start, our towers sim/real median 0.88 -> 0.96 train, 0.88 -> 0.91 held back; totals 28.3 / 25.9. Winners with
+  start units 69.3 -> 71.1% train, 66.0 -> 70.7% held back. Human replays, everything today together (per-body +
+  bar HP + this; fid_pro_falling vs fid_pro_flags): start units, |sim - real| ours 0.131 -> 0.104, theirs 0.163 ->
+  0.108 (train), held back 0.130 -> 0.089 / 0.114 -> 0.111; winners train 60.8 -> 64.1%, held back 58.6 -> 57.8%
+  (n 147-181). Empty start unchanged within noise.
+- **Where S2 stands on the bot's games (held back, levels on):** winners 70% (empty start) / 71% (with start units);
+  our towers sim/real 0.91, typical window error 0.065-0.076 tower; lifetimes at the detector's floor. Human games:
+  winners 57-66%, and big hits on empty boards still come out low in the sim (sim/real median 0.53 train on n 73
+  windows with > 0.1 tower lost): the next thing to look at there.
