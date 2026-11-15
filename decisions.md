@@ -5568,3 +5568,9 @@ Same engine and bot rules as the v6 checks.
   our towers sim/real 0.91, typical window error 0.065-0.076 tower; lifetimes at the detector's floor. Human games:
   winners 57-66%, and big hits on empty boards still come out low in the sim (sim/real median 0.53 train on n 73
   windows with > 0.1 tower lost): the next thing to look at there.
+- **Most of what's left is units the sim never got** (foreign_det_solid > 0: a replay unit seen >= 1.5 s of a card /
+  team the sim never had; mostly a start unit the detector missed, e.g. tv_2026-10-14_r60 24 s: a Golden Knight that
+  dashed 3.7 s before, undetected at the start, then 9 s on their tower). Empty start, without those windows:
+  human replays train winners 63.4 -> 66.6% (456 of 726 windows), their towers real 10.1 / sim 10.9, ours 9.0 / 10.7;
+  bot replays train 70.8 -> 74.1% (238 of 302), ours 19.8 / 19.6; held back 69.6% (53) and 71.6% (71). On complete
+  windows the sim's tower damage matches. sim_validate now prints this line per group.
