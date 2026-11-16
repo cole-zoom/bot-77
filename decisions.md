@@ -5594,3 +5594,15 @@ Same engine and bot rules as the v6 checks.
   The later copy gets split 'duplicate' (config/duplicate_replays.json, scripts/find_duplicate_replays.py), so S2,
   build_bc_dataset and pairing use one copy; none were in an evaluation list (build_sources asserts it). Runner bar
   0.90 -> 0.95. scripts/after_replays.sh is the rebuild chain with the duplicate step.
+
+## 2026-11-16 — Cole's shadow session on bot-77, v9 started
+- 21 good shadow games on bot-77, all wins (home Wi-Fi dropped twice; then his phone hotspot, clean: no gap > 1.2 s).
+  Discarded: 092215 + 092427 (one game split in two at a Wi-Fi reconnect: the second half matched his card 6%),
+  093345 (Wi-Fi, stopped unsaved). Shadow mode splits a game at a reconnect: to fix.
+- Total usable shadow games: 51 (32 train in shadow_t01, 15 held in shadow_t01_held by the md5 rule, + flags).
+- bot-77 climbed well above 1.3k; Cole: opponents noticeably better. v8's card match fell to 13-24% in several of the
+  later games (30-48% early): new opponents or a read problem, to check. Shadow mode doesn't log trophies yet.
+- Found: train_bc's --lead already applies to --games episodes (src set by load_demos), so v8 had lead 3 on his
+  shadow plays. The late-label test is therefore a longer lead.
+- v9 (data/logs/run_v9.sh): v8's recipe with games_v9 (19 sim + 32 shadow train games); v9L same with --lead 8
+  (~1.1 s). Both then scored with v7, v8 on the 15 held-out games (data/logs/agreement_v9.log).
