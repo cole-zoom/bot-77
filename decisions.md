@@ -5574,3 +5574,23 @@ Same engine and bot rules as the v6 checks.
   human replays train winners 63.4 -> 66.6% (456 of 726 windows), their towers real 10.1 / sim 10.9, ours 9.0 / 10.7;
   bot replays train 70.8 -> 74.1% (238 of 302), ours 19.8 / 19.6; held back 69.6% (53) and 71.6% (71). On complete
   windows the sim's tower damage matches. sim_validate now prints this line per group.
+
+### 2026-11-16: phone replays in, pairing and duplicates
+
+- **Phone replays ingested** (ingest_replays with layouts_for; 186 replays / 372 videos from 11-13 .. 11-15, 0 errors),
+  then the rebuild chain (log data/logs/rebuild_2026-11-16.log). `matches` has its source columns again.
+- **pair_bot_replays: false pairs across weeks.** bl_2026-11-15_r08 (41 replay plays) had paired with bot_2026-10-27_205025
+  (8 logged plays) at 88%: a long replay of the same deck covers a short log by chance. 5 of 343 pairs were 9-19 days
+  apart. A replay now pairs only with a game 0-2 days before it (bot77.pairing.replay_can_be_of): 340 pairs, linked
+  plays 6915 -> 6921. The genuine phone pairs sit at 0.87-0.88 (median 0.74-0.76 by day vs 0.96 on BlueStacks days):
+  the bot logs a play or two that never landed (bot-only Bomber, Goblin Hut, ...), offsets ~2 s, nothing missing from
+  the replay's hand.
+- **Replays recorded twice.** On the phone the bot's own deck fills half of each Battle Log thumbnail, so different
+  games scored 0.86-0.93 against the runner's 0.90 "recorded before" bar: collect1 chunk 3 stopped after 5 replays
+  ("no more battles", 4 look-alike new games in a row; chunk 4 then found 10 more), and the same battle came back
+  under a new id. By hand plays (same card, side, clock within 1 s, >= 80% both ways; same games 0.89-1.0, different
+  < 0.6): 23 of 1025 replays are a second copy (10-22 .. 11-15, BlueStacks too; one TV pair). Identical thumbnails
+  don't settle it either: 11-15 r11 / 11-14 r38 score 1.0 and are different games (same opponent deck).
+  The later copy gets split 'duplicate' (config/duplicate_replays.json, scripts/find_duplicate_replays.py), so S2,
+  build_bc_dataset and pairing use one copy; none were in an evaluation list (build_sources asserts it). Runner bar
+  0.90 -> 0.95. scripts/after_replays.sh is the rebuild chain with the duplicate step.
