@@ -36,7 +36,10 @@ ENTRY_UP, ENTRY_DOWN = 330, 45  # an entry's fingerprint (both decks): from this
 VIEW_TOP = 420  # the list scrolls under the Battle Log header above this y
 MATCH = 0.8  # normalized correlation for a screen template
 SAME_ENTRY = 0.93  # ... and for finding the last recorded entry again
-KNOWN = 0.90  # ... and for "recorded before": blurred quarter-size thumbnails (card shine animates), compared with
+KNOWN = 0.95  # (0.90 before 2026-11-16: on the phone the bot's own deck fills half of every thumbnail and different
+              # games scored 0.86-0.93, so a run stopped after 4 "recorded" new games; duplicates there 0.97-1.0, and
+              # bot77.replay_dedupe drops any that slip through)
+              # ... and for "recorded before": blurred quarter-size thumbnails (card shine animates), compared with
               # +-24 px vertical slack (a watched entry shows its result and score, which pushes the decks down 8 px:
               # TV 30/44 slipped through at 0.80 without slack). Duplicates 0.97, different games <= 0.82; a friendly
               # rematch with identical decks (0.997) can't be told apart

@@ -8,7 +8,8 @@ Adds to every match (the existing columns are kept):
   pov_side      bottom / top (a replay is stored twice: once per player's hand, the top one as <id>_top_m01)
   pair_match_id the same game from the other player's side (replays), else null
   truth_set     replay (both hands, exact) / auto (paired POVs) / live (POV keyed by its replay) / none
-  split         heldout / test / heldback / dev / train / lab (lab battles, config/lab_replays.json) -- once, here, from the config lists (precedence in that order;
+  split         heldout / test / heldback / dev / train / lab (lab battles, config/lab_replays.json) / duplicate
+                (config/duplicate_replays.json) -- once, here, from the config lists (precedence in that order;
                 a replay's top side follows its bottom side). Replaces the per-script logic (bot77.holdout, build_*).
   league        TV Royale tab (0 = Ultimate Champion, 1.. down the leagues), -1 for Battle Log games, null otherwise
   result        win / loss for the bot's games (from bot_games / data/live/game_results.json); for replays from the
@@ -32,6 +33,10 @@ TEST = set(cfg("replay_test_games.json")["matches"])
 HELDBACK = set(cfg("heldback_replays.json")["matches"])
 # lab battles (scripted friendly battles, scripts/lab_play.py; docs/plan-sim-1to1.md P0.4): replay ids, both sides
 LAB = set(cfg("lab_replays.json")["replays"]) if Path("config/lab_replays.json").exists() else set()
+# the same battle recorded twice (scripts/find_duplicate_replays.py, 2026-11-16): the later id
+DUP = set(cfg("duplicate_replays.json")["replays"]) if Path("config/duplicate_replays.json").exists() else set()
+# a copy in an evaluation list would leave its twin in train: settle it by hand (move the list entry to the twin)
+assert not DUP & (HELDOUT | TEST | HELDBACK), sorted(DUP & (HELDOUT | TEST | HELDBACK))
 truth = {}
 for f in glob.glob("data/ground_truth/opponent_truth_*.json"):
     kind = Path(f).name.split("_")[2]  # replay / auto / live; the benchmark's own truth file is named by video id
@@ -105,6 +110,8 @@ def split(m: str) -> str:
     b = bottom_of(m)
     if is_lab(m):  # scripted battles: for the simulator only, never training or evaluation of play
         return "lab"
+    if b in DUP:  # one copy only, whatever split the other one has
+        return "duplicate"
     for name, s in (("heldout", HELDOUT), ("test", TEST), ("heldback", HELDBACK)):
         if m in s or b in s:
             return name
