@@ -253,3 +253,18 @@ def test_a_window_doesnt_start_while_a_tower_is_falling():
         tower_hp = {"own_l": [(90.0, 1.0), (92.0, 1.0), (94.0, 0.9), (96.0, 0.73)], "own_king": [(10.0, 1.0)]}
     assert not towers_falling(G, 93.0)
     assert towers_falling(G, 96.0)    # bl_2026-10-29_r26: the left tower already under an unseen Knight
+
+
+def test_window_stores_both_fight_margins():
+    from types import SimpleNamespace
+
+    from bot77.sim.validate import metrics
+
+    g = SimpleNamespace(game_id="m", split="train", source="replay_bot")
+    w = {"t0": 10.0, "t1": 22.5, "plays": [], "start_units": 0}
+    giant = {"card": "Giant", "team": "own", "x": 3.0, "y": 20.0}
+    knight = {"card": "Knight", "team": "opp", "x": 3.0, "y": 22.0}
+    frames = [(t / 4, [giant], [giant, knight]) for t in range(0, 50)]
+    rows = {r["metric"]: r["value"] for r in metrics(g, w, {"frames": frames, "plays": []})}
+    assert rows["margin_sim"] == 5.0  # Giant 5 vs nothing
+    assert rows["margin_det"] == 2.0  # Giant 5 vs Knight 3

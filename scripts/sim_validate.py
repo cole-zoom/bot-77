@@ -15,6 +15,8 @@ import numpy as np
 from bot77.sim import store
 from bot77.sim.validate import DT_BINS, load_game, metrics, run_window, windows
 
+DECISIVE = 2.0  # elixir: a fight margin the replay reads at least this clearly (2026-11-16)
+
 ap = argparse.ArgumentParser()
 ap.add_argument("--run", required=True)
 ap.add_argument("--splits", default="train,dev,heldback")
@@ -124,6 +126,11 @@ for label, split, kind in groups:
     full = {(r["match_id"], r["t0"]) for r in R if r["metric"] == "foreign_det_solid" and r["value"] == 0} & clean
     w = [r["value"] for r in R if r["metric"] == "winner_agree" and (r["match_id"], r["t0"]) in full]
     line = [f"  complete windows ({len(full)}): winner_agree {np.mean(w):.1%}" if w else f"  complete windows ({len(full)})"]
+    md = {(r["match_id"], r["t0"]): r["value"] for r in R if r["metric"] == "margin_det"}
+    wd = [r["value"] for r in R if r["metric"] == "winner_agree" and (r["match_id"], r["t0"]) in full
+          and abs(md.get((r["match_id"], r["t0"]), 0)) >= DECISIVE]
+    if wd:
+        line.append(f"where the replay's margin >= {DECISIVE} elixir {np.mean(wd):.1%} of {len(wd)}")
     for side in ("own", "opp"):
         real = {(r["match_id"], r["t0"]): r["value"] for r in R if r["metric"] == f"tower_dmg_{side}_real"}
         sim = {(r["match_id"], r["t0"]): r["value"] for r in R if r["metric"] == f"tower_dmg_{side}_sim"}

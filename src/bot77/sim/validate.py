@@ -570,6 +570,9 @@ def metrics(g: Game, w: dict, r: dict) -> list[dict]:
         both = any(p["side"] == "bottom" for p in w["plays"]) and any(p["side"] == "top" for p in w["plays"])
         rows.append({**base, "metric": "winner_agree" if both else "winner_agree_onesided", "card": "", "dt_bin": -1,
                      "value": float(ws == wd), "n": 1})
+        # the margins themselves (2026-11-16): a near-tie flips winner_agree on one missed unit
+        rows.append({**base, "metric": "margin_sim", "card": "", "dt_bin": -1, "value": vs["own"] - vs["opp"], "n": 1})
+        rows.append({**base, "metric": "margin_det", "card": "", "dt_bin": -1, "value": vd["own"] - vd["opp"], "n": 1})
         rows.append({**base, "metric": "value_diff_own", "card": "", "dt_bin": -1, "value": vs["own"] - vd["own"], "n": 1})
         rows.append({**base, "metric": "value_diff_opp", "card": "", "dt_bin": -1, "value": vs["opp"] - vd["opp"], "n": 1})
     if getattr(g, "tower_hp", None) and r["frames"]:
