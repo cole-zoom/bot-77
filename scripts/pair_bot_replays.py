@@ -22,7 +22,7 @@ acts = defaultdict(list)
 for a in db.open_table("bot_actions").to_arrow().to_pylist():
     if a["time_left_s"] is not None:
         acts[a["game_id"]].append({"k": a["k"], "card": a["card"], "tm": 180 - a["time_left_s"]})
-reps = [m["match_id"] for m in db.open_table("matches").search().where("source = 'replay_bot' AND pov_side = 'bottom'")
+reps = [m["match_id"] for m in db.open_table("matches").search().where("source = 'replay_bot' AND pov_side = 'bottom' AND split != 'duplicate'")
         .select(["match_id"]).limit(10**5).to_arrow().to_pylist()]
 plays = defaultdict(list)
 for p in db.open_table("plays").search().where("source = 'hand' AND side = 'bottom'").select(["game_id", "t", "t_match", "card"]) \
