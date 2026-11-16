@@ -5618,3 +5618,17 @@ Same engine and bot rules as the v6 checks.
   an Executioner and a Giant read as the bot's at one spot (the opponent's hand has neither) took a whole tower in the
   sim, none in the replay. validate.deck_check (sim_validate --start-decks flip|drop) checks them against both decks
   plus what each card spawns (validate.produces, measured in the sim: Goblin Hut -> Spear Goblins, ...).
+  Bot S2 with --start-decks (fid_bot_deckflip / deckdrop vs fid_bot_oppking): complete windows with start units, their
+  towers sim 85.5 -> 82.2 (flip) / 79.8 (drop), real 41.9; everything else within noise. A small share of the
+  excess: the check stays off by default.
+- **No Giant ever had a level.** read_card_levels names each tile cluster by the decks of its entries; the Giant
+  always sits beside a Mini P.E.K.K.A in the bot's deck, so its cluster read Mini P.E.K.K.A 94% / Giant 90% and took
+  that name: 613 of 613 decks with a Giant had no Giant level, and every Giant played at the engine's 11 (3968 HP vs
+  2728 at the bot's 7; bl_2026-11-03_r02 42.3 s: a level-7 Giant at < half HP died at 46 s to a Valkyrie and the
+  tower, the sim's at 2169 HP lived 11 s and took 0.83 of a tower). levels.name_clusters names the surest cluster
+  first and a name taken by another tile of the same entry no longer counts: Giant tiles 0 -> 727, entries with one
+  card twice 711 -> 17, deck cards without a level 10% -> 1.3%. Bot S2 (fid_bot_giantlv vs fid_bot_oppking), start
+  units, their towers: sim/real median 1.17 -> 1.00 train, 1.31 -> 1.16 held back; complete-window totals 85.5 -> 76.9
+  (real 41.7) train, 33.2 -> 30.3 (real 16.3) held back. Our towers' median 0.93 -> 0.81 train (the opponents'
+  Giants got their levels too), totals 57.4 / 56.5. The typical window now matches; the totals' excess is in a
+  minority of windows (top 20 = 28% of it). Human replays unchanged (TV replays have no Battle Log entry to read).
