@@ -21,7 +21,21 @@ MAX_SKEW_S = 20  # the two devices' wall clocks / recording starts may differ by
 MIN_COMMON_S = 30  # the two matches must share at least this much match time
 NEXT_HOLD_FRAMES = 3  # a "next" card counts once read this many frames in a row
 NEXT_MATCH_S = (-0.8, 1.5)  # a next-card advance belongs to a logged play this close before / after it
+REPLAY_AFTER_DAYS = (0, 2)  # a bot game's Battle Log replay is recorded the same day or soon after (2026-11-16: a 41-play
+# replay recorded 11-15 had paired with an 8-play bot game from 10-27 at 88%, the same deck covering a short log by chance)
 CYCLE_AHEAD = 3  # 8-card cycle: the card played at one advance is shown as "next" 3 advances later (91% on 400 replays)
+
+
+def replay_can_be_of(game_id: str, replay_id: str) -> bool:
+    """Whether replay_id (bl_YYYY-MM-DD_...) was recorded within REPLAY_AFTER_DAYS of game_id (bot_YYYY-MM-DD_...).
+    Ids without a date are not ruled out."""
+    import datetime as dt
+    import re
+    g, r = (re.search(r"(\d{4}-\d\d-\d\d)", x) for x in (game_id, replay_id))
+    if not g or not r:
+        return True
+    days = (dt.date.fromisoformat(r[1]) - dt.date.fromisoformat(g[1])).days
+    return REPLAY_AFTER_DAYS[0] <= days <= REPLAY_AFTER_DAYS[1]
 
 
 def _clock(db, match_id: str) -> dict[int, float]:

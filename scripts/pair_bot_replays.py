@@ -14,6 +14,8 @@ from collections import defaultdict
 import lancedb
 import pyarrow as pa
 
+from bot77.pairing import replay_can_be_of
+
 MIN_AGREE, CLOCK_TOL = 0.7, 1.5
 db = lancedb.connect("data/lancedb")
 acts = defaultdict(list)
@@ -47,6 +49,8 @@ def agree(bot, rep):
 cands = []
 for g, bot in acts.items():
     for r in reps:
+        if not replay_can_be_of(g, r):
+            continue
         a, hits = agree(bot, plays[r])
         if a >= MIN_AGREE:
             cands.append((a, g, r, hits))
