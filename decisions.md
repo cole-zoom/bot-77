@@ -5632,3 +5632,13 @@ Same engine and bot rules as the v6 checks.
   (real 41.7) train, 33.2 -> 30.3 (real 16.3) held back. Our towers' median 0.93 -> 0.81 train (the opponents'
   Giants got their levels too), totals 57.4 / 56.5. The typical window now matches; the totals' excess is in a
   minority of windows (top 20 = 28% of it). Human replays unchanged (TV replays have no Battle Log entry to read).
+- **v9 / v9L on the 15 held-out shadow games** (card top-1 / p his / play-vs-wait AUC / cell tiles): v7 0.303 / 0.158 /
+  0.655 / 5.83; v8 0.327 / 0.195 / 0.661 / 5.39; v9 e0-e3 0.263-0.303 / ~0.20 / 0.657-0.666 / 5.0-5.66; v9L (lead 8)
+  e0-e3 0.265-0.294 / ~0.23 / 0.656-0.662 / 4.47-6.0. Eleven more games and a 1.1 s lead both left timing flat:
+  neither data volume nor a late label explains it.
+- **Next (Cole agreed, retraining fine): fix what the brain is given.** Holes, all logged 11-03: (1) no opponent elixir
+  in the observation (spend scalars 0 everywhere); (2) tower HP always full live (mirror() takes towers, live passes
+  None); (3) troop HP always full live (place_units takes hp_frac, the live stack never reads bars; validate.py has an
+  offline bar reader); (4) the tracker's opponent plays polluted (over-counting, to measure now against the ~135 phone
+  replays). Flat opponent-play ages: already fixed. The 63 shadow games with saved frames let the held-out set be
+  rebuilt with the new inputs.
