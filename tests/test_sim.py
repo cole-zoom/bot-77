@@ -268,3 +268,19 @@ def test_window_stores_both_fight_margins():
     rows = {r["metric"]: r["value"] for r in metrics(g, w, {"frames": frames, "plays": []})}
     assert rows["margin_sim"] == 5.0  # Giant 5 vs nothing
     assert rows["margin_det"] == 2.0  # Giant 5 vs Knight 3
+
+
+def test_start_units_are_checked_against_both_decks():
+    from bot77.sim import cards as sc
+    from bot77.sim.validate import deck_check, produces
+
+    e = sc.engine_id
+    decks = {"bottom": [e("Giant"), e("Goblin Hut"), e("Bomber")], "top": [e("Wizard"), e("Knight"), e("Valkyrie")]}
+    assert "Spear Goblins" in produces(e("Goblin Hut"))  # a spawn is the spawner's side's
+    units = [{"card": "Giant", "team": "own"}, {"card": "Spear Goblins", "team": "own"},
+             {"card": "Knight", "team": "own"},  # the other side's card: wrong team
+             {"card": "Executioner", "team": "own"}]  # neither deck: a misread card
+    assert [(u["card"], u["team"]) for u in deck_check(units, decks)] == [
+        ("Giant", "own"), ("Spear Goblins", "own"), ("Knight", "opp"), ("Executioner", "own")]
+    assert [u["card"] for u in deck_check(units, decks, drop_unknown=True)] == ["Giant", "Spear Goblins", "Knight"]
+    assert deck_check(units, {"bottom": decks["bottom"]}) == units  # one deck unknown: as read

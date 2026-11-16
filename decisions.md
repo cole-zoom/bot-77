@@ -5606,3 +5606,15 @@ Same engine and bot rules as the v6 checks.
   shadow plays. The late-label test is therefore a longer lead.
 - v9 (data/logs/run_v9.sh): v8's recipe with games_v9 (19 sim + 32 shadow train games); v9L same with --lead 8
   (~1.1 s). Both then scored with v7, v8 on the 15 held-out games (data/logs/agreement_v9.log).
+- **Enemy King's HP was never read** (167 of 13.6k readings accepted; ours ~80%). The detector boxes the enemy King's
+  bar as its bottom rim (h/w 0.07 on 95% of 52k boxes vs 0.26-0.30 for every other bar), so the number above it was
+  never in the OCR crop and S2 counted no damage to their King. build_tower_hp grows a flat King box to the full bar
+  (crop_box) and --redo-opp-king re-read it in the 985 cached matches: 25,222 accepted (82%). S2 (fid_*_oppking vs
+  fid_*_margin): more windows have tower HP (bot empty start 278 -> 427), but the bot's excess damage to the
+  opponent's towers with start units stays ~2x on complete windows (real 41.9 / sim 85.5 train, 16.3 / 33.2 held
+  back). bl_2026-10-23_r18 49.7 s (King 3240 -> 2091 on screen, read 0 before) is no longer an outlier.
+- **Start units of the wrong team / card**: 8% of the bot replays' start units (25 of 314, 80 games) are a card only
+  the other side has (10) or neither side has (15, e.g. Wizard / Executioner misreads). bl_2026-11-15_r76 34.7 s:
+  an Executioner and a Giant read as the bot's at one spot (the opponent's hand has neither) took a whole tower in the
+  sim, none in the replay. validate.deck_check (sim_validate --start-decks flip|drop) checks them against both decks
+  plus what each card spawns (validate.produces, measured in the sim: Goblin Hut -> Spear Goblins, ...).

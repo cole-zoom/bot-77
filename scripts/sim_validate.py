@@ -33,6 +33,8 @@ ap.add_argument("--levels", default="off", choices=["on", "off"],
 ap.add_argument("--start-bodies", default="per-body", choices=["per-body", "whole"],
                 help="units on the board at a window's start: one body per detection (fork 5dead64) or a whole card "
                      "per cluster (before 2026-11-15)")
+ap.add_argument("--start-decks", default="off", choices=["off", "flip", "drop"],
+                help="start units against both decks: flip a card only the other side has; drop also cards of neither")
 ap.add_argument("--fid-heldback", type=float, default=0.25,
                 help="sources with no held-back split (replay_bot: all train): this md5 share of games is reported as "
                      "'heldback', the rest as 'train' (2026-11-15)")
@@ -62,7 +64,7 @@ for i, m in enumerate(games):
     g = load_game(m["match_id"], m["split"], m["source"])
     for w in windows(g):
         r = run_window(g, w, args.towers, args.kings == "wake", levels=args.levels == "on",
-                       per_body=args.start_bodies == "per-body")
+                       per_body=args.start_bodies == "per-body", decks=args.start_decks)
         rows += metrics(g, w, r)
         n_win += 1
     if (i + 1) % 50 == 0:

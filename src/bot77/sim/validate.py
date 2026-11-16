@@ -16,6 +16,7 @@ from __future__ import annotations
 import bisect
 from pathlib import Path
 import collections
+from functools import lru_cache
 from dataclasses import dataclass, field
 
 import numpy as np
@@ -353,8 +354,43 @@ def load_levels(game_id: str, decks: dict[str, list[int]]) -> tuple[dict[str, di
     return levels, tower_max
 
 
+@lru_cache(maxsize=1024)
+def produces(engine_card: int) -> frozenset[str]:
+    """Our names of what one engine card puts on the board in 32 s: itself and what it spawns (Goblin Hut -> Spear
+    Goblins, Witch -> Skeletons, Battle Ram -> Barbarians), measured in the sim. Death spawns of a unit that lives
+    through it are missed (Golem's Golemites)."""
+    s = Sim.new([engine_card], [engine_card])
+    s.reset()
+    s.inject(engine_card, 9.0, 20.0, "own")
+    seen = {sc.our_name(engine_card)}
+    for _ in range(80):
+        s.step(4)
+        seen |= {u["card"] for u in s.units() if u["card"]}
+    return frozenset(seen)
+
+
+def deck_check(units: list[dict], decks: dict[str, list[int]], drop_unknown: bool = False) -> list[dict]:
+    """Start units against the two decks (2026-11-16: 8% of the bot replays' start units are a card of the other side
+    or of neither, e.g. bl_2026-11-15_r76 34.7 s: the opponent's units read as the bot's took a whole tower in the sim).
+    A card only the other side can have changes team; one neither side can have is dropped if drop_unknown. Without
+    both decks the units are kept as they are."""
+    if not decks.get("bottom") or not decks.get("top"):
+        return units
+    can = {team: set().union(*(produces(e) for e in decks[side])) for team, side in (("own", "bottom"), ("opp", "top"))}
+    out = []
+    for u in units:
+        other = "opp" if u["team"] == "own" else "own"
+        if u["card"] in can[u["team"]]:
+            out.append(u)
+        elif u["card"] in can[other]:
+            out.append({**u, "team": other})
+        elif not drop_unknown:
+            out.append(u)
+    return out
+
+
 def run_window(g: Game, w: dict, towers: str = "liquipedia_l11", wake_kings: bool = True,
-               levels: bool = False, per_body: bool = True) -> dict:
+               levels: bool = False, per_body: bool = True, decks: str = "off") -> dict:
     """Play the window in the sim. -> {'frames': [(dt, sim units, replay units)], 'plays': [PlayResult], 'sim'}.
     Sim tick = (video t - offset) x 10; a replay frame is compared with the sim at its nearest tick."""
     sim = Sim.new(g.decks["bottom"], g.decks["top"], towers=towers)
@@ -387,6 +423,8 @@ def run_window(g: Game, w: dict, towers: str = "liquipedia_l11", wake_kings: boo
                 sim.wake_king(team)
     towers0 = {k: v["frac"] for k, v in sim.towers().items()}
     start_units = _frame(g, w["t0"] - PRE_S) or []
+    if decks != "off":  # "flip": wrong-team units change team; "drop": also drop cards neither deck has
+        start_units = deck_check(start_units, g.decks, drop_unknown=decks == "drop")
     if per_body and start_units:
         start_units = with_bar_hp(g, w["t0"] - PRE_S, start_units)
     injected, _ = place_units(sim, start_units, per_body=per_body)  # per_body: one detected Goblin is one Goblin
