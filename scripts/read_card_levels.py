@@ -5,7 +5,8 @@
 
 Levels: bot77.readers.levels (digit templates). Cards: a card's tile looks the same in every entry, so tiles are
 clustered across all entries and each cluster is named by the decks the hand reading found for the replays it occurs
-in (matches.deck_names; the name present in the most of them, >= 80% of the cluster's tiles with a known deck). This
+in (matches.deck_names; the name present in the most of them, >= 80% of the cluster's tiles with a known deck;
+surest cluster first, a name taken by another tile of the same entry doesn't count: levels.name_clusters). This
 also names tiles of replays not ingested yet (the phone's), as long as the card was seen in an ingested one.
 Bottom = the entry's left player (the account that recorded it), top = right.
 """
@@ -17,7 +18,7 @@ from pathlib import Path
 import cv2
 import numpy as np
 
-from bot77.readers.levels import LevelReader, find_tiles
+from bot77.readers.levels import LevelReader, find_tiles, name_clusters
 from bot77.sim import store
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -69,14 +70,8 @@ for i, f in enumerate(F):
             continue
     cent.append(f)
     members.append([i])
-names = {}
-for j, idx in enumerate(members):
-    known = [tiles[i] for i in idx if tiles[i][1] in decks.get(tiles[i][0], {})]
-    c = collections.Counter(n for t in known for n in set(decks[t[0]][t[1]]))
-    if known and c:
-        name, n = c.most_common(1)[0]
-        if n / len(known) >= a.purity:
-            names[j] = (name, n / len(known), len(known))
+names = name_clusters({j: [(tiles[i][0], tiles[i][1]) for i in idx] for j, idx in enumerate(members)},
+                      {(v, sd): d for v, ds in decks.items() for sd, d in ds.items()}, a.purity)
 lab = {}
 for j, idx in enumerate(members):
     for i in idx:

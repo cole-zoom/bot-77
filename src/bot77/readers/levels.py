@@ -18,6 +18,7 @@ from __future__ import annotations
 
 from pathlib import Path
 
+import collections
 import cv2
 import numpy as np
 from scipy.optimize import linear_sum_assignment
@@ -149,3 +150,34 @@ def _decode(png: bytes) -> np.ndarray:
         a = im[:, :, 3:] / 255.0
         im = (im[:, :, :3] * a + 128 * (1 - a)).astype(np.uint8)
     return im
+
+
+def name_clusters(cluster_entries: dict[int, list], entry_decks: dict, purity: float = 0.80) -> dict[int, tuple]:
+    """Name tile clusters by the hand-read decks of the entries they occur in, surest first, each name explaining
+    away: once a cluster is named, another tile of the same entry can't be that card (2026-11-16: the Giant's tiles,
+    always beside a Mini P.E.K.K.A in the bot's deck, were named Mini P.E.K.K.A 94% vs Giant 90%, so no Giant ever got
+    a level and every Giant played at 11).
+    cluster_entries: cluster -> entry keys of its tiles (one per tile); entry_decks: entry -> deck card names.
+    -> {cluster: (name, purity, tiles with a known deck)}."""
+    taken: dict = collections.defaultdict(set)  # entry -> names claimed by its named tiles
+    names: dict[int, tuple] = {}
+    while True:
+        best = None
+        for j, es in cluster_entries.items():
+            if j in names:
+                continue
+            known = [e for e in es if e in entry_decks]
+            c = collections.Counter(n for e in known for n in set(entry_decks[e]) - taken[e])
+            if not c:
+                continue
+            (name, n), *rest = c.most_common(2)
+            p = n / len(known)
+            margin = p - (rest[0][1] / len(known) if rest else 0.0)
+            if p >= purity and (best is None or (p, margin) > best[0]):
+                best = ((p, margin), j, name, len(known))
+        if best is None:
+            return names
+        (p, _), j, name, n = best
+        names[j] = (name, p, n)
+        for e in cluster_entries[j]:
+            taken[e].add(name)
