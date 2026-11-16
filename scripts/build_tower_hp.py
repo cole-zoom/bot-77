@@ -77,6 +77,19 @@ def tower_name(bar: dict, width: int) -> str | None:
     return f"{team}_{'l' if (bar['x0'] + bar['x1']) / 2 < width / 2 else 'r'}"
 
 
+KING_BAR_ASPECT = 0.30  # a King's bar box (badge, bar and number) height / width, as the detector boxes our own King
+FLAT_BAR = 0.2  # ...but the enemy King's box is the bar's bottom rim only (h / w 0.07 on 95% of 52k boxes, 2026-11-16):
+                # the number above it was never in the crop, so their King read nothing (167 of 13.6k readings)
+
+
+def crop_box(cls: str, box: tuple[int, int, int, int]) -> tuple[int, int, int, int]:
+    """The frame region to OCR for a detected bar: the box +-4 px, a flat King box grown upward to a full bar."""
+    x0, y0, x1, y1 = box
+    if BARS.get(cls) == "king" and (y1 - y0) < FLAT_BAR * (x1 - x0):
+        y0 = y1 - int(round(KING_BAR_ASPECT * (x1 - x0)))
+    return max(0, x0 - 4), max(0, y0 - 4), x1 + 4, y1 + 4
+
+
 def frames_1fps(path: str, width: int, height: int, step: float):
     """(t, frame) every `step` s, hardware-decoded by ffmpeg (VideoToolbox): much faster than seeking with OpenCV."""
     cmd = ["ffmpeg", "-v", "error", "-hwaccel", "videotoolbox", "-i", path, "-vf", f"fps={1 / step}",
@@ -92,7 +105,8 @@ def frames_1fps(path: str, width: int, height: int, step: float):
             k += 1
 
 
-def process(match: dict, video: dict, step: float) -> list[dict]:
+def process(match: dict, video: dict, step: float, only: str | None = None) -> list[dict]:
+    """Cleaned readings of every tower bar; with `only` (a tower name), that tower's raw readings, uncleaned."""
     bars = bars_by_time(match["match_id"])
     if not bars:
         return []
@@ -111,10 +125,10 @@ def process(match: dict, video: dict, step: float) -> list[dict]:
             continue
         for b in bars[ts[near]]:
             name = tower_name(b, width)
-            if name is None:
+            if name is None or (only and name != only):
                 continue
-            x0, y0, x1, y1 = (int(round(b[k])) for k in ("x0", "y0", "x1", "y1"))
-            crop = frame[max(0, y0 - 4):y1 + 4, max(0, x0 - 4):x1 + 4]
+            x0, y0, x1, y1 = crop_box(b["cls"], tuple(int(round(b[k])) for k in ("x0", "y0", "x1", "y1")))
+            crop = frame[y0:y1, x0:x1]
             if crop.size == 0:
                 continue
             sig = signature(crop)
@@ -126,7 +140,7 @@ def process(match: dict, video: dict, step: float) -> list[dict]:
             else:
                 hp, text = last_read[name]  # unchanged bar: same reading
             raw.append({"t": t, "tower": name, "hp_raw": hp, "raw": text, "fresh": fresh})
-    return clean(match["match_id"], raw)
+    return raw if only else clean(match["match_id"], raw)
 
 
 def clean(match_id: str, raw: list[dict]) -> list[dict]:
@@ -184,6 +198,8 @@ def main():
     ap.add_argument("--shard", default="0/1", help="i/n: this process takes every n-th game")
     ap.add_argument("--merge", action="store_true", help="write every cached match into the tower_hp table")
     ap.add_argument("--reclean", action="store_true", help="re-parse the cached OCR text (no OCR) before --merge")
+    ap.add_argument("--redo-opp-king", action="store_true",
+                    help="cached matches: OCR the enemy King again (its crop grew 2026-11-16), keep the other towers' text")
     args = ap.parse_args()
     CACHE.mkdir(parents=True, exist_ok=True)
     if args.reclean:  # re-parse every cached match's OCR text with the current rules (no OCR)
@@ -210,12 +226,19 @@ def main():
     t0 = time.time()
     for i, m in enumerate(games):
         out = CACHE / f"{m['match_id']}.json"
-        if out.exists():
+        if out.exists() and not args.redo_opp_king:
+            continue
+        if args.redo_opp_king and not out.exists():
             continue
         v = store.read("videos", f"video_id = '{m['video_id']}'")
         if not v:
             continue
-        rows = process(m, v[0], args.step)
+        if args.redo_opp_king:
+            kept = [{"t": r["t"], "tower": r["tower"], "raw": r["raw"], "hp_raw": None}
+                    for r in json.loads(out.read_text()) if r["tower"] != "opp_king"]
+            rows = clean(m["match_id"], kept + process(m, v[0], args.step, only="opp_king"))
+        else:
+            rows = process(m, v[0], args.step)
         out.write_text(json.dumps(rows))
         print(f"[{args.shard}] {i + 1}/{len(games)} {m['match_id']}: {len(rows)} readings, "
               f"{sum(r['accepted'] for r in rows)} accepted, {time.time() - t0:.0f} s", flush=True)
