@@ -5642,3 +5642,8 @@ Same engine and bot rules as the v6 checks.
   offline bar reader); (4) the tracker's opponent plays polluted (over-counting, to measure now against the ~135 phone
   replays). Flat opponent-play ages: already fixed. The 63 shadow games with saved frames let the held-out set be
   rebuilt with the new inputs.
+- **Cole (2026-11-16): two more inputs are must-haves, not later:** (7) spells in flight (Fireball / Rocket / Log /
+  arrows volleys travelling: type, position, landing spot, time to impact), (8) the opponent's likely hand (the 4
+  cards they can hold, from the cycle: a card played goes to the back; once their 8 are known the hand is the 4 not
+  among the last 4 played; before that, partial). Both go into the same input-layout change as opponent elixir, so
+  the brain is rebuilt and retrained once.
