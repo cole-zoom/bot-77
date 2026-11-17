@@ -5731,3 +5731,60 @@ Same engine and bot rules as the v6 checks.
   mirrored units carry hp_frac (1038 decisions); board HP channels 0-7 sum e.g. 2.89 vs 3.63 full at 48 s.
 - Weak spots: troop bars (42% found, ~1 in 9 badly read); a King with no bar is "full" (one asleep but chipped
   before its bar shows can't be told); their princess band is found once per game.
+
+### 2026-11-16: input rebuild step 4 — the new input block (their elixir, likely hand, spells in flight) and a net that reads it
+- **Spell slots vs the replays (scripts/eval_spell_slots.py; PlayTracker + SpellTracker replayed over the cached live
+  detections; held-out half, 47 games, scored once after tuning on the other half):** their Fireball in a slot 37/55
+  (67%), first there median **0.7 s after it left their hand** (IQR 0.5-1.3); a Fireball flies ~1.4 s from their
+  King to the bridge and ~2.5 s to our princess tower (10 tiles/s, game files), so most are in the slots ~1-2 s before
+  impact. Arrows 21/33 (64%), only as their splash (Rage / Poison / Vines reads), i.e. at landing (+0.5 s), time to
+  impact 0. Rocket 2/3 (+0.8 s). Zap 0/4. No Log played. Phantom slots of theirs 2.4 a game (Fireball 55 of 114:
+  shots and our own Fireball read as theirs; Goblin Curse 28: a detector misread). Tune half: Fireball 29/37 (78%),
+  Arrows 20/28, 1.6 phantoms a game.
+- What it took: our splash / a building's landing dust (as PlayTracker); a "Fireball" within 2.5 tiles of a unit
+  whose shots read as one (SHOOTERS + Mega Minion: phantoms 61 -> 37 on tune, recall 30 -> 29); our play of the card
+  up to 3.5 s before its first sighting = ours (our Fireball is first seen landing on their side); a spell in neither
+  deck once their 8 are known = misread. The eval moves our plays 1.5 s earlier than the cycle tracker logged them
+  (live the bot's tap comes before its spell shows; the cached own plays lag ~1.5 s): Arrows phantoms 290 -> 26.
+- **Landing spot: weak.** Thrown spells are seen once or twice, so the line from their King's sprite to the sighting
+  picks the target (the spot on the line catching most of our units / towers, else on to our princess-tower row).
+  Against a later sighting of the same spell (n 1-5 per half) it's off by 1.6-8.8 engine tiles: not measurable
+  properly without a landing truth.
+- **Block layout v1, 437 floats after the engine's 13,977** (bot77.live.extra_obs; old part untouched): 7 scalars
+  (their elixir /10, s since their last play /30, cards known /8, hand slots named /4, all 8 known, plays /30, block
+  present), can_hold[185] (their likely hand: known cards outside their last 4 different plays), comes_back[185] (the
+  oldest of those 4), 3 spell slots x 20 (present, 11-way type, theirs / ours, now x/y, landing x/y in the engine
+  frame, time to impact /3 s, in their likely hand 1 / unknown 0.5). Binary cycle features, not probabilities: the
+  training data will carry the tracker's own noise (step 5), so the net learns how far to trust them.
+- **ExtraObsNet (bot77.rl.extra_net):** MicroRoyaleNet unchanged on the first 13,977 floats; the block through
+  Linear(437, 64) -> ReLU -> Linear(64, 1504, zero-initialised) added to the LSTM's input. **Initialised from v8
+  (bc_school_v8/epoch03) it is v8 bit for bit** (tests/test_extra_net.py: card and placement logits over 400 steps of
+  two held-out shadow games with a random block, and the live step's logits / value / LSTM state, torch.equal);
+  old data reads a zero block; one optimiser step moves the features (not vacuous). 94k new parameters.
+  train_bc.py --extra-obs (--init an old or new checkpoint; saves "extra_obs" meta), shadow_agreement.py and
+  SelfPlayPolicy load either kind (load_policy).
+- **Flags (default off):** live_play.py / shadow_play.py / dump_live_inputs.py --play-tracker (BOT77_PLAY_TRACKER=1):
+  PlayTracker replaces OpponentTracker for the cycle blocks and opp_plays, our tap (card, spot) goes to it, the block
+  feeds a net that reads it (zeros otherwise), the loop saves opp_plays.json per game, shadow_play saves the block
+  after the 13,977 floats of every row. Not run on the phone.
+- **Step 5 needs (rebuild the training data with the block through the live path).** Cache per-game unit reads
+  (card, team, x, y, conf at 10 reads/s, like tracker_eval) on the LaCie, then compute the block by replaying
+  OppInputs over them (seconds a game), so tracker changes never need a re-read:
+  1. shadow games (shadow_t01 + held, 51): 43 have frames (/Volumes/LaCie/bot-77-data/raw/shadow_frames/<gid>/<i>.jpg
+     = row i, ~1.2k a game): LiveReader (a16_live, fast) over them in order, own plays = Cole's labels (card, cell ->
+     our frame) at their row time; ~52k reads, ~1 h laptop. The 8 earliest (11-10..11-12) have no frames: zero block
+     (block-present 0) or drop them. Future shadow games: shadow_play --play-tracker saves the block live.
+  2. review_v1 (66 answers on the bot's own games, 13.6k decisions): rerun LiveReader over each game.mkv at 10 fps as
+     eval_live_tracker.run_game does (100 games of 11-14/15 are already cached); own plays = bot_actions taps; ~2 h.
+  3. shards_t01 (962 pro trajectories, 2.1M decisions, ~29 h of replay video): the live detector (v6l) through
+     LiveReader with each video's layout at 10 fps, ~1M reads: ~15-30 h on the laptop, or ~3-4 h on the RunPod 4090
+     (~$0.9/h, ~$4 + video upload). The top player's trajectory needs the board mirrored (teams swapped, x -> 18 - x,
+     y -> 29.8 - y in our frame) and its own plays from `plays` (source hand, side top). Cheaper but not the live
+     path: the cached replay detections (unit_detections_v5l_e15, another detector) -> OppInputs, minutes; their
+     noise differs from live, so only as a fallback.
+  4. school_v3 (3170 sim episodes, ~720k decisions) and games_v9's 19 sim games: no video. Re-simulate with the
+     builders' seeds and feed the sim's units each 0.1 s as detections (engine_to_ours, conf 0.9) into OppInputs,
+     dropping reads to live rates (their plays ~35% missed, spells seen ~70% Fireball / Arrows only as a splash);
+     ~1-2 h CPU. Or a zero block (block-present 0) if the noise model isn't trusted.
+  Disk: the block is ~10-20 non-zeros a row; new shards on the LaCie. Then step 6: train_bc --extra-obs --init v8 on
+  the rebuilt sets, score with shadow_agreement on the rebuilt held-out shadow games.
