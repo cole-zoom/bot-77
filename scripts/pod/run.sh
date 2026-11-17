@@ -2,7 +2,7 @@
 # The pro-replay board reads on the pod (step 5, 2026-11-16). From /workspace/bot77:
 #   bash scripts/pod/run.sh [WORKERS]          (default: 6 processes sharing the GPU)
 # Reads /workspace/pod_job/{manifest.json,cards.json,videos/} and writes /workspace/pod_job/reads/<match>.npz, one per
-# match (resumable: a restart skips the done ones). Log: /workspace/pod_job/reads.log. ~1.6 GB of reads for all 484.
+# match (resumable: a restart skips the done ones). Log: /workspace/pod_job/reads.log. ~0.2 GB of reads for all 484 (~1.9 KB per match second, every raw detection kept).
 set -euo pipefail
 cd "$(dirname "$0")/../.."
 W=${1:-6}

@@ -3,7 +3,7 @@
 #   bash scripts/pod/pack.sh [JOB_DIR] [--transcode]
 # JOB_DIR (default /Volumes/LaCie/bot-77-data/pod_job) gets: code.tgz (src/bot77, the reader script, scripts/pod,
 # layouts, HUD assets, the v6l detector weights), manifest.json + cards.json (scripts/pod/make_manifest.py), videos/
-# (symlinks to the 484 originals, 86.8 GB; or, with --transcode, 10 fps x264 crf 18 copies, ~29 GB: see decisions.md
+# (symlinks to the 484 originals, 86.8 GB; or, with --transcode, 10 fps x264 crf 18 copies, ~29 GB, 96% of unit reads identical to the originals: see decisions.md
 # for the read agreement measured on them).
 #
 # Then (POD = the pod's "SSH over exposed TCP" address from the RunPod console, e.g. root@1.2.3.4 -p 40123):

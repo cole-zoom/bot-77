@@ -5788,3 +5788,48 @@ Same engine and bot rules as the v6 checks.
      ~1-2 h CPU. Or a zero block (block-present 0) if the noise model isn't trusted.
   Disk: the block is ~10-20 non-zeros a row; new shards on the LaCie. Then step 6: train_bc --extra-obs --init v8 on
   the rebuilt sets, score with shadow_agreement on the rebuilt held-out shadow games.
+
+### 2026-11-16: input rebuild step 5 — training data through the live path (laptop part done; pro shards packaged for the pod)
+- **Shadow (scripts/rebuild_shadow.py -> data/cache/bc/shadow_t02 + shadow_t02_held, same md5 split, 32 + 19):** 43
+  games re-read from their saved frames (LiveReader a16_live fast, BOT77_LIVE_HP, OppInputs; Cole's label = own_play
+  + LiveReader.played before the next row), 49,899 rows; 8 games without frames (9,243 rows) keep their old rows with
+  a zero block. Rows, cards, cells identical in all 51 files; 0 frames missing, 4 rows not decided (old row kept).
+  Base differs on 48,682 of 49,899 rows, cells by section: opp cycle 931k (PlayTracker's plays replace
+  OpponentTracker's), board attrs 340k / HP 237k / units 105k, tower-HP scalars 126k, time 14k, own hand 7k. Block
+  ~9.6 non-zeros a row; likely hand named on 76% of rows, a spell slot on 6.4%; 23.9 opponent plays counted a game.
+  Tower HP moves in 48 of 51 files; 3 princesses called destroyed before 60 s, each after a read of <= 0.13.
+- **Reproduction check first** (one game, old stack: OpponentTracker, HP off, real ages): units equal on 79% of rows,
+  same mean count; the rest is read timing (only the decision frames are saved: clock / cycle recency move 0.1-0.5 s).
+- **Review answers (scripts/rebuild_review.py -> data/cache/bc/review_v2, 65 files, 13,649 rows):** each bot game's
+  game.mkv at 10 fps through the live stack (bluestacks_live), the bot's taps (bot_actions, t - t_start) as own plays.
+  Aligning by load_game's offset or by the game clock put the bot's play ~1 s off (a label's slot held another
+  card); the rows now take the shift (per game -14.0 .. -1.4 s) at which the old HUD hands agree most with the
+  recording's: hand slots agree median 95% (min 69%), a labelled row's slot holds the same card 99 / 110 (the rest
+  mostly the play's own tick, where the live reader blanks the tapped slot). Block 8.6 non-zeros a row, hand named
+  72% of rows. Frame gap > 0.5 s in 11 files (max 2.7 s, rows outside the recording's battle frames).
+- **Tower reader fixes found on BlueStacks** (bot77.readers.tower_hp): BARS_BLUESTACKS measured (princess bars from
+  frames, King fill rows; their bands still located per game); no reads in the clock's first 4 s; a fall > 0.45 must
+  hold 1 s (was: a second read), as BlueStacks' red "No card selected" over their bar read 0.04 for 0.5 s and the
+  tower then counted destroyed all game (bot_2026-10-31_012417). Against the replays' OCR'd HP on 2 games: within
+  0.05 on 95-100% of rows per tower after the fix. LiveReader picks the bars by layout; the a16 bars are unchanged.
+- **Sim demos (school_v3, games_v9's 19 sim games): zero block.** scripts/rebuild_sim_block.py --check 12: 1 of 12
+  episodes replays exactly on today's engine; the rest part from the saved rows 0.9-21.5 s in (one board-HP cell
+  first: the engine's stats moved since 10-30, then the scripted choices). A block from another trajectory would
+  describe a board the rows don't show, so they keep block-present 0 (train_bc pads old rows; no files written).
+- **Pro shards (shards_t01, 484 matches, 962 trajectories):** all 484 sources are our own recordings (TV Royale 417,
+  Battle Log 67; none on YouTube: the urls are placeholders), 1080x1920 ~30 fps h264, 86.8 GB (55 on the laptop disk,
+  the rest on the LaCie), 31.3 h of match. Job: scripts/pod/pack.sh -> make_manifest.py (manifest with each match's
+  HUD clock / elixir, cards.json), read_replay_boards.py (LiveReader.read_board: v6l, fast mode, troop HP bars; every
+  raw detection with its box kept for the later detector-misses table; ~1.9 KB per match second, ~0.2 GB total),
+  then build_bc_live.py on the Mac (HUD hands / labels as before, units + troop HP from the reads, OppInputs per
+  player with the top player's board mirrored, the opponent's deck and elixir as live estimates them, the block).
+  The live clock reader is Apple-Vision OCR (macOS only), so the clock comes from hud_states; replay frames are dimmed
+  (their pink bar fill V ~153 < 170), so tower HP stays the replays' OCR'd values.
+- **Measured on the laptop** (2 matches end to end, a rebuild running alongside): reads 28-29 frames/s (1,700 frames
+  in 60 s, 2,960 in 105 s); shards 9,119 rows in 51 s on 2 workers. Against shards_t01: same rows and times on all 4
+  trajectories, labels same except 3 cells of 77 plays on one, which the old builder gives too when rerun today (the
+  plays table moved since 10-28). Opponent plays counted 14/16 (true 13/25) and 52/56 (true 74/78). Full read job on
+  the laptop: ~11 h; on the 4090 estimated ~1.5-2.5 h (6 processes).
+- **Upload:** originals 86.8 GB, or 10 fps x264 crf 18 copies ~29 GB (3.0x smaller; ~1 h to make on the Mac): on
+  one match 96.0% of unit reads identical (card, team, within 0.5 tiles), HP bars within 0.05 on 88%; crf 23 (6.2x)
+  93.6% / 77.5%.
