@@ -64,17 +64,21 @@ BAND_COVER = 0.85  # a row of their bar: this share of its columns fill or track
 START_S = 4.0  # no reads in the first seconds of the clock: the bars draw in from the left (step 5, 2026-11-16: on
                # BlueStacks the half-drawn opp_r bar read 0.04 twice at 0-0.5 s and the tower was called destroyed for
                # the whole game, bot_2026-10-31_012417); nothing can damage a tower that early
+DIM_FILL = 0.83  # a dark arena draws the bars dimmer (BlueStacks night arena, 2026-10-31 16:24 on: their full fill V ~153,
+                 # track ~77, read all track = 0.01 for 0.76): the bright threshold per team is min(170, this x the
+                 # princess fill's median V at its first read, when every tower is full); 223 on a normal arena -> 170
+LEARN_BY_S = 20.0
 BAND_MIN = 9  # rows: their bars are 12-16 tall; a 5-row band locked in the start animation read 0.05 for 0.97
 
 
-def _masks(crop: np.ndarray, team: str) -> tuple[np.ndarray, np.ndarray, np.ndarray]:
+def _masks(crop: np.ndarray, team: str, vmin: float = 170) -> tuple[np.ndarray, np.ndarray, np.ndarray]:
     """(fill, team-coloured fill, track) per pixel. Fill is bright: the team's hue, or white (a bar flashes white
     for a frame when hit: bot_2026-11-14_150329 17 s read 0.07 for 0.63 before white counted)."""
     hsv = cv2.cvtColor(crop, cv2.COLOR_BGR2HSV)
     h, s, v = hsv[..., 0], hsv[..., 1], hsv[..., 2]
     lo, hi = TEAM_HUE[team]
     hue = ((h >= lo) & (h <= hi) if lo <= hi else (h >= lo) | (h <= hi)) & (s >= 80)
-    bright = v >= 170
+    bright = v >= vmin
     return bright & (hue | (s < 70)), hue & bright, hue & ~bright
 
 
@@ -84,12 +88,12 @@ def _px(name: str, frame_w: int, bars: dict) -> tuple[int, int, int, int]:
     return int(round(x0 * s)), int(round(x1 * s)) + 1, int(round(y0 * s)), int(round(y1 * s))
 
 
-def find_band(frame: np.ndarray, name: str, bars: dict = BARS_A16) -> tuple[int, int] | None:
+def find_band(frame: np.ndarray, name: str, bars: dict = BARS_A16, vmin: float = 170) -> tuple[int, int] | None:
     """The rows of their bar in its search window (frame pixels): the tallest run of rows where >= BAND_COVER of the
     columns are the bar's colour (fill or track; a King's track is grey, so its fill alone), trimmed a row each side.
     None when the bar isn't there (a King not woken yet)."""
     X0, X1, Y0, Y1 = _px(name, frame.shape[1], bars)
-    _, colour, track = _masks(frame[Y0:Y1, X0:X1], name[:3])
+    _, colour, track = _masks(frame[Y0:Y1, X0:X1], name[:3], vmin)
     cover = (colour | track).mean(1) if not name.endswith("king") else colour.mean(1)
     ok = cover >= (BAND_COVER if not name.endswith("king") else 0.5)
     best, run, start = (0, 0), 0, 0
@@ -106,7 +110,7 @@ def find_band(frame: np.ndarray, name: str, bars: dict = BARS_A16) -> tuple[int,
 
 
 def read_bar(frame: np.ndarray, name: str, band: tuple[int, int] | None = None,
-             bars: dict = BARS_A16) -> tuple[float | None, bool]:
+             bars: dict = BARS_A16, vmin: float = 170) -> tuple[float | None, bool]:
     """(fill fraction or None if no fill, whether the bar — fill or dark track — is there) on rows `band` (frame
     pixels; default the bar's fixed rows)."""
     X0, X1, Y0, Y1 = _px(name, frame.shape[1], bars)
@@ -115,7 +119,7 @@ def read_bar(frame: np.ndarray, name: str, band: tuple[int, int] | None = None,
     crop = frame[Y0:Y1, X0:X1]
     if crop.size == 0:
         return None, False
-    fill_px, _, track_px = _masks(crop, name[:3])
+    fill_px, _, track_px = _masks(crop, name[:3], vmin)
     half = max(1, crop.shape[0] // 2)
     fill = fill_px.sum(0) >= half
     track = track_px.sum(0) >= half
@@ -165,6 +169,7 @@ class TowerHP:
         self.up_since: dict[str, float | None] = {k: None for k in self.bars}
         self.drop_seen: dict[str, tuple[float, float] | None] = {k: None for k in self.bars}
         self.woken: set[str] = set()
+        self.vmin: dict[str, float] = {}  # team -> the bright threshold (DIM_FILL)
         self.destroyed: set[str] = set()
         self.last_t = -1e9
         self.last_elapsed: float | None = None
@@ -177,15 +182,20 @@ class TowerHP:
         if t - self.last_t < self.every - 1e-6 or (elapsed_s is not None and elapsed_s < START_S):
             return self.fracs()
         self.last_t = t
+        for team in ("own", "opp"):
+            # learnt only early (every tower full); a reader started later keeps 170
+            if team not in self.vmin and elapsed_s is not None and elapsed_s <= LEARN_BY_S:
+                self._learn_vmin(frame, team)
         for name in self.bars:
             if name in self.destroyed:
                 continue
+            vmin = self.vmin.get(name[:3], 170)
             band = None
             if name not in FIXED:
-                band = self.band[name] = self.band[name] or find_band(frame, name, self.bars)
+                band = self.band[name] = self.band[name] or find_band(frame, name, self.bars, vmin)
                 if band is None:  # their bar not located yet (a King not woken, or the start of the game)
                     continue
-            f, present = read_bar(frame, name, band, self.bars)
+            f, present = read_bar(frame, name, band, self.bars, vmin)
             absent = f is None and not present  # (fill None but present: their bar under the red pulse, or no fill)
             if f is not None and name.endswith("king") and name not in self.woken:
                 if f < WAKE:
@@ -220,6 +230,28 @@ class TowerHP:
                 self.destroyed.add(name)
                 self.frac[name] = 0.0
         return self.fracs()
+
+    def _learn_vmin(self, frame: np.ndarray, team: str) -> None:
+        """The team's bright threshold from its princess bars at their first read (all full: the clock is past
+        START_S): the median V of the bar's hue pixels (the fill) x DIM_FILL, at most 170."""
+        vs = []
+        for name in (f"{team}_l", f"{team}_r"):
+            if name not in self.bars:
+                continue
+            X0, X1, Y0, Y1 = _px(name, frame.shape[1], self.bars)
+            if name not in FIXED:
+                band = find_band(frame, name, self.bars, 0)  # fill or track, whatever their brightness
+                if band is None:
+                    return
+                Y0, Y1 = band
+            hsv = cv2.cvtColor(frame[Y0:Y1, X0:X1], cv2.COLOR_BGR2HSV).reshape(-1, 3)
+            lo, hi = TEAM_HUE[team]
+            m = (hsv[:, 0] >= lo) & (hsv[:, 0] <= hi) & (hsv[:, 1] >= 80)
+            if m.mean() < 0.5:
+                return  # something over the bar: try again next read
+            vs.append(float(np.median(hsv[m, 2])))
+        if vs:
+            self.vmin[team] = min(170.0, DIM_FILL * min(vs))
 
     def fracs(self) -> dict[str, float]:
         return dict(self.frac)
