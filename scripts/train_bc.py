@@ -132,9 +132,13 @@ def obs_rows(f, lead=0) -> "sp.csr_matrix":
     return _CACHE[f]
 
 
-def load_meta():
-    results = {m["match_id"]: m["result"] for m in store.read("matches", "source IN ('replay_tv', 'replay_bl')")}
-    pairs = {m["match_id"]: m["pair_match_id"] for m in store.read("matches", "pov_side = 'bottom'")}
+def load_meta(meta_path: str | None = None):
+    if meta_path:  # a box without the tables (a rented GPU): results / pairs exported by scripts/pod/train_meta.py
+        meta = json.loads(Path(meta_path).read_text())
+        results, pairs = meta["results"], meta["pairs"]
+    else:
+        results = {m["match_id"]: m["result"] for m in store.read("matches", "source IN ('replay_tv', 'replay_bl')")}
+        pairs = {m["match_id"]: m["pair_match_id"] for m in store.read("matches", "pov_side = 'bottom'")}
     eps = []
     for f in sorted(SHARDS.glob("*.npz")):
         d = np.load(f)
@@ -313,6 +317,8 @@ def main():
                     help="Cole's whole games against the deck bots (scripts/build_deck_demos.py), 2026-11-06")
     ap.add_argument("--games-share", type=float, default=0.125,
                     help="share of every batch drawn from --games, taken out of the --demos windows")
+    ap.add_argument("--device", default="cpu", help="cpu, cuda, or auto (cuda when there is one)")
+    ap.add_argument("--match-meta", default=None, help="match results / pairs as json, instead of the tables")
     ap.add_argument("--extra-obs", action="store_true",
                     help="the net with the new input block (bot77.rl.extra_net.ExtraObsNet); --init may be an old checkpoint")
     a = ap.parse_args()
@@ -320,8 +326,10 @@ def main():
     SHARDS, WINDOW, BURN_IN, PLAY_WEIGHT = Path(a.shards), a.window, a.burn_in, a.play_weight
     torch.manual_seed(77)
     rng = np.random.default_rng(77)
-    device = torch.device("cpu")
-    eps = load_meta()
+    device = torch.device("cuda" if a.device == "auto" and torch.cuda.is_available() else
+                          ("cpu" if a.device == "auto" else a.device))
+    print(f"device: {device}", flush=True)
+    eps = load_meta(a.match_meta)
     train = [e for e in eps if e["split"] == "train"]
     held = [e for e in eps if e["split"] == "heldback"]
     print(f"episodes: {len(train)} train ({sum(e['n'] for e in train)} decisions), {len(held)} held-back "
