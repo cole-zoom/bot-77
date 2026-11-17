@@ -5833,3 +5833,24 @@ Same engine and bot rules as the v6 checks.
 - **Upload:** originals 86.8 GB, or 10 fps x264 crf 18 copies ~29 GB (3.0x smaller; ~1 h to make on the Mac): on
   one match 96.0% of unit reads identical (card, team, within 0.5 tiles), HP bars within 0.05 on 88%; crf 23 (6.2x)
   93.6% / 77.5%.
+
+## 2026-11-17 — Step 6: v10 retrain on the rebuilt data (laptop, CPU)
+
+- **Data:** shards_t02 (483 pro matches read overnight on the laptop through the live path, ~2.1M rows; 2 workers on
+  mps, reads 484/484 done 05:54, build done 08:11; tv_2026-10-14_r35_m01 left out as split='duplicate'; 4 matches
+  top side only), school_v3 demos, review_v2, games_v10 (games_v9's 19 deck-bot games + 32 shadow_t02 games, results
+  win 1 / loss -1 / '?' 0). No rented GPU: every RunPod type tried (L40S, 5090, 4090) was out of capacity during their
+  emergency maintenance, so v10 ran on the laptop, nice 10, ~2.3 h (4 epochs x 310 steps, ~2,100 s an epoch).
+- **Recipe:** v8's (init bc_school_v8/epoch03, window 256, burn-in 64, play-weight 50, demo-share 0.7, games-share
+  0.25, lead 3) with --extra-obs (437-float block, zero-initialised output). The block is used: its output layer went
+  from 0 to norm 4.86 by epoch 3.
+- **Held-back pro episodes (96):** before 0.372 card / 0.708 AUC / cell exact 0.032 / 5.39 tiles; epoch 0 0.370 /
+  0.716 / 0.023 / 5.39; epoch 3 0.359 / 0.704 / 0.024 / 5.66. Train losses keep falling (card 1.005 -> 0.776), the
+  held-back numbers don't: overfitting from epoch 1.
+- **Cole's 19 held-out shadow games (shadow_t02_held, 422 plays)** — card_top1 / p_his / auc / cell tiles / cell exact:
+  v8 0.313 / 0.186 / 0.656 / 5.39 / 0.059; v10 e0 0.284 / 0.184 / 0.649 / 5.10 / 0.055; e1 0.299 / 0.186 / 0.654 /
+  5.39 / 0.057; e2 0.306 / 0.173 / 0.649 / 5.83 / 0.064; e3 0.308 / 0.185 / 0.647 / 5.39 / 0.066.
+- **Verdict: v10 is not better than v8** (card and timing slightly worse, exact cell slightly better, all within
+  noise on 422 plays). No live test (step 8) on this. The 12-epoch v10x run is not worth renting a GPU for as is:
+  held-back falls from epoch 1. Next: find why the new inputs don't help (ablate the block on held-out, lower LR /
+  more dropout for the block, or train it from scratch rather than on top of v8) before spending GPU time.
