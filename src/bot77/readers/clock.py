@@ -9,7 +9,6 @@ from pathlib import Path
 
 import cv2
 import numpy as np
-from ocrmac import ocrmac
 from PIL import Image
 
 from bot77.layout import Layout
@@ -35,6 +34,7 @@ class ClockRead:
 
 def ocr_text(image_bgr: np.ndarray, upscale: int = 3) -> str:
     big = image_bgr if upscale == 1 else cv2.resize(image_bgr, None, fx=upscale, fy=upscale, interpolation=cv2.INTER_CUBIC)
+    from ocrmac import ocrmac  # macOS only (Apple Vision); imported here so Linux boxes can load the module
     results = ocrmac.OCR(Image.fromarray(cv2.cvtColor(big, cv2.COLOR_BGR2RGB)), recognition_level="accurate").recognize()
     return " ".join(text for text, _conf, _box in results)
 
