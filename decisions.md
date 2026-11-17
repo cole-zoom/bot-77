@@ -5697,6 +5697,6 @@ Same engine and bot rules as the v6 checks.
   0.6 tiles (83% within 2). Worst recall: Fire Spirit 6% (16), Valkyrie 16% (58; old 12%), Electro Spirit 34%,
   Fireball 38% (old 29%), Hog Rider 44%, Barbarians 48%, Spear Goblins 49%; Arrows 55% (old 3%).
   Elixir MAE 2.30 (median +1.5: missed plays leave it high; true plays 0.89, regeneration only 4.46). Likely hand
-  2.48 of 4 once 8 known (true plays 3.91, random 1.99), 9% of the time.
+  2.48 of 4 once 8 known (true plays 3.91, random 1.99), 12% of the time.
 - Not wired into live_play: the live stack keeps OpponentTracker. PlayTracker takes update_state(LiveState) and
   own_play(card, t, x, y) (the bot's tap; with its spot, our own units are told apart by place too).
