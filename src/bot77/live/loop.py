@@ -202,7 +202,7 @@ class Runner:
         if self.record and not self.dry_run and getattr(self.dev, "stream", None) is not None:
             self.dev.stream.record_to(GAMES_DIR / gid / "game.mkv")  # from the stream itself (no second encoder user)
         elif self.record and not self.dry_run:
-            import os, subprocess
+            import subprocess
             from bot77.live.device import ADB
             rec = subprocess.Popen(["scrcpy", "-s", self.dev.s, "--no-window", "--no-audio", "--no-control", "--max-fps", "30",
                                     "--video-bit-rate", "8M", f"--record={GAMES_DIR / gid / 'game.mkv'}"],
