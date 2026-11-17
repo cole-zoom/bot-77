@@ -83,7 +83,7 @@ def truth_for(db, rep: str, cards: list[dict]) -> tuple[list[dict], list[dict]]:
     ax0, ay0, ax1, _ = Layout.load(v["layout_id"]).katacr_arena
     dep = deploys(d, names, (ax1 - ax0) / 18, lambda c: ctype.get(c) == "building", lambda c: ctype.get(c) == "spell",
                   (ax0, ay0), spell_team=None)
-    return placed(top, dep, "enemy"), bot
+    return placed(top, dep, "enemy"), placed(bot, dep, "friendly")
 
 
 def offset(own: list[dict], rep_own: list[dict]) -> tuple[float, float]:
@@ -193,18 +193,34 @@ def paired_truth(db, g: str, cands: list, cards: list[dict], rerun: bool = False
         truth, rep_own = truth_for(db, rep, cards)
         off, agree = offset(run["own_plays"], rep_own)
         if best is None or agree > best["agree"]:
-            best = {"rep": rep, "truth": truth, "off": off, "agree": agree, "ratio": ratio}
+            best = {"rep": rep, "truth": truth, "off": off, "agree": agree, "ratio": ratio, "own": rep_own}
     best["deck"], best["hud"] = top_hud(db, best["rep"], {c["id"]: c["name"] for c in cards})
     f.parent.mkdir(parents=True, exist_ok=True)
     f.write_text(json.dumps(best, default=float))
     return best
 
 
-def replay_new(run: dict, cards: list[dict]) -> dict:
+def own_spots(own: list[dict], rep_own: list[dict], off: float) -> list[dict]:
+    """Our plays as the live cycle tracker logged them, with where they landed: live, the bot knows where it tapped;
+    here the replay's first sighting of the unit stands in for the tap (same card, within 2 s)."""
+    out, used = [], set()
+    for o in own:
+        c = [(abs(q["t"] - off - o["t"]), k) for k, q in enumerate(rep_own)
+             if k not in used and q["card"] == o["card"] and abs(q["t"] - off - o["t"]) <= 2.0 and q.get("x") is not None]
+        if c:
+            k = min(c)[1]; used.add(k)
+            out.append({**o, "x": rep_own[k]["x"], "y": rep_own[k]["y"]})
+        else:
+            out.append(dict(o))
+    return out
+
+
+def replay_new(run: dict, cards: list[dict], pr: dict | None = None) -> dict:
     """bot77.live.opponent.PlayTracker over a game's cached units and own plays, as the live loop would feed it."""
     from bot77.live.opponent import PlayTracker, replay
     trk = PlayTracker.from_cards(cards, our_deck=DECK.split(","))
-    plays, hand = replay(trk, run["units"], run["clock"], run["own_plays"])
+    own = own_spots(run["own_plays"], pr["own"], pr["off"]) if pr and pr.get("own") else run["own_plays"]
+    plays, hand = replay(trk, run["units"], run["clock"], own)
     return {"plays": plays, "hand_series": hand}
 
 
@@ -348,7 +364,7 @@ def main():
         if not run["clock"]:
             continue
         if a.tracker == "new":
-            run = {**run, **replay_new(run, cards)}
+            run = {**run, **replay_new(run, cards, pr)}
         lo, hi = run["clock"][0][0], run["clock"][-1][0]  # the live recording's battle span (it can be cut short)
         truth = [p for p in truth if lo + 1.0 <= p["t"] - off <= hi - a.window]
         run = {**run, "plays": [q for q in run["plays"] if lo + 1.0 <= q["t"] <= hi - a.window]}

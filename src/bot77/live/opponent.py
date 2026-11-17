@@ -25,7 +25,6 @@ import math
 from dataclasses import dataclass, field
 
 RIVER_Y = 14.9  # bot77.live.state.RIVER_Y (arena tiles, y grows toward our king)
-REAL_ELIXIR_S = 2.9  # bot77.sim.scenario.REAL_ELIXIR_S: seconds per elixir at 1x in our replays
 
 
 def real_multiplier(elapsed_s: float) -> int:
@@ -45,6 +44,10 @@ PRODUCES = {
     "Lava Hound": {"Lava Pups"}, "Goblin Cage": {"Goblin Brawler"}, "Suspicious Bush": {"Bush Goblins"},
     "Goblin Demolisher": {"Kamikaze Goblin Demolisher"}, "Phoenix": {"Phoenix Egg"},
 }
+# the Barbarians a Battle Ram / Barbarian Hut / Barbarian Barrel lets out are often read as Elite Barbarians (2026-11-16:
+# our Battle Ram dying at their tower, then "Elite Barbarians" at its spot)
+for _c in ("Battle Ram", "Barbarian Hut", "Barbarian Barrel"):
+    PRODUCES[_c] = PRODUCES[_c] | {"Elite Barbarians"}
 # The detector reads an Arrows volley's splash as Rage / Poison (and the volley just before it as Vines): ours and
 # theirs alike (2026-11-16, tune games: every one of our Arrows showed Poison / Rage at -0.5..+0.9 s, at the landing
 # spot, team either; the opponents' replays show no Rage or Poison played at all)
@@ -93,14 +96,19 @@ class Params:
     new_unit_conf: float = 0.0  # a troop / building not yet among their cards: its surest read at least this
     dup_r: float = 1.0  # tiles: a new track this close to one of its card seen just now is a second box on it
     own_win0: float = -2.0  # our play of the card logged up to this long after a unit of it shows still explains it
+    own_r: float = 3.0  # ... within this many tiles of where we put it (when the tap's spot is known; 0: anywhere)
     own_hold_s: float = 1.5  # a new unit of one of our cards near the river waits this long for our play to be logged
     full_deck_block: bool = True  # with 8 cards known, no new card
+    ninth_hits: int = 6  # ... unless seen this many reads
+    ninth_conf: float = 0.6  # ... once at least this sure
     own_half: float = 1.5  # our troops land on our half: a fresh unit this far past the river (their side) isn't ours
     spell_conf: float = 0.4  # a spell is seen once or twice in flight: one read this sure is enough
     spell_hold_s: float = 1.6  # ... judged this long after it shows (our own play may be logged just after it lands)
     own_spell_win: tuple = (-2.0, 2.5)  # our spell explains its own card seen this long around our play
     splash_map: bool = True
     build_dust_r: float = 1.5  # a splash this close to a building in the same read is its landing dust
+    el_start: float = 6.0  # their elixir at clock 3:00 (fit on the tune games: the replays read ~7.6 at clock 0:04)
+    el_s: float = 2.8  # clock seconds an elixir at 1x (fit on the tune games: 2.9 drifts -0.4 elixir every 30 s)
 
 
 class PlayTracker:
@@ -257,7 +265,9 @@ class PlayTracker:
                 return "own", f"our {o['card']}"
             if o["card"] == tr.card and self._spell(tr.card):
                 continue
-            if o["card"] == tr.card and p.own_win0 <= dt <= p.own_s and tr.y >= RIVER_Y - p.own_half:
+            if o["card"] == tr.card and p.own_win0 <= dt <= p.own_s and tr.y >= RIVER_Y - p.own_half and (
+                    o["x"] is None or not p.own_r or
+                    math.hypot(o["x"] - tr.x, o["y"] - tr.y) <= p.own_r + p.speed * max(dt, 0.0)):
                 return "own", "our play"
             if tr.card in self.produces.get(o["card"], ()) and dt <= 32.0 and tr.card not in self._known():
                 return "own", f"spawn of our {o['card']}"
@@ -288,8 +298,11 @@ class PlayTracker:
             return None
         known = self._known()
         if tr.card not in known:
-            if p.full_deck_block and len(known) >= 8:
-                tr.owner, tr.why = "opp", "not in their 8"
+            if p.full_deck_block and len(known) >= 8 and not (
+                    tr.hits >= p.ninth_hits and tr.conf >= p.ninth_conf and not self._spell(tr.card)):
+                # their 8 are known: a 9th card needs a sure, steady sighting (one of the 8 was a misread)
+                if tr.hits >= p.ninth_hits or self._spell(tr.card):
+                    tr.owner, tr.why = "opp", "not in their 8"
                 return None
             if self._spell(tr.card):
                 if tr.conf < p.new_card_conf:
@@ -338,11 +351,11 @@ class PlayTracker:
     def _regen(self, elapsed: float) -> None:
         if self._el_t is None:
             self._el_t = elapsed
-            self._el = min(10.0, 5.0 + elapsed / REAL_ELIXIR_S)
+            self._el = min(10.0, self.p.el_start + elapsed / self.p.el_s)
         e, t = self._el, self._el_t
         while t < elapsed:
             step = min(0.5, elapsed - t)
-            e = min(10.0, e + step * real_multiplier(t) / REAL_ELIXIR_S)
+            e = min(10.0, e + step * real_multiplier(t) / self.p.el_s)
             t += step
         self._el, self._el_t = e, max(t, self._el_t)
         self.elapsed = elapsed
@@ -373,7 +386,7 @@ def replay(trk: PlayTracker, units: list, clock: list, own_plays: list[dict], ha
     k, ci, hand, last_h = 0, 0, [], -1e9
     for t, us in units:
         while k < len(own) and own[k]["t"] <= t:
-            trk.own_play(own[k]["card"], own[k]["t"])
+            trk.own_play(own[k]["card"], own[k]["t"], own[k].get("x"), own[k].get("y"))
             k += 1
         while ci + 1 < len(clock) and clock[ci + 1][0] <= t:
             ci += 1
