@@ -5854,3 +5854,9 @@ Same engine and bot rules as the v6 checks.
   noise on 422 plays). No live test (step 8) on this. The 12-epoch v10x run is not worth renting a GPU for as is:
   held-back falls from epoch 1. Next: find why the new inputs don't help (ablate the block on held-out, lower LR /
   more dropout for the block, or train it from scratch rather than on top of v8) before spending GPU time.
+- **Old reads vs new harness reads, same 19 games, same 422 plays** (shadow_t01_held = the old path, no block;
+  shadow_t02_held = rebuilt through the live path with the block) — card_top1 / p_his / auc / cell tiles / exact:
+  old: v8 0.327 / 0.195 / 0.661 / 5.39 / 0.050, v10 0.334 / 0.197 / 0.657 / 5.61 / 0.066;
+  new: v8 0.313 / 0.186 / 0.656 / 5.39 / 0.059, v10 0.308 / 0.185 / 0.647 / 5.39 / 0.066.
+  The new reads don't lift either model offline (both ~0.015-0.025 lower on card, inside noise: SE ~0.023 at 422
+  plays), and v10 does no better with its block filled than with it zeroed. The detector (v6l) is the same in both.
