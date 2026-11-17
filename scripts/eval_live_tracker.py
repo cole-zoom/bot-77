@@ -72,8 +72,9 @@ def truth_for(db, rep: str, cards: list[dict]) -> tuple[list[dict], list[dict]]:
     from bot77.playbook import placed
     from bot77.spawns import deploys
     rows = db.open_table("plays").search().where(f"game_id = '{rep}' AND source = 'hand'") \
-        .select(["side", "t", "card"]).limit(10**4).to_arrow().to_pylist()
-    top = sorted(({"t": r["t"], "card": r["card"]} for r in rows if r["side"] == "top" and r["card"]), key=lambda p: p["t"])
+        .select(["side", "t", "card", "slot", "elixir_before", "elixir_after"]).limit(10**4).to_arrow().to_pylist()
+    top = sorted(({"t": r["t"], "card": r["card"], "elixir_before": r["elixir_before"], "elixir_after": r["elixir_after"]}
+                  for r in rows if r["side"] == "top" and r["card"]), key=lambda p: p["t"])
     bot = sorted(({"t": r["t"], "card": r["card"]} for r in rows if r["side"] == "bottom" and r["card"]), key=lambda p: p["t"])
     names = [c["name"] for c in cards]
     ctype = {c["name"]: c["type"] for c in cards}
@@ -155,6 +156,94 @@ def name_candidates(db, dates: tuple) -> dict[str, list[tuple[str, float]]]:
     return out
 
 
+def split_of(game: str) -> str:
+    """The new tracker's tune / held-out halves (2026-11-16): by the game id's md5, so it never depends on the list."""
+    import hashlib
+    return "tune" if int(hashlib.md5(game.encode()).hexdigest(), 16) % 2 == 0 else "held"
+
+
+def top_hud(db, rep: str, names: dict) -> tuple[list[str], list]:
+    """(their deck, [(replay video t, their 4 cards, their elixir)] every 0.5 s) from the replay's top-side video."""
+    m = db.open_table("matches").search().where(f"match_id = '{rep}'").select(["pair_match_id"]).to_arrow().to_pylist()
+    top = m[0]["pair_match_id"] if m else None
+    if not top:
+        return [], []
+    tm = db.open_table("matches").search().where(f"match_id = '{top}'").select(["deck_names"]).to_arrow().to_pylist()
+    rows = db.open_table("hud_states").search().where(f"match_id = '{top}'").select(["t_video", "hand", "hand_state", "elixir"]) \
+        .limit(10**6).to_arrow().to_pylist()
+    out, last = [], -1e9
+    for r in sorted(rows, key=lambda r: r["t_video"]):
+        if r["t_video"] - last < 0.5 or not all(s == "card" for s in r["hand_state"]):
+            continue
+        last = r["t_video"]
+        out.append((round(r["t_video"], 2), [names.get(c) for c in r["hand"]], r["elixir"]))
+    return (tm[0]["deck_names"] if tm else []), out
+
+
+def paired_truth(db, g: str, cands: list, cards: list[dict], rerun: bool = False) -> dict:
+    """The answer key of one bot game, cached in CACHE/_truth (loading it from lancedb takes most of a scoring run):
+    among the replays whose opponent name fits, the one our own plays line up with best; its top-hand plays (with
+    where they landed and their elixir), the time offset, their deck and hand / elixir every 0.5 s."""
+    f = CACHE / "_truth" / f"{g}.json"
+    if f.exists() and not rerun:
+        return json.loads(f.read_text())
+    run = json.loads((CACHE / f"{g}.json").read_text())
+    best = None
+    for rep, ratio in cands:
+        truth, rep_own = truth_for(db, rep, cards)
+        off, agree = offset(run["own_plays"], rep_own)
+        if best is None or agree > best["agree"]:
+            best = {"rep": rep, "truth": truth, "off": off, "agree": agree, "ratio": ratio}
+    best["deck"], best["hud"] = top_hud(db, best["rep"], {c["id"]: c["name"] for c in cards})
+    f.parent.mkdir(parents=True, exist_ok=True)
+    f.write_text(json.dumps(best, default=float))
+    return best
+
+
+def replay_new(run: dict, cards: list[dict]) -> dict:
+    """bot77.live.opponent.PlayTracker over a game's cached units and own plays, as the live loop would feed it."""
+    from bot77.live.opponent import PlayTracker, replay
+    trk = PlayTracker.from_cards(cards, our_deck=DECK.split(","))
+    plays, hand = replay(trk, run["units"], run["clock"], run["own_plays"])
+    return {"plays": plays, "hand_series": hand}
+
+
+def score_hand(run: dict, pr: dict, off: float, lo: float, hi: float, g: str) -> list[dict]:
+    """Likely hand and elixir vs the replay's top hand every 0.5 s (live t -> replay t + off)."""
+    hud = pr.get("hud") or []
+    if not hud:
+        return []
+    import bisect
+    ts = [h[0] for h in hud]
+    out = []
+    for t, hand, sure, el in run["hand_series"]:
+        if not lo + 1.0 <= t <= hi:
+            continue
+        i = bisect.bisect_left(ts, t + off)
+        if i >= len(ts) or abs(ts[i] - t - off) > 0.6:
+            continue
+        real = set(hud[i][1])
+        out.append({"game": g, "t": t, "hit": len(real & set(hand)), "n": len([c for c in hand if c]), "sure": sure,
+                    "el": el, "el_real": hud[i][2], "deck_known": len(set(pr.get("deck") or [])) })
+    return out
+
+
+def report_hand(rows: list[dict]) -> None:
+    import numpy as np
+    print(f"\nlikely hand vs their real hand ({len(rows)} samples, every 0.5 s):")
+    for lab, sel in (("all", rows), ("8 cards known", [r for r in rows if r["sure"]]),
+                     ("deck partly known", [r for r in rows if not r["sure"]])):
+        if not sel:
+            continue
+        print(f"  {lab:18s} n {len(sel):6d}  cards right of 4: {np.mean([r['hit'] for r in sel]):.2f}  "
+              f"all 4 right {np.mean([r['hit'] == 4 for r in sel]):.0%}  named {np.mean([r['n'] for r in sel]):.2f}")
+    e = [r for r in rows if r["el_real"] is not None and r["el"] is not None]
+    if e:
+        err = np.array([r["el"] - r["el_real"] for r in e])
+        print(f"elixir estimate - their real elixir: MAE {np.abs(err).mean():.2f}, median {np.median(err):+.2f}, "
+              f"within 1 {np.mean(np.abs(err) <= 1):.0%}, within 2 {np.mean(np.abs(err) <= 2):.0%} (n {len(e)})")
+
+
 OWN_UNIT_S = 15.0  # a unit of a card we played this recently can be ours
 
 
@@ -211,6 +300,12 @@ def main():
     ap.add_argument("--window", type=float, default=2.0)
     ap.add_argument("--score-only", action="store_true")
     ap.add_argument("--rerun", action="store_true")
+    ap.add_argument("--tracker", choices=("old", "new"), default="old",
+                    help="old: the live OpponentTracker's cached plays; new: bot77.live.opponent.PlayTracker replayed "
+                         "over the cached units (seconds, no video)")
+    ap.add_argument("--split", choices=("all", "tune", "held"), default="all",
+                    help="tune / held: the half of the games the new tracker was tuned on, or the other half")
+    ap.add_argument("--rerun-truth", action="store_true", help="rebuild the cached answer keys (CACHE/_truth)")
     ap.add_argument("--out", default=None, help="write the per-play rows here (json)")
     a = ap.parse_args()
     db = lancedb.connect(str(ROOT / "data/lancedb"))
@@ -237,24 +332,23 @@ def main():
 
     our_deck = set(DECK.split(","))
     spawns = spawn_map(cards)
-    allt, allq, per_game = [], [], []
+    allt, allq, per_game, hands = [], [], [], []
     for g in games:
         f = CACHE / f"{g}.json"
         if not f.exists():
             continue
-        run = json.loads(f.read_text())
-        best = None  # among the replays whose opponent name fits: the one our own plays line up with best
-        for rep, ratio in cands[g]:
-            truth, rep_own = truth_for(db, rep, cards)
-            off, agree = offset(run["own_plays"], rep_own)
-            if best is None or agree > best[3]:
-                best = (rep, truth, off, agree, ratio)
-        rep, truth, off, agree, ratio = best
+        if a.split != "all" and split_of(g) != a.split:
+            continue
+        pr = paired_truth(db, g, cands[g], cards, a.rerun_truth)
+        rep, truth, off, agree, ratio = pr["rep"], pr["truth"], pr["off"], pr["agree"], pr["ratio"]
         if agree < 0.6:
             print(f"{g}: own plays agree only {agree:.0%} with {rep} (name {ratio:.2f}): skipped")
             continue
+        run = json.loads(f.read_text())
         if not run["clock"]:
             continue
+        if a.tracker == "new":
+            run = {**run, **replay_new(run, cards)}
         lo, hi = run["clock"][0][0], run["clock"][-1][0]  # the live recording's battle span (it can be cut short)
         truth = [p for p in truth if lo + 1.0 <= p["t"] - off <= hi - a.window]
         run = {**run, "plays": [q for q in run["plays"] if lo + 1.0 <= q["t"] <= hi - a.window]}
@@ -264,10 +358,15 @@ def main():
         for q in s["tracker"]:
             q.update(game=g, replay=rep, replay_t=round(q["t"] + off, 2))
         allt += s["truth"]; allq += s["tracker"]
+        if a.tracker == "new":
+            hands += score_hand(run, pr, off, lo, hi, g)
         nf = sum("match" in p for p in s["truth"])
         per_game.append((g, rep, round(ratio, 2), len(truth), len(s["tracker"]), nf, round(off, 2), round(agree, 2),
                          f"live {live_n.get(g)} / offline {len(run['plays'])}", f"span {hi - lo:.0f} s"))
+    print(f"tracker: {a.tracker}; games: {a.split}")
     report(allt, allq, per_game)
+    if hands:
+        report_hand(hands)
     if a.out:
         Path(a.out).write_text(json.dumps({"truth": allt, "tracker": allq, "games": per_game}, default=str))
 
