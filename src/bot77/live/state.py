@@ -2,6 +2,7 @@
 works for recordings works here), plus an online tracker of the opponent's plays from the unit detector."""
 from __future__ import annotations
 
+import os
 from collections import Counter
 from dataclasses import dataclass, field
 
@@ -26,6 +27,8 @@ class Unit:
     x: float  # arena tiles
     y: float
     conf: float
+    box: tuple[float, float, float, float] | None = None  # frame pixels (the HP-bar pairing needs it)
+    hp_frac: float | None = None  # off its HP bar (BOT77_LIVE_HP); None: no bar read (full)
 
 
 @dataclass
@@ -41,6 +44,7 @@ class LiveState:
     units: list[Unit] = field(default_factory=list)
     queue: list[int | None] = field(default_factory=list)  # our cycle after Next (bot77.live.cycle), front first
     hand_read: list[int | None] | None = None  # what the screen read this frame, before the tracker
+    towers: dict[str, float] | None = None  # HP fractions off the tower bars (BOT77_LIVE_HP); None: not read
 
     @property
     def in_battle(self) -> bool:
@@ -78,6 +82,10 @@ class LiveReader:
         self._clock: tuple[float, ClockRead] | None = None
         self._hand: tuple[np.ndarray, dict] | None = None
         self._units: tuple[float, list] | None = None
+        # Tower and troop HP off their bars (2026-11-16; bot77.readers.tower_hp / unit_hp). Off by default: every
+        # run before had towers and troops full. BOT77_LIVE_HP=1 (or set read_hp) turns it on.
+        self.read_hp = os.environ.get("BOT77_LIVE_HP") == "1"
+        self.tower_hp = None
 
     def played(self, slot: int, t: float) -> None:
         """The bot tapped this slot (the loop, after deploy)."""
@@ -174,6 +182,11 @@ class LiveReader:
                         hand[k] = None
         st = LiveState(t, hand, nxt_id, el.elixir, clock.time_left_s, clock.elapsed_s, clock.multiplier or 1,
                        clock.phase, queue=queue, hand_read=cur)
+        if self.read_hp and st.in_battle:
+            if self.tower_hp is None:
+                from bot77.readers.tower_hp import TowerHP
+                self.tower_hp = TowerHP()
+            st.towers = self.tower_hp.update(frame, t, clock.elapsed_s)
         if self.detector is not None and st.in_battle:
             if self.fast and self._units and t - self._units[0] < self.DETECT_EVERY:
                 st.units = list(self._units[1])
@@ -182,9 +195,24 @@ class LiveReader:
             for d in self.detector.detect(frame, self.layout):
                 card = class_to_card(d.name, self.names)[0]
                 cx, cy = (d.box[0] + d.box[2]) / 2, (d.box[1] + d.box[3]) / 2
-                st.units.append(Unit(card, d.name, d.team, (cx - ox) / tile, (cy - oy) / tile, d.conf))
+                st.units.append(Unit(card, d.name, d.team, (cx - ox) / tile, (cy - oy) / tile, d.conf, tuple(d.box)))
+            if self.read_hp:
+                attach_unit_hp(frame, st.units)
             self._units = (t, list(st.units))
         return st
+
+
+def attach_unit_hp(frame: np.ndarray, units: list[Unit]) -> None:
+    """Each unit's hp_frac off the HP bar over its head (bot77.readers.unit_hp: the offline S2 reader, same pairing:
+    same team by the bar's level badge, one bar per unit). In place; a unit with no bar stays None (full)."""
+    from bot77.readers.unit_hp import attach_bar_hp
+    bars = [{"cls": u.cls, "team": u.team, "box": u.box} for u in units if u.cls in ("bar", "bar-level") and u.box]
+    if not any(b["cls"] == "bar" for b in bars):
+        return
+    body = [i for i, u in enumerate(units) if u.box and u.cls not in ("bar", "bar-level") and "tower" not in u.cls]
+    got = attach_bar_hp(frame, [{"box": units[i].box, "team": units[i].team} for i in body], bars)
+    for i, g in zip(body, got):
+        units[i].hp_frac = g.get("hp_frac")
 
 
 class OpponentTracker:

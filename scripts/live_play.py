@@ -7,6 +7,7 @@ LanceDB (bot_actions, bot_games). Pull the games' replays afterwards with replay
   ... --policy selfplay --ckpt X --decision-s 0.1 --full-bar-guard  # the network, with the full-bar band-aid
 """
 import argparse
+import os
 from pathlib import Path
 
 import lancedb
@@ -33,7 +34,12 @@ ap.add_argument("--full-bar-guard", action="store_true",
 ap.add_argument("--deck", default="Giant,Battle Ram,Mini P.E.K.K.A,Mega Minion,Bomber,Goblin Hut,Fireball,Arrows",
                 help="our 8 cards (names): read against these from the first frame, the cycle tracker keeps the hand "
                      "(bot77.live.cycle); '' to learn the deck from the hand as before")
+ap.add_argument("--hp", action="store_true",
+                help="read tower and troop HP off their bars and give them to the selfplay mirror (BOT77_LIVE_HP=1; "
+                     "bot77.readers.tower_hp / unit_hp). Off: towers and troops read full, as every run before 2026-11-16")
 a = ap.parse_args()
+if a.hp:
+    os.environ["BOT77_LIVE_HP"] = "1"
 STOP_FILE.parent.mkdir(parents=True, exist_ok=True)
 STOP_FILE.unlink(missing_ok=True)
 print(ui.banner(a.device, a.layout, getattr(a, "games", 0) or 999, a.hours), flush=True)

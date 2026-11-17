@@ -16,11 +16,12 @@ from bot77.sim.scenario import place_units
 
 def mirror(own_deck: list[int], opp_deck: list[int], t_match: float, hand: list[int], elixir_own: float,
            elixir_opp: float, units: list[dict], towers: dict[str, float] | None = None,
-           opp_played: list | None = None) -> Sim | None:
+           opp_played: list | None = None, unit_hp: bool = False) -> Sim | None:
     """Engine ids throughout. units: card (our name), cls, team own / opp, x, y (feet, acting player's frame).
     towers: HP fractions {own_king, own_l, ...} (0 = destroyed; missing = full). opp_played: the opponent's plays so
     far, oldest first, each (engine id, seconds ago) (the observation's card-cycle blocks: which of their cards they
-    have, and how recently each was played; a bare id counts as played now). None if the hand can't be set.
+    have, and how recently each was played; a bare id counts as played now). unit_hp: a one-body unit's `hp_frac`
+    (its HP bar, read live) sets its HP (place_units unit_hp); off, every unit is full. None if the hand can't be set.
 
     Each play is stamped at its own match time (2026-10-31, Cole's review: "knowing their cycle, and what cards they
     have in their hand"): note_played_card stamps the engine's CURRENT tick, and the mirror is rebuilt per decision, so
@@ -41,7 +42,7 @@ def mirror(own_deck: list[int], opp_deck: list[int], t_match: float, hand: list[
             sim.set_tower(team, slot, 0.0)
         elif frac > 0:
             sim.set_tower(team, slot, frac)
-    place_units(sim, units)
+    place_units(sim, units, unit_hp=unit_hp)
     for e in opp_played or []:
         e, ago = e if isinstance(e, tuple) else (e, 0.0)
         sim.set_clock(max(0.0, float(t_match) - float(ago)))

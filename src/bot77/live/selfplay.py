@@ -6,8 +6,9 @@ second (its training cadence: 10 engine ticks), the live screen read (bot77.live
 engine's observation goes through the trained net, and its card + cell become a tap. The net's LSTM memory is kept
 across decisions and reset each game.
 
-Not mirrored: tower HP (the live bot doesn't read it: towers count as full), units' HP (full), the opponent's elixir
-(estimated: 5 + regeneration - what we saw them spend).
+Not mirrored by default: tower HP (towers count as full), units' HP (full); BOT77_LIVE_HP=1 reads both off their bars
+(2026-11-16, bot77.readers.tower_hp / unit_hp). The opponent's elixir is estimated (5 + regeneration - what we saw
+them spend).
 """
 from __future__ import annotations
 
@@ -91,7 +92,8 @@ class SelfPlayPolicy:
         spent = sum(sc.cost(e) for e in (sc.engine_id(p["card"]) for p in opp_plays) if e is not None)
         regen = sum(real_multiplier(t) for t in range(int(st.elapsed_s))) / REAL_ELIXIR_S
         units = [{"card": u.card, "cls": u.cls, "team": "own" if u.team == "friendly" else "opp", "x": u.x,
-                  "y": u.y + FEET_DY} for u in st.units
+                  "y": u.y + FEET_DY, **({"hp_frac": u.hp_frac} if getattr(u, "hp_frac", None) is not None else {})}
+                 for u in st.units
                  if u.card and u.team in ("friendly", "enemy") and "tower" not in u.cls and "bar" not in u.cls]
         # (card, seconds ago), so the cycle blocks' recency says which of their cards are cycled away (bot77.sim.mirror).
         # BOT77_FLAT_OPP_CYCLE=1: every play "just now", as every model up to school v4 was trained and live-tested
@@ -99,8 +101,10 @@ class SelfPlayPolicy:
         flat = os.environ.get("BOT77_FLAT_OPP_CYCLE") == "1"
         opp_played = [(e, 0.0 if flat else max(0.0, st.t - p["t"]))
                       for e, p in ((sc.engine_id(p["card"]), p) for p in opp_plays) if e is not None]
+        # tower and troop HP off their bars when the reader has them (BOT77_LIVE_HP=1, 2026-11-16); else all full
+        towers = getattr(st, "towers", None)
         return mirror(deck, opp_deck[:8], float(st.elapsed_s), hand, st.elixir, 5.0 + regen - spent, units,
-                      None, opp_played)
+                      towers, opp_played, unit_hp=towers is not None)
 
     def decide(self, st: LiveState, opp_plays: list[dict]) -> Action | None:
         if st.t - self.last_t < self.decision_s - 1e-3:

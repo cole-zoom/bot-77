@@ -141,7 +141,8 @@ def _body_max_hp(card: int, level: int | None) -> float:
     return float(us[0]["hp"]) if us else 0.0
 
 
-def place_units(sim: Sim, units: list[dict], per_body: bool = False) -> tuple[list[tuple], list[tuple]]:
+def place_units(sim: Sim, units: list[dict], per_body: bool = False,
+                unit_hp: bool = False) -> tuple[list[tuple], list[tuple]]:
     """Inject detected units (card, cls, team own/opp, x, y = FEET) as deployed, full HP. Bodies of one card within
     SQUAD_RADIUS are one deploy: one card per cluster (so a half-dead squad comes back whole). Spells are skipped.
     per_body: a one-body card or a card of independent bodies (_independent_bodies) is injected one body per
@@ -149,6 +150,8 @@ def place_units(sim: Sim, units: list[dict], per_body: bool = False) -> tuple[li
     instead (the fidelity check, 2026-11-15: a whole card per cluster put 4 Goblins for one flicker, and a Mini
     P.E.K.K.A that had fought came back fresh). Off by default: the live mirror and the imitation datasets were built
     with whole cards.
+    unit_hp (2026-11-16, the live mirror behind BOT77_LIVE_HP): whole cards as before, but a one-body card's
+    injections take its detections' `hp_frac` (lowest first; none = full). Squads stay full.
     -> (injected: (card, team, x, y, bodies seen, bodies injected), skipped: (card, why))."""
     injected, skipped, groups = [], [], []
     for u in units:
@@ -187,8 +190,13 @@ def place_units(sim: Sim, units: list[dict], per_body: bool = False) -> tuple[li
             continue
         k = -(-n // _squad_size(g["card"]))  # injections for this cluster
         cx, cy = sum(p[0] for p in g["pts"]) / n, sum(p[1] for p in g["pts"]) / n
-        for _ in range(k):
-            sim.inject(g["card"], cx, cy, g["team"])
+        fs = sorted(f for f in g["hp"] if f is not None) if unit_hp and _squad_size(g["card"]) == 1 else []
+        for i in range(k):
+            if i < len(fs):
+                lv = getattr(sim, "levels", {}).get(g["team"], {}).get(g["card"])
+                sim.inject(g["card"], cx, cy, g["team"], hp=max(1.0, fs[i] * _body_max_hp(g["card"], lv)))
+            else:
+                sim.inject(g["card"], cx, cy, g["team"])
         injected.append((sc.our_name(g["card"]), g["team"], round(cx, 2), round(cy, 2), n, k * _squad_size(g["card"])))
     return injected, skipped
 

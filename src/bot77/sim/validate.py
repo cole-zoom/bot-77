@@ -26,6 +26,7 @@ from bot77.features.frames import FEET_DY
 from bot77.sim import cards as sc
 from bot77.sim.engine import Sim
 from bot77.sim.spots import recover
+from bot77.readers.unit_hp import _badge_of, _bar_team, attach_bar_hp, bar_of  # noqa: F401  (moved 2026-11-16)
 from bot77.sim.scenario import SPELL_CLASSES, _engine_deck, _rows, _squad_size, place_units, side_decks
 
 RUN = "v5l_e15"
@@ -253,47 +254,10 @@ def windows(g: Game, max_start: int = MAX_START_UNITS) -> list[dict]:
     return out
 
 
-def _badge_of(bar: dict, bars: list[dict]) -> dict | None:
-    cy = (bar["box"][1] + bar["box"][3]) / 2
-    for q in bars:
-        if q["cls"] == "bar-level" and abs((q["box"][1] + q["box"][3]) / 2 - cy) < 15 \
-                and q["box"][0] <= bar["box"][0] + 4 and q["box"][2] > bar["box"][0]:
-            return q
-    return None
-
-
-def _bar_team(bar: dict, bars: list[dict]) -> str:
-    """A bar's team is its level badge's when it has one: the detector calls a bar's team by its fill colour, and a
-    just-hit bar is white (bl_2026-10-23_r25 50.5 s: our Giant's bar read 'opp', its badge 'own')."""
-    badge = _badge_of(bar, bars)
-    return badge["team"] if badge else bar["team"]
-
-
-def bar_of(unit_box: tuple, team: str, bars: list[dict]) -> tuple[tuple, tuple | None] | None:
-    """The HP bar (and its level badge) over a unit: same team, the bar's centre within the unit box's width, its
-    bottom from 45 px above the box's top to 30 px into it (the bar hangs over the unit's head)."""
-    x0, y0, x1, _ = unit_box
-    best, bd = None, 1e9
-    for b in bars:
-        if b["cls"] != "bar" or _bar_team(b, bars) != team:
-            continue
-        bx0, by0, bx1, by1 = b["box"]
-        cx = (bx0 + bx1) / 2
-        if x0 - 10 <= cx <= x1 + 10 and y0 - 45 <= by1 <= y0 + 30:
-            d = abs(cx - (x0 + x1) / 2) + abs(by1 - y0)
-            if d < bd:
-                best, bd = b, d
-    if best is None:
-        return None
-    badge = _badge_of(best, bars)
-    return best["box"], (badge["box"] if badge else None)
-
-
 def with_bar_hp(g: Game, t: float, units: list[dict]) -> list[dict]:
     """The units of the frame nearest t, each with hp_frac read off its HP bar (none: full, the bar shows only once
     a unit is damaged; 2026-11-15)."""
     from bot77.calibrate import read_frame
-    from bot77.readers.unit_hp import bar_fill
     i = bisect.bisect_left(g.frame_ts, t)
     ts = [g.frame_ts[j] for j in (i - 1, i) if 0 <= j < len(g.frame_ts)]
     if not ts:
@@ -307,23 +271,7 @@ def with_bar_hp(g: Game, t: float, units: list[dict]) -> list[dict]:
         frame = read_frame(video, tf)
     except Exception:  # noqa: BLE001  (video not on disk)
         return units
-    out, free = [dict(u) for u in units], list(bars)
-    # each bar to one unit, closest pairs first (overlapping units would otherwise share one)
-    pairs = []
-    for i, u in enumerate(out):
-        hit = bar_of(u["box"], u["team"], free) if u.get("box") else None
-        if hit:
-            pairs.append((abs((hit[0][0] + hit[0][2]) / 2 - (u["box"][0] + u["box"][2]) / 2) + abs(hit[0][3] - u["box"][1]), i))
-    for _, i in sorted(pairs):
-        u = out[i]
-        hit = bar_of(u["box"], u["team"], free)
-        if not hit:
-            continue
-        free = [b for b in free if b["box"] != hit[0]]
-        f = bar_fill(frame, hit[0], hit[1])
-        if f is not None:
-            u["hp_frac"] = f
-    return out
+    return attach_bar_hp(frame, units, bars)
 
 
 def _towers_at(g: Game, t_match: float) -> dict | None:

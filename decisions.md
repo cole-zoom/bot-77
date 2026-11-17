@@ -5700,3 +5700,34 @@ Same engine and bot rules as the v6 checks.
   2.48 of 4 once 8 known (true plays 3.91, random 1.99), 12% of the time.
 - Not wired into live_play: the live stack keeps OpponentTracker. PlayTracker takes update_state(LiveState) and
   own_play(card, t, x, y) (the bot's tap; with its spot, our own units are told apart by place too).
+
+### 2026-11-16: tower and troop HP read live (BOT77_LIVE_HP, default off)
+- **Tower HP** (bot77.readers.tower_hp, by fill colour, no OCR): 20 recorded phone games (11-14 / 11-15, 1 fps, 13.4k
+  tower reads) against the numbers printed on the same bars (Apple Vision OCR; princess max = commonest early number,
+  King max = its highest number seen twice): median |err| 0.000-0.003 per tower, within 0.05 on 94.5-99.6% (own
+  princesses 97.6 / 98.8%, theirs 96.7 / 95.5%, our King 96.1%, their King 99.6% of 763 reads). Most of the rest are
+  OCR misreads: 12 frames checked by eye (incl. 5 of the worst disagreements: 722 read as 2272, 928 as 428, 619 as
+  1619, ...) all within 0.02 of the printed number. Destroyed princess towers: 38 called, 0 false (no number after),
+  called ~1.5-2 s after the bar goes at 0.5 s reads.
+- What it took: fill end -> fraction fitted against the numbers (the fill starts under the level badge: x 230 / 480
+  is empty, not 234 / 486); their princess bars sit 15-20 px lower in some arenas, so their band is located per game
+  (>= 9 rows, or a half-drawn bar in the start animation locks a 5-row band: read 0.05 for 0.97); their pink hue
+  155-179 only (orange-red arena ground, hue 4-8, read as their bar); a just-hit bar flashes white (counts as fill);
+  something drawn over a princess bar is skipped up to 40 px (a unit's badge cut the run: 0.1 for 0.97); HP only goes
+  down (a rise needs 2 s; a fall > 0.45 needs a second read); a King counts as woken at its first read >= 0.5; an
+  all-track princess bar stands at a few HP (bot_2026-11-15_002049: 63 HP for 30 s).
+- **Troop HP** (validate's offline bar reader, bar <-> unit pairing moved to bot77.readers.unit_hp so live and S2
+  share it): 7 games at 2 reads/s, 3.2k detected units: a bar read for 42.5% (bars only show once damaged; Goblin Hut
+  / Cannon 84-100%, Spear Goblins 8%, Skeletons 0%), 62-68% of `bar` detections go to a unit. By eye, 36 bars: 26
+  within 0.1, 31 within 0.15, 4 badly off (a near-full bar read 0.01, a light-pink fill read 0.06, a bar under a
+  badge-less overlay, white text over the track): the reader under-reads by ~0.05 typically.
+- **Cost:** towers 0.18 ms (all six, p95 0.4) per read, every 0.5 s; troop bars 1.8 ms per detector frame (p95 5.7,
+  every 0.2 s). ~2 ms per frame worst case, well inside 15.
+- **Wiring:** LiveReader.read_hp (env BOT77_LIVE_HP=1, live_play.py --hp, dump_live_inputs.py --hp) fills
+  LiveState.towers and Unit.hp_frac; SelfPlayPolicy._mirror passes towers to mirror() and unit_hp=True, which sets a
+  one-body card's injected HP from its bar (place_units unit_hp; squads stay full; default off = byte-identical).
+- **Dump check** (bot_2026-11-14_172646, a16_live, --hp, 1602 decisions): every tower scalar now moves (our left 0.761
+  -> 0, their right -> 0, our King 1.305 -> 0.059, their King -> 0.590; 8-23 distinct values each); 1351 of 3558
+  mirrored units carry hp_frac (1038 decisions); board HP channels 0-7 sum e.g. 2.89 vs 3.63 full at 48 s.
+- Weak spots: troop bars (42% found, ~1 in 9 badly read); a King with no bar is "full" (one asleep but chipped
+  before its bar shows can't be told); their princess band is found once per game.

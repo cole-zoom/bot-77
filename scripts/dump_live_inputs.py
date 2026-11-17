@@ -98,7 +98,11 @@ def main():
     ap.add_argument("--real-cycle", action="store_true",
                     help="the opponent's plays with their real ages; by default every play reads 'just now' "
                          "(BOT77_FLAT_OPP_CYCLE=1), as every live run so far")
+    ap.add_argument("--layout", default="bluestacks_live", help="a16_live for the phone's games (2026-11-14 on)")
+    ap.add_argument("--hp", action="store_true", help="tower and troop HP off their bars (BOT77_LIVE_HP=1)")
     a = ap.parse_args()
+    if a.hp:
+        os.environ["BOT77_LIVE_HP"] = "1"
     if not a.real_cycle:
         os.environ["BOT77_FLAT_OPP_CYCLE"] = "1"
     video = ROOT / "data/raw/live_games" / a.game / "game.mkv"
@@ -110,7 +114,7 @@ def main():
     by_id, by_name = {c["id"]: c["name"] for c in cards}, {c["name"]: c["id"] for c in cards}
     deck = [by_name[n] for n in DECK.split(",")]
     det = Bot77Detector(Path(adopted_path("detector_live", "data/models/bot77_detector/v6l/best.pt")))
-    reader = LiveReader(Layout.load("bluestacks_live"), cards, det, deck=deck)
+    reader = LiveReader(Layout.load(a.layout), cards, det, deck=deck)
     reader.fast = True
     opp = OpponentTracker()
     pol = SP.SelfPlayPolicy(cards, a.ckpt, decision_s=0.1)
@@ -147,7 +151,10 @@ def main():
                                 "hand_read_by_screen": names(st.hand_read or []), "next": by_id.get(st.next),
                                 "queue": names(st.queue),
                                 "units": [{"card": u.card, "cls": u.cls, "team": u.team, "x": round(u.x, 2),
-                                           "y": round(u.y, 2), "conf": round(u.conf, 2)} for u in st.units]},
+                                           "y": round(u.y, 2), "conf": round(u.conf, 2),
+                                           "hp_frac": None if u.hp_frac is None else round(u.hp_frac, 2)}
+                                          for u in st.units],
+                                "towers": st.towers},
                 "opp_plays": [{"t": round(p["t"], 1), "card": p["card"]} for p in opp.plays],
                 "mirror_args": {"own_deck": [ename(e) for e in ar[0]], "opp_deck": [ename(e) for e in ar[1]],
                                 "t_match": ar[2], "hand": [ename(e) for e in ar[3]], "elixir_own": ar[4],
@@ -185,7 +192,7 @@ def main():
                "**3. Into the engine (mirror)**", "",
                f"- our deck {m['own_deck']}; their deck so far {m['opp_deck']}",
                f"- hand {m['hand']}, our elixir {m['elixir_own']}, their elixir (estimate) {m['elixir_opp_estimate']}",
-               f"- towers {m['towers'] or 'all full (not read live)'}; opp played (card, s ago) {m['opp_played']}",
+               f"- towers {m['towers'] or 'all full (not read live; --hp reads them)'}; opp played (card, s ago) {m['opp_played']}",
                f"- units: {m['units']}", "",
                "**4. The vector the net reads** (decoded)", "",
                f"- elixir {o['elixir']}, hand {o['hand']} costing {o['hand_costs']}",
