@@ -182,11 +182,17 @@ class LiveReader:
                         hand[k] = None
         st = LiveState(t, hand, nxt_id, el.elixir, clock.time_left_s, clock.elapsed_s, clock.multiplier or 1,
                        clock.phase, queue=queue, hand_read=cur)
+        return self.read_board(frame, t, st)
+
+    def read_board(self, frame: np.ndarray, t: float, st: LiveState) -> LiveState:
+        """The board half of read(): tower HP (BOT77_LIVE_HP) and the detected units, into `st`. Split out
+        (2026-11-16, step 5) so the training-data rebuild reads replays' boards through this same code with the clock
+        and hand from their offline HUD reads (scripts/read_replay_boards.py)."""
         if self.read_hp and st.in_battle:
             if self.tower_hp is None:
-                from bot77.readers.tower_hp import TowerHP
-                self.tower_hp = TowerHP()
-            st.towers = self.tower_hp.update(frame, t, clock.elapsed_s)
+                from bot77.readers.tower_hp import BARS_A16, BARS_BY_LAYOUT, TowerHP
+                self.tower_hp = TowerHP(bars=BARS_BY_LAYOUT.get(self.layout.layout_id, BARS_A16))
+            st.towers = self.tower_hp.update(frame, t, st.elapsed_s)
         if self.detector is not None and st.in_battle:
             if self.fast and self._units and t - self._units[0] < self.DETECT_EVERY:
                 st.units = list(self._units[1])

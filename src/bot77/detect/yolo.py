@@ -40,7 +40,9 @@ class Bot77Detector:
 
         self.model = YOLO(str(weights))
         self.conf = conf
-        self.device = device or "mps"
+        # mps on the Mac; BOT77_DETECT_DEVICE (e.g. "cuda:0") on a Linux GPU box (scripts/pod/, 2026-11-16)
+        import os
+        self.device = device or os.environ.get("BOT77_DETECT_DEVICE") or "mps"
 
     arena = UnitDetector.arena  # same detector crop as KataCR's
 

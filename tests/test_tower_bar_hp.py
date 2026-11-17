@@ -50,8 +50,20 @@ def test_kings_full_until_their_bar_shows_and_hp_never_jumps_up():
     assert abs(tw.update(frame_with({"own_king": 1.0}), 1.0, 11)["own_king"] - 0.8) < 0.02  # a one-read jump up
 
 
-def test_a_fall_too_big_for_one_read_needs_a_second():
+def test_a_fall_too_big_for_one_read_must_hold_a_second():
     tw = TowerHP(every=0.0)
     tw.update(frame_with({"own_l": 1.0}), 0.0, 10)
     assert abs(tw.update(frame_with({"own_l": 0.1}), 0.5, 10)["own_l"] - 1.0) < 0.02
-    assert abs(tw.update(frame_with({"own_l": 0.1}), 1.0, 11)["own_l"] - 0.1) < 0.02
+    assert abs(tw.update(frame_with({"own_l": 0.1}), 1.0, 11)["own_l"] - 1.0) < 0.02
+    assert abs(tw.update(frame_with({"own_l": 0.1}), 1.5, 11)["own_l"] - 0.1) < 0.02
+
+
+def test_a_brief_overlay_is_not_a_destroyed_tower():
+    """BlueStacks' "No card selected" over a bar for ~0.5 s read it near empty (bot_2026-10-31_012417)."""
+    tw = TowerHP(every=0.0)
+    tw.update(frame_with({"own_l": 1.0}), 0.0, 10)
+    tw.update(frame_with({"own_l": 0.04}), 0.5, 10)
+    tw.update(frame_with({"own_l": 0.04}), 1.0, 11)
+    for k in range(10):
+        f = tw.update(frame_with({"own_l": 1.0}), 1.5 + k * 0.5, 12 + k)
+    assert abs(f["own_l"] - 1.0) < 0.02

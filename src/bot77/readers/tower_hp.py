@@ -30,6 +30,20 @@ BARS_A16 = {
     "opp_r": (767, 770, 880, 325, 405),
     "opp_king": (480, 486, 634, 105, 185),
 }
+# BlueStacks (layout bluestacks_live, the bot's games up to 11-13; 2026-11-16, step 5): the same bars measured on its
+# frames (princess bars at 20 s of bot_2026-10-31_013343, the Kings' fill rows on bot_2026-11-02_122958 36 s; x
+# scales 1.05 from the phone's). Their windows as the phone's: the band is found in them.
+BARS_BLUESTACKS = {
+    "own_l": (214, 218, 333, 1190, 1196),
+    "own_r": (780, 784, 899, 1190, 1196),
+    "own_king": (477, 484, 640, 1448, 1454),
+    "opp_l": (212, 216, 334, 232, 312),
+    "opp_r": (778, 782, 900, 232, 312),
+    "opp_king": (479, 486, 641, 30, 110),
+}
+# Not the replays (layout replay_bottom): their frames are dimmed (their pink fill reads V ~153, under the bright
+# threshold), so the live tower reader doesn't apply; the pro shards keep the replays' OCR'd tower HP.
+BARS_BY_LAYOUT = {"a16_live": BARS_A16, "bluestacks_live": BARS_BLUESTACKS}
 FIXED = {"own_l", "own_r", "own_king"}
 # OpenCV hue ranges. Their bar is pink 160-178 (fill) / 162-165 (track); not through red: some arenas' ground is
 # orange-red (hue 4-8, S 190) and read as their bar (bot_2026-11-15_012028: 0.09 for 0.91; bot_2026-11-15_030845
@@ -42,9 +56,14 @@ GONE_S = 1.5  # a princess bar unseen this long: the tower is destroyed...
 GONE_BELOW = 0.6  # ...if it was last read at or below this (bars vanish for 1-3 s in the start animation)
 DROP_TOL = 0.45  # ...and a fall of more than this in one read (no card does that in 0.5 s) only on a second read
 WAKE = 0.5  # a King's first bar must read at least this (before it wakes its band can catch a unit's bar)
+DROP_S = 1.0  # ...held this long (2026-11-16: BlueStacks' red "No card selected" over their bar read 0.04 for 0.5 s,
+              # and the full bar coming back counted as a rise, then as a destroyed tower, bot_2026-10-31_012417)
 UP_TOL, UP_S = 0.05, 2.0  # HP only goes down: a read this much above the last counts only after UP_S of such reads
                           # (a destroyed tower's spot flashed pink for 5 s, read 0.41 -> 1.0, bot_2026-11-14_172646)
 BAND_COVER = 0.85  # a row of their bar: this share of its columns fill or track
+START_S = 4.0  # no reads in the first seconds of the clock: the bars draw in from the left (step 5, 2026-11-16: on
+               # BlueStacks the half-drawn opp_r bar read 0.04 twice at 0-0.5 s and the tower was called destroyed for
+               # the whole game, bot_2026-10-31_012417); nothing can damage a tower that early
 BAND_MIN = 9  # rows: their bars are 12-16 tall; a 5-row band locked in the start animation read 0.05 for 0.97
 
 
@@ -144,7 +163,7 @@ class TowerHP:
         self.band: dict[str, tuple[int, int] | None] = {k: None for k in self.bars}
         self.gone_since: dict[str, float | None] = {k: None for k in self.bars}
         self.up_since: dict[str, float | None] = {k: None for k in self.bars}
-        self.drop_seen: dict[str, float | None] = {k: None for k in self.bars}
+        self.drop_seen: dict[str, tuple[float, float] | None] = {k: None for k in self.bars}
         self.woken: set[str] = set()
         self.destroyed: set[str] = set()
         self.last_t = -1e9
@@ -155,7 +174,7 @@ class TowerHP:
             self.reset()  # the clock went back: a new game
         if elapsed_s is not None:
             self.last_elapsed = elapsed_s
-        if t - self.last_t < self.every - 1e-6:
+        if t - self.last_t < self.every - 1e-6 or (elapsed_s is not None and elapsed_s < START_S):
             return self.fracs()
         self.last_t = t
         for name in self.bars:
@@ -179,9 +198,12 @@ class TowerHP:
                     f, absent = None, True  # a destroyed tower's spot can flash pink (bot_2026-11-14_172646 58 s)
             else:
                 self.up_since[name] = None
-            if f is not None and f < self.frac[name] - DROP_TOL:  # a fall too big for one read: read it twice
-                if self.drop_seen[name] is None or abs(self.drop_seen[name] - f) > 0.1:
-                    self.drop_seen[name], f = f, None
+            if f is not None and f < self.frac[name] - DROP_TOL:  # a fall too big for one read: hold it DROP_S
+                d = self.drop_seen[name]
+                if d is None or abs(d[0] - f) > 0.1:
+                    self.drop_seen[name], f = (f, t), None
+                elif t - d[1] < DROP_S - 1e-6:
+                    f = None
             else:
                 self.drop_seen[name] = None
             if f is not None:
