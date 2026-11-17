@@ -5860,3 +5860,20 @@ Same engine and bot rules as the v6 checks.
   new: v8 0.313 / 0.186 / 0.656 / 5.39 / 0.059, v10 0.308 / 0.185 / 0.647 / 5.39 / 0.066.
   The new reads don't lift either model offline (both ~0.015-0.025 lower on card, inside noise: SE ~0.023 at 422
   plays), and v10 does no better with its block filled than with it zeroed. The detector (v6l) is the same in both.
+
+## 2026-11-17 — Step 8: live A/B, old harness vs new (v8 e3 both arms, Galaxy A16)
+
+- **Setup:** data/logs/ab_harness.sh: one live_play.py run a game, A B B A blocks (Cole: "Do it A B B A"). A = v8 e3 as
+  before; B = v8 e3 with --hp --play-tracker (tower / troop HP, PlayTracker). v8 doesn't read the new input block, so B
+  tests the HP and tracker feeding its existing inputs, not opponent elixir / likely hand / spells in flight.
+  Logs: data/live/ab_harness/ (summary.log, gameNN_X.log, excluded.txt).
+- **Excluded (4):** game 1 A (started 20 s late after a loop crash, fixed 5809344), game 2 B (wifi out), game 9 A
+  (connection lost mid-game on the hotspot). Two blocks cut short by connection drops; each kept equal A and B.
+- **Result, 20 clean games: A 4-6, B 4-6.** A: games 4,5,8,10,13,14,16,19,20,23 = W L L L W W W L L L; B: 3,6,7,11,
+  12,15,17,18,21,22 = W L L L L L W W W L. Trophies 1879 -> 1650s over the session in both arms (both drew the same range
+  through the A B B A order). No stream freezes in any counted game. Game 10 (A) a real 3-crown loss in ~1 min.
+- **Verdict: no difference at 10 games an arm** (a 95% interval on each arm's win rate is ~+-0.3). The new harness
+  doesn't hurt live; whether it helps needs either far more games or a model that reads the block (v10).
+- **Fixes during the run:** loop.py's local `import os` crashed every game at its start (5809344); our profile popup,
+  opened by the between-games nudge on the A16, is now closed by finding its red X (ad9c825; BlueStacks' fixed
+  (995, 190) misses on the A16).
