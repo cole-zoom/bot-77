@@ -5647,3 +5647,23 @@ Same engine and bot rules as the v6 checks.
   cards they can hold, from the cycle: a card played goes to the back; once their 8 are known the hand is the 4 not
   among the last 4 played; before that, partial). Both go into the same input-layout change as opponent elixir, so
   the brain is rebuilt and retrained once.
+
+### 2026-11-16: live opponent tracker measured against the phone replays
+- **100 bot games (11-14 / 11-15), 2133 opponent plays in their replays' top hand, 4447 tracker plays.** Recall (right
+  card within 2 s) **66%**, +408 found with a wrong card; precision **32%**; card accuracy 77%; timing median +0.20 s
+  (IQR 0.0..+0.6); place median 0.4 tiles from the replay's first sighting, 90% within 2 tiles. 43 tracker plays a
+  game vs 20 real. Recall by time since their previous play: 0-2 s 54%, 2-4 s 63%, 4 s+ 67%, first play 71%.
+- **Worst cards** (recall): Arrows 7% (spells barely seen), Valkyrie 17% (58 read as another card), Fire Spirit 24%,
+  Fireball 32%, Barbarians 38%, Goblins 40%. Best: Cannon / Inferno / Skeleton Dragons / Tombstone 95-100%, Giant 93%.
+- **Phantoms 2637 (26 a game)**: our own units read as theirs 1075 (Mega Minion 426, Mini P.E.K.K.A 219, Bomber 151:
+  bot_2026-11-14_150329 clock 13.3 s, our Mega Minion at the right bridge); cards in neither deck 1002 (Rage 311,
+  Poison 155 — our Arrows' splash reads as their spell, bot_2026-11-14_150715 clock 22.2 s; Spear Goblins 117 = our
+  Goblin Hut's spawns); late/early double counts 247; recounts 154 (their Barbarians still fighting, undetected > 6 s,
+  counted again: bot_2026-11-14_150329 clock 31.2 s); spawns of their cards 132.
+- Method (scripts/eval_live_tracker.py): the live run never logs the tracker's plays, so LiveReader (a16_live, v6l,
+  fast) + OpponentTracker were re-run over game.mkv at 10 reads/s; its counts match the live bot_games.opp_plays
+  (4447 vs 4467, median |diff| 2 a game). Time map from our own plays (cycle tracker vs the replay's bottom hand).
+- **bot_pairs pairs some phone games wrongly**: the bot's opening repeats, so bot_2026-11-14_160808 (vs Lisandro)
+  matched another game's replay (EUtired luis) at 89%. The eval pairs by opponent name (live log OCR vs replay OCR,
+  >= 0.7), then own plays (>= 0.6); 10 of 56 bot_pairs disagree with it. 8 name matches failed own plays (rematches /
+  missing replays) and were skipped. Some live recordings stop early (160808: 61 s): truth is clipped to them.
