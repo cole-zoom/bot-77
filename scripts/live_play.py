@@ -37,7 +37,13 @@ ap.add_argument("--deck", default="Giant,Battle Ram,Mini P.E.K.K.A,Mega Minion,B
 ap.add_argument("--hp", action="store_true",
                 help="read tower and troop HP off their bars and give them to the selfplay mirror (BOT77_LIVE_HP=1; "
                      "bot77.readers.tower_hp / unit_hp). Off: towers and troops read full, as every run before 2026-11-16")
+ap.add_argument("--play-tracker", action="store_true",
+                help="the new opponent tracker (bot77.live.opponent.PlayTracker) for the cycle blocks, and the new input "
+                     "block (opponent elixir, likely hand, spells in flight) for a checkpoint that reads it "
+                     "(BOT77_PLAY_TRACKER=1). Off: OpponentTracker, as every run before 2026-11-16")
 a = ap.parse_args()
+if a.play_tracker:
+    os.environ["BOT77_PLAY_TRACKER"] = "1"
 if a.hp:
     os.environ["BOT77_LIVE_HP"] = "1"
 STOP_FILE.parent.mkdir(parents=True, exist_ok=True)

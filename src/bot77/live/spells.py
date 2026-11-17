@@ -52,6 +52,9 @@ THEIR_KING, OUR_KING = (9.0, 4.67), (9.0, 25.13)
 THEIR_TOWERS = [(3.45, 7.23), (14.5, 7.23), THEIR_KING]
 OUR_TOWERS = [(3.45, 22.57), (14.5, 22.57), OUR_KING]
 FEET_DY = 1.27  # bot77.features.frames.FEET_DY
+# where a thrown spell leaves from: the King's sprite (its box centre), not its feet: a Fireball is first seen level
+# with the King's feet, so the line from the feet ran sideways (2026-11-16, eval_spell_slots landing check)
+THEIR_LAUNCH, OUR_LAUNCH = (THEIR_KING[0], THEIR_KING[1] - FEET_DY), (OUR_KING[0], OUR_KING[1] - FEET_DY)
 
 
 def edist(a, b) -> float:
@@ -86,6 +89,8 @@ class SpellParams:
     move_min: float = 1.0  # engine tiles moved before its direction counts
     linger_s: float = 0.5  # a landed spell (time to impact 0) stays this long after its last sighting
     ahead_min: float = -1.0  # engine tiles: a target this far behind the spell (along its line) can still be hit
+    line_slack: float = 1.0  # engine tiles beyond the radius (the line from the King is rough: the sprite arcs)
+    cone: float = 0.25  # extra engine tiles of reach per tile along the line, when its direction is from the King
     default_ahead: float = 5.0  # no target on its line: lands this many engine tiles on
     shot_r: float = 2.5  # our tiles: a spell read this close to a unit that shoots like it is its shot
     build_dust_r: float = 1.5  # a splash read this close to a building is its landing dust (PlayTracker.Params)
@@ -181,12 +186,14 @@ class SpellTracker:
         if speed is None or tr.splash:
             tr.land, tr.tti = (tr.x, tr.y), 0.0
             return
-        origin = THEIR_KING if tr.owner == "opp" else OUR_KING
+        origin = THEIR_LAUNCH if tr.owner == "opp" else OUR_LAUNCH
         targets = [(x, y) for team, x, y in board if team == ("friendly" if tr.owner == "opp" else "enemy")]
         towers = OUR_TOWERS if tr.owner == "opp" else THEIR_TOWERS
         (_, xa, ya) = tr.pts[0]
         p = (tr.x, tr.y)
-        a = (xa, ya) if edist((xa, ya), p) >= self.p.move_min else origin
+        moved = edist((xa, ya), p) >= self.p.move_min
+        a = (xa, ya) if moved else origin
+        cone = 0.0 if moved else self.p.cone  # a line from the King only: rougher the further out
         # the line in engine-scaled coordinates
         ux, uy = p[0] - a[0], (p[1] - a[1]) / Y_SCALE
         n = math.hypot(ux, uy)
@@ -200,13 +207,16 @@ class SpellTracker:
             vx, vy = c[0] - p[0], (c[1] - p[1]) / Y_SCALE
             s = vx * ux + vy * uy
             perp = abs(vx * uy - vy * ux)
-            if s >= self.p.ahead_min and perp <= r:
+            if s >= self.p.ahead_min and perp <= r + self.p.line_slack + cone * max(s, 0.0):
                 caught = sum(edist(c, o) <= r for o in targets) + 1.5 * sum(edist(c, o) <= r for o in towers)
                 cands.append((-caught, perp, s, c))
         if cands:
             land = min(cands)[3]
-        else:
-            land = (p[0] + ux * self.p.default_ahead, p[1] + uy * self.p.default_ahead * Y_SCALE)
+        else:  # nothing on its line: on toward the target side's princess towers
+            row = towers[0][1]
+            k = (row - p[1]) / (uy * Y_SCALE) if abs(uy) > 0.2 and (row - p[1]) * uy > 0 else self.p.default_ahead
+            land = (p[0] + ux * k, p[1] + uy * k * Y_SCALE)
+        land = (min(18.0, max(0.0, land[0])), min(OUR_KING[1] + 1.0, max(THEIR_KING[1] - 1.0, land[1])))
         tr.land = land
         tr.tti = max(0.0, edist(p, land) / speed - (t - tr.t))
 

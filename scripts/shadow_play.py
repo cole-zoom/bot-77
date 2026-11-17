@@ -156,7 +156,10 @@ class ShadowPolicy(SelfPlayPolicy):
         act = super().decide(st, opp_plays)
         if len(self.log) > n and self._obs is not None:
             e = self.log[-1]
-            self.rows.append({"t": st.t, "obs": self._obs, "p": e["p"], "hand": list(st.hand), "label": None,
+            obs = self._obs
+            if self.opp_inputs is not None:  # --play-tracker: the new input block, as live play computes it
+                obs = np.concatenate([obs, self.opp_inputs.block(st.t).astype(np.float16)])
+            self.rows.append({"t": st.t, "obs": obs, "p": e["p"], "hand": list(st.hand), "label": None,
                               "act": None if act is None else (act.slot, act.x, act.y)})
         return None  # shadow: never tap
 
@@ -216,11 +219,15 @@ def main():
     ap.add_argument("--games", type=int, default=30)
     ap.add_argument("--weights", default=adopted_path("detector_live", "data/models/bot77_detector/v6l/best.pt"))
     ap.add_argument("--deck", default="Giant,Battle Ram,Mini P.E.K.K.A,Mega Minion,Bomber,Goblin Hut,Fireball,Arrows")
+    ap.add_argument("--play-tracker", action="store_true",
+                    help="the new opponent tracker for the cycle blocks, and the new input block (bot77.live.extra_obs) "
+                         "saved after the 13,977 floats of every decision (live_play.py --play-tracker)")
     a = ap.parse_args()
     STOP_FILE.unlink(missing_ok=True)
     cards = lancedb.connect("data/lancedb").open_table("cards").search().where("kind = 'deck_card'").limit(1000) \
         .to_arrow().to_pylist()
     by_name = {c["name"]: c["id"] for c in cards}
+    id_name = {c["id"]: c["name"] for c in cards}
     deck = [by_name[n.strip()] for n in a.deck.split(",")]
     layout = Layout.load(a.layout)
     dev = Device(a.device, stream=True)
@@ -262,6 +269,10 @@ def main():
                 game = {"id": time.strftime("%Y-%m-%d_%H%M%S"), "reader": reader, "opp": OpponentTracker(),
                         "policy": ShadowPolicy(cards, a.ckpt, decision_s=0.1), "seen": time.time(),
                         "n_raw": len(touches.raw), "plays": 0}
+                if a.play_tracker:
+                    from bot77.live.extra_obs import OppInputs
+                    game["opp"] = OppInputs(cards, [n.strip() for n in a.deck.split(",")])
+                    game["policy"].opp_inputs = game["opp"]
                 touches.drain()  # touches from the menus
                 print(ui.c(f"  … game {game['id']}", "grey"), flush=True)
             else:
@@ -275,6 +286,8 @@ def main():
         for slot, px, py, tp in touches.drain():
             tile, ox, oy = game["reader"].tile_px(im.shape[1])
             x, y = (px - ox) / tile, (py - oy) / tile - AIM_DY  # where his unit lands, as the bot's own aim
+            if hasattr(game["opp"], "own_play") and 0 <= slot < 4 and st.hand[slot] is not None:
+                game["opp"].own_play(id_name[st.hand[slot]], st.t, x, y)  # his play: tells his units apart
             game["reader"].played(slot, st.t)  # the cycle tracker, as after the bot's own play
             if game["policy"].label(tp - dev.t0, slot, x, y):  # his touch on the device clock
                 game["plays"] += 1

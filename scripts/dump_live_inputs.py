@@ -21,6 +21,10 @@ Out: data/reviews/live_inputs/<game>/decisions.jsonl (every decision), obs.npz, 
 same pixels, a frame's timing can differ by ~0.1 s), and no taps are made, so the "tapped slot stays blank" hold
 (LiveReader.played) never fires; the hand is what the screen and tracker show. The opponent's plays read "just now"
 as in every live run (BOT77_FLAT_OPP_CYCLE=1); --real-cycle for their real ages.
+
+--play-tracker (2026-11-16): the new opponent tracker (PlayTracker) in place of OpponentTracker, fed our plays as the
+cycle tracker logs them, and the new input block (bot77.live.extra_obs: their elixir, likely hand, spells in flight)
+appended to every saved vector and decoded under "extra_block".
 """
 import argparse
 import json
@@ -38,6 +42,7 @@ sys.path.insert(0, str(FORK))
 import bot77.live.selfplay as SP  # noqa: E402
 from bot77.detect.yolo import Bot77Detector  # noqa: E402
 from bot77.layout import Layout  # noqa: E402
+from bot77.live.extra_obs import BASE_DIM, OppInputs, decode_block  # noqa: E402
 from bot77.live.state import LiveReader, OpponentTracker  # noqa: E402
 from bot77.models import adopted_path  # noqa: E402
 from bot77.sim import cards as sc  # noqa: E402
@@ -81,11 +86,14 @@ def decode(obs: np.ndarray) -> dict:
         hand.append(ename(int(nz[0])) if len(nz) else None)
     j = i + 5 + 4 * NCARD
     scal = {SCALARS[k]: round(float(obs[j + k]), 4) for k in range(10)}
-    cyc = obs[j + 10:]
+    cyc = obs[j + 10: j + 10 + 2 * NCARD]
     seen, rec = cyc[:NCARD], cyc[NCARD:]
     opp_cycle = [{"card": ename(int(c)), "seen": 1, "recency": round(float(rec[c]), 3)} for c in np.nonzero(seen)[0]]
-    return {"size": int(obs.size), "elixir": round(elixir, 2), "hand": hand, "hand_costs": costs, "scalars": scal,
-            "opp_cycle": opp_cycle, "board_nonzero_cells": board}
+    out = {"size": int(obs.size), "elixir": round(elixir, 2), "hand": hand, "hand_costs": costs, "scalars": scal,
+           "opp_cycle": opp_cycle, "board_nonzero_cells": board}
+    if obs.size > BASE_DIM:  # the new input block after the engine's 13,977 floats (bot77.live.extra_obs)
+        out["extra_block"] = decode_block(obs[BASE_DIM:])
+    return out
 
 
 def main():
@@ -100,6 +108,8 @@ def main():
                          "(BOT77_FLAT_OPP_CYCLE=1), as every live run so far")
     ap.add_argument("--layout", default="bluestacks_live", help="a16_live for the phone's games (2026-11-14 on)")
     ap.add_argument("--hp", action="store_true", help="tower and troop HP off their bars (BOT77_LIVE_HP=1)")
+    ap.add_argument("--play-tracker", action="store_true",
+                    help="PlayTracker for the cycle blocks and the new input block (BOT77_PLAY_TRACKER=1)")
     a = ap.parse_args()
     if a.hp:
         os.environ["BOT77_LIVE_HP"] = "1"
@@ -118,6 +128,10 @@ def main():
     reader.fast = True
     opp = OpponentTracker()
     pol = SP.SelfPlayPolicy(cards, a.ckpt, decision_s=0.1)
+    if a.play_tracker:
+        opp = OppInputs(cards, DECK.split(","))
+        pol.opp_inputs = opp
+    n_own = 0
 
     cap = {}
     orig = SP.mirror
@@ -134,6 +148,11 @@ def main():
             st = reader.read(im, t)
             if not st.in_battle:
                 continue
+            if a.play_tracker and reader.tracker is not None:  # our plays, as the cycle tracker logs them (no taps here)
+                ev = [e for e in reader.tracker.events if e.kind == "play"]
+                for e in ev[n_own:]:
+                    opp.own_play(by_id.get(e.old), e.t)
+                n_own = len(ev)
             opp.update(st)
             cap.clear()
             pol.decide(st, opp.plays)
@@ -142,6 +161,8 @@ def main():
             n_log = len(pol.log)
             d = pol.log[-1]
             obs = np.asarray(cap["sim"].env.get_observation_for_team(0), dtype=np.float32)
+            if a.play_tracker:
+                obs = np.concatenate([obs, opp.block(st.t)])
             obs_all.append(obs)
             ar = cap["args"]
             row = {
@@ -198,6 +219,7 @@ def main():
                f"- elixir {o['elixir']}, hand {o['hand']} costing {o['hand_costs']}",
                f"- scalars: {o['scalars']}",
                f"- opponent cycle: {[(c['card'], c['recency']) for c in o['opp_cycle']]}",
+               *([f"- new block: {o['extra_block']}"] if "extra_block" in o else []),
                f"- board: {len(o['board_nonzero_cells'])} non-zero cells:", ""]
         md += [f"  - ({c['x']:2d},{c['y']:2d}) {c['what']}: {c['value']}" for c in o["board_nonzero_cells"]
                if c["channel"] < 8]

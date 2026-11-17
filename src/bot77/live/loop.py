@@ -5,6 +5,7 @@ keyed by the usual pipeline, so the bot's games become training data."""
 from __future__ import annotations
 
 import json
+import os
 import signal
 import time
 from dataclasses import asdict
@@ -214,8 +215,17 @@ class Runner:
         reader.fast = self.fast_reader  # decisions every 0.1 s: clock / hand / units cached (bot77.live.state)
         if not self.deck and len(self.known_deck) == 8:  # our deck from earlier games: read only those 8 cards from the first frame
             reader.deck, reader.reader = list(self.known_deck), reader.full.restrict(set(self.known_deck))  # (~1 s -> ~0.1 s)
+        policy = self.policy_factory()
+        opp = OpponentTracker()
+        if os.environ.get("BOT77_PLAY_TRACKER") == "1":
+            # the new opponent tracker (bot77.live.opponent.PlayTracker, 2026-11-16) for the cycle blocks, plus the new
+            # input block it feeds (bot77.live.extra_obs) for a net that reads one
+            from bot77.live.extra_obs import OppInputs
+            ours = reader.deck or self.deck or self.known_deck or []
+            opp = OppInputs(self.cards, [self.names[c] for c in ours if c in self.names])
+            policy.opp_inputs = opp
         return {"id": gid, "t0": t, "reader": reader,
-                "policy": self.policy_factory(), "opp": OpponentTracker(), "n": 0, "rec": rec, "after": [],
+                "policy": policy, "opp": opp, "n": 0, "rec": rec, "after": [],
                 "num": len(self.games) + 1, "wall0": time.time(), "opp_name": None, "last_status": 0.0, "result": "?"}
 
     @staticmethod
@@ -275,6 +285,8 @@ class Runner:
         game["reader"].played(act.slot, st.t)
         game["after"].append((k, st.t + 2.0))
         game["policy"].record_own(st.t, act.card)
+        if hasattr(game["opp"], "own_play"):  # PlayTracker: our tap and its spot tell our units and spells apart
+            game["opp"].own_play(act.card, st.t, act.x, act.y)
         game["n"] += 1
         row = {"game_id": game["id"], "t": float(st.t), "card": act.card, "slot": act.slot, "x_tiles": float(act.x), "y_tiles": float(act.y),
                "reason": act.reason, "elixir": float(st.elixir), "hand": json.dumps(st.hand, default=float),
@@ -306,6 +318,9 @@ class Runner:
         log = getattr(game["policy"], "log", None)
         if log:
             (GAMES_DIR / game["id"] / "decisions.json").write_text(json.dumps(log))
+        if hasattr(game["opp"], "trk"):  # BOT77_PLAY_TRACKER: what it counted, for checking against the replay
+            (GAMES_DIR / game["id"] / "opp_plays.json").write_text(json.dumps(
+                {"plays": game["opp"].plays, "own": game["opp"].trk.own}, default=float))
         tr = getattr(game["reader"], "tracker", None)
         if tr is not None:  # the cycle tracker's plays and re-syncs (bot77.live.cycle), for the live check and CI
             (GAMES_DIR / game["id"] / "cycle.json").write_text(json.dumps(

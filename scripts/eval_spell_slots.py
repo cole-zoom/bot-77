@@ -7,7 +7,9 @@ is found when a slot of theirs holds that card within [cast - 0.5, cast + 3] s.
 
 Reported per card: found, the delay from cast to the first slot, the slot's predicted time to impact then, and how
 far ahead of the impact it was: impact ~ cast + (engine tiles from their King to the slot's landing spot) / the
-game-file speed (Fireball 10 tiles/s, Rocket 5.8, Arrows 18); and slots of theirs with no real spell (phantoms).
+game-file speed (Fireball 10 tiles/s, Rocket 5.8, Arrows 18), the landing taken as where the spell was last seen
+(a lower bound: it may have flown on unseen); the slot's landing guess against that last sighting when it was seen
+again >= 0.3 s later; and slots of theirs with no real spell (phantoms).
 
   uv run --no-sync python scripts/eval_spell_slots.py [--split all|tune|held]
 """
@@ -25,7 +27,7 @@ sys.path.insert(0, str(ROOT / "third_party" / "clash-royale-env"))
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from eval_live_tracker import CACHE, DECK, own_spots, split_of  # noqa: E402
 from bot77.live.extra_obs import OppInputs  # noqa: E402
-from bot77.live.spells import THEIR_KING, edist  # noqa: E402
+from bot77.live.spells import THEIR_LAUNCH, edist  # noqa: E402
 
 OWN_LAG = 1.5
 FILE_SPEED = {"Fireball": 10.0, "Rocket": 5.83, "Arrows": 18.0, "Goblin Barrel": 6.7, "Giant Snowball": 13.3}
@@ -78,7 +80,8 @@ def main():
         n_games += 1
         lo, hi = run["clock"][0][0], run["clock"][-1][0]
         minutes += (hi - lo) / 60
-        series, _ = run_game(run, pr, cards)
+        series, opp = run_game(run, pr, cards)
+        ends = {id(tr): tr for tr in opp.spells.done + opp.spells.tracks}
         first = {}  # track id -> (t, card, owner, tti, land) at its first slot appearance as theirs
         for t, row in series:
             for tid, card, owner, tti, land in row:
@@ -98,9 +101,14 @@ def main():
                 tid = hits[0][1]
                 used.add(tid)
                 t1, _, tti, land = first[tid]
-                flight = edist(THEIR_KING, land) / FILE_SPEED.get(p["card"], 10.0) if land else None
+                tr = ends.get(tid)
+                # impact ~ cast + the flight from their King to where it was last seen (on its way or landing: a
+                # lower bound), at the game files' speed; independent of the slot's own landing guess
+                flight = edist(THEIR_LAUNCH, (tr.x, tr.y)) / FILE_SPEED.get(p["card"], 10.0) if tr is not None else None
                 r.update(delay=round(t1 - c, 2), tti_pred=tti, flight_est=round(flight, 2) if flight else None,
                          lead=round(c + flight - t1, 2) if flight else None)
+                if tr is not None and land and tr.t - t1 >= 0.3:  # seen again later: its last sighting ~ where it hit
+                    r["land_err"] = round(edist(land, (tr.x, tr.y)), 2)
             rows.append(r)
         for tid, v in first.items():
             if tid not in used and lo + 1.0 <= v[0] <= hi - 3.0:
@@ -120,6 +128,9 @@ def main():
                      f" predicted time to impact then median {stats.median(r['tti_pred'] for r in f):.2f} s;"
                      f" before the estimated impact {len(ahead)}/{len(rs)} ({len(ahead) / len(rs):.0%}),"
                      f" lead median {stats.median(leads):+.2f} s")
+        le = sorted(r["land_err"] for r in f if "land_err" in r)
+        if le:
+            line += f"; landing guess vs its last sighting (n {len(le)}): median {stats.median(le):.1f} engine tiles"
         print(line)
     print(f"phantom spell slots of theirs: {len(phantoms)} ({len(phantoms) / max(n_games, 1):.1f} a game), "
           f"by card: {Counter(p['card'] for p in phantoms).most_common(8)}")

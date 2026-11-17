@@ -9,6 +9,10 @@ across decisions and reset each game.
 Not mirrored by default: tower HP (towers count as full), units' HP (full); BOT77_LIVE_HP=1 reads both off their bars
 (2026-11-16, bot77.readers.tower_hp / unit_hp). The opponent's elixir is estimated (5 + regeneration - what we saw
 them spend).
+
+A checkpoint with the new input block (bot77.rl.extra_net, train_bc.py --extra-obs) gets the block from
+`opp_inputs` (bot77.live.extra_obs.OppInputs, set by the loop when BOT77_PLAY_TRACKER=1); without it the block is
+zeros, as in data saved before it existed.
 """
 from __future__ import annotations
 
@@ -42,11 +46,14 @@ class SelfPlayPolicy:
         if str(FORK) not in sys.path:
             sys.path.insert(0, str(FORK))
         import torch
-        from python_ai.models.policy_io import LSTM_HIDDEN, load_net
+        from python_ai.models.policy_io import LSTM_HIDDEN
         from bot77.rl import pocket
+        from bot77.rl.extra_net import load_policy
         pocket.install()  # the real game has the pocket too
         self.torch = torch
-        self.net = load_net(ckpt, "cpu", verbose=False)
+        self.net = load_policy(ckpt, "cpu")  # an old checkpoint, or one with the input block
+        self.extra_dim = getattr(self.net, "extra_dim", 0)
+        self.opp_inputs = None  # bot77.live.extra_obs.OppInputs (the loop sets it under BOT77_PLAY_TRACKER=1)
         self.hidden = LSTM_HIDDEN
         self.sample = sample
         self.decision_s = decision_s  # 1.0 for the 1 s models, 0.1 for the 0.1 s ones (2026-10-28)
@@ -114,7 +121,11 @@ class SelfPlayPolicy:
         if sim is None:
             return None
         torch = self.torch
-        obs = torch.tensor(np.asarray(sim.env.get_observation_for_team(0), dtype=np.float32)).unsqueeze(0)
+        obs = np.asarray(sim.env.get_observation_for_team(0), dtype=np.float32)
+        if self.extra_dim:
+            block = self.opp_inputs.block(st.t) if self.opp_inputs is not None else np.zeros(self.extra_dim, np.float32)
+            obs = np.concatenate([obs, block[:self.extra_dim]])
+        obs = torch.tensor(obs).unsqueeze(0)
         with torch.no_grad():
             mask = self.net.affordability_mask(obs)
             feats, emb, spatial, hires = self.net.extract_features_hires(obs)

@@ -5,7 +5,7 @@ The engine observation is unchanged and stays first, so every old dataset and ch
 reads the first 13,977 floats (the fork locates every section by a forward offset), and a new net
 (bot77.rl.extra_net.ExtraObsNet) reads the block on top. A missing block is all zeros.
 
-Layout v1 (EXTRA_DIM = 436 floats, offsets from the block's start):
+Layout v1 (EXTRA_DIM = 437 floats, offsets from the block's start):
 
   0     their elixir estimate / 10 (PlayTracker.elixir(): 6 at 3:00, 1/2.8 s x the phase multiplier, minus each
         counted play's cost; held-out MAE 2.3, reads high when plays are missed)
@@ -15,12 +15,13 @@ Layout v1 (EXTRA_DIM = 436 floats, offsets from the block's start):
   4     1 when all 8 of their cards are known (the cycle rule is exact then: 3.9 of 4 right on true plays, 2.5 on the
         tracker's)
   5     plays counted / 30, capped at 1
-  6     can_hold[185]  (engine card ids) 1 for each card of their likely hand (PlayTracker.hand(): their known cards
+  6     1: the block is here (0 in data saved without it, which reads all zeros: "no block" is not "0 elixir")
+  7     can_hold[185]  (engine card ids) 1 for each card of their likely hand (PlayTracker.hand(): their known cards
         outside the last 4 played; longest-unplayed first, 4 at most). Cards they haven't shown stay 0: slot 3 says
         how many of the 4 are unknown
-  191   comes_back[185] 1 for the card that returns to their hand at their next play: the oldest of their last 4
+  192   comes_back[185] 1 for the card that returns to their hand at their next play: the oldest of their last 4
         different plays (only once 4 are known)
-  376   3 spell slots x 20, soonest impact first (bot77.live.spells.SpellTracker):
+  377   3 spell slots x 20, soonest impact first (bot77.live.spells.SpellTracker):
           +0   present
           +1   type one-hot over SPELL_TYPES (11: Fireball, Rocket, Arrows, The Log, Zap, Goblin Barrel,
                Barbarian Barrel, Giant Snowball, Lightning, Poison, other)
@@ -42,15 +43,15 @@ from bot77.live.spells import SPELL_TYPES, SpellTracker
 
 BASE_DIM = 13977
 NCARD = 185
-N_SCALARS = 6
+N_SCALARS = 7
 SLOTS, SLOT_DIM = 3, 20
 CAN_HOLD = N_SCALARS
 COMES_BACK = CAN_HOLD + NCARD
 SPELLS = COMES_BACK + NCARD
-EXTRA_DIM = SPELLS + SLOTS * SLOT_DIM  # 436
+EXTRA_DIM = SPELLS + SLOTS * SLOT_DIM  # 437
 LAYOUT = "v1"
 SCALAR_NAMES = ["their elixir / 10", "s since their last play / 30", "their cards known / 8", "likely hand named / 4",
-                "all 8 known", "plays counted / 30"]
+                "all 8 known", "plays counted / 30", "block present"]
 
 
 def _engine_id(name: str) -> int | None:
@@ -107,6 +108,7 @@ def build_block(trk: PlayTracker, spells: SpellTracker, t: float) -> np.ndarray:
     out[3] = sum(c is not None for c in hand) / 4.0
     out[4] = float(sure)
     out[5] = min(1.0, len(trk.plays) / 30.0)
+    out[6] = 1.0
     for c in hand:
         e = _engine_id(c) if c else None
         if e is not None:
