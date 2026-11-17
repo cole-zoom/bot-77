@@ -20,6 +20,10 @@ not in either deck (a misread), other.
 
   uv run --no-sync python scripts/eval_live_tracker.py --limit 10            # run + score the first 10 paired games
   uv run --no-sync python scripts/eval_live_tracker.py --score-only          # score what's cached
+  uv run --no-sync python scripts/eval_live_tracker.py --score-only --tracker new --split held
+      # the new PlayTracker (bot77.live.opponent) replayed over the cached units, on the held-out half; also scores
+      # its likely hand and elixir against the replay's top HUD
+Answer keys are cached in CACHE/_truth (--rerun-truth rebuilds them).
 Cache: /Volumes/LaCie/bot-77-data/tracker_eval/<game>.json (big; the laptop disk is nearly full).
 """
 import argparse

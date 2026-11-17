@@ -5690,3 +5690,13 @@ Same engine and bot rules as the v6 checks.
   time; its 8 hold ~1.2 wrong cards at the end); 0.99 right of 1.40 named before that.
 - Tried and dropped (F1 +-0.003): joining another card's read to a track right there as the same unit misread,
   voting a track's card.
+- **Held-out half (47 games, 1054 real plays; scored once, after tuning stopped):** old tracker recall 63% /
+  precision 32% / card accuracy 77%, 25.6 phantoms a game (our own cards 507, neither deck 442, late/early 118,
+  recounts 71, their spawns 52). **PlayTracker at first sighting 65% / 84% / 96%, 2.2 phantoms a game** (late/early
+  51, neither deck 27, recounts 9, our own 8); scored when counted 59% / 76%. Timing median 0.0 s, place median
+  0.6 tiles (83% within 2). Worst recall: Fire Spirit 6% (16), Valkyrie 16% (58; old 12%), Electro Spirit 34%,
+  Fireball 38% (old 29%), Hog Rider 44%, Barbarians 48%, Spear Goblins 49%; Arrows 55% (old 3%).
+  Elixir MAE 2.30 (median +1.5: missed plays leave it high; true plays 0.89, regeneration only 4.46). Likely hand
+  2.48 of 4 once 8 known (true plays 3.91, random 1.99), 9% of the time.
+- Not wired into live_play: the live stack keeps OpponentTracker. PlayTracker takes update_state(LiveState) and
+  own_play(card, t, x, y) (the bot's tap; with its spot, our own units are told apart by place too).
