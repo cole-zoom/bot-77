@@ -5760,7 +5760,7 @@ Same engine and bot rules as the v6 checks.
   Linear(437, 64) -> ReLU -> Linear(64, 1504, zero-initialised) added to the LSTM's input. **Initialised from v8
   (bc_school_v8/epoch03) it is v8 bit for bit** (tests/test_extra_net.py: card and placement logits over 400 steps of
   two held-out shadow games with a random block, and the live step's logits / value / LSTM state, torch.equal);
-  old data reads a zero block; one optimiser step moves the features (not vacuous). 94k new parameters.
+  old data reads a zero block; one optimiser step moves the features (not vacuous). 126k new parameters.
   train_bc.py --extra-obs (--init an old or new checkpoint; saves "extra_obs" meta), shadow_agreement.py and
   SelfPlayPolicy load either kind (load_policy).
 - **Flags (default off):** live_play.py / shadow_play.py / dump_live_inputs.py --play-tracker (BOT77_PLAY_TRACKER=1):
