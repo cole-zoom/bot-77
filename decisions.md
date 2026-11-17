@@ -5667,3 +5667,26 @@ Same engine and bot rules as the v6 checks.
   matched another game's replay (EUtired luis) at 89%. The eval pairs by opponent name (live log OCR vs replay OCR,
   >= 0.7), then own plays (>= 0.6); 10 of 56 bot_pairs disagree with it. 8 name matches failed own plays (rematches /
   missing replays) and were skipped. Some live recordings stop early (160808: 61 s): truth is clipped to them.
+
+### 2026-11-16: new opponent-play tracker (bot77.live.opponent.PlayTracker), tune half
+- **Tune half (53 games by md5 of the game id, 1079 real plays; eval_live_tracker --tracker new --split tune):**
+  old tracker recall 68% / precision 31% / card accuracy 78%, 27 phantoms a game; PlayTracker scored at first
+  sighting **71% / 83% / 97%, 2.7 phantoms a game**, timing median 0.0 s (IQR -0.2..+0.3); scored when counted
+  (latency median 0.5 s, 90% 1.6 s) 65% / 75%. Replays the cached units in ~2 s for all games.
+- What the misreads were (tune games): our Arrows' splash reads as Poison / Rage (and Vines just before), team either,
+  at -0.5..+0.9 s of our play -> mapped to Arrows, ours when we played Arrows / Fireball / a building within -2..+2.5 s;
+  a "Rage" 0.6 tiles under our Goblin Hut as it lands (dropped: splash within 1.5 tiles of a building); their Skeleton
+  Dragons' / Wizard's shots read as Fireball on our half; our Battle Ram's Barbarians read as Elite Barbarians.
+  The cycle tracker logs our play up to ~1.5 s after the unit shows: a new unit of one of our cards near the river
+  waits 1.5 s for it. Their units are first seen up to ~2.5 tiles past the river (fast ones): the deploy zone is
+  their half + 2.5 tiles (from +0.5: recall 40% -> 50% alone).
+- Cycle in the replays: a card comes back after >= 4 other plays (393 of 700 repeats at exactly 4; 35 at < 4,
+  hand-read noise), never sooner than 9.4 s; the tracker uses >= 2 counted plays and 8 s (it misses ~30%).
+- **Elixir**: their bar (replay top HUD) vs clock seconds regenerates at 1/2.8 s, not 2.9 (2.9 drifts -0.4 every
+  30 s even with the true plays), and reads ~7.6 at clock 0:04 (start ~6). With the true plays MAE 0.86 (median
+  -0.45); with the tracker's plays MAE 1.97; regeneration only (no spend, as the brain's inputs are now) 4.07.
+- **Likely hand** (vs the replay's top hand, every 0.5 s): from the true plays 3.94 of 4 once 8 are seen (the cycle
+  rule is right); from the tracker's plays 2.55 of 4 (random 4 of the 8: 2.0) once it knows 8 cards (17% of the
+  time; its 8 hold ~1.2 wrong cards at the end); 0.99 right of 1.40 named before that.
+- Tried and dropped (F1 +-0.003): joining another card's read to a track right there as the same unit misread,
+  voting a track's card.

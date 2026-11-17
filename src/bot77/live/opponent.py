@@ -52,6 +52,9 @@ for _c in ("Battle Ram", "Barbarian Hut", "Barbarian Barrel"):
 # theirs alike (2026-11-16, tune games: every one of our Arrows showed Poison / Rage at -0.5..+0.9 s, at the landing
 # spot, team either; the opponents' replays show no Rage or Poison played at all)
 SPLASH = {"Rage": "Arrows", "Poison": "Arrows", "Vines": "Arrows"}
+# Units whose shots the detector reads as a spell (2026-11-16: "Fireball" on our half next to their Skeleton Dragons,
+# Wizard; our Bomber's bombs)
+SHOOTERS = {"Fireball": {"Skeleton Dragons", "Wizard", "Baby Dragon", "Bomber", "Electro Dragon", "Firecracker"}}
 # cards they can put down on our half too
 ANYWHERE = {"Miner", "Goblin Barrel", "Mighty Miner", "Goblin Drill", "Graveyard", "Royal Delivery", "Skeleton Barrel"}
 
@@ -87,6 +90,7 @@ class Params:
     squad_s: float = 3.0  # a play explains more units of its card this long after it
     squad_r: float = 3.5  # ... this close
     spawn_r: float = 4.0  # a spawner explains its spawns this close
+    shot_r: float = 6.0  # a shooter explains a "spell" this close (SHOOTERS)
     own_s: float = 4.0  # our play of a card explains a new unit of it this long after (where it lands, unknown here)
     deploy_margin: float = 2.5  # tiles past the river still "their half"
     cycle_plays: int = 2  # counted plays of other cards before a card can be counted again (true cycle: 4)
@@ -101,6 +105,7 @@ class Params:
     full_deck_block: bool = True  # with 8 cards known, no new card
     ninth_hits: int = 6  # ... unless seen this many reads
     ninth_conf: float = 0.6  # ... once at least this sure
+    ninth_spell_conf: float = 0.8  # a spell: one read this sure
     own_half: float = 1.5  # our troops land on our half: a fresh unit this far past the river (their side) isn't ours
     spell_conf: float = 0.4  # a spell is seen once or twice in flight: one read this sure is enough
     spell_hold_s: float = 1.6  # ... judged this long after it shows (our own play may be logged just after it lands)
@@ -244,6 +249,9 @@ class PlayTracker:
             # a second box on a unit already followed
             if o.card == tr.card and dist <= p.dup_r and t - o.t <= 0.6:
                 return o.owner, "second box"
+            # a shot, read as a spell
+            if o.card in SHOOTERS.get(tr.card, ()) and dist <= p.shot_r and t - o.t <= 1.0:
+                return o.owner, f"shot of {o.card}"
             # a spawner on the field
             if tr.card in self.produces.get(o.card, ()) and dist <= p.spawn_r:
                 return o.owner, f"spawn of {o.card}"
@@ -298,8 +306,9 @@ class PlayTracker:
             return None
         known = self._known()
         if tr.card not in known:
-            if p.full_deck_block and len(known) >= 8 and not (
-                    tr.hits >= p.ninth_hits and tr.conf >= p.ninth_conf and not self._spell(tr.card)):
+            sure = tr.conf >= p.ninth_spell_conf if self._spell(tr.card) else (
+                tr.hits >= p.ninth_hits and tr.conf >= p.ninth_conf)
+            if p.full_deck_block and len(known) >= 8 and not sure:
                 # their 8 are known: a 9th card needs a sure, steady sighting (one of the 8 was a misread)
                 if tr.hits >= p.ninth_hits or self._spell(tr.card):
                     tr.owner, tr.why = "opp", "not in their 8"

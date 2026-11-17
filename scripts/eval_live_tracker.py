@@ -319,6 +319,9 @@ def main():
     ap.add_argument("--tracker", choices=("old", "new"), default="old",
                     help="old: the live OpponentTracker's cached plays; new: bot77.live.opponent.PlayTracker replayed "
                          "over the cached units (seconds, no video)")
+    ap.add_argument("--play-time", choices=("seen", "known"), default="seen",
+                    help="new tracker: score a play at its first sighting (its time as the board shows it; default) "
+                         "or when it was counted (the old tracker's plays are both, 2 reads after the first sighting)")
     ap.add_argument("--split", choices=("all", "tune", "held"), default="all",
                     help="tune / held: the half of the games the new tracker was tuned on, or the other half")
     ap.add_argument("--rerun-truth", action="store_true", help="rebuild the cached answer keys (CACHE/_truth)")
@@ -365,6 +368,8 @@ def main():
             continue
         if a.tracker == "new":
             run = {**run, **replay_new(run, cards, pr)}
+            if a.play_time == "known":
+                run["plays"] = [{**{k: v for k, v in q.items() if k != "t_known"}, "t": q["t_known"]} for q in run["plays"]]
         lo, hi = run["clock"][0][0], run["clock"][-1][0]  # the live recording's battle span (it can be cut short)
         truth = [p for p in truth if lo + 1.0 <= p["t"] - off <= hi - a.window]
         run = {**run, "plays": [q for q in run["plays"] if lo + 1.0 <= q["t"] <= hi - a.window]}
@@ -408,6 +413,10 @@ def report(allt, allq, per_game):
         dts.append(q["t"] - p["t_live"])
         if p.get("x") is not None and q["at"]:
             dist.append(min(((x - p["x"]) ** 2 + (y - p["y"]) ** 2) ** 0.5 for x, y in q["at"]))
+    lat = [q["t_known"] - q["t"] for q in allq if q.get("t_known") is not None]
+    if lat:
+        sl = sorted(lat)
+        print(f"latency (counted - first seen): median {stats.median(sl):.2f} s, 90% {sl[int(0.9 * len(sl))]:.2f} s")
     if dts:
         print(f"timing (tracker - truth): median {stats.median(dts):+.2f} s, IQR {sorted(dts)[len(dts) // 4]:+.2f}..{sorted(dts)[3 * len(dts) // 4]:+.2f}")
     if dist:
