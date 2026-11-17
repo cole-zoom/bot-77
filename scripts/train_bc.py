@@ -33,6 +33,11 @@ the bot's own games, every row unlabelled but his answer's, --review-share of ev
 (REVIEW_HOLDOUT, by game id) are only scored: the mean chance the network gives his answer there, and at the
 training ones, after each epoch (before wait calibration, so "wait" reads low on both).
 
+--extra-obs (2026-11-16, step 4 of the input rebuild): train bot77.rl.extra_net.ExtraObsNet, the net with the new
+input block (opponent elixir, likely hand, spells in flight; bot77.live.extra_obs). --init may be an old checkpoint
+(the block starts with no effect: the net begins exactly as the old one) or a new one. Data without the block reads an
+all-zero block; data with it trains an old net on its first 13,977 floats only.
+
 Scores (held-back): card at plays (which of the 4 hand cards, given a play happened; A v3 got ~51%), play-vs-wait AUC,
 placement (the cell the pro used, and the distance in tiles to it).
 """
@@ -48,6 +53,7 @@ import torch
 import torch.nn.functional as F
 from sklearn.metrics import roc_auc_score
 
+from bot77.live.extra_obs import fit_obs
 from bot77.sim import store
 
 FORK = Path(__file__).resolve().parents[1] / "third_party" / "clash-royale-env"
@@ -65,6 +71,7 @@ _CACHE: dict = {}
 
 
 LEAD = 0  # --lead
+OBS_W = 13977  # the net's observation width (13977 + the block with --extra-obs); every data source is fitted to it
 REVIEW_HOLDOUT = 4  # every 4th game (by a hash of its id) of the review answers is only scored
 
 
@@ -86,7 +93,7 @@ def review_score(net, eps, device) -> dict:
     p_wait, p_card, held = [], [], []  # held: the chance of no play at all over an answer's wait ticks (10 = 1 s)
     for ep in eps:
         d = np.load(ep["file"])
-        obs = torch.tensor(d["obs"].astype(np.float32), device=device).unsqueeze(1)
+        obs = torch.tensor(fit_obs(d["obs"].astype(np.float32), OBS_W), device=device).unsqueeze(1)
         card = torch.tensor(d["card"], device=device).unsqueeze(1)
         L = obs.shape[0]
         _, _, (cl, _, rows, _) = sequence_loss(net, obs, card, torch.full_like(card, -1),
@@ -121,7 +128,7 @@ def obs_rows(f, lead=0) -> "sp.csr_matrix":
     if f not in _CACHE:
         d = np.load(f)
         card, cell = (d["card"], d["cell"]) if not lead else lead_labels(d["card"], d["cell"], lead)
-        _CACHE[f] = (sp.csr_matrix(d["obs"].astype(np.float32)), card, cell)
+        _CACHE[f] = (sp.csr_matrix(fit_obs(d["obs"].astype(np.float32), OBS_W)), card, cell)
     return _CACHE[f]
 
 
@@ -243,7 +250,7 @@ def timing(net, eps, device) -> dict:
     for ep in eps:
         d = np.load(ep["file"])
         c = d["card"]
-        obs = torch.tensor(d["obs"].astype(np.float32), device=device).unsqueeze(1)
+        obs = torch.tensor(fit_obs(d["obs"].astype(np.float32), OBS_W), device=device).unsqueeze(1)
         card = torch.tensor(c, device=device).unsqueeze(1)
         _, _, (cl, _, _, _) = sequence_loss(net, obs, card, card, torch.ones_like(card, dtype=torch.bool),
                                             torch.ones_like(card, dtype=torch.float32))
@@ -281,7 +288,7 @@ def load_demos(path: Path) -> list[dict]:
 
 
 def main():
-    global SHARDS, WINDOW, BURN_IN, PLAY_WEIGHT, LEAD
+    global SHARDS, WINDOW, BURN_IN, PLAY_WEIGHT, LEAD, OBS_W
     ap = argparse.ArgumentParser()
     ap.add_argument("--epochs", type=int, default=6)
     ap.add_argument("--steps-per-epoch", type=int, default=0, help="0 = one window per training episode")
@@ -306,6 +313,8 @@ def main():
                     help="Cole's whole games against the deck bots (scripts/build_deck_demos.py), 2026-11-06")
     ap.add_argument("--games-share", type=float, default=0.125,
                     help="share of every batch drawn from --games, taken out of the --demos windows")
+    ap.add_argument("--extra-obs", action="store_true",
+                    help="the net with the new input block (bot77.rl.extra_net.ExtraObsNet); --init may be an old checkpoint")
     a = ap.parse_args()
     LEAD = a.lead
     SHARDS, WINDOW, BURN_IN, PLAY_WEIGHT = Path(a.shards), a.window, a.burn_in, a.play_weight
@@ -345,10 +354,18 @@ def main():
     if reviews:
         print(f"reviews: {len(reviews)} answers to train on, {len(review_ho)} held out (by game); {n_review} of every "
               f"{BATCH} windows", flush=True)
-    net = MicroRoyaleNet().to(device)
+    if a.extra_obs:
+        from bot77.rl.extra_net import init_from
+        net = init_from(a.init, device)
+        OBS_W = net.obs_dim
+        print(f"input block: {net.meta()}, observation width {OBS_W}", flush=True)
+    else:
+        net = MicroRoyaleNet().to(device)
+        if a.init:
+            net.load_state_dict(torch.load(a.init, map_location=device, weights_only=False)["model"])
     if a.init:
-        net.load_state_dict(torch.load(a.init, map_location=device, weights_only=False)["model"])
         print(f"continuing from {a.init}", flush=True)
+    meta = {"extra_obs": net.meta()} if a.extra_obs else {}
     opt = torch.optim.Adam(net.parameters(), lr=a.lr)
     out = Path(a.out)
     out.mkdir(parents=True, exist_ok=True)
@@ -390,15 +407,16 @@ def main():
         history.append({"epoch": epoch, "card_loss": lc / steps, "cell_loss": lp / steps, **ev})
         print(f"epoch {epoch}: card loss {lc / steps:.3f}, cell loss {lp / steps:.3f}, held-back {ev} "
               f"({time.time() - t0:.0f} s)", flush=True)
-        torch.save({"model": net.state_dict(), "bc_epoch": epoch, "bc_history": history}, out / "last.pth")
+        torch.save({"model": net.state_dict(), "bc_epoch": epoch, "bc_history": history, **meta}, out / "last.pth")
         if demos or reviews:  # the defence school is judged by the situation exam, so every epoch is kept for it
-            torch.save({"model": net.state_dict(), "bc_epoch": epoch}, out / f"epoch{epoch:02d}.pth")
+            torch.save({"model": net.state_dict(), "bc_epoch": epoch, **meta}, out / f"epoch{epoch:02d}.pth")
         # the best held-back checkpoint (card at plays + play/wait AUC - cell distance / 20): placement over-fits
         # after ~70 epochs (v3: train cell loss falling, held-back distance rising)
         score = ev["card_at_plays"] + (ev["play_vs_wait_auc"] or 0) - (ev["cell_dist_median_tiles"] or 20) / 20
         if epoch == 0 or score > best:
             best = score
-            torch.save({"model": net.state_dict(), "bc_epoch": epoch, "bc_history": history}, out / "model_weights.pth")
+            torch.save({"model": net.state_dict(), "bc_epoch": epoch, "bc_history": history, **meta},
+                       out / "model_weights.pth")
     (out / "history.json").write_text(json.dumps(history, indent=1))
     print(f"saved {out / 'model_weights.pth'}")
 

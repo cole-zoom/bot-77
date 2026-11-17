@@ -6,6 +6,7 @@ Per checkpoint, over every held-out game run as one sequence (scripts/shadow_lan
 card_top1 (its top slot is his card, at his plays), p_his (the chance it gave his card, wait included),
 auc (play vs wait: 1 - p_wait ranks his play moments above his waits), cell_tiles (median distance from its cell for
 his card to his cell, in board tiles), cell_exact.
+Checkpoints with the new input block (train_bc.py --extra-obs) load too; games saved without the block read a zero one.
 """
 import argparse
 import sys
@@ -18,7 +19,8 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from shadow_lance import guesses  # noqa: E402
 from train_bc import BOARD_W  # noqa: E402
-from python_ai.models.policy_io import load_net  # noqa: E402
+from bot77.live.extra_obs import fit_obs  # noqa: E402
+from bot77.rl.extra_net import load_policy, obs_width  # noqa: E402
 
 
 def auc(pos: np.ndarray, neg: np.ndarray) -> float:
@@ -27,12 +29,12 @@ def auc(pos: np.ndarray, neg: np.ndarray) -> float:
 
 
 def score(ckpt: str, files: list[Path]) -> dict:
-    net = load_net(ckpt, torch.device("cpu")).eval()
+    net = load_policy(ckpt, torch.device("cpu"), verbose=True).eval()  # old or with the input block (bot77.rl.extra_net)
     top1, phis, dist, exact, at_play, at_wait = [], [], [], [], [], []
     for f in files:
         d = np.load(f)
         card, cell = d["card"], d["cell"]
-        g = guesses(net, d["obs"], card)
+        g = guesses(net, fit_obs(d["obs"], obs_width(net)), card)
         play = card < 4
         top1 += list(g["top"][play] == card[play])
         phis += list(g["p"][play, card[play]])
