@@ -245,6 +245,20 @@ def battle_tab(im: np.ndarray) -> tuple[float, float] | None:
     return (best[1], best[2]) if best[0] >= BOLT_MIN else None
 
 
+
+def red_x(im: np.ndarray) -> tuple[float, float] | None:
+    """A popup's red close button in the top-right corner (x 850-1080, y 100-400 of a 1080-wide screen), by colour."""
+    k = im.shape[1] / 1080
+    hsv = cv2.cvtColor(im[int(100 * k):int(400 * k), int(850 * k):], cv2.COLOR_BGR2HSV)
+    m = (((hsv[..., 0] < 8) | (hsv[..., 0] > 172)) & (hsv[..., 1] > 150) & (hsv[..., 2] > 150)).astype(np.uint8)
+    n, _, st, cen = cv2.connectedComponentsWithStats(m)
+    ok = [i for i in range(1, n) if 40 * k <= st[i, 2] <= 90 * k and 40 * k <= st[i, 3] <= 90 * k
+          and st[i, 4] >= 800 * k * k]  # a ~60 px square button (the A16's: 61 x 57)
+    best = max(ok, key=lambda i: st[i, 4], default=None)
+    if best is None:
+        return None
+    return float(cen[best][0] + 850 * k), float(cen[best][1] + 100 * k)
+
 def between_games_tap(im: np.ndarray) -> tuple[float, float, str] | None:
     """Where to tap on a screen between games, or None: a safe whole-word button (never anything about buying,
     gems, offers or clans); the left card on "Choose your reward" (Cole: press Choose, then pick any card)."""
@@ -257,7 +271,8 @@ def between_games_tap(im: np.ndarray) -> tuple[float, float, str] | None:
     # our profile, opened by the nudge at (540, 330) landing on the name banner on home (2026-10-31, run40v4: 4 min
     # stuck); "current streak" reads "currents sbreak" in the fast OCR. Its red X, top right
     if any("battles won" in t or "current" in t for t, _, _ in texts):
-        return 995, 190, "close profile"
+        x = red_x(im)  # BlueStacks' X sits at (995, 190), the Galaxy A16's at (972, 293) (2026-11-17: missed there, stuck)
+        return (x[0], x[1], "close profile") if x else (995, 190, "close profile")
     if any(any(n in t for n in NEVER) for t, _, _ in texts if len(t) < 30) and \
             not any(t in SAFE_BUTTONS for t, _, _ in texts):
         tab = battle_tab(im)  # a shop / clan screen: never its buttons, but the Battle tab in the bottom bar is safe
