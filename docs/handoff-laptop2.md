@@ -70,9 +70,12 @@ and bring it back to the main laptop session to cut the missing template.
 ## Run 24/7
 
 ```bash
-caffeinate -i -s bash scripts/tv_loop.sh 720 1800 60
-#   720 h (30 days) max, a new pass every 30 min, all 60 leagues from the top down
+caffeinate -i -s bash scripts/tv_loop.sh 720 1800 16
+#   720 h (30 days) max, a new pass every 30 min, the top 16 leagues from Ultimate Champion down
 ```
+
+**Leagues (Cole, 2026-11-18):** "everyone in leagues is pretty good": record the top 16 leagues (at least 12). Each
+replay's log row keeps its league as `tab` (0 = Ultimate Champion), so training can weight or filter by it.
 
 - **Progress:** `ls $BOT77_RAW/tv_royale/*/replay_*.mp4 | wc -l`, and the log in `data/logs/tv_runner_<date>.log`.
 - **Stop:** Ctrl-C, or `pkill -f tv_loop.sh; pkill -INT -f "scrcpy -s"`. Wait for the current replay to finish first if
