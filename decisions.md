@@ -5877,3 +5877,16 @@ Same engine and bot rules as the v6 checks.
 - **Fixes during the run:** loop.py's local `import os` crashed every game at its start (5809344); our profile popup,
   opened by the between-games nudge on the A16, is now closed by finding its red X (ad9c825; BlueStacks' fixed
   (995, 190) misses on the A16).
+
+## 2026-11-17 — Step 8b: live A/B, v8 on the old harness vs v10 on the new (the full upgrade)
+
+- **Why a second run:** the first A/B had v8 in both arms, and v8 doesn't read the input block, so opponent elixir /
+  likely hand / spells in flight were never tested live (Cole caught it: v10 was the point). This run: A = v8 e3, old
+  harness; B = v10 e3 with --hp --play-tracker (block filled by OppInputs; game 2's opp_plays.json shows the tracker's
+  plays). data/logs/ab_harness.sh (CK_A / CK_B, OUT=data/live/ab_v10), 5 A B B A blocks, Galaxy A16, home wifi back.
+- **Result, 20 games, none excluded (no freezes, no drops): A 5-5, B 6-4.** A: 1,4,5,8,9,12,13,16,17,20 =
+  L L W W L W W W L L; B: 2,3,6,7,10,11,14,15,18,19 = W L W W L L W W L W. Trophies 1649 -> ~1670 (1600-1784).
+- **Verdict:** v10 + new harness one win ahead in 10 a side: no measurable difference (95% interval per arm ~+-0.3;
+  telling 50% from 60% needs ~400 games a side). Not worse, so v10 on the new harness can be the default; the real gains
+  have to come from training that makes the block matter (sim games recording the block through OppInputs; school_v3's
+  zero-block demos were ~70% of v10's batches).
