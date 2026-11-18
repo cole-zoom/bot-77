@@ -5904,3 +5904,47 @@ Same engine and bot rules as the v6 checks.
   --allow-missing-video to override). Test: test_a_game_without_its_video_is_reported_missing.
 - Card levels: everything outside the replay check (live mirror, self-play, training) plays every card at level 11;
   only sim_validate --levels on uses the replay's levels, so the comparison with a level-7 Giant on video is fair.
+
+### 2026-11-18: more pro replays (target ~5,000), a second laptop to record them, and how pro replays teach the bot
+- **Why more data:** v10 overfits after one epoch on 484 pro matches, so the lever is data, not compute. Cole asked
+  for "a massive training run". Plan: grow the pro set from 484 to ~5,000 matches (~10x), retraining and scoring at
+  ~1,000 / 2,000 / 4,000 (shadow_agreement on the held-out shadow games); stop recording when the score flattens.
+  The 5,000 figure is a judgment call; the checkpoints measure whether it pays.
+- **Recording:** TV Royale plays in real time, ~10 replays an hour, ~200-250 a day 24/7, so ~3-4 weeks. Cole's second
+  laptop records onto the LaCie (its own disk has no room). It needs its own Android phone (BlueStacks can't run
+  Clash since 11-09) and its own Clash account (one account can't be on two devices). Branch laptop2-tv-recording:
+  replay_runner takes BOT77_RAW (output root), BOT77_ADB (platform-tools adb without BlueStacks), stops below
+  BOT77_MIN_FREE_GB (30); docs/handoff-laptop2.md has the steps. data/laptop2_seed.tar (268 MB, gitignored): the A16
+  screen templates + entry thumbnails of the 445 TV battles already recorded, so they aren't recorded again. TV Royale
+  has not been recorded on the A16 yet: the handoff starts with a 2-replay test. The scripted sim demos don't need
+  24/7 (3,000 took 8 min) and get rebuilt with the input block on this laptop.
+- **LaCie cleanup for room** (Cole's go, each item): 698 -> 904 GB free. Deleted Cole's 16 cole_*.mov originals (each
+  has an .mp4 copy, durations equal to 0.02 s; cole_2026-09-29_c.mp4 was laptop-only and was copied to the LaCie
+  first, byte-identical), the 6 "Screen Recording 2026-10-17..10-20" .movs (Cole's iPhone-mirroring ladder games, read
+  as cole_2026-10-17_a .. cole_2026-10-20_b; those six cropped .mp4s copied to the LaCie first, byte-identical), and
+  118 game.mp4 remuxes in live_games (stream copies of the game.mkv beside them; build_loss_review.py remakes them).
+  At ~180 MB a replay, 904 GB holds ~5,000 more.
+- **How pro replays teach the bot (explained to Cole, he asked to keep it):** imitation, not play. Nothing plays
+  against anything in training; the model learns to predict what the pro did.
+  1. A replay shows both players' hands, elixir and next card, so every play is known: when, which card, where.
+  2. The replay runs through the bot's own eyes (the live detector, HP reader, clock, opponent tracker), giving what
+     the bot would have seen every 0.1 s: board units, tower HP, its hand and elixir, time, and its opponent guesses.
+  3. Each moment is labelled with the pro's answer ("Hog Rider at this tile" or "wait"); the network learns to
+     predict it, with its memory (LSTM) carried through the match. Plays weigh ~50x, as most moments are waits.
+  Each match is two lessons (one per player; the top player's view is mirrored so the board always looks like the
+  bot's side): 5,000 matches ~ 10,000 player-games, ~20M decision moments. It learns "given this board, hand and
+  elixir, a pro plays X here", so what it knows depends on how often it has seen a card used:
+  - Common cards in pro games (Hog, Log, Fireball, Musketeer, Skeletons): it learns how they're really used.
+  - Rare or never-seen cards: it knows almost nothing; a card in its hand that never appeared in training is noise.
+  - A deck's game plan (cycle Hog every ~20 s, Earthquake the building, defend cheap and counter-push) only comes from
+    many games with that deck. Trained on every deck mixed, it learns the average plan, not ours.
+  So the recipe is two stages, like pretraining then fine-tuning a language model: (1) general board sense from the
+  ~5,000 pro games (defending, timing, placement, elixir trades: the part that needs volume); (2) our deck: fine-tune
+  on Hog EQ, i.e. Cole's shadow games plus pro replays with Hog EQ or close, weighted up. Handed a deck it never
+  trained on, it plays like "a generic pro holding these cards": better than random, but clumsy.
+  Limits of imitation: at best it plays like the average of whom it copies, and in spots pros never reach it has
+  nothing to copy, so small errors compound. That is why self-play RL stays the later step, and why Cole's games
+  matter most: the only data that is both our deck and his judgment.
+- **To change at the first checkpoint:** demos are 70% of every batch today (pro data was small); with ~10x the pro
+  data the mix shifts toward pro games. Count how many pro matches contain Hog + Earthquake (how much of the new data
+  is about our deck).
