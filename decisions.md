@@ -5948,3 +5948,13 @@ Same engine and bot rules as the v6 checks.
 - **To change at the first checkpoint:** demos are 70% of every batch today (pro data was small); with ~10x the pro
   data the mix shifts toward pro games. Count how many pro matches contain Hog + Earthquake (how much of the new data
   is about our deck).
+- **Which TV leagues (Cole, 2026-11-18): the top 16** ("lowk everyone in leagues is pretty good. I say we get atleast
+  the first 12. up to the first 16"). Replaces the 10-13 rule that the move predictor keeps to tab 0. Found while
+  checking: that rule was never applied; of the 417 TV replays in v10's pro data only 76 are tab 0 (tab 1: 90, 2: 64,
+  3: 34, 4: 41, 5: 37, 6: 25, 7: 32, 8: 25, 9: 13, none logged: 9), so it already trained on tabs 0-9. Ultimate
+  Champion alone gave only ~15-25 new games a day, too few for the ~5,000 target. Laptop 2 runs
+  `tv_loop.sh 720 1800 16`. Training keeps the league per match, to weight or filter by it later.
+- **What gets recorded per replay (the 11-13/11-14 telemetry rule: record what has a use, compute the rest later):**
+  the full video untouched (1080x1920, 30 fps, VS intro to end screen) so games can be re-read when the reader changes;
+  the entry crop (both decks, levels, names); the runner log row (time, league, length, end screen seen). Plays,
+  elixir, HP and results are read from the video. Videos are kept after reading, not deleted.
