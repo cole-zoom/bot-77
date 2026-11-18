@@ -284,3 +284,14 @@ def test_start_units_are_checked_against_both_decks():
         ("Giant", "own"), ("Spear Goblins", "own"), ("Knight", "opp"), ("Executioner", "own")]
     assert [u["card"] for u in deck_check(units, decks, drop_unknown=True)] == ["Giant", "Spear Goblins", "Knight"]
     assert deck_check(units, {"bottom": decks["bottom"]}) == units  # one deck unknown: as read
+
+
+def test_a_game_without_its_video_is_reported_missing(tmp_path):
+    """sim_validate refuses to run when a replay video is gone (LaCie unplugged): start units' HP comes off it."""
+    from bot77.sim.validate import missing_videos, video_path
+    assert video_path("bl_2026-10-23_r18_m01", tmp_path) == tmp_path / "bl_2026-10-23_r18.mp4"
+    (tmp_path / "real.mp4").write_bytes(b"x")
+    (tmp_path / "bl_2026-10-23_r18.mp4").symlink_to(tmp_path / "real.mp4")
+    (tmp_path / "bl_2026-10-23_r19.mp4").symlink_to(tmp_path / "unplugged.mp4")  # dangling, as with the drive out
+    assert missing_videos(["bl_2026-10-23_r18_m01", "bl_2026-10-23_r19_m01", "tv_x_r01_m01"], tmp_path) == \
+        ["bl_2026-10-23_r19_m01", "tv_x_r01_m01"]

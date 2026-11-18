@@ -5890,3 +5890,17 @@ Same engine and bot rules as the v6 checks.
   telling 50% from 60% needs ~400 games a side). Not worse, so v10 on the new harness can be the default; the real gains
   have to come from training that makes the block matter (sim games recording the block through OppInputs; school_v3's
   zero-block demos were ~70% of v10's batches).
+
+### 2026-11-17: S2 recheck after the other session's changes; missing videos now stop a run
+- Cole asked to confirm damage still holds after another session's commits (b1d064c..0f6e847: bar pairing moved to
+  bot77.readers.unit_hp, place_units unit_hp flag default off, live tower HP reader). Bot S2, 40 games per split
+  (307 windows), --levels on: the current code and e97750e give identical numbers on every window, and two runs of the
+  current code are identical (the sim is deterministic). Replay side (real tower damage, margin_det) matches the stored
+  run fid_bot_giantlv_e97750e on every window.
+- The sim side did differ from the stored run (17 of 307 windows; sim damage to own 27.3 -> 30.5) because the LaCie
+  drive was unplugged: replay videos are symlinks onto it, with_bar_hp reads start units' HP off the video, and a
+  missing video silently meant full HP. The stored runs were made with the drive in and stand.
+- sim_validate now exits when any selected game's video is missing (validate.missing_videos;
+  --allow-missing-video to override). Test: test_a_game_without_its_video_is_reported_missing.
+- Card levels: everything outside the replay check (live mirror, self-play, training) plays every card at level 11;
+  only sim_validate --levels on uses the replay's levels, so the comparison with a level-7 Giant on video is fair.

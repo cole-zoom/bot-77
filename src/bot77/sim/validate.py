@@ -254,6 +254,21 @@ def windows(g: Game, max_start: int = MAX_START_UNITS) -> list[dict]:
     return out
 
 
+VIDEOS = Path("data/raw/replay_links")
+
+
+def video_path(game_id: str, root: Path = VIDEOS) -> Path:
+    """The replay video a game's frames come from (a symlink, often onto the LaCie drive)."""
+    return root / f"{game_id.rsplit('_m', 1)[0]}.mp4"
+
+
+def missing_videos(game_ids: list[str], root: Path = VIDEOS) -> list[str]:
+    """Games whose video can't be opened (a dangling symlink when the LaCie drive is unplugged). with_bar_hp reads
+    start units' HP off the video, and without it every unit starts full: the sim side of a run silently changes
+    (2026-11-17: 17 of 307 bot windows moved with the drive out), so sim_validate refuses to run with any missing."""
+    return [g for g in game_ids if not video_path(g, root).exists()]
+
+
 def with_bar_hp(g: Game, t: float, units: list[dict]) -> list[dict]:
     """The units of the frame nearest t, each with hp_frac read off its HP bar (none: full, the bar shows only once
     a unit is damaged; 2026-11-15)."""
@@ -266,7 +281,7 @@ def with_bar_hp(g: Game, t: float, units: list[dict]) -> list[dict]:
     bars = getattr(g, "bars", {}).get(tf, [])
     if not any(b["cls"] == "bar" for b in bars):
         return units
-    video = Path("data/raw/replay_links") / f"{g.game_id.rsplit('_m', 1)[0]}.mp4"
+    video = video_path(g.game_id)
     try:
         frame = read_frame(video, tf)
     except Exception:  # noqa: BLE001  (video not on disk)

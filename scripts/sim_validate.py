@@ -8,12 +8,13 @@ Calibrate on train / dev, report on held-back; test and held-out are never run.
 import argparse
 import collections
 import hashlib
+import sys
 import time
 
 import numpy as np
 
 from bot77.sim import store
-from bot77.sim.validate import DT_BINS, load_game, metrics, run_window, windows
+from bot77.sim.validate import DT_BINS, load_game, metrics, missing_videos, run_window, windows
 
 DECISIVE = 2.0  # elixir: a fight margin the replay reads at least this clearly (2026-11-16)
 
@@ -35,6 +36,8 @@ ap.add_argument("--start-bodies", default="per-body", choices=["per-body", "whol
                      "per cluster (before 2026-11-15)")
 ap.add_argument("--start-decks", default="off", choices=["off", "flip", "drop"],
                 help="start units against both decks: flip a card only the other side has; drop also cards of neither")
+ap.add_argument("--allow-missing-video", action="store_true",
+                help="run even when replay videos are missing (start units then read as full HP)")
 ap.add_argument("--fid-heldback", type=float, default=0.25,
                 help="sources with no held-back split (replay_bot: all train): this md5 share of games is reported as "
                      "'heldback', the rest as 'train' (2026-11-15)")
@@ -60,6 +63,10 @@ if args.games:
     games = [g for v in per.values() for g in v[: args.games]]
 
 rows, n_win, t0 = [], 0, time.time()
+gone = missing_videos([m["match_id"] for m in games])
+if gone and not args.allow_missing_video:
+    sys.exit(f"{len(gone)} of {len(games)} games have no video (LaCie unplugged?), e.g. {gone[0]}: start units' HP "
+             f"comes off the video, so the sim side would change. Plug the drive in or pass --allow-missing-video.")
 for i, m in enumerate(games):
     g = load_game(m["match_id"], m["split"], m["source"])
     for w in windows(g):
