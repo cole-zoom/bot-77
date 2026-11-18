@@ -5958,3 +5958,29 @@ Same engine and bot rules as the v6 checks.
   the full video untouched (1080x1920, 30 fps, VS intro to end screen) so games can be re-read when the reader changes;
   the entry crop (both decks, levels, names); the runner log row (time, league, length, end screen seen). Plays,
   elixir, HP and results are read from the video. Videos are kept after reading, not deleted.
+
+### 2026-11-18: compared with Hasty-CR (github.com/hastylmao/Hasty-CR, MIT) and what to borrow
+- **What it is:** an integer-exact simulator (millitiles, 50 ms ticks, card stats decoded from the client's tables,
+  ~1,600 tests) and a 2.6 Hog PPO agent (behaviour clone of a rule engine -> PPO), live on a MuMu emulator. Sim
+  results: 93% vs its rule engine, 87% vs meta decks; its README says no trained policy has beaten a human. Its run
+  journal: live ladder all-time W14 L118 D72 (one stretch 14-76 at 5,501 trophies, stuck there). No live HP, no
+  opponent model. Newest commit (10-10) adds a "live memory-reader bot"; its replay fetcher gets past Cloudflare's
+  challenge. We borrow neither (anti-cheat line).
+- **Cole: his socials show it on ~14k-trophy ladder (10-16).** Not verified (I can't see the posts). Explanations
+  that fit the repo: trophy floors stop a losing account from dropping (his own journal: 14-76 and trophies didn't
+  move), so a high account shows high trophies whatever the bot's record; clips pick the wins; the bot on video may be
+  the memory-reader build (game state read from memory: exact HP, elixir, opponent hand), not the public PPO policy;
+  maxed cards. The repo's own numbers are the evidence we have: 14-118 live.
+- **Borrow (credit Hasty-CR in code and here, as with KataCR):**
+  1. **Behaviour supervisor for self-play** (his rl_supervisor.py): watch behaviour, not loss, every update (Hog
+     share, plays per match, elixir leaked, card-KL to the start, sim win rate vs fixed opponents); on drift, stop,
+     roll back to the last good checkpoint, lower lr, restart. Our 4 October rounds degraded unnoticed this way. We
+     already have the KL anchor and the PFSP league; the supervisor and rollback are new. When: before the next RL run.
+  2. **Exploit probe** (his exploit_probe.py): flag sim wins that hinge on one card, tile or timing, or collapse when
+     one parameter is perturbed (a sim bug the policy found). When: with 1.
+  3. **Cross-check our engine against his** (his sim.check claims, calibration/scenarios, data/fidelity/mechanics.json):
+     run the same setups in both engines; where they disagree, the replays decide (sim_validate). Known items to check
+     in ours: body-block of a Hog by a cheap unit (his: ~0.5 s delay, uncalibrated), charging units held by a Knight,
+     units retargeting the king after their princess tower falls. When: now, feeds the sim-demo rebuild.
+  4. **Live-vs-sim observation parity test** (his test_rl_policy.py): one board through the sim's and the live path's
+     observation builders, compared cell by cell (the input block included). When: now, cheap.
