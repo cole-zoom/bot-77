@@ -22,14 +22,20 @@ are skipped, so the runner can be re-run daily. TV Royale is top players' games:
 Needs: BlueStacks Settings > Advanced > Android Debug Bridge on; `brew install scrcpy` (records the Android screen).
 Screen templates (game frames, gitignored) live in data/raw/replays/_ui/.
 """
-import argparse, json, os, signal, subprocess, sys, time
+import argparse, json, os, shutil, signal, subprocess, sys, time
 from pathlib import Path
 
 import cv2
 import numpy as np
 
 ROOT = Path(__file__).resolve().parents[1]
-ADB = "/Applications/BlueStacks.app/Contents/MacOS/hd-adb"
+_HD_ADB = "/Applications/BlueStacks.app/Contents/MacOS/hd-adb"
+# BOT77_ADB overrides; a Mac without BlueStacks (the second laptop, docs/handoff-laptop2.md) uses platform-tools' adb
+ADB = os.environ.get("BOT77_ADB") or (_HD_ADB if Path(_HD_ADB).exists() else shutil.which("adb") or _HD_ADB)
+# Where recordings go: <RAW>/tv_royale/<date>/ (or replays/). BOT77_RAW=/Volumes/LaCie/bot-77-data/raw on the second
+# laptop, whose own disk has no room; recording stops below MIN_FREE_GB free there (BOT77_MIN_FREE_GB)
+RAW = Path(os.environ.get("BOT77_RAW", ROOT / "data/raw"))
+MIN_FREE_GB = float(os.environ.get("BOT77_MIN_FREE_GB", 30))
 UI = ROOT / os.environ.get("REPLAY_UI", "data/raw/replays/_ui")  # data/raw/replays/_ui_a16 on the Galaxy A16 (2026-11-13)
 W, H = 1080, 1920  # Android screen
 ENTRY_UP, ENTRY_DOWN = 330, 45  # an entry's fingerprint (both decks): from this far above its Watch button to this far above it
@@ -322,6 +328,7 @@ def next_button(d: Device, last_fp: np.ndarray | None, skip: int,
 
 
 def record(d: Device, out: Path) -> subprocess.Popen:
+    (ROOT / "data/logs").mkdir(parents=True, exist_ok=True)
     return subprocess.Popen(["scrcpy", "-s", d.s, "--no-window", "--no-audio", "--no-control", "--max-fps", "30",
                              "--video-bit-rate", "12M", f"--record={out}"], env={**os.environ, "ADB": ADB},
                             stdout=subprocess.DEVNULL, stderr=open(ROOT / "data/logs/scrcpy_last.log", "w"),
@@ -346,7 +353,7 @@ def main() -> None:
     global TITLE
     TITLE, folder = SOURCES[a.source]
     d = Device(a.device)
-    root = ROOT / "data/raw" / folder
+    root = RAW / folder
     known = [] if a.no_known else known_fps(root)
     out_dir = root / time.strftime("%Y-%m-%d")
     out_dir.mkdir(parents=True, exist_ok=True)
@@ -356,6 +363,9 @@ def main() -> None:
     if a.source == "tv":
         to_top_tab(d)
     for i in range(first, first + a.n):
+        free_gb = shutil.disk_usage(out_dir).free / 1e9
+        if free_gb < MIN_FREE_GB:  # also catches the LaCie coming unplugged (the folder errors before this)
+            print(f"stopping: {free_gb:.0f} GB free on {out_dir} (< {MIN_FREE_GB:.0f})", flush=True); break
         nb = nth_button(d, a.skip + i - first) if a.by_index else next_button(d, last_fp, a.skip, known)
         while nb is None and a.source == "tv" and tab < a.max_tabs - 1:  # this league is done: one league down
             if not switch_tab(d, "tv_left"):
