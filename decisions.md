@@ -6005,3 +6005,23 @@ Same engine and bot rules as the v6 checks.
 - **The input block** isn't compared here: sim demos have a zero block until the sim-demo rebuild (OppInputs on sim
   events).
 - **tests/test_obs_parity.py** pins the exact sections, one-body positions, and the spent gap (so a fix shows up).
+
+### 2026-11-18: our engine against Hasty-CR's predictions (Hasty-CR borrow 3)
+- **His evidence base:** data/fidelity/mechanics.json says `real_measured_trace_count: 0`; his calibration scenarios
+  are synthetic ("cannot establish live mechanics"), and of 31 mechanics 13 are "verified current data" (stats from
+  the client), the rest single-implementation, hypothesis or guess. So his numbers are another engine's opinion, not
+  ground truth; our sim_validate (real replays) stays the judge. His engine was not run here (running downloaded code
+  was blocked); his numbers are from his README.
+- **scripts/engine_crosscheck.py** (log: data/logs/engine_crosscheck.txt), same setups in ours:
+  - Lone Hog on an undefended princess tower: ours 7 hits, 2219 dmg (317 a hit); his 6 hits, 1902. One hit apart:
+    tower damage / Hog HP / the Hog's first-hit timing. Open: Cole or a replay decides.
+  - Musketeer into a Cannon: Musketeer wins untouched in both (it outranges the Cannon); ours 4.9 s from 9 tiles
+    (3.0 s of fighting), his 7.1 s from 10. Our first setup (both 6 tiles apart, centre to centre) started inside the
+    Cannon's reach and the Musketeer lost 606 HP: distances must be edge to edge, as his registry notes.
+  - Prince charging a Musketeer from 6 tiles: Prince wins in 2.9 s, losing 651 (his not published).
+  - Body-block: one Skeleton in a Hog's path delays it 0.3 s (4.3 -> 4.6 s to the first tower hit); his ~0.5 s
+    (uncalibrated). Same shape, no permanent stop.
+  - Battle Ram into a Knight: ours gets through (tower hit at 5.5 s); his holds it forever (his known bug). Not ours.
+  - Our left princess tower down, enemy Hog in that lane: ours targets the King (correct; his old bug went for the
+    far princess).
+- Net: no new bug found in ours. The one open number is the Hog's hits on a lone tower (7 vs 6).
