@@ -54,6 +54,7 @@ import torch.nn.functional as F
 from sklearn.metrics import roc_auc_score
 
 from bot77.live.extra_obs import fit_obs
+from bot77.live.rebuild import SCAL0
 from bot77.sim import store
 
 FORK = Path(__file__).resolve().parents[1] / "third_party" / "clash-royale-env"
@@ -72,6 +73,18 @@ _CACHE: dict = {}
 
 LEAD = 0  # --lead
 OBS_W = 13977  # the net's observation width (13977 + the block with --extra-obs); every data source is fitted to it
+# The two "elixir spent" scalars (own, theirs): the engine has no setter, so everything built through the mirror (pro
+# shards, shadow games, live) reads 0 there, while sim demos carry real totals (scripts/obs_parity.py, 2026-11-18). A
+# net could use them to tell demos from real games, so they are zeroed in every source (--keep-spent to skip).
+SPENT_COLS = slice(SCAL0 + 1, SCAL0 + 3)
+ZERO_SPENT = True
+
+
+def _obs(d) -> np.ndarray:
+    o = fit_obs(d["obs"].astype(np.float32), OBS_W)
+    if ZERO_SPENT:
+        o[:, SPENT_COLS] = 0.0
+    return o
 REVIEW_HOLDOUT = 4  # every 4th game (by a hash of its id) of the review answers is only scored
 
 
@@ -93,7 +106,7 @@ def review_score(net, eps, device) -> dict:
     p_wait, p_card, held = [], [], []  # held: the chance of no play at all over an answer's wait ticks (10 = 1 s)
     for ep in eps:
         d = np.load(ep["file"])
-        obs = torch.tensor(fit_obs(d["obs"].astype(np.float32), OBS_W), device=device).unsqueeze(1)
+        obs = torch.tensor(_obs(d), device=device).unsqueeze(1)
         card = torch.tensor(d["card"], device=device).unsqueeze(1)
         L = obs.shape[0]
         _, _, (cl, _, rows, _) = sequence_loss(net, obs, card, torch.full_like(card, -1),
@@ -128,7 +141,7 @@ def obs_rows(f, lead=0) -> "sp.csr_matrix":
     if f not in _CACHE:
         d = np.load(f)
         card, cell = (d["card"], d["cell"]) if not lead else lead_labels(d["card"], d["cell"], lead)
-        _CACHE[f] = (sp.csr_matrix(fit_obs(d["obs"].astype(np.float32), OBS_W)), card, cell)
+        _CACHE[f] = (sp.csr_matrix(_obs(d)), card, cell)
     return _CACHE[f]
 
 
@@ -254,7 +267,7 @@ def timing(net, eps, device) -> dict:
     for ep in eps:
         d = np.load(ep["file"])
         c = d["card"]
-        obs = torch.tensor(fit_obs(d["obs"].astype(np.float32), OBS_W), device=device).unsqueeze(1)
+        obs = torch.tensor(_obs(d), device=device).unsqueeze(1)
         card = torch.tensor(c, device=device).unsqueeze(1)
         _, _, (cl, _, _, _) = sequence_loss(net, obs, card, card, torch.ones_like(card, dtype=torch.bool),
                                             torch.ones_like(card, dtype=torch.float32))
@@ -292,7 +305,7 @@ def load_demos(path: Path) -> list[dict]:
 
 
 def main():
-    global SHARDS, WINDOW, BURN_IN, PLAY_WEIGHT, LEAD, OBS_W
+    global SHARDS, WINDOW, BURN_IN, PLAY_WEIGHT, LEAD, OBS_W, ZERO_SPENT
     ap = argparse.ArgumentParser()
     ap.add_argument("--epochs", type=int, default=6)
     ap.add_argument("--steps-per-epoch", type=int, default=0, help="0 = one window per training episode")
@@ -321,7 +334,9 @@ def main():
     ap.add_argument("--match-meta", default=None, help="match results / pairs as json, instead of the tables")
     ap.add_argument("--extra-obs", action="store_true",
                     help="the net with the new input block (bot77.rl.extra_net.ExtraObsNet); --init may be an old checkpoint")
+    ap.add_argument("--keep-spent", action="store_true", help="keep the elixir-spent scalars (zeroed by default: SPENT_COLS)")
     a = ap.parse_args()
+    ZERO_SPENT = not a.keep_spent
     LEAD = a.lead
     SHARDS, WINDOW, BURN_IN, PLAY_WEIGHT = Path(a.shards), a.window, a.burn_in, a.play_weight
     torch.manual_seed(77)

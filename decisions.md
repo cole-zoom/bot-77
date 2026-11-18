@@ -5984,3 +5984,24 @@ Same engine and bot rules as the v6 checks.
      units retargeting the king after their princess tower falls. When: now, feeds the sim-demo rebuild.
   4. **Live-vs-sim observation parity test** (his test_rl_policy.py): one board through the sim's and the live path's
      observation builders, compared cell by cell (the input block included). When: now, cheap.
+
+### 2026-11-18: live-vs-sim observation parity (Hasty-CR borrow 4)
+- **scripts/obs_parity.py** (after Hasty-CR's test_rl_policy.py, MIT): engine matches with random legal plays both
+  sides (Hog 2.6 vs 3 decks); every 2 s the moment is rebuilt through bot77.sim.mirror (the live and pro-shard path)
+  from a perfect read (true units, HP, towers, hand, both elixirs, decks, the opponent's timed plays) and compared
+  with the running engine's own observation (the sim-demo and self-play path), by section. 254 moments, 3 matches.
+- **Identical:** clock, multiplier, tower HP, the opponent's cycle, the river.
+- **Elixir spent (own, theirs): always differs.** The engine has no setter, so the mirror reads 0, in the pro shards
+  (shards_t02), shadow games (shadow_t02) and live, while every sim demo (defence_t01 / school_v3: up to 0.025) carries
+  the real total. A net could tell demos from real games by it. Fix: train_bc.py now zeroes the two cells in every
+  source (SPENT_COLS; --keep-spent to skip). Live already reads 0, so live and training agree with no model change.
+  Models trained before (v10 and earlier) saw the demos' values.
+- **Units:** one-body units land where they were (median 0.04 tiles, 90th pct 0.19; the mirror's one commit tick
+  moves walkers ~0.1-0.2). Squads re-form at their centre (median 0.26 tiles off, 90th 0.66) and come back whole: 96
+  extra bodies in 435 (the documented whole-card choice; per_body exists for the fidelity check). Spawned bodies
+  (Goblin Hut goblins etc., no card id): 104 left out by the perfect read; live, the detector names them and the
+  mirror injects them as a card. Board HP with troop HP on: 65% of moments differ, small (squad bodies refilled).
+- **Elixir:** +0.035 (one tick of regen from the commit step). Negligible.
+- **The input block** isn't compared here: sim demos have a zero block until the sim-demo rebuild (OppInputs on sim
+  events).
+- **tests/test_obs_parity.py** pins the exact sections, one-body positions, and the spent gap (so a fix shows up).
